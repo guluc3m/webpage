@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<humano>
+
+<nombre>Jesús Espino</nombre>
+<nick>jespino</nick>
+
+<foto>people/jespino/jesus.jpg</foto>
+
+<rollo>
+Jesús es el presidente del GUL, vocal de Hispalinux y la única persona conocida que desde 
+que se inventó el transistor bipolar ha pasado
+tantos meses usando exclusivamente la consola en modo texto que ha olvidado el nombre de algunos colores. Semejante
+aberración no ha podido traer buenas consecuencias y por ello es responsable de haber dedicado horas y horas
+a tareas como repasar comandos de vim o poner su cara en la foto de una modelo, y lo peor de todo, en público. Es
+un gran activista del software libre y ha participado dando conferencias y cursos sobre temas muy variados en muchas
+organizaciones a lo largo y ancho de este país. Participa muy activamente en proyectos como GenDist, debculture, LUC3M, WinSOL, 
+geduroam y acabar cenando en un chino al final de las jornadas técnicas. El hecho de que su 
+página personal sea parte de la forja RedIRIS no es casualidad.
+</rollo>
+
+<page>forja.rediris.es/users/jespino/</page>
+<blog>planeta.gul.es</blog>
+<mail>jespino @nospam@ di.uc3m.es</mail> 
+<key>people/jespino/jesus.gpg</key>
+
+</humano>
+

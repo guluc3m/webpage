@@ -1,0 +1,46 @@
+
+  * Bienvenida y presentación
+  * Lanzar en la lista «cursos» discusion sobre actividades
+     * Cursos de Noviembre y cursos en otros campus.
+     * Actividades en residencias
+  * Instar a los asistentes a inscribirse en el libro de socios
+  * Comentarios y preguntas
+
+===Bienvenida y presentación===
+
+Estuvieron presentes seis socios y la junta, excepto el presidente que no pudo estar presente.
+
+=== Cursos ===
+
+Se aprobó lanzar la discusión en la lista curso, aunque quedaba pendiente revisar si dicha lista continuaba en condiciones de ser utilizada, ya que dicha lista llevaba bstante tiempo sin usarse.
+Durante la reunión se concretaron actividades a realizar sobre los cursos:
+   * Marketing general: Hacer más atractivos los cursos poniendo titulos mas atractivos, poniendo descripciones más prolijas y demás.
+   * Hacer trípticos con horarios: Estos trípticos se podrían repartir en mano cada día, teniendo en gran los horarios del día y después todo el horario con un pequeño resumen de cada curso.
+   * Instar a que en cada curso se hable del resto de cursos, citándolos y dando cohesión a la actividad.
+   * Buscar subvención y/o patrocinio: Consiguiendo fondos se podría repartir documentación u otro tipo de material adicional en los cursos.
+   * Montar una aplicación web que puede servir para que quien se apunte pueda obtener documentación en los cursos, haciendola así bajo demanda, y/o para votar los cursos más valorados y que sean los que se realicen.
+
+Respecto a la realización de los cursos, tal y como son hasta ahora, se aprobó fijar su duración en una semana y hacer otras actividades aparte. De esta forma se darán cursos más concretos y se harán más actividades. Entre estas actividades se fijaron:
+  * Monográfico de C: David muñoz se presentó voluntario para desarrollarlo.
+  * Monográfico de Java: 
+  * Monográfico de Ruby: Lo propuso Sergio Gil, aunque aún quedaba hablar con otros ponentes.
+  * Monográfico de introducción a GNU/Linux: A realizar tanto en el campus de Leganés como en el de Getafe. Se presentarón para llevarlo a cabo Roberto muñoz, Claudio Jimenez y Fernando Cerezal.
+  * Monográfico sobre seguridad: Hubo interés en esto, aunque habría que encontrar quién podría impartirlo.
+En un monográfico habrá una persona encargada de desarrollarlo. Esta persona hablará con el resto de personas que le ayuden y dirá a la junta qué material necesita y la fecha de realización.
+
+Sobre los cursos, se habló de llevar acabo uno sobre «linux ecológico», mostrando los pequeños «hacks para ahorro de energía y utilizando el poder mediatico actual que este término tiene. También buscar si se podría realizar un curso sobre modelo de negocio en el software libre en en el campus de Getafe.
+
+En otro tipo de actividades:
+  * Se acordó realizar una «install party» para finales de octubre o principios de noviembre.
+  * Se discutió sobre la comunicación con profesores, finalizando en que cada socio hablase con los profesores que conoce para que estos puedan dar publicidad de los cursos en clase.
+  * Samuel Rodriguez se comprometió a organizar una torneo de overkill.
+  * Iniciar en breve algún tipo de llamamiento a los socios sobre diseños de carteles A2 para poder tenerlos impresos con suficiente antelación.
+
+Respecto a las residencias no quedo claro que ninguna actividad pudiese tener gran acogida allí, aunque una «install party» podría tener público.
+
+===Instar a los asistentes a inscribirse en el libro de socios ===
+
+Todos los asistenets estaban inscritos, 3 nuevos socios en el libro de socios desde la ultima reunión.
+
+=== Comentarios y preguntas ===
+No hubo.

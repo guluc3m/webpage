@@ -1,0 +1,13 @@
+====== Calendario ======
+
+^    Primera Semana   ^^^^^^
+^  Hora  ^  Lunes 27  ^  Martes 28  ^  Miercoles 29  ^  Jueves 30  ^  Viernes 31  ^
+^ 11:00-13:00 |   [[charlas_definitivas_marzo_2006#luc3mel_linux_de_la_carlos_iii|Luc3m: El Linux de la Carlos III]]   |      |   [[charlas_definitivas_marzo_2006#blender_diseno_3d|Blender, Diseño 3D]]   |   [[charlas_definitivas_marzo_2006#opengl_sdl|OpenGL]]   |   [[charlas_definitivas_marzo_2006#patrones|Patrones de diseño]]   |
+^ 16:00-18:00 |   [[charlas_definitivas_marzo_2006#comandos_basicos|Comandos Básicos]]   |   [[charlas_definitivas_marzo_2006#red_domestica|Red Domestica]]   |   [[charlas_definitivas_marzo_2006#latex|LaTeX]]   |  [[charlas_definitivas_marzo_2006#gendistcrea_tu_linux_live|GenDist: Crea tu Linux Live]]   |      |
+^ 18:00-20:00 |	  [[charlas_definitivas_marzo_2006#alternativas_libres|Alternativas Libres]]   |   [[charlas_definitivas_marzo_2006#gestion_documental_con_docmgr|Gestión Documental con DocMGR]]   |   [[charlas_definitivas_marzo_2006#latex_avanzado|LaTeX avanzado]]   |   [[charlas_definitivas_marzo_2006#joomlaun_portal_web_en_15_minutos|Joomla: Un portal Web en 15 minutos]]   |   JavaScript, el lenguaje de los navegadores   |
+^    Segunda Semana   ^^^^^^
+^  Hora  ^  Lunes 3  ^  Martes 4  ^  Miercoles 5  ^  Jueves 6  ^  Viernes 7  ^
+^ 11:00-13:00 |      |      |      |      |   [[charlas_definitivas_marzo_2006#ruby_on_rails|Ruby on Rails]]   |
+^ 16:00-18:00 |  [[charlas_definitivas_marzo_2006#haskell|Haskell]]  |   [[charlas_definitivas_marzo_2006#ebox|eBox]]   |   [[charlas_definitivas_marzo_2006#vim|Vim]]   |   [[charlas_definitivas_marzo_2006#sistemas_de_ficheros|Sistemas de Ficheros]]   |   [[charlas_definitivas_marzo_2006#seguridad_en_linux|Seguridad en Linux]]   |
+^ 18:00-20:00 |	  [[charlas_definitivas_marzo_2006#mononet_libre|Mono: .NET libre]]   |   [[charlas_definitivas_marzo_2006#subversiondesarrollo_colaborativo|Subversion: Desarrollo colaborativo]]   |   [[charlas_definitivas_marzo_2006#awk|Awk]]   |   [[charlas_definitivas_marzo_2006#raid|RAID]]   |   [[charlas_definitivas_marzo_2006#seguridad_en_red|Seguridad en Red]]   |
+

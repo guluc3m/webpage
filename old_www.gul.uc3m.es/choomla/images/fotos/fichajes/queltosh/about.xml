@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<humano>
+
+<nombre>Roberto Muñoz</nombre>
+<nick>queltosh</nick>
+
+<foto>people/queltosh/roberto.jpg</foto>
+
+<rollo>
+Queltosh es enigmático. Nadie sabe qué carajo significa. Al igual que juanra, se curtió
+en las aulas informáticas y en el servicio de ayuda. Eso imprime carácter. Ostenta el 
+cargo de coordinador de actividades del GUL y 
+se dedica principalmente a desmontar y montar equipos delante de la audiencia de los cursos 
+así como a llenar su carpeta personal de ficheros con nombres incomprensibles como 
+backupzipi o charliebot. Entre su cartera de proyectos cuentan un parser que convierte código 
+Bash a novelas románticas y un script para automatizar la descarga de contenido de algunas 
+webs de dudosa reputación. 
+</rollo>
+
+<blog>queltosh.blogspot.com</blog>
+<page>roberto.gul.es</page>
+<mail>munoz punto roberto en gmail punto com</mail> 
+<key>people/queltosh/publickey</key>
+
+</humano>
+

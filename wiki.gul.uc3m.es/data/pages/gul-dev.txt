@@ -1,0 +1,15 @@
+====== gul-dev ======
+
+===== ¿Qué es gul-dev? =====
+
+gul-dev conforma a todos aquellos que están interesados en el desarrollo de software bajo linux. No es necesario ser un experto para pertenecer a gul-dev, sólo hay que tener ganas.
+
+===== ¿Cómo participar? =====
+
+Para empezar a participar en gul-dev, te recomiendo que te apuntes a su [[http://gul.uc3m.es/mailman/listinfo/gul-dev|lista de correo]]. Ahí podrás resolver tus dudas así como ayudar a aquellos que menos saben.
+
+Aquellos usuarios con buenas ideas, podrán disponer de alojamiento para sus proyectos en [[http://guadiana.gul.uc3m.es/|GULForge]] (temporalmente parado). Aquí podrás controlar tus proyectos con foros, bugtracking, subversion, etc.
+
+===== Documentos =====
+  * [[Introducción a Subversion]]
+  * [[Introducción a la programación en C]]

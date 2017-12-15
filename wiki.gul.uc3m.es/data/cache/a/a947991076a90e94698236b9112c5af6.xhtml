@@ -1,0 +1,106 @@
+<div class="toc">
+<div class="tocheader"> <script type="text/javascript">showTocToggle("+","-")</script>Tabla de Contenidos</div>
+<div id="tocinside">
+<ul class="toc">
+<li class="level1"><span class="li"><a href="#envio_de_claves_cifradas_por_un_canal_inseguro" class="toc">Envío de claves cifradas por un canal inseguro</a></span><ul class="toc">
+<li class="level2"><span class="li"><a href="#advertencia" class="toc">Advertencia</a></span></li>
+<li class="level2"><span class="li"><a href="#introduccion" class="toc">Introducción</a></span></li>
+<li class="level2"><span class="li"><a href="#que_vamos_a_necesitar" class="toc">¿Qué vamos a necesitar?</a></span></li>
+<li class="level2"><span class="li"><a href="#funcionamiento" class="toc">Funcionamiento</a></span></li>
+<li class="level2"><span class="li"><a href="#implementacion_del_cliente" class="toc">Implementación del cliente</a></span></li>
+<li class="level2"><span class="li"><a href="#implementacion_del_servidor" class="toc">Implementación del servidor</a></span></li>
+<li class="level2"><span class="li"><a href="#conclusiones" class="toc">Conclusiones</a></span></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<a name="envio_de_claves_cifradas_por_un_canal_inseguro"></a><h1>Envío de claves cifradas por un canal inseguro</h1>
+<div class="level1">
+
+</div>
+<!-- SECTION [1-63] -->
+<a name="advertencia"></a><h2>Advertencia</h2>
+<div class="level2">
+
+<p>
+ La técnica que aquí se va a explicar sólo afecta al envío de la clave, no de los datos. Sólo sirve para la autenticación. Si requiere de seguridad completa, le recomiendo que utilice protocolos como <acronym title="Secure Shell">SSH</acronym>, HTTPS, etc. Además, esta técnica está pensada originalmente para el uso en páginas web.
+</p>
+
+</div>
+<!-- SECTION [64-391] -->
+<a name="introduccion"></a><h2>Introducción</h2>
+<div class="level2">
+
+<p>
+ Probablemente, muchos de vosotros os habréis preguntado cómo enviar una clave cifrada cuando el canal de comunicaciones es inseguro. Una de las posibles soluciones es el uso del sistema de Diffie-Hellman. Pero este mecanismo requiere que los interlocutores puedan comunicarse sin obstáculos. Esto no pasa con el protocolo <acronym title="Hyper Text Transfer Protocol">HTTP</acronym>.
+</p>
+
+<p>
+El protocolo <acronym title="Hyper Text Transfer Protocol">HTTP</acronym> es un protocolo sencillo. El cliente manda una petición al servidor y éste le responde. Por tanto, la capacidad de comunicación entre cliente y servidor está muy limitada.
+</p>
+
+</div>
+<!-- SECTION [392-945] -->
+<a name="que_vamos_a_necesitar"></a><h2>¿Qué vamos a necesitar?</h2>
+<div class="level2">
+
+<p>
+ Para realizar dicho algoritmo, necesitaremos de un navegador que soporte javascript y cookies. Por parte del servidor, necesitaremos <acronym title="Hypertext Preprocessor">PHP</acronym> con el soporte de sesiones.
+</p>
+
+<p>
+El soporte de javascript lo necesitamos para utilizar el algoritmo MD5 que se encuentra en la página de <a href="http://pajhome.org.uk/crypt/md5/" class="urlextern" target="_blank" title="http://pajhome.org.uk/crypt/md5/" onclick="return svchk()" onkeypress="return svchk()" rel="nofollow">Paj</a>.
+</p>
+
+</div>
+<!-- SECTION [946-1298] -->
+<a name="funcionamiento"></a><h2>Funcionamiento</h2>
+<div class="level2">
+
+<p>
+ El sistema es sencillo, primero el servidor activa las sesiones y envía una cookie al cliente, además, genera un número aleatorio que almacenará en la sesión y que será enviado al cliente en un campo hidden.
+</p>
+
+<p>
+El cliente, cuando envía la clave, toma esta, la concatena con el valor enviado por el servidor y lo cifra con MD5. Luego manda este resultado al servidor.
+</p>
+
+<p>
+El servidor toma el valor recibido, toma la clave de la base de datos y la concatena con el valor guardado en la sesión. Hace el MD5 del resultado y si es igual que lo enviado por el cliente, entonces es que a acertado la clave.
+</p>
+
+<p>
+A grandes rasgos, el proceso es el anterior. Puede que sea necesario hacer algunas modificaciones para adaptarlo a sistemas ya hechos (sobre todo si la clave se almacena cifrada). Pero, de momento, eso os lo dejo a vosotros.
+</p>
+
+</div>
+<!-- SECTION [1299-2156] -->
+<a name="implementacion_del_cliente"></a><h2>Implementación del cliente</h2>
+<div class="level2">
+
+<p>
+ POR HACER.
+</p>
+
+</div>
+<!-- SECTION [2157-2209] -->
+<a name="implementacion_del_servidor"></a><h2>Implementación del servidor</h2>
+<div class="level2">
+
+<p>
+ POR HACER.
+</p>
+
+</div>
+<!-- SECTION [2210-2263] -->
+<a name="conclusiones"></a><h2>Conclusiones</h2>
+<div class="level2">
+
+<p>
+ POR HACER. 
+</p>
+
+</div>
+<!-- SECTION [2264-] -->

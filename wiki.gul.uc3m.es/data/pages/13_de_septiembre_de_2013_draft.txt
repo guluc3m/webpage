@@ -1,0 +1,87 @@
+====== Asistentes ======
+
+  * Fernando Cerezal Lopez
+  * Samuel Rodriguez Sevilla
+  * Roberto Muñoz Gómez
+  * Jose María Chumo Mata
+  * Javier Honduvilla
+  * Adolfo Sanz de Diego
+  * Yago
+  * Miguel Vaello
+  * Rodrigo de Frutos
+  * Nerea Luis
+  * Hombre con problemas con Apache
+  * Óscar 
+  * Rafael Medina
+
+
+
+
+====== Orden del día ======
+ 
+Toma acta don Miguel Vaello Martínez (secretario).
+
+ ==== # Próximas Jornadas del GUL 2013 II edición ====
+
+
+  * Abre la sesión tomando la palabra Nerea, que viene a anunciar que para febrero de 2014 se celebrará la próxima edición del evento T3chFest. Con ello también nos avisa de que otras dos organizaciones realizarán otras actividades interesantes por esas fechas y por ello
+plantea solapar dichas actividades. El formato de dichas jornadas comprende un día competo con paradas para café y comida.
+
+  * Fernando plantea si debemos hacer actividades conjuntas o cada uno por su cuneta pero con cierta coordinación
+  * Roberto propone hacerlo en conjunto y disponer de un track propio para las jornadas del GUL. (Partners?)
+  * El resto de asistentes coincide que uno de los grandes problemas es la falta de gente para organizarlo todo.
+  * También ser plantea la posibilidad de volver a realizar las Jornadas en las aulas audiovisuales del edificio Rey Pastor en Leganés.
+  * Se acuerda incluir a Nerea en la lista de cursos para organizar desde ahí la posible colaboración.
+
+
+
+
+ ==== # Visita de Ironhack ====
+
+  * Roberto nos comenta la reunión que ha tenido la hora anterior con un integrante de la plataforma [[http://ironhack.com|Ironhack]] . Ironhack es una plataforma centrada en formar a desarrolladores Web con la mejor calidad posible a través de un curso que dura ocho semanas y que va desde lo básico a un proyecto final. Dicho curso tiene un coste unos 6000 € (aprox.) y cuentan con un sistema de becas y financiación. Cabe destacar que las clases son en inglés y las imparte gente con bastante reconocimiento en el sector.
+
+  * Roberto les ha propuesto dar una charla ya que buscan cierta publicidad y con ello la gente podría obtener un descuento en el precio del curso diciendo dando referencias del GUL.
+  * También se abre la puerta a las donaciones por parte de dicha plataforma que irían a parar a las arcas del GUL.
+  * Además se les ha propuesto dar alguna charla en la Jornadas técnicas y podrían dar alguna relaccionada con Firefox OS y con sistemas.
+  * Finalmente, esta plataforma suele realizar charlas paralelas que suelen costar dinero, se ha planteado que la gente del GUL pueda ir gratis.
+
+
+==== # Renovación de la aplicación de cursos ====
+
+  * Llevamos tiempo intentando renovar la aplicación y por diversas cuestiones sólo s eha podido solucionar algún que otro bug o fallo de seguridad. Además, la verisón del framework (CakePHP) es vulnerable y no funciona correctamente con veriones nuevas de PHP
+  * Se propone hacerla desde cero y para esto Javier propone quedar un sábado y aplicar un desarrollo ágil marca de la casa.
+  * se acuerda moverlo por la lista de gul-dev y para esto se ha de añadir a los siguientes interesados en colaborar:
+  - Javier Honduvilla
+  - Jose María Chumo
+  - Samuel Rodríguez
+  - Oscar
+  - Rafael Medina
+  - Adolfo de Diego
+  - Yago
+  - Miguel Vaello
+
+
+
+
+==== # Memoria de actividades ====
+  - Hay que entregarla cuanto antes que nos pilla el toro.
+  - Únicamente queda revisarla y que Miguel Vaello aplique un orgásmico '//nightly patch//' al LaTeX de la memoria de actividades.
+
+# Nuevos servicios del GUL
+  * Roberto propuso por la lista ampliar los servicios ofrecidos por el GUL. Primeramente se ha propuesto aplicar el número de mirrors de proyectos de //software// libre. 
+  * Miguel propone incluir los siguientes:
+    - OpenWRT, con el fin de poder descargar tanto el código de la distribución (git) como //mirror// de los paquetes e imágenes precompiladas.
+    - También un //mirror// del Kernel de Linux (git mirror).
+
+Para esto, Miguel propone usar gitweb o similar para mostrar los repositorios a través de la web y que sean fácilmente localizables todos los repositorios que se van a agregar. También habría que incluir un cronjob para actualizar los repositorios.
+
+  * Roberto propone incluir un //mirror// de apache, aunque hay que cerciorarse de que cabe en el disco.
+
+  * Samuel popone incluir Raspbian (debian para Rasberry Pi).
+ 
+  * Por otra parte, Roberto propone dar otros servicios además de los mirror, por ello habla de que el GUL disponga de un servidor de DNS dinámico para que sus miembros puedan disponer gratuitamente de dicho servicio, redireccionando sus IP a subdominios *.gul.es. 
+  * Además, Roberto propone añadir un servicio de túnel DNS. Queda por determinar qué software se empleará. 
+
+
+
+Leganés, 13 de septiembre de 2013

@@ -1,0 +1,30 @@
+====== Campañas de Márketing y Comunicaciones ======
+
+Las gestiona el grupo de trabajo [[gul-myc]].
+
+===== Objetivos =====
+
+Estos 2 primeros bloques de objetivos fundacionales del propio GUL, siempre viene bien no perderlos de vista:
+
+   * Dar a conocer el Software libre
+     * Dar a conocer que existe el software libre y lo que es
+     * Hacer que la gente se pase al software libre
+   * Dar a conocer Linux, GNU/Linux
+     * Interesar a la gente en el uso de Linux
+
+Los siguientes, en cambio, son objetivos de captación interna que ayudan al GUL a ser más ágil y potente y poder cumplir mejor con los anteriores.
+
+   * Dar a conocer el GUL-UC3M:
+     * Que la gente sepa que existe el GUL-UC3M
+     * Que la gente se apunte al GUL-UC3M
+     * Que se conozca la lista: su existencia, su utilidad, sus características
+   * Alentar la participación:
+     * Desmitificar el nivel de la lista: Que se sepa que cualquiera puede participar, tanto los novatos como los "gurus".
+     * Que los nuevos en la lista no sean tan tímidos.
+     * Que la gente de la lista asista a las reuniones.
+     * Que la gente participe en los grupos de interés y de trabajo
+
+También hay captación externa:
+   * Capturar patrocinios para actividades y/o proyectos
+
+Nota: Aunque atraer a gente de fuera de la universidad siempre es interesante y está jusificado por ser una asociación de pleno derecho registrada en el Ayuntamiento de Leganés y en la Comunidad de Madrid, los esfuerzos deben orientarse primordialmente a atraer gente de dentro ya que es más facil de justificar, siendo el GUL una asociación originamente universitaria y siendo la universidad la fuente más importante de recursos.

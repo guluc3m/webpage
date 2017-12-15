@@ -1,0 +1,56 @@
+- prioridad normal
+
++ prioridad alta
+
+# nunca se ha impartido
+
+? petición
+
+([0-9]+) número de votos
+
+  * Python(1)
+  * + PyGTK(1)
+  * - Joomla (2)
+  * # Plone
+  * - Moodle
+  * - Dokuwiki (2)
+  * - DocMGR (1)
+  * - Sistemas de ficheros (2)
+  * + vim (3)
+  * + Qué es el S.L. (3)
+  * - Linux como alternativa a windows (3)
+  * - Haskell (2)
+  * - awk (2)
+  * - gendist
+  * - LaTeX
+  * + paquetes Debian (2)
+  * - bash (3)
+  * + subversion (1)
+  * - cvs (1)
+  * + php/mysql (2)
+  * - Instalación (2)
+  * - PyGame
+  * # Hispalinux
+  * + Introducción y uso diario (4)
+  * - Redes domésticas (3)
+  * - Java (1)
+  * # Lego Mindstorms (1)
+  * C (2)
+  * ? juegos para linux (1)
+  * ? kernel hacking (3)
+  * ? Gimp (1)
+  * ? AJAX (2)
+  * ? Apache (1)
+  * ? Perl (1)
+  * ? Django
+  * ? Mod_python
+  * ? CherryPy
+  * ? turbogears
+  * ? Pyjamas
+  * ? web.py
+  * ? Ruby On Rails (1)
+  * Ruby (1)
+  * Clusters para alta disponibilidad (2)
+  * Hilos y forks (3)
+  * Emacs (1)
+  * Apache Ant (1)

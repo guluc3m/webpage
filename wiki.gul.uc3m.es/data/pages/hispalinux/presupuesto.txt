@@ -1,0 +1,19 @@
+====== Presupuesto ======
+
+===== Aproximado =====
+
+  * Comida (50 personas organizacion/ponetes x 2 dias x 20€ = 2000€)
+  * Cena (50 personas organizacion/ponetes x 2 dias x 40€ = 4000€)
+  * Desayuno (400 asistentes x 2 dias x 2€ = 1600€)
+  * Desplazamiento Internacional (3 ponentes internacionales x 1000€/persona = 3000€)
+  * Desplazamiento Nacional (15 ponentes nacionales x 300€/persona = 4500€)
+  * Estancia (Estancia de 18 personas x 200€/persona = 3600€)
+  * Merchandising (1000 bolsas de obsequios x 6€/bolsa = 6000€)
+
+  * **Total aproximado: 24700€**
+
+==== otras partidas (propuesta sin validar) ====
+
+  * Publicidad
+  * Grabaciones audiovisuales
+  * Stands (material, montaje y desmontaje)

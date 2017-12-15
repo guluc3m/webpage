@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.7.1" -->
+<?xml-stylesheet href="http://wiki.gul.es/lib/styles/feed.css" type="text/css"?>
+<feed version="0.3" xmlns="http://purl.org/atom/ns#">
+    <title>GUL UC3M wiki</title>
+    <tagline></tagline>
+    <link rel="alternate" type="text/html" href="http://wiki.gul.es/"/>
+    <id>http://wiki.gul.es/</id>
+    <modified>2013-10-10T12:45:13+01:00</modified>
+    <generator>FeedCreator 1.7.1</generator>
+    <entry>
+        <title>wiki:documentacion</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=wiki:documentacion&amp;amp;rev=1263729022"/>
+        <created>2010-01-17T12:50:22+01:00</created>
+        <issued>2010-01-17T12:50:22+01:00</issued>
+        <modified>2010-01-17T12:50:22+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=wiki:documentacion&amp;amp;rev=1263729022</id>
+        <summary> Comenzar en Linux no siempre es fácil. Los recién llegados a Linux, a menudo se preguntan ¿por dónde empiezo? ¿dónde puedo encontrar la documentación más básica?  Para intentar ayudar a los nuevos usuarios a dar sus primeros pasos con Linux, el Grup...</summary>
+    </entry>
+    <entry>
+        <title>wiki:documentacion_aplicaciones</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=wiki:documentacion_aplicaciones&amp;amp;rev=1276767027"/>
+        <created>2010-06-17T11:30:27+01:00</created>
+        <issued>2010-06-17T11:30:27+01:00</issued>
+        <modified>2010-06-17T11:30:27+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=wiki:documentacion_aplicaciones&amp;amp;rev=1276767027</id>
+        <summary> Aplicaciones   Alternativas libres  Alternativas libres. Alternativas libres para cualquier tipo de programa.  Open Source Living. Open Source Living, an archive of the Web&amp;rsquo;s best Open Source software, applications and references for a zero-co...</summary>
+    </entry>
+    <entry>
+        <title>wiki:documentacion_distribuciones</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=wiki:documentacion_distribuciones&amp;amp;rev=1178064774"/>
+        <created>2007-05-02T02:12:54+01:00</created>
+        <issued>2007-05-02T02:12:54+01:00</issued>
+        <modified>2007-05-02T02:12:54+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=wiki:documentacion_distribuciones&amp;amp;rev=1178064774</id>
+        <summary> Distribuciones   OpenSUSE  Documentación de usuarios. Es la pagina inicial de la documentación de la Comunidad openSUSE.  Novell SUSE Linux 10.0 Reference (pdf). Documentación oficial.  Novell SUSE Linux 10.0 Start-Up (pdf). Documentación oficial.  ...</summary>
+    </entry>
+    <entry>
+        <title>wiki:dokuwiki</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=wiki:dokuwiki&amp;amp;rev=1121276410"/>
+        <created>2005-07-13T19:40:10+01:00</created>
+        <issued>2005-07-13T19:40:10+01:00</issued>
+        <modified>2005-07-13T19:40:10+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=wiki:dokuwiki&amp;amp;rev=1121276410</id>
+        <summary>  DokuWiki is a standards compliant, simple to use Wiki, mainly aimed at creating documentation of any kind. It is targeted at developer teams, workgroups and small companies. It has a simple but powerful syntax which makes sure the datafiles remain ...</summary>
+    </entry>
+    <entry>
+        <title>wiki:instalando_openldap_con_soporte_ssl_en_debian</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=wiki:instalando_openldap_con_soporte_ssl_en_debian&amp;amp;rev=1161027615"/>
+        <created>2006-10-16T21:40:15+01:00</created>
+        <issued>2006-10-16T21:40:15+01:00</issued>
+        <modified>2006-10-16T21:40:15+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=wiki:instalando_openldap_con_soporte_ssl_en_debian&amp;amp;rev=1161027615</id>
+        <summary> El objetivo primero es instalar openldap en la máquina y que los usuarios locales autentiquen a través de ldap.  Lo primero que hemos de hacer es instalar openldap y algunas utilidades que nos harán falta más tarde:  #apt-get install slapd ldap-util...</summary>
+    </entry>
+    <entry>
+        <title>wiki:ndiswrapper</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=wiki:ndiswrapper&amp;amp;rev=1211071625"/>
+        <created>2008-05-18T02:47:05+01:00</created>
+        <issued>2008-05-18T02:47:05+01:00</issued>
+        <modified>2008-05-18T02:47:05+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=wiki:ndiswrapper&amp;amp;rev=1211071625</id>
+        <summary> Algunos fabricantes de tarjetas WiFi solo crean drivers para Windows. Esto, en principio, no tiene nada de malo (no podemos obligar a un fabricante a sacar drivers para los cientos de sistemas operativos que hay en el mundo), si no fuera por el hech...</summary>
+    </entry>
+    <entry>
+        <title>wiki:playground</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=wiki:playground&amp;amp;rev=1121276412"/>
+        <created>2005-07-13T19:40:12+01:00</created>
+        <issued>2005-07-13T19:40:12+01:00</issued>
+        <modified>2005-07-13T19:40:12+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=wiki:playground&amp;amp;rev=1121276412</id>
+        <summary> PlayGround   ...</summary>
+    </entry>
+    <entry>
+        <title>wiki:preguntas_frecuentes</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=wiki:preguntas_frecuentes&amp;amp;rev=1177449191"/>
+        <created>2007-04-24T23:13:11+01:00</created>
+        <issued>2007-04-24T23:13:11+01:00</issued>
+        <modified>2007-04-24T23:13:11+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=wiki:preguntas_frecuentes&amp;amp;rev=1177449191</id>
+        <summary> Esto pretende ser una recopilación de las preguntas frecuentes que le pueden surgir a alguien que no esté familiarizado con el software libre.   ¿Qué es el software libre?     El software libre es todo aquel cuya licencia permite cuatro libertades: ...</summary>
+    </entry>
+    <entry>
+        <title>wiki:rorendebian</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=wiki:rorendebian&amp;amp;rev=1202091653"/>
+        <created>2008-02-04T03:20:53+01:00</created>
+        <issued>2008-02-04T03:20:53+01:00</issued>
+        <modified>2008-02-04T03:20:53+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=wiki:rorendebian&amp;amp;rev=1202091653</id>
+        <summary> Crearemos una aplicación de prueba llamada &amp;ldquo;pror&amp;rdquo; (&amp;rdquo;prueba ruby on rails&amp;rdquo;)  La ubicaremos en /var/www  Haremos un alias en apache para acceder a ella usando la dirección http://...../pror Instalar los paquetes necesarios:  ap...</summary>
+    </entry>
+    <entry>
+        <title>wiki:syntax</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=wiki:syntax&amp;amp;rev=1121276410"/>
+        <created>2005-07-13T19:40:10+01:00</created>
+        <issued>2005-07-13T19:40:10+01:00</issued>
+        <modified>2005-07-13T19:40:10+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=wiki:syntax&amp;amp;rev=1121276410</id>
+        <summary> DokuWiki supports some simple markup language, which tries to make the datafiles to be as readable as possible. This page contains all possible syntax you may use when editing the pages. Simply have a look at the source of this page by pressing the ...</summary>
+    </entry>
+</feed>

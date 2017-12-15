@@ -1,0 +1,48 @@
+===Bienvenida y presentación===
+
+Nos dimos la bienvenida, estuvo presente la junta completa y cuatro miembros.
+
+===Cursos Marzo. Reserva de aulas.===
+
+Roberto Muñoz, coordinador de actividades, se encargará de la reserva de las aulas para los cursos de Marzo de 2007.
+
+===Colores GUL.===
+Se discuten los nuevos colores corporativos del gul que serán utilizados en la página web y en el planeta de forma que el fondo se muy clarito, las letras tengan un valor hexadecimal 111111 y los motivos sean azules.
+
+===Aprobación de la página web.===
+
+Se plantea ha votación la web del gul y se aprueba a falta de retocar ligeramente los colores para que sean los decididos en el punto anterior.
+
+===Interfaz foro.===
+
+Los encargados de montar el foro, comentan que ya están resultos todos los problemas que surgieron y que ya funciona, aunque todavia falta cambiar el estilo para adaptarlo a los colores del gul y mandar un correo para informar a la gente de como funciona.
+
+
+===Campaña publicidad.===
+
+Siguiendo con el tema de darnos a conocer se decide atacar por dos frentes:
+  * Publicaciones: Fernando Cerezal queda encargado de mandar correos electróncos a varias publicaciones locales.
+  * Publicidad subliminal: se que en organizar oleadas de publicidad subliminal de vez en cuando.
+
+===Campaña de patrocinios.===
+
+Se queda en intentar conseguir más patrocinios hablando con la gente que salga elegida en el Ayuntamiento de Leganés, con el nuevo rector y con empresas privadas (como pudiera ser PcBox). También se comenta que sería interesante intentar buscar empresas de formacion para crear un convenio de colaboración, así como empresas relaccionadas con el software libre en el libro blanco o patrocinios indirectos como gasolina y estancias en hotel para traer ponentes de fuera de la Comunidad de Madrid.
+
+
+Las decisiones sobre la viabilidad de los patrocinios se tomara por la junta y el dinero será destinado a la compra de servidores o a traer ponentes.
+
+===Propuesta reunión candidato a rector. ¿Que le proponemos?===
+
+A raíz de la petición de alguno de los candidatos a rector se habla sobre que temas plantear. Se considera que los más importantes es que no castiguen a todas las asociaciones por los actos de unas pocas, que nos dejen reservar cualquier aula siempre que esté libre y que sería interesante aumentar el uso de Software Libre en la docencia.
+
+===¿Cena fin de cursos?===
+Se propone hacer una cena al final de los cursos más organizada, pedir a la gente que diga quien va a venir para así poder hacer una reserva en un restaurante cercano.
+
+===Instar a los asistentes a inscribirse en el libro de socios===
+
+===Comentarios y preguntas===
+
+Se hacen las siguientes propuestas, aunque nadie se hace cargo especificamente de ninguna:
+  * Intentar generar una lista de profesores para tener mas contacto con ellos.
+  * Contactar con el vicerrectorado de infraestructura para que todas las maquinas sean duales.
+  * Publicitar que todo el mundo tiene cuenta en los ordenadores linux de la universidad.

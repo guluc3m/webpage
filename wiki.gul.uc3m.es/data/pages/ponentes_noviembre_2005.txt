@@ -1,0 +1,43 @@
+====== Ponentes ======
+
+===== Claudio Jimenez =====
+  * [[charlas_definitivas_noviembre_2005#comandos_basicos|Comandos Basicos]]
+
+===== David Muñoz =====
+  * [[charlas_definitivas_noviembre_2005#xhtml_y_apache|XHTML y Apache (Tarde de Web)]]
+  * [[charlas_definitivas_noviembre_2005#postgresql_y_php|PostgreSQL y PHP (Tarde de Web)]]
+
+===== Felipe Talavera =====
+  * [[charlas_definitivas_noviembre_2005#ruby_on_rails|Ruby on Rails, AJAX y Web 2.0]]
+
+===== Fernando Cerezal =====
+  * [[charlas_definitivas_noviembre_2005#introduccion_a_java|Introduccion a Java]]
+
+===== Fernando J. Pereda =====
+  * [[charlas_definitivas_noviembre_2005#ebuilsdistribucion_de_software_en_gentoo|Ebuilds: Distribucion de software en gentoo]]
+  * [[charlas_definitivas_noviembre_2005#programacion_en_bash|Programación en Bash]]
+
+===== Jesus Espino =====
+  * [[charlas_definitivas_noviembre_2005#presentacion_del_gul|Presentación del GUL]]
+  * [[charlas_definitivas_noviembre_2005#construccion_de_paquetes_debian|Construcción de paquetes Debian]]
+  * [[charlas_definitivas_noviembre_2005#que_es_el_software_libre|¿Que es el software libre?]]
+  * [[charlas_definitivas_noviembre_2005#luc3m_el_linux_de_la_carlos_iii|LUC3M: El Linux de la Carlos III]]
+  * [[charlas_definitivas_noviembre_2005#python|Python]]
+  * [[charlas_definitivas_noviembre_2005#python_gtk|Python-GTK]]
+
+===== José Manuel Ferrer =====
+  * [[charlas_definitivas_noviembre_2005#bacula_como_alternativa_a_legato_networker_time_navigator_brighstor|Bacula como alternativa a Legato Networker, Time Navigator, BrighStor...]]
+  * [[charlas_definitivas_noviembre_2005#introduccion_a_perl|Introducción a Perl]]
+
+===== Juan José Rodríguez Buleo =====
+  * [[charlas_definitivas_noviembre_2005#introduccion_a_perl|Introducción a Perl]]
+
+===== Luis de Bethencourt =====
+  * [[charlas_definitivas_noviembre_2005#gimp_retoque_fotografico|Gimp: Retoque fotografico]]
+
+===== Roberto Muñoz =====
+  * [[charlas_definitivas_noviembre_2005#montado_e_instalacion_de_un_ordenador|Montado e instalación de un ordenador]]
+
+
+===== Vicente Palacios =====
+  * [[charlas_definitivas_noviembre_2005#uml_diseño_de_software|UML: Diseño de software]]

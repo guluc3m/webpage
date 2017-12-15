@@ -1,0 +1,58 @@
+====== Asistentes ======
+
+  * Roberto Muñoz
+  * Igor Zubiaurre
+  * Juan Ramón Martín
+  * Samuel Rodríguez
+  * Miguel Vaello
+  * Fernando Cerezal
+  * Ana Esther Rodriguez
+  * Sergio Morcuende
+  * Adolfo Sanz
+  * Sandra Molins
+  * José María Chumo
+
+====== Orden del día ======
+
+  * Cambio de firmas del banco
+
+  * Nube
+
+
+====== Sesión ======
+
+Toma acta don Samuel Rodríguez Sevilla (secretario).
+
+  * Administración del GUL:
+    * Roberto: hay que secuestrar a Jesús Espino.\\ Se quedará el día 15 de mayo para realizar el papeleo del cambio de firmas.\\ Jesús Espino confirma por gtalk su asistencia.
+    * Hay que preparar la justificación de la subvención. Esta parte queda a cargo de Samuel.
+    * Chumo se compromete a encontrar y traer el libro de actas, esté donde esté.
+
+  * [[gul-root]]:
+    * Correos de fallos del planeta. Roberto: el cron manda correos por fallos del planeta.
+    * Rober y Fer: mezclar el twitter y el planeta para que de más vida. Se aprueba.
+
+  * [[gul-myc]]:
+    * Dar de alta a Adolfo en gul-myc.
+      * Fernando lo hará en el wiki.
+      * Cuenta de twitter. Samuel se compromete en buscar la clave de la cuenta de twitter del GUL. Adolfo se comprometa a hacer de comunity manager.
+    * Miguel Vaello se compromete a actualizar los tripticos. Se puede buscar en la lista de correo de consejo; Igor dice que él podría buscarlo.
+    * Adolfo se compromete a ayudar a mejorar la web de cursos. Ayudará con el tema de estilo y HTML.
+
+  * [[gul-cursos]] Jornadas Técnicas.
+    * Se habla sobre el problema de las fechas, que se anuncia muy tarde. \\ Se presenta la problemática con la universidad, que no permite asegurar las solicitudes aprobadas con suficiente antelación, y se barajan otros lugares. \\ Se comenta que ni los profesores tienen más poder que las asociaciones en ese sentido.\\ Se comenta que hacerlo en la universidad da buena imagen al GUL como asociación universitaria.
+    * Adolfo: comenta que en el correo se dijo que podría proponerse slots de 1 hora y, si lo necesitas, solicitas 2 horas.
+    * Chumo: juntar los días más profesionales para facilitar al público de fuera de la universidad y así facilitarles su planificación.
+    * Igor y Adolfo: hay que potenciar las votaciones.
+    * Miguel V.: propone sortear una camiseta entre los asistentes.
+    * Igor: comenta que cree que los talleres tienen más tirón que las charlas.
+    * Ana: ¿por qué no se solicita que se den créditos por las jornadas?\\ Fer: dice que se puede conseguir que se de un crédito al ponente, pero hay que moverlo.
+    * Adolfo: ¿por qué no poner un eslogan?
+    * Adolfo: Eventos para socializar como betabeers o publicitar más los que ya hay. El resto de datos se pueden encontrar en la lista de correo y cuentan como válidas para el acta.
+    * Adolfo: publicitar el call for papers con mucha antelación y las votaciones.\\ Igor: mejor dejar las votaciones dos semanas antes para involucrar a la gente.
+
+  * Otras actividades tecnológicas:
+    * Roberto: enviará un correo a la lista general para continuar con la GUL-nube el martes 15 de mayo.
+    * Chumo: hacer algo parecido al grupo de javascript, pero de una única vez al mes. Su idea es que uno se empolle algo y se lo enseñe a los demás. Se puede publicar para dar publicidad al evento y a la asociación. Se aprueba, pero debe haber gente que mueva y organice esto.
+    * Echar una mano para promocionar el concurso universitario de SL y echar una mano a la gente para seleccionar qué hacer y enseñarles un poco cómo hacerlo. La idea es reunir a gente que quiera aprender a programar para ver si quieren presentarse al concurso (quien dice concurso de SL dice Google Summer Code).
+    * Gul summer camp.\\ Fer: quiere hacer un vídeo sobre crear radioenlaces y dar una charla sobre Arduino. Nos comenta que hay una persona trabajando con impresoras 3D que podría dar una charla sobre el tema.\\ Fer: se podría mover para hacerlo en agosto o julio.\\ Se puede enseñar a programar ya que mucha gente quiere aprender porque tienen poca o ninguna idea.

@@ -1,0 +1,7 @@
+====== Charlas ======
+
+===== Niveles =====
+El nivel que se le asigna a cada charla depende de su dificultad:
+  * **Básico:** Se puede entender en gran parte sin conocimientos técnicos.
+  * **Medio:** Son necesarios unos conocimientos básicos sobre Linux, programación, software libre... dependiendo de la temática de la charla.
+  * **Alto:** Es necesaria una buena base Linux, programación, software libre... dependiendo de la temática de la charla.

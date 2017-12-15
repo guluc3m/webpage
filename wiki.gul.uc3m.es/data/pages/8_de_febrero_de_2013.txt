@@ -1,0 +1,53 @@
+====== Asistenetes ======
+
+  * Samuel Rodríguez
+
+  * Ana Esther Rodríguez
+
+  * Irene M. Morgado
+
+  * Sandra Molins
+
+  * Roberto Muñoz
+
+  * Fernando Cerezal
+	
+  * David Rubio
+
+  * Ana Isabel Gómez-Pimoyo
+
+  * Miguel Vaello
+
+====== Orden de día ======
+
+	* Organización de los nuevos cursos, cambio de fechas.
+	
+	* Ideas para el nuevo servidor del GUL así como posibles problemas o aspectos derivados.
+	
+	* Cambio de empresa para la custodia del dominio.
+	
+	* Cierre antigua cuenta bancaria.
+
+        * Cortes periódicos de sumunistro eléctrico.
+
+
+
+====== Sesión ======
+
+Toma acta don Miguel Vaello Martínez (secretario).
+
+  * Se acuerda que las Jornadas Técnicas del GUL se celebrarán a partir del próximo curso la seguna semana de febrero y la útima semana completa de septiembre.
+    * Las jornadas de marzo 2013 se celebrarán la semana del 4 de marzo a nada más que exista algún problema y se moverán a la semana del 11.
+
+  * Para poner en marcha el nuevo servidor migrar los sistemas actuales: 
+    - Fernando propone que sea lo suficientemente estándar apara que luego se pueda dar soporte sin que resulte muy costoso mantenerlo . 
+    - Claudio propone no usar MVs y cambiar Xen por KVM.
+    - Se acuerda finalmente exportar configuraciones y reinstalar todo en lugar de migrar. 
+    - A colación, Fernando propone hacer reuniones previsas a las reuniones periódicas del GUL cada 3 meses de GUL-ROOT y además hacer una limpieza de la gente que figura como GUL-ROOT al tiempo que se forma a nueva gente.
+    - Se acuerda pensar una contraseña nueva para root con carácter urgente.
+
+  * El dominio está en Arsys y cuesta unos 25 € al año. Necesitamos uno que permitra delegación de DNS. Se encarga Claudio con Ayuda de Roberto para realizar el traspaso a CDMON. Se asopciará el pago a la nueva cuenta bancaraia.
+
+  * Dejar el saldo de la cuenta antigua a 0 y buscar a Jesús Espino para que realice la cancelación de la misma. Miguel (secretario) se compromete a pedir detalladamente y por escrito la documentación necesaria para tramitar la cancelación de la antigua cuenta.
+
+  * Estos últimos meses se han producido caidas en el suministro eléctrico con demasiada frecuencia y ha que hatajar el probelma cuanto antes. Fernando se hace cargo de venir un día para realizar las mediciones pertinentes e intentar ailar el problema.

@@ -1,0 +1,255 @@
+/* Revival.3 */
+/* by: Develop Daly - www.developdaly.com */
+
+/* Structure */
+* {
+   padding:0;
+   margin:0;
+}
+
+body {
+	text-align: left;
+	margin:0 auto;
+	padding:0;
+	color:#000000;
+	font-size:12px;
+	font-family:Verdana, Tahoma, Arial, sans-serif;
+	background:#e7f7ff;
+}
+#page {
+	width:800px;
+	margin:0 auto;
+}
+
+#left{
+	float:left;
+	width:150px;
+	margin:22px 0 0 0;
+	padding:0px 0 30px 0;
+}
+#right{
+	float:right;
+	width:630px;
+	padding:0 0 15px 0;
+}
+
+/* top menu */
+#topmenu{
+	font-size:11px;
+	color:#005577;
+	clear:both;
+	margin:10px auto 0 auto;
+	width:790px;
+	padding:0px 0 0 0;
+	text-align:center;
+}
+
+/* left menu */
+#publicidad {
+	width:148px;
+	margin: 22px 0 0 0;
+	border:1px solid #057;
+	text-align:center;
+}
+
+#publicidad a img {
+	padding-top:5px;
+	width:140px;
+	border: none;
+}
+
+h2#publicidad {
+	color:#005577;
+	font-size:15px;
+	font-weight:900;
+}
+
+ul#menu {
+	width:148px;
+	padding:0;
+	color:#ffffff;
+	list-style:none;
+	margin: 0px 0 0 0;
+	border:1px solid #057;
+}
+
+.button a {
+	background:#c7d7ef;
+	display: block;
+	overflow: hidden;
+	/*for MacIE*/
+	color:#333333;
+	font-size:14px;
+	font-weight:600;
+	text-align:center;
+	width:148px;
+	text-decoration: none;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+	
+.button a:hover {
+	color:#99cccc;;
+	background-color: #005577;
+	}
+
+#content {
+	margin:0;
+	padding:0 5px 15px 0;
+}
+#content p{
+	padding:10px 0 0 0;
+}
+
+/* headers */
+#header {
+	height:100px;
+	width:800px;
+	margin: 0 auto;
+	padding:0px;
+	background:url(img/fondo.jpg) no-repeat;
+	background-color:#c7d7f0;
+	/*-moz-border-radius:15px;*/
+}
+#headleft{
+	float:left;
+	width:150px;
+	padding:2px 0 0 2px;
+}
+#headright{
+	float:right;
+	height:75px;
+	width:450px;
+	padding:0 0 15px;
+	font-weight:normal;
+	font-size:11px;
+	color:#99cccc;
+	text-align:right;
+	padding:5px 10px 0 0;
+}
+
+#header a img {
+	border: none;
+}
+
+
+
+/* footer */
+
+#footer{
+	font-size:11px;
+	color:#005577;
+	background:#c7d7ef;
+	clear:both;
+	margin:10px auto 10px auto;
+	width:788px;
+	padding:5px;
+	text-align:center;
+	border:1px solid #057;
+}
+
+#footer a {
+	color:#000;
+}
+
+#footer a:hover {
+	color:#fff;
+}
+
+/* misc */
+a{
+	color:#084f6d;
+}
+a:hover{
+	color:#000000;
+}
+
+.left{
+	float:left;
+}
+
+.right{
+	padding-top:10px;
+	float:right;
+}
+
+h1{
+	font-weight:900;
+	font-size:34px;
+	color:#99cccc;
+	padding: 25px 0 10px 115px;
+}
+
+h2{
+	color:#005577;
+	font-size:12px;
+	text-decoration:none;
+}
+h2 a{text-decoration:none;}
+h2 a:hover{color:#fff;}
+
+h2 a:link{text-decoration:none;}
+
+h3{
+	color:#005577;
+	font-size:16px;
+	padding:20px 0 0 0;
+}
+h4{
+	color:#005577;
+	font-size:13px;
+	padding:10px 0 0 0;
+}
+
+h5{
+	font-weight:normal;
+	font-size:10px;
+	padding-right:10px;
+	text-align:right;
+}
+
+h5 a:hover{
+	color:#9797c0;
+}
+
+h6{
+	font-weight:normal;
+	font-size:10px;
+	padding-right:10px;
+	text-align:left;
+}
+
+#content img{
+	margin:5px;
+}
+
+
+
+
+/*
+html, body {
+	height: 100%;
+}
+
+
+.box {
+	margin:0;
+	height:100%;
+	border:2px solid #999999;
+	margin:10px 20px 0 30px;
+}
+.box p{
+	padding:5px;
+}
+
+
+h2 a:hover{
+	color:#999;
+}
+
+
+
+td#right {
+	width:195px;
+}
+

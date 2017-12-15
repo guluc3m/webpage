@@ -1,0 +1,48 @@
+Pagina para explicar el estado actual de las máquinas:
+
+Cofio:
+     * Estado: Operativo.
+     * Configuración:
+        *Un disco de 80 gigas con el sistema.
+        *Un raid 5 de 4 discos (con bus propio) con los «homes» de las «worstations» exportados por NFS, los mirrors de Debian, luc3m y retrolinux. Gestionado por lvm.
+     * Servicios: Wiki, ftp, homes de las estaciones y correo.
+
+Tormes:
+     * Estado: Opertativo.
+     * Servicios: Servidor de Jabber.
+
+Ebro:
+     * Estado: Operativo, gdm mal configurado.
+     * Servicios: apache.
+
+Jarama: 
+     * Estado: Operativo.
+     * Servicios: apache y dhcp.
+
+Corneja:
+     * Estado: Operativo.
+     * Servicios: Cortafuegos.
+
+Seco:
+     * Estado: Operativo.
+     * Servicios: ???
+
+Lozoya:
+     * Estado: Operativo.
+     * Servicios: ???
+
+Sella: 
+     * Estado: Apagado.
+     * Servicios: Máquinas de pruebas.
+
+Pisuerga:
+     * Estado: Apagado.
+     * Servicios: Tiene guardada una copia de los homes.
+
+Pas:
+     * Estado: Operativo.
+     * Servicios: Gentoo-es
+
+Guadiana:
+     * Estado: Apagado.
+     * Servicios: apache, svn, servidor de proyectos.

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<humano>
+
+<nombre>Sergio Martín</nombre>
+<nick>Sanok</nick>
+
+<foto>people/sanok/sanok2.png</foto>
+
+<rollo>
+Sanok fue el creador de la primera página web decente que tuvo el GUL (junto con Flype).
+Tras su estancia en la universidad se convirtió en uno de los culpables / colaboradores del control 
+de los chavales en las aulas entre alguna otra de sus oscuras labores diarias. Hay rumores de que le 
+quieren poner una bomba, pegarle o alguna cosa por el estilo pero esperemos que sean solo 
+eso, rumores, ya que le tenemos aprecio por aqui. A su marcha de la Universidad el GUL cayó en una profunda
+depresión que le llevó a cometer la locura de sustituir la página que Sanok había creado con un wiki de mierda
+culpable de que todo navegante mínimamente interesado huyera despavorido al verlo. </rollo>
+
+<page>www.gul.es</page>
+<blog>planeta.gul.es</blog>
+<mail>sanok82 at gmail dot com</mail> 
+<key>people/sanok/publickey</key>
+
+</humano>
+

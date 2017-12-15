@@ -1,0 +1,100 @@
+
+===== Capítulo 1: Actividades del grupo de usuarios de Linux =====
+==== Artículo 1 ====
+
+Con la denominación de grupo de usuarios de Linux de la universidad Carlos III se constituye una asociación en la universidad Carlos III de Madrid.
+==== Artículo 2 ====
+
+La asociación tiene su domicilio social en el campus de Leganés de la universidad Carlos III de Madrid, Avenida de la Universidad 30-32.
+==== Artículo 3 ====
+
+El objetivo del grupo de usuarios de Linux es crear un contexto abierto de intercambio de conocimientos de informática en general, y en especial del sistema operativo Linux y de todos los programas relacionados con dicho sistema operativo.
+==== Artículo 4 ====
+
+Las actividades de grupo serán:
+
+    * fomentar el uso del sistema operativo Linux,
+    * crear un entorno para compartir conocimientos de informática en general y del sistema operativo Linux en especial,
+    * fomentar los conocimientos de informática y
+    * apoyar y fomentar cualquier otra actividad social o cultural que sea del beneplácito de la mayoría de los miembros.
+
+==== Artículo 5 ====
+
+Las actividades lectivas tendrán que tener el beneplácito de al menos tres miembros del grupo, el beneplácito del coordinador general en el caso de usar material del grupo y del beneplácito del coordinador general y del tesorero en el caso de usar los fondos del grupo de usurarios del grupo.
+==== Artículo 6 ====
+
+Las actividades no lectivas requerirán del beneplácito del coordinador general y de al menos tres miembros del grupo de usuarios de Linux.
+==== Artículo 7 ====
+
+Todas las actividades del grupo de usuarios de Linux deberan tener un coordinador de actividad que será miembro del grupo de usuarios de Linux.
+===== Capítulo 2: Estructura jerárquica del grupo de usuarios de Linux =====
+==== Artículo 1 ====
+
+El grupo de usuarios de Linux tendrá un coordinador general que será el representante y máxima autoridad dentro del grupo de usuarios de Linux.
+==== Artículo 2 ====
+
+El coordinador general tiene la obligación de coodinar las distintas actividades del grupo de usuarios de Linux y representar al grupo de usuarios de Linux.
+==== Artículo 3 ====
+
+El grupo de usuarios de Linux tendrá un vicecoordinador que tendrá por obligaciones ayudar en lo posible al coordinador general y de ser su sustituto en caso de dimisión o incapacidad física o psiquica grave del coordinador general, en cuyo caso organizará lo más pronto posible una nueva elección, ateniéndose a lo dispuesto en el Artículo 6 de este Capítulo.
+==== Artículo 4 ====
+
+El grupo de usuarios de Linux tendrá un tesorero que se encargará de llevar la contabilidad del grupo de usuarios de Linux.
+==== Artículo 5 ====
+
+El grupo de usuarios de Linux tendrá un comité directivo formado por seis personas, el coordinador general, el vicecoordinador, el tesorero y tres personas elegidas por la asamblea de los miembros.
+==== Artículo 6 ====
+
+Las funciones del comité directivo serán:
+
+    * ayudar al coordinador general en sus funciones,
+    * convocar la asamblea de socios (como mínimo se convocará una asamblea al año),
+    * mantener el orden dentro de él para lo cual podrá expulsar del grupo de usuarios de Linux a aquel miembro que, de forma reiterada y/o grave, incumpla sus obligaciones como miembro,
+    * y de ser el responsable del material propiedad del grupo de usuarios de Linux.
+
+==== Artículo 7 ====
+
+La asamblea de socios tendrá por funciones:
+
+    * elegir a los miembros del comité directivo,
+    * añadir, modificar o suprimir artículos de los estatutos y
+    * orientar al comité directivo de las actividades a realizar.
+
+===== Capítulo 3: Derechos y obligaciones de los miembros del grupo de usuarios de Linux =====
+==== Artículo 1 ====
+
+Cualquier persona que asi lo desee podrá ser miembro del grupo de usuarios de Linux siempre y cuando se cumpla lo referido en el Artículo cuatro de este Capítulo.
+==== Artículo 2 ====
+
+Los miembros tendrán los siguientes derechos:
+
+    * al voto en las asambleas,
+    * a organizar actividades y
+    * al respeto por parte de los demás miembros del grupo de usuarios de Linux.
+
+==== Artículo 3 ====
+
+Los miembros tendrán las siguientes obligaciones:
+
+    * promover actividades lectivas que ayuden a cumplimentar el objetivo del grupo descrito en el Capítulo uno, Artículo tres de los estatutos.
+    * ayudar en lo posible a ayudar a los demás miembros del grupo de usuarios de Linux y
+    * respetar a los demás miembros.
+
+==== Artículo 4 ====
+
+Una persona que haya sido expulsada del grupo de usuarios de Linux sólo podrá ser readmitido si el comité directivo lo considerá apropiado.
+===== Capítulo 4: Actividades finacieras del grupo de usuarios de Linux =====
+==== Artículo 1 ====
+
+El grupo de usuarios de Linux se financiará con las aportaciones voluntarias de sus miembros y de las concesiones de otras organizaciones.
+==== Artículo 2 ====
+
+El comité directivo es el único responsable de las actividades financieras de grupo.
+==== Artículo 3 ====
+
+En el caso de la disolución del grupo de usuarios de Linux todo el material y fondos capitales pasarán a ser propiedad del grupo de sistemas y comunicaciones de la universidad Carlos III de Madrid.
+==== Artículo 4 ====
+
+El uso de los fondos tendrá que tener el beneplácito del tesorero y del coordinador general. Disposición transitoria
+
+Los presentes estatutos entrarán en vigor una vez sea registrada la asociación por el Registro de Asociaciones de la Universidad Carlos III de Madrid.

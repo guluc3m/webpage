@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metafile version="1.5"  client="site" >
+    <name>Español(Spanish Formal International)</name>
+    <tag>es-ES</tag>
+    <version>1.5.2</version>
+    <creationDate>2008-03-25</creationDate>
+    <author>TodosJuntos.org</author>
+    <authorEmail>traduccion@todosjuntos.org</authorEmail>
+    <authorUrl>www.todosjuntos.org</authorUrl>
+    <copyright>(C) 2005 - 2008 TodosJuntos.org. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <description>Spanish front language pack for Joomla 1.5.2</description>
+    <metadata>
+    	<name>Español(Spanish Formal International)</name>
+    	<tag>es-ES</tag>
+    	<rtl>0</rtl>
+    	<locale>es_ES.UTF-8, spa_ES.UTF-8, es_ES, spanish.UTF-8, spanish, </locale>
+    	<winCodePage>iso-8859-1</winCodePage>
+    	<backwardLang>spanish</backwardLang>
+    	<pdfFontName>freesans</pdfFontName>
+    </metadata>
+    <params />
+</metafile>
+

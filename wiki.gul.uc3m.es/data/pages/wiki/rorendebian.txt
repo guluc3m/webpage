@@ -1,0 +1,85 @@
+=== Cómo crear una aplicación ruby on rails en debian ===
+
+Crearemos una aplicación de prueba llamada "pror" ("prueba ruby on rails")
+
+La ubicaremos en /var/www
+
+Haremos un alias en apache para acceder a ella usando la dirección http://...../pror
+Instalar los paquetes necesarios:
+
+  aptitude update 
+  aptitude install rubygems build-essential
+  gem update --system 
+  gem install rails --include-dependencies 
+  aptitude install libapache2-mod-fastcgi 
+  aptitude install libfcgi-ruby1.8
+  aptitude install libmysql-ruby 
+	
+
+Los scripts "rails" y "rake", necesarios en el desarrollo de una aplicación RoR se instalan en
+
+  /var/lib/gems/1.8/bin
+
+NOTA: (parece que) en las versiones actuales se enlazan en /usr/bin 
+
+
+== Creamos la aplicación: ==
+
+  cd /var/www/
+  /var/lib/gems/1.8/bin/rails pror
+	
+
+== Cedemos la aplicación al desarrollador (voiser): ==
+
+  chown -R voiser /var/www/pror/
+	
+
+== Configuramos apache: ==
+
+  vim /etc/apache2/sites-available/default
+	
+
+== Añadimos una nueva ubicación de apache: ==
+
+  Alias /pror "/var/www/pror/public/"
+  <directory /var/www/pror/public/>
+     AllowOverride all
+     Order allow,deny
+     Allow from all
+  </directory>
+	
+
+== Configuramos la aplicación: ==
+
+  cd /var/www/pror
+  chown -R www-data log
+  chown -R www-data tmp
+  vim public/.htaccess
+	
+
+Encima de las directivas RewriteRule añadimos:
+
+ 
+  RewriteBase /pror 
+
+que es el alias que le dimos en apache. Además, cambiaremos
+
+  RewriteRule ^(.*)$ dispatch.cgi [QSA,L] 
+
+por
+
+  RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
+
+(sólo cambia la extensión del archivo)
+
+
+== Activamos el módulo rewrite de apache ==
+
+  a2enmod rewrite
+
+
+== Reiniciamos apache: ==
+
+  /etc/init.d/apache2 restart
+	
+

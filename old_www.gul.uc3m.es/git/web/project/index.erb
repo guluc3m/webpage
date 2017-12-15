@@ -1,0 +1,175 @@
+<html>
+  <head>
+    <title>Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid</title>
+    <%= partial("head") %>
+  </head>
+  <body>
+    
+    <%
+      def title_for(story)
+        if story.title.length > 50 
+          story.title[0..50] + "..." 
+        else
+          story.title 
+        end
+      end
+
+      def imglink(alt, src, link)
+          "<img alt=\"#{alt}\" src=\"#{src}\" border=0 onClick=\"javascript:window.location='#{link}'\"/>"
+      end
+    %>
+    
+    <div class="logobox">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <h1><a href="/">GUL UC3M</a></h1>
+          </div>
+          <div class="span3 offset5">
+            <h1 style="text-align:right">
+            <button class="btn btn-small btn-primary" type="button" onclick="javascript:window.location='http://radio.gul.es/directo';"><i class="icon-volume-up icon-white"></i>Radio</button>
+            <button class="btn btn-small btn-primary" type="button" onclick="javascript:window.location='http://radio.gul.es/directo64';"><i class="icon-volume-down icon-white"></i>Radio (móvil)</button>
+            </h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span8">
+            <h2>Nos gusta jugar con la tecnología</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="mainstory">
+      <div class="container">
+        <div class="row">
+          <div class="span8">
+            <h1><%= @story.title %></h1>
+            <div class="date">
+              <%= if @story.updated.length > 0 then @story.updated else "&nbsp;" end %>
+            </div>
+            <p>
+              <%= @story.body %>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span6">
+            <p>
+              <% @story.pictures.each do |picture| %>
+                <a href="<%= picture.path %>">
+                  <img src="<%= picture.thumbnail %>"/>
+                </a>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container" id="maincontainer">
+      <div class="row">
+
+        <div class="span4">
+          <h2>LA ASOCIACIÓN</h2>
+          <p>
+            <ul>
+              <li><i class="icon-question-sign"></i><a href="/gul/intro">¿Quiénes somos?</a></li>
+              <li><i class="icon-barcode"></i><a href="/gul/servicios">Servicios</a></li>
+              <li><i class="icon-file"></i><a href="http://wiki.gul.es">Documentación (wiki)</a></li>
+            </ul>
+          </p>
+        </div>
+
+        <div class="span4">
+          <h2>ACTIVIDADES</h2>
+          <p>
+            <ul>
+              <li><i class="icon-question-sign"></i><a href="/gul/actividades">¿Qué hacemos?</a></li>
+              <li><i class="icon-envelope"></i><a href="http://gul.uc3m.es/cgi-bin/mailman/listinfo">Listas de correo</a></li>
+              <li><i class="icon-calendar"></i><a href="/cursos/intro">Jornadas técnicas</a></li>
+              <li><i class="icon-volume-up"></i><a href="http://radio.gul.es">Radio Holamundo</a></li>
+            </ul>
+          </p>
+        </div>
+
+        <div class="span4">
+          <h2>MIEMBROS</h2>
+          <p>
+            <ul>
+              <li><i class="icon-info-sign"></i><a href="/gul/reuniones">Reuniones</a></li>
+              <li><i class="icon-user"></i><a href="http://planeta.gul.es">Planeta GUL</a></li>
+            </ul>
+          </p>
+        </div>
+
+      </div>
+      <div class="row">
+
+        <div class="span4">
+          <h2>SOCIAL</h2>
+          <%= imglink("el gul en twitter", "img/twitter.png", "http://twitter.com/guluc3m") %>
+          <%= imglink("el gul en linkedin", "img/linkedin.png", "http://www.linkedin.com/groups?home=&gid=3451836") %>
+        </div>
+
+        <div class="span4">
+          <h2>¿POR DÓNDE EMPIEZO?</h2>
+          <p>
+          ¿Qué tal apuntándose a la <a href="https://gul.uc3m.es/mailman/listinfo/gul">lista de correo GUL</a>? 
+          </p>
+  	      <div id="mlform">
+  	        <form method="POST" action="https://gul.uc3m.es/mailman/subscribe/gul">
+              <input id="mail" type="text" name="email" placeholder="Dirección de e-mail"/> <br />
+  	          <input id="mailsubmit" type="submit" value="Apuntarme"/>
+  	        </form>
+  	      </div>
+  	      <p>
+  	        Es totalmente gratis, no te enviaremos publicidad y no cedemos tus datos
+  	        a terceras partes.
+  	      </p>
+        </div>
+
+        <div class="span4">
+          <h2>OTRAS NOTICIAS</h2>
+          <p class="timeline">
+            <ul>
+              <% @timeline.reverse[1..5].each do |story| %>
+                  <li class="tl">
+                    <a href="<%= story.path %>">
+                      <%= title_for (story) %>
+                    </a>
+                  </li>
+              <% end %>
+            </ul>
+          </p>
+        </div>
+<!--
+        <div class="span4">
+          <h2></h2>
+          <p>
+            <% if @photos %>
+              <% @photos.each do |photo| %>
+                <a href="<%= photo.path %>">
+                  <img src="<%= photo.thumbnail %>" width="50" />
+                </a>  
+                <% end %>
+            <% end %>
+          </p>
+        </div>
+-->
+      </div>
+    
+      <div class="row">
+        <div class="span12">
+          <pre id="fortunespre">
+          </pre>
+        </div>
+      </div>
+    </div>
+    
+      <%= partial("fortunes") %>
+      <%= partial("footer") %>
+    
+  </body>
+</html>
+

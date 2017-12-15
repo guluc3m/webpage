@@ -1,0 +1,42 @@
+A continuación, se exponen los temas a tratar en la próxima reunión de socios:
+
+    *      Bienvenida y presentación
+    *      Posibilidad de conectar el servidor de Gentoo-es al SAI y como apagarlo.
+    *      Revisar configuracion SAI
+    *      Mirror de Gentoo
+    *      Problema con repositorio Debian
+    *      Posibilidad de comprar CDs y/o DVDs para poder dar distribuciones.
+    *      Instar a los asistentes a inscribirse en el libro de socios
+    *      Comentarios y preguntas
+
+== Bienvenida y presentación ==
+
+La bienvenida fue breve. Estuvo presente la junta, y dos socios.
+
+== Posibilidad de conectar el servidor de Gentoo-es al SAI y como apagarlo ==
+
+Se definió el esquema a seguir para conectar ese servidor al SAI y que se apagase correctamente. Los detalles quedan fuera de este documento.
+
+== Revisar configuracion SAI ==
+
+Los scripts del demonio que gestionaba el SAI no funcionaban correctamente. Se revisó y arregló la configuración durante la reunión. Ahora funciona correctamente.
+
+== Réplica de Gentoo ==
+
+Se aprobó alojar una réplica de Gentoo en el servidor principal. Quedó pendiente que algún responsable de Gentoo lo montase.
+
+== Problema con repositorio Debian ==
+
+El repositorio de Debian daba problemas al actualizar porque faltaban unas llaves de firmado y no se podian autenticar paquetes. Se vió que el fallo no era nuestro y el problema se arreglo solo.
+
+== Posibilidad de comprar CDs y/o DVDs para poder dar distribuciones ==
+
+Se debatió que sería bueno tenerlos, pero dado que los examenes estaban muy cerca se dejó el tema para más adelante. Mientras tanto se irian mirando precios.
+
+== Instar a los asistentes a inscribirse en el libro de socios ==
+
+Todos los asistentes ya estaban inscritos.
+
+== Comentarios y preguntas ==
+
+No hubo.

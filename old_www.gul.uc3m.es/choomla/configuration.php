@@ -1,0 +1,56 @@
+<?php
+class JConfig {
+	var $offline = '0';
+	var $editor = 'none';
+	var $list_limit = '100';
+	var $helpurl = 'http://help.joomla.org';
+	var $debug = '0';
+	var $debug_lang = '0';
+	var $sef = '1';
+	var $sef_rewrite = '0';
+	var $sef_suffix = '1';
+	var $feed_limit = '10';
+	var $feed_email = 'author';
+	var $secret = 'nZnZcj5ML54HV5e2';
+	var $gzip = '0';
+	var $error_reporting = '-1';
+	var $xmlrpc_server = '0';
+	var $log_path = '/var/www/www.gul.uc3m.es/current/logs';
+	var $tmp_path = '/var/www/www.gul.uc3m.es/current/tmp';
+	var $live_site = '';
+	var $force_ssl = '0';
+	var $offset = '0';
+	var $caching = '0';
+	var $cachetime = '15';
+	var $cache_handler = 'file';
+	var $memcache_settings = array();
+	var $ftp_enable = '0';
+	var $ftp_host = '127.0.0.1';
+	var $ftp_port = '21';
+	var $ftp_user = 'voiser';
+	var $ftp_pass = 'lalala';
+	var $ftp_root = '';
+	var $dbtype = 'mysql';
+	var $host = 'localhost';
+	var $user = 'gulwww';
+	var $db = 'choomla_1_5';
+	var $dbprefix = 'jos_';
+	var $mailer = 'mail';
+	var $mailfrom = 'webmaster@gul.es';
+	var $fromname = 'GUL UC3M';
+	var $sendmail = '/usr/sbin/sendmail';
+	var $smtpauth = '0';
+	var $smtpuser = '';
+	var $smtppass = '';
+	var $smtphost = 'localhost';
+	var $MetaAuthor = '1';
+	var $MetaTitle = '1';
+	var $lifetime = '15';
+	var $session_handler = 'database';
+	var $password = 'w3b4dm1n';
+	var $sitename = 'GUL UC3M';
+	var $MetaDesc = 'Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid';
+	var $MetaKeys = 'Linux, GUL, G.U.L, GUL UC3M, Ruby, Python, Bash, Programación, Sistemas operativos, kernel, drivers, software libre, licencias, gpl, bsd, redes, tcp, ip, web, bases de datos, bbdd';
+	var $offline_message = 'El sitio está desactivado por tareas de mantenimiento  Por favor, vuelva más tarde.';
+}
+?>

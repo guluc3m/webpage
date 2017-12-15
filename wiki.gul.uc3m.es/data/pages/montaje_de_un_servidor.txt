@@ -1,0 +1,30 @@
+===== Montaje de un servidor =====
+
+El servidor principal del GUL se nos ha quedado pequeño. Por ello vamos a montar un nuevo servidor y trataremos de documentar todo el proceso, desde los componentes hasta la puesta a punto de los servicios; de esta forma podemos contar con un documento que nos puede servir de base tanto a los administradores de la máquina como a los visitantes de esta web que pretendan realizar un proyecto semejante.
+
+===== ¿Qué queremos conseguir? =====
+
+El servidor que vamos a montar tiene que cubrir dos necesidades:
+
+  * Para virtualizar varias máquinas debemos contar con un buen procesador y bastante RAM. 
+  * Para contar con un buen almacenamiento, necesitamos un RAID.
+
+En el mercado hay máquinas que cubren estas necesidades con el inconveniente del precio extraordinariamente alto, por lo que vamos a montarlo por componentes, lo que nos supondrá un desembolso mucho más reducido con unas prestaciones finales muy altas.
+
+===== Componentes =====
+
+Los componentes que hemos comprado son:
+
+  * Procesador: Athlon64 X2 5600+ (2 núcleos a 2800 MHz)
+  * Placa: Asus M2N32 WS Professional (NVIDIA nForce 590 SLI)
+  * RAM: Dos módulos de 2 gigas (DIMM DDR2-800)
+  * Backplane para 4 discos SATA
+  * 4 discos duros de 500 GB
+  * caja de 3U
+  * fuente de 700W (BQT StraightPower E5)
+  * ventilación (Zalman de cobre)
+
+Todos estos componentes salen por unos 1500 euros
+
+===== Montaje =====
+

@@ -1,0 +1,7 @@
+Este documento trata de dar una idea del estado en que se encuentra el RAID de cofio
+
+Estado: 
+        *Homes copiados en jarama y pisuerga.
+        *Tiene funcionando perfectamente las listas de correo, FTP y web desde el disco que no pertenece al RAID.
+        *Raid 5 de 4 discos funcionando y los homes se exportan.
+

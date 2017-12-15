@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<humano>
+
+  <nombre>Daniel Payno</nombre>
+  <nick>Pay</nick>
+
+  <foto>people/payno/ondas.png</foto>
+
+  <rollo>
+	Pay es uno de los fundadores de esta gloriosa asociación y quizá el miembro más bohemio y curioso de los dos millones de socios. A veces, en plena caminata de cambio de aula, te lo cruzas con la sonrisa puesta, observando la infinita belleza de la naturaleza, con el gesto amable y tranquilo. Al rato te lo encuentras en la cafetería tocando blues con una telecaster que recuerda a la de Keith Richards. Luego te pasas por los cursos del GUL y le ves en plena efervescencia con Ardour, Hydrogen y demás. Se le conoce no sólo por ser el único usuario en todo el mundo del gestor de ventanas ion3, sino además por defenderlo, lo cual tiene su mérito. En sus ratos libres se dedica a grabar canciones, tocar en conciertos y distribuir su música bajo licencia Creative Commons, por supuesto. 
+  </rollo>
+
+  <!-- enlaces a páginas externas, personal y blog. Se añade http:// --> 
+  <page>ebro.gul.uc3m.es/~payno</page>
+  <blog>pay.zoomblog.com</blog>
+
+  <!-- añadir ruido para que no haya spam -->
+  <mail>dpayno arrrrrrroba gmail puuuuunto com (léase con voz de blues)</mail> 
+
+  <!-- si la clave está en un servidor externo, usar http://servidor/clave.gpg -->
+  <!-- si la clave se añade a este repositorio local, usar people/nick/clave.gpg -->
+  <!-- si no hay clave, dejarlo como people/nick/publickey para mostrar un aviso de clave no encontrada -->
+  <key>people/payno/publickey</key>
+
+</humano>
+

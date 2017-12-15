@@ -1,0 +1,41 @@
+  * Bienvenida y presentación
+  * Celebrar elecciones
+  * Curso en Getafe. Resumen. Ideas sobre cursos en este campus.
+  * Instar a los asistentes a inscribirse en el libro de socios
+  * Comentarios y preguntas
+
+===Bienvenida y presentación===
+
+Nos dimos la bienvenida, estuvo presente el presidente, el vicepresidente-secretario, el vocal y el coordinador de actividades de la junta y cuatro socios.
+
+===Tema de elecciones===
+
+Se celebraron las elecciones a cada uno de los puestos de la junta, votando los presentes a mano alzada, otros cuatro socios vía telefónica, y Samuel Rodríguez Sevilla, dejo su voto por escrito.
+
+	Personas que dejan puestos:
+		Fernando Cerezal López		- Vicepresidente-Secretario
+		Claudio Jiménez Castillo	- Vocal
+
+	Personas que ocupan nuevos puestos:
+		Claudio Jimenez Castillo	- Vicepresidente-Secretario
+		Juan Ramón Martín Blanco	- Vocal
+
+	 La junta queda formada de la siguiente forma:
+		Jesús Espino García		- Presidente
+		Claudio Jiménez Castillo	- Vicepresidente-Secretario
+		Samuel Rodríguez Sevilla	- Tesorero
+		Roberto Muñoz Gómez		- Coordinador de actividades
+		Juan Ramón Martín Blanco	- Vocal
+
+===Curso en Getafe. Resumen. Ideas sobre cursos en este campus.===
+
+Se discutió el resultado del curso de introducción a GNU/Linux organizado en Getafe, se llegó a la conclusión de que había tenido bastante exito ya que fue bastante gente, unas 15 personas, y se acordo intentar seguir dando cursos en Getafe. Se dijo que sería interesante dar uno de Blender y otro de LaTeX.
+
+
+===Instar a los asistentes a inscribirse en el libro de socios===
+
+Todos los asistentes estaban inscritos.
+
+===Comentarios y preguntas===
+
+No hubo.

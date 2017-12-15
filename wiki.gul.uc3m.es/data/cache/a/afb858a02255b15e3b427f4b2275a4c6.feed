@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.7.1" -->
+<?xml-stylesheet href="http://wiki.gul.es/lib/styles/feed.css" type="text/css"?>
+<feed version="0.3" xmlns="http://purl.org/atom/ns#">
+    <title>GUL UC3M</title>
+    <tagline></tagline>
+    <link rel="alternate" type="text/html" href="http://wiki.gul.es/"/>
+    <id>http://wiki.gul.es/</id>
+    <modified>2010-06-17T11:27:23+01:00</modified>
+    <generator>FeedCreator 1.7.1</generator>
+    <entry>
+        <title>estatutos</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=estatutos&amp;amp;do=diff1265389439"/>
+        <created>2010-02-05T18:03:59+01:00</created>
+        <issued>2010-02-05T18:03:59+01:00</issued>
+        <modified>2010-02-05T18:03:59+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=estatutos&amp;amp;do=diff1265389439</id>
+        <author>
+            <name>david</name>
+            <email>voiser@163.117.156.52</email>
+        </author>
+        <summary> Con la denominación de grupo de usuarios de Linux de la universidad Carlos III se constituye una asociación en la universidad Carlos III de Madrid.   Artículo 2   La asociación tiene su domicilio social en el campus de Leganés de la universidad Carl...</summary>
+    </entry>
+    <entry>
+        <title>wiki:documentacion</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=wiki:documentacion&amp;amp;do=diff1263729022"/>
+        <created>2010-01-17T12:50:22+01:00</created>
+        <issued>2010-01-17T12:50:22+01:00</issued>
+        <modified>2010-01-17T12:50:22+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=wiki:documentacion&amp;amp;do=diff1263729022</id>
+        <author>
+            <name>Borja Bergua</name>
+            <email>borja@85.49.37.113</email>
+        </author>
+        <summary> Comenzar en Linux no siempre es fácil. Los recién llegados a Linux, a menudo se preguntan ¿por dónde empiezo? ¿dónde puedo encontrar la documentación más básica?  Para intentar ayudar a los nuevos usuarios a dar sus primeros pasos con Linux, el Grup...</summary>
+    </entry>
+    <entry>
+        <title>inicio - Actualizaciones: +GNU -Gentoo-es</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=inicio&amp;amp;do=diff1239004206"/>
+        <created>2009-04-06T09:50:06+01:00</created>
+        <issued>2009-04-06T09:50:06+01:00</issued>
+        <modified>2009-04-06T09:50:06+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=inicio&amp;amp;do=diff1239004206</id>
+        <author>
+            <name>Igor</name>
+            <email>igor@213.164.164.164</email>
+        </author>
+        <summary> Este es nuestro wiki; el sitio donde elaboramos y publicamos colaborativamente informacíón acerca del GUL y sus actividades.  Si quieres participar pide acceso a gul-root  Servicios  FTP: Nuestro servidor de ficheros FTP con mirrors completos de Deb...</summary>
+    </entry>
+    <entry>
+        <title>noviembre_de_2007 - Redireccionado al FTP. Quito info obsoleta.</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=noviembre_de_2007&amp;amp;do=diff1239003006"/>
+        <created>2009-04-06T09:30:06+01:00</created>
+        <issued>2009-04-06T09:30:06+01:00</issued>
+        <modified>2009-04-06T09:30:06+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=noviembre_de_2007&amp;amp;do=diff1239003006</id>
+        <author>
+            <name>Igor</name>
+            <email>igor@213.164.164.164</email>
+        </author>
+        <summary> Tienes presentaciones y material de las jornadas en nuestro FTP    ...</summary>
+    </entry>
+    <entry>
+        <title>wiki:documentacion_aplicaciones</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=wiki:documentacion_aplicaciones&amp;amp;do=diff1235904701"/>
+        <created>2009-03-01T11:51:41+01:00</created>
+        <issued>2009-03-01T11:51:41+01:00</issued>
+        <modified>2009-03-01T11:51:41+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=wiki:documentacion_aplicaciones&amp;amp;do=diff1235904701</id>
+        <author>
+            <name>Borja Bergua</name>
+            <email>borja@85.49.235.139</email>
+        </author>
+        <summary> Aplicaciones   Alternativas libres  Alternativas libres. Alternativas libres para cualquier tipo de programa.  Open Source Living. Open Source Living, an archive of the Web&amp;rsquo;s best Open Source software, applications and references for a zero-co...</summary>
+    </entry>
+    <entry>
+        <title>reuniones</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=reuniones&amp;amp;do=diff1229103628"/>
+        <created>2008-12-12T18:40:28+01:00</created>
+        <issued>2008-12-12T18:40:28+01:00</issued>
+        <modified>2008-12-12T18:40:28+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=reuniones&amp;amp;do=diff1229103628</id>
+        <author>
+            <name>Claudio Jimenez</name>
+            <email>cjimenez@163.117.156.52</email>
+        </author>
+        <summary> El GUL realiza periódicamente reuniones entre sus socios para conocer sus opiniones, así como para la toma de decisiones que concierne a la asociación.     Actas   Última reunión   La última reunión se realizó el viernes 9 de Mayo a las 20:00 horas ...</summary>
+    </entry>
+    <entry>
+        <title>26_de_septiembre_de_2008</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=26_de_septiembre_de_2008&amp;amp;do=diff1224067095"/>
+        <created>2008-10-15T12:38:15+01:00</created>
+        <issued>2008-10-15T12:38:15+01:00</issued>
+        <modified>2008-10-15T12:38:15+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=26_de_septiembre_de_2008&amp;amp;do=diff1224067095</id>
+        <author>
+            <name>Jes�s Espino</name>
+            <email>jespino@84.77.1.34</email>
+        </author>
+        <summary> Los presentes le dan el visto bueno y se insta al secretario a enviar un mensaje a la lista general para notificar este hecho y solicitar opiniones respecto a los mismos a los asociados. En caso de que no haya negativas, la aprobación se hará en la ...</summary>
+    </entry>
+    <entry>
+        <title>actas</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=actas&amp;amp;do=diff1224066939"/>
+        <created>2008-10-15T12:35:39+01:00</created>
+        <issued>2008-10-15T12:35:39+01:00</issued>
+        <modified>2008-10-15T12:35:39+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=actas&amp;amp;do=diff1224066939</id>
+        <author>
+            <name>Jes�s Espino</name>
+            <email>jespino@84.77.1.34</email>
+        </author>
+        <summary> Actas de Reuniones   Reuniones del 2005  7 de octubre de 2005  11 de noviembre de 2005  9 de diciembre de 2005   Reuniones del 2006  13 de enero de 2006  17 de febrero de 2006  4 de Marzo de 2006  7 de Abril de 2006  12 de mayo de 2006  7 de julio d...</summary>
+    </entry>
+    <entry>
+        <title>wiki:ndiswrapper</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=wiki:ndiswrapper&amp;amp;do=diff1211071625"/>
+        <created>2008-05-18T02:47:05+01:00</created>
+        <issued>2008-05-18T02:47:05+01:00</issued>
+        <modified>2008-05-18T02:47:05+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=wiki:ndiswrapper&amp;amp;do=diff1211071625</id>
+        <author>
+            <name>david</name>
+            <email>voiser@88.11.155.10</email>
+        </author>
+        <summary> Algunos fabricantes de tarjetas WiFi solo crean drivers para Windows. Esto, en principio, no tiene nada de malo (no podemos obligar a un fabricante a sacar drivers para los cientos de sistemas operativos que hay en el mundo), si no fuera por el hech...</summary>
+    </entry>
+    <entry>
+        <title>10_de_octubre_de_2007</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=10_de_octubre_de_2007&amp;amp;do=diff1209372722"/>
+        <created>2008-04-28T10:52:02+01:00</created>
+        <issued>2008-04-28T10:52:02+01:00</issued>
+        <modified>2008-04-28T10:52:02+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=10_de_octubre_de_2007&amp;amp;do=diff1209372722</id>
+        <author>
+            <name>Claudio Jimenez</name>
+            <email>cjimenez@87.222.44.244</email>
+        </author>
+        <summary> A la reunión han asistido la junta al completo y cinco socios.   Convocatoria de elecciones   Se convocan elecciones a la Junta de la asociación para la siguiente asamblea que se celebrará el día 16 de noviembre.   Joomla Day   Se discuten temas var...</summary>
+    </entry>
+    <entry>
+        <title>14_de_marzo_de_2008</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=14_de_marzo_de_2008&amp;amp;do=diff1208868844"/>
+        <created>2008-04-22T14:54:04+01:00</created>
+        <issued>2008-04-22T14:54:04+01:00</issued>
+        <modified>2008-04-22T14:54:04+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=14_de_marzo_de_2008&amp;amp;do=diff1208868844</id>
+        <author>
+            <name>Jose Maria Chumo</name>
+            <email>jmchuma@163.117.87.154</email>
+        </author>
+        <summary> A la reunión han asistido toda la junta y cinco socios.   Recapitulación de las Jornadas Técnicas   Poca asistencia debido a falta de publicidad, esto se debe a que el numero de gente de la asociacion que está por la universidad normalmente a bajado...</summary>
+    </entry>
+    <entry>
+        <title>11_de_enero_de_2008</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=11_de_enero_de_2008&amp;amp;do=diff1208868807"/>
+        <created>2008-04-22T14:53:27+01:00</created>
+        <issued>2008-04-22T14:53:27+01:00</issued>
+        <modified>2008-04-22T14:53:27+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=11_de_enero_de_2008&amp;amp;do=diff1208868807</id>
+        <author>
+            <name>Jose Maria Chumo</name>
+            <email>jmchuma@163.117.87.154</email>
+        </author>
+        <summary> A la reunión han asistido toda la junta y seis socios.   Reunión con GLUEM   Puntos a tratar en la reunión del lunes con la gente del Grupo de Usuarios de la Universidad Europea de Madrid (GLUEM):  Conocernos.  Intercambio de informacion.  Intercamb...</summary>
+    </entry>
+    <entry>
+        <title>2_de_julio_de_2007 - Correción de la lista de productos</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=2_de_julio_de_2007&amp;amp;do=diff1208868576"/>
+        <created>2008-04-22T14:49:36+01:00</created>
+        <issued>2008-04-22T14:49:36+01:00</issued>
+        <modified>2008-04-22T14:49:36+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=2_de_julio_de_2007&amp;amp;do=diff1208868576</id>
+        <author>
+            <name>Jose Maria Chumo</name>
+            <email>jmchuma@163.117.87.154</email>
+        </author>
+        <summary> A la reunión han asistido la junta al completo y seis socios.   Reunión con Crisol   Montar una reunión con la gente de Crisol para hablar de futuras colaboraciones con ellos.   Merchandising   Se discutió la creación de merchandising, decidiendo qu...</summary>
+    </entry>
+    <entry>
+        <title>19_de_diciembre_de_2007 - creado</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=19_de_diciembre_de_2007&amp;amp;do=diff1208867809"/>
+        <created>2008-04-22T14:36:49+01:00</created>
+        <issued>2008-04-22T14:36:49+01:00</issued>
+        <modified>2008-04-22T14:36:49+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=19_de_diciembre_de_2007&amp;amp;do=diff1208867809</id>
+        <author>
+            <name>Claudio Jimenez</name>
+            <email>cjimenez@87.222.44.221</email>
+        </author>
+        <summary> A la reunión han asistido toda la junta y siete socios.   Jornadas Técnicas de Marzo   El coordinador de actividades comenta las aulas que nos ha concedido la universidad y al ver que no tienen equipos de audiovisuales para grabar se le pide que int...</summary>
+    </entry>
+    <entry>
+        <title>16_de_noviembre_de_2007</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=16_de_noviembre_de_2007&amp;amp;do=diff1208867782"/>
+        <created>2008-04-22T14:36:22+01:00</created>
+        <issued>2008-04-22T14:36:22+01:00</issued>
+        <modified>2008-04-22T14:36:22+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=16_de_noviembre_de_2007&amp;amp;do=diff1208867782</id>
+        <author>
+            <name>Claudio Jimenez</name>
+            <email>cjimenez@87.222.44.221</email>
+        </author>
+        <summary> A la reunión han asistido toda la junta menos el tesorero y cuatro socios.   Elecciones   Dos personas han votado de forma anticipada y los presentes de manera presencial, el resultado de la votación y por tanto la nueva configuración de la Junta es...</summary>
+    </entry>
+    <entry>
+        <title>11_de_abril_de_2008 - creado</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=11_de_abril_de_2008&amp;amp;do=diff1208867503"/>
+        <created>2008-04-22T14:31:43+01:00</created>
+        <issued>2008-04-22T14:31:43+01:00</issued>
+        <modified>2008-04-22T14:31:43+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=11_de_abril_de_2008&amp;amp;do=diff1208867503</id>
+        <author>
+            <name>Jose Maria Chumo</name>
+            <email>jmchuma@163.117.87.154</email>
+        </author>
+        <summary> A la reunión han asistido toda la junta menos el presidente, que lo hace de forma telefónica, y siete socios.   Joomla Day   Jesús no tiene novedades e Igor no ha venido, por lo que no se habla nada sobre este tema.   Web de ofertas de trabajo   Deb...</summary>
+    </entry>
+    <entry>
+        <title>actividades_sugeridas - curso de música asistida por Linux</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=actividades_sugeridas&amp;amp;do=diff1203860080"/>
+        <created>2008-02-24T14:34:40+01:00</created>
+        <issued>2008-02-24T14:34:40+01:00</issued>
+        <modified>2008-02-24T14:34:40+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=actividades_sugeridas&amp;amp;do=diff1203860080</id>
+        <author>
+            <name>Igor</name>
+            <email>igor@87.235.185.53</email>
+        </author>
+        <summary> Esta es una lista de actividades sugeridas pendientes de desarrollar.   ponentes y ponencias   Lista de gente que quizá podría dar charlas interesantes:   Alicia Asín Pérez publicó este artículo sobre hardware libre.  Sancho Lerena ha comentado algu...</summary>
+    </entry>
+    <entry>
+        <title>wiki:rorendebian</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=wiki:rorendebian&amp;amp;do=diff1202091653"/>
+        <created>2008-02-04T03:20:53+01:00</created>
+        <issued>2008-02-04T03:20:53+01:00</issued>
+        <modified>2008-02-04T03:20:53+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=wiki:rorendebian&amp;amp;do=diff1202091653</id>
+        <author>
+            <name>david</name>
+            <email>voiser@83.36.72.65</email>
+        </author>
+        <summary> Crearemos una aplicación de prueba llamada &amp;ldquo;pror&amp;rdquo; (&amp;rdquo;prueba ruby on rails&amp;rdquo;)  La ubicaremos en /var/www  Haremos un alias en apache para acceder a ella usando la dirección http://...../pror Instalar los paquetes necesarios:  ap...</summary>
+    </entry>
+    <entry>
+        <title>charlas_definitivas_marzo_2007 - ticket 32: transparencias</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=charlas_definitivas_marzo_2007&amp;amp;do=diff1199543980"/>
+        <created>2008-01-05T15:39:40+01:00</created>
+        <issued>2008-01-05T15:39:40+01:00</issued>
+        <modified>2008-01-05T15:39:40+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=charlas_definitivas_marzo_2007&amp;amp;do=diff1199543980</id>
+        <author>
+            <name>Igor</name>
+            <email>igor@87.235.185.53</email>
+        </author>
+        <summary> El nivel que se le asigna a cada charla depende de su dificultad:  Básico: Se puede entender en gran parte sin conocimientos técnicos.  Medio: Son necesarios unos conocimientos básicos sobre Linux, programación, software libre... dependiendo de la t...</summary>
+    </entry>
+    <entry>
+        <title>sistema_de_votaciones - creado</title>
+        <link rel="alternate" type="text/html" href="http://wiki.gul.es/doku.php?id=sistema_de_votaciones&amp;amp;do=diff1195125364"/>
+        <created>2007-11-15T12:16:04+01:00</created>
+        <issued>2007-11-15T12:16:04+01:00</issued>
+        <modified>2007-11-15T12:16:04+01:00</modified>
+        <id>http://wiki.gul.es/doku.php?id=sistema_de_votaciones&amp;amp;do=diff1195125364</id>
+        <author>
+            <name>Claudio Jimenez</name>
+            <email>cjimenez@163.117.141.233</email>
+        </author>
+        <summary> La Junta está compuesta por los siguientes cargos: Presidente, Vicepresidente/secretario, Tesorero, Vocal y Coordinador de Actividades.  Cualquiera de los socios podrá presentarse a cualquier cargo desde este momento hasta 48 horas antes del comienz...</summary>
+    </entry>
+</feed>

@@ -1,0 +1,40 @@
+====== Distribuciones ======
+
+===== OpenSUSE =====
+  * [[http://es.opensuse.org/Documentaci%C3%B3n_de_usuarios|Documentación de usuarios]]. Es la pagina inicial de la documentación de la Comunidad openSUSE.
+  * [[http://www.novell.com/documentation/suse10/pdfdoc/suse10_ref/suse10_ref.pdf|Novell SUSE Linux 10.0 Reference (pdf)]]. Documentación oficial.
+  * [[http://www.novell.com/documentation/suse10/pdfdoc/suse10_start/suse10_start.pdf|Novell SUSE Linux 10.0 Start-Up (pdf)]]. Documentación oficial.
+
+
+===== Fedora =====
+  * [[http://fedora.redhat.com/docs/fedora-install-guide-en/fc5/|Fedora Core 5 Installation Guide]], [[http://fedora.redhat.com/docs/fedora-install-guide-en/fc5/fedora-install-guide-en_US.tar.gz|tar.gz]]. Documentación oficial.
+  * [[http://stanton-finley.net/fedora_core_5_installation_notes.html|Fedora Core 5 Linux Installation Notes]]. It is no longer necessary to become an expert practitioner of the arcane dark arts of the Unix command line in order to get a complete Linux distribution working on your PC including all of the productivity, multimedia, and entertainment applications you will need on your desktop and a fully functional web server as well.
+  * [[http://www.fedorafaq.org/basics/|The Fedora Basics FAQ]]. This page goes over some of the basics of using Linux, and a few basics of using Fedora in particular. It's helpful to know these things before reading the Unofficial FAQ.
+  * [[http://www.fedorafaq.org/|The Unofficial Fedora FAQ]].
+
+===== Mandriva =====
+  * [[http://doc.mandrivalinux.com/MandrakeLinux/101/es/Starter.html/|Mandrakelinux 10.1 Guía de Comienzo]], [[http://doc.mandrivalinux.com/MandrakeLinux/101/es/Starter.pdf|pdf]].
+  * [[http://doc.mandrivalinux.com/MandrakeLinux/101/es/Command-Line.html/|Mandrakelinux 10.1 Guía de Referencia]], [[http://doc.mandrivalinux.com/MandrakeLinux/101/es/Command-Line.pdf|pdf]].
+  * [[http://blogdrake.net/|BlogDrake]]. Comunidad de usuarios de Mandriva Linux.
+
+===== Ubuntu =====
+  * [[http://doble-personalidad.blogspot.com/2006/08/how-to-instalar-ubuntu-linux-desde.html|How To... instalar Ubuntu-Linux desde cero y sin conocimientos previos]].
+  * [[http://www.ubuntu-es.org/|ubuntu-es]]. Comunidad de habla española para usuarios de Ubuntu.
+  * [[http://www.guia-ubuntu.org/|guia-ubuntu.org]]. Guía no-oficial de Ubuntu, tiene un montón de cosas y es un buen punto de referencia para novatos.
+  * [[http://guias-ubuntu.ourproject.org/|GuiasUbuntu]]. Este proyecto se basa en la redacción de guías de Ubuntu y de distribuciones derivadas, principalmente enfocadas a usuarios noveles.
+  * [[https://wiki.ubuntu.com/|wiki.ubuntu.com]]. Wikis creados por usuarios de Ubuntu para casi cualquier problema (en inglés).
+  * [[http://help.ubuntu.com/|ubuntu documentation]]. Documentación para Ubuntu (en inglés).
+  * [[https://help.ubuntu.com/community/RestrictedFormats|RestrictedFormats]]. En esta página se explica cómo instalar los codecs de audio y video más famosos o extendidos, como puede ser, por ejemplo, el mp3, entre otros.
+  * [[http://www.freesoftwaremagazine.com/articles/printing_ubuntu?page=0%2C0|Printing with Ubuntu]]. Esta guía paso a paso detallada proporciona todo lo necesario para hacer la impresión fácil y directa. Con los detalles con respecto a la ayuda de la multi-impresora y de localización de averías.
+  * [[http://www.debuntu.org/|Debian/Ubuntu Tips & Tricks]]. Debuntu.org: .deb packages, Unix/Linux Tutorials and Articles.
+  * [[http://help.ubuntu.com/starterguide/C/index.html|Ubuntu FAQ Guide]]. (desaparecida)
+  * [[http://www.ubuntu-es.org/node/19975|Minitutorial Aceleracion 3D tarjetas ATI con Ubuntu Dapper 6.06]]. Explicación de los pasos exactos que se deben seguir para tener aceleración 3D en Ubuntu con tarjetas ATI.
+
+===== Debian =====
+  * [[http://people.debian.org/~debacle/refcard/refcard-es-a4.pdf|Tarjeta de referencia para Debian GNU/Linux (pdf)]].  Las 101 cosas más importantes para el uso de GNU/Linux. Los de Debian han publicado una tarjeta de referencia con pistas imprescindibles para movernos por la línea de comandos que seguro que nos facilita la vida a todos los que estamos empezando (o no tanto) a usar Linux, y muy especialmente una distribución Debian o basada en Debian (Ubuntu, Knoppix, ...).
+  * [[http://www.esdebian.org/|esdebian]]. esdebian es un comunidad independiente de usuarios de Debian. Fue creado para que los usuarios de Debian de habla hispana tengamos un lugar donde poder expresarnos, ayudarnos y compartir con los demas todo lo relacionado con Debian, y de esa forma ayudar en la difusión del proyecto Debian.
+  * [[http://www.aboutdebian.com|Debian Linux Tutorial]]. Beginners Guide To Linux Servers and Networking Installation and Set Up with Instructions On How To Configure A Home Server.
+  * [[http://www.debiantutorials.org|debiantutorials.org]]. A Debian GNU/Linux Desktop Tutorial Site.
+  * [[http://www.debian-administration.org|Debian Administration]]. This site was created as a simple weblog designed to contain interesting and useful information related to the System Administration of Debian GNU/Linux systems.
+  * [[http://www.debuntu.org/|Debian/Ubuntu Tips & Tricks]]. Debuntu.org: .deb packages, Unix/Linux Tutorials and Articles.
+  * [[:configuracion_de_tarjetas_nvidia_en_debian|Configuración de tarjetas nvidia en debian]]. Explica los pasos que hay que seguir para instalar los drivers de las tarjetas de la marca nVidia en Debian GNU/Linux.

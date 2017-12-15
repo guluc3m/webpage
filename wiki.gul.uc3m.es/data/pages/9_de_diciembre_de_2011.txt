@@ -1,0 +1,28 @@
+====== Asistentes ======
+
+  * David Muñoz
+  * Roberto Muñoz
+  * Miguel de la Cruz
+  * Fernando Cerezal
+  * Ana Esther Rodríguez
+  * Sandra Molins
+  * Claudio Jiménez
+  * Miguel Herranz
+  * Enrique
+
+======== Orden del día ========
+
+  * Licencias de PFCs y acceso a sus códigos.
+
+  * Uso de la lista de consejo.
+
+======== Sesión ========
+
+
+Toma acta don Samuel Rodríguez Sevilla (secretario).
+
+Enrique nos explica en relación a los proyectos fin de carrera que la universidad sólo está interesada en la memoria de los mismos, pero no en el resto del material que pueda estar relacionado (como el código fuente). Las memorias actualmente tiene una licencia creative commons de serie. Por este motivo nos propone que se interceda con la universidad para permitir otros tipo de licencia además de ofrecer una herramienta para poder exponer el código (como una forja).
+
+Samuel dice que se podría hablar con Vicente Palacios a lo que Fernando responde que es más recomendable hablar con Barber. Además, Fernando propone sacar este tema primero por la lista de correo para sacar opiniones, ya que hay profesores en ésta.
+
+Por otra parte David propone mover todo lo que se trata en la lista de consejo a la lista general ya que ésta última tiene poca actividad. Se acuerda hacer un mayor uso de la lista general.

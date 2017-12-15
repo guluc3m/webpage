@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.7.1" -->
+<?xml-stylesheet href="http://gul.es/lib/styles/feed.css" type="text/css"?>
+<rdf:RDF
+    xmlns="http://purl.org/rss/1.0/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel rdf:about="http://gul.es/feed.php">
+        <title>GUL UC3M</title>
+        <description></description>
+        <link>http://gul.es/</link>
+        <image rdf:resource="http://gul.es/lib/images/favicon.ico" />
+       <dc:date>2006-10-27T08:06:46+01:00</dc:date>
+        <items>
+            <rdf:Seq>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=calendario_noviembre_2006&amp;amp;do=diff1161628553"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=pagina_introduccion_en_leganes&amp;amp;do=diff1161554307"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=curso_de_introduccion_a_gnu_linux&amp;amp;do=diff1161554062"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=pagina_introduccion_en_getafe&amp;amp;do=diff1161451828"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=inicio&amp;amp;do=diff1161367857"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=reuniones&amp;amp;do=diff1161367529"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=wiki:instalando_openldap_con_soporte_ssl_en_debian&amp;amp;do=diff1161027615"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=ponentes_noviembre_2006&amp;amp;do=diff1161027451"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=charlas_definitivas_noviembre_2006&amp;amp;do=diff1161027381"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=normativa_electoral&amp;amp;do=diff1160585568"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=elecciones&amp;amp;do=diff1160585525"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=fortunes_de_la_uc3m&amp;amp;do=diff1160584750"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=15_de_septiembre_de_2006&amp;amp;do=diff1158665764"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=actas&amp;amp;do=diff1158659677"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=wiki:documentacion_aplicaciones&amp;amp;do=diff1158521741"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=wiki:documentacion&amp;amp;do=diff1157419138"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=charlas_definitivas_marzo_2006&amp;amp;do=diff1157327242"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=charlas_definitivas_noviembre_2005&amp;amp;do=diff1157326797"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=wiki:documentacion_distribuciones&amp;amp;do=diff1157318532"/>
+                <rdf:li rdf:resource="http://gul.es/doku.php?id=calendario_marzo_2006&amp;amp;do=diff1155032432"/>
+            </rdf:Seq>
+        </items>
+    </channel>
+    <image rdf:about="http://gul.es/lib/images/favicon.ico">
+        <title>GUL UC3M</title>
+        <link>http://gul.es/</link>
+        <url>http://gul.es/lib/images/favicon.ico</url>
+    </image>
+    <item rdf:about="http://gul.es/doku.php?id=calendario_noviembre_2006&amp;amp;do=diff1161628553">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-10-23T20:35:53+01:00</dc:date>
+        <dc:creator>Roberto Mu�oz (roberto@163.117.5.66)</dc:creator>
+        <title>calendario_noviembre_2006</title>
+        <link>http://gul.es/doku.php?id=calendario_noviembre_2006&amp;amp;do=diff1161628553</link>
+        <description> Calendario    Hora  Lunes   Martes  Miercoles  Jueves  Viernes       Octubre       23  24  25  26  27      17-19  Monográfico Introducción en Getafe. Aula: 9.1.17  Monográfico Introducción en Getafe. Aula: 9.1.17  Monográfico Introducción en Getafe....</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=pagina_introduccion_en_leganes&amp;amp;do=diff1161554307">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-10-22T23:58:27+01:00</dc:date>
+        <dc:creator>Fernando Cerezal (kryptos@217.125.215.129)</dc:creator>
+        <title>pagina_introduccion_en_leganes - creado</title>
+        <link>http://gul.es/doku.php?id=pagina_introduccion_en_leganes&amp;amp;do=diff1161554307</link>
+        <description> EL Grupo de Usuarios de Linux de la Universidad organiza, como cada año, cursos en el campus de Leganés. Con este curso pretendemos llevar a este campus lo que llevamos promulgando en el campus de Leganés desde 1998: las bondades del software libre ...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=curso_de_introduccion_a_gnu_linux&amp;amp;do=diff1161554062">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-10-22T23:54:22+01:00</dc:date>
+        <dc:creator>Fernando Cerezal (kryptos@217.125.215.129)</dc:creator>
+        <title>curso_de_introduccion_a_gnu_linux</title>
+        <link>http://gul.es/doku.php?id=curso_de_introduccion_a_gnu_linux&amp;amp;do=diff1161554062</link>
+        <description> Pagina introduccion en Getafe   Indice  Quienes somos nosotros y que es el Software Libre  El software, segun la RAE, es: El conjunto de programas, instrucciones y reglas informáticas para ejecutar ciertas tareas en una computadora.  El sofware Libr...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=pagina_introduccion_en_getafe&amp;amp;do=diff1161451828">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-10-21T19:30:28+01:00</dc:date>
+        <dc:creator>Samuel Rodriguez Sevilla (laparca@217.126.173.154)</dc:creator>
+        <title>pagina_introduccion_en_getafe</title>
+        <link>http://gul.es/doku.php?id=pagina_introduccion_en_getafe&amp;amp;do=diff1161451828</link>
+        <description> EL Grupo de Usuarios de Linux de la Universidad organiza por primera vez un curso de introducción en el campus de Getafe. Con este curso pretendemos llevar a este campus lo que llevamos promulgando en el campus de Leganés desde 1998: las bondades de...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=inicio&amp;amp;do=diff1161367857">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-10-20T20:10:57+01:00</dc:date>
+        <dc:creator>Roberto Mu�oz (roberto@163.117.100.240)</dc:creator>
+        <title>inicio</title>
+        <link>http://gul.es/doku.php?id=inicio&amp;amp;do=diff1161367857</link>
+        <description> Servicios  FTP: Nuestro servidor de ficheros FTP con mirror un mirror de Debian completo y la documentacion que generamos.  Lista de correo: Nuestra lista de correo para resolver dudas y debatir temas relacionados con software libre y con el GUL.  P...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=reuniones&amp;amp;do=diff1161367529">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-10-20T20:05:29+01:00</dc:date>
+        <dc:creator>Roberto Mu�oz (roberto@163.117.100.240)</dc:creator>
+        <title>reuniones</title>
+        <link>http://gul.es/doku.php?id=reuniones&amp;amp;do=diff1161367529</link>
+        <description> El GUL realiza periódicamente reuniones entre sus socios para conocer sus opiniones, así como para la toma de decisiones que concierne a la asociación.     Actas   Próxima reunión   La próxima reunión se realizará el viernes 15 de septiembre a las 2...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=wiki:instalando_openldap_con_soporte_ssl_en_debian&amp;amp;do=diff1161027615">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-10-16T21:40:15+01:00</dc:date>
+        <dc:creator>Juan Ramon Martin (juanra@62.15.209.207)</dc:creator>
+        <title>wiki:instalando_openldap_con_soporte_ssl_en_debian</title>
+        <link>http://gul.es/doku.php?id=wiki:instalando_openldap_con_soporte_ssl_en_debian&amp;amp;do=diff1161027615</link>
+        <description> El objetivo primero es instalar openldap en la máquina y que los usuarios locales autentiquen a través de ldap.  Lo primero que hemos de hacer es instalar openldap y algunas utilidades que nos harán falta más tarde:  #apt-get install slapd ldap-util...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=ponentes_noviembre_2006&amp;amp;do=diff1161027451">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-10-16T21:37:31+01:00</dc:date>
+        <dc:creator>Juan Ramon Martin (juanra@62.15.209.207)</dc:creator>
+        <title>ponentes_noviembre_2006</title>
+        <link>http://gul.es/doku.php?id=ponentes_noviembre_2006&amp;amp;do=diff1161027451</link>
+        <description> Ponentes   Juan Ramon Martin Blanco  Apache2    ...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=charlas_definitivas_noviembre_2006&amp;amp;do=diff1161027381">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-10-16T21:36:21+01:00</dc:date>
+        <dc:creator>Juan Ramon Martin (juanra@62.15.209.207)</dc:creator>
+        <title>charlas_definitivas_noviembre_2006</title>
+        <link>http://gul.es/doku.php?id=charlas_definitivas_noviembre_2006&amp;amp;do=diff1161027381</link>
+        <description> El nivel que se le asigna a cada charla depende de su dificultad:  Básico: Se puede entender en gran parte sin conocimientos técnicos.  Medio: Son necesarios unos conocimientos básicos sobre Linux, programación, software libre... dependiendo de la t...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=normativa_electoral&amp;amp;do=diff1160585568">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-10-11T18:52:48+01:00</dc:date>
+        <dc:creator>Roberto Mu�oz (roberto@163.117.8.142)</dc:creator>
+        <title>normativa_electoral - creado</title>
+        <link>http://gul.es/doku.php?id=normativa_electoral&amp;amp;do=diff1160585568</link>
+        <description> Sistema electoral: &amp;nbsp; * Se utilizará un sistema de listas abiertas y se realizará una votación por cargo. &amp;nbsp; * Cada candidato dirá a qué cargos se presenta por orden de preferencia. Cada votante votará a quien prefiera de cada lista. &amp;nbsp; ...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=elecciones&amp;amp;do=diff1160585525">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-10-11T18:52:05+01:00</dc:date>
+        <dc:creator>Roberto Mu�oz (roberto@163.117.8.142)</dc:creator>
+        <title>elecciones</title>
+        <link>http://gul.es/doku.php?id=elecciones&amp;amp;do=diff1160585525</link>
+        <description> Normativa electoral   Candidaturas    Presidente  Preferencia    Jesús Espino1    Samuel Rodríguez2    Roberto Muñoz1         Secretario  Preferencia          Tesorero  Preferencia    Samuel Rodríguez1    Roberto Muñoz4         Coordinador de activi...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=fortunes_de_la_uc3m&amp;amp;do=diff1160584750">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-10-11T18:39:10+01:00</dc:date>
+        <dc:creator>Samuel Rodriguez Sevilla (laparca@163.117.80.136)</dc:creator>
+        <title>fortunes_de_la_uc3m</title>
+        <link>http://gul.es/doku.php?id=fortunes_de_la_uc3m&amp;amp;do=diff1160584750</link>
+        <description> Proyecto Fortunes de la UC3M   Fortunes actuales &amp;quot;Esto es un ejemplo real, no penseis que me he inspirado en una noche etilica&amp;quot;   -- (Ismael Sanchez - Estadistica) Profesor: &amp;quot;Mi despacho es el 2.1.C...aqui abajo...en la otra esquina.....</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=15_de_septiembre_de_2006&amp;amp;do=diff1158665764">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-09-19T13:36:04+01:00</dc:date>
+        <dc:creator>Fernando Cerezal (kryptos@81.35.17.113)</dc:creator>
+        <title>15_de_septiembre_de_2006</title>
+        <link>http://gul.es/doku.php?id=15_de_septiembre_de_2006&amp;amp;do=diff1158665764</link>
+        <description> Nos dimos la bienvenida, estuvo presente la junta completa y tres socios.   Tema de subvención para marzo   En los inicios del GUL se hizo una solicitud de subvención para realizar los cursos y se denegó alegando que de la docencia se encargaba la U...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=actas&amp;amp;do=diff1158659677">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-09-19T11:54:37+01:00</dc:date>
+        <dc:creator>Fernando Cerezal (kryptos@81.35.17.113)</dc:creator>
+        <title>actas</title>
+        <link>http://gul.es/doku.php?id=actas&amp;amp;do=diff1158659677</link>
+        <description> Actas de Reuniones  7 de octubre de 2005  11 de noviembre de 2005  9 de diciembre de 2005  13 de enero de 2006  17 de febrero de 2006  4 de Marzo de 2006  7 de Abril de 2006  12 de mayo de 2006  7 de julio de 2006  15 de septiembre de 2006    ...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=wiki:documentacion_aplicaciones&amp;amp;do=diff1158521741">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-09-17T21:35:41+01:00</dc:date>
+        <dc:creator>Borja Bergua (borja@217.126.141.27)</dc:creator>
+        <title>wiki:documentacion_aplicaciones</title>
+        <link>http://gul.es/doku.php?id=wiki:documentacion_aplicaciones&amp;amp;do=diff1158521741</link>
+        <description> Aplicaciones   Alternativas libres  Alternativas libres. Alternativas libres para cualquier tipo de programa.   Aptitude  Aptitude: mejorando apt.   Bash  Bash Guide for Beginners.  Linux Shell Scripting Tutorial - A Beginner's handbook. This Linux ...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=wiki:documentacion&amp;amp;do=diff1157419138">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-09-05T03:18:58+01:00</dc:date>
+        <dc:creator>Borja Bergua (borja@217.126.141.27)</dc:creator>
+        <title>wiki:documentacion</title>
+        <link>http://gul.es/doku.php?id=wiki:documentacion&amp;amp;do=diff1157419138</link>
+        <description> Comenzar en Linux no siempre es fácil. Los recién llegados a Linux, a menudo se preguntan ¿por dónde empiezo? ¿dónde puedo encontrar la documentación más básica?  Para intentar ayudar a los nuevos usuarios a dar sus primeros pasos con Linux, el Grup...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=charlas_definitivas_marzo_2006&amp;amp;do=diff1157327242">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-09-04T01:47:22+01:00</dc:date>
+        <dc:creator>Fernando Cerezal (kryptos@217.125.210.187)</dc:creator>
+        <title>charlas_definitivas_marzo_2006</title>
+        <link>http://gul.es/doku.php?id=charlas_definitivas_marzo_2006&amp;amp;do=diff1157327242</link>
+        <description> El nivel que se le asigna a cada charla depende de su dificultad:  Básico: Se puede entender en gran parte sin conocimientos técnicos.  Medio: Son necesarios unos conocimientos básicos sobre Linux, programación, software libre... dependiendo de la t...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=charlas_definitivas_noviembre_2005&amp;amp;do=diff1157326797">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-09-04T01:39:57+01:00</dc:date>
+        <dc:creator>Fernando Cerezal (kryptos@217.125.210.187)</dc:creator>
+        <title>charlas_definitivas_noviembre_2005</title>
+        <link>http://gul.es/doku.php?id=charlas_definitivas_noviembre_2005&amp;amp;do=diff1157326797</link>
+        <description> Ponente: José Manuel Ferrer   Fecha, hora y lugar:  Fecha: Lunes 21 de Noviembre  Hora: de 16:00 a 18:00  Lugar: 1.2.C.16    Descripción: Se mostrará el funcionamiento de bácula, un sistema para hacer copias de seguridad tanto locales como remotas. ...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=wiki:documentacion_distribuciones&amp;amp;do=diff1157318532">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-09-03T23:22:12+01:00</dc:date>
+        <dc:creator>Borja Bergua (borja@217.126.141.27)</dc:creator>
+        <title>wiki:documentacion_distribuciones</title>
+        <link>http://gul.es/doku.php?id=wiki:documentacion_distribuciones&amp;amp;do=diff1157318532</link>
+        <description> Distribuciones   OpenSUSE  Documentación de usuarios. Es la pagina inicial de la documentación de la Comunidad openSUSE.  Novell SUSE Linux 10.0 Reference (pdf). Documentación oficial.  Novell SUSE Linux 10.0 Start-Up (pdf). Documentación oficial.  ...</description>
+    </item>
+    <item rdf:about="http://gul.es/doku.php?id=calendario_marzo_2006&amp;amp;do=diff1155032432">
+        <dc:format>text/html</dc:format>
+        <dc:date>2006-08-08T12:20:32+01:00</dc:date>
+        <dc:creator>Fernando Cerezal (kryptos@81.34.201.136)</dc:creator>
+        <title>calendario_marzo_2006 - cambiado «Patrones» a «Patrones de diseño»</title>
+        <link>http://gul.es/doku.php?id=calendario_marzo_2006&amp;amp;do=diff1155032432</link>
+        <description> Calendario      Primera Semana      Hora  Lunes 27  Martes 28  Miercoles 29  Jueves 30  Viernes 31     11:00-13:00  Luc3m: El Linux de la Carlos III      Blender, Diseño 3D   OpenGL   Patrones de diseño      16:00-18:00  Comandos Básicos   Red Domes...</description>
+    </item>
+</rdf:RDF>

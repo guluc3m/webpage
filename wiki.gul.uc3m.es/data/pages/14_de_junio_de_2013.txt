@@ -1,0 +1,94 @@
+====== Asistenetes ======
+
+  * Samuel Rodríguez
+
+  * Ana Esther Rodríguez
+
+  * Irene M. Morgado
+
+  * Sandra Molins
+
+  * Roberto Muñoz
+
+  * Fernando Cerezal
+	
+  * Juan Ramón Martín
+
+  * Paula González
+
+  * Victor Rabadán 
+
+  * David Rubio
+
+  * Adrián Casado
+
+  * Miguel Vaello
+
+
+
+
+
+
+
+====== Orden de día ======
+
+	- Bienvenida al nuevo miembro: Adrián Casado
+	- Estado de la propuesta para hacer los exámenes de la LPI en la EPS
+	- Charlas tipo [[http://www.ted.com/|TED]] en el GUL
+
+
+
+
+
+
+
+
+
+
+
+
+====== Sesión =======
+
+Toma acta don Miguel Vaello Martínez (secretario).
+
+          -  **Bienvenida al nuevo miembro Adrián Casado**:
+
+  * Se le recibe con vítores y cánticos.
+
+          - **Estado de la propuesta para hacer los exámenes de la LPI en la EPS**:
+
+  * Después de una reunión con el delegado de la EPS, Mario Cobo, para preguntarle como funciona el sistema de pago a la escuela, se ha concluido que no hay ningún problema acerca de la utilización de los espacios ya que los pedimos y por nuestras manos no pasa dinero. Simplemente, los interesados tendrá que realizar la matriculación del examen a través de la web de la LPI.
+  * Por tanto, se da luz verde a la organización del evento y Roberto se encarga de escribir a Henry Chalup _el hombre que propuso los cursos_ para acordar cuando hacemos los exámenes. En principio, una buena fecha para hacer dichos exámenes debería ser un poco antes de noviembre, para así hacerlo coincidir con las Jornadas Técnicas del GUL, es decir, el pedirlo comprendido entre 3<sup>a</sup> o 4<sup>a</sup> semana de octubre.
+
+  *  Paula y Ana proponen que  realizar pequeñas reuniones antes de las Jornadas Técnicas para ir organizando a la par ambos eventos.
+
+  * Se decide por mayoría simple que los jornadas deberán celebrarse a lo largo de la 4a semana de octubre, que además no coincide con fiestas.
+
+  * Para terminar, Paula propone crear un grupo de estudio para todos los interesados en realizar el examen de la LPI. Además, se aprueba la creación de una lista de correo específica para dicho grupo.
+    
+  * Adrián se compromete a gestionar posibles cuestiones que puedan surgir en la universidad para organizar la LPI
+
+          -  **Charlas tipo [[http://www.ted.com/|TED]] en el GUL**
+
+  * La idea sería copiar un poco las conferencias del [[http://www.ted.com/|TED]], para hacer un discurso corto e intenso y que no sea aburrido sobre la tecnología el Software Libre.
+
+  * La vía para proponer dichas charlas será la misma que para las Jornadas Técnicas.
+
+
+
+
+
+
+====== Otros puntos que aparecieron durante la sesión ======
+
+
+  * Juanra nos dará una charla GUL-root sobre como montar las MVs nuevas que hay desplegadas.:-D
+
+  * Conseguir de una p:!:ta vez controladora SATA PCI-Express para Ebro, Roberto se compromete a traer una.
+
+  * Primer o segundo fin de semana de julio, hacer otra GUL-root para terminar de tomar los nuevos y mejorados servicios del GUL.8-)
+
+
+
+
+Leganés, 14 de junio de 2013

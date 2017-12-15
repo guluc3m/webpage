@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<humano>
+
+<nombre>Claudio Jiménez</nombre>
+<nick>xendex</nick>
+
+<foto>people/xendex/cjimenez.jpg</foto>
+
+<rollo>
+Claudio es vicepresidente del GUL, lo que le otorga poder suficiente para organizar fiestas 
+en la residencia de estudiantes y proponer lan parties para pasarnos el fin de semana jugando
+al enemy territory en lugar de dedicarnos a hacer cosas de provecho como jugar al Quake III o 
+comer bocadillos de panceta con patatas fritas.
+Está especializado en instalar ubuntu en un macbook, guardar las actas de reuniones durante
+unos pocos meses y es responsable de la web del GUL y de charlas como LaTeX, subversion o 
+comandos básicos de Linux. Como proyectos personales
+tiene Big Pig, un software para crear galerías de fotos mucho más ligero y sencillo de instalar 
+que los demás. 
+</rollo>
+
+<page>jarama.gul.es/~cjimenez/personal/</page>
+<blog>cjimenez.wordpress.com/</blog>
+<mail>claudio punto jimenez en alumnos punto uc3m punto es</mail> 
+<key>people/xendex/cjimenez.gpg</key>
+
+</humano>
+

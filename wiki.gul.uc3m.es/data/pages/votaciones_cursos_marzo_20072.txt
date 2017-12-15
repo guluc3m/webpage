@@ -1,0 +1,52 @@
+<poll Cursos-Marzo-2007> 
+  ¿Qué cursos te gustaría que se dieran?
+  *  Python
+  *  + PyGTK
+  * - Joomla
+  *  # Plone
+  *  - Moodle
+  *  - Dokuwiki
+  *  - DocMGR
+  *  - Sistemas de ficheros
+  *  + vim
+  *  + Qué es el S.L.
+  *  - Linux como alternativa a windows
+  *  - Haskell
+  *  - awk
+  *  - gendist
+  *  - LaTeX
+  *  + paquetes Debian
+  *  - bash
+  *  + subversion
+  *  - cvs
+  *  + php/mysql
+  *  - Instalación
+  *  - PyGame 
+  *  # Hispalinux
+  *  + Introducción y uso diario
+  *  - Redes domésticas
+  *  - Java
+  *  # Lego Mindstorms
+  *  C
+  *  ? juegos para linux
+  *  ? kernel hacking
+  *  ? Gimp
+  *  ? AJAX
+  *  ? Apache
+  *  ? Perl
+  *  ? Django
+  *  ? Mod_python
+  *  ? CherryPy
+  *  ? turbogears
+  *  ? Pyjamas
+  *  ? web.py
+  *  ? Ruby On Rails
+  *  Ruby
+  *  Clusters para alta disponibilidad
+  *  Hilos y forks
+  *  Emacs
+</poll>
+  * - prioridad normal
+  * + prioridad alta
+  * # nunca se ha impartido
+  * ? petición

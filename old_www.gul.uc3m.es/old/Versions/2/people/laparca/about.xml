@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<humano>
+
+<nombre>Samuel Rodríguez</nombre>
+<nick>laparca</nick>
+
+<foto>http://panther1.last.fm/avatar/25e20d4181897fd0368522aadd169e91.png</foto>
+
+<rollo>
+Laparca significa "La Muerte". Y no es para menos, Samuel es responsable de haber tumbado
+varios servidores del GUL con los dichosos "sudo rm -rf" que, para quien no sepa linux, se puede
+traducir como "Samuel se ha cargado el disco duro". Esto le ha llevado a ganarse el seudónimo de "-force".
+Entre sus hazañas está reiniciar cuatro veces al día el firewall del GUL, 
+trabajar en el departamento de física montando clusters para jugar a las partículas o comprarse un iPod nano para
+instalarle un Linux muy especial que no podía reproducir mp3. En sus ratos de lucidez reiniciaba
+el iPod con su sistema operativo normal para escuchar canciones como "El ataque de los pingüinos 
+de Linux" entre Placebo y Rammstein. Ha dado charlas tan apasionantes como "Cálculo matricial y
+transformaciones lineales para trabajar con OpenGL" y entre sus proyectos personales cuentan drivers
+para los pedales de las dichosas máquinas de bailar o para controlar el mando wiimote vía bluetooth.
+</rollo>
+
+<page>blog.laparca.es</page>
+<blog>blog.laparca.es</blog>
+<mail>samrs65 en gmail punto com</mail> 
+<key>people/laparca/samuel.gpg</key>
+
+</humano>
+

@@ -1,0 +1,109 @@
+====== Aplicaciones ======
+
+===== Alternativas libres =====
+  * [[http://alts.homelinux.net|Alternativas libres]]. Alternativas libres para cualquier tipo de programa.
+  * [[http://www.osliving.com|Open Source Living]]. Open Source Living, an archive of the Web's best Open Source software, applications and references for a zero-cost / top quality digital experience.
+
+===== Aptitude =====
+  * [[http://www.badopi.org/suy/aptitude|Aptitude: mejorando apt]].
+
+===== Audio =====
+  * [[http://reciclado100.blogspot.com/2007/08/soundconverter-conversor-de-audio-para.html|SoundConverter, conversor de audio para Gnome]]. SoundConverter es una aplicación para Gnome que te permite gráficamente convertir archivos de audio como Ogg Vorbis, AAC, MP3, FLAC, WAV, AVI, MPEG, MOV, M4A, AC3, DTS, ALAC, MPC, Shorten, APE, SID, etc... en varios formatos Ogg Vorbis, MP3, FLAC y WAV.
+
+===== Bash =====
+  * [[http://www.tldp.org/LDP/Bash-Beginners-Guide/html/|Bash Guide for Beginners]].
+  * [[http://www.cyberciti.biz/nixcraft/linux/docs/uniqlinuxfeatures/lsst/|Linux Shell Scripting Tutorial - A Beginner's handbook]]. This Linux Shell Scripting Tutorial is designed for people who wish to learn the fundamentals of shell scripting/programming. It also contains an introduction to power tools such as awk and sed.
+  * [[http://tldp.org/LDP/abs/html/|Advanced Bash-Scripting Guide]]. An in-depth exploration of the art of shell scripting.
+  * [[http://www.bash-hackers.org/wiki/|Bash Hackers Wiki]]. The main motivation was to provide human-readable documentation and information to not force users to read every bit of the Bash manpage - which is PITA sometimes. The docs here are not meant as newbie tutorial, more as educational summary.
+  * [[http://www.ibm.com/developerworks/library/l-bash-test.html|Bash test and comparison functions]]. Are you confused by the plethora of testing and comparison options in the Bash shell? This tip helps you demystify the various types of file, arithmetic, and string tests so you will always know when to use test, [ ], %%[[ ]]%%, %%(( ))%%, or if-then-else  constructs.
+  * [[http://linuxcommand.org/index.php|LinuxCommand.org]]. Learn the Linux command line. Write shell scripts.
+  * [[http://www.gentoo.org/doc/en/articles/bash-by-example-p1.xml|Bash by example]].
+  * [[http://www.ss64.com/bash/|An A-Z Index of the Linux BASH command line]].
+  * [[:charlas_definitivas_noviembre_2005#programacion_en_bash|Power Shell Scripting (Ponencia del Gul)]]. Ponencia a cargo de Fernando J. Pereda realizada durante el ciclo de charlas del GUL de Noviembre de 2005, incluye audio y video de la ponencia.
+
+===== Cedega/Winex =====
+  * [[http://www.linuxjuegos.com/2005/08/04/instalar-y-configurar-cedega-winex-gratis/|Instalar y configurar Cedega Winex gratis]]. Cedega permite ejecutar juegos windows, en sistemas linux.
+
+===== Emacs =====
+  * [[http://www.rpublica.net/emacs/emacs.html|Emacs: Iniciación a la edición]]. Ésta pretende ser una iniciación a la edición con Emacs, algo más extensa que el excelente tutorial que el propio Emacs nos proporciona y dirigida a todo aquel que, conociendo ya las posibilidades de la aplicación, desee iniciarse en su uso.
+
+===== Gimp =====
+  * [[http://www.imh.es/dokumentazio-irekia/manuales/curso-de-tratamiento-de-imagenes-con-gimp|Curso de tratamiento de imágenes con Gimp]]. Curso básico del uso de la herramienta de software libre Gimp.
+  * [[http://docs.gimp.org/es/|Manual de usuario del GIMP]].
+
+===== GnuPG =====
+  * [[http://www.freesoftwaremagazine.com/articles/secure_email|Secure your email communication with free software]]. A guide for installing, configuring and using Mozilla Thunderbird, Enigmail, and GnuPG to provide secure and encrypted email.
+
+===== Gnuplot =====
+  * [[http://www-128.ibm.com/developerworks/library/l-gnuplot/|Visualize your data with gnuplot]]. Turn your data and functions into professional-looking graphs with Gnuplot 4.0, a freely distributed plotting tool. In this article, get a hands-on guide to gnuplot that emphasizes the idioms you'll need to use this tool effectively.
+  * [[http://www.gnuplot.info/docs/gpcard.pdf|Gnuplot reference card]]. Tarjeta de referencia con los comandos más usuales de gnuplot.
+  * [[http://www.gnuplot.info/documentation.html|Documentación oficial de gnuplot]].
+  * [[http://t16web.lanl.gov/Kawano/gnuplot/index-e.html|gnuplot tips (not so Frequently Asked Questions)]].
+
+===== GRUB =====
+  * [[http://www.esdebian.org/article.php/20070301063456844|Recuperar GRUB]]. Un serie de instrucciones muy sencillas para recuperar GRUB cuando lo hemos perdido.
+
+===== Juegos =====
+  * [[http://en.wikipedia.org/wiki/List_of_open_source_games|List of open source games]]. Es una lista ordenada alfabéticamente de los principales juegos open source.
+  * [[http://en.wikipedia.org/wiki/List_of_free_first-person_shooters|List of free first-person shooters]]. Es una lista de juegos gratuitos de la categoría llamada "first person shooters", que pueden ser software libre o no.
+  * [[http://es.wikipedia.org/wiki/Lista_de_Emuladores|Lista de Emuladores]]. Lista de emuladores de todo tipo de micros existentes, incluidos tanto los que tiene que ver con máquinas lúdicas como los que no.
+  * [[http://www.linuxjuegos.com/|LinuxJuegos.com]]. Es un weblog dedicado al software de entretenimiento y juegos sobre la plataforma GNU/Linux y similares.
+  * [[http://www.happypenguin.org|The Linux Game Tome (en inglés)]]. Web dedicada a los juegos en Linux.
+  * [[http://jesusda.com/docs/juegoslinux/s5/index.html|Jugando con GNU/Linux]]. Presentación sobre juegos en Linux.
+  * [[http://gaming.gwos.org/|Ubuntu Gamers Arena]]. Web dedicada a juegos en Linux, especialmente Ubuntu.
+  * [[http://linux.softpedia.com/get/GAMES-ENTERTAINMENT/|Softpedia linux games]]. Web desde dónde se pueden descargar multitud de juegos para Linux.
+  * [[http://doc.gwos.org/index.php/Native_Games|Ubuntu Game List]]. Wiki donde van clasificando juegos nativos para Ubuntu, lista aplicable al resto de distribuciones de GNU/Linux.
+  * [[http://ubuntuforums.org/forumdisplay.php?f=93|Ubuntu formus: Gaming & Leisure]]. Foro de Ubuntu dedicado a juegos.
+  * [[http://www.ubuntugames.org/|ubuntugames.org (en portugués)]]. Está en portugués pero se entiende bastante bien.
+
+===== LaTeX =====
+  * [[http://es.wikipedia.org/wiki/LaTeX|LaTeX]]. Página de la wikipedia en castellano sobre LaTeX.
+  * [[http://www.ntg.nl/doc/bautista/ldesc2e.pdf|Una Descripcion de LaTeX 2e (pdf)]]. Manual muy completo sobre LaTeX.
+  * [[http://tex.loria.fr/general/Voss-Mathmode.pdf|LaTeX Math Mode (pdf)]]. Manual completísimo sobre cómo escribir textos matemáticos en LaTeX.
+  * [[http://www.sindominio.net/~xabier/curso_latex/|Curso de introducción a LaTeX]]. En esta página encontrarás información útil para empezar con LaTeX: un curso organizado en 4 clases, recursos, plantillas, scripts, y ejercicios varios.
+  * [[http://www.texytipografia.com|TeX y tipografía]]. Maquetación y composición con TeX, LaTeX, XML, Unicode y Omega. Tipografía, ortotipografía y estilo del español.
+  * [[http://elblogdelatex.blogspot.com|El blog de Latex]].
+  * [[http://www.cs.man.ac.uk/~navarroj/latex/files/cookbook.pdf|TeX Cookbook (pdf)]]. Resumen de comandos TeX.
+
+===== Octave =====
+  * [[http://www.gnu.org/software/octave/doc/interpreter/|The GNU Octave Manual]]. Manual oficial de Octave.
+
+===== OpenOffice.org =====
+  * [[http://support.openoffice.org/index.html|OpenOffice.org Support]]. Cantidad de recursos de ayuda para OpenOffice.org (foros, listas de correo, artículos, libros, etc.).
+  * [[http://bulma.net/body.phtml?nIdNoticia=2307|Números de página con OpenOffice]]. Cómo contar a partir del número 20, por ejemplo, o cómo empezar a contar a partir de la segunda página, o con otro formato de números.
+
+
+
+===== Screen =====
+  * [[http://suburbia.sindominio.net/spip.php?article147|GNU Screen: Introducción y tutorial para principiantes]]. La mayoría de los sistemas Unix modernos (Linux, MacOSX y *BSD) vienen con una pequeña utilidad de consola llamada GNU-Screen. Es una herramienta poderosa en manos de guerrilleros del modo texto, una navaja suiza versátil para todo tipo de interacción persona-máquina basada en texto.
+  * [[http://aperiodic.net/screen/|GNU screen]]. Página con enlaces interesantes a documentación de screen.
+  * [[http://www4.informatik.uni-erlangen.de/~jnweiger/screen-faq.html|Screen FAQ]]. This is a list of frequently asked questions on screen@uni-erlangen.de. 
+  * [[http://www.linuxjournal.com/article/6340|Power Sessions with Screen]]
+  * [[http://www.oreillynet.com/linux/cmd/cmd.csp?path=s/screen|Alphabetical Directory of Linux Commands:screen]]
+  * [[http://www.pixelbeat.org/lkdb/screen.html|linux screen keyboard shortcuts]]
+
+===== Ssh/Scp =====
+  * [[http://en.jakilinux.org/apps/ssh-tricks/|Trucos SSH]]. SSH (secure shell) es un programa que permite un acceso remoto seguro. No todo el mundo conoce el potencial de SSH, como acceso sin contraseña, ejecucion automatica de comandos en maquinas remotas, e incluso montar sistemas de ficheros a traves de SSH. En este articulo se echa un vistazo a estas caracteristicas y a muchas mas.
+
+=====  Sudo/Sudoers/Visudo =====
+  * [[http://www.rpublica.net/sudo/indice.html|Sudo Sudoers Visudo]]. Un breve manual de sudo, basado en las páginas man del programa, y de su configuración a través del archivo /etc/sudoers.
+
+  * [[http://www.linuxparatodos.net/geeklog/staticpages/index.php?page=como-sudo-linux|Cómo configurar y utilizar Sudo]].
+
+===== Vi/Vim =====
+  * [[http://tnerual.eriogerg.free.fr/vimqrc-es.html|Vim - Carta de referencia rápida]]. Extensa recopilación de comandos de Vim, en español.
+  * [[http://www.tuxfiles.org/linuxhelp/vimcheat.html|The Vim commands cheat sheet - 1.1 (inglés)]]. A cheat sheet of some useful and most often used Vim commands. This Vim cheat sheet isn't trying to include all the Vim commands in the known universe, but should list the most essential ones.
+  * [[http://bullium.com/support/vim.html|Vim Commands Cheat Sheet]], [[http://bullium.com/support/vim.pdf|pdf]].
+  * [[http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html|Graphical vi-vim Cheat Sheet and Tutorial]].
+  * [[http://drumlin.thehutt.org/vi/|VI(Visual) Editor Reference manual]].
+
+===== Wine =====
+  * [[http://bulma.net/body.phtml?nIdNoticia=1164|Ejecuta tus programas windows en Linux con WINE]]. Wine permite ejecutar aplicaciones windows, en sistemas linux.
+  * [[http://www.playonlinux.com/es/|Playonlinux]]. Playonlinux es un programa pensado originalmente para facilitar la instalación de programas de Windows en GNU/Linux mediante la capa de abstracción Wine, haciendo especial énfasis en el terreno de los juegos.
+  * [[http://www.wine-doors.org|Wine-Doors]]. Wine-doors is an application designed to make installing windows software on Linux, Solaris or other Unix systems easier.
+  * [[http://frankscorner.org/|Frank's Corner]]. This website contains all the information you need to get some popular Windows applications and games running on Linux using Wine.
+  * [[http://www.von-thadden.de/Joachim/WineTools/|WineTools]]. WineTools is a menu driven installer for installing about 90 Windows programs under the x86 (Athlon or Intel PC) processor architecture with the Linux operating system using Wine.
+
+===== Xgl =====
+  * [[https://help.ubuntu.com/community/CompositeManager/Xgl|CompositeManager/Xgl]]. Esta página explica cómo instalar Xgl en Ubuntu.
+  * [[http://es.opensuse.org/Xgl|Xgl - openSUSE]]. Esta página explica cómo instalar Xgl en openSUSE.

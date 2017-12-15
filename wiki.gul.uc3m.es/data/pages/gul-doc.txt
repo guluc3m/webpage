@@ -1,0 +1,12 @@
+====== gul-doc ======
+
+===== ¿Qué es gul-doc? =====
+
+Gul-doc es el grupo de documentación y traducción. La idea es que si hay algún manual que creas que sería especialmente útil que estuviese traducido o si tú mismo hiciste un pequeño manual para algo para lo que no encontraste suficiente documentación, lo podamos poner a disponibilidad de todos.  
+
+===== ¿Cómo participar? =====
+
+Para participar en gul-doc, puedes apuntarte a la [[http://gul.uc3m.es/mailman/listinfo/gul-doc|lista de correo]]. Ahí podrás proponer, coordinarnos para un trabajo mayor y demás.
+
+
+===== Documentos =====

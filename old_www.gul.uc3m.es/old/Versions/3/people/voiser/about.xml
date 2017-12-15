@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<humano>
+
+<nombre>David Muñoz</nombre>
+<nick>voiser::</nick>
+
+<foto>http://farm1.static.flickr.com/35/116943195_2bbcb87dcd_m.jpg</foto>
+
+<rollo>
+David es un chico pegado a su móvil. Es uno de los "activistas ssh" que siempre hace las cosas o en remoto o
+cuando no hay nadie en el despacho del GUL, por lo que apenas se entera de las novedades ni los cotilleos. 
+En el GUL participa ayudando en tareas de administración de la web y es responsable de las Tardes de Web, esas
+espantosas charlas donde los asistentes acaban haciendo de ponentes. Sus intereses
+se centran en la programación, las bases de datos, un poquito de OpenGL y evangelizar sobre las interfaces de usuario.
+Entre sus proyectos personales está salir a la calle sin 
+su powerbook a la espalda, acabar Cabaret y hacer la Semana Web. 
+</rollo>
+
+<page>voiser.es</page>
+<blog>voiser.es/blog</blog>
+<mail>voiser at gmail dot com</mail> 
+<key>people/voiser/david.gpg</key>
+
+</humano>
+
+
+

@@ -1,0 +1,210 @@
+==== Acerca de esta sección ====
+
+__**BORRADOR PENDIENTE DE ELABORACION (Y APROBACION)**__
+
+=== ¿Por qué elaborar un Plan de Medios? ===
+
+El Plan de Medios de un evento es vital porque planifica su difusión. En él, se definen las líneas básicas de actuación que el equipo de coordinación de un acto debe seguir a la hora de relacionarse no sólo con los medios de comunicación, sino también con los líderes de opinión, los sectores y colectivos influyentes en la sociedad y la ciudadanía en su conjunto.
+
+El Congreso Hispalinux debe contar con una buena definición de sus estrategias comunicativas, de la que forma parte el Plan de Medios. De esta forma, logrará una comunicación efectiva según el propósito de cada ocasión y generará una mejor imagen de la asociación.
+
+=== Normas de coordinación ===
+Para ello, para cada comunicación se describirán los siguientes datos fundamentales de coordinación del trabajo:
+  * quién convoca
+  * a quién se convoca
+  * para qué (objetivos)
+  * por qué vía
+  * con qué mensaje (contenido y forma)
+  * cuándo (no necesariamente la fecha, sino la ocasión, las condiciones previas y/o que disparan la comunicación)
+
+La información de los contactos debe recogerse en el [[Repositorio de contactos]]. Si fuera //sensitiva// se debe poner quién dentro del [[Voluntarios|equipo]] tiene contacto con el destinatario. 
+
+A medida que se efectúen comunicaciones hay que actualizar en [[Registro de comunicaciones]] para que no se pierda el control.
+
+
+===== Visión del Evento =====
+
+La visión del Congreso Hispalinux 2007 está especificada [[dirección|aquí]]
+
+
+
+
+==== Estrategia ====
+
+Queremos adquirir presencia e influencia social => tenemos que estar en todas partes sin llegar a cansar.
+Con objeto de no empachar, el Plan dosificará la frecuencia de los mensajes y tratará de que a cada destinatario le lleguen sucesivos mensajes con contenido diferente cada vez.
+
+=== Mensajes Según Destinatarios ===
+La comunicación es un gran valor, pero es necesario determinar adecuadamente los agentes que la favorecen. Es decir, hay que tener muy claro __a quiénes__ nos interesa llegar para comunicar __qué__. A partír de ahí habrá que deducir el __cómo__. En función de la persona o colectivo al que nos dirijamos y el momento, el mensaje será diferente, aunque se repitan algunas informaciones básicas. Variarán las formas y los contenidos:
+
+== Comunes ==
+   * Objetivo: promoción del software libre:
+     * Implicación con en el evento materializada en ayuda prestada y/o en su defecto retransmisión de entusiasmo)
+     * Dinamización estable con el software libre materializada en futuras aportaciones a la comunidad
+
+== A Colaboradores ==
+   * ¿Quienes son?
+     * Instituciones oficiales, empresas, asociaciones, ... (?)
+     * Miembros de la comunidad SL vs Agentes externos
+   * Nuestros objetivos:
+     * Animarles a colaborar y si es posible, a implicarse 
+   * Valores de imagen (se materializan en mensajes diferentes según el colaborador.
+     * Solvencia de Hispalinux (ojo a la historia de fracasos y problemas)
+     * Relevancia del evento: interés (calidad) y visibilidad (cantidad)
+
+== A Patrocinadores ==
+   * Nuestros objetivos:
+     * Habilitar medios: Sufragación de gastos y dotación presupuestaria
+   * Sus objetivos:
+     * Interés comercial directo (impulso al mercado)
+     * ...e indirecto (imagen corporativa)
+   * Valores de imagen:
+     * Fiabilidad y solvencia de Hispalinux (ojo a la historia de fracasos y problemas)
+     * Retorno de lo inversión:
+       * Presencia intensa (impacto mediático, alta asistencia, ...)
+       * Protagonismo (posicionamiento visual, referencias, ...)
+       * Público relevante (líderes de opinión, decisores de compra, competencia, empleados, agentes del sector ...)
+       * Alineamiento de objetivos estratégicos (temáticas, mensajes y objetivos del evento vs. su estrategia comercial)
+       * Influencia del evento en los asistentes
+
+== A Asistentes ==
+   * Nuestros objetivos:
+     * su satisfacción con el evento
+     * su implicación en la comunidad (mantenerla, renovarla o iniciarla)
+   * Valores de imagen:
+     * El congreso como oportunidad generadora de avances
+     * Diversión
+     * Asombro
+     * Alegría
+
+== A MMCC Generalistas ==
+   * Nuestros objetivos: Impacto mediático (cantidad y calidad de apariciones)
+   * Valores:
+     * Asombro
+     * Novedad
+
+== A MMCC Especializados ==
+   * Nuestros objetivos:
+     * Impacto mediático
+     * Mejora y/o refuerzo de la imagen de Hispalinux
+   * Valores:
+     * Implicación
+     * Unidad
+     * Cercanía
+
+=== Mensajes en la Línea Temporal ===
+
+La línea temporal se divide en 3 apartados fundamentales diferenciados.
+
+  - ANTES de la celebración del evento
+    * Lanzamiento y llamamientos
+    * Explicaciones, anticipos e informes de evolución
+    * Recordatorios de última hora
+  - DURANTE la celebración del evento
+    * Informes de evolución
+  - DESPUÉS de la celebración del evento
+    * Agradecimientos e informes de resultados
+
+
+
+===== Antes de la celebración del evento =====
+
+=== Carta de invitación a instituciones públicas, empresas privadas, asociaciones y demás colectivos. Previa y anticipada ===
+
+  * __Objetivo__: anunciar el evento y atraer personajes de interés públicos que llamen la atención de los MMCC.
+  * __Mensaje___: carta de invitación...
+    * clara: evento, organización, lugar, fecha, web (y forma de contactarnos)
+    * cortés: (que destaque en lo posible la importancia de la presencia del representante invitado) y
+    * atrayente: que destaque el interés del acto, los objetivos, en definitiva, que lo promocione. Alinear en lo posible a   los intereses de cada destinatario.
+    * personalizada: dependiendo de los medios disponibles se personaliza o al menos se estrecha el círculo de destinatarios.
+  * __Plazo de difusión__: meses antes de su  inicio. Semanas antes de la rueda de prensa para poder presentar a los personajes mediáticos
+  * __Destinatarios__:
+    * las entidades y organismos convocadas
+    * ejecutar por orden (de relevancia o de disponibilidad, según la situación)
+    * extender con imaginación a círculos externos (empresas y asociaciones que no tengan que ver necesariamente con el SL)
+
+=== Convocatoria general a los MMCC. Previa y anticipada ===
+  * __Objetivo__: anunciar el evento, generar expectación e interés público.
+  * __Mensaje__:  ¿Qué mensajes juntos/separados y 
+    * convocatoria clara (evento, organización, lugar y fecha) y texto de llamamiento (información breve pero atrayente del evento).
+    * llamada a la participación aportando comentarios y sugerencias respecto al [[dirección|planteamiento]]
+    * llamada a la participación en voluntariado
+    * call for papers (ponentes)
+  * __Plazo de difusión__: meses antes de su inicio.
+  * __Destinatarios__:
+    * MMCC generalistas
+    * MMCC especializados de periodicidad mensual y bimensual
+    * ámbito nacional (especial énfasis en la región y provincia) y en sus diferentes formatos (radio, tv, prensa, internet)
+
+=== Convocatoria de presentación del evento. Aviso de rueda de prensa ===
+  * __Objetivo__: volver a acaparar protagonismo con algo muy positivo, una invitación -que siempre mola-.
+  * __Mensaje__: convocatoria clara de la rueda de prensa:
+    * qué representante público la preside,
+    * quiénes presentan el evento,
+    * dónde se celebra, cuándo, qué se va a presentar -breve descripción del evento de prensa-)
+    * dónde se celebra, cuándo, qué se va a presentar -breve descripción del Congreso -)
+    * y invitación a una copa posterior.
+  * __Plazo de difusión__: 1-3 días antes a la celebración de la rueda de prensa.
+  * __Destinatarios__: MMCC citados. Asociaciones. Entidades públicas y empresas privadas, representantes de colectivos juveniles...
+
+=== Apariciones esporádicas en MMCC ===
+  * __Objetivo__: estar en la boca de todo el mundo y fundamentalmente de quienes se encargan de poner los acontecimientos en boca de todo el mundo, oséa, los líderes 
+  * __Mensaje__:
+    * comentarios en web -propia y ajenas-,
+    * entrevistas a los responsables de la organización;
+    * conversaciones y contactos “informales” con periodistas, asociaciones, instituciones...
+    * adelantos de las actividades
+    * anuncios y comentarios sectoriales: son una llamada a la asistencia del público. Se pueden modular en función de las ponencias para que sea más efectivo (buscando publico interesado para cada una)
+  * __Plazo de difusión__: las semanas previas a la celebración del evento
+  * __Destinatarios__: 
+    * ciudadanía en general.
+    * con especial hincapié en periodistas, representantes de instituciones públicas y empresas privadas y demás colectivos y organismos.
+    * Última llamada a ponentes: No es un mensaje imprescindible, pero ayuda a animar a ponentes de última hora y mantiene la expectación. Podria diseñarse algun mensaje especifico para competidores de ponentes que ya se hayan presentado con objeto de reforzar el interés para los asistentes.
+  * Estas comunicaciones no tienen porqué ser oficiales, ni proceder de la organización necesariamente. Pueden ser también iniciativas de los colaboradores. ¡Hay que dinamizarlos!
+
+
+=== Diseño, elaboración y difusión de folletos, carteles y demás formatos de publicidad exterior ===
+  * __Mensaje__: los textos de carteles, folletos y demás soportes para publicidad exterior deben ser meramente informativos y su diseño, además de ser un estímulo impactante, debe facilitar la función informativa.
+  * __Plazo de difusión__: la semana previa a la celebración del evento.
+  * __Destinatarios__. ciudadanía en general.
+  * __Objetivo__. estar en la boca de todo el mundo.
+
+
+=== Presentación del Congreso Hispalinux 2007. Rueda de prensa ¿y copita de vino posterior? ===
+  * __Acto__: 
+    * Recepción de asistentes. Reparto de material (nota de prensa escrita, dossier adjunto, bolígrafo (en papel o, mejor para este caso, CD o pendrive con información), carpeta corporativa y libreta y alguna chuminadilla (almoadilla para el ratón por ejemplo).
+    * Facilitar trabajo a TV y radio con conexiones eléctricas.
+    * Rueda de prensa (con orden establecido de turno de palabra).
+      * Presentación en video o presentación del evento (aquí entran muchas posibilidades, estamos hablando de nuevas tecnologías y hay que impactar).
+      * Ruegos y preguntas.
+      * Se levanta la sesión.
+    * Copita de vino posterior en plan informal.   ¿?¿?¿?
+  * __Fecha para la presentación del Congreso__: según asistencia de representantes de Administración (Importante: que no sea viernes).
+  * __Destinatarios__: MMCC y, en general, los convocados.
+  * __Objetivo__: ser un buen trampolín de cara al inicio del evento. Tenerlos a todos contentos y expectantes ante el acontecimiento (especialmente a la prensa) 
+  * __Muy importante__:
+    * Que no quede cutre (un buen lugar, buen despliegue de medios, buena presencia y un buen catering). Que no aburra (cuidar las intervenciones... que sean dinámicas, innovadoras, interactivas...).
+    * Que no defraude (priorizar la información estratégicamente, no se trata de contarlo todo. Solo lo que nos interesa destacar, aquello que llama la atención y lo convierte en noticioso).
+
+
+=== Convocatoria general a los MMCC. Recordatorio del evento ===
+  * __Mensaje__: convocatoria clara (evento, organización, lugar y fecha) y texto de llamamiento a la asistencia (información breve pero atrayente del evento).
+  * __Plazo de difusión__: enviar 1-3 días antes de su inicio.
+  * __Destinatarios__: MMCC generalistas y especializados de ámbito nacional (especial énfasis en la región y provincia) y en sus diferentes formatos (radio, tv, prensa, internet)
+  * __Objetivo__. Volver a anunciar el evento, recordando su interés público.
+
+===== Durante la celebración del evento =====
+
+=== Blogs del dia ===
+
+Son reseñas diarias en las que se cuenta como ha ido el dia. Sirven para animar a la asistencia sobre todo al público local.
+
+===== Después de la celebración del evento =====
+
+=== Cierre, agradecimientos ===
+
+Aparte de una cuestión de buena educación, sirve para poner los dientes largos a quien no pudo asistir. Es la primera acción de promoción para la siguiente edición.
+
+=== Publicacion del balance ===
+
+Es una extensión del cierre con más medios (fotos, videos, ...).

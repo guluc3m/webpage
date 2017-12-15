@@ -1,0 +1,217 @@
+<div class="toc">
+<div class="tocheader"> <script type="text/javascript">showTocToggle("+","-")</script>Tabla de Contenidos</div>
+<div id="tocinside">
+<ul class="toc">
+<li class="level1"><span class="li"><a href="#introduccion" class="toc">Introducción</a></span></li>
+<li class="level1"><span class="li"><a href="#compilar_los_drivers_de_nvidia" class="toc">Compilar los drivers de nVidia</a></span><ul class="toc">
+<li class="level2"><span class="li"><a href="#instalar_el_kernel_y_sus_cabeceras" class="toc">Instalar el kernel y sus cabeceras</a></span></li>
+<li class="level2"><span class="li"><a href="#reiniciar_con_el_nuevo_kernel" class="toc">Reiniciar con el nuevo kernel</a></span></li>
+<li class="level2"><span class="li"><a href="#instalar_el_paquete_fuente_de_nvidia" class="toc">Instalar el paquete fuente de nvidia</a></span></li>
+<li class="level2"><span class="li"><a href="#exportar_las_variables_de_entorno_para_el_kernel" class="toc">Exportar las variables de entorno para el kernel</a></span></li>
+<li class="level2"><span class="li"><a href="#descomprimir_y_construir_el_paquete" class="toc">Descomprimir y construir el paquete</a></span></li>
+<li class="level2"><span class="li"><a href="#instalar_paquetes_kernel-nvidia-common" class="toc">Instalar paquetes kernel-nvidia-common</a></span></li>
+<li class="level2"><span class="li"><a href="#instalar_el_paquete_construido" class="toc">Instalar el paquete construido</a></span></li>
+<li class="level2"><span class="li"><a href="#instalar_nvidia_glx" class="toc">Instalar Nvidia GLX</a></span></li>
+<li class="level2"><span class="li"><a href="#configuras_las_x" class="toc">Configuras las X</a></span></li>
+<li class="level2"><span class="li"><a href="#cargar_el_driver_y_reiniciar" class="toc">Cargar el driver y reiniciar</a></span></li>
+</ul>
+</li>
+<li class="level1"><span class="li"><a href="#extras" class="toc">Extras</a></span><ul class="toc">
+<li class="level2"><span class="li"><a href="#configurar_tarjeta" class="toc">Configurar tarjeta</a></span></li>
+<li class="level2"><span class="li"><a href="#problemas_con_xawtv" class="toc">Problemas con xawtv</a></span></li>
+</ul>
+</li>
+<li class="level1"><span class="li"><a href="#descargar_este_documento_en_otros_formatos" class="toc">Descargar este documento en otros formatos</a></span></li>
+</ul>
+</div>
+</div>
+
+<a name="introduccion"></a><h1>Introducción</h1>
+<div class="level1">
+
+<p>
+En este documento pretendo explicar los pasos que hay que seguir para instalar los dirvers de las tarjetas de la marca nVidia en Debian GNU/Linux.
+</p>
+
+<p>
+Aunque hay varios sistemas, me decanto por hacerlo &lsquo;a la Debian&rsquo;, es decir, compilando y creando los paquetes .deb que luego instalaremos.
+</p>
+
+<p>
+También explico como compilar los drivers para nuevos kernels que estés compilando por tu cuenta. Por último, un pequeño extra. Como configurar &lsquo;xawtv&rsquo; para que funcione correctamente a pantalla completa. 
+</p>
+
+</div>
+<!-- SECTION [1-527] -->
+<a name="compilar_los_drivers_de_nvidia"></a><h1>Compilar los drivers de nVidia</h1>
+<div class="level1">
+
+<p>
+Estos pasos los he ido recopilando de distintos manuales. En este caso explico los pasos para instalar en Debian. Existen muchas otras maneras de hacer este proceso, pero con esta es con la que primero conseguí instalar los drivers de nVidia.
+</p>
+
+</div>
+<!-- SECTION [528-817] -->
+<a name="instalar_el_kernel_y_sus_cabeceras"></a><h2>Instalar el kernel y sus cabeceras</h2>
+<div class="level2">
+
+<p>
+Lo primero es instalar el kernel y las cabeceras del kernel. Suponemos que quieres instalar un kernel precompilado por la gente de Debian (la mejor opción para los principiantes). Para ello tienes que cambiarte a &lsquo;root&rsquo; e instalar los siguientes paquetes. A partir de ahora se presupone que estamos ejecutando todas las acciones como superusuario, es decir root.
+</p>
+
+<p>
+Hemos utilizado la versión 2.6.8-1 Para Pentium IV. 
+</p>
+<pre class="code">$ apt-get install kernel-image-2.6.8-1-686
+$ apt-get install kernel-headers-2.6.8-1-686</pre>
+
+</div>
+<!-- SECTION [818-1376] -->
+<a name="reiniciar_con_el_nuevo_kernel"></a><h2>Reiniciar con el nuevo kernel</h2>
+<div class="level2">
+
+<p>
+Reiniciar la máquina y arrancar con el nuevo kernel. 
+</p>
+
+</div>
+<!-- SECTION [1377-1474] -->
+<a name="instalar_el_paquete_fuente_de_nvidia"></a><h2>Instalar el paquete fuente de nvidia</h2>
+<div class="level2">
+
+<p>
+Instalamos las fuentes de los drivers. (Hay que tener bien configurado el fichero /etc/apt/sources.list). 
+</p>
+<pre class="code">$ apt-get install nvidia-kernel-source</pre>
+
+<p>
+ En caso de que no se descargue este archivo o cualquier otro podemos descargarlo e instalarlo con: 
+</p>
+<pre class="code">$ dpkg -i paquete_a_instalar.deb</pre>
+
+</div>
+<!-- SECTION [1475-1808] -->
+<a name="exportar_las_variables_de_entorno_para_el_kernel"></a><h2>Exportar las variables de entorno para el kernel</h2>
+<div class="level2">
+
+<p>
+Para que nos configure los driver respecto al kernel que queremos. 
+</p>
+<pre class="code">$ export KSRC=/usr/src/kernel-headers-2.6.8-1-686
+$ export KVERS=2.6.8-1-686</pre>
+
+</div>
+<!-- SECTION [1809-2019] -->
+<a name="descomprimir_y_construir_el_paquete"></a><h2>Descomprimir y construir el paquete</h2>
+<div class="level2">
+
+<p>
+Vamos al directorio /usr/src y descomprimimos el paquete. 
+</p>
+<pre class="code">$ cd /usr/src
+$ tar zxvf nvidia-kernel-source.tar.gz</pre>
+
+<p>
+ Cambiamos de directorio y vamos a donde se ha descomprimido el paquete y creamos el .deb. 
+</p>
+<pre class="code">$ cd modules/nvidia-kernel
+$ debian/rules binary_modules</pre>
+
+</div>
+<!-- SECTION [2020-2337] -->
+<a name="instalar_paquetes_kernel-nvidia-common"></a><h2>Instalar paquetes kernel-nvidia-common</h2>
+<div class="level2">
+<pre class="code">$ apt-get install nvidia-kernel-common</pre>
+
+</div>
+<!-- SECTION [2338-2431] -->
+<a name="instalar_el_paquete_construido"></a><h2>Instalar el paquete construido</h2>
+<div class="level2">
+<pre class="code">$ dpkg -i /usr/src/modules/nvidia-kernel-*</pre>
+
+<p>
+ Si tenemos varios, elegir la versión del kernel con el que arancamos, es decir al que le queremos instalar los drivers. 
+</p>
+
+</div>
+<!-- SECTION [2432-2644] -->
+<a name="instalar_nvidia_glx"></a><h2>Instalar Nvidia GLX</h2>
+<div class="level2">
+<pre class="code">$ apt-get install nvidia-glx</pre>
+
+</div>
+<!-- SECTION [2645-2709] -->
+<a name="configuras_las_x"></a><h2>Configuras las X</h2>
+<div class="level2">
+
+<p>
+Utilizar un editor para comentar en el archivo /etc/X11/XF86Config-4 las siguientes lineas: 
+</p>
+<pre class="code"># Load &quot;GLcore&quot;
+# Load &quot;dri&quot;</pre>
+
+<p>
+ Sustituir: 
+</p>
+<ul>
+<li class="level1"><div class="li"> Driver &ldquo;nv&rdquo; por Driver &ldquo;nvidia&rdquo;</div>
+</li>
+</ul>
+
+<p>
+ Otra opción alternativa a esos dos pasos es hacerlo de una manera &lsquo;más gráfica&rsquo; con: 
+</p>
+<pre class="code">$ dpkg-reconfigure xserver-xfree86</pre>
+
+</div>
+<!-- SECTION [2710-3041] -->
+<a name="cargar_el_driver_y_reiniciar"></a><h2>Cargar el driver y reiniciar</h2>
+<div class="level2">
+
+<p>
+Comprobamos que el driver esté cargado con el comando: 
+</p>
+<pre class="code">$ modconf</pre>
+
+<p>
+ Reiniciamos. 
+</p>
+
+</div>
+<!-- SECTION [3042-3167] -->
+<a name="extras"></a><h1>Extras</h1>
+<div class="level1">
+
+</div>
+<!-- SECTION [3168-3188] -->
+<a name="configurar_tarjeta"></a><h2>Configurar tarjeta</h2>
+<div class="level2">
+
+<p>
+Para configurar algunos parámetros podemos instalar lo siguiente: 
+</p>
+<pre class="code">$ apt-get install nvidia-setting</pre>
+
+</div>
+<!-- SECTION [3189-3323] -->
+<a name="problemas_con_xawtv"></a><h2>Problemas con xawtv</h2>
+<div class="level2">
+
+<p>
+Uno de los problemas en aplicaciones relacionadas con el video es que al poner xawtv a pantalla completa, el área útil no es toda la pantalla. Para solventarlo añadimos en /etc/X11/XFree86-4 apartado modules: 
+</p>
+<pre class="code">Load &quot;v4l&quot;</pre>
+
+</div>
+<!-- SECTION [3324-3582] -->
+<a name="descargar_este_documento_en_otros_formatos"></a><h1>Descargar este documento en otros formatos</h1>
+<div class="level1">
+<ul>
+<li class="level1"><div class="li"> <a href="http://cofio.gul.uc3m.es/docs-n-howtos/nVidia-debian-howto/latex/nVdia.tex" class="urlextern" target="_blank" title="http://cofio.gul.uc3m.es/docs-n-howtos/nVidia-debian-howto/latex/nVdia.tex" onclick="return svchk()" onkeypress="return svchk()" rel="nofollow">Codigo LaTeX</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://cofio.gul.uc3m.es/docs-n-howtos/nVidia-debian-howto/pdf/nVdia.pdf" class="urlextern" target="_blank" title="http://cofio.gul.uc3m.es/docs-n-howtos/nVidia-debian-howto/pdf/nVdia.pdf" onclick="return svchk()" onkeypress="return svchk()" rel="nofollow">PDF</a></div>
+</li>
+</ul>
+
+</div>
+<!-- SECTION [3583-] -->

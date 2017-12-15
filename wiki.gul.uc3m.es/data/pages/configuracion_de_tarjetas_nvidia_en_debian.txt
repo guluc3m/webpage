@@ -1,0 +1,113 @@
+====== Introducción ======
+En este documento pretendo explicar los pasos que hay que seguir para instalar los drivers de las tarjetas de la marca nVidia en Debian GNU/Linux.
+
+Aunque hay varios sistemas, me decanto por hacerlo 'a la Debian', es decir, compilando y creando los paquetes .deb que luego instalaremos.
+
+También explico como compilar los drivers para nuevos kernels que estés compilando por tu cuenta. Por último, un pequeño extra. Como configurar 'xawtv' para que funcione correctamente a pantalla completa. 
+
+====== Advertencias ======
+Esta versión del manual está basada en la versión de pruebas de Debian, por lo tanto hay algunos cambios con la edición anterior del manual.
+
+  * El kernel de linux ha dejado de llamarse kernel para llamarse linux.
+  * La versión del kernel linux ha pasado de 2.6.8 a 2.6.12.
+  * Debian ha dejado de utilizar XFree86 para usar Xorg.
+
+Si el comando empieza por # (almohadilla) ha de ser ejecutado con permisos de superusuario.
+
+====== Compilar los drivers de nVidia ======
+Estos pasos los he ido recopilando de distintos manuales. En este caso explico los pasos para instalar en Debian. Existen muchas otras maneras de hacer este proceso, pero con esta es con la que primero conseguí instalar los drivers de nVidia.
+
+===== Instalar el kernel y sus cabeceras =====
+Lo primero es instalar el kernel y las cabeceras del kernel. Suponemos que quieres instalar un kernel precompilado por la gente de Debian (la mejor opción para los principiantes). Para ello tienes que cambiarte a 'root' e instalar los siguientes paquetes.
+
+Hemos utilizado la versión 2.6.12-1 Para Pentium IV.
+
+  # apt-get install linux-image-2.6.12-1-686
+  # apt-get install linux-headers-2.6.12-1-686
+
+===== Reiniciar con el nuevo kernel =====
+Reiniciar la máquina y arrancar con el nuevo kernel. 
+
+===== Instalar el paquete fuente de nvidia =====
+Instalamos las fuentes de los drivers. (Hay que tener bien configurado el fichero /etc/apt/sources.list).
+
+  $ apt-get install nvidia-kernel-source
+
+En caso de que no se descargue este archivo o cualquier otro podemos descargarlo de la página de Debian e instalarlo con:
+
+  $ dpkg -i paquete_a_instalar.deb
+
+===== Exportar las variables de entorno para el kernel =====
+Para que nos configure los driver respecto al kernel que queremos.
+
+  $ export KSRC=/usr/src/linux-headers-2.6.12-1-686
+  $ export KVERS=2.6.12-1-686
+
+===== Descomprimir y construir el paquete =====
+Vamos al directorio /usr/src y descomprimimos el paquete.
+
+  $ cd /usr/src
+  $ tar zxvf nvidia-kernel-source.tar.gz
+
+Cambiamos de directorio y vamos a donde se ha descomprimido el paquete y creamos el .deb.
+
+  $ cd modules/nvidia-kernel
+  $ debian/rules binary_modules
+
+===== Instalar paquetes kernel-nvidia-common =====
+
+  $ apt-get install nvidia-kernel-common
+
+===== Instalar el paquete construido =====
+
+  $ dpkg -i /usr/src/modules/nvidia-kernel-*
+
+Si tenemos varios, elegir la versión del kernel con el que arancamos, es decir al que le queremos instalar los drivers. 
+
+===== Instalar Nvidia GLX =====
+
+  $ apt-get install nvidia-glx
+
+===== Configuras las X =====
+Utilizar un editor para comentar en el archivo /etc/X11/xorg.conf las siguientes lineas:
+
+  * Load "GLcore"
+  * Load "dri"
+
+Para comentar hemos de cambiar las lineas anteriores por:
+
+  * #Load "GLcore"
+  * #Load "dri"
+
+Si no existe alguna de esas lineas no es necesario volver a escribirlas.
+
+Sustituir:
+
+  * Driver "nv" por Driver "nvidia"
+
+Otra opción alternativa a esos dos pasos es hacerlo de una manera 'más gráfica' con:
+
+  $ dpkg-reconfigure xserver-xorg
+
+===== Cargar el driver y reiniciar =====
+Comprobamos que el driver esté cargado con el comando:
+
+  $ modconf
+
+Reiniciamos. 
+
+====== Extras ======
+===== Configurar tarjeta =====
+Para configurar algunos parámetros podemos instalar lo siguiente:
+
+  $ apt-get install nvidia-setting
+
+===== Problemas con xawtv =====
+Uno de los problemas en aplicaciones relacionadas con el video es que al poner xawtv a pantalla completa, el área útil no es toda la pantalla. Para solventarlo añadimos en /etc/X11/xorg.conf apartado modules:
+
+  Load "v4l"
+
+Por defecto viene añadido.
+====== Descargar este documento en otros formatos ======
+  * [[http://cofio.gul.uc3m.es/docs-n-howtos/nVidia-debian-howto/latex/nVdia.tex|Codigo LaTeX]] (No actualizado)
+  * [[http://cofio.gul.uc3m.es/docs-n-howtos/nVidia-debian-howto/pdf/nVdia.pdf|PDF]] (No actualizado)

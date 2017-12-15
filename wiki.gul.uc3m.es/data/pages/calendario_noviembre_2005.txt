@@ -1,0 +1,10 @@
+====== Calendario ======
+
+^    Primera Semana   ^^^^^^
+^  Hora  ^  Lunes 14  ^  Martes 15  ^  Miercoles 16  ^  Jueves 17  ^  Viernes 18  ^
+^  16:00-18:00 	|  Presentación del GUL  |  Linux como alternativa a Windows  |   Montado e instalación de un ordenador  |  Construcción de paquetes Debian  |  XHTML y Apache  |
+^  18:00-20:00 	|  ¿Que es el software libre?  |  LUC3M: El Linux de la Carlos III  |  Comandos Basicos  |  Programación en Bash  |  PostgreSQL y PHP  |
+^    Segunda Semana   ^^^^^^
+^  Hora  ^  Lunes 21  ^  Martes 22  ^  Miercoles 23  ^  Jueves 24  ^  Viernes 25  ^
+^ 16:00-18:00 |    Bacula como alternativa a Legato Networker, Time Navigator, BrighStor...    |  Gimp: Retoque fotografico  |  Python  |  Intro. a Java: OO  |  UML: Diseño de software  |
+^ 18:00-20:00 |	  Introducción a Perl   |  Ebuils: distribucion de software en gentoo  |   Python GTK   | Intro. a Java: Prog. en Java  |  Ruby on Rails  |

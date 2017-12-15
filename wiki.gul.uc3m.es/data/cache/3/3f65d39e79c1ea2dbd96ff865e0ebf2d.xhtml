@@ -1,0 +1,99 @@
+
+<h4><a name="como_crear_una_aplicacion_ruby_on_rails_en_debian" id="como_crear_una_aplicacion_ruby_on_rails_en_debian">Cómo crear una aplicación ruby on rails en debian</a></h4>
+<div class="level4">
+
+<p>
+ Crearemos una aplicación de prueba llamada &ldquo;pror&rdquo; (&rdquo;prueba ruby on rails&rdquo;)
+</p>
+
+<p>
+La ubicaremos en /var/www
+</p>
+
+<p>
+Haremos un alias en apache para acceder a ella usando la dirección <a href="http://...../pror" class="urlextern" title="http://...../pror"  rel="nofollow">http://...../pror</a> Instalar los paquetes necesarios: 
+</p>
+<pre class="code">aptitude update 
+aptitude install rubygems build-essential 
+gem install rails --include-dependencies 
+aptitude install libapache2-mod-fastcgi 
+aptitude install libfcgi-ruby1.8
+aptitude install libmysql-ruby 
+</pre>
+
+<p>
+ Los scripts &ldquo;rails&rdquo; y &ldquo;rake&rdquo;, necesarios en el desarrollo de una aplicación RoR se instalan en 
+</p>
+<pre class="code">/var/lib/gems/1.8/bin</pre>
+
+</div>
+
+<h5><a name="creamos_la_aplicacion" id="creamos_la_aplicacion">Creamos la aplicación:</a></h5>
+<div class="level5">
+<pre class="code">cd /var/www/
+/var/lib/gems/1.8/bin/rails pror
+</pre>
+
+</div>
+
+<h5><a name="cedemos_la_aplicacion_al_desarrollador_voiser" id="cedemos_la_aplicacion_al_desarrollador_voiser">Cedemos la aplicación al desarrollador (voiser):</a></h5>
+<div class="level5">
+<pre class="code">chown -R voiser /var/www/pror/
+</pre>
+
+</div>
+
+<h5><a name="configuramos_apache" id="configuramos_apache">Configuramos apache:</a></h5>
+<div class="level5">
+<pre class="code">vim /etc/apache2/sites-available/default
+</pre>
+
+</div>
+
+<h5><a name="anadimos_una_nueva_ubicacion_de_apache" id="anadimos_una_nueva_ubicacion_de_apache">Añadimos una nueva ubicación de apache:</a></h5>
+<div class="level5">
+<pre class="code">Alias /pror &quot;/var/www/pror/public/&quot;
+&lt;directory /var/www/pror/public/&gt;
+   AllowOverride all
+   Order allow,deny
+   Allow from all
+&lt;/directory&gt;
+</pre>
+
+</div>
+
+<h5><a name="configuramos_la_aplicacion" id="configuramos_la_aplicacion">Configuramos la aplicación:</a></h5>
+<div class="level5">
+<pre class="code">cd /var/www/pror
+chown -R www-data log
+chown -R www-data tmp
+vim public/.htaccess
+</pre>
+
+<p>
+ Encima de las directivas RewriteRule añadimos:
+</p>
+<pre class="code">RewriteBase /pror </pre>
+
+<p>
+ que es el alias que le dimos en apache. Además, cambiaremos 
+</p>
+<pre class="code">RewriteRule ^(.*)$ dispatch.cgi [QSA,L] </pre>
+
+<p>
+ por 
+</p>
+<pre class="code">RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]</pre>
+
+<p>
+ (sólo cambia la extensión del archivo)
+</p>
+
+</div>
+
+<h5><a name="reiniciamos_apache" id="reiniciamos_apache">Reiniciamos apache:</a></h5>
+<div class="level5">
+<pre class="code">/etc/init.d/apache2 restart
+</pre>
+
+</div>

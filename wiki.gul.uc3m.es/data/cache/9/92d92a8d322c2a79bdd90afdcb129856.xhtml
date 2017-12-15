@@ -1,0 +1,191 @@
+
+<h1><a name="instalando_openldap_con_soporte_ssl_en_debian" id="instalando_openldap_con_soporte_ssl_en_debian">Instalando OpenLDAP con soporte SSL en debian</a></h1>
+<div class="level1">
+
+<p>
+ El objetivo primero es instalar openldap en la máquina y que los usuarios locales autentiquen a través de ldap.
+</p>
+
+<p>
+Lo primero que hemos de hacer es instalar openldap y algunas utilidades que nos harán falta más tarde:
+</p>
+
+<p>
+<code>#apt-get install slapd ldap-utils</code>
+</p>
+
+<p>
+Ahora debemos modificar el fichero /etc/ldap/slapd.conf de la siguiente manera:
+</p>
+
+<p>
+<code># The base of your directory in database #1</code>
+</p>
+
+<p>
+<code>suffix &ldquo;dc=gul,dc=uc3m,dc=es&rdquo;</code>
+</p>
+
+<p>
+<code># The userPassword by default can be changed</code>
+</p>
+
+<p>
+<code># by the entry owning it if they are authenticated.</code>
+</p>
+
+<p>
+<code># Others should not be able to see it, except the</code>
+</p>
+
+<p>
+<code># admin entry below</code>
+</p>
+
+<p>
+<code># These access lines apply to database #1 only</code>
+</p>
+
+<p>
+<code>access to attrs=userPassword</code>
+</p>
+
+<p>
+<code>by dn=&rdquo;cn=admin,dc=gul,dc=uc3m,dc=es&rdquo; write</code>
+</p>
+
+<p>
+<code>by anonymous auth</code>
+</p>
+
+<p>
+<code>by self write</code>
+</p>
+
+<p>
+<code>by * none</code>
+</p>
+
+<p>
+<code># The admin dn has full write access, everyone else</code>
+</p>
+
+<p>
+<code># can read everything.</code>
+</p>
+
+<p>
+<code>access to *</code>
+</p>
+
+<p>
+<code>by dn=&rdquo;cn=admin,dc=gul,dc=uc3m,dc=es&rdquo; write</code>
+</p>
+
+<p>
+<code>by * read</code>
+</p>
+
+<p>
+ Con esto hemos configurado el servidor ldap para el dominio del GUL-UC3M.
+</p>
+
+<p>
+Ahora procederemos al tema de los certificados para el soporte ssl. Hay varias formas de generar las claves del servidor, pero me decantaré por la de generar una autoridad de certificación propia (CA), la cual firmará los certificados tanto del servidor como de los clientes.
+</p>
+
+<p>
+Instalamos openssl:
+</p>
+
+<p>
+<code>#apt-get install openssl</code>
+</p>
+
+<p>
+Generamos una CA propia:
+</p>
+
+<p>
+<code>#cd /usr/lib/ssl/misc/</code> <code>#./CA.sh -newca</code>
+</p>
+
+<p>
+Es necesario introducir todos los datos correctamente así como una passphrase para la CA.
+</p>
+
+<p>
+<code>#mv demoCA /etc/gulCA</code>
+</p>
+
+<p>
+Con esto tenemos nuestra autoridad de certificación en /etc/gulCA
+</p>
+
+<p>
+Ahora modificamos el fichero /usr/lib/ssl/openssl.cnf de manera que todo se haga con nuestra CA:
+</p>
+
+<p>
+<code>####################################################################</code> <code>[ CA_default ]</code> <code></code> <code>dir = /etc/gulCA # Where everything is kept</code>
+</p>
+
+<p>
+Ahora creamos la clave del servidor y la petición de firmado para la CA:
+</p>
+
+<p>
+<code>#cd /etc/gulCA</code> <code>#openssl req -newkey rsa:1024 -nodes -keyout newreq.pem -out newreq.pem
+</code> Hacemos la petición de firmado:
+</p>
+
+<p>
+<code># /usr/lib/ssl/misc/CA.sh -sign
+</code> Nos pedirá la passphrase de la CA introducida anteriormente.
+</p>
+
+<p>
+Con esto las claves ya estarán firmadas, ahora debemos crear un directorio donde se guardarán para su posterior uso por slapd:
+</p>
+
+<p>
+<code>#mkdir /etc/ldap/slapd-certs</code> <code>#cp cacert.pem /etc/ldap/slapd-certs/</code> <code>#mv newcert.pem /etc/ldap/slapd-certs/servercrt.pem</code> <code>#mv newreq.pem /etc/ldap/slapd-certs/serverkey.pem</code> <code>#chmod 400 /etc/ldap/slapd-certs/serverkey.pem</code>
+</p>
+
+<p>
+A continuación debemos editar el fichero /etc/ldap/slapd.conf para que contenga las siguientes líneas:
+</p>
+
+<p>
+<code>TLSCipherSuite HIGH:MEDIUM:+SSLv2:RSA</code> <code>TLSCACertificateFile /etc/ldap/slapd-certs/cacert.pem</code> <code>TLSCertificateFile /etc/ldap/slapd-certs/servercrt.pem</code> <code>TLSCertificateKeyFile /etc/ldap/slapd-certs/serverkey.pem</code>
+</p>
+
+<p>
+Para que el servidor arranque tanto en modo no seguro como en modo seguro, hay que modificar el fichero /etc/default/slapd de la siguiente manera:
+</p>
+
+<p>
+<code>SLAPD_SERVICES=&rdquo;ldap:<em>/ ldaps:</em>/&rdquo;</code>
+</p>
+
+<p>
+Si todo ha ido bien, al arrancar el servidor ldap, no debería dar ningún error:
+</p>
+
+<p>
+<code>#/etc/init.d/slapd start</code> <code>Starting OpenLDAP: slapd.</code>
+</p>
+
+<p>
+Para comprobar que el servidor está corriendo podemos ejecutar:
+</p>
+
+<p>
+<code># netstat -alnp | grep slapd</code> <code>tcp 0 0 0.0.0.0:389 0.0.0.0:* LISTEN 7716/slapd</code> <code>tcp 0 0 0.0.0.0:636 0.0.0.0:* LISTEN 7716/slapd</code> <code>tcp 0 0 127.0.0.1:389 127.0.0.1:49456 ESTABLISHED7716/slapd</code> <code>tcp6 0 0 :::389 :::* LISTEN 7716/slapd</code> <code>tcp6 0 0 :::636 :::* LISTEN 7716/slapd</code>&lsquo;&rsquo;
+</p>
+
+<p>
+Podemos ver cómo el servidor está corriendo en los puertos 389 (no seguro) y 636(seguro). 
+</p>
+
+</div>

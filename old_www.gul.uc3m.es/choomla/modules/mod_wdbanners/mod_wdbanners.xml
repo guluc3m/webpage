@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>WDBanners</name>
+	<author>BinhCoder</author>
+	<creationDate>January 2009</creationDate>
+	<copyright>Copyright (C) 2009 WDTech.Net. All rights reserved.</copyright>
+	<license></license>
+	<authorEmail>binhcoder@gmail.com</authorEmail>
+	<authorUrl>www.wdtech.net</authorUrl>
+	<version>1.0</version>
+	<description>DESCBANNER</description>
+	<files>
+		<filename module="mod_wdbanners">mod_wdbanners.php</filename>
+	</files>
+	<params addpath="/administrator/components/com_banners/elements">
+		<param name="target" type="list" default="1" label="Target" description="PARAMTARGET">
+			<option value="0">Parent Window</option>
+			<option value="1">New Window</option>
+		</param>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="show_random" type="radio" default="0" label="Show random banner" description="PARAMSHOWRANDOM">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="fixed_size" type="radio" default="0" label="Fixed size" description="PARAMFIXEDSIZE">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="width" type="text" default="200" label="Width" description="PARAMWIDTH" />
+		<param name="height" type="text" default="100" label="Height" description="PARAMHEIGHT" />
+		<param name="delay_time" type="text" default="10" label="Delay time" description="PARAMDELAYTIME" />
+	</params>
+	<params group="advanced">
+		<param name="banner_image_url_1" type="text" size="40" default="" label="Image URL" description="PARAMIMAGE1" />
+		<param name="banner_link_1" type="text" size="40" default="" label="Link" description="PARAMLINK1" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		
+		<param name="banner_image_url_2" type="text" size="40" default="" label="Image URL" description="PARAMIMAGE2" />
+		<param name="banner_link_2" type="text" size="40" default="" label="Link" description="PARAMLINK2" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		
+		<param name="banner_image_url_3" type="text" size="40" default="" label="Image URL" description="PARAMIMAGE3" />
+		<param name="banner_link_3" type="text" size="40" default="" label="Link" description="PARAMLINK3" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		
+		<param name="banner_image_url_4" type="text" size="40" default="" label="Image URL" description="PARAMIMAGE4" />
+		<param name="banner_link_4" type="text" size="40" default="" label="Link" description="PARAMLINK4" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		
+		<param name="banner_image_url_5" type="text" size="40" default="" label="Image URL" description="PARAMIMAGE5" />
+		<param name="banner_link_5" type="text" size="40" default="" label="Link" description="PARAMLINK1" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		
+		<param name="banner_image_url_6" type="text" size="40" default="" label="Image URL" description="PARAMIMAGE6" />
+		<param name="banner_link_6" type="text" size="40" default="" label="Link" description="PARAMLINK6" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		
+		<param name="banner_image_url_7" type="text" size="40" default="" label="Image URL" description="PARAMIMAGE7" />
+		<param name="banner_link_7" type="text" size="40" default="" label="Link" description="PARAMLINK7" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		
+		<param name="banner_image_url_8" type="text" size="40" default="" label="Image URL" description="PARAMIMAGE8" />
+		<param name="banner_link_8" type="text" size="40" default="" label="Link" description="PARAMLINK8" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		
+		<param name="banner_image_url_9" type="text" size="40" default="" label="Image URL" description="PARAMIMAGE9" />
+		<param name="banner_link_9" type="text" size="40" default="" label="Link" description="PARAMLINK9" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		
+		<param name="banner_image_url_10" type="text" size="40" default="" label="Image URL" description="PARAMIMAGE10" />
+		<param name="banner_link_10" type="text" size="40" default="" label="Link" description="PARAMLINK10" />
+	</params>
+</install>

@@ -1,0 +1,59 @@
+Este es el guión de la charla que darán Samuel y Adal en la residencia de Leganés el Martes 18 de Octubre de 19:00 a 21:00.
+
+====== Introducción ======
+
+Linux nacio un feliz día de 1991. Su padre, Linus Torvals, nunca penso
+que pudiese llegar a ser una solucón tan popular.
+
+Enseñar un poco de la historia con la Wikipedia.
+
+====== Instalación de Windows y Linux (buscar un linux que se instale fácil) ======
+
+Sin misterio.
+
+====== Comprobar software instalado en ambos ======
+
+
+Mostar aplicaciones normalmente usadas que uno instala (Linux) y el otro
+no (Windows), como por ejemplo:
+    * Edición de documentos
+    * Retoque fotográfico
+    * FSpot
+
+====== Enseñar cómo hacer las cosas comunes en Linux ======
+
+   * Creación de documentos
+   * Editar imágenes
+   * Navegar por interet
+   * Chatear (aMsn, Kopete, Gaim)
+   * Jugar
+   * Descargar
+   * Escuchar música y ver vídeos
+   * Wine | VMWare
+   * Programar
+   * Diseño de circuitos
+   * Correo electrónico
+
+   Preguntar a la gente si quiere saber de algún programa que use en güindous su alternativa en Linux.
+
+====== Conseguir ayuda para Linux ======
+
+   * Lista del GUL
+   * Listas de Hispalinux
+   * es.comp.os.linux
+
+====== Distribuciones para novatos ======
+
+   * Fedora
+   * Ubuntu
+   * Mandriva
+   * SuSE
+   * Linex, Luc3m, molinux, lliure, max
+
+====== Distribuciones medias/avanzadas ======
+
+   * Debian
+
+====== Distribuciones para masocas ======
+
+   * Gentoo

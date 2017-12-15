@@ -1,0 +1,18 @@
+====== Curso de introducción a GNU/Linux: Campus de Leganés ======
+
+EL Grupo de Usuarios de Linux de la Universidad organiza, como cada año, cursos en el campus de Leganés.
+Con este curso pretendemos llevar a este campus lo que llevamos promulgando en el campus de Leganés desde 1998: las bondades del software libre y porqué creemos que es mejor que el actual modelo de la industria del software.
+
+Durante el curso se mostrará qué es el software libre, esto es, su definición e intenciones. Acto seguido se tratará de mostrar cual es su estado y cómo se relacionan los proyectos entre sí. 
+
+A partir de aquí se convertirá en un curso totalmente práctico donde se mostrará cómo se utiliza un sistema GNU/Linux para el día a día: mensajería instantanea, navegador, correo, P2P, etc.. y su administración. Todo de forma totalmente gráfica y sencilla. A continuación se dará una introducción a la consola.
+
+El curso finalizará con una serie de referencias de ayuda a las que recurrir si uno se atasca un poco al principio.
+
+El curso durará ocho horas, distribuidas en cuatro días. Se realizará del 6 al 9 de noviembre de 2006 de 17:00 a 19:00 horas en el aula 1.2.G03.
+La asistencia es libre y gratuita hasta completar aforo.
+
+Y para finalizar, el dia 10 celebraremos una [[install party]], donde te ayudaremos a instalar y configurar linux en tu máquina. [[install party|Más información]].
+
+
+¡Nos vemos allí!

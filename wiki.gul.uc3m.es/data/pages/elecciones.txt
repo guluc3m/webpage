@@ -1,0 +1,31 @@
+======Sistema electoral======
+
+[[Normativa electoral]]
+
+======Candidaturas======
+
+^ Presidente ^  Preferencia ^
+|Jesús Espino|1|
+|Samuel Rodríguez|2|
+|Roberto Muñoz|1|
+|Juan Ramón Martín |1|
+|||
+
+^ Secretario ^  Preferencia ^
+|Juan Ramón Martín|5|
+|||
+
+^ Tesorero ^  Preferencia ^
+|Samuel Rodríguez|1|
+|Roberto Muñoz|4|
+|Juan Ramón Martin|4| 
+|||
+
+^ Coordinador de actividades ^  Preferencia ^
+|Roberto Muñoz|2|
+|Juan Ramón Martín|3|
+|||
+
+^ Vocal ^  Preferencia ^
+|Roberto Muñoz|3|
+|Juan Ramón Martín|2|

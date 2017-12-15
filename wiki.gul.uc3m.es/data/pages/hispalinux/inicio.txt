@@ -1,0 +1,17 @@
+====== Organizacion del Congreso Hispalinux 2007 ======
+
+Dividiremos la organizacion en los siguientes temas:
+
+  * [[Dirección]]: Objetivos del congreso e iniciativas propuestas
+  * Medios para la organización
+    * [[Patrocinadores]] y [[Presupuesto]]
+    * Colaboradores externos y Material
+    * [[Roadmap]]
+    * Administración interna
+    * Sistemas
+  * Actividades de organización
+    * Contenidos: [[Ponentes]] y [[Programa]], Mensajes a emitir...
+    * Logística: [[Voluntarios]],  [[gráficas|Creatividad gráfica]] y multimedia, [[Hoteles]]...
+    * [[Difusión]]: Comunicados, Prensa ([[plan de medios]], contactos, ...), Dinamización de la comunidad... 
+
+Ver también la [[http://congreso.hispalinux.es|web]] ([[http://hl2007.gul.es|provisional]])

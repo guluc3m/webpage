@@ -1,0 +1,50 @@
+====== Creación de una tabla para jugar a pydance ======
+
+===== Introducción =====
+
+Muchas personas habrán visto en muchos salones recreativos una máquina en la que se puede bailar. Esta máquina es Dance Dance Revolution. Este juego tiene versión para MS Windows y Sony PlayStation. En el caso de la vídeoconsola de Sony, existe un panel con el que también se puede jugar.
+
+En el mundo GNU/Linux existe un clónico: pydance. Este juego acepta las canciones de la versión de MS Windows y el jugar con joystick. Pero lo verdaderamente divertido es poder bailar igual que en la máquina.
+
+Como muchos de nosotro no tenemos dinero para comprar la PlayStation + el juego + el panel, o el panel + un adaptador para PC, el miembro del GUL Fernando Cerezal se puso a trabajar en el modo de crear un panel de bajo coste para poder jugar en Linux a pydance. El resultado lo podéis ver en [[http://ebro.gul.uc3m.es/~roberto/aso/images.html|estas fotografías]] (son las dos primeras fotografías y las dos últimas).
+
+===== Objetivos =====
+
+El objetivo de este proyecto es la creación de una tabla de bajo coste para poder jugar a pydance. Para este propósito tenemos (hasta la fecha) dos opciones (las contribuciones son bienvenidas):
+
+  * Crear la tabla haciendo uso de un mando adecuado (método Fernando)
+  * Crear la tabla directamente sin el uso de mandos, pero parcheando el núcleo (método Samuel).
+
+A continuación, expongo las comprobaciones, ventajas e inconvenientes de cada método:
+
+==== Método Fernando ====
+
+Este método consiste en aprovechar un mando de vídeoconsolo viejo. Antes de continuar, me gustaría definir qué es un mando adecuado. Un mando es adecuado cuando tiene 4 o más botones. La necesidad de este número de botones se debe a que pydance no permite utilizar los ejes de los mandos (arriba-abajo y derecha-izquierda), y sólo permite utilizar los botones. Para un juego decente, se requieren 4 botones.
+
+Los mejores mandos son los de vídeoconsolas viejas, esas que tenemos llenas de polvo porque ya no las utilizamos. Por ejemplo, se puede utilizar el mando de una NES, una Super Nintendo, el de la SEGA Megadrive, etc.
+
+En este punto, lo primero que tenemos que hacer es probar que el mando funciona, para ello hay que conectarlo al PC. Estos mandos, no pueden ser conectados directamente, por lo que tenemos que hacer un apaño. Para este propósito, hay un documento del núcleo Linux que nos explica que hacer para conectar cada tipo de mando al PC. Este documento se encuentra en RUTA_EN_LA_QUE_ESTE_LA_DOCUMENTACIÓN_DE_LINUX/input/joystick-parport.txt
+
+Una vez que tenemos conectado el mando al PC, podemos probarlo cargando el módulo del núcleo con los parámetros correcto. El módulo a utilizar puede ser db9 o gamecon, dependiendo de nuestras preferencias. Los parámetros a pasar a los módulos son el puerto en que se encuentra el mando (normalmente el 0) y el tipo de mando (el valor de este parámetro se puede obtener del fichero de documentación joystick-parport.txt).
+
+Ya podemos probar si pydance reconoce bien los botones del mando (también se puede utilizar la aplicación jstest). Si todo funciona correctamente, podemos utilizar el mando para crear la tabla.
+
+La ventaja de este método radica en que no es necesario cambiar el núcleo, por lo que el que tengamos instalado en nuestra distribución nos vale. El inconveniente es que se necesita tener algunos conocimientos (muy básicos) de electrónica y hay que jugar mucho con el soldador.
+
+==== Método Samuel ====
+
+Este método consiste en crearse uno mismo el panel sin utilizar para ello un mando. Este método está basado en el anterior, intentando simplificar la parte hardware (la parte del mando). Para conseguir este simplificación, me basé en un mando de una Amstrad GX4000, que tiene dos botones y 2 ejes (cada eje implementado con 2 botones). Este mando no requiere circuitería y es muy simple, como podemos ver a continuación:
+
+{{http://ebro.gul.uc3m.es/~laparca/wp-content/Mando_dia.png}}
+
+El problema de utilizar este método para crear la tabla radica en el hecho de que hay que modificar un módulo del núcleo Linux; en este caso, el módulo db9.c.
+
+===== Material  Para la tabla =====
+
+Para poder hacer la tabla es necesario el siguiente material:
+  * 2 Cajas de cartón del mismo tamaño, si puede ser con forma de cubo (todas las caras del mismo tamaño)
+  * 12 Latas de bebida (de cola, cerveza, etc. )
+  * Pegamento
+  * Cable
+  * Conector de DB25 macho.
+  * Tijeras

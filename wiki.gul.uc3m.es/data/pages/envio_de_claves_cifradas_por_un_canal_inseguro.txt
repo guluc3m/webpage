@@ -1,0 +1,39 @@
+====== Envío de claves cifradas por un canal inseguro ======
+
+===== Advertencia =====
+
+La técnica que aquí se va a explicar sólo afecta al envío de la clave, no de los datos. Sólo sirve para la autenticación. Si requiere de seguridad completa, le recomiendo que utilice protocolos como SSH, HTTPS, etc. Además, esta técnica está pensada originalmente para el uso en páginas web.
+
+===== Introducción =====
+
+Probablemente, muchos de vosotros os habréis preguntado cómo enviar una clave cifrada cuando el canal de comunicaciones es inseguro. Una de las posibles soluciones es el uso del sistema de Diffie-Hellman. Pero este mecanismo requiere que los interlocutores puedan comunicarse sin obstáculos. Esto no pasa con el protocolo HTTP.
+
+El protocolo HTTP es un protocolo sencillo. El cliente manda una petición al servidor y éste le responde. Por tanto, la capacidad de comunicación entre cliente y servidor está muy limitada.
+
+===== ¿Qué vamos a necesitar? =====
+
+Para realizar dicho algoritmo, necesitaremos de un navegador que soporte javascript y cookies. Por parte del servidor, necesitaremos PHP con el soporte de sesiones.
+
+El soporte de javascript lo necesitamos para utilizar el algoritmo MD5 que se encuentra en la página de [[http://pajhome.org.uk/crypt/md5/|Paj]].
+
+===== Funcionamiento =====
+
+El sistema es sencillo, primero el servidor activa las sesiones y envía una cookie al cliente, además, genera un número aleatorio que almacenará en la sesión y que será enviado al cliente en un campo hidden.
+
+El cliente, cuando envía la clave, toma esta, la concatena con el valor enviado por el servidor y lo cifra con MD5. Luego manda este resultado al servidor.
+
+El servidor toma el valor recibido, toma la clave de la base de datos y la concatena con el valor guardado en la sesión. Hace el MD5 del resultado y si es igual que lo enviado por el cliente, entonces es que a acertado la clave.
+
+A grandes rasgos, el proceso es el anterior. Puede que sea necesario hacer algunas modificaciones para adaptarlo a sistemas ya hechos (sobre todo si la clave se almacena cifrada). Pero, de momento, eso os lo dejo a vosotros.
+
+===== Implementación del cliente =====
+
+POR HACER.
+
+===== Implementación del servidor =====
+
+POR HACER.
+
+===== Conclusiones =====
+
+POR HACER.

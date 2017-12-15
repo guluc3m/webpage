@@ -1,0 +1,221 @@
+
+<h4><a name="ndiswrapper" id="ndiswrapper">NDISWrapper</a></h4>
+<div class="level4">
+
+<p>
+ Algunos fabricantes de tarjetas WiFi solo crean drivers para Windows. Esto, en principio, no tiene nada de malo (no podemos obligar a un fabricante a sacar drivers para los cientos de sistemas operativos que hay en el mundo), si no fuera por el hecho de que las especificaciones de su hardware se mantienen en secreto. Esto *sí* que es malo, porque impiden que alguien ajeno a la empresa cree un driver.
+</p>
+
+<p>
+NDISWrapper es un software que permite emplear los drivers windows de las tarjetas WiFi en Linux. Lo que hace es adaptar el <acronym title="Application Programming Interface">API</acronym> del kernel Linux al <acronym title="Application Programming Interface">API</acronym> que implementa el driver windows. Es algo así como un traductor. NDISWrapper es libre y gratuito.
+</p>
+
+<p>
+Para usar NDISWrapper, lo primero es asegurarse de que tu tarjeta está soportada:
+</p>
+
+<p>
+<a href="http://ndiswrapper.sourceforge.net/joomla/index.php?/component/option,com_openwiki/Itemid,33/id,list/" class="urlextern" title="http://ndiswrapper.sourceforge.net/joomla/index.php?/component/option,com_openwiki/Itemid,33/id,list/"  rel="nofollow">http://ndiswrapper.sourceforge.net/joomla/index.php?/component/option,com_openwiki/Itemid,33/id,list/</a>
+</p>
+
+<p>
+Si tu tarjeta aparece por ahí (o si no aparece pero quieres probar fortuna), usar NDISWrapper es realmente sencillo. 
+</p>
+
+<p>
+Siento decirte que para esta tarea tendremos que emplear la consola como root :)
+</p>
+
+</div>
+
+<h4><a name="resumen_para_el_impaciente" id="resumen_para_el_impaciente">Resumen para el impaciente</a></h4>
+<div class="level4">
+
+<p>
+ Si ya controlas de Linux, el resumen es: 
+</p>
+<ol>
+<li class="level1"><div class="li"> evita que los drivers de linux de tu tarjeta se carguen</div>
+</li>
+<li class="level1"><div class="li"> instala las fuentes del kernel</div>
+</li>
+<li class="level1"><div class="li"> bájate la última versión de NDISWrapper</div>
+</li>
+<li class="level1"><div class="li"> compila e instala</div>
+</li>
+<li class="level1"><div class="li"> carga el driver de windows con ndiswrapper -i loquesea.inf</div>
+</li>
+<li class="level1"><div class="li"> modprobe ndiswrapper</div>
+</li>
+<li class="level1"><div class="li"> iwconfig ....</div>
+</li>
+</ol>
+
+</div>
+
+<h4><a name="eliminar_drivers_que_no_queremos_usar" id="eliminar_drivers_que_no_queremos_usar">Eliminar drivers que no queremos usar</a></h4>
+<div class="level4">
+
+<p>
+ Lo primero es asegurarse de que ningún driver Linux va a interferir. Algunas distros (la mayoría) cargan automáticamente los drivers que ellos creen que son los mejores. Esto hay que evitarlo. Para ello, hay que añadir a /etc/modprobe.d/blacklist los nombres de los módulos que se cargan cuando la tarjeta WiFi se detecta. 
+</p>
+
+<p>
+Por ejemplo, al conectar mi tarjeta wifi USB, en los mensajes del kernel aparecen entradas con los nombres &ldquo;rt2500usb&rdquo;, &ldquo;rt73usb&rdquo;, &ldquo;p54usb&rdquo;. Estos drivers son los que queremos eliminar. Si hago &ldquo;lsmod&rdquo; (listar los módulos -drivers- cargados) y me leo con cuidado la lista de módulos cargados, veo que, efectivamente, aparecen los anteriores; también veo (fijándome en la tercera columna de la salida de lsmod) que hay otros módulos (rt2x00usb, rt2x00lib, prism54usb, p54common) que están siendo usados por los primeros (rt2500usb, rt73usb, p54usb). Esto ocurre porque los primeros módulos tienen dependencias y necesitan a los segundos para funcionar. 
+</p>
+
+<p>
+Así pues, tenemos siete drivers que queremos dejar de usar. Edito /etc/modprobe.d/blacklist y añado al final del todo lo siguiente:
+</p>
+<pre class="code">
+blacklist rt2500usb
+blacklist rt2x00usb
+blacklist rt2x00lib
+blacklist rt73usb
+blacklist prism54usb
+blacklist p54usb
+blacklist p54common
+</pre>
+
+<p>
+ahora podemos optar por descargar uno a uno los drivers (con el comando rmmod) o bien reiniciar la máquina. Lo que más rabia te de. 
+</p>
+
+</div>
+
+<h4><a name="instalando_las_fuentes_del_kernel" id="instalando_las_fuentes_del_kernel">Instalando las fuentes del kernel</a></h4>
+<div class="level4">
+
+<p>
+ Lo primero que hay que hacer es tener las fuentes de tu kernel. Debes saber qué versión del kernel estás usando. Nada más fácil:
+</p>
+<pre class="code">
+uname -a
+</pre>
+
+<p>
+Esto devolverá un mensaje diciendo qué versión de kernel tienes. Si, por ejemplo, tienes la 2.6.24-6-686, entonces tendrás que instalar las fuentes para esa versión. En algunas distribuciones tienes la oportunidad de instalar sólo las cabeceras (headers). Yo te recomiendo que instales las fuentes completas, porque a veces te puede venir bien.
+</p>
+
+<p>
+Asegúrate de que en /usr/src hay un enlace simbólico llamado &ldquo;linux&rdquo; que apunta a la carpeta que contiene las fuentes del kernel con la versión que estés usando. Por ejemplo, si uso el 2.6.24-6-686 y he instalado las fuentes de esta versión, tendré una carpeta llamada 
+</p>
+<pre class="code">
+/usr/src/linux-2.6.24-6-686
+</pre>
+
+<p>
+así que si hago
+</p>
+<pre class="code">
+cd /usr/src
+ls -las
+</pre>
+
+<p>
+tendré que ver algo así como
+</p>
+<pre class="code">
+[...] linux -&gt; linux-sources-2.6.24-6-686
+</pre>
+
+<p>
+Si no lo veo, o si &ldquo;linux&rdquo; no apunta a donde debe apuntar, no hay problema:
+</p>
+<pre class="code">
+cd /usr/src
+rm linux 
+ln -s linux-sources-2.6.24-6-686 linux
+</pre>
+
+<p>
+(no te apures por ese &ldquo;rm linux&rdquo;, esto no es dañino para tu sistema). Esto borra el enlace simbólico &ldquo;linux&rdquo; y crea otro llamado igual que apunta al directorio correcto.
+</p>
+
+<p>
+Ten en cuenta que los nombres de los directorios (linux-sources-2.6.24-6-686 en este caso) pueden diferir dependiendo de tu distribución. 
+</p>
+
+</div>
+
+<h4><a name="compilando_ndiswrapper" id="compilando_ndiswrapper">Compilando NDISWrapper</a></h4>
+<div class="level4">
+
+<p>
+ Una vez tengamos las fuentes del kernel, navegamos por la web de ndiswrapper para descargar la última versión. Lo guardamos, por ejemplo, en /root. Obviamente tendrás que ser root para poder dejar el .tar.gz en ese directorio. Yo lo voy a descargar desde la terminal con wget. 
+</p>
+<pre class="code">
+cd /root
+wget http://downloads.sourceforge.net/ndiswrapper/ndiswrapper-1.52.tar.gz?modtime=1201988892&amp;big_mirror=0
+tar xvzf ndiswrapper-1.52.tar.gz
+&lt;code&gt;
+
+compilamos e instalamos:
+
+&lt;code&gt;
+cd ndiswrapper-1.52
+</pre>
+
+<p>
+Si ya tienes alguna instalación vieja de NDISWrapper, asegúrate de eliminarla:
+</p>
+<pre class="code">
+make uninstall
+</pre>
+
+<p>
+Ahora compilamos:
+</p>
+<pre class="code">
+make
+</pre>
+
+<p>
+Y si si todo va bien, instalamos:
+</p>
+<pre class="code">
+make install
+</pre>
+
+<p>
+Haciendo esto se te instalan los drivers de ndiswrapper y un par de comandos de la terminal que serán útiles. 
+</p>
+
+</div>
+
+<h4><a name="por_finusando_ndiswrapper" id="por_finusando_ndiswrapper">Por fin: usando NDISWrapper</a></h4>
+<div class="level4">
+
+<p>
+ Coge el CD de drivers de windows y móntalo. Navega por el CD hasta encontrar los drivers de windows para tu tarjeta. Los drivers suelen llamarse xxxxx.inf así que haz:
+</p>
+<pre class="code">
+ndiswrapper -i xxxxx.inf
+</pre>
+
+<p>
+Si todo va bien, el driver estará listo:
+</p>
+<pre class="code">
+ndiswrapper -l
+</pre>
+
+<p>
+así que ya tienes el driver de windows disponible en tu Linux. Cárgalo:
+</p>
+<pre class="code">
+modprobe ndiswrapper
+</pre>
+
+<p>
+y deberías ver una nueva interfaz:
+</p>
+<pre class="code">
+iwconfig
+</pre>
+
+<p>
+A partir de ahi, deberás configurar la nueva interfaz con el ESSID de la red y los parámetros de seguridad que necesites. 
+</p>
+
+</div>

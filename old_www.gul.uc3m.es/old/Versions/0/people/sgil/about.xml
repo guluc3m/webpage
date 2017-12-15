@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<humano>
+
+<nombre>Sergio Gil</nombre>
+<nick>porras</nick>
+
+<foto>people/sgil/sergio.jpg</foto>
+
+<rollo>
+Rubysergio es un gulero de buena cepa. Es rubyautor de posts en el planeta gul
+sobre rubycosas sorprendentes como fotos de sus rubyzapatillas o videos de canciones 
+que se mueven entre el metal y canciones horteras con guitarristas hiper-rápidos. Su mayor rubyafición es un
+lenguaje de programación llamado BASIC con el que rubytrabaja en una consultora sobre accesibilidad web
+y cosas por el estilo y es responsable de blogs de prestigio como La Coctelera. 
+
+Su álbum de fotos de Flickr incluye fotos de fiestas, amigos y pantallazos con código Ruby.
+
+
+En el GUL se dedica a dar rubycharlas sobre un framework para aplicaciones 
+web que el lector adivinará, así como de cursos de LaTeX para usuarios de ruby y software libre 
+en las PYMES. Obviamente, es un máquina en Ruby y Ruby On Rails pero eso ya lo habíais adivinado, ¿verdad?.
+</rollo>
+
+<page>www.lacoctelera.com/porras/perfil</page>
+<blog>www.lacoctelera.com/porras</blog>
+<mail>sgilperez arroba gmail punto com</mail> 
+<key>people/sgil/publickey</key>
+
+</humano>
+

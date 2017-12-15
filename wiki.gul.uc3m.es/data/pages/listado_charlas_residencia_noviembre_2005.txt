@@ -1,0 +1,16 @@
+====== Lista de charlas ======
+===== Lunes 17 =====
+
+  * 17:00 - 18:00 ¿Que es el Software Libre?
+  * 18:00 - 19:00 LUC3M
+  * 19:00 - 21:00 Mesa redonda sobre Software Libre
+
+===== Martes 18 =====
+
+  * 17:00 - 19:00 Comandos Básicos
+  * 19:00 - 21:00 [[Linux como alternativa a Windows]]
+
+===== Miércoles 19 =====
+
+  * 17:00 - 19:00  OpenOffice
+  * 19:00 - 21:00  [[http://sgil.blogspot.com/2005/10/latex.html|LaTeX: La imprenta en casa]]

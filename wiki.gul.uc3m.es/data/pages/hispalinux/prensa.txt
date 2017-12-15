@@ -1,0 +1,9 @@
+====== Prensa ======
+  * TeleMadrid (Television) (Sin Contacto)
+  * Teleganes (Television) (Sin Contacto)
+  * La Ser (Radio) (Sin Contacto)
+  * Onda Cero (Radio) (Sin Contacto)
+  * 20Minutos (Periodico) (Sin Contacto)
+  * El Pais (Periodico) (Sin Contacto)
+  * El Mundo (Periodico) (Sin Contacto)
+  * Linxu Magazine (Revista) (Confirmado)
