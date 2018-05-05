@@ -55,7 +55,10 @@
                     <form action="https://gul.uc3m.es/mailman/subscribe/gul" method="POST">
                         <label for="email">Escribe tu e-mail y empieza a enterarte de todo</label>
                         <input id="mail" type="email" name="email" value="" placeholder="E-mail">
-                        <button type="submit" name="button">Suscríbete</button>
+                        <div id="captcha-button">
+                                <div class="g-recaptcha" data-sitekey="6Lc3b1cUAAAAAMmEjzUXwP4rkh5f82XJb4mceeKN" data-callback="checkCaptcha"></div>
+                                <button id="button-submit" type="submit" name="button" disabled>Suscríbete</button>
+                        </div>
                     </form>
                 </div>
                 <div class="begin-card card">
