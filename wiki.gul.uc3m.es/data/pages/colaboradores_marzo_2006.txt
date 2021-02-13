@@ -1,4 +1,0 @@
-====== Colaboradores ======
-
-^{{logo_crisol.jpg}} ^ [[http://crisol.uc3m.es/|CRISOL: Centro de Recursos de Información y Software Libres]]: El grupo CRISOL, integrado en el Servicio de Informática de la Universidad Carlos III de Madrid, tiene como objetivos el soporte y la promoción del Software Libre en el ámbito universitario y su entorno, aportando acceso a tecnologías de la información de forma fácil y asequible. ^
-

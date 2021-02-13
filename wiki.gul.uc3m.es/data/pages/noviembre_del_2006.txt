@@ -1,7 +1,0 @@
-====== Jornadas técnicas de Noviembre de 2006 ======
-  * [[Propuestas de charlas]]
-  * [[charlas_definitivas_noviembre_2006|Charlas]]
-  * [[calendario_noviembre_2006|Calendario]]
-  * [[ponentes_noviembre_2006|Ponentes]]
-  * [[¿Cómo llegar?]]
-
