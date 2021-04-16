@@ -1,131 +1,95 @@
 <!DOCTYPE html>
-<html lang=es>
-    <head>
-        <!--Tag needed for tildes and other letters-->
-        <meta charset="UTF-8">
-        <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-        <!--Tag needed to make the webpage responsive, see https://www.w3schools.com/css/css_rwd_viewport.asp for details-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--With this link we load the Lato font family needed for the page-->
-        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-        <!--Use our main stylesheet too-->
-        <link rel="stylesheet" type="text/css" href="static/style/style.css">
-        <!--Set the title of the page so it shows it on the tab of the browser-->
-        <title>GUL UC3M | Inicio</title>
-        <!--Favicon stuff for desktop, mobile and other platforms-->
-        <link rel="apple-touch-icon" sizes="180x180" href="static/images/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon/favicon-16x16.png">
-        <link rel="manifest" href="site.webmanifest">
-        <link rel="mask-icon" href="static/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="theme-color" content="#1c3144">
-		<!--Google Recaptcha script-->
-		<script src='https://www.google.com/recaptcha/api.js'></script>
-    </head>
-    <body>
-        <!--Desktop header with all the links. Hidden in mobile mode, full width in desktop mode-->
-        <header class=row>
-            <!--Logo part of the header, leftmost div-->
-            <div class="col-4 header-logo">
-                <img alt="GUL UC3M Logo" src="static/images/logo_horizontal_gray.svg">
-             <!--Empty button to be used as padding
-            <div class="col-1 header-motto"></div>
-            <div class="col-1 header-motto"></div>
-            <div class="col-1 header-motto"></div>
-            <div class="col-1 header-motto"></div>
-            <div class="col-1 header-motto"></div>
-            <div class="col-1 header-motto"></div>-->
-           <!-- <div class="col-8 header-motto">
-                <p>Nos gusta jugar con la tecnología</p>
-            </div>-->
-            <!--Link icons-->
-            <div class="col-12">
-                <!--Every link is opened in a new tab (except GUL groups)-->
-                <a href="https://twitter.com/guluc3m" target="_blank"><img alt=Twitter class=icon src=static/images/icon/twitter.svg></a>
-                <a href="https://github.com/guluc3m" target="_blank"><img alt="GitHub" class=icon src=static/images/icon/github.svg></a>
-                <a href="https://cursos.gul.es/" target="_blank"><img alt="Cursos" class=icon src=static/images/icon/graduation-cap.svg></a>
-                <a href="http://jamon.gul.es/" target="_blank"><img alt="GULJamon" class=icon src=static/images/icon/ham.svg></a>
-                <a href="http://radio.gul.es/" target="_blank"><img alt="Radio GUL" class=icon src=static/images/icon/radio.svg></a>
-             </div>
-           <!--Links to other main pages
-            <a class="col-1 header-button" href="grupos/grupos.html#arduino">Arduinos</a>
-            <a class="col-1 header-button" href="grupos/grupos.html#hack3rs">Hack3rs</a>
-            <a class="col-1 header-button" href="grupos/grupos.html#juegos">Juegos</a>
-            <a class="col-1 header-button" href="grupos/grupos.html#magIA">MagIA</a>
-            <a class="col-1 header-button" href="http://radio.gul.es">Radio GUL</a>-->
-        </header>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="static/images/favicon.png">
+    <!-- ====== RESPONSIVE TAG ====== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUL UC3M | Inicio</title>
+    <!-- ====== OWN STYLESHEETS ====== -->
+    <link rel="stylesheet" href="static/style/styles.css">
+    <!-- ====== BOOTSTRAP STYLESHEETS ====== -->
+    <link rel="stylesheet" href="static/style/bootstrap/css/bootstrap.min.css">
+    <!-- ====== FONTS ====== -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+<body>
+    <!-- ====== NAV SECTION ====== -->
+    <section id="nav-section">
+      <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#main-section"><img class="logo-nav" src="static/images/logo_horizontal_gray.svg" alt="Logo GUL Image"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav nav-container-icon">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"><img class="image-nav" src="static/images/icon/twitter.svg" alt="Twitter icon"></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><img class="image-nav" src="static/images/icon/github.svg" alt="Github icon"></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><img class="image-nav" src="static/images/icon/graduation-cap.svg" alt="Graduation icon"></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" aria-disabled="true"><img class="image-nav" src="static/images/icon/ham.svg" alt="Ham icon"></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" aria-disabled="true"><img class="image-nav" src="static/images/icon/radio.svg" alt="Radio icon"></a>
+                </li>
+              </ul>
+              <ul class="navbar-nav nav-container-text">
+                <li class="nav-item">
+                  <a class="nav-link" href="#what-is-gul-section">Quienes somos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Donde estamos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Curiosea</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Únete</a>
+                </li>
+              </ul>
+          </div>
+        </div>
+      </nav>
+    </section>
 
-        <canvas id="words-rain"></canvas>
-        <!--Padding column so the content is not directly next to the border of the page-->
-        <div class="col-1 pad"></div>
+    <!-- ====== MAIN SECTION ====== -->
+    <section id="main-section">
+      <div class="container-fluid image-main-section"></div>
+      <div class="text-centered-office">
+        <span class="title-text-centered">NOS GUSTA JUGAR CON LA TECNOLOGIA</span>
+      </div>
+    </section>
 
-        <!--Left section of the document, with timetables and contact info-->
-        <div class="col-4 section">
-            <div class="card-blue">Horarios</div>
-            <div class=card>
-                <p><strong>Reunión mensual</strong>: Segundo viernes de cada mes a las 19h</p>
-                <p><a href="grupos/grupos.html#juegos"><strong>Juegos</strong></a>: Jueves de 19 a 21h semanalmente</p>
-                <iframe src="https://calendar.google.com/calendar/embed?src=uc3m.es_vhbqbqmnuc590jsvbr0hh7kj64%40group.calendar.google.com&ctz=Europe%2FMadrid" style="border: 0" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
-                <a href="https://calendar.google.com/calendar/embed?src=uc3m.es_vhbqbqmnuc590jsvbr0hh7kj64%40group.calendar.google.com&ctz=Europe%2FMadrid">
-                <div class=card-lighter style="text-align:center">Ver calendario completo</div></a>
+    <!-- ====== WHAT IS GUL SECTION ====== -->
+    <section id="what-is-gul-section">
+      <div class="row">
+        <div class="left-content col-5 offset-2">
+          <div class="card">
+            <h5 class="card-header">¿QUÉ ES EL GUL?</h5>
+            <div class="card-body">
+              <h5 class="card-title">Lorem, ipsum dolor.</h5>
+              <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum, nam obcaecati. Delectus aspernatur amet esse culpa fuga. Totam, sit iure.</p>
             </div>
-            <div class="card-blue">Localización</div>
-            <div class=card>
-                <p>Despacho 2.3.C05, edificio Sabatini, Universidad Carlos III, Leganés.</p>
-                <a href="https://goo.gl/maps/EfZch2z85uH2" target="_blank">
-                <div class=card-lighter style="text-align:center">Consultar en el mapa</div></a>
-            </div>
+          </div>
         </div>
-        <!--Right wide column of the right, with other stuff-->
-        <div class="col-6 section">
-            <!--General info about the group-->
-            <div class="card-blue"><h2>¿Qué es el GUL?</h2></div>
-            <div class=card>
-                <p>El <strong>Grupo de Usuarios de Linux</strong> es una asociación de estudiantes unidos por nuestras
-                inquietudes en torno a los ordenadores, a la informática y, en concreto, la idea común de
-                la utilización y promoción del <strong>software libre</strong>.</p>
-                <p>Nos reunimos los segundos viernes de cada mes para  aprender y compartir conocimientos, y tenemos
-                algunos grupos de trabajo enfocados en distintos áreas de la informática y la tecnología, como
-                <a href="grupos/grupos.html#juegos"><strong>Juegos</strong></a> y <a href="http://radio.gul.es"><b>Radio</b></a>.</p>
-            </div>
-            <!--Contact information-->
-            <div class="card-blue"><h3>Contacto</h3></div>
-            <div class=card><p>Puedes entrar en contacto con nosotros vía correo electrónico o a través de una de nuestras redes sociales:</p>
-                <div class=row>
-                    <!--Twitter and button-->
-                    <a href="mailto:info@gul.uc3m.es" target="_blank"><div class="col-6 card-lighter" style="text-align:center">info@gul.uc3m.es</div></a>
-                    <a href="https://twitter.com/guluc3m" target="_blank"><div class="col-6 card-lighter" style="text-align:center">Twitter</div></a>
-                </div>
-            </div>
-            <!--Email address form for mailing list-->
-            <div class=card-blue>Lista de correo</div>
-            <div class=card>
-                <p>Puedes apuntarte a la lista de correo para recibir avisos de reuniones y eventos, participar en discusiones
-                y preguntar dudas a nuestra comunidad:</p>
-                <div class=form>
-		    <form method="POST" action=https://gul.uc3m.es/mailman/subscribe/gul>
-                    <p><input id=email type=email name=email value="" placeholder="Correo electrónico" text="Tu correo aquí"></p>
-					<!--<div class="col-12 card-lighter" style="text-align:center">Enviar</div>-->
-					<div id="captcha-button">
-						<div class="g-recaptcha" style="margin: 0 auto; display: table" data-sitekey="6Lc3b1cUAAAAAMmEjzUXwP4rkh5f82XJb4mceeKN" data-callback="checkCaptcha"></div>
-						<button class="col-12 card-lighter" id="button-submit" type="submit" name="button" disabled>Suscríbete</button>
-					</div>
-		        </div>
-                </form>
-	    </div>
+  
+        <div class="right content">
+  
         </div>
-    </div>
-    <!--Padding column so the content is not directly next to the border of the page-->
-        <div class="col-1 pad"></div>
-        <div class=card style="text-align: center; background-color: rgb(0, 0, 0, 0); color: #DDD; font-size: 0.75em">
-            <p>El Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid es una asociación declarada de beneficio social por el Ministerio de Hacienda.</p>
-            <p>Domicilio social: despacho 2.3C05 del edificio Sabatini, Avenida de la Universidad, 30 28911 Leganés Madrid, España.</p>
-            <p>C.I.F.: G83296988</p>
-            <p>Número de registro de la comunidad de Madrid: 23500</p>
-            <p>Número de registro del ayuntamiento de Leganés: 795</p>
-        </div>
-        <!--Words rain-->
-        <script src=static/script/canvas.js></script>
-    </body>
+      </div>
+    </section>
+</body>
+
+    <!-- ====== OWN JS ====== -->
+    <script src="static/js/jquery-3.6.0.min.js"></script>
+    <script src="static/js/script.js"></script>
+    <!-- ====== BOOTSTRAP JS ====== -->
+    <script src="static/style/bootstrap/js/bootstrap.min.js"></script>
 </html>
