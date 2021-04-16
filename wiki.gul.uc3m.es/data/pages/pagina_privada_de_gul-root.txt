@@ -1,7 +1,0 @@
-====== Documentos ======
-
-  * [[Estado actual de cofio]]
-
-  * [[Planes futuros]]
-
-  * [[Estado actual de las máquinas]]
