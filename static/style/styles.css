@@ -13,7 +13,9 @@ html{
 .image-nav{
     width: 2rem;
 }
-
+.bg-light{
+    transition: ease 1s;
+}
 .container-fluid{
     padding: 0px !important;
 }
@@ -34,6 +36,13 @@ html{
 .nav-container-text > .nav-item:hover{
     background-color: #d7d8d8;
 }
+.goDown{
+    background-color: rgba(255, 255, 255, 0.76) !important;
+    transition: ease 1s;
+}
+.goDown a{
+    color: black !important;
+}
 /* <<<<<<  NAV SECTION END >>>>>> */
 
 /* ======  MAIN SECTION START ====== */
@@ -42,8 +51,9 @@ html{
     position: relative;
     background-image: url('../images/background/office.jpg');
     background-size: cover;
-    background-attachment: fixed;
+    background-position: center center;
     background-repeat: no-repeat;
+    z-index: 4;
     filter: blur(2px);
     height: 100vh;
     width: auto;
@@ -58,7 +68,7 @@ html{
     text-align: center;
     color: white;
     text-shadow: 2px 1px 5px #000;
-    z-index: 2 !important;
+    z-index: 5 !important;
     background-color: rgba(54, 54, 54, 0.616);
 }
 
@@ -68,11 +78,44 @@ html{
 /* ======  WHAT IS GUL SECTION START ====== */
 
 #what-is-gul-section{
-    padding-top: 50px;
+    font-size: 1.2rem 
+}
+#what-is-gul-section .card{
+   margin-top: 15%;
+}
+.row{
+    max-width:100%;
+}
+.text-content{
+    z-index: 2;
+}
+.text-content .card{
+    box-shadow: 3px 3px 10px #000;
+}
+.tux-gif{
+    max-width: 200px;
+}
+.img-content img{
+    position: absolute;
+    top: 10%;
+    left: 70%;
+    transform: translate(-50%,-50%);
+    width: 40%;
+    z-index: 1;
+    box-shadow: 3px 3px 10px #000;
+}
+
+/* <<<<<<  MAIN SECTION SECTION END >>>>>> */
+
+/* ======  WHERE WE ARE SECTION START ====== */
+
+#where-we-are-section{
+    height: 100vh;
 }
 
 
-/* <<<<<<  MAIN SECTION SECTION END >>>>>> */
+/* <<<<<<  WHERE WE ARE SECTION END >>>>>> */
+
 
 
 /* ======  MEDIA QUERY SECTION START ====== */
@@ -93,17 +136,17 @@ html{
         padding-left: 10px;
         padding-right: 10px;
     }
-
-    #main-section > .image-main-section{
-        background-position: center center;
-    }
 }
 
 @media screen and (max-width:576px){
     .text-centered-office{
-        padding: 30px 20px;
         font-size: 1.3rem;
-        width: 85%;
+    }
+    #what-is-gul-section .card{
+        margin-top: 20%;
+     }
+    .img-content > img{
+        display: none;
     }
 }
 
