@@ -17,7 +17,8 @@ $(document).ready(function(){
     //console.log("Altura del nav: "+offset);
     //console.log("Altura tras restarle el nav: "+newHeight);
     $("#what-is-gul-section").css("height",newHeight);
-
+    $(".what-is-gul-card").css("margin-top",offset);
+    
     /* ====== CHANGE NAV COLOR ON SCROLL ====== */
 
     $(window).scroll(function() {
