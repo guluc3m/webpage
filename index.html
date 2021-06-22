@@ -1,61 +1,121 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="static/images/favicon.png">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="static/images/favicon.png" />
     <!-- ====== RESPONSIVE TAG ====== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GUL UC3M | Inicio</title>
     <!-- ====== OWN STYLESHEETS ====== -->
-    <link rel="stylesheet" href="static/style/styles.css">
+    <link rel="stylesheet" href="static/style/styles.css" />
     <!-- ====== BOOTSTRAP STYLESHEETS ====== -->
-    <link rel="stylesheet" href="static/style/bootstrap/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="static/style/bootstrap/css/bootstrap.min.css"
+    />
     <!-- ====== FONTS ====== -->
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <!-- ====== ANIMATE CSS ====== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+    />
+    <!-- ====== LEAFLET CSS ====== -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+    />
+    <!-- ====== LEAFLET JS ====== -->
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
   </head>
-<body>
+  <body>
     <!-- ====== NAV SECTION ====== -->
     <section id="nav-section">
-      <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <nav
+        id="navbar"
+        class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
+      >
         <div class="container-fluid">
-          <a class="navbar-brand" href="#main-section"><img class="logo-nav" src="static/images/logo_horizontal_gray.svg" alt="Logo GUL Image"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <a class="navbar-brand" href="#main-section"
+            ><img
+              class="logo-nav"
+              src="static/images/logo_horizontal_gray.svg"
+              alt="Logo GUL Image"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav nav-container-icon">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"><img class="image-nav" src="static/images/icon/twitter.svg" alt="Twitter icon"></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><img class="image-nav" src="static/images/icon/github.svg" alt="Github icon"></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><img class="image-nav" src="static/images/icon/graduation-cap.svg" alt="Graduation icon"></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#" aria-disabled="true"><img class="image-nav" src="static/images/icon/ham.svg" alt="Ham icon"></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#" aria-disabled="true"><img class="image-nav" src="static/images/icon/radio.svg" alt="Radio icon"></a>
-                </li>
-              </ul>
-              <ul class="navbar-nav nav-container-text">
-                <li class="nav-item">
-                  <a class="nav-link" href="#what-is-gul-section">Quienes somos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#where-we-are-section">Donde estamos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Curiosea</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Únete</a>
-                </li>
-              </ul>
+            <ul class="navbar-nav nav-container-icon">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  ><img
+                    class="image-nav"
+                    src="static/images/icon/twitter.svg"
+                    alt="Twitter icon"
+                /></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><img
+                    class="image-nav"
+                    src="static/images/icon/github.svg"
+                    alt="Github icon"
+                /></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><img
+                    class="image-nav"
+                    src="static/images/icon/graduation-cap.svg"
+                    alt="Graduation icon"
+                /></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" aria-disabled="true"
+                  ><img
+                    class="image-nav"
+                    src="static/images/icon/ham.svg"
+                    alt="Ham icon"
+                /></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" aria-disabled="true"
+                  ><img
+                    class="image-nav"
+                    src="static/images/icon/radio.svg"
+                    alt="Radio icon"
+                /></a>
+              </li>
+            </ul>
+            <ul class="navbar-nav nav-container-text">
+              <li class="nav-item">
+                <a class="nav-link" onclick="scrollToIt('#what-is-gul-section')"
+                  >Quienes somos</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  onclick="scrollToIt('#where-we-are-section')"
+                  >Donde estamos</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="scrollToIt('#curiuous-section')"
+                  >Curiosea</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Únete</a>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
@@ -65,48 +125,145 @@
     <section id="main-section">
       <div class="container-fluid image-main-section"></div>
       <div class="text-centered-office">
-        <span class="title-text-centered">NOS GUSTA JUGAR CON LA TECNOLOGIA</span>
+        <span class="title-text-centered"
+          >NOS GUSTA JUGAR CON LA TECNOLOGIA</span
+        >
       </div>
     </section>
 
     <!-- ====== WHAT IS GUL SECTION ====== -->
+
     <section id="what-is-gul-section">
-      <div class="row">
-        <div class="animate__animated text-content col-11 col-xl-5 col-lg-7 offset-1 offset-lg-2">
-          <div class="card what-is-gul-card">
-            <h4 class="card-header">¿QUÉ ES EL GUL?</h4>
-            <div class="card-body row">
-              <p class="card-text col-md-12 col-12">El <b>Grupo de Usuarios de Linux</b> es una asociación de estudiantes unidos por nuestras inquietudes en torno a los ordenadores, a la informática y, en concreto, la idea común de la utilización y promoción del <b>software libre</b>.
-              </p>
-              <p class="card-text col-md-12 col-9">
-              Nos reunimos los segundos viernes de cada mes para aprender y compartir conocimientos, y tenemos algunos grupos de trabajo enfocados en distintos áreas de la informática y la tecnología, como <b>Juegos y Radio</b>.
-              </p>
-              <p class="col-md-4 col-3">
-                <img class="tux-gif" src="static/images/tuxAnimated.gif" alt="Tux gif">
-              </p>
-            </div>
+      <div id="text-container">
+        <div class="text-title">
+          <h3>¿QUÉ ES EL GUL?</h3>
+        </div>
+        <div class="text-desc">
+          <p>
+            El <b>Grupo de Usuarios de Linux</b> es una asociación de
+            estudiantes unidos por nuestras inquietudes en torno a los
+            ordenadores, a la informática y, en concreto, la idea común de la
+            utilización y promoción del <b>software libre</b>.
+          </p>
+          <p>
+            Nos reunimos los segundos viernes de cada mes para aprender y
+            compartir conocimientos, y tenemos algunos grupos de trabajo
+            enfocados en distintos áreas de la informática y la tecnología, como
+            <b>Juegos y Radio</b>.
+          </p>
+          <img src="static/images/tuxAnimated.gif" alt="tux-gif" id="tux-gif" />
+        </div>
+      </div>
+
+      <div id="overlay-img">
+        <img
+          src="static/images/what-is-gul.jpeg"
+          id="img-container"
+          alt="Universidad Carlos III de Madrid"
+        />
+        <a href="https://www.uc3m.es" target="_blank">
+          <div class="overlay">
+            <div class="text">Universidad Carlos III de Madrid</div>
           </div>
-        </div>
-        <div class="animate__animated img-content">
-          <img src="static/images/what-is-gul.jpeg" alt="Universidad carlos III de Madrid">
-        </div>
+        </a>
       </div>
     </section>
 
     <!-- ====== WHERE WE ARE SECTION ====== -->
     <section id="where-we-are-section">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <!--
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
         <path d="M1200 0L0 0 892.25 114.72 1200 0z" class="shape-fill"></path>
-    </svg>
+      </svg>
+      -->
+
+      <div id="map" class="map map-home"></div>
+
+      <div id="coordinates">
+        <div class="coordinates-title">
+          <h3>DÓNDE ESTAMOS</h3>
+        </div>
+        <div class="coordinates-desc">
+          <p>Avenida de la Universidad, 30, 28911 Leganés, Madrid</p>
+          <p>Edificio Sabatini</p>
+          <p>2.3C05</p>
+        </div>
+      </div>
     </section>
 
+    <!-- ====== CURIUOUS SECTION ====== -->
 
+    <section id="curiuous-section">
+      <div id="cur-title">
+        <h3>¡MIRA LO QUE HEMOS HECHO!</h3>
+      </div>
 
-</body>
+      <div id="cur-container">
+        <div
+          class="github-card"
+          data-github="guluc3m"
+          data-height="341"
+          data-theme="medium"
+        ></div>
+        <div class="top-cards">
+          <div class="top-row">
+            <div class="top-col">
+              <object
+                type="image/svg+xml"
+                data="https://gh-card.dev/repos/guluc3m/zoe-lib-python.svg?link_target=_blank"
+              ></object>
+              <object
+                type="image/svg+xml"
+                data="https://gh-card.dev/repos/guluc3m/zoe-lib-java.svg?link_target=_blank"
+              ></object>
+            </div>
+            <div class="top-col">
+              <object
+                type="image/svg+xml"
+                data="https://gh-card.dev/repos/guluc3m/Actas.svg?link_target=_blank"
+              ></object>
+              <object
+                type="image/svg+xml"
+                data="https://gh-card.dev/repos/guluc3m/morgana.svg?link_target=_blank"
+              ></object>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- ====== OWN JS ====== -->
-    <script src="static/js/jquery-3.6.0.min.js"></script>
-    <script src="static/js/script.js"></script>
-    <!-- ====== BOOTSTRAP JS ====== -->
-    <script src="static/style/bootstrap/js/bootstrap.min.js"></script>
+    <!-- ====== CONTACT SECTION ====== -->
+    <section id="contact-section">
+      
+      <div id="contact-container">
+        <div class="contact-title">
+          <h3>¿TE HEMOS ATRAÍDO? ¡ÚNETE!</h3>
+        </div>
+        <div class="contact-matrix">
+          <p>
+            as
+          </p>
+        </div>
+        <div class="contact-mail">
+          <p>
+            as
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </body>
+
+  <!-- ====== OWN JS ====== -->
+  <script src="static/js/jquery-3.6.0.min.js"></script>
+  <script src="static/js/script.js"></script>
+  <!-- ====== BOOTSTRAP JS ====== -->
+  <script src="static/style/bootstrap/js/bootstrap.min.js"></script>
+  <!-- ====== GITHUB CARD ====== -->
+  <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 </html>
