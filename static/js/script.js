@@ -17,13 +17,15 @@ function scrollToIt(section) {
     $(window).scrollTop(distance);
 }
 
+$(document).ready(function() {
+    /* ====== OPEN STREET MAP  -  LEAFLET ====== */
+    var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        osm = L.tileLayer(osmUrl, { maxZoom: 18, attribution: osmAttrib });
+    var map = L.map('map').setView([40.33139,-3.76821], 17).addLayer(osm);
+    L.marker([40.33228,-3.76589])
+        .addTo(map)
+        .bindPopup('Universidad Carlos III de Madrid')
+        .openPopup();
+});
 
-/* ====== OPEN STREET MAP  -  LEAFLET ====== */
-var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    osm = L.tileLayer(osmUrl, { maxZoom: 18, attribution: osmAttrib });
-var map = L.map('map').setView([40.33139,-3.76821], 17).addLayer(osm);
-L.marker([40.33228,-3.76589])
-    .addTo(map)
-    .bindPopup('Universidad Carlos III de Madrid')
-    .openPopup();
