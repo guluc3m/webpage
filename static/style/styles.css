@@ -320,7 +320,6 @@ html {
 @media screen and (max-width:1400px){
   #cur-container{
     flex-direction: column;
-    overflow: scroll;
   }
   #contact-container {
     width: 80%;
@@ -402,6 +401,9 @@ html {
   .top-col object:hover{
     transform: none;
     box-shadow: none;
+  }
+  #cur-container {
+    overflow: scroll;
   }
   #contact-container {
     overflow: scroll;
