@@ -89,7 +89,24 @@ html {
 
 #nos-gusta-jugar {
   position: relative;
-  top: 50%;
+  top: 45%;
+}
+
+.fortuna {
+  font-size: 0.6em;
+  font-style: italic;
+  margin: auto;
+  line-height: normal;
+  max-width: 70%;
+  white-space: break-spaces;
+}
+
+#nos-gusta-jugar #fortuna-texto {
+  text-align: justify;
+  
+}
+#nos-gusta-jugar #fortuna-autor {
+  text-align: left;
 }
 
 /* <<<<<<  MAIN SECTION SECTION END >>>>>> */
@@ -392,6 +409,9 @@ html {
   }
 }
 @media screen and (max-width: 768px) {
+  .fortuna {
+    font-size: 0.7em;
+  }
   .top-col{
     margin-right: 0px;
   }

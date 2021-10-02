@@ -9,22 +9,15 @@
     <!-- ====== OWN STYLESHEETS ====== -->
     <link rel="stylesheet" href="static/style/styles.css" />
     <!-- ====== BOOTSTRAP STYLESHEETS ====== -->
-    <link
-      rel="stylesheet"
-      href="static/style/bootstrap/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="static/style/bootstrap/css/bootstrap.min.css"/>
     <!-- ====== FONTS ====== -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Lato"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
     <!-- ====== LEAFLET CSS ====== -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
-    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
     <!-- ====== LEAFLET JS ====== -->
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <!-- FORTUNAS -->
+    <script src="static/js/fortunas.js"></script>
   </head>
   <body>
     <!-- ====== NAV SECTION ====== -->
@@ -54,66 +47,51 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav nav-container-icon">
               <li class="nav-item">
-                <a class="nav-link active" target="_blank" aria-current="page" href="https://twitter.com/guluc3m"
-                  ><img
-                    class="image-nav"
-                    src="static/images/icon/twitter.svg"
-                    alt="Twitter icon"
-                /></a>
+                <a class="nav-link active" target="_blank" aria-current="page" href="https://twitter.com/guluc3m">
+                  <img class="image-nav" src="static/images/icon/twitter.svg" alt="Twitter icon"/>
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://github.com/guluc3m"
-                  ><img
-                    class="image-nav"
-                    src="static/images/icon/github.svg"
-                    alt="Github icon"
-                /></a>
+                <a class="nav-link" target="_blank" href="https://github.com/guluc3m">
+                  <img class="image-nav" src="static/images/icon/github.svg" alt="Github icon"/>
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://cursos.gul.es"
-                  ><img
-                    class="image-nav"
-                    src="static/images/icon/graduation-cap.svg"
-                    alt="Graduation icon"
-                /></a>
+                <a class="nav-link" target="_blank" href="https://cursos.gul.es">
+                  <img class="image-nav" src="static/images/icon/graduation-cap.svg" alt="Graduation icon"/>
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://jamon.gul.es" aria-disabled="true"
-                  ><img
-                    class="image-nav"
-                    src="static/images/icon/ham.svg"
-                    alt="Ham icon"
-                /></a>
+                <a class="nav-link" target="_blank" href="https://jamon.gul.es" aria-disabled="true">
+                  <img class="image-nav" src="static/images/icon/ham.svg" alt="Ham icon"/>
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://radio.gul.es" aria-disabled="true"
-                  ><img
-                    class="image-nav"
-                    src="static/images/icon/radio.svg"
-                    alt="Radio icon"
-                /></a>
+                <a class="nav-link" target="_blank" href="https://radio.gul.es" aria-disabled="true">
+                  <img class="image-nav" src="static/images/icon/radio.svg" alt="Radio icon"/>
+                </a>
               </li>
             </ul>
             <ul class="navbar-nav nav-container-text">
               <li class="nav-item">
-                <a class="nav-link" href="#what-is-gul-section"
-                  >Quienes somos</a
-                >
+                <a class="nav-link" href="#what-is-gul-section">
+                  Quienes somos
+                </a>
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="#where-we-are-section"
-                  >Donde estamos</a
-                >
+                <a class="nav-link" href="#where-we-are-section">
+                  Donde estamos
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href='#curiuous-section'
-                  >Curiosea</a
-                >
+                <a class="nav-link" href='#curiuous-section'>
+                  Curiosea
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#contact-section">Únete</a>
+                <a class="nav-link" href="#contact-section">
+                  Únete
+                </a>
               </li>
             </ul>
           </div>
@@ -125,9 +103,12 @@
     <section id="main-section">
       <div class="container-fluid image-main-section"></div>
       <div class="text-centered-office">
-        <span id="nos-gusta-jugar" class="title-text-centered"
-          >NOS GUSTA JUGAR CON LA TECNOLOGIA</span
-        >
+        <div id="nos-gusta-jugar" class="title-text-centered">
+            <p>NOS GUSTA JUGAR CON LA TECNOLOGIA</p>
+            <p id="fortuna-texto" class="fortuna"></p>
+            <p id="fortuna-autor" class="mt-3 fortuna"></p>
+        </div>
+
       </div>
     </section>
 

@@ -17,6 +17,7 @@ function scrollToIt(section) {
     $(window).scrollTop(distance);
 }
 
+
 $(document).ready(function() {
     /* ====== OPEN STREET MAP  -  LEAFLET ====== */
     var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -27,5 +28,13 @@ $(document).ready(function() {
         .addTo(map)
         .bindPopup('Universidad Carlos III de Madrid')
         .openPopup();
+
+    // Fichero con las fortunas ya se encuentra precargado en el HTML
+    // Carga fortuna aleatoria y rellena el elemento HTML
+    var fortuna_aleatoria = fortunas[Math.floor(Math.random() * fortunas.length)];
+    //var fortuna_aleatoria = fortunas[3];
+    console.log(fortuna_aleatoria);
+    $("#fortuna-texto").html(fortuna_aleatoria[0]);
+    $("#fortuna-autor").html(fortuna_aleatoria[1]);
 });
 
