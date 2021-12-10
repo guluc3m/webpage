@@ -59,7 +59,7 @@ html {
 
 #main-section > .image-main-section {
   position: relative;
-  background-image: url("../images/background/office.jpg");
+  background-image: url("../images/background/office.avif");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -119,7 +119,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("../images/background/what-is-gul-background.jpg") center
+  background: url("../images/background/what-is-gul-background.avif") center
     center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -199,7 +199,7 @@ html {
 #where-we-are-section {
   height: 100vh;
   /*background-color: #e0dfdf;*/
-  background: url("../images/background/where-we-are-background.png") center
+  background: url("../images/background/where-we-are-background.avif") center
     center no-repeat;
   background-size: cover;
   display: flex;
@@ -242,7 +242,7 @@ html {
 
 #curiuous-section {
   height: 100vh;
-  background: url("../images/background/curiuous-background.jpeg") center center
+  background: url("../images/background/curiuous-background.avif") center center
     no-repeat;
   background-size: cover;
   color: #ffffff;
@@ -296,7 +296,7 @@ html {
 /* ======  CONTACT SECTION START ====== */
 
 #contact-section {
-  background: url('../images/background/contact-background.jpg') center center no-repeat;
+  background: url('../images/background/contact-background.avif') center center no-repeat;
   background-size: cover;
   height: 100vh;
   display: flex;
