@@ -32,7 +32,7 @@
   </head>
   <body>
     <!-- ====== NAV SECTION ====== -->
-    <section id="nav-section">
+    <header id="nav-section">
       <nav
         id="navbar"
         class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
@@ -108,194 +108,196 @@
           </div>
         </div>
       </nav>
-    </section>
+    </header>
 
     <!-- ====== MAIN SECTION ====== -->
-    <section id="main-section">
-      <div class="container-fluid image-main-section"></div>
-      <div class="text-centered-office">
-        <div id="nos-gusta-jugar" class="title-text-centered">
-            <p>NOS GUSTA JUGAR CON LA TECNOLOGIA</p>
-            <p id="fortuna-texto" class="fortuna" aria-hidden="true"></p>
-            <p id="fortuna-autor" class="mt-3 fortuna" aria-hidden="true"></p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ====== WHAT IS GUL SECTION ====== -->
-
-    <section id="what-is-gul-section">
-      <div class="text-container">
-        <div class="text-title">
-          <h3>¿QUÉ ES EL GUL?</h3>
-        </div>
-        <div class="text-desc">
-          <p>
-            El <b>Grupo de Usuarios de Linux</b> es una asociación de
-            estudiantes unidos por nuestras inquietudes en torno a los
-            ordenadores, la informática y, en concreto, la idea común de la
-            utilización y promoción del <a class="no-style" target="_blank" href="https://www.gnu.org/philosophy/free-sw.es.html"><b>software libre</b></a>.
-          </p>
-          <p>
-            Nos reunimos el segundo viernes de cada mes para aprender y
-            compartir conocimientos, normalmente esto se traduce en tomar algo
-            todos juntos. Si no estás aquí por la fiesta, también tenemos algunos
-            grupos de trabajo enfocados en distintos áreas de la informática y la tecnología, como
-            <b>Juegos, Radio o IA</b>.
-          </p>
-          <img src="static/images/tuxAnimated.gif" alt="tux-gif" id="tux-gif" />
-        </div>
-      </div>
-
-      <div id="overlay-img">
-        <img
-          src="static/images/what-is-gul.avif"
-          id="img-container"
-          alt="Universidad Carlos III de Madrid"
-        />
-        <a href="https://www.uc3m.es" target="_blank">
-          <div class="overlay">
-            <div class="text">Universidad Carlos III de Madrid</div>
+    <main>
+      <section id="main-section">
+        <div class="container-fluid image-main-section"></div>
+        <div class="text-centered-office">
+          <div id="nos-gusta-jugar" class="title-text-centered">
+              <h1 class="mb-3">NOS GUSTA JUGAR CON LA TECNOLOGIA</h1>
+              <p id="fortuna-texto" class="fortuna" aria-hidden="true"></p>
+              <p id="fortuna-autor" class="mt-3 fortuna" aria-hidden="true"></p>
           </div>
-        </a>
-      </div>
-    </section>
 
-    <!-- ====== WHERE WE ARE SECTION ====== -->
-    <section id="where-we-are-section">
-      <!--
-      <svg
-        data-name="Layer 1"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1200 120"
-        preserveAspectRatio="none"
-      >
-        <path d="M1200 0L0 0 892.25 114.72 1200 0z" class="shape-fill"></path>
-      </svg>
-      -->
-
-      <div id="map" class="map map-home"></div>
-
-      <div id="coordinates">
-        <div class="coordinates-title">
-          <h3>DÓNDE ESTAMOS</h3>
         </div>
-        <div class="coordinates-desc">
-          <p>Avenida de la Universidad, 30, 28911 Leganés, Madrid</p>
-          <p>Edificio Sabatini</p>
-          <p>2.3C05</p>
+      </section>
+
+      <!-- ====== WHAT IS GUL SECTION ====== -->
+
+      <section id="what-is-gul-section">
+        <div class="text-container">
+          <div class="text-title">
+            <h3>¿QUÉ ES EL GUL?</h3>
+          </div>
+          <div class="text-desc">
+            <p>
+              El <b>Grupo de Usuarios de Linux</b> es una asociación de
+              estudiantes unidos por nuestras inquietudes en torno a los
+              ordenadores, la informática y, en concreto, la idea común de la
+              utilización y promoción del <a class="no-style" target="_blank" href="https://www.gnu.org/philosophy/free-sw.es.html"><b>software libre</b></a>.
+            </p>
+            <p>
+              Nos reunimos el segundo viernes de cada mes para aprender y
+              compartir conocimientos, normalmente esto se traduce en tomar algo
+              todos juntos. Si no estás aquí por la fiesta, también tenemos algunos
+              grupos de trabajo enfocados en distintos áreas de la informática y la tecnología, como
+              <b>Juegos, Radio o IA</b>.
+            </p>
+            <img src="static/images/tuxAnimated.gif" alt="tux-gif" id="tux-gif" />
+          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ====== CURIUOUS SECTION ====== -->
+        <div id="overlay-img">
+          <img
+            src="static/images/what-is-gul.avif"
+            id="img-container"
+            alt="Universidad Carlos III de Madrid"
+          />
+          <a href="https://www.uc3m.es" target="_blank">
+            <div class="overlay">
+              <div class="text">Universidad Carlos III de Madrid</div>
+            </div>
+          </a>
+        </div>
+      </section>
 
-    <section id="curiuous-section">
-      <div id="cur-title">
-        <h3>¡MIRA LO QUE HEMOS HECHO!</h3>
-      </div>
-
-      <div id="cur-container">
+      <!-- ====== WHERE WE ARE SECTION ====== -->
+      <section id="where-we-are-section">
         <!--
-        Descomentar si algún día github-cards funciona
-        <div
-          class="github-card"
-          data-github="guluc3m"
-          data-height="341"
-          data-theme="medium"
-        ></div>
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path d="M1200 0L0 0 892.25 114.72 1200 0z" class="shape-fill"></path>
+        </svg>
         -->
 
-        <div class="top-cards">
-          <div class="top-row">
-            <div class="top-col">
-              <object
-                type="image/svg+xml"
-                data="https://gh-card.dev/repos/guluc3m/webpage.svg?link_target=_blank"
-              >Webpage</object>
-              <object
-                type="image/svg+xml"
-                data="https://gh-card.dev/repos/guluc3m/Actas.svg?link_target=_blank"
-              >Actas</object>
-              <object
-                type="image/svg+xml"
-                data="https://gh-card.dev/repos/guluc3m/OpenGLCurso.svg?link_target=_blank"
-              >OpenGLCurso</object>
+        <div id="map" class="map map-home"></div>
 
-            </div>
-            <div class="top-col">
-              <object
-                type="image/svg+xml"
-                data="https://gh-card.dev/repos/guluc3m/zoe-lib-python.svg?link_target=_blank"
-              >Zoe-lib-python</object>
-              <object
-                type="image/svg+xml"
-                data="https://gh-card.dev/repos/guluc3m/zoe-lib-java.svg?link_target=_blank"
-              >Zoe-lib-java</object>
-              <object
-                type="image/svg+xml"
-                data="https://gh-card.dev/repos/guluc3m/morgana.svg?link_target=_blank"
-              >Morgana</object>
+        <div id="coordinates">
+          <div class="coordinates-title">
+            <h3>DÓNDE ESTAMOS</h3>
+          </div>
+          <div class="coordinates-desc">
+            <p>Avenida de la Universidad, 30, 28911 Leganés, Madrid</p>
+            <p>Edificio Sabatini</p>
+            <p>2.3C05</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====== CURIUOUS SECTION ====== -->
+
+      <section id="curiuous-section">
+        <div id="cur-title">
+          <h3>¡MIRA LO QUE HEMOS HECHO!</h3>
+        </div>
+
+        <div id="cur-container">
+          <!--
+          Descomentar si algún día github-cards funciona
+          <div
+            class="github-card"
+            data-github="guluc3m"
+            data-height="341"
+            data-theme="medium"
+          ></div>
+          -->
+
+          <div class="top-cards">
+            <div class="top-row">
+              <div class="top-col">
+                <object
+                  type="image/svg+xml"
+                  data="https://gh-card.dev/repos/guluc3m/webpage.svg?link_target=_blank"
+                >Webpage</object>
+                <object
+                  type="image/svg+xml"
+                  data="https://gh-card.dev/repos/guluc3m/Actas.svg?link_target=_blank"
+                >Actas</object>
+                <object
+                  type="image/svg+xml"
+                  data="https://gh-card.dev/repos/guluc3m/OpenGLCurso.svg?link_target=_blank"
+                >OpenGLCurso</object>
+
+              </div>
+              <div class="top-col">
+                <object
+                  type="image/svg+xml"
+                  data="https://gh-card.dev/repos/guluc3m/zoe-lib-python.svg?link_target=_blank"
+                >Zoe-lib-python</object>
+                <object
+                  type="image/svg+xml"
+                  data="https://gh-card.dev/repos/guluc3m/zoe-lib-java.svg?link_target=_blank"
+                >Zoe-lib-java</object>
+                <object
+                  type="image/svg+xml"
+                  data="https://gh-card.dev/repos/guluc3m/morgana.svg?link_target=_blank"
+                >Morgana</object>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ====== CONTACT SECTION ====== -->
-    <section id="contact-section">
+      <!-- ====== CONTACT SECTION ====== -->
+      <section id="contact-section">
 
-      <div id="contact-title" class="mb-4">
-        <h3>¿TE HEMOS ATRAÍDO? ¡PARTICIPA!</h3>
-      </div>
-      <div id="contact-container" class="p-2">
-        <div class="text-container">
-          <div class="text-title">
-            <h3>Lista de Correo</h3>
+        <div id="contact-title" class="mb-4">
+          <h3>¿TE HEMOS ATRAÍDO? ¡PARTICIPA!</h3>
+        </div>
+        <div id="contact-container" class="p-2">
+          <div class="text-container">
+            <div class="text-title">
+              <h3>Lista de Correo</h3>
+            </div>
+            <div class="text-desc">
+              <p>
+                Para contactar con nosotros por correo puedes escribirnos a: <b>info AT gul.uc3m.es</b>
+              </p>
+              <p> O suscribirte a la lista y empezar a participar en la misma: <a class="no-style" href="https://lista.gul.es/postorius/lists/lista.gul.uc3m.es/" target="_blank">lista.gul.es</a>
+              </p>
+            </div>
           </div>
-          <div class="text-desc">
-            <p>
-              Para contactar con nosotros por correo puedes escribirnos a: <b>info AT gul.uc3m.es</b>
+
+          <div class="text-container">
+            <div class="text-title">
+              <h3>Otros contactos</h3>
+            </div>
+            <div class="text-desc">
+              <p>
+              Si no te gustan los correos porque son muy de antes de que nacieras y no has tenido la suerte de encontrarnos en el despacho (Covid y esas cosas...), también tenemos grupo de:
+              </p>
+              <ul>
+                  <li><b>Telegram</b>: Canal de comunicación principal junto con la lista de correo</li>
+                  <li><b>Discord</b>: Para reuniones telemáticas principalmente</li>
+              </ul>
+              Para evitar que se nos metan bots continuamente son <b>por invitación</b> y por lo tanto tendrás que mandarnos un correo igualmente
             </p>
-            <p> O suscribirte a la lista y empezar a participar en la misma: <a class="no-style" href="https://lista.gul.es/postorius/lists/lista.gul.uc3m.es/" target="_blank">lista.gul.es</a>
-            </p>
+            </div>
           </div>
         </div>
-
-        <div class="text-container">
-          <div class="text-title">
-            <h3>Otros contactos</h3>
-          </div>
-          <div class="text-desc">
-            <p>
-            Si no te gustan los correos porque son muy de antes de que nacieras y no has tenido la suerte de encontrarnos en el despacho (Covid y esas cosas...), también tenemos grupo de:
-            </p>
-            <ul>
-                <li><b>Telegram</b>: Canal de comunicación principal junto con la lista de correo</li>
-                <li><b>Discord</b>: Para reuniones telemáticas principalmente</li>
-            </ul>
-            Para evitar que se nos metan bots continuamente son <b>por invitación</b> y por lo tanto tendrás que mandarnos un correo igualmente
+      </section>
+      <section id="legal-section">
+        <div class="text-desc text-center">
+          <p>
+          El Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid es una asociación declarada de beneficio social por el Ministerio de Hacienda.
           </p>
-          </div>
+          <p>
+          Domicilio social: despacho 2.3C05 del edificio Sabatini, Avenida de la Universidad, 30 28911 Leganés Madrid, España.
+          </p>
+          <p>
+          C.I.F.: G83296988<br>
+          Número de registro de la comunidad de Madrid: 23500<br>
+          Número de registro del ayuntamiento de Leganés: 795
+          </p>
         </div>
-      </div>
-    </section>
-    <section id="legal-section">
-      <div class="text-desc text-center">
-        <p>
-        El Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid es una asociación declarada de beneficio social por el Ministerio de Hacienda.
-        </p>
-        <p>
-        Domicilio social: despacho 2.3C05 del edificio Sabatini, Avenida de la Universidad, 30 28911 Leganés Madrid, España.
-        </p>
-        <p>
-        C.I.F.: G83296988<br>
-        Número de registro de la comunidad de Madrid: 23500<br>
-        Número de registro del ayuntamiento de Leganés: 795
-        </p>
-      </div>
-    </section>
+      </section>
+    </main>
   </body>
 
   <!-- ====== OWN JS ====== -->
