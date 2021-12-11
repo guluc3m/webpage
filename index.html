@@ -26,9 +26,9 @@
     <!-- ====== LEAFLET CSS ====== -->
     <link rel="stylesheet" href="static/style/leaflet/leaflet.css" />
     <!-- ====== LEAFLET JS ====== -->
-    <script src="static/js/leaflet.js" async></script>
+    <script type="text/javascript" src="static/js/leaflet.js" async></script>
     <!-- FORTUNAS -->
-    <script src="static/js/fortunas.js" async></script>
+    <script type="text/javascript" src="static/js/fortunas.js" async></script>
   </head>
   <body>
     <!-- ====== NAV SECTION ====== -->
@@ -38,12 +38,12 @@
         class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
       >
         <div class="container-fluid m-3 mt-0 mb-0">
-          <a class="navbar-brand" href="#main-section"
-            ><img
+          <a class="navbar-brand" href="#main-section" aria-current="page">
+            <img
               class="logo-nav"
               src="static/images/logo_horizontal_gray.svg"
-              alt="Logo GUL Image"
-          /></a>
+              alt="Logo GUL Image"/>
+          </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -58,27 +58,27 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav nav-container-icon">
               <li class="nav-item">
-                <a class="nav-link active" target="_blank" aria-current="page" href="https://twitter.com/guluc3m">
+                <a class="nav-link active" target="_blank" aria-current="false" href="https://twitter.com/guluc3m" title="Enlace a Twitter">
                   <img class="image-nav" src="static/images/icon/twitter.svg" alt="Twitter icon"/>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://github.com/guluc3m">
+                <a class="nav-link" target="_blank" href="https://github.com/guluc3m" title="Enlace a Github" aria-current="false">
                   <img class="image-nav" src="static/images/icon/github.svg" alt="Github icon"/>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://cursos.gul.es">
+                <a class="nav-link" target="_blank" href="https://cursos.gul.es" title="Enlace a cursos.gul.es">
                   <img class="image-nav" src="static/images/icon/graduation-cap.svg" alt="Graduation icon"/>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://jamon.gul.es" aria-disabled="true">
+                <a class="nav-link" target="_blank" href="https://jamon.gul.es" title="Enlace a jamon.gul.es" aria-disabled="true">
                   <img class="image-nav" src="static/images/icon/ham.svg" alt="Ham icon"/>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://radio.gul.es" aria-disabled="true">
+                <a class="nav-link" target="_blank" href="https://radio.gul.es" title="Enlace a radio.gul.es" aria-disabled="true">
                   <img class="image-nav" src="static/images/icon/radio.svg" alt="Radio icon"/>
                 </a>
               </li>
@@ -277,7 +277,6 @@
                   <li><b>Discord</b>: Para reuniones telemáticas principalmente</li>
               </ul>
               Para evitar que se nos metan bots continuamente son <b>por invitación</b> y por lo tanto tendrás que mandarnos un correo igualmente
-            </p>
             </div>
           </div>
         </div>
@@ -301,10 +300,10 @@
   </body>
 
   <!-- ====== OWN JS ====== -->
-  <script src="static/js/jquery-3.6.0.min.js"></script>
-  <script src="static/js/script.js"></script>
+  <script type="text/javascript" src="static/js/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="static/js/script.js"></script>
   <!-- ====== BOOTSTRAP JS ====== -->
-  <script src="static/style/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="static/style/bootstrap/js/bootstrap.min.js"></script>
   <!-- ====== GITHUB CARD ====== -->
   <!-- No se muestra en la web, ni idea porqué, pero aquí se queda por si acaso
       <script src="static/js/github-cards.js"></script>
