@@ -705,5 +705,9 @@ var fortunas = [
     [
         "Es un problema fácil de solucionar: a hostias, como toda la vida.",
         "Roberto Muñoz"
+    ],
+    [
+        "Mirad chicos, hasta uno de teleco puede resolver esto.",
+        "Carlos Linares"
     ]
 ]
