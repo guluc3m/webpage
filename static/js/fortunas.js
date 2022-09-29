@@ -663,7 +663,7 @@ var fortunas = [
         "Almudena Alcaide (Usa la fuerza, Cesar)"
     ],
     [
-        "«fish» además de pez significa pescar (así de simple es la gramática inglesa), de modo que fish:// sería pescar://. Algo así como decirle al navegador: «péscame ese pedaasso dearchivorr1!!» Si el programata hubiera sido español igual hubiera puesto plgdtm:// (Por la Grooria de Tu Mare)",
+        "«fish» además de pez significa pescar (así de simple es la gramática inglesa), de modo que fish:// sería pescar://. Algo así como decirle al navegador: «péscame ese pedaasso dearchivorr!!» Si el programata hubiera sido español igual hubiera puesto plgdtm:// (Por la Grooria de Tu Mare)",
         "Igor (en la lista de correo)"
     ],
     [
@@ -709,5 +709,9 @@ var fortunas = [
     [
         "Mirad chicos, hasta uno de teleco puede resolver esto.",
         "Carlos Linares"
+    ],
+    [
+        "Chica: *Suelta un estornudo agudo*\nProfesor: \"Mi gato suena igual\".",
+        "Criptografía con los de Matemáticas Aplicadas y Computación"
     ]
 ]
