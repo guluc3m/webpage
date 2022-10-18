@@ -708,10 +708,14 @@ var fortunas = [
     ],
     [
         "Mirad chicos, hasta uno de teleco puede resolver esto.",
-        "Carlos Linares"
+        "Carlos Linares (Heurística y Optimización)"
     ],
     [
         "Chica: *Suelta un estornudo agudo*\nProfesor: \"Mi gato suena igual\".",
         "Criptografía con los de Matemáticas Aplicadas y Computación"
+    ],
+    [
+        "No vayáis diciendo por ahí que vuestro profesor de redes os ha dicho que nos vamos a quedar sin direcciones IPv6. \nSi váis a citarme, decid que vuestro profesor de redes cree que la estupidez humana va a hacer que nos quedemos sin direcciones IPv6.",
+        "Marcelo Bagnalio (Redes de Ordenadores)"
     ]
 ]
