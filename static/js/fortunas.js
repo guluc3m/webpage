@@ -717,5 +717,9 @@ var fortunas = [
     [
         "No vayáis diciendo por ahí que vuestro profesor de redes os ha dicho que nos vamos a quedar sin direcciones IPv6. \nSi váis a citarme, decid que vuestro profesor de redes cree que la estupidez humana va a hacer que nos quedemos sin direcciones IPv6.",
         "Marcelo Bagnalio (Redes de Ordenadores)"
+    ],
+    [
+        "Programar es diseñar una solución a un problema y explicarlo de una forma tan simple que lo entienda esta mesa.",
+        "Carlos Linares (Heurística y Optimización)"
     ]
 ]
