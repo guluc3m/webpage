@@ -721,5 +721,9 @@ var fortunas = [
     [
         "Programar es diseñar una solución a un problema y explicarlo de una forma tan simple que lo entienda esta mesa.",
         "Carlos Linares (Heurística y Optimización)"
+    ],
+    [
+        "A vosotros os ponen las matemáticas.",
+        "Casti (Empresariales)"
     ]
 ]
