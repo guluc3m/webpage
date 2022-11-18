@@ -725,5 +725,25 @@ var fortunas = [
     [
         "A vosotros os ponen las matemáticas.",
         "Casti (Empresariales)"
+    ],
+    [
+        "Vuestro plan de empresas es una mierda... No no he dicho eso.",
+        "Casti (Empresariales)"
+    ],
+    [
+        "Porque Casti es tonta",
+        "Casti (Empresariales)"
+    ],
+    [
+        "Porque Java o JavaScript es interpretado y lento y da muchos problemas de incompatibilidad.",
+        "Jesús Manuel Poza (Ingeniería de Software)"
+    ],
+    [
+        "Un navegador no tiene arquitectura cliente-servidor.\nUna aplicación de móvil es una arquitectura cliente servidor.",
+        "Jesús Manuel Poza (Ingeniería de Software)"
+    ],
+    [
+        "Lenguajes de .NET como C o F.",
+        "Jesús Manuel Poza (Ingeniería de Software)"
     ]
 ]
