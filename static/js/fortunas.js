@@ -745,5 +745,9 @@ var fortunas = [
     [
         "Lenguajes de .NET como C o F.",
         "Jesús Manuel Poza (Ingeniería de Software)"
+    ],
+    [
+        "No.\nEspera, ¿cual era la pregunta?\nSi.",
+        "Ana Granados (Multimedia)"
     ]
 ]
