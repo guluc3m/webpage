@@ -749,5 +749,13 @@ var fortunas = [
     [
         "No.\nEspera, ¿cual era la pregunta?\nSi.",
         "Ana Granados (Multimedia)"
+    ],
+    [
+        "El lema de Python es \"Somos adultos, sabemos lo que estamos haciendo\".",
+        "Carlos Linares (Heurística y Optimización)"
+    ],
+    [
+        "Mutex. Es un buen nombre para un perro.",
+        "David Expósito (Sistemas Operativos)"
     ]
 ]
