@@ -761,5 +761,9 @@ var fortunas = [
     [
         "(A la profesora de Multimedia) ¡He buscado la película más putamente gay que existe y aún así no ha salido por ningún puto lada nada de LGBT!",
         "Luisda (frustración por el web scraping)"
+    ],
+    [
+        "¡Es mi gato y me lo follo cuando quiero!",
+        "Anónimo"
     ]
 ]
