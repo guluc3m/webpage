@@ -765,5 +765,9 @@ var fortunas = [
     [
         "¡Es mi gato y me lo follo cuando quiero!",
         "Anónimo"
+    ],
+    [
+        "No contéis en ningún sitio que os he dicho que un MAC es un hash cifrado, que me cortan la cabeza.",
+        "Juan Tapiador (Ingeniería de la Ciberseguridad)"
     ]
 ]
