@@ -769,5 +769,9 @@ var fortunas = [
     [
         "No contéis en ningún sitio que os he dicho que un MAC es un hash cifrado, que me cortan la cabeza.",
         "Juan Tapiador (Ingeniería de la Ciberseguridad)"
+    ],
+    [
+        "Está el chiste del duende cabrón. ¿Cual es el chiste?\nPues es un duende que te da exactamente lo que pides. Y va uno y le dice \"¡Quiero que me lleguen hasta el suelo!\". Y le corta las piernas.\nPues C es igual",
+        "Alejandro Calderón (Sistemas Distribuídos)"
     ]
 ]
