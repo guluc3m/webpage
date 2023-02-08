@@ -771,7 +771,7 @@ var fortunas = [
         "Juan Tapiador (Ingeniería de la Ciberseguridad)"
     ],
     [
-        "Está el chiste del duende cabrón. ¿Cual es el chiste?\nPues es un duende que te da exactamente lo que pides. Y va uno y le dice \"¡Quiero que me lleguen hasta el suelo!\". Y le corta las piernas.\nPues C es igual",
+        "Está el chiste del duende cabrón. ¿Cual es el chiste?\nPues es un duende que te da exactamente lo que pides. Y va uno y le dice \"¡Quiero que me lleguen hasta el suelo!\". Y le corta las piernas.\nPues C es ese duende.",
         "Alejandro Calderón (Sistemas Distribuídos)"
     ]
 ]
