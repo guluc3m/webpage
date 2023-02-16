@@ -747,7 +747,7 @@ var fortunas = [
         "Jesús Manuel Poza (Ingeniería de Software)"
     ],
     [
-        "No.\nEspera, ¿cual era la pregunta?\nSi.",
+        "No.\nEspera, ¿cual era la pregunta?\nYes.",
         "Ana Granados (Multimedia)"
     ],
     [
@@ -773,5 +773,9 @@ var fortunas = [
     [
         "Está el chiste del duende cabrón. ¿Cual es el chiste?\nPues es un duende que te da exactamente lo que pides. Y va uno y le dice \"¡Quiero que me lleguen hasta el suelo!\". Y le corta las piernas.\nPues C es ese duende.",
         "Alejandro Calderón (Sistemas Distribuídos)"
+    ],
+    [
+        "Yo resuelvo los problemas de concurrencia muy fácilmente: pongo un lock() al principio y un unlock() al final.",
+        "Félix García (Sistemas Distribuídos)"
     ]
 ]
