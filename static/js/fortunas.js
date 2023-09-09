@@ -777,5 +777,9 @@ var fortunas = [
     [
         "Yo resuelvo los problemas de concurrencia muy fácilmente: pongo un lock() al principio y un unlock() al final.",
         "Félix García (Sistemas Distribuídos)"
+    ],
+    [
+        "En la cabecera HTTP viene todo, hasta el nombre de tu novia.",
+        "Jesús Hernando (Tecnologías Informáticas para la Web)"
     ]
 ]
