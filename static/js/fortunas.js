@@ -695,7 +695,7 @@ var fortunas = [
         "Caso verídico"
     ],
     [
-        "Voiser: \"Python es muy explícito, es muy verboso. Es como Java.\"\nJesús: \"¿Ah si? ¡Pues Ryby es como Perl!\"",
+        "Voiser: \"Python es muy explícito, es muy verboso. Es como Java.\"\nJesús: \"¿Ah si? ¡Pues Ruby es como Perl!\"",
         "David y Jesús"
     ],
     [
@@ -731,7 +731,7 @@ var fortunas = [
         "Casti (Empresariales)"
     ],
     [
-        "Porque Casti es tonta",
+        "Porque Casti es tonta.",
         "Casti (Empresariales)"
     ],
     [
@@ -780,6 +780,18 @@ var fortunas = [
     ],
     [
         "En la cabecera HTTP viene todo, hasta el nombre de tu novia.",
+        "Jesús Hernando (Tecnologías Informáticas para la Web)"
+    ],
+    [
+        "Esto es una dictadura, y además voluntaria. Tu dices \"¡Me presento a dictador!\", y ya está.",
+        "Alex de la Torre (en una renovación de la Junta del GUL)"
+    ],
+    [
+        "La población no es, entendedme, \"normal\", todos tenemos una tarita.",
+        "Jesús Hernando (Tecnologías Informáticas para la Web)"
+    ],
+    [
+        "Jugador de cookies, perdedor de mus.",
         "Jesús Hernando (Tecnologías Informáticas para la Web)"
     ]
 ]
