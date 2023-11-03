@@ -793,5 +793,13 @@ var fortunas = [
     [
         "Jugador de cookies, perdedor de mus.",
         "Jesús Hernando (Tecnologías Informáticas para la Web)"
+    ],
+    [
+        "Si hacemos la defensa de la primera práctica, hacemos la defensa de la segunda práctica, y hacemos la defensa de la tercera práctica, nos parecemos al Cholo: sólo defendemos.",
+        "Jesús Hernando (Tecnologías Informáticas para la Web)"
+    ],
+    [
+        "Todo ésto lo tenéis en un PDF muy bonito que esta noche, como no hay botellón, os vais a leer.",
+        "Jesús Hernando (Tecnologías Informáticas para la Web)"
     ]
 ]
