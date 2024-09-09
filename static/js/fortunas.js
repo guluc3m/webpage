@@ -805,5 +805,9 @@ var fortunas = [
     [
         "Mi nombre es Juan Manuel Alonso... el resto ya os lo dirán por ahí.",
         "Weber (Teoría Avanzada de la Computación)"
+    ],
+    [
+        "Mira, os lo voy a decir de otra manera: aquí aprueba to'l mundo.",
+        "Antonio De Amescua (Dirección de Proyectos en Ingeniería Informática)"
     ]
 ]
