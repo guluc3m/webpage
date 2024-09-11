@@ -809,5 +809,17 @@ var fortunas = [
     [
         "Mira, os lo voy a decir de otra manera: aquí aprueba to'l mundo.",
         "Antonio De Amescua (Dirección de Proyectos en Ingeniería Informática)"
+    ],
+    [
+        "Alumno: \"¿Por qué no hay ningún free() en el código que nos habéis dado?\"\nProfesor: \"Porque en mis tiempos free() no hacía nada.\"",
+        "Weber (Procesadores del Lenguaje)"
+    ],
+    [
+        "A mí me da igual quién conozca mi religión. Me gusta Maradona y todo el mundo lo sabe.",
+        "Sergio Pastrana (Sistemas de Ciberseguridad)"
+    ],
+    [
+        "¿Qué os parecen estos supercomputadores? Para mí son porno. Me ponen.",
+        "Javier García (Computación de Altas Prestaciones)"
     ]
 ]
