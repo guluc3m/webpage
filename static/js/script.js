@@ -34,7 +34,7 @@ $(document).ready(function() {
     var fortuna_aleatoria = fortunas[Math.floor(Math.random() * fortunas.length)];
     //var fortuna_aleatoria = fortunas[3];
     console.log(fortuna_aleatoria);
-    $("#fortuna-texto").html(fortuna_aleatoria[0]);
-    $("#fortuna-autor").html(fortuna_aleatoria[1]);
+    $("#fortuna-texto").html("\"" + fortuna_aleatoria[0] + "\"");
+    $("#fortuna-autor").html("— " + fortuna_aleatoria[1]);
 });
 
