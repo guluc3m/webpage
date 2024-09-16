@@ -821,5 +821,13 @@ var fortunas = [
     [
         "¿Qué os parecen estos supercomputadores? Para mí son porno. Me ponen.",
         "Javier García (Computación de Altas Prestaciones)"
+    ],
+    [
+        "¿Aspectos éticos? ¿Que yo os voy a enseñar ética a vosotros? ¡Y una mierda!",
+        "Carlos Galán (Aspectos Legales y Éticos de la Ingeniería Informática)"
+    ],
+    [
+        "Y me dice el rector \"Me parece bien, pero hagamos la prueba en un campus que no nos lo quemen si sale mal\". Y lo llevamos a Colmenarejo.",
+        "Carlos Galán (Aspectos Legales y Éticos de la Ingeniería Informática)"
     ]
 ]
