@@ -829,5 +829,9 @@ var fortunas = [
     [
         "Y me dice el rector \"Me parece bien, pero hagamos la prueba en un campus que no nos lo quemen si sale mal\". Y lo llevamos a Colmenarejo.",
         "Carlos Galán (Aspectos Legales y Éticos de la Ingeniería Informática)"
+    ],
+    [
+        "Aclaración: es \"Ley de Amdahl\", no \"Ley de Gandalf\"",
+        "Javier García (Computación de Altas Prestaciones)"
     ]
 ]
