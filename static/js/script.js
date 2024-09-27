@@ -17,6 +17,35 @@ function scrollToIt(section) {
     $(window).scrollTop(distance);
 }
 
+function splitLines(string) { return string.split(/\r\n|\r|\n/); }
+
+function formatFortunas(quote, author) {
+
+    if (splitLines(quote).length == 1) {
+        // remove trailing '.'
+        if (
+            quote.charAt(quote.length - 1) == "." &&
+            (quote.length > 3 && quote.substring(quote.length - 3, quote.length) != "...")  // no es '...'
+        ) {
+            quote = quote.slice(0, -1)
+        }
+
+        // añadir comillas guays
+
+        // prevenir que se apliquen al setup (*Uno que pasaba* Y le dije...)
+        let first = quote.indexOf("*")
+        let last = quote.lastIndexOf("*")
+        if (first == 0 && first != last) {
+            quote = quote.substring(first, last + 2) + "«" + quote.substring(last + 2, quote.length + 1) + "»"
+        }
+        else {
+            quote = "«" + quote + "»"
+        }
+    }
+
+    return [quote, "— " + author]
+}
+
 
 $(document).ready(function() {
     /* ====== OPEN STREET MAP  -  LEAFLET ====== */
@@ -31,10 +60,10 @@ $(document).ready(function() {
 
     // Fichero con las fortunas ya se encuentra precargado en el HTML
     // Carga fortuna aleatoria y rellena el elemento HTML
-    var fortuna_aleatoria = fortunas[Math.floor(Math.random() * fortunas.length)];
-    //var fortuna_aleatoria = fortunas[3];
+    let fortuna_aleatoria = fortunas[Math.floor(Math.random() * fortunas.length)];
     console.log(fortuna_aleatoria);
-    $("#fortuna-texto").html("«" + fortuna_aleatoria[0] + "»");
-    $("#fortuna-autor").html("— " + fortuna_aleatoria[1]);
-});
 
+    const [quote, author] = formatFortunas(fortuna_aleatoria[0], fortuna_aleatoria[1])
+    $("#fortuna-texto").html(quote);
+    $("#fortuna-autor").html(author);
+});
