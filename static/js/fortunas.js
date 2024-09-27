@@ -747,7 +747,7 @@ var fortunas = [
         "Jesús Manuel Poza (Ingeniería de Software)"
     ],
     [
-        "No.\nEspera, ¿cual era la pregunta?\nYes.",
+        "No. Espera, ¿cual era la pregunta? Yes.",
         "Ana Granados (Multimedia)"
     ],
     [
@@ -837,5 +837,9 @@ var fortunas = [
     [
         "En vez de usar \"patrón maestro-esclavo\", ya que es un término poco inclusivo, usaremos \"patrón profesor-becario\".",
         "Javier García (Computación de Altas Prestaciones)"
+    ],
+    [
+        "Todo se lo copian a Ada.",
+        "Jesús Carretero (Computación de Altas Prestaciones)"
     ]
 ]
