@@ -223,8 +223,8 @@ var fortunas = [
         "Pablo Acedo (Electrónica)"
     ],
     [
-        "Profesora: \"Cuando un proceso muere, este mata a todos sus hijos antes de morir\"Se oyen murmullos por la clase, cuando derrepente se callan y se oye una voz al fondo: \"Pues que cabron!!!\"",
-        "Goyi - Sistemas Operativos"
+        "Profesora: \"Cuando un proceso muere, este mata a todos sus hijos antes de morir\"\nSe oyen murmullos por la clase, cuando derrepente se callan y se oye una voz al fondo: \"¡Pues que cabrón!\"",
+        "Goyi (Sistemas Operativos)"
     ],
     [
         "Dime que polvo tienes y te diré que arquitectura usas",
@@ -232,7 +232,7 @@ var fortunas = [
     ],
     [
         "Pero no os calleis como putas", 
-        "Prefiero dejarlo en el anonimato"
+        "Anónimo"
     ],
     [
         "Vengo a ofrecerme a dar clases y me dicen: pues vas a dar clases de UML. ¡Pero qué coño! Si no tengo ni idea de UML. Así que si me veis que dudo, es porque no tengo mucha idea de esta asignatura. Las dudas, si es necesario se las pasaré a Vicente y luego os doy la respuesta",
@@ -663,7 +663,7 @@ var fortunas = [
         "Almudena Alcaide (Usa la fuerza, Cesar)"
     ],
     [
-        "«fish» además de pez significa pescar (así de simple es la gramática inglesa), de modo que fish:// sería pescar://. Algo así como decirle al navegador: «péscame ese pedaasso dearchivorr!!» Si el programata hubiera sido español igual hubiera puesto plgdtm:// (Por la Grooria de Tu Mare)",
+        "\"fish\" además de pez significa pescar (así de simple es la gramática inglesa), de modo que fish:// sería pescar://. Algo así como decirle al navegador: \"péscame ese pedaasso dearchivorr!!\" Si el programata hubiera sido español igual hubiera puesto plgdtm:// (Por la Grooria de Tu Mare)",
         "Igor (en la lista de correo)"
     ],
     [
@@ -675,7 +675,7 @@ var fortunas = [
         "JEDA (Película de terror)"
     ],
     [
-        "Imagínate que te dicen: «Oye, que la función del Office no me sale.» Que bonito llegar allí y enseñarselo, ¿no? Sobre todo si es una tia. En mi caso, claro.",
+        "Imagínate que te dicen: \"Oye, que la función del Office no me sale.\" Que bonito llegar allí y enseñarselo, ¿no? Sobre todo si es una tia. En mi caso, claro.",
         "JEDA"
     ],
     [
