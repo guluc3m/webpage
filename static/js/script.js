@@ -25,18 +25,35 @@ function formatFortunas(quote, author) {
         // remove trailing '.'
         if (
             quote.charAt(quote.length - 1) == "." &&
-            (quote.length > 3 && quote.substring(quote.length - 3, quote.length) != "...")  // no es '...'
+            (
+                quote.length > 3 &&
+                quote.substring(quote.length - 3, quote.length) != "..."
+            )  // no es '...'
         ) {
             quote = quote.slice(0, -1)
         }
 
+        // replace '«', '»'
+        quote = quote.replace("«", "\"")
+        quote = quote.replace("»", "\"")
+
+
         // añadir comillas guays
 
-        // prevenir que se apliquen al setup (*Uno que pasaba* Y le dije...)
+        // prevenir que se apliquen al setup/punchline (*Uno que pasaba* Y le dije...)
         let first = quote.indexOf("*")
         let last = quote.lastIndexOf("*")
-        if (first == 0 && first != last) {
-            quote = quote.substring(first, last + 2) + "«" + quote.substring(last + 2, quote.length + 1) + "»"
+        if (first >= 0 && first != last) {
+            if (first == 0) {
+                // prevenir al inicio
+                quote = quote.substring(first, last + 1) + "\n" +
+                        "«" + quote.substring(last + 2, quote.length) + "»"
+            }
+            else if (last == quote.length - 1) {
+                // prevenir al final
+                quote = "«" + quote.substring(0, first - 1) + "»" +
+                        "\n" + quote.substring(first, quote.length)
+            }
         }
         else {
             quote = "«" + quote + "»"
