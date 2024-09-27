@@ -831,7 +831,11 @@ var fortunas = [
         "Carlos Galán (Aspectos Legales y Éticos de la Ingeniería Informática)"
     ],
     [
-        "Aclaración: es \"Ley de Amdahl\", no \"Ley de Gandalf\"",
+        "Aclaración: es \"Ley de Amdahl\", no \"Ley de Gandalf\".",
+        "Javier García (Computación de Altas Prestaciones)"
+    ],
+    [
+        "En vez de usar \"patrón maestro-esclavo\", ya que es un término poco inclusivo, usaremos \"patrón profesor-becario\".",
         "Javier García (Computación de Altas Prestaciones)"
     ]
 ]
