@@ -841,5 +841,9 @@ var fortunas = [
     [
         "Todo se lo copian a Ada.",
         "Jesús Carretero (Computación de Altas Prestaciones)"
+    ],
+    [
+        "Los ingenieros estamos acostumbrados a sufrir. Los del Atleti ni te cuento",
+        "Carlos Galán (Aspectos Legales y Éticos de la Ingeniería Informática)"
     ]
 ]
