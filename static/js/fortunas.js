@@ -849,5 +849,17 @@ var fortunas = [
     [
         "Los ingenieros estamos acostumbrados a sufrir. Los del Atleti ni te cuento",
         "Carlos Galán (Aspectos Legales y Éticos de la Ingeniería Informática)"
+    ],
+    [
+        "Tenemos que ver qué tipo de avión queremos: si va a ser de carga, si va a ser de pajeros... pasajeros...",
+        "Antonio De Amescua (Dirección de Proyectos en Ingeniería Informática)"
+    ],
+    [
+        "No me hago responsable de lo que haya ahí dentro. Si lo buscáis, lo vais a encontrar. Me refiero a porno.",
+        "Javier García (Computación de Altas Prestaciones)"
+    ],
+    [
+        "Yo soy un hombre con recursos. Soy el MacGyver de ARCOS.",
+        "Javier García (Computación de Altas Prestaciones)"
     ]
 ]
