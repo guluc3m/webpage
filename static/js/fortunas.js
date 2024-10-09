@@ -755,6 +755,10 @@ var fortunas = [
         "Carlos Linares (Heurística y Optimización)"
     ],
     [
+        "Si decimos que 0 es un numero natural, el 0 se pone muy contento por que ya es un numero natural.",
+        "Carlos Linares (Heurística y Optimización)"
+    ],
+    [
         "Mutex. Es un buen nombre para un perro.",
         "David Expósito (Sistemas Operativos)"
     ],
