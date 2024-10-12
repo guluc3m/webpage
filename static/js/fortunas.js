@@ -861,5 +861,13 @@ var fortunas = [
     [
         "Yo soy un hombre con recursos. Soy el MacGyver de ARCOS.",
         "Javier García (Computación de Altas Prestaciones)"
+    ],
+    [
+        "Sólo odio tres cosas: los taxistas, los \"cripto-bros\", y Python.",
+        "Javier García (Computación de Altas Prestaciones)"
+    ],
+    [
+        "El estado no debería existir",
+        "Jose Antonio y la programación"
     ]
 ]
