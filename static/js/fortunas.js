@@ -869,5 +869,21 @@ var fortunas = [
     [
         "El estado no debería existir",
         "Jose Antonio y la programación"
+    ],
+    [
+        "Si eran coprimos, su inverso era el mismo.\n...\nA mi estas cosas me ponen.",
+        "Daniel Garzon (Criptografía y seguridad informática)"
+    ],
+    [
+        "Os estoy enseñando casos en los que solo se me produce un 1.\n...\nEstos casos me ponen, luego os explicaré por que.",
+        "Daniel Garzon (Criptografía y seguridad informática)"
+    ],
+    [
+        "Un generador que me produce todo el conjunto reducido de restos.\n...\nEsto, me vuelve a poner.",
+        "Daniel Garzon (Criptografía y seguridad informática)"
+    ],
+    [
+        "Vamos a hablar de los gaussianos, no gamusinos, gaussianos",
+        "Daniel Garzon (Criptografía y seguridad informática)"
     ]
 ]
