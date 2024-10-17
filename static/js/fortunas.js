@@ -885,5 +885,9 @@ var fortunas = [
     [
         "Vamos a hablar de los gaussianos, no gamusinos, gaussianos",
         "Daniel Garzon (Criptografía y seguridad informática)"
+    ],
+    [
+        "También tenemos los lenguajes de alto nivel, como Python y Rust.",
+        "Angel Hernandez Bravo (Estructura de computadores)"
     ]
 ]
