@@ -827,10 +827,6 @@ var fortunas = [
         "Javier García (Computación de Altas Prestaciones)"
     ],
     [
-        "¿Aspectos éticos? ¿Que yo os voy a enseñar ética a vosotros? ¡Y una mierda!",
-        "Carlos Galán (Aspectos Legales y Éticos de la Ingeniería Informática)"
-    ],
-    [
         "Y me dice el rector \"Me parece bien, pero hagamos la prueba en un campus que no nos lo quemen si sale mal\". Y lo llevamos a Colmenarejo.",
         "Carlos Galán (Aspectos Legales y Éticos de la Ingeniería Informática)"
     ],
@@ -893,5 +889,9 @@ var fortunas = [
     [
         "Si me toca enseñaros OpenGL, me pego un tiro.",
         "Javier García (Computación de Altas Prestaciones)"
+    ],
+    [
+        "Primero está Dios, y luego están los ingenieros de caminos. Y a veces, al contrario.",
+        "Carlos Galán (Aspectos Legales y Éticos de la Ingeniería Informática)"
     ]
 ]
