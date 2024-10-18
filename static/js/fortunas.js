@@ -871,15 +871,15 @@ var fortunas = [
         "Jose Antonio y la programación"
     ],
     [
-        "Si eran coprimos, su inverso era el mismo.\n...\nA mi estas cosas me ponen.",
+        "Si eran coprimos, su inverso era el mismo... A mi estas cosas me ponen.",
         "Daniel Garzon (Criptografía y seguridad informática)"
     ],
     [
-        "Os estoy enseñando casos en los que solo se me produce un 1.\n...\nEstos casos me ponen, luego os explicaré por que.",
+        "Os estoy enseñando casos en los que solo se me produce un 1... Estos casos me ponen, luego os explicaré por que.",
         "Daniel Garzon (Criptografía y seguridad informática)"
     ],
     [
-        "Un generador que me produce todo el conjunto reducido de restos.\n...\nEsto, me vuelve a poner.",
+        "Un generador que me produce todo el conjunto reducido de restos... Esto, me vuelve a poner.",
         "Daniel Garzon (Criptografía y seguridad informática)"
     ],
     [
@@ -889,5 +889,9 @@ var fortunas = [
     [
         "También tenemos los lenguajes de alto nivel, como Python y Rust.",
         "Angel Hernandez Bravo (Estructura de computadores)"
+    ],
+    [
+        "Si me toca enseñaros OpenGL, me pego un tiro.",
+        "Javier García (Computación de Altas Prestaciones)"
     ]
 ]
