@@ -893,5 +893,13 @@ var fortunas = [
     [
         "Primero está Dios, y luego están los ingenieros de caminos. Y a veces, al contrario.",
         "Carlos Galán (Aspectos Legales y Éticos de la Ingeniería Informática)"
+    ],
+    [
+        "Y aquí es donde os voy a follar la mente ahora...",
+        "Javier García (Computación de Altas Prestaciones)"
+    ],
+    [
+        "No son buenos, pero son necesarios. Iba a hacer un chiste sobre el tacto rectal, pero bueno.",
+        "Javier García (Computación de Altas Prestaciones)"
     ]
 ]
