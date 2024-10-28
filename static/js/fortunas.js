@@ -905,5 +905,9 @@ var fortunas = [
     [
         "¿Que vamos a usar chat?",
         "Daniel Garzon (Criptografía y seguridad informática)"
+    ],
+    [
+        "A mi me encantan los legos, mi casa esta llena de legos, mi cama también lo esta, ¿queréis ver mis legos?",
+        "Javier García (Estructura de computadores)"
     ]
 ]
