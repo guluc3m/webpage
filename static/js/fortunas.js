@@ -901,5 +901,9 @@ var fortunas = [
     [
         "No son buenos, pero son necesarios. Iba a hacer un chiste sobre el tacto rectal, pero bueno.",
         "Javier García (Computación de Altas Prestaciones)"
+    ],
+    [
+        "¿Que vamos a usar chat?",
+        "Daniel Garzon (Criptografía y seguridad informática)"
     ]
 ]
