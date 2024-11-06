@@ -909,5 +909,17 @@ var fortunas = [
     [
         "A mi me encantan los legos, mi casa esta llena de legos, mi cama también lo esta, ¿queréis ver mis legos?",
         "Javier García (Estructura de computadores)"
+    ],
+    [
+        "Un kernel lo hace un mono entrenao. No os estoy mirando, he dicho un mono entrenao.",
+        "Javier García (Estructura de computadores)"
+    ],
+    [
+        "Son estructuras de datos complejas que hacen los físicos entre porro y porro.",
+        "Javier García (Estructura de computadores)"
+    ],
+    [
+        "No quiero ser un teleco muerde-antenas.",
+        "Javier García (Estructura de computadores)"
     ]
 ]
