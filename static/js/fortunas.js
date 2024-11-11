@@ -925,5 +925,8 @@ var fortunas = [
     [
         "En su día lo implementé en C++, no sé por qué. Era joven, necesitaba dinero...",
         "Javier García (Estructura de computadores)"
-    ]
+    ],
+    [
+        "Rust esta bien",
+        "José (en el fondo le encanta)"
 ]
