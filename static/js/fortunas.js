@@ -928,5 +928,6 @@ var fortunas = [
     ],
     [
         "Rust esta bien",
-        "José (en el fondo le encanta)"
+        "Jose Antonio (en el fondo le encanta)"
+    ]
 ]
