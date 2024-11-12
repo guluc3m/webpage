@@ -933,5 +933,21 @@ var fortunas = [
     [
         "Es muy grande, pensaba que iba a ser más pequeño",
         "José Antonio"                            // Me han obligado
+    ],
+    [
+        "Buscad a una señora con un bebé en Twitter\nSi no la encontraís buscad un bebé... Por ejemplo, me he traído un bebé...",
+        "Roberto (Sistemas Interactivos y Ubicuos)"
+    ],
+    [
+        "Que un minmundi estúpido lo pueda entender",
+        "Antonio Nappa (Ciberseguridad)"
+    ],
+    [
+        "Depende de vuestro nivel de masoquismo, sadismo...",
+        "Antonio Nappa (Ciberseguridad) (Hablando de tmux y vim)"
+    ],
+    [
+        "La inteligencia artificial es como el método de Montecarlo.\nTira cosas y hace cosas.",
+        "Un chaval de industriales"
     ]
 ]
