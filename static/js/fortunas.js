@@ -928,6 +928,10 @@ var fortunas = [
     ],
     [
         "Rust esta bien",
-        "Jose Antonio (en el fondo le encanta)"
+        "José Antonio (en el fondo le encanta)"    // Esto es mentira, pero bueno.
+    ],
+    [
+        "Es muy grande, pensaba que iba a ser más pequeño",
+        "José Antonio"                            // Me han obligado
     ]
 ]
