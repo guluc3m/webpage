@@ -719,10 +719,6 @@ var fortunas = [
         "Marcelo Bagnalio (Redes de Ordenadores)"
     ],
     [
-        "Programar es diseñar una solución a un problema y explicarlo de una forma tan simple que lo entienda esta mesa.",
-        "Carlos Linares (Heurística y Optimización)"
-    ],
-    [
         "A vosotros os ponen las matemáticas.",
         "Casti (Empresariales)"
     ],
@@ -928,7 +924,7 @@ var fortunas = [
     ],
     [
         "Rust esta bien",
-        "José Antonio (en el fondo le encanta)"    // Esto es mentira, pero bueno.
+        "José Antonio (en el fondo le encanta)"    // Esto es mentira, pero es verdad que lo dije.
     ],
     [
         "Es muy grande, pensaba que iba a ser más pequeño",
@@ -949,5 +945,13 @@ var fortunas = [
     [
         "La inteligencia artificial es como el método de Montecarlo.\nTira cosas y hace cosas.",
         "Un chaval de industriales"
+    ],
+    [
+        "*Hablando del minado en blockchain* Pero ahora con la IA, ¿no puedes pedirle que te resuelva el hash?",  // casi me lo cargo
+        "Máster en Ingeniería Circular"
+    ],
+    [
+        "El black friday hacking monday in the morning",
+        "Carlos Galán (Aspectos Legales y Éticos de la Ingeniería Informática)"
     ]
 ]
