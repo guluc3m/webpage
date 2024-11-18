@@ -953,5 +953,9 @@ var fortunas = [
     [
         "El black friday hacking monday in the morning",
         "Carlos Galán (Aspectos Legales y Éticos de la Ingeniería Informática)"
+    ],
+    [
+        "En la clase de Agapito, I.A., I.A.O. ...",
+        "Canción popular (Inteligencia Artificial en las Organizaciones)"
     ]
 ]
