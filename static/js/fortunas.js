@@ -931,7 +931,7 @@ var fortunas = [
         "José Antonio"                            // Me han obligado
     ],
     [
-        "Buscad a una señora con un bebé en Twitter\nSi no la encontraís buscad un bebé... Por ejemplo, me he traído un bebé...",
+        "Buscad a una señora con un bebé en Twitter. Si no la encontraís, buscad un bebé... Por ejemplo, me he traído un bebé...",
         "Roberto (Sistemas Interactivos y Ubicuos)"
     ],
     [
@@ -939,11 +939,11 @@ var fortunas = [
         "Antonio Nappa (Ciberseguridad)"
     ],
     [
-        "Depende de vuestro nivel de masoquismo, sadismo...",
-        "Antonio Nappa (Ciberseguridad) (Hablando de tmux y vim)"
+        "*Hablando de tmux y vim* Depende de vuestro nivel de masoquismo, sadismo...",
+        "Antonio Nappa (Ciberseguridad)"
     ],
     [
-        "La inteligencia artificial es como el método de Montecarlo.\nTira cosas y hace cosas.",
+        "La inteligencia artificial es como el método de Montecarlo: tira cosas y hace cosas.",
         "Un chaval de industriales"
     ],
     [
