@@ -957,5 +957,13 @@ var fortunas = [
     [
         "En la clase de Agapito, I.A., I.A.O. ...",
         "Canción popular (Inteligencia Artificial en las Organizaciones)"
+    ],
+    [
+        "Antiguamente, con estándares de wifi mas antiguos, uno sabía cuando era la hora de comer.",
+        "Pedro (Redes de ordenadores)"
+    ],
+    [
+        "Vosotros mismos corregireis los trabajos de los demás, y teneis que tener un poco de ética. Si mi amigo es un paquete es un paquete. Nos tomamos algo, pero eres un paquete tio.",
+        "Daniel Garzon (Criptografía y seguridad informática)"
     ]
 ]
