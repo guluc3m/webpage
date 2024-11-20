@@ -965,5 +965,17 @@ var fortunas = [
     [
         "Vosotros mismos corregireis los trabajos de los demás, y teneis que tener un poco de ética. Si mi amigo es un paquete es un paquete. Nos tomamos algo, pero eres un paquete tio.",
         "Daniel Garzon (Criptografía y seguridad informática)"
+    ],
+    [
+        "A partir de esto, leyendolo como un manga del fin al principio",
+        "Antonio Nappa (Ciberseguridad)"
+    ],
+    [
+        "Los niños, que no hacen nada, no los puedo poner a trabajar",
+        "José Antonio"
+    ],
+    [
+        "Linux Manjaro es como Hanahh Montanah: lo mejor de ambos mundos",
+        "Milei-lover"
     ]
 ]
