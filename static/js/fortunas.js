@@ -975,7 +975,11 @@ var fortunas = [
         "José Antonio"
     ],
     [
-        "Linux Manjaro es como Hanahh Montanah: lo mejor de ambos mundos",
+        "Linux Manjaro es como Hannah Montana: lo mejor de ambos mundos",
         "Milei-lover"
+    ],
+    [
+        "¿Te has cortado el pelo, o te ha crecido la cabeza?",
+        "Carlos Galán (Aspectos Legales y Éticos de la Ingeniería Informática)"
     ]
 ]
