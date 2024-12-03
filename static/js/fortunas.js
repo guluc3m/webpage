@@ -981,5 +981,9 @@ var fortunas = [
     [
         "¿Te has cortado el pelo, o te ha crecido la cabeza?",
         "Carlos Galán (Aspectos Legales y Éticos de la Ingeniería Informática)"
+    ],
+    [
+        "No te irás del despacho del GUL sin haber aprendido una cosa más de Linux",
+        "Alguien no del GUL"
     ]
 ]
