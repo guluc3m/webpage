@@ -985,5 +985,9 @@ var fortunas = [
     [
         "No te irás del despacho del GUL sin haber aprendido una cosa más de Linux",
         "Alguien no del GUL"
+    ],
+    [
+        "Al inicio la teoría era sólamente teórica, pero al aplicarlo era más complicado",
+        "Anónimo"
     ]
 ]
