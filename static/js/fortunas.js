@@ -989,5 +989,9 @@ var fortunas = [
     [
         "Al inicio la teoría era sólamente teórica, pero al aplicarlo era más complicado",
         "Anónimo"
+    ],
+    [
+        "Eso es, Arquitectura me la pone dura",
+        "Anónimo"  // Jesús Carretero
     ]
 ]
