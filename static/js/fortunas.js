@@ -997,5 +997,29 @@ var fortunas = [
     [
         "¿Tenéis que venir los dos días? Pues jo, me haría mucha ilusión...",
         "Anabel Fraga (Calidad de Software)"
+    ],
+    [
+        "Eliges un umbral y luego te lo metes por el culo",
+        "Jose Luis Blanco (Profesor de la UPM)"
+    ],
+    [
+        "Es un reporte automatico que no entiendo que significa, pero segun entiendo la teoria es normal que ocurra. Vamos, que no tengo ni puta idea, pero no creo que sea algo malo.",
+        "Banga"
+    ],
+    [
+        "*Hablando sobre las ayudas económicas a asociaciones*\n- \"El plazo de presentacion acaba pasado mañana y el correo lo mandaron hoy\"\n+ \"Nono, hay hasta octubre\"\n- \"Dani, estamos en octubre\"+ \"Tremendos hijos de p***\"",
+        "Banga y Danié"
+    ],
+    [
+        "La sociedad de la informacion y sus consecuencias han sido terribles para la raza humana",
+        "Banga"
+    ],
+    [
+        "Yo quería aprobar a 3 de 43 y me han obligado a aprobar 6 de 43",
+        "Jose Luis Blanco (UPM)"
+    ],
+    [
+        "La memoria muscular no falla, la otra, ya tal..."
+        "El Presi (2022) escribiendo contraseñas"
     ]
 ]
