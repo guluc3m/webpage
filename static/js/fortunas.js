@@ -993,5 +993,9 @@ var fortunas = [
     [
         "Eso es, Arquitectura me la pone dura",
         "Anónimo"  // Jesús Carretero
+    ],
+    [
+        "¿Tenéis que venir los dos días? Pues jo, me haría mucha ilusión...",
+        "Anabel Fraga (Calidad de Software)"
     ]
 ]
