@@ -1019,7 +1019,11 @@ var fortunas = [
         "Jose Luis Blanco (UPM)"
     ],
     [
-        "La memoria muscular no falla, la otra, ya tal..."
+        "La memoria muscular no falla, la otra, ya tal...",
         "El Presi (2022) escribiendo contraseñas"
+    ],
+    [
+        "El problema de C++ es C, debería ser simplemente ++",
+        "Luisda"
     ]
 ]
