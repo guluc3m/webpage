@@ -1025,5 +1025,8 @@ var fortunas = [
     [
         "El problema de C++ es C, debería ser simplemente ++",
         "Luisda"
-    ]
+    ],
+    [
+        "Creo que después de los judios es lo peor que le ha pasado a la humanidad",
+        "Danié hablando sobre NodeJS"
 ]
