@@ -1011,11 +1011,11 @@ var fortunas = [
         "Banga y Danié"
     ],
     [
-        "La sociedad de la informacion y sus consecuencias han sido terribles para la raza humana",
+        "La sociedad de la información y sus consecuencias han sido terribles para la raza humana",
         "Banga"
     ],
     [
-        "Yo quería aprobar a 3 de 43 y me han obligado a aprobar 6 de 43",
+        "Yo quería aprobar a 3 de 43 y me han obligado a aprobar a 6 de 43",
         "Jose Luis Blanco (UPM)"
     ],
     [
@@ -1027,6 +1027,15 @@ var fortunas = [
         "Luisda"
     ],
     [
-        "Creo que después de los judios es lo peor que le ha pasado a la humanidad",
+        "Creo que, después de los judios, es lo peor que le ha pasado a la humanidad",
         "Danié hablando sobre NodeJS"
+    ],
+    [
+        "Profesor: \"¿Alguien toma apuntes?\"\nAlumno: \"Yo\"\nP: \"¿Y por qué diapositiva nos quedamos?\"\nA: \"Por la 43... no, no, es broma, no lo he apuntado\"",
+        "Máster en Ingeniería Informática"
+    ],
+    [
+        "El GUL, el Grupo de Usuarios de LaTeX",
+        "Alguien no del GUL"
+    ]
 ]
