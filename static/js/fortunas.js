@@ -1037,5 +1037,9 @@ var fortunas = [
     [
         "El GUL, el Grupo de Usuarios de LaTeX",
         "Alguien no del GUL"
+    ],
+    [
+        "Ada es como la Alemania nazi",
+        "Jose Antonio y sus vacas"
     ]
 ]
