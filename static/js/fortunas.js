@@ -1041,5 +1041,9 @@ var fortunas = [
     [
         "Ada es como la Alemania nazi",
         "Jose Antonio y sus vacas"
+    ],
+    [
+        "Lusida: \"¿Entonces, a que hora te paso a recoger?\"\nJose: \"Valeee\"",
+        "Jose Antonio aún con la cabeza en C++"
     ]
 ]
