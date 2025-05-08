@@ -1053,5 +1053,9 @@ var fortunas = [
     [
         "Bueno aquí puede que haya una de más de 20, pero no nos interesa",
         "Anónimo"
+    ],
+    [
+        "Me gusta GNOME por el logo",
+        "Luisda"
     ]
 ]
