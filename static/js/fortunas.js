@@ -1049,5 +1049,9 @@ var fortunas = [
     [
         "Taiwan es el paraíso de la silicona",
         "Albert"
+    ],
+    [
+        "Bueno aquí puede que haya una de más de 20, pero no nos interesa",
+        "Anónimo"
     ]
 ]
