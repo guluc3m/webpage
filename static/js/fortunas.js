@@ -1045,5 +1045,9 @@ var fortunas = [
     [
         "Lusida: \"¿Entonces, a que hora te paso a recoger?\"\nJose: \"Valeee\"",
         "Jose Antonio aún con la cabeza en C++"
+    ], 
+    [
+        "Taiwan es el paraíso de la silicona",
+        "Albert"
     ]
 ]
