@@ -1059,7 +1059,7 @@ var fortunas = [
         "Luisda"
     ],
     [
-        "Cuando es tu mierda,\nno dices que es una mierda,\ndices que es un abono,\nun buen abono para las plantas,\npara que crezcan.",
+        "Cuando es tu mierda, no dices que es una mierda. Dices que es un abono, un buen abono para las plantas, para que crezcan.",
         "Alejando Calderón"
     ]
 ]
