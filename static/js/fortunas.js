@@ -1057,5 +1057,9 @@ var fortunas = [
     [
         "Me gusta GNOME por el logo",
         "Luisda"
+    ],
+    [
+        "Cuando es tu mierda,\nno dices que es una mierda,\ndices que es un abono,\nun buen abono para las plantas,\npara que crezcan.",
+        "Alejando Calderón"
     ]
 ]
