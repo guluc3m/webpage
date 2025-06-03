@@ -1061,5 +1061,9 @@ var fortunas = [
     [
         "Cuando es tu mierda, no dices que es una mierda. Dices que es un abono, un buen abono para las plantas, para que crezcan.",
         "Alejando Calderón"
+    ],
+    [
+        "Yo cobro una miseria y mi jefe un dineral, por eso echo truños en horario laboral",
+        "Jorge GMAC"
     ]
 ]
