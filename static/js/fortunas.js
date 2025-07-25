@@ -1065,5 +1065,9 @@ var fortunas = [
     [
         "Yo cobro una miseria y mi jefe un dineral, por eso echo truños en horario laboral",
         "Jorge GMAC"
+    ],
+    [
+        "En esta universidad somos todos racistas, usamos 'Master' en vez de 'Main'",
+        "Jose Antonio"
     ]
 ]
