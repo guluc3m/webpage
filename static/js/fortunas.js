@@ -1069,5 +1069,9 @@ var fortunas = [
     [
         "En esta universidad somos todos racistas, usamos 'Master' en vez de 'Main'",
         "Jose Antonio"
+    ],
+    [
+        "Esto queda muy bonito, esto me pone",
+        "Jose Antonio hablando sobre las secciones de su TFG"
     ]
 ]
