@@ -1073,5 +1073,9 @@ var fortunas = [
     [
         "Esto queda muy bonito, esto me pone",
         "Jose Antonio hablando sobre las secciones de su TFG"
+    ],
+    [
+        "Viva la Union Europea que nos ha traido tapones que se te clavan en la nariz y banners en los buscadores",
+        "Juan Manuel Estevez Tapiador"
     ]
 ]
