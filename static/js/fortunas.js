@@ -1081,5 +1081,9 @@ var fortunas = [
     [
         "Esto es ccomo compilar el kernel de Linux estando borracho",
         "José Maria de Fuentes García-Romero de Tejada, aka Chema"
+    ],
+    [
+        "Esto lo ponéis en las encuestas, el profesor sabe levantar la ceja y hacer el pajarito",
+        "José Maria de Fuentes García-Romero de Tejada, aka Chema"
     ]
 ]
