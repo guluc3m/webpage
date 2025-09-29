@@ -1078,4 +1078,8 @@ var fortunas = [
         "Viva la Union Europea que nos ha traido tapones que se te clavan en la nariz y banners en los buscadores",
         "Juan Manuel Estevez Tapiador"
     ]
+    [
+        "Esto es ccomo compilar el kernel de Linux estando borracho",
+        "José Maria de Fuentes García-Romero de Tejada, aka Chema"
+    ]
 ]
