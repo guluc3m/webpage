@@ -1067,7 +1067,7 @@ var fortunas = [
         "Jorge GMAC"
     ],
     [
-        "En esta universidad somos todos racistas, usamos 'Master' en vez de 'Main'",
+        "En esta universidad somos todos racistas, usamos 'master' en vez de 'main'",
         "Jose Antonio"
     ],
     [
@@ -1079,11 +1079,15 @@ var fortunas = [
         "Juan Manuel Estevez Tapiador"
     ],
     [
-        "Esto es ccomo compilar el kernel de Linux estando borracho",
+        "Esto es como compilar el kernel de Linux estando borracho",
         "José Maria de Fuentes García-Romero de Tejada, aka Chema"
     ],
     [
         "Esto lo ponéis en las encuestas, el profesor sabe levantar la ceja y hacer el pajarito",
         "José Maria de Fuentes García-Romero de Tejada, aka Chema"
+    ],
+    [
+        "Que Dios te lo pague, porque yo no lo voy a hacer",
+        "Jose Antonio"
     ]
 ]
