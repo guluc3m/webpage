@@ -1089,5 +1089,9 @@ var fortunas = [
     [
         "Que Dios te lo pague, porque yo no lo voy a hacer",
         "Jose Antonio"
+    ],
+    [
+        "¿Lo habéis entendido? . . . Es probable que me inmole en los próximos minutos",
+        "José Maria de Fuentes García-Romero de Tejada, aka Chema"
     ]
 ]
