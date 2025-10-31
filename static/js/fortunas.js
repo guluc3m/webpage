@@ -1095,7 +1095,7 @@ var fortunas = [
         "José Maria de Fuentes García-Romero de Tejada, aka Chema"
     ],
     [
-        "Como no saqueis todos un 10, no os voy a enseñar mi pajarito, os lo teneis que ganar"
+        "Como no saqueis todos un 10, no os voy a enseñar mi pajarito, os lo teneis que ganar",
         "José Maria de Fuentes García-Romero de Tejada, aka Chema"
     ],
     [
