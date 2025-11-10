@@ -1101,5 +1101,9 @@ var fortunas = [
     [
         "Mi correo este finde parecía AliExpress, sólo me escribían chinos",
         "Profesor anónimo"
+    ],
+    [
+        "Este programa con comportamiento indefinido devuelve 1, 43 o termina por lanzar los misiles del Korea del norte",
+        "JD explicando las carreras de datos"
     ]
 ]
