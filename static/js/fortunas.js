@@ -1105,5 +1105,9 @@ var fortunas = [
     [
         "Este programa con comportamiento indefinido devuelve 1, 43 o termina por lanzar los misiles del Korea del norte",
         "JD explicando las carreras de datos"
+    ],
+    [
+        "Pero los de AISC comen pegamento",
+        "Jose Antonio"
     ]
 ]
