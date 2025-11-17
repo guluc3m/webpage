@@ -1109,5 +1109,9 @@ var fortunas = [
     [
         "Pero los de AISC comen pegamento",
         "Jose Antonio"
+    ],
+    [
+        "Maria quería ver Bambi 2, pero en vez de bambi se descargó la peli del fontanero sexy",
+        "José Maria de Fuentes García-Romero de Tejada, aka Chema"
     ]
 ]
