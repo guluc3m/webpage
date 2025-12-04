@@ -1125,5 +1125,13 @@ var fortunas = [
     [
         "¿Recursos humanos?, como tal sí los tenemos. Departamento no",
         "Albert Giurgiu"
+    ],
+    [
+        "Escucha, son 30TB, ¿tu sabes la cantidad de porno que podemos guardar ahí?,
+        "Albert Giurgiu"
+    ],
+    [
+        "Soy la Vocal, no la Consonante, a mi dejadme en paz",
+        "Jose Antonio"
     ]
 ]
