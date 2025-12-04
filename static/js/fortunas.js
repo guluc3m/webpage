@@ -1113,5 +1113,9 @@ var fortunas = [
     [
         "Maria quería ver Bambi 2, pero en vez de bambi se descargó la peli del fontanero sexy",
         "José Maria de Fuentes García-Romero de Tejada, aka Chema"
+    ],
+    [
+        "Si no os compila la práctica porque vuestro CMake llama por telefono a tu abuela, no pasa nada",
+        "Carlos Linares"
     ]
 ]
