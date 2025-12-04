@@ -1127,7 +1127,7 @@ var fortunas = [
         "Albert Giurgiu"
     ],
     [
-        "Escucha, son 30TB, ¿tu sabes la cantidad de porno que podemos guardar ahí?,
+        "Escucha, son 30TB, ¿tu sabes la cantidad de porno que podemos guardar ahí?",
         "Albert Giurgiu"
     ],
     [
