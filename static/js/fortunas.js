@@ -1117,5 +1117,13 @@ var fortunas = [
     [
         "Si no os compila la práctica porque vuestro CMake llama por telefono a tu abuela, no pasa nada",
         "Carlos Linares"
+    ],
+    [
+        "Voy a sacarme el doctorado solo para ser el Dr. Matamoros",
+        "Samuel Matamoros"
+    ],
+    [
+        "¿Recursos humanos?, como tal sí los tenemos. Departamento no",
+        "Albert Giurgiu"
     ]
 ]
