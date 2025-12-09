@@ -1133,5 +1133,9 @@ var fortunas = [
     [
         "Soy la Vocal, no la Consonante, a mi dejadme en paz",
         "Jose Antonio"
+    ],
+    [
+        "Las contraseñas se tienen que cambiar más veces que los calzoncillos",
+        "Jose María de Fuentes García-Romero de Tejada, aka Chema"
     ]
 ]
