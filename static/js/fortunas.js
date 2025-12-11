@@ -1137,5 +1137,9 @@ var fortunas = [
     [
         "Las contraseñas se tienen que cambiar más veces que los calzoncillos",
         "Jose María de Fuentes García-Romero de Tejada, aka Chema"
+    ],
+    [
+        "A lo mejor tu madre habla en C++ y tu padre en Haskell",
+        "Carlos Linares"
     ]
 ]
