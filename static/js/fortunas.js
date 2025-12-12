@@ -1141,5 +1141,9 @@ var fortunas = [
     [
         "A lo mejor tu madre habla en C++ y tu padre en Haskell",
         "Carlos Linares"
+    ],
+    [
+        "Un programa con un comportamiento no definido puede hasta dejar embarazada a tu gata, incluso si no tienes gata",
+        "JD"
     ]
 ]
