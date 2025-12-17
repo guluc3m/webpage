@@ -1145,5 +1145,9 @@ var fortunas = [
     [
         "Un programa con un comportamiento no definido puede hasta dejar embarazada a tu gata, incluso si no tienes gata",
         "JD"
+    ],
+    [
+        "me gustan los pies",
+        "Luisda (¿Por que le habían puesto pies a Tux en el blog?)"
     ]
 ]
