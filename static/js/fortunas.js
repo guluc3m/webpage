@@ -1149,5 +1149,9 @@ var fortunas = [
     [
         "me gustan los pies",
         "Luisda (¿Por que le habían puesto pies a Tux en el blog?)"
+    ],
+    [
+        "Bro, necesito ideas para el cartel de la charla de C\nHmmmm, pon la cara de JD....... ok no",
+        "Miguel el \"diseñador gráfico\" y Jorge"
     ]
 ]
