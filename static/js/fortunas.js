@@ -1157,5 +1157,9 @@ var fortunas = [
     [
         "Bro, necesito ideas para el cartel de la charla de C\nHmmmm, pon la cara de JD....... ok no",
         "Miguel el \"diseñador gráfico\" y Jorge"
+    ],
+    [
+        "Aqui no os presenteis con las manos vacías que acabamos a ostias aqui en el laboratorio.",
+        ""
     ]
 ]
