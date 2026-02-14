@@ -1160,7 +1160,7 @@ var fortunas = [
     ],
     [
         "Aqui no os presenteis con las manos vacías que acabamos a ostias aqui en el laboratorio.",
-        ""
+        "Daniel Garzon (Seguridad en dispositivos móviles)"
     ], 
     [
         "Pero yo la tengo levantada de hace más tiempo",
