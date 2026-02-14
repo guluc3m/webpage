@@ -1161,5 +1161,9 @@ var fortunas = [
     [
         "Aqui no os presenteis con las manos vacías que acabamos a ostias aqui en el laboratorio.",
         ""
+    ], 
+    [
+        "Pero yo la tengo levantada de hace más tiempo",
+        "Jorge sobre su \"servidor\""
     ]
 ]
