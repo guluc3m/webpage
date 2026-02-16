@@ -1165,5 +1165,9 @@ var fortunas = [
     [
         "Pero yo la tengo levantada de hace más tiempo",
         "Jorge sobre su \"servidor\""
-    ]
+    ],
+    [
+        "Lo de consultarlo con la es una mierda, a mi me lo entregais el viernes. \n¿Sabeis lo que les pone a los jefes eso? \nLes pone nivel se van al baño a tocarse.",
+        "Daniel Garzon (Seguridad en dispositivos móviles)"
+    ], 
 ]
