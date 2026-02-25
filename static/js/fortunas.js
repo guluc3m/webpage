@@ -1175,7 +1175,11 @@ var fortunas = [
         "Jorge Castañeda"
     ], 
     [
-        "A los del año pasado no les tuve que decir todo esto...\n\n\na lo mejor es que eran mas listos...\n\n\nni confirmo ni desmiento",
+        "A los del año pasado no les tuve que decir todo esto...\n\n\na lo mejor es que eran más listos...\n\n\nni confirmo ni desmiento",
+        "Daniel Garzon (Seguridad en dispositivos móviles)"
+    ],
+    [
+        "¿Habéis visto? Esto es lo que hace un jefe, la culpa es mía, pero se la echo a el.",
         "Daniel Garzon (Seguridad en dispositivos móviles)"
     ],
 ]
