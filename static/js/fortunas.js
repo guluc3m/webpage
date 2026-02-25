@@ -1174,4 +1174,8 @@ var fortunas = [
         "Me voy a auto proclamar rumano",
         "Jorge Castañeda"
     ], 
+        [
+        "A los del año pasado no les tuve que decir todo esto...\n\n\na lo mejor es que eran mas listos...\n\n\nni confirmo ni demiento",
+        "Daniel Garzon (Seguridad en dispositivos móviles)"
+    ],
 ]
