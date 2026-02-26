@@ -1179,7 +1179,11 @@ var fortunas = [
         "Daniel Garzon (Seguridad en dispositivos móviles)"
     ],
     [
-        "¿Habéis visto? Esto es lo que hace un jefe, la culpa es mía, pero se la echo a el.",
+        "¿Habéis visto? Esto es lo que hace un jefe, la culpa es mía, pero se la echo a él.",
         "Daniel Garzon (Seguridad en dispositivos móviles)"
+    ],
+    [
+        "Los motores tienen una peculiaridad, y es que giran.",
+        "Ricardo Hidalgo (IOT)"
     ],
 ]
