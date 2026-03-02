@@ -1189,5 +1189,9 @@ var fortunas = [
     [
         "Mirad, lo que no vais a volver a ver en vuestra vida, un MacBook de 3000€... (5 min más tarde) MacOS es una mierda",
         "Luisda alardeando de su portátil"
+    ],
+    [
+        "Normal que no funcione la wifi, Edu y Roam están tomándose un café",
+        "Edu"
     ]
 ]
