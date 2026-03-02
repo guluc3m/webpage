@@ -1186,4 +1186,8 @@ var fortunas = [
         "Los motores tienen una peculiaridad, y es que giran.",
         "Ricardo Hidalgo (IOT)"
     ],
+    [
+        "Mirad, lo que no vais a volver a ver en vuestra vida, un MacBook de 3000€... (5 min más tarde) MacOS es una mierda",
+        "Luisda alardeando de su portátil"
+    ]
 ]
