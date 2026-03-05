@@ -1193,5 +1193,9 @@ var fortunas = [
     [
         "Normal que no funcione la wifi, Edu y Roam están tomándose un café",
         "Edu"
+    ],
+    [
+        "Un proxy es como un camarero\nNo bro, mejor aún, es una maid de un maid café",
+        "Ethan definiendo un proxy con Miguel"
     ]
 ]
