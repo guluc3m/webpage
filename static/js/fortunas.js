@@ -1197,5 +1197,9 @@ var fortunas = [
     [
         "Un proxy es como un camarero\nNo bro, mejor aún, es una maid de un maid café",
         "Ethan definiendo un proxy con Miguel"
+    ],
+    [
+        "Es más comodo por delante que por detrás",
+        "Maria Paz Sesmero Lorente"
     ]
 ]
