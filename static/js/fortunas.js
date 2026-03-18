@@ -1201,5 +1201,9 @@ var fortunas = [
     [
         "Es más comodo por delante que por detrás",
         "Maria Paz Sesmero Lorente"
+    ],
+    [
+        "Alumno: \"¿Si suspendo el parcial...?\"\nDaniel: No hay huevos",
+        "Daniel Garzon (Seguridad en dispositivos móviles)"
     ]
 ]
