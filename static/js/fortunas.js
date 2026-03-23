@@ -1205,5 +1205,9 @@ var fortunas = [
     [
         "Alumno: \"¿Si suspendo el parcial...?\"\nDaniel: No hay huevos",
         "Daniel Garzon (Seguridad en dispositivos móviles)"
+    ],
+    [
+        "Esto va hacer que se tenga que programar más, y también teneis que cobrar más",
+        "Alejandro Calderón"
     ]
 ]
