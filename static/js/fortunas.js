@@ -1209,5 +1209,9 @@ var fortunas = [
     [
         "Esto va hacer que se tenga que programar más, y también teneis que cobrar más",
         "Alejandro Calderón"
+    ],
+    [
+        "Lo ve gente, pero no la que piratea.\nEl diagrama de Venn son dos tetas",
+        "Luisda hablando sobre First Dates"
     ]
 ]
