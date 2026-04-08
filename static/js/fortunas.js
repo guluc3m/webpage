@@ -1213,5 +1213,9 @@ var fortunas = [
     [
         "Lo ve gente, pero no la que piratea.\nEl diagrama de Venn son dos tetas",
         "Luisda hablando sobre First Dates"
+    ],
+    [
+        "Que cojones que redes ni que mierda, un python, si tienes tanto azucar tanta insulina, ni agentes ni mierdas.",
+        "Daniel Garzon (Seguridad en dispositivos móviles)"
     ]
 ]
