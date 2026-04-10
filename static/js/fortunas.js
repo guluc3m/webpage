@@ -1217,5 +1217,9 @@ var fortunas = [
     [
         "Que cojones que redes ni que mierda, un python, si tienes tanto azucar tanta insulina, ni agentes ni mierdas.",
         "Daniel Garzon (Seguridad en dispositivos móviles)"
+    ],
+    [
+        "Esto si funciona, funciona de churro",
+        "Felix García Carballeira (Sistemas distribuidos)"
     ]
 ]
