@@ -1221,5 +1221,9 @@ var fortunas = [
     [
         "Esto si funciona, funciona de churro",
         "Felix García Carballeira (Sistemas distribuidos)"
+    ],
+    [
+        "Un sistema de ficheros tiene que ser bueno, bonito y barato",
+        "Alejandro Calderón (Sistemas distribuidos)"
     ]
 ]
