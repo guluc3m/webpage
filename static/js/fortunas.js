@@ -1225,5 +1225,9 @@ var fortunas = [
     [
         "Un sistema de ficheros tiene que ser bueno, bonito y barato",
         "Alejandro Calderón (Sistemas distribuidos)"
+    ],
+    [
+        "- A mi me vendió la carrera Calderón. Hizo bien, si no estaría estudiando periodismo.\n- Te salvó de ser un letrasado",
+        "¿Por qué nos hemos metido a informática?"
     ]
 ]
