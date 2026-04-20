@@ -1229,5 +1229,9 @@ var fortunas = [
     [
         "- A mi me vendió la carrera Calderón. Hizo bien, si no estaría estudiando periodismo.\n- Te salvó de ser un letrasado",
         "¿Por qué nos hemos metido a informática?"
+    ],
+    [
+        "Desarrollamos como un corcho virtual en el CERN, para que compartan lo que iban encontrando y que no pierdan el tiempo. Se podría decir que iban \"acelerados\".\n\t...Perdon por el chiste",
+        "Alejandro Calderón (Sistemas distribuidos)"
     ]
 ]
