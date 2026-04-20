@@ -1233,5 +1233,9 @@ var fortunas = [
     [
         "Desarrollamos como un corcho virtual en el CERN, para que compartan lo que iban encontrando y que no pierdan el tiempo. Se podría decir que iban \"acelerados\".\n\t...Perdon por el chiste",
         "Alejandro Calderón (Sistemas distribuidos)"
+    ],
+    [
+        "uptime? no tiene 256 de ram?",
+        "Un muerdeantenas del GUL"
     ]
 ]
