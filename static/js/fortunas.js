@@ -1231,11 +1231,15 @@ var fortunas = [
         "¿Por qué nos hemos metido a informática?"
     ],
     [
-        "Desarrollamos como un corcho virtual en el CERN, para que compartan lo que iban encontrando y que no pierdan el tiempo. Se podría decir que iban \"acelerados\".\n\t...Perdon por el chiste",
+        "Desarrollamos como un corcho virtual en el CERN, para que compartan lo que iban encontrando y que no pierdan el tiempo. Se podría decir que iban \"acelerados\".\n\t... Perdon por el chiste",
         "Alejandro Calderón (Sistemas distribuidos)"
     ],
     [
         "uptime? no tiene 256 de ram?",
+        "Un muerdeantenas del GUL"
+    ],
+    [
+        "Como me brickees el portátil, te muerdo la antena de casa y te quedas sin Internet",
         "Un muerdeantenas del GUL"
     ]
 ]
