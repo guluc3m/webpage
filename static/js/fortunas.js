@@ -1241,5 +1241,9 @@ var fortunas = [
     [
         "Como me brickees el portátil, te muerdo la antena de casa y te quedas sin Internet",
         "Un muerdeantenas del GUL"
+    ],
+    [
+        "Miembro 1: Si quieres 'ricear' puedes hacerte algo chulo con X11 en ordenadores antiguos, rollo i3 esta muy bien\nMiembro 2: i3 el procesador?",
+        "Yet again, el muerdeantenas del GUL"
     ]
 ]
