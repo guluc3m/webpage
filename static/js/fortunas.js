@@ -1245,5 +1245,9 @@ var fortunas = [
     [
         "Miembro 1: Si quieres 'ricear' puedes hacerte algo chulo con X11 en ordenadores antiguos, rollo i3 esta muy bien\nMiembro 2: i3 el procesador?",
         "Yet again, el muerdeantenas del GUL"
+    ],
+    [
+        "Aunque bueno, \"el pelao de software\" no reduce mucho las opciones para distinguir al profesor",
+        "Hugo"
     ]
 ]
