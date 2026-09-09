@@ -1249,5 +1249,8 @@ var fortunas = [
     [
         "Aunque bueno, \"el pelao de software\" no reduce mucho las opciones para distinguir al profesor",
         "Hugo"
+    ],
+        "Para calcular esa cantidad masiva. M A S I V A (jeje) de datos",
+        "Javier Garcia Blas (HPC)"
     ]
 ]
