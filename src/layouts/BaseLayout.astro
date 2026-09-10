@@ -28,7 +28,8 @@ const {
 // Astro.site comes from `site` in astro.config.mjs. Used to build absolute URLs,
 // which Open Graph and the canonical tag require.
 const canonical = new URL(Astro.url.pathname, Astro.site);
-// TODO(assets): og-image.png doesn't exist yet — added in the SEO/assets step.
+// Provisional preview image (1200×630). Replaced with the final design once the
+// visual direction is settled.
 const ogImage = new URL('/og-image.png', Astro.site);
 ---
 

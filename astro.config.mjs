@@ -6,11 +6,15 @@
 // whole deployable — no server. The site is a single static page.
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
   // Canonical origin. Used for <link rel="canonical">, OG tags and sitemap.xml.
   site: 'https://gul.uc3m.es',
+  // Emits sitemap-index.xml (+ sitemap-0.xml) into dist/ at build time. Needs
+  // `site` set above. robots.txt points crawlers at it.
+  integrations: [sitemap()],
   // No SSR. Pages are prerendered at build time. This is the default; pinned
   // explicitly so a stray `getStaticPaths` / adapter change can't flip it.
   output: 'static',

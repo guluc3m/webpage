@@ -1,5 +1,6 @@
 # Served at /robots.txt (files in public/ are copied verbatim to the site root).
 # Fully permissive — no analytics, nothing to hide.
-# TODO(seo): add a `Sitemap:` line when sitemap.xml is generated.
 User-agent: *
 Disallow:
+
+Sitemap: https://gul.uc3m.es/sitemap-index.xml
