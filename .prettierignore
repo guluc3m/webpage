@@ -1,0 +1,9 @@
+# Generated or vendored
+dist/
+.astro/
+node_modules/
+pnpm-lock.yaml
+
+# The live 2021 site, kept only until its content is migrated
+static/
+index.html

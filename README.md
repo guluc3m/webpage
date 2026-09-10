@@ -45,12 +45,12 @@ Abre <http://localhost:4321>. Al guardar un fichero, la página se recarga sola.
 
 ### Comandos
 
-| Comando        | Qué hace                                                                       |
-| -------------- | ----------------------------------------------------------------------------- |
-| `pnpm dev`     | Servidor local con recarga en caliente. Es lo que usas mientras trabajas.     |
-| `pnpm build`   | Genera el sitio final en `dist/` (HTML + CSS + JS ya optimizados).            |
-| `pnpm preview` | Sirve `dist/` tal cual, para revisar el resultado real del `build`.          |
-| `pnpm check`   | Comprueba los tipos de TypeScript y busca errores en los `.astro`.           |
+| Comando        | Qué hace                                                                  |
+| -------------- | ------------------------------------------------------------------------- |
+| `pnpm dev`     | Servidor local con recarga en caliente. Es lo que usas mientras trabajas. |
+| `pnpm build`   | Genera el sitio final en `dist/` (HTML + CSS + JS ya optimizados).        |
+| `pnpm preview` | Sirve `dist/` tal cual, para revisar el resultado real del `build`.       |
+| `pnpm check`   | Comprueba los tipos de TypeScript y busca errores en los `.astro`.        |
 
 Antes de abrir un Pull Request (PR), que pasen `pnpm build` y `pnpm check`.
 
@@ -106,7 +106,9 @@ const cita = fortunas[Math.floor(Math.random() * fortunas.length)];
 <!-- PARTE DE ABAJO: HTML. Las llaves { } insertan valores de la parte de arriba. -->
 <BaseLayout title="GUL UC3M">
   <h1>Hola</h1>
-  <blockquote>{cita.quote} — {cita.author}</blockquote>
+  <blockquote>
+    {cita.quote} — {cita.author}
+  </blockquote>
 </BaseLayout>
 ```
 
@@ -123,6 +125,7 @@ Los componentes viven en `src/components/`. Se importan y se usan como etiquetas
 ---
 import Faq from '../components/Faq.astro';
 ---
+
 <Faq />
 ```
 
@@ -132,14 +135,20 @@ Un **layout** (`src/layouts/`) es un componente que envuelve páginas. Usa
 ```astro
 ---
 // src/layouts/BaseLayout.astro
-interface Props { title: string; }
-const { title } = Astro.props;      // así se reciben los datos que le pasan
+interface Props {
+  title: string;
+}
+const { title } = Astro.props; // así se reciben los datos que le pasan
 import '../styles/global.css';
 ---
+
 <html lang="es">
-  <head><title>{title}</title><!-- meta, Open Graph, favicon… --></head>
+  <head>
+    <title>{title}</title>
+    <!-- meta, Open Graph, favicon… -->
+  </head>
   <body>
-    <slot />   <!-- aquí entra el contenido de la página -->
+    <slot /> <!-- aquí entra el contenido de la página -->
   </body>
 </html>
 ```
@@ -154,8 +163,8 @@ Leaflet, la animación del Juego de la Vida del fondo), se marca con una
 directiva `client:*`:
 
 ```astro
-<Map client:visible />        <!-- carga su JS cuando entra en pantalla -->
-<GameOfLife client:idle />    <!-- carga cuando el navegador está ocioso -->
+<Map client:visible /> <!-- carga su JS cuando entra en pantalla -->
+<GameOfLife client:idle /> <!-- carga cuando el navegador está ocioso -->
 ```
 
 Eso es una «isla»: un trozo interactivo dentro de una página por lo demás
@@ -223,13 +232,13 @@ pone hash al nombre…).
 
 ## Tareas típicas
 
-| Quiero…                          | Toco…                                                        |
-| -------------------------------- | ---------------------------------------------------------- |
-| Añadir una frase a las fortunas  | `src/data/fortunas.json` (una entrada `{ "quote", "author" }`) |
-| Cambiar el texto de una sección  | El componente correspondiente en `src/components/`          |
-| Cambiar colores o fuentes        | El bloque `@theme` de `src/styles/global.css`               |
-| Cambiar meta tags / SEO          | `src/layouts/BaseLayout.astro`                              |
-| Reordenar las secciones          | `src/pages/index.astro`                                     |
+| Quiero…                         | Toco…                                                          |
+| ------------------------------- | -------------------------------------------------------------- |
+| Añadir una frase a las fortunas | `src/data/fortunas.json` (una entrada `{ "quote", "author" }`) |
+| Cambiar el texto de una sección | El componente correspondiente en `src/components/`             |
+| Cambiar colores o fuentes       | El bloque `@theme` de `src/styles/global.css`                  |
+| Cambiar meta tags / SEO         | `src/layouts/BaseLayout.astro`                                 |
+| Reordenar las secciones         | `src/pages/index.astro`                                        |
 
 ---
 
