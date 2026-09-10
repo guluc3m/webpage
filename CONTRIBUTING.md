@@ -11,7 +11,8 @@ requisitos (Node 22, pnpm 11), cómo levantar el entorno y qué hace cada comand
 
 1. Crea una rama desde `web-2026`. Nombre: `tipo/descripcion-corta`
    (`fix/mapa-sin-pin`, `feat/linux-lo-mejor`, `docs/readme-deploy`).
-2. Haz tus cambios. Que sean del tamaño de un PR: una cosa por rama.
+2. Haz tus cambios. Que sean del tamaño de un PR: una cosa por rama. 
+Si no sabes que cambiar, puede buscar en los `TODO()` que están por todos los lados en los comentarios.
 3. Antes de abrir el Pull Request, comprueba que pasa todo:
 
    ```sh

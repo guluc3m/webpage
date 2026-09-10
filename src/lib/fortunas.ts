@@ -5,9 +5,6 @@
  * display text. It runs AT BUILD TIME only (the site is static) — Hero.astro
  * picks one at random while Astro builds the page, so nothing here ships to the
  * browser.
- *
- * Ported from the 2021 site's `formatFortunas` (static/js/script.js). Behaviour
- * kept, with one fix: entries with no author no longer render "— undefined".
  */
 
 export interface Fortuna {
@@ -25,12 +22,7 @@ export interface FormattedFortuna {
 const isMultiline = (s: string): boolean => /\r\n|\r|\n/.test(s);
 
 /**
- * Rules (single-line quotes only — multi-line quotes are left untouched):
- *  - drop a trailing "." but never an ellipsis "..."
- *  - wrap the quote in guillemets «...»
- *  - a `*setup*` / `*action*` span (a joke stage direction) stays OUTSIDE the
- *    guillemets, on its own line. A `*span*` in the middle is left unwrapped,
- *    same as the 2021 code did.
+ * Rules (single-line quotes only — multi-line quotes are left untouched)
  */
 export function formatFortuna({ quote, author }: Fortuna): FormattedFortuna {
   let q = quote;
@@ -40,7 +32,7 @@ export function formatFortuna({ quote, author }: Fortuna): FormattedFortuna {
       q = q.slice(0, -1);
     }
 
-    // Normalise stray guillemets to plain quotes before we add our own.
+    // Normalise stray guillemets to plain quotes.
     q = q.replace('«', '"').replace('»', '"');
 
     const first = q.indexOf('*');
@@ -53,7 +45,6 @@ export function formatFortuna({ quote, author }: Fortuna): FormattedFortuna {
         // *action* at the end — "- 1" drops the space before the "*".
         q = '«' + q.slice(0, first - 1) + '»\n' + q.slice(first);
       }
-      // *span* in the middle: leave as-is (matches 2021 behaviour).
     } else {
       q = `«${q}»`;
     }
