@@ -1,0 +1,24 @@
+/*
+ * Global stylesheet. Imported once, by src/layouts/BaseLayout.astro, so every
+ * page gets it. This is also where Tailwind v4 is configured: v4 has no
+ * tailwind.config.js — the theme (palette, fonts, spacing tokens) lives here in
+ * the @theme block, and it travels with the shared gul- components when they're
+ * copied into other GUL repos.
+ */
+@import 'tailwindcss';
+
+/*
+ * @theme — the curated GUL palette and design tokens.
+ *
+ * PLACEHOLDER. The final visual direction (grey→black gradients from the logo
+ * grey, pixel/retro aesthetic — issue #5) is designed later. For now this only
+ * carries what the scaffold needs to render.
+ *
+ * OI (open issue): fonts. Self-host vs CDN, and which pixel display font +
+ * readable body font, is not decided. Until then we ride Tailwind's default
+ * system stacks (`font-sans` / `font-mono`). Do not pick fonts here without the
+ * maintainer's call.
+ */
+@theme {
+  /* intentionally near-empty for now — see above */
+}

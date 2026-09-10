@@ -1,0 +1,8 @@
+# pnpm settings. This repo is not a monorepo — the file exists only because
+# pnpm 11 moved a few settings here out of package.json.
+#
+# allowBuilds: pnpm blocks dependency install scripts by default. esbuild (pulled
+# in by Astro/Vite) has a legitimate postinstall that fetches its native binary,
+# so it's allowed here. Add an entry only after checking why a package needs it.
+allowBuilds:
+  esbuild: true

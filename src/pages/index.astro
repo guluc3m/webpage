@@ -1,0 +1,24 @@
+---
+// The landing page — and the only page. The whole GUL site is this single
+// document (CLAUDE.md: "a single page"). Its job is to compose the section
+// components in the order fixed by CLAUDE.md; that wiring lands once the
+// components exist. For now it's a bare placeholder that proves the toolchain
+// (Astro + TypeScript + Tailwind) builds.
+import '../styles/global.css';
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GUL UC3M</title>
+  </head>
+  <body>
+    <main class="mx-auto max-w-2xl p-8 font-sans">
+      <h1 class="text-3xl font-bold">GUL UC3M - web 2026</h1>
+      <p class="mt-4 text-neutral-600">
+        Me gustan los pingus. :)
+      </p>
+    </main>
+  </body>
+</html>

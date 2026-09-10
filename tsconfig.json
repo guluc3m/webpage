@@ -1,0 +1,17 @@
+{
+  // TypeScript config for the whole project. Extends Astro's "strict" preset
+  // (which itself turns on `strict: true` and Astro-specific options). The Astro
+  // VS Code extension and `pnpm check` (astro check) both read this file.
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    // Lets .ts/.tsx files resolve `.astro` imports and get IntelliSense for them
+    // in the editor. Harmless for the CLI build.
+    "plugins": [{ "name": "@astrojs/ts-plugin" }]
+  },
+  "include": [".astro/types.d.ts", "**/*"],
+  // dist/ is build output. static/, index.html, robots.txt are the LIVE 2021 site,
+  // kept only until its content is migrated (CLAUDE.md step 14) — excluded here so
+  // its vendored jQuery/Leaflet don't spam the type checker. Delete these two
+  // globs once the old site is removed.
+  "exclude": ["dist", "static", "index.html", "robots.txt"]
+}
