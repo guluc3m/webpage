@@ -1,0 +1,25 @@
+---
+/**
+ * gul-Header — the site header: GUL logo + navigation.
+ *
+ * Shared component (`gul-` prefix) — copied into the other GUL repos. It takes
+ * the nav links as a prop so nothing about *this* site's sections is baked in.
+ *
+ * TODO(design): sticky behaviour, sizing, retro/pixel styling. Scaffold is a
+ * plain bar.
+ */
+import GulNav from './gul-Nav.astro';
+
+interface Props {
+  links: { label: string; href: string }[];
+}
+
+const { links } = Astro.props;
+---
+
+<header class="flex items-center justify-between gap-6 p-4">
+  <a href="/" aria-label="Inicio">
+    <img src="/logo-gul.svg" alt="GUL UC3M" class="h-8 w-auto" />
+  </a>
+  <GulNav links={links} />
+</header>

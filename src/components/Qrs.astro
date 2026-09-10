@@ -1,0 +1,35 @@
+---
+/**
+ * Qrs — QR codes for the two GUL Telegram groups.
+ *
+ * Deliberately QR-only: NO Telegram links anywhere on the site (the point is to
+ * keep bots out of the groups — CLAUDE.md).
+ *
+ * TODO(assets): drop in the real QR images (public/qr-*.png) — supplied by the
+ * maintainers. Placeholder boxes for now.
+ */
+const groups = [
+  { label: 'Grupo general', img: '/qr-general.png' },
+  { label: 'Grupo de avisos', img: '/qr-avisos.png' },
+];
+---
+
+<section id="qrs" class="mx-auto max-w-3xl p-8">
+  <h2 class="text-3xl font-bold">Telegram</h2>
+  <p class="mt-2 text-neutral-700">Escanea para entrar. No hay enlaces: solo QR.</p>
+  <ul class="mt-4 flex flex-wrap gap-6">
+    {groups.map((group) => (
+      <li class="text-center">
+        {/* TODO(assets): real QR — this <img> 404s until then. */}
+        <img
+          src={group.img}
+          alt={`Código QR — ${group.label}`}
+          width="160"
+          height="160"
+          class="border border-neutral-300 bg-neutral-100"
+        />
+        <p class="mt-2 text-sm">{group.label}</p>
+      </li>
+    ))}
+  </ul>
+</section>

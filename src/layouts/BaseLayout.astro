@@ -1,0 +1,57 @@
+---
+/**
+ * BaseLayout — the HTML skeleton every page is wrapped in.
+ *
+ * It owns the <head>: charset, viewport, <title>, meta description, canonical
+ * URL, Open Graph / Twitter card tags and the favicon. Page content goes in the
+ * default <slot />. The site is currently a single page, but this stays a
+ * separate layout so it can be copied into the other GUL repos unchanged.
+ *
+ * Usage:
+ *   <BaseLayout title="…" description="…">…page…</BaseLayout>
+ */
+import '../styles/global.css';
+
+interface Props {
+  /** Goes in <title> and og:title. Keep it short. */
+  title: string;
+  /** Meta description + og:description. One sentence. */
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid.',
+} = Astro.props;
+
+// Astro.site comes from `site` in astro.config.mjs. Used to build absolute URLs,
+// which Open Graph and the canonical tag require.
+const canonical = new URL(Astro.url.pathname, Astro.site);
+// TODO(assets): og-image.png doesn't exist yet — added in the SEO/assets step.
+const ogImage = new URL('/og-image.png', Astro.site);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="canonical" href={canonical} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body class="bg-white text-neutral-900">
+    <slot />
+  </body>
+</html>

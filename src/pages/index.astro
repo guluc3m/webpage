@@ -1,24 +1,41 @@
 ---
-// The landing page — and the only page. The whole GUL site is this single
-// document (CLAUDE.md: "a single page"). Its job is to compose the section
-// components in the order fixed by CLAUDE.md; that wiring lands once the
-// components exist. For now it's a bare placeholder that proves the toolchain
-// (Astro + TypeScript + Tailwind) builds.
-import '../styles/global.css';
+/**
+ * index.astro — the landing page, and the only page (CLAUDE.md: "a single page").
+ *
+ * Its whole job is to lay out the section components in the fixed order. Section
+ * content lives in each component under src/components/, not here. To reorder the
+ * page, reorder these tags.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GulHeader from '../components/gul-Header.astro';
+import GulFooter from '../components/gul-Footer.astro';
+import Hero from '../components/Hero.astro';
+import WhatIsGul from '../components/WhatIsGul.astro';
+import Faq from '../components/Faq.astro';
+import Projects from '../components/Projects.astro';
+import Qrs from '../components/Qrs.astro';
+import WhereWeAre from '../components/WhereWeAre.astro';
+
+// Nav links: in-page anchors match each section's `id`. External service links
+// (/jamon, /ctf, /guia, …) can be added here later — Zoe and Radio are gone.
+const navLinks = [
+  { label: '¿Qué es el GUL?', href: '#que-es-el-gul' },
+  { label: 'FAQ', href: '#faq' },
+  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Telegram', href: '#qrs' },
+  { label: '¿Dónde estamos?', href: '#donde-estamos' },
+];
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GUL UC3M</title>
-  </head>
-  <body>
-    <main class="mx-auto max-w-2xl p-8 font-sans">
-      <h1 class="text-3xl font-bold">GUL UC3M - web 2026</h1>
-      <p class="mt-4 text-neutral-600">
-        Me gustan los pingus. :)
-      </p>
-    </main>
-  </body>
-</html>
+<BaseLayout title="GUL UC3M">
+  <GulHeader links={navLinks} />
+  <main>
+    <Hero />
+    <WhatIsGul />
+    <Faq />
+    <Projects />
+    <Qrs />
+    <WhereWeAre />
+  </main>
+  <GulFooter />
+</BaseLayout>

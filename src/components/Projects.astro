@@ -1,0 +1,30 @@
+---
+/**
+ * Projects — cards, each linking out to the project's own page/repo.
+ *
+ * Only the Typst report template for now (CLAUDE.md); more get added to the
+ * array later.
+ * TODO(copy): real descriptions.
+ */
+const projects = [
+  {
+    name: 'Plantilla de informes Typst',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    href: 'https://github.com/guluc3m/report-template-typst',
+  },
+];
+---
+
+<section id="proyectos" class="mx-auto max-w-3xl p-8">
+  <h2 class="text-3xl font-bold">Proyectos</h2>
+  <ul class="mt-4 grid gap-4 sm:grid-cols-2">
+    {projects.map((project) => (
+      <li class="border border-neutral-300 p-4">
+        <a href={project.href} target="_blank" rel="noopener" class="font-medium">
+          {project.name}
+        </a>
+        <p class="mt-2 text-sm text-neutral-700">{project.description}</p>
+      </li>
+    ))}
+  </ul>
+</section>

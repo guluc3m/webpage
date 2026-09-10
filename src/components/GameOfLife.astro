@@ -1,0 +1,112 @@
+---
+/**
+ * GameOfLife — Conway's Game of Life on a <canvas>, used as the Hero background.
+ *
+ * Constraints (CLAUDE.md):
+ *  - cheap: big cells, low frame rate, no per-pixel work
+ *  - pauses when scrolled out of view (IntersectionObserver)
+ *  - respects `prefers-reduced-motion`: draws one static frame, never animates
+ *
+ * It fills its positioned parent. Put it behind content with absolute positioning
+ * from the parent side.
+ *
+ * TODO(design): colours come from the Tailwind @theme once the palette is set.
+ */
+---
+
+<canvas
+  data-game-of-life
+  aria-hidden="true"
+  class="pointer-events-none absolute inset-0 h-full w-full"
+></canvas>
+
+<script>
+  const CELL = 14; // px per cell — bigger = cheaper
+  const STEP_MS = 120; // ~8 fps is plenty for GoL
+  const FILL = 'rgba(0, 0, 0, 0.14)'; // placeholder until the palette exists
+
+  const canvas = document.querySelector<HTMLCanvasElement>('[data-game-of-life]');
+  const ctx = canvas?.getContext('2d');
+  if (canvas && ctx) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let cols = 0;
+    let rows = 0;
+    let grid: Uint8Array = new Uint8Array(0);
+
+    const idx = (x: number, y: number) => y * cols + x;
+
+    function reset() {
+      // Match the backing store to the element's real size (parent-driven).
+      const { width, height } = canvas!.getBoundingClientRect();
+      canvas!.width = width;
+      canvas!.height = height;
+      cols = Math.max(1, Math.ceil(width / CELL));
+      rows = Math.max(1, Math.ceil(height / CELL));
+      grid = new Uint8Array(cols * rows);
+      for (let i = 0; i < grid.length; i++) grid[i] = Math.random() < 0.3 ? 1 : 0;
+      draw();
+    }
+
+    function step() {
+      const next = new Uint8Array(grid.length);
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          let n = 0;
+          for (let dy = -1; dy <= 1; dy++) {
+            for (let dx = -1; dx <= 1; dx++) {
+              if (dx === 0 && dy === 0) continue;
+              // Toroidal wrap keeps the field alive without edge handling.
+              const nx = (x + dx + cols) % cols;
+              const ny = (y + dy + rows) % rows;
+              n += grid[idx(nx, ny)];
+            }
+          }
+          const alive = grid[idx(x, y)];
+          next[idx(x, y)] = n === 3 || (alive && n === 2) ? 1 : 0;
+        }
+      }
+      grid = next;
+    }
+
+    function draw() {
+      ctx!.clearRect(0, 0, canvas!.width, canvas!.height);
+      ctx!.fillStyle = FILL;
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          if (grid[idx(x, y)]) ctx!.fillRect(x * CELL, y * CELL, CELL - 1, CELL - 1);
+        }
+      }
+    }
+
+    let last = 0;
+    let running = false;
+    let raf = 0;
+    function loop(now: number) {
+      if (!running) return;
+      if (now - last >= STEP_MS) {
+        step();
+        draw();
+        last = now;
+      }
+      raf = requestAnimationFrame(loop);
+    }
+    const start = () => {
+      if (running || reduceMotion) return;
+      running = true;
+      raf = requestAnimationFrame(loop);
+    };
+    const stop = () => {
+      running = false;
+      cancelAnimationFrame(raf);
+    };
+
+    reset();
+    window.addEventListener('resize', reset);
+
+    // Only animate while the canvas is actually on screen.
+    new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop())).observe(
+      canvas,
+    );
+  }
+</script>

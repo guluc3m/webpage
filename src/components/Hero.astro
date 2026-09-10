@@ -1,0 +1,21 @@
+---
+/**
+ * Hero — the first screen. Conway's Game of Life runs as the background
+ * (GameOfLife is positioned absolutely inside this section's relative box).
+ *
+ * TODO(design): the actual hero design is deferred (CLAUDE.md). This is a
+ * placeholder headline over the animation.
+ */
+import GameOfLife from './GameOfLife.astro';
+---
+
+<section id="inicio" class="relative flex min-h-screen items-center overflow-hidden">
+  <GameOfLife />
+  <div class="relative mx-auto max-w-3xl p-8">
+    <h1 class="text-5xl font-bold">GUL UC3M</h1>
+    <p class="mt-4 text-lg text-neutral-700">
+      Grupo de Usuarios de Linux · Universidad Carlos III de Madrid.
+      {/* TODO(copy): tagline real. */}
+    </p>
+  </div>
+</section>

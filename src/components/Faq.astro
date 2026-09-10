@@ -1,0 +1,28 @@
+---
+/**
+ * Faq — frequently asked questions.
+ *
+ * Uses native <details>/<summary> so it works without JavaScript.
+ * TODO(copy): real questions and answers (placeholders for now).
+ */
+const items = [
+  { q: '¿Cómo me apunto al GUL?', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+  {
+    q: '¿Hay que saber Linux?',
+    a: 'Sed non risus. Suspendisse lectus tortor, dignissim sit amet.',
+  },
+  { q: '¿Cuándo quedáis?', a: 'Cras elementum ultrices diam. Maecenas ligula massa, varius a.' },
+];
+---
+
+<section id="faq" class="mx-auto max-w-3xl p-8">
+  <h2 class="text-3xl font-bold">FAQ</h2>
+  <div class="mt-4 space-y-2">
+    {items.map((item) => (
+      <details class="border border-neutral-300 p-3">
+        <summary class="cursor-pointer font-medium">{item.q}</summary>
+        <p class="mt-2 text-neutral-700">{item.a}</p>
+      </details>
+    ))}
+  </div>
+</section>

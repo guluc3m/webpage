@@ -1,0 +1,41 @@
+---
+/**
+ * gul-Nav — the navigation link list.
+ *
+ * Shared component (`gul-` prefix): meant to be copied into the other GUL repos,
+ * so it takes its links as a prop instead of hard-coding this site's sections.
+ * gul-Header renders it.
+ *
+ * TODO(design): mobile menu (burger), active-link highlight, styling. Scaffold
+ * only renders a plain list.
+ */
+interface NavLink {
+  label: string;
+  /** In-page anchor (`#faq`) or absolute URL (`https://gul.uc3m.es/ctf`). */
+  href: string;
+}
+
+interface Props {
+  links: NavLink[];
+}
+
+const { links } = Astro.props;
+
+// External links get target/rel; in-page anchors don't.
+const isExternal = (href: string) => href.startsWith('http');
+---
+
+<nav aria-label="Principal">
+  <ul class="flex flex-wrap gap-4">
+    {links.map((link) => (
+      <li>
+        <a
+          href={link.href}
+          {...(isExternal(link.href) ? { target: '_blank', rel: 'noopener' } : {})}
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

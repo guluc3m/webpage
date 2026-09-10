@@ -1,0 +1,49 @@
+---
+/**
+ * Map — Leaflet map with OpenStreetMap tiles and a single pin on the GUL office.
+ *
+ * Client-side island: Leaflet needs `window`/`document`, so all of it runs in
+ * the browser <script> below. The map only initialises once its container is on
+ * screen (IntersectionObserver) to avoid loading tiles no one sees.
+ *
+ * Coordinates carried over from the 2021 site (static/js/script.js).
+ * TODO(design): restyle toward a minimal lu.ma-style look (CLAUDE.md).
+ */
+---
+
+<div
+  data-map
+  class="h-96 w-full bg-neutral-100"
+  role="img"
+  aria-label="Mapa: sede del GUL en el edificio Sabatini, Leganés"
+></div>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+  // Vite rewrites these to hashed asset URLs; without it Leaflet's default marker
+  // images 404.
+  import iconUrl from 'leaflet/dist/images/marker-icon.png';
+  import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
+  import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
+
+  L.Icon.Default.mergeOptions({ iconUrl, iconRetinaUrl, shadowUrl });
+
+  const OFFICE: [number, number] = [40.33228, -3.76589];
+
+  const el = document.querySelector<HTMLElement>('[data-map]');
+  if (el) {
+    let map: L.Map | undefined;
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting || map) return;
+      map = L.map(el, { scrollWheelZoom: false }).setView(OFFICE, 17);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap',
+        maxZoom: 19,
+      }).addTo(map);
+      L.marker(OFFICE).addTo(map);
+      observer.disconnect();
+    });
+    observer.observe(el);
+  }
+</script>
