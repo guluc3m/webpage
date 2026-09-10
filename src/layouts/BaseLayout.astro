@@ -21,7 +21,8 @@ interface Props {
 
 const {
   title,
-  description = 'Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid.',
+  // Default carried over verbatim from the 2021 site's <meta description>.
+  description = 'El Grupo de Usuarios de Linux es una asociación de estudiantes unidos por nuestras inquietudes en torno a los ordenadores, la informática y, en concreto, la idea común de la utilización y promoción del software libre.',
 } = Astro.props;
 
 // Astro.site comes from `site` in astro.config.mjs. Used to build absolute URLs,
@@ -47,6 +48,7 @@ const ogImage = new URL('/og-image.png', Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="es_ES" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <meta name="generator" content={Astro.generator} />

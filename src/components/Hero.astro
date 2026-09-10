@@ -3,19 +3,27 @@
  * Hero — the first screen. Conway's Game of Life runs as the background
  * (GameOfLife is positioned absolutely inside this section's relative box).
  *
- * TODO(design): the actual hero design is deferred (CLAUDE.md). This is a
- * placeholder headline over the animation.
+ * Shows a random "fortuna" (GUL in-joke) under the slogan. The quote is picked
+ * and formatted here, at build time — it changes on each rebuild, not per visit.
+ *
+ * TODO(design): the actual hero design is still to do. Slogan + fortuna are the
+ * real 2021 content; layout/styling is placeholder.
  */
 import GameOfLife from './GameOfLife.astro';
+import fortunas from '../data/fortunas.json';
+import { formatFortuna, randomFortuna, type Fortuna } from '../lib/fortunas.ts';
+
+const fortuna = formatFortuna(randomFortuna(fortunas as Fortuna[]));
 ---
 
 <section id="inicio" class="relative flex min-h-screen items-center overflow-hidden">
   <GameOfLife />
   <div class="relative mx-auto max-w-3xl p-8">
-    <h1 class="text-5xl font-bold">GUL UC3M</h1>
-    <p class="mt-4 text-lg text-neutral-700">
-      Grupo de Usuarios de Linux · Universidad Carlos III de Madrid.
-      {/* TODO(copy): tagline real. */}
-    </p>
+    <h1 class="text-5xl font-bold">Nos gusta jugar con la tecnología</h1>
+    <figure class="mt-6">
+      {/* whitespace-pre-line: the formatter may put a *stage direction* on its own line */}
+      <blockquote class="whitespace-pre-line text-lg text-neutral-700">{fortuna.quote}</blockquote>
+      {fortuna.author && <figcaption class="mt-2 text-neutral-500">{fortuna.author}</figcaption>}
+    </figure>
   </div>
 </section>

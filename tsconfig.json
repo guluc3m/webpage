@@ -9,9 +9,5 @@
     "plugins": [{ "name": "@astrojs/ts-plugin" }]
   },
   "include": [".astro/types.d.ts", "**/*"],
-  // dist/ is build output. static/, index.html, robots.txt are the LIVE 2021 site,
-  // kept only until its content is migrated (CLAUDE.md step 14) — excluded here so
-  // its vendored jQuery/Leaflet don't spam the type checker. Delete these two
-  // globs once the old site is removed.
-  "exclude": ["dist", "static", "index.html", "robots.txt"]
+  "exclude": ["dist"]
 }

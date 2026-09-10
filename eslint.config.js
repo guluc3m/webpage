@@ -17,8 +17,8 @@ import prettier from 'eslint-config-prettier';
 import globals from 'globals';
 
 export default defineConfig([
-  // Not source — never lint these. `static/` and `index.html` are the old site.
-  globalIgnores(['dist/', '.astro/', 'static/', 'index.html']),
+  // Generated, not source.
+  globalIgnores(['dist/', '.astro/']),
 
   js.configs.recommended,
   tseslint.configs.recommended,

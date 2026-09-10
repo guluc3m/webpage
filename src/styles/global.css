@@ -14,10 +14,10 @@
  * grey, pixel/retro aesthetic — issue #5) is designed later. For now this only
  * carries what the scaffold needs to render.
  *
- * OI (open issue): fonts. Self-host vs CDN, and which pixel display font +
- * readable body font, is not decided. Until then we ride Tailwind's default
- * system stacks (`font-sans` / `font-mono`). Do not pick fonts here without the
- * maintainer's call.
+ * Fonts are NOT decided yet: self-host vs CDN, and which pixel display font +
+ * readable body font. Until that call is made we ride Tailwind's default system
+ * stacks (`font-sans` / `font-mono`). Don't pick fonts here without the
+ * maintainer's say-so.
  */
 @theme {
   /* intentionally near-empty for now — see above */
