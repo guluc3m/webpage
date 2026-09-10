@@ -12,32 +12,25 @@
  * the SVGs in the assets step.
  * TODO(design): styling.
  */
+import { SOCIALS, CONTACT } from '../config.ts';
 ---
 
 <footer id="legal" class="border-t border-neutral-300 p-6 text-center text-sm text-neutral-600">
   <p class="flex justify-center gap-4">
-    <a href="https://twitter.com/guluc3m" target="_blank" rel="noopener">
-      Twitter
-    </a>
-    <a href="https://github.com/guluc3m" target="_blank" rel="noopener">
-      GitHub
-    </a>
-    <a href="https://youtube.com/c/guluc3m" target="_blank" rel="noopener">
-      YouTube
-    </a>
+    {
+      SOCIALS.map((s) => (
+        <a href={s.href} target="_blank" rel="noopener">
+          {s.label}
+        </a>
+      ))
+    }
   </p>
 
   <!-- Contacto. Email obfuscated on purpose — no mailto:. Telegram is QR-only
        (see the Telegram section); Discord is invite-only via email. -->
-  <p class="mt-4">Contacto: info AT gul.uc3m.es</p>
+  <p class="mt-4">Contacto: {CONTACT.email}</p>
   <p class="mt-1">
-    <a
-      href="https://lista-gul.uc3m.es/postorius/lists/lista.gul.uc3m.es/"
-      target="_blank"
-      rel="noopener"
-    >
-      Lista de correo
-    </a>
+    <a href={CONTACT.mailingList} target="_blank" rel="noopener"> Lista de correo </a>
     · Discord (reuniones telemáticas): pídenos invitación por correo
   </p>
 
