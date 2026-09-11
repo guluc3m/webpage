@@ -10,13 +10,15 @@
  * real 2021 content; layout/styling is placeholder.
  */
 import GameOfLife from './GameOfLife.astro';
-import fortunas from '../data/fortunas.json';
-import { formatFortuna, randomFortuna, type Fortuna } from '../lib/fortunas.ts';
+import ShaderBackground from './ShaderBackground.astro';
+import fortunas from '../../data/fortunas.json';
+import { formatFortuna, randomFortuna, type Fortuna } from '../../lib/fortunas.ts';
 
 const fortuna = formatFortuna(randomFortuna(fortunas as Fortuna[]));
 ---
 
 <section id="inicio" class="relative flex min-h-screen items-center overflow-hidden">
+  <ShaderBackground />
   <GameOfLife />
   <div class="relative mx-auto max-w-3xl p-8">
     <h1 class="text-5xl font-bold tracking-tight text-gul-ink sm:text-6xl">
