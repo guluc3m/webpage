@@ -8,17 +8,19 @@
 @import 'tailwindcss';
 
 /*
- * @theme — the curated GUL palette and design tokens.
- *
- * PLACEHOLDER. The final visual direction (grey→black gradients from the logo
- * grey, pixel/retro aesthetic — issue #5) is designed later. For now this only
- * carries what the scaffold needs to render.
+ * @theme — the curated GUL palette (issue #5: grey→black gradient, cream text
+ * for emphasis). Monochrome on purpose — reads as pixel/retro rather than the
+ * "AI glow gradient" look, and is colour-blind-safe by construction.
  *
  * Fonts are NOT decided yet: self-host vs CDN, and which pixel display font +
  * readable body font. Until that call is made we ride Tailwind's default system
- * stacks (`font-sans` / `font-mono`). Don't pick fonts here without the
- * maintainer's say-so.
+ * stacks (`font-sans` / `font-serif` / `font-mono`). Don't pick fonts here
+ * without the maintainer's say-so.
  */
 @theme {
-  /* intentionally near-empty for now — see above */
+  --color-gul-bg: #0a0a09; /* page canvas */
+  --color-gul-surface: #171714; /* cards, nav pill, footer */
+  --color-gul-line: #2c2c27; /* borders on dark surfaces */
+  --color-gul-ink: #ece7d8; /* headline / emphasis text, cream */
+  --color-gul-muted: #9c988c; /* body text on dark */
 }

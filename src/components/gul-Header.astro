@@ -5,8 +5,7 @@
  * Shared component (`gul-` prefix) — copied into the other GUL repos. It takes
  * the nav links as a prop so nothing about *this* site's sections is baked in.
  *
- * TODO(design): sticky behaviour, sizing, retro/pixel styling. Scaffold is a
- * plain bar.
+ * TODO(design): retro/pixel styling pass once fonts/assets land.
  */
 import GulNav from './gul-Nav.astro';
 
@@ -17,9 +16,11 @@ interface Props {
 const { links } = Astro.props;
 ---
 
-<header class="flex items-center justify-between gap-6 p-4">
+<header class="sticky top-0 z-50 flex items-center justify-between gap-6 p-4">
   <a href="/" aria-label="Inicio">
     <img src="/logo-gul.svg" alt="GUL UC3M" class="h-8 w-auto" />
   </a>
-  <GulNav links={links} />
+  <div class="rounded-full border border-gul-line bg-gul-surface/70 px-6 py-2 backdrop-blur">
+    <GulNav links={links} />
+  </div>
 </header>

@@ -10,16 +10,15 @@
  *
  * TODO(assets): the social links were icons on the old site — swap the text for
  * the SVGs in the assets step.
- * TODO(design): styling.
  */
 import { SOCIALS, CONTACT } from '../config.ts';
 ---
 
-<footer id="legal" class="border-t border-neutral-300 p-6 text-center text-sm text-neutral-600">
+<footer id="legal" class="relative overflow-hidden border-t border-gul-line bg-gul-surface p-6 text-center text-sm text-gul-muted">
   <p class="flex justify-center gap-4">
     {
       SOCIALS.map((s) => (
-        <a href={s.href} target="_blank" rel="noopener">
+        <a href={s.href} target="_blank" rel="noopener" class="hover:text-gul-ink">
           {s.label}
         </a>
       ))
@@ -30,7 +29,9 @@ import { SOCIALS, CONTACT } from '../config.ts';
        (see the Telegram section); Discord is invite-only via email. -->
   <p class="mt-4">Contacto: {CONTACT.email}</p>
   <p class="mt-1">
-    <a href={CONTACT.mailingList} target="_blank" rel="noopener"> Lista de correo </a>
+    <a href={CONTACT.mailingList} target="_blank" rel="noopener" class="hover:text-gul-ink">
+      Lista de correo
+    </a>{' '}
     · Discord (reuniones telemáticas): pídenos invitación por correo
   </p>
 
@@ -56,6 +57,7 @@ import { SOCIALS, CONTACT } from '../config.ts';
       target="_blank"
       rel="noopener"
       title="link a los estatutos"
+      class="hover:text-gul-ink"
     >
       Estatutos
     </a>
@@ -65,8 +67,17 @@ import { SOCIALS, CONTACT } from '../config.ts';
       target="_blank"
       rel="noopener"
       title="link al código de conducta"
+      class="hover:text-gul-ink"
     >
       Código de Conducta
     </a>
+  </p>
+
+  <!-- Ghost wordmark, purely decorative — ignored by assistive tech. -->
+  <p
+    aria-hidden="true"
+    class="pointer-events-none mt-8 -mb-8 truncate text-[12rem] leading-none font-bold text-gul-line select-none sm:text-[16rem]"
+  >
+    GUL
   </p>
 </footer>

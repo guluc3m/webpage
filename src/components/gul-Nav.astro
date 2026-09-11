@@ -6,8 +6,7 @@
  * so it takes its links as a prop instead of hard-coding this site's sections.
  * gul-Header renders it.
  *
- * TODO(design): mobile menu (burger), active-link highlight, styling. Scaffold
- * only renders a plain list.
+ * TODO(design): mobile menu (burger), active-link highlight.
  */
 interface NavLink {
   label: string;
@@ -26,11 +25,12 @@ const isExternal = (href: string) => href.startsWith('http');
 ---
 
 <nav aria-label="Principal">
-  <ul class="flex flex-wrap gap-4">
+  <ul class="flex flex-wrap gap-6 text-sm">
     {links.map((link) => (
       <li>
         <a
           href={link.href}
+          class="text-gul-muted transition-colors hover:text-gul-ink"
           {...(isExternal(link.href) ? { target: '_blank', rel: 'noopener' } : {})}
         >
           {link.label}

@@ -15,14 +15,15 @@ const projects = [
 ---
 
 <section id="proyectos" class="mx-auto max-w-3xl p-8">
-  <h2 class="text-3xl font-bold">Proyectos</h2>
+  <h2 class="text-3xl font-bold text-gul-ink">Proyectos</h2>
   <ul class="mt-4 grid gap-4 sm:grid-cols-2">
-    {projects.map((project) => (
-      <li class="border border-neutral-300 p-4">
-        <a href={project.href} target="_blank" rel="noopener" class="font-medium">
+    {projects.map((project, i) => (
+      <li class="rounded-2xl border border-gul-line bg-gul-surface p-6 transition-colors hover:border-gul-ink/40">
+        <span class="text-xs text-gul-muted">{String(i + 1).padStart(2, '0')}</span>
+        <a href={project.href} target="_blank" rel="noopener" class="mt-2 block font-medium text-gul-ink">
           {project.name}
         </a>
-        <p class="mt-2 text-sm text-neutral-700">{project.description}</p>
+        <p class="mt-2 text-sm text-gul-muted">{project.description}</p>
       </li>
     ))}
   </ul>

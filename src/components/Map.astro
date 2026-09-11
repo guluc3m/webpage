@@ -6,14 +6,14 @@
  * the browser <script> below. The map only initialises once its container is on
  * screen (IntersectionObserver) to avoid loading tiles no one sees.
  *
- * Coordinates carried over from the 2021 site.
- * TODO(design): restyle toward a minimal lu.ma-style look.
+ * Coordinates carried over from the 2021 site. Tiles run through a grayscale
+ * filter (below) to keep the map inside the site's monochrome palette.
  */
 ---
 
 <div
   data-map
-  class="h-96 w-full bg-neutral-100"
+  class="h-96 w-full bg-gul-surface grayscale"
   role="img"
   aria-label="Mapa: sede del GUL en el edificio Sabatini, Leganés"
 ></div>

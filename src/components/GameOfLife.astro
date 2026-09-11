@@ -9,8 +9,6 @@
  *
  * It fills its positioned parent. Put it behind content with absolute positioning
  * from the parent side.
- *
- * TODO(design): colours come from the Tailwind @theme once the palette is set.
  */
 ---
 
@@ -21,9 +19,13 @@
 ></canvas>
 
 <script>
-  const CELL = 14; // px per cell — bigger = cheaper
-  const STEP_MS = 120; // ~8 fps is plenty for GoL
-  const FILL = 'rgba(0, 0, 0, 0.14)'; // placeholder until the palette exists
+  const CELL = 12; // px per cell (square + gap) — bigger = cheaper
+  const GAP = 3; // px gap between squares — 0 for a solid grid
+  const DENSITY = 0.1; // fraction of cells alive on the first frame
+  const STEP_MS = 120; // ms per generation — lower = faster animation
+  const ALIVE_FILL = 'rgba(236, 231, 216, 0.12)'; // --color-gul-ink, dim, on the dark hero
+  const DEAD_FILL = '#0a0a09'; // dead-cell squares — --color-gul-bg, solid (not transparent)
+  const GRID_FILL = 'transparent'; // canvas background, i.e. the gaps between squares
 
   const canvas = document.querySelector<HTMLCanvasElement>('[data-game-of-life]');
   const ctx = canvas?.getContext('2d');
@@ -44,7 +46,7 @@
       cols = Math.max(1, Math.ceil(width / CELL));
       rows = Math.max(1, Math.ceil(height / CELL));
       grid = new Uint8Array(cols * rows);
-      for (let i = 0; i < grid.length; i++) grid[i] = Math.random() < 0.3 ? 1 : 0;
+      for (let i = 0; i < grid.length; i++) grid[i] = Math.random() < DENSITY ? 1 : 0;
       draw();
     }
 
@@ -71,10 +73,12 @@
 
     function draw() {
       ctx!.clearRect(0, 0, canvas!.width, canvas!.height);
-      ctx!.fillStyle = FILL;
+      ctx!.fillStyle = GRID_FILL;
+      ctx!.fillRect(0, 0, canvas!.width, canvas!.height);
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
-          if (grid[idx(x, y)]) ctx!.fillRect(x * CELL, y * CELL, CELL - 1, CELL - 1);
+          ctx!.fillStyle = grid[idx(x, y)] ? ALIVE_FILL : DEAD_FILL;
+          ctx!.fillRect(x * CELL, y * CELL, CELL - GAP, CELL - GAP);
         }
       }
     }
