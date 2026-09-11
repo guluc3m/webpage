@@ -23,7 +23,12 @@
   const GAP = 3; // px gap between squares — 0 for a solid grid
   const DENSITY = 0.2; // fraction of cells alive on the first frame
   const STEP_MS = 120; // ms per generation — lower = faster animation
-  const ALIVE_FILL = 'rgba(236, 231, 216, 0.12)'; // --color-gul-ink, dim, on the dark hero
+  // Alive-cell gradient stops, [offset 0-1, color]. Applied once across the whole
+  // canvas (not per-cell) so cells read as cut-outs of one continuous gradient.
+  const ALIVE_GRADIENT: [number, string][] = [
+    [0, 'rgba(236, 231, 216, 0.34)'], // --color-gul-ink, dim
+    [1, 'rgba(156, 152, 140, 0.14)'], // --color-gul-muted, less dim so it stays visible
+  ];
   const DEAD_FILL = '#0a0a09'; // dead-cell squares — --color-gul-bg, solid (not transparent)
   const GRID_FILL = 'transparent'; // canvas background, i.e. the gaps between squares
 
@@ -35,6 +40,7 @@
     let cols = 0;
     let rows = 0;
     let grid: Uint8Array = new Uint8Array(0);
+    let aliveFill: CanvasGradient;
 
     const idx = (x: number, y: number) => y * cols + x;
 
@@ -47,6 +53,9 @@
       rows = Math.max(1, Math.ceil(height / CELL));
       grid = new Uint8Array(cols * rows);
       for (let i = 0; i < grid.length; i++) grid[i] = Math.random() < DENSITY ? 1 : 0;
+      // Diagonal top-right → bottom-left; depends on canvas size, rebuilt on resize.
+      aliveFill = ctx!.createLinearGradient(width, 0, 0, height);
+      for (const [offset, color] of ALIVE_GRADIENT) aliveFill.addColorStop(offset, color);
       draw();
     }
 
@@ -77,7 +86,7 @@
       ctx!.fillRect(0, 0, canvas!.width, canvas!.height);
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
-          ctx!.fillStyle = grid[idx(x, y)] ? ALIVE_FILL : DEAD_FILL;
+          ctx!.fillStyle = grid[idx(x, y)] ? aliveFill : DEAD_FILL;
           ctx!.fillRect(x * CELL, y * CELL, CELL - GAP, CELL - GAP);
         }
       }
