@@ -1,0 +1,17 @@
+---
+/**
+ * gul-Eyebrow — the small labelled line above a title (used above the Hero
+ * h1). `class` passes through for per-usage spacing (e.g. Hero's mb-4).
+ */
+interface Props {
+  text: string;
+  class?: string;
+}
+
+const { text, class: className } = Astro.props;
+---
+
+<p class:list={['flex items-center gap-3 text-sm font-medium tracking-[0.2em] text-gul-muted uppercase', className]}>
+  <span class="h-px w-8 bg-gul-line"></span>
+  {text}
+</p>

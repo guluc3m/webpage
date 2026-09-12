@@ -22,12 +22,11 @@
   import L from 'leaflet';
   import 'leaflet/dist/leaflet.css';
   // Vite rewrites these to hashed asset URLs; without it Leaflet's default marker
-  // images 404.
+  // images 404. No shadowUrl: the site has no drop shadows anywhere, pin included.
   import iconUrl from 'leaflet/dist/images/marker-icon.png';
   import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
-  import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
 
-  L.Icon.Default.mergeOptions({ iconUrl, iconRetinaUrl, shadowUrl });
+  L.Icon.Default.mergeOptions({ iconUrl, iconRetinaUrl });
 
   const OFFICE: [number, number] = [40.33228, -3.76589];
 
@@ -47,3 +46,16 @@
     observer.observe(el);
   }
 </script>
+
+<style>
+  /* Leaflet's own leaflet.css puts a drop shadow on the zoom controls and
+     popups. :global() reaches them since Leaflet injects this markup at
+     runtime — it never exists in this component's template. */
+  :global(.leaflet-bar),
+  :global(.leaflet-control-layers),
+  :global(.leaflet-popup-content-wrapper),
+  :global(.leaflet-popup-tip),
+  :global(.leaflet-tooltip) {
+    box-shadow: none;
+  }
+</style>
