@@ -6,10 +6,19 @@
  *  - cheap: big cells, low frame rate, no per-pixel work
  *  - pauses when scrolled out of view (IntersectionObserver)
  *  - respects `prefers-reduced-motion`: draws one static frame, never animates
+ *  - ignores resize events caused by browser zoom (only DPR-stable resizes
+ *    rebuild the grid) — otherwise zooming out inflates cols x rows and the
+ *    O(cols*rows) simulation stalls the page
  *
  * It fills its positioned parent. Put it behind content with absolute positioning
  * from the parent side.
  */
+import { readFileSync } from 'node:fs';
+import { computeTuxBitmap } from '../../lib/tuxBitmap.ts';
+
+// Rasterized once per build, not per visitor — see src/lib/tux.ts.
+const tuxSvg = readFileSync(new URL('../../../public/tux.svg', import.meta.url));
+const tuxBitmap = await computeTuxBitmap(tuxSvg, 100, 80); // 100 = bitmap height in units, not screen px; 70 = alpha threshold, tuned by eye
 ---
 
 <canvas
@@ -18,11 +27,26 @@
   class="pointer-events-none absolute inset-0 h-full w-full"
 ></canvas>
 
+<script define:vars={{ tuxBitmap }}>
+  // define:vars only works on a plain inline script (no bundling, no imports) —
+  // stash the value so the module script below (which needs to import
+  // sampleTuxMask) can read it.
+  window.__tuxBitmap = tuxBitmap;
+</script>
+
 <script>
-  const CELL = 12; // px per cell (square + gap) — bigger = cheaper
-  const GAP = 3; // px gap between squares — 0 for a solid grid
+  import { sampleTuxMask, type TuxBitmap } from '../../lib/tux.ts';
+
+  declare global {
+    interface Window {
+      __tuxBitmap: TuxBitmap;
+    }
+  }
+
+  const CELL = 10; // px per cell (square + gap) — bigger = cheaper
+  const GAP = 2; // px gap between squares — 0 for a solid grid
   const DENSITY = 0.2; // fraction of cells alive on the first frame
-  const STEP_MS = 120; // ms per generation — lower = faster animation
+  const STEP_MS = 140; // ms per generation — lower = faster animation
   // Alive-cell gradient stops, [offset 0-1, color]. Applied once across the whole
   // canvas (not per-cell) so cells read as cut-outs of one continuous gradient.
   const ALIVE_GRADIENT: [number, string][] = [
@@ -31,6 +55,15 @@
   ];
   const DEAD_FILL = '#0a0a09'; // dead-cell squares — --color-gul-bg, solid (not transparent)
   const GRID_FILL = 'transparent'; // canvas background, i.e. the gaps between squares
+
+  // Tux silhouette overlay: a fixed set of cells always reads as Tux, regardless of
+  // whether the automaton underneath is alive or dead there — the life logic still
+  // runs on the full grid, only draw() overrides these cells' color. tuxBitmap
+  // itself is precomputed at build time (see src/lib/tux.ts) — the client only
+  // resamples it to the current grid resolution, no SVG decoding here.
+  const TUX_FILL = '#ece7d8'; // --color-gul-ink, solid
+  const TUX_HEIGHT_FRACTION = 1.0; // fraction of the grid's rows Tux's height fills
+  const TUX_X_FRACTION = 0.9; // 0 = left, 0.5 = centered, 1 = right — text sits on the left
 
   const canvas = document.querySelector<HTMLCanvasElement>('[data-game-of-life]');
   const ctx = canvas?.getContext('2d');
@@ -41,6 +74,7 @@
     let rows = 0;
     let grid: Uint8Array = new Uint8Array(0);
     let aliveFill: CanvasGradient;
+    let tuxMask: Uint8Array = new Uint8Array(0);
 
     const idx = (x: number, y: number) => y * cols + x;
 
@@ -56,6 +90,7 @@
       // Diagonal top-right → bottom-left; depends on canvas size, rebuilt on resize.
       aliveFill = ctx!.createLinearGradient(width, 0, 0, height);
       for (const [offset, color] of ALIVE_GRADIENT) aliveFill.addColorStop(offset, color);
+      tuxMask = sampleTuxMask(window.__tuxBitmap, cols, rows, TUX_HEIGHT_FRACTION, TUX_X_FRACTION);
       draw();
     }
 
@@ -86,7 +121,8 @@
       ctx!.fillRect(0, 0, canvas!.width, canvas!.height);
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
-          ctx!.fillStyle = grid[idx(x, y)] ? aliveFill : DEAD_FILL;
+          const i = idx(x, y);
+          ctx!.fillStyle = tuxMask[i] ? TUX_FILL : grid[i] ? aliveFill : DEAD_FILL;
           ctx!.fillRect(x * CELL, y * CELL, CELL - GAP, CELL - GAP);
         }
       }
@@ -115,7 +151,20 @@
     };
 
     reset();
-    window.addEventListener('resize', reset);
+
+    // Browser zoom also fires 'resize' and inflates getBoundingClientRect()'s
+    // CSS-px size, which would blow up cols x rows (and the O(cols*rows) sim
+    // cost) for no layout reason — devicePixelRatio changes on zoom but not on
+    // a real resize, so use it to tell the two apart and skip rebuilding on zoom.
+    let lastDPR = window.devicePixelRatio;
+    window.addEventListener('resize', () => {
+      const dpr = window.devicePixelRatio;
+      if (dpr !== lastDPR) {
+        lastDPR = dpr;
+        return;
+      }
+      reset();
+    });
 
     // Only animate while the canvas is actually on screen.
     new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop())).observe(
