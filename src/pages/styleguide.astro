@@ -13,12 +13,47 @@ import GulHeader from '../components/gul-Header.astro';
 import { navLinks } from '../data/navLinks';
 import GulFooter from '../components/gul-Footer.astro';
 
-// Font stack is OI (CLAUDE.md) — shown here so the maintainer can compare
-// candidates once chosen. Until then these are Tailwind's default stacks.
+// Decided (self-hosted via @fontsource-variable, tokens in global.css @theme).
+// Read straight from the real classes — no separate demo styling to drift out
+// of sync with the actual site.
 const fontStacks = [
-  { class: 'font-sans', label: 'font-sans (default del sistema)' },
-  { class: 'font-serif', label: 'font-serif (default del sistema)' },
-  { class: 'font-mono', label: 'font-mono (default del sistema)' },
+  { class: 'font-sans', label: 'font-sans — Inter (cuerpo)' },
+  { class: 'font-heading font-bold', label: 'font-heading — Space Grotesk (encabezados)' },
+  { class: 'font-mono', label: 'font-mono — JetBrains Mono (código)' },
+];
+
+// Real usage counts from a grep across src/components — not invented, this is
+// what the code already does.
+const radii = [
+  { class: 'rounded-md', label: 'rounded-md — el más usado (bordes, inputs, botones)' },
+  { class: 'rounded-2xl', label: 'rounded-2xl — cards y acordeón' },
+  { class: 'rounded-lg', label: 'rounded-lg — un solo uso suelto, candidato a unificar' },
+];
+
+const shadows = [
+  { class: 'shadow', label: 'shadow' },
+  { class: 'shadow-lg', label: 'shadow-lg — dropdown del nav' },
+];
+
+// Tailwind's default spacing scale (0.25rem step) — no custom token defined.
+const spacingScale = [
+  { class: 'w-1', px: '4px' },
+  { class: 'w-2', px: '8px' },
+  { class: 'w-3', px: '12px' },
+  { class: 'w-4', px: '16px' },
+  { class: 'w-6', px: '24px' },
+  { class: 'w-8', px: '32px' },
+  { class: 'w-12', px: '48px' },
+  { class: 'w-16', px: '64px' },
+  { class: 'w-24', px: '96px' },
+];
+
+// Tailwind's default breakpoints. Only sm: is actually used anywhere today.
+const breakpoints = [
+  { prefix: 'sm', minWidth: '640px', note: 'el único usado hoy (cards, listas, formulario)' },
+  { prefix: 'md', minWidth: '768px', note: 'sin uso todavía' },
+  { prefix: 'lg', minWidth: '1024px', note: 'sin uso todavía' },
+  { prefix: 'xl', minWidth: '1280px', note: 'sin uso todavía' },
 ];
 
 const colors = [
@@ -74,7 +109,7 @@ const callouts = [
     <p class="text-xs font-semibold tracking-[0.3em] text-gul-muted uppercase">Estilos base</p>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Colores</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Colores</h2>
       <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
         {colors.map((c) => (
           <div class="space-y-2">
@@ -89,24 +124,108 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Tipografía</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Tipografía</h2>
       <p class="text-xs text-gul-muted">
-        Familias sin decidir todavía (OI) — estos son los defaults de Tailwind.
+        Decidido y autohospedado (@fontsource-variable, sin CDN) — tokens reales en
+        <code class="rounded bg-gul-surface px-1 py-0.5 text-gul-ink">global.css</code>.
       </p>
       <div class="grid gap-4 sm:grid-cols-3">
         {fontStacks.map((f) => (
           <div class="space-y-1 rounded-md border border-gul-line p-4">
             <p class={`${f.class} text-lg text-gul-ink`}>Grupo de Usuarios de Linux</p>
             <p class="text-xs text-gul-muted">{f.label}</p>
+            <p class={`${f.class} text-xs text-gul-muted`}>áéíóú ñ ¿¡ 0123456789</p>
           </div>
         ))}
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Radios</h2>
+      <div class="flex flex-wrap gap-6">
+        {radii.map((r) => (
+          <div class="space-y-2 text-center">
+            <div class={`flex h-16 w-16 items-center justify-center border border-gul-line bg-gul-surface ${r.class}`} />
+            <p class="max-w-24 text-xs text-gul-muted">{r.label}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Sombras</h2>
+      <div class="flex flex-wrap gap-6">
+        {shadows.map((s) => (
+          <div class="space-y-2 text-center">
+            <div class={`h-16 w-16 rounded-md bg-gul-surface ${s.class}`} />
+            <p class="text-xs text-gul-muted">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Espaciado</h2>
+      <p class="text-xs text-gul-muted">
+        Escala por defecto de Tailwind (pasos de 0.25rem) — sin token propio todavía.
+      </p>
+      <div class="space-y-2">
+        {spacingScale.map((s) => (
+          <div class="flex items-center gap-3">
+            <div class={`h-4 bg-gul-ink ${s.class}`} />
+            <span class="text-xs text-gul-muted">
+              {s.class} — {s.px}
+            </span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Breakpoints</h2>
+      <table class="w-full rounded-md border border-gul-line text-left text-sm">
+        <thead>
+          <tr class="border-b border-gul-line text-gul-ink">
+            <th class="p-3 font-semibold">Prefijo</th>
+            <th class="p-3 font-semibold">min-width</th>
+            <th class="p-3 font-semibold">Uso</th>
+          </tr>
+        </thead>
+        <tbody class="text-gul-muted">
+          {breakpoints.map((b) => (
+            <tr class="border-b border-gul-line/50 last:border-0">
+              <td class="p-3">{b.prefix}:</td>
+              <td class="p-3">{b.minWidth}</td>
+              <td class="p-3">{b.note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Foco (accesibilidad)</h2>
+      <p class="text-xs text-gul-muted">
+        Único patrón real hoy: <code class="rounded bg-gul-surface px-1 py-0.5 text-gul-ink">focus-visible:text-gul-ink</code>
+        en el nav (cambio de color, sin anillo). Prueba a navegar con Tab.
+      </p>
+      <div class="flex flex-wrap items-center gap-4 rounded-md border border-gul-line p-6">
+        <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gul-muted outline-none focus-visible:text-gul-ink">
+          Enlace enfocable
+        </a>
+        <button
+          type="button"
+          class="rounded-md border border-gul-line px-4 py-2 text-sm font-semibold text-gul-ink outline-none focus-visible:text-gul-muted"
+        >
+          Botón enfocable
+        </button>
       </div>
     </section>
 
     <p class="text-xs font-semibold tracking-[0.3em] text-gul-muted uppercase">Componentes</p>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Eyebrow</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Eyebrow</h2>
       <div class="rounded-md border border-gul-line p-6">
         <p class="flex items-center gap-3 text-sm font-medium tracking-[0.2em] text-gul-muted uppercase">
           <span class="h-px w-8 bg-gul-line"></span>
@@ -116,21 +235,21 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Encabezados</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Encabezados</h2>
       <div class="space-y-3 rounded-md border border-gul-line p-6">
-        <h1 class="text-4xl font-bold text-gul-ink">H1 — Grupo de Usuarios de Linux</h1>
-        <h2 class="text-3xl font-bold text-gul-ink">H2 — Grupo de Usuarios de Linux</h2>
-        <h3 class="text-2xl font-semibold text-gul-ink">H3 — Grupo de Usuarios de Linux</h3>
-        <h4 class="text-xl font-semibold text-gul-ink">H4 — Grupo de Usuarios de Linux</h4>
-        <h5 class="text-lg font-semibold text-gul-ink">H5 — Grupo de Usuarios de Linux</h5>
-        <h6 class="text-base font-semibold tracking-wide text-gul-muted uppercase">
+        <h1 class="font-heading text-4xl font-bold text-gul-ink">H1 — Grupo de Usuarios de Linux</h1>
+        <h2 class="font-heading text-3xl font-bold text-gul-ink">H2 — Grupo de Usuarios de Linux</h2>
+        <h3 class="font-heading text-2xl font-semibold text-gul-ink">H3 — Grupo de Usuarios de Linux</h3>
+        <h4 class="font-heading text-xl font-semibold text-gul-ink">H4 — Grupo de Usuarios de Linux</h4>
+        <h5 class="font-heading text-lg font-semibold text-gul-ink">H5 — Grupo de Usuarios de Linux</h5>
+        <h6 class="font-heading text-base font-semibold tracking-wide text-gul-muted uppercase">
           H6 — Grupo de Usuarios de Linux
         </h6>
       </div>
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Párrafos</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Párrafos</h2>
       <div class="space-y-4 rounded-md border border-gul-line p-6">
         <p class="text-lg text-gul-ink">
           Párrafo destacado (lead) — para la entradilla de una sección, algo más grande que el
@@ -153,7 +272,7 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Cita</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Cita</h2>
       <figure class="rounded-md border border-gul-line p-6 pl-8 border-l-2 border-l-gul-line">
         <blockquote class="font-serif text-lg text-gul-muted italic">
           «El software libre es una cuestión de libertad, no de precio.»
@@ -163,7 +282,7 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Código y teclado</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Código y teclado</h2>
       <div class="space-y-4 rounded-md border border-gul-line p-6">
         <pre class="overflow-x-auto rounded-md border border-gul-line bg-gul-surface p-4 text-sm text-gul-ink"><code>sudo apt update &amp;&amp; sudo apt upgrade</code></pre>
         <p class="text-sm text-gul-muted">
@@ -189,7 +308,7 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Listas</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Listas</h2>
       <div class="grid gap-6 rounded-md border border-gul-line p-6 sm:grid-cols-2">
         <div>
           <p class="mb-2 text-sm text-gul-muted">
@@ -213,12 +332,12 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Divisor</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Divisor</h2>
       <hr class="border-gul-line" />
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Cards</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Cards</h2>
       <div class="grid gap-4 sm:grid-cols-2">
         <div class="rounded-2xl border border-gul-line bg-gul-surface p-6 transition-colors hover:border-gul-ink/40">
           <span class="text-xs text-gul-muted">01</span>
@@ -242,7 +361,7 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Acordeón</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Acordeón</h2>
       <div class="space-y-2">
         {faqItems.map((item) => (
           <details class="rounded-2xl border border-gul-line bg-gul-surface p-4 open:border-gul-ink/30">
@@ -256,7 +375,7 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Tabs</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Tabs</h2>
       <div data-gul-tabs class="rounded-md border border-gul-line p-6">
         <div role="tablist" class="flex gap-1 border-b border-gul-line">
           <button
@@ -305,7 +424,7 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Modal</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Modal</h2>
       <div class="rounded-md border border-gul-line p-6">
         <button
           type="button"
@@ -334,7 +453,7 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Campos de formulario</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Campos de formulario</h2>
       <div class="grid gap-4 rounded-md border border-gul-line p-6 sm:grid-cols-2">
         <label class="block space-y-1 text-sm">
           <span class="font-medium text-gul-ink">Nombre</span>
@@ -379,7 +498,7 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Badges</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Badges</h2>
       <div class="flex flex-wrap items-center gap-3 rounded-md border border-gul-line p-6">
         <span class="rounded-full bg-gul-ink px-2.5 py-0.5 text-xs font-medium text-gul-bg">
           Primario
@@ -391,7 +510,7 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Tabla</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Tabla</h2>
       <table class="w-full rounded-md border border-gul-line text-left text-sm">
         <thead>
           <tr class="border-b border-gul-line text-gul-ink">
@@ -413,7 +532,7 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Aviso (callout)</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Aviso (callout)</h2>
       <p class="text-xs text-gul-muted">
         Se diferencian por icono + etiqueta, no por color: la paleta (issue #5) es monocroma a
         propósito por accesibilidad daltónica. Añadir rojo/verde semántico requeriría el visto bueno
@@ -437,7 +556,7 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Botones y enlaces</h2>
+      <h2 class="font-heading text-3xl font-bold text-gul-ink">Botones y enlaces</h2>
       <div class="flex flex-wrap items-center gap-4 rounded-md border border-gul-line p-6">
         <button class="rounded-md bg-gul-ink px-4 py-2 text-sm font-semibold text-gul-bg">
           Botón primario

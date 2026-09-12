@@ -8,14 +8,23 @@
 @import 'tailwindcss';
 
 /*
+ * Self-hosted fonts (decided over the pixel-font idea in issue #5 — retro
+ * enough already via the palette + Game of Life background). Variable-weight
+ * builds, one file per family, no Google Fonts CDN call.
+ */
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource-variable/jetbrains-mono';
+
+/*
  * @theme — the curated GUL palette (issue #5: grey→black gradient, cream text
  * for emphasis). Monochrome on purpose — reads as pixel/retro rather than the
  * "AI glow gradient" look, and is colour-blind-safe by construction.
  *
- * Fonts are NOT decided yet: self-host vs CDN, and which pixel display font +
- * readable body font. Until that call is made we ride Tailwind's default system
- * stacks (`font-sans` / `font-serif` / `font-mono`). Don't pick fonts here
- * without the maintainer's say-so.
+ * Fonts: Inter for body (--font-sans), Space Grotesk for headings
+ * (--font-heading, use the `font-heading` class), JetBrains Mono for code
+ * (--font-mono). Decided by the maintainer after comparing candidates live in
+ * /styleguide — don't swap these without going through that page again.
  */
 @theme {
   --color-gul-bg: #0a0a09; /* page canvas */
@@ -23,4 +32,8 @@
   --color-gul-line: #2c2c27; /* borders on dark surfaces */
   --color-gul-ink: #ece7d8; /* headline / emphasis text, cream */
   --color-gul-muted: #9c988c; /* body text on dark */
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Space Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
 }
