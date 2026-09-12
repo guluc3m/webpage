@@ -9,16 +9,34 @@
  * invented here — this page documents standards, it doesn't set new ones.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import GulHeader from '../components/gul-Header.astro';
+import { navLinks } from '../data/navLinks';
+import GulFooter from '../components/gul-Footer.astro';
+
+// Font stack is OI (CLAUDE.md) — shown here so the maintainer can compare
+// candidates once chosen. Until then these are Tailwind's default stacks.
+const fontStacks = [
+  { class: 'font-sans', label: 'font-sans (default del sistema)' },
+  { class: 'font-serif', label: 'font-serif (default del sistema)' },
+  { class: 'font-mono', label: 'font-mono (default del sistema)' },
+];
 
 const colors = [
   { token: 'gul-bg', class: 'bg-gul-bg', hex: '#0a0a09', desc: 'page canvas' },
-  { token: 'gul-surface', class: 'bg-gul-surface', hex: '#171714', desc: 'cards, nav pill, footer' },
+  {
+    token: 'gul-surface',
+    class: 'bg-gul-surface',
+    hex: '#171714',
+    desc: 'cards, nav pill, footer',
+  },
   { token: 'gul-line', class: 'bg-gul-line', hex: '#2c2c27', desc: 'borders on dark surfaces' },
   { token: 'gul-ink', class: 'bg-gul-ink', hex: '#ece7d8', desc: 'headline / emphasis text' },
   { token: 'gul-muted', class: 'bg-gul-muted', hex: '#9c988c', desc: 'body text on dark' },
 ];
 
-const faqItems = [{ q: '¿Cómo me apunto al GUL?', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' }];
+const faqItems = [
+  { q: '¿Cómo me apunto al GUL?', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+];
 
 // Callouts differentiate by icon + label, not by colour: the palette (issue #5)
 // is deliberately monochrome for colour-blind safety, so red/green semantic
@@ -43,30 +61,49 @@ const callouts = [
 ---
 
 <BaseLayout title="Styleguide — GUL">
+  <GulHeader links={navLinks} />
   <main class="mx-auto max-w-3xl space-y-16 p-8">
     <header class="space-y-2 border-b border-gul-line pb-6">
       <h1 class="text-4xl font-bold text-gul-ink">Styleguide</h1>
       <p class="text-gul-muted">
-        Página de trabajo para decidir la identidad visual compartida. No forma parte del sitio público.
+        Página de trabajo para decidir la identidad visual compartida. No forma parte del sitio
+        público.
       </p>
     </header>
+
+    <p class="text-xs font-semibold tracking-[0.3em] text-gul-muted uppercase">Estilos base</p>
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Colores</h2>
       <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
-        {
-          colors.map((c) => (
-            <div class="space-y-2">
-              <div class={`h-20 rounded-md border border-gul-line ${c.class}`} />
-              <p class="text-sm text-gul-ink">{c.token}</p>
-              <p class="text-xs text-gul-muted">
-                {c.hex} — {c.desc}
-              </p>
-            </div>
-          ))
-        }
+        {colors.map((c) => (
+          <div class="space-y-2">
+            <div class={`h-20 rounded-md border border-gul-line ${c.class}`} />
+            <p class="text-sm text-gul-ink">{c.token}</p>
+            <p class="text-xs text-gul-muted">
+              {c.hex} — {c.desc}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Tipografía</h2>
+      <p class="text-xs text-gul-muted">
+        Familias sin decidir todavía (OI) — estos son los defaults de Tailwind.
+      </p>
+      <div class="grid gap-4 sm:grid-cols-3">
+        {fontStacks.map((f) => (
+          <div class="space-y-1 rounded-md border border-gul-line p-4">
+            <p class={`${f.class} text-lg text-gul-ink`}>Grupo de Usuarios de Linux</p>
+            <p class="text-xs text-gul-muted">{f.label}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <p class="text-xs font-semibold tracking-[0.3em] text-gul-muted uppercase">Componentes</p>
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Eyebrow</h2>
@@ -86,7 +123,9 @@ const callouts = [
         <h3 class="text-2xl font-semibold text-gul-ink">H3 — Grupo de Usuarios de Linux</h3>
         <h4 class="text-xl font-semibold text-gul-ink">H4 — Grupo de Usuarios de Linux</h4>
         <h5 class="text-lg font-semibold text-gul-ink">H5 — Grupo de Usuarios de Linux</h5>
-        <h6 class="text-base font-semibold tracking-wide text-gul-muted uppercase">H6 — Grupo de Usuarios de Linux</h6>
+        <h6 class="text-base font-semibold tracking-wide text-gul-muted uppercase">
+          H6 — Grupo de Usuarios de Linux
+        </h6>
       </div>
     </section>
 
@@ -94,13 +133,20 @@ const callouts = [
       <h2 class="text-3xl font-bold text-gul-ink">Párrafos</h2>
       <div class="space-y-4 rounded-md border border-gul-line p-6">
         <p class="text-lg text-gul-ink">
-          Párrafo destacado (lead) — para la entradilla de una sección, algo más grande que el cuerpo normal.
+          Párrafo destacado (lead) — para la entradilla de una sección, algo más grande que el
+          cuerpo normal.
         </p>
         <p class="text-base leading-relaxed text-gul-muted">
-          Párrafo de cuerpo estándar. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Un enlace dentro de texto se ve
-          <a href="#" class="text-gul-ink underline decoration-gul-muted underline-offset-4 hover:text-gul-ink/80">así</a
-          >.
+          Párrafo de cuerpo estándar. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+          do eiusmod tempor incididunt ut labore et dolore magna aliqua. Un enlace dentro de texto
+          se ve
+          <a
+            href="#"
+            class="text-gul-ink underline decoration-gul-muted underline-offset-4 hover:text-gul-ink/80"
+          >
+            así
+          </a>
+          .
         </p>
         <p class="text-sm text-gul-muted">Texto pequeño — pies de foto, notas, metadatos.</p>
       </div>
@@ -117,10 +163,38 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Código y teclado</h2>
+      <div class="space-y-4 rounded-md border border-gul-line p-6">
+        <pre class="overflow-x-auto rounded-md border border-gul-line bg-gul-surface p-4 text-sm text-gul-ink"><code>sudo apt update &amp;&amp; sudo apt upgrade</code></pre>
+        <p class="text-sm text-gul-muted">
+          Código inline, como{' '}
+          <code class="rounded bg-gul-surface px-1.5 py-0.5 text-gul-ink">apt-get</code>, dentro de
+          una frase.
+        </p>
+        <p class="text-sm text-gul-muted">
+          Abre una terminal con
+          <kbd class="rounded border border-gul-line bg-gul-surface px-1.5 py-0.5 font-mono text-xs text-gul-ink">
+            Ctrl
+          </kbd>
+          +
+          <kbd class="rounded border border-gul-line bg-gul-surface px-1.5 py-0.5 font-mono text-xs text-gul-ink">
+            Alt
+          </kbd>
+          +
+          <kbd class="rounded border border-gul-line bg-gul-surface px-1.5 py-0.5 font-mono text-xs text-gul-ink">
+            T
+          </kbd>
+        </p>
+      </div>
+    </section>
+
+    <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Listas</h2>
       <div class="grid gap-6 rounded-md border border-gul-line p-6 sm:grid-cols-2">
         <div>
-          <p class="mb-2 text-sm text-gul-muted">Sin ordenar (bullet-icon Tux: idea abierta, issue #5)</p>
+          <p class="mb-2 text-sm text-gul-muted">
+            Sin ordenar (bullet-icon Tux: idea abierta, issue #5)
+          </p>
           <ul class="list-disc space-y-1 pl-5 text-gul-ink">
             <li>Primer elemento</li>
             <li>Segundo elemento</li>
@@ -139,17 +213,30 @@ const callouts = [
     </section>
 
     <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Divisor</h2>
+      <hr class="border-gul-line" />
+    </section>
+
+    <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Cards</h2>
       <div class="grid gap-4 sm:grid-cols-2">
         <div class="rounded-2xl border border-gul-line bg-gul-surface p-6 transition-colors hover:border-gul-ink/40">
           <span class="text-xs text-gul-muted">01</span>
-          <a href="#" class="mt-2 block font-medium text-gul-ink">Título de la card</a>
-          <p class="mt-2 text-sm text-gul-muted">Descripción corta de una línea o dos sobre el contenido.</p>
+          <a href="#" class="mt-2 block font-medium text-gul-ink">
+            Título de la card
+          </a>
+          <p class="mt-2 text-sm text-gul-muted">
+            Descripción corta de una línea o dos sobre el contenido.
+          </p>
         </div>
         <div class="rounded-2xl border border-gul-line bg-gul-surface p-6 transition-colors hover:border-gul-ink/40">
           <span class="text-xs text-gul-muted">02</span>
-          <a href="#" class="mt-2 block font-medium text-gul-ink">Otra card</a>
-          <p class="mt-2 text-sm text-gul-muted">Mismo patrón que las de Proyectos, reutilizado aquí.</p>
+          <a href="#" class="mt-2 block font-medium text-gul-ink">
+            Otra card
+          </a>
+          <p class="mt-2 text-sm text-gul-muted">
+            Mismo patrón que las de Proyectos, reutilizado aquí.
+          </p>
         </div>
       </div>
     </section>
@@ -157,14 +244,92 @@ const callouts = [
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Acordeón</h2>
       <div class="space-y-2">
-        {
-          faqItems.map((item) => (
-            <details class="rounded-2xl border border-gul-line bg-gul-surface p-4 open:border-gul-ink/30">
-              <summary class="cursor-pointer font-medium text-gul-ink marker:text-gul-muted">{item.q}</summary>
-              <p class="mt-2 text-gul-muted">{item.a}</p>
-            </details>
-          ))
-        }
+        {faqItems.map((item) => (
+          <details class="rounded-2xl border border-gul-line bg-gul-surface p-4 open:border-gul-ink/30">
+            <summary class="cursor-pointer font-medium text-gul-ink marker:text-gul-muted">
+              {item.q}
+            </summary>
+            <p class="mt-2 text-gul-muted">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Tabs</h2>
+      <div data-gul-tabs class="rounded-md border border-gul-line p-6">
+        <div role="tablist" class="flex gap-1 border-b border-gul-line">
+          <button
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="tab-panel-1"
+            id="tab-1"
+            data-gul-tab
+            class="border-b-2 border-gul-ink px-3 py-2 text-sm font-medium text-gul-ink"
+          >
+            Instalación
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="tab-panel-2"
+            id="tab-2"
+            data-gul-tab
+            class="border-b-2 border-transparent px-3 py-2 text-sm font-medium text-gul-muted hover:text-gul-ink"
+          >
+            Configuración
+          </button>
+        </div>
+        <div
+          role="tabpanel"
+          id="tab-panel-1"
+          aria-labelledby="tab-1"
+          data-gul-tabpanel
+          class="pt-4 text-sm text-gul-muted"
+        >
+          Contenido de la primera pestaña.
+        </div>
+        <div
+          role="tabpanel"
+          id="tab-panel-2"
+          aria-labelledby="tab-2"
+          data-gul-tabpanel
+          hidden
+          class="pt-4 text-sm text-gul-muted"
+        >
+          Contenido de la segunda pestaña.
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Modal</h2>
+      <div class="rounded-md border border-gul-line p-6">
+        <button
+          type="button"
+          data-gul-modal-open
+          class="rounded-md bg-gul-ink px-4 py-2 text-sm font-semibold text-gul-bg"
+        >
+          Abrir modal
+        </button>
+        <dialog
+          data-gul-modal
+          class="rounded-md border border-gul-line bg-gul-surface p-6 text-gul-ink backdrop:bg-gul-bg/70"
+        >
+          <h3 class="text-lg font-semibold text-gul-ink">Título del modal</h3>
+          <p class="mt-2 text-sm text-gul-muted">
+            Contenido de ejemplo. Nativo (&lt;dialog&gt;), sin librería.
+          </p>
+          <button
+            type="button"
+            data-gul-modal-close
+            class="mt-4 rounded-md border border-gul-line px-4 py-2 text-sm font-semibold text-gul-ink"
+          >
+            Cerrar
+          </button>
+        </dialog>
       </div>
     </section>
 
@@ -185,8 +350,27 @@ const callouts = [
             rows="1"
             placeholder="Escribe aquí…"
             class="w-full rounded-md border border-gul-line bg-gul-bg px-3 py-2 text-gul-ink placeholder:text-gul-muted focus:border-gul-ink focus:outline-none"
-          />
+          ></textarea>
         </label>
+        <label class="block space-y-1 text-sm">
+          <span class="font-medium text-gul-ink">Comisión</span>
+          <select class="w-full rounded-md border border-gul-line bg-gul-bg px-3 py-2 text-gul-ink focus:border-gul-ink focus:outline-none">
+            <option>Sysadmin</option>
+            <option>Seguridad</option>
+            <option>Eventos</option>
+          </select>
+        </label>
+        <fieldset class="space-y-1 text-sm">
+          <legend class="font-medium text-gul-ink">Nivel</legend>
+          <label class="flex items-center gap-2 text-gul-ink">
+            <input type="radio" name="nivel" class="accent-gul-ink" />
+            Principiante
+          </label>
+          <label class="flex items-center gap-2 text-gul-ink">
+            <input type="radio" name="nivel" class="accent-gul-ink" />
+            Con experiencia
+          </label>
+        </fieldset>
         <label class="flex items-center gap-2 text-sm text-gul-ink">
           <input type="checkbox" class="accent-gul-ink" />
           Acepto los términos
@@ -197,8 +381,12 @@ const callouts = [
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Badges</h2>
       <div class="flex flex-wrap items-center gap-3 rounded-md border border-gul-line p-6">
-        <span class="rounded-full bg-gul-ink px-2.5 py-0.5 text-xs font-medium text-gul-bg">Primario</span>
-        <span class="rounded-full border border-gul-line px-2.5 py-0.5 text-xs font-medium text-gul-muted">Secundario</span>
+        <span class="rounded-full bg-gul-ink px-2.5 py-0.5 text-xs font-medium text-gul-bg">
+          Primario
+        </span>
+        <span class="rounded-full border border-gul-line px-2.5 py-0.5 text-xs font-medium text-gul-muted">
+          Secundario
+        </span>
       </div>
     </section>
 
@@ -227,32 +415,74 @@ const callouts = [
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Aviso (callout)</h2>
       <p class="text-xs text-gul-muted">
-        Se diferencian por icono + etiqueta, no por color: la paleta (issue #5) es monocroma a propósito por
-        accesibilidad daltónica. Añadir rojo/verde semántico requeriría el visto bueno del mantenedor.
+        Se diferencian por icono + etiqueta, no por color: la paleta (issue #5) es monocroma a
+        propósito por accesibilidad daltónica. Añadir rojo/verde semántico requeriría el visto bueno
+        del mantenedor.
       </p>
       <div class="space-y-3">
-        {
-          callouts.map((c) => (
-            <div class="flex items-start gap-3 rounded-md border border-gul-line bg-gul-surface p-4">
-              <svg viewBox="0 0 24 24" class="mt-0.5 size-5 shrink-0 stroke-current stroke-[1.5] text-gul-ink" fill="none" set:html={c.icon} />
-              <p class="text-sm text-gul-muted">
-                <span class="font-semibold text-gul-ink">{c.label}:</span> {c.text}
-              </p>
-            </div>
-          ))
-        }
+        {callouts.map((c) => (
+          <div class="flex items-start gap-3 rounded-md border border-gul-line bg-gul-surface p-4">
+            <svg
+              viewBox="0 0 24 24"
+              class="mt-0.5 size-5 shrink-0 stroke-current stroke-[1.5] text-gul-ink"
+              fill="none"
+              set:html={c.icon}
+            />
+            <p class="text-sm text-gul-muted">
+              <span class="font-semibold text-gul-ink">{c.label}:</span> {c.text}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Botones y enlaces</h2>
       <div class="flex flex-wrap items-center gap-4 rounded-md border border-gul-line p-6">
-        <button class="rounded-md bg-gul-ink px-4 py-2 text-sm font-semibold text-gul-bg">Botón primario</button>
-        <button class="rounded-md border border-gul-line px-4 py-2 text-sm font-semibold text-gul-ink">Botón secundario</button>
-        <a href="#" class="text-sm text-gul-ink underline decoration-gul-muted underline-offset-4 hover:text-gul-muted">
+        <button class="rounded-md bg-gul-ink px-4 py-2 text-sm font-semibold text-gul-bg">
+          Botón primario
+        </button>
+        <button class="rounded-md border border-gul-line px-4 py-2 text-sm font-semibold text-gul-ink">
+          Botón secundario
+        </button>
+        <a
+          href="#"
+          class="text-sm text-gul-ink underline decoration-gul-muted underline-offset-4 hover:text-gul-muted"
+        >
           Enlace de texto
         </a>
       </div>
     </section>
   </main>
+  <GulFooter />
 </BaseLayout>
+
+<script>
+  // Tabs: click a [data-gul-tab], show its matching [data-gul-tabpanel] via
+  // aria-controls, hide the rest. No library — a handful of DOM calls.
+  document.querySelectorAll<HTMLElement>('[data-gul-tabs]').forEach((tabs) => {
+    const buttons = tabs.querySelectorAll<HTMLButtonElement>('[data-gul-tab]');
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        buttons.forEach((b) => {
+          b.setAttribute('aria-selected', String(b === button));
+          b.classList.toggle('border-gul-ink', b === button);
+          b.classList.toggle('text-gul-ink', b === button);
+          b.classList.toggle('border-transparent', b !== button);
+          b.classList.toggle('text-gul-muted', b !== button);
+        });
+        tabs.querySelectorAll<HTMLElement>('[data-gul-tabpanel]').forEach((panel) => {
+          panel.hidden = panel.id !== button.getAttribute('aria-controls');
+        });
+      });
+    });
+  });
+
+  // Modal: native <dialog> does the focus trap and Escape-to-close for free.
+  document.querySelectorAll<HTMLDialogElement>('[data-gul-modal]').forEach((dialog) => {
+    const opener = dialog.parentElement?.querySelector<HTMLButtonElement>('[data-gul-modal-open]');
+    const closer = dialog.querySelector<HTMLButtonElement>('[data-gul-modal-close]');
+    opener?.addEventListener('click', () => dialog.showModal());
+    closer?.addEventListener('click', () => dialog.close());
+  });
+</script>
