@@ -1,16 +1,18 @@
 ---
 /**
- * gul-Button — the only two button looks the site has. Extra attributes
- * (id, data-*, type…) pass straight through, e.g. for wiring gul-Modal's
- * trigger/close buttons.
+ * gul-Button — the only two button looks the site has. Renders <a> when href
+ * is given (e.g. the header's "Contacta" CTA, an in-page anchor), <button
+ * type="button"> otherwise. Extra attributes (id, data-*…) pass straight
+ * through, e.g. for wiring gul-Modal's trigger/close buttons.
  */
-import type { HTMLAttributes } from 'astro/types';
-
-interface Props extends HTMLAttributes<'button'> {
+interface Props {
   variant?: 'primary' | 'secondary';
+  href?: string;
+  class?: string;
+  [attr: string]: unknown;
 }
 
-const { variant = 'primary', class: className, ...rest } = Astro.props;
+const { variant = 'primary', href, class: className, ...rest } = Astro.props;
 
 // gul-blue is the decided CTA colour (issue #5 accent); gul-ink text keeps
 // contrast around 4:1 on it — borderline for small text, worth a proper
@@ -19,8 +21,17 @@ const variants = {
   primary: 'bg-gul-blue text-gul-ink',
   secondary: 'border border-gul-line text-gul-ink',
 };
+const classes = ['rounded-md px-4 py-2 text-sm font-semibold', variants[variant], className];
 ---
 
-<button type="button" class:list={['rounded-md px-4 py-2 text-sm font-semibold', variants[variant], className]} {...rest}>
-  <slot />
-</button>
+{
+  href ? (
+    <a href={href} class:list={classes} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button type="button" class:list={classes} {...rest}>
+      <slot />
+    </button>
+  )
+}
