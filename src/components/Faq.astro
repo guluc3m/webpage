@@ -20,10 +20,8 @@ const items = [
   <p>gul@uc3m $> man faq</p>
   <div class="mt-4 space-y-2">
     {items.map((item) => (
-      <details class="rounded-2xl border border-gul-line bg-gul-surface p-4 open:border-gul-ink/30">
-        <summary class="cursor-pointer font-medium text-gul-ink marker:text-gul-muted">
-          {item.q}
-        </summary>
+      <details>
+        <summary>{item.q}</summary>
         <p class="mt-2 text-gul-muted">{item.a}</p>
       </details>
     ))}

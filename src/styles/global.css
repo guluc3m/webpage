@@ -144,6 +144,11 @@
   /* Table. */
   table {
     width: 100%;
+    /* Tailwind's preflight sets border-collapse: collapse on every table, and
+       per spec border-radius has no visual effect once borders are collapsed
+       — override back to separate or the rounded corner silently does nothing. */
+    border-collapse: separate;
+    border-spacing: 0;
     border-radius: var(--radius-md);
     border: 1px solid var(--color-gul-line);
     text-align: left;
@@ -199,10 +204,11 @@
   }
 
   /* Disclosure — matches Faq.astro's accordion, the only real usage today.
-     rounded-2xl (not rounded-md): this is a card-like container, same radius
-     as Cards, per the Radios scale. */
+     rounded-md, same as every other outer container (Radios rule: rounded-md
+     is always the outer edge — the old rounded-2xl here and on gul-Card was
+     a leftover inconsistency from before that rule was made explicit). */
   details {
-    border-radius: var(--radius-2xl);
+    border-radius: var(--radius-md);
     border: 1px solid var(--color-gul-line);
     background-color: var(--color-gul-surface);
     padding: 1rem;

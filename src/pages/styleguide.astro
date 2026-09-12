@@ -34,12 +34,13 @@ const fontStacks = [
   { class: 'font-mono', label: 'font-mono — JetBrains Mono (código)' },
 ];
 
-// Real usage counts from a grep across src/components — not invented, this is
-// what the code already does.
+// rounded-2xl used to be the outer radius on Cards/Acordeón/mapa — an
+// inconsistency from before the "rounded-md is always the outer edge" rule
+// was made explicit. All unified now; rounded-2xl has no real use left.
 const radii = [
-  { class: 'rounded-md', label: 'rounded-md — el más usado (bordes, inputs, botones)' },
-  { class: 'rounded-2xl', label: 'rounded-2xl — cards y acordeón' },
-  { class: 'rounded-lg', label: 'rounded-lg — un solo uso suelto, candidato a unificar' },
+  { class: 'rounded-md', label: 'rounded-md — el único para bordes exteriores' },
+  { class: 'rounded-2xl', label: 'rounded-2xl — sin uso desde que se unificó todo a rounded-md' },
+  { class: 'rounded-lg', label: 'rounded-lg — un solo uso suelto (dropdown del nav), candidato a unificar' },
 ];
 
 // Tailwind's default spacing scale (0.25rem step) — no custom token defined.

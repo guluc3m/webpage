@@ -17,7 +17,7 @@ const { href, title, description, index } = Astro.props;
 const isExternal = href.startsWith('http');
 ---
 
-<div class="rounded-2xl border border-gul-line bg-gul-surface p-6 transition-colors hover:border-gul-ink/40">
+<div class="rounded-md border border-gul-line bg-gul-surface p-6 transition-colors hover:border-gul-ink/40">
   {index && <span class="text-xs text-gul-muted">{index}</span>}
   <a href={href} class="mt-2 block font-medium text-gul-ink" {...(isExternal ? { target: '_blank', rel: 'noopener' } : {})}>
     {title}
