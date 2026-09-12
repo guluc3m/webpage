@@ -50,7 +50,7 @@ const tuxBitmap = await computeTuxBitmap(tuxSvg, 100, 80); // 100 = bitmap heigh
   // Alive-cell gradient stops, [offset 0-1, color]. Applied once across the whole
   // canvas (not per-cell) so cells read as cut-outs of one continuous gradient.
   const ALIVE_GRADIENT: [number, string][] = [
-    [0, 'rgba(236, 231, 216, 0.34)'], // --color-gul-ink, dim
+    [0, 'rgba(236, 231, 216, 0.49)'], // --color-gul-ink, dim
     [1, 'rgba(156, 152, 140, 0.14)'], // --color-gul-muted, less dim so it stays visible
   ];
   const DEAD_FILL = '#0a0a09'; // dead-cell squares — --color-gul-bg, solid (not transparent)
@@ -64,6 +64,10 @@ const tuxBitmap = await computeTuxBitmap(tuxSvg, 100, 80); // 100 = bitmap heigh
   const TUX_FILL = '#ece7d8'; // --color-gul-ink, solid
   const TUX_HEIGHT_FRACTION = 1.0; // fraction of the grid's rows Tux's height fills
   const TUX_X_FRACTION = 0.9; // 0 = left, 0.5 = centered, 1 = right — text sits on the left
+  // CRT-boot reveal: for this many generations after reset(), each Tux cell only has a
+  // chance (growing each generation) of showing as Tux instead of its plain cell — a
+  // flicker that settles into the full silhouette. Skipped entirely under reduced motion.
+  const TUX_REVEAL_STEPS = 8;
 
   const canvas = document.querySelector<HTMLCanvasElement>('[data-game-of-life]');
   const ctx = canvas?.getContext('2d');
@@ -75,6 +79,7 @@ const tuxBitmap = await computeTuxBitmap(tuxSvg, 100, 80); // 100 = bitmap heigh
     let grid: Uint8Array = new Uint8Array(0);
     let aliveFill: CanvasGradient;
     let tuxMask: Uint8Array = new Uint8Array(0);
+    let revealStep = 0;
 
     const idx = (x: number, y: number) => y * cols + x;
 
@@ -91,6 +96,7 @@ const tuxBitmap = await computeTuxBitmap(tuxSvg, 100, 80); // 100 = bitmap heigh
       aliveFill = ctx!.createLinearGradient(width, 0, 0, height);
       for (const [offset, color] of ALIVE_GRADIENT) aliveFill.addColorStop(offset, color);
       tuxMask = sampleTuxMask(window.__tuxBitmap, cols, rows, TUX_HEIGHT_FRACTION, TUX_X_FRACTION);
+      revealStep = reduceMotion ? TUX_REVEAL_STEPS : 0;
       draw();
     }
 
@@ -122,7 +128,8 @@ const tuxBitmap = await computeTuxBitmap(tuxSvg, 100, 80); // 100 = bitmap heigh
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
           const i = idx(x, y);
-          ctx!.fillStyle = tuxMask[i] ? TUX_FILL : grid[i] ? aliveFill : DEAD_FILL;
+          const showTux = tuxMask[i] && (revealStep >= TUX_REVEAL_STEPS || Math.random() < revealStep / TUX_REVEAL_STEPS);
+          ctx!.fillStyle = showTux ? TUX_FILL : grid[i] ? aliveFill : DEAD_FILL;
           ctx!.fillRect(x * CELL, y * CELL, CELL - GAP, CELL - GAP);
         }
       }
@@ -135,6 +142,7 @@ const tuxBitmap = await computeTuxBitmap(tuxSvg, 100, 80); // 100 = bitmap heigh
       if (!running) return;
       if (now - last >= STEP_MS) {
         step();
+        if (revealStep < TUX_REVEAL_STEPS) revealStep++;
         draw();
         last = now;
       }
