@@ -43,3 +43,21 @@ test('sampleTuxMask: heightFraction < 1 shrinks and bottom-aligns the box', () =
   assert.equal(at(0, 0), 0);
   assert.equal(at(5, 3), 0);
 });
+
+test('sampleTuxMask: xFraction 1 flushes the box to the right edge', () => {
+  const bitmap = { width: 1, height: 1, mask: '1' };
+  const result = sampleTuxMask(bitmap, 6, 2, 1, 1); // boxH=2, boxW=2, dx=4, dy=0
+  const at = (x: number, y: number) => result[y * 6 + x];
+  assert.equal(at(4, 0), 1);
+  assert.equal(at(5, 1), 1);
+  assert.equal(at(0, 0), 0);
+});
+
+test('sampleTuxMask: xFraction 0 flushes the box to the left edge', () => {
+  const bitmap = { width: 1, height: 1, mask: '1' };
+  const result = sampleTuxMask(bitmap, 6, 2, 1, 0); // boxH=2, boxW=2, dx=0, dy=0
+  const at = (x: number, y: number) => result[y * 6 + x];
+  assert.equal(at(0, 0), 1);
+  assert.equal(at(1, 1), 1);
+  assert.equal(at(5, 0), 0);
+});

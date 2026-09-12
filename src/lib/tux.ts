@@ -13,20 +13,21 @@ export interface TuxBitmap {
 }
 
 /**
- * Fits `bitmap` into a box of height `rows * heightFraction`, bottom-aligned and
- * horizontally centered in the grid (same placement the SVG used to be drawn at
- * directly), and nearest-neighbor samples it onto a cols x rows cell mask.
+ * Fits `bitmap` into a box of height `rows * heightFraction`, bottom-aligned,
+ * and nearest-neighbor samples it onto a cols x rows cell mask. `xFraction`
+ * places the box horizontally: 0 = flush left, 0.5 = centered, 1 = flush right.
  */
 export function sampleTuxMask(
   bitmap: TuxBitmap,
   cols: number,
   rows: number,
   heightFraction: number,
+  xFraction = 0.5,
 ): Uint8Array {
   const mask = new Uint8Array(cols * rows);
   const boxH = Math.round(rows * heightFraction);
   const boxW = Math.round(boxH * (bitmap.width / bitmap.height));
-  const dx = Math.round((cols - boxW) / 2);
+  const dx = Math.round((cols - boxW) * xFraction);
   const dy = rows - boxH;
 
   for (let by = 0; by < boxH; by++) {

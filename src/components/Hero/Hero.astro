@@ -20,8 +20,7 @@ const fortuna = formatFortuna(randomFortuna(fortunas as Fortuna[]));
 <section id="inicio" class="relative flex min-h-screen items-center overflow-hidden">
   <ShaderBackground />
   <GameOfLife />
-  {/*
-  <div class="relative mx-auto max-w-3xl p-8">
+  <div class="relative max-w-3xl px-32 py-8">
     <p class="mb-4 flex items-center gap-3 text-sm font-medium tracking-[0.2em] text-gul-muted uppercase">
       <span class="h-px w-8 bg-gul-line"></span>
       Grupo de Usuarios de Linux
@@ -30,16 +29,11 @@ const fortuna = formatFortuna(randomFortuna(fortunas as Fortuna[]));
       Nos gusta <em class="font-serif font-normal italic">jugar</em> con la tecnología
     </h1>
     <figure class="mt-6 border-l border-gul-line pl-4">
-      */}
       {/* whitespace-pre-line: the formatter may put a *stage direction* on its own line */}
-      {/*
       <blockquote class="whitespace-pre-line font-serif text-lg text-gul-muted italic">
         {fortuna.quote}
       </blockquote>
-      {fortuna.author && (
-      <figcaption class="mt-2 text-sm text-gul-muted">{fortuna.author}</figcaption>
-      )}
+      {fortuna.author && <figcaption class="mt-2 text-sm text-gul-muted">{fortuna.author}</figcaption>}
     </figure>
   </div>
-        */}
 </section>
