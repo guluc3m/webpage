@@ -1,0 +1,258 @@
+---
+/**
+ * /styleguide — working page to lock down HTML-element-level standards (h1–h6,
+ * paragraphs, lists, cards, buttons) before they're copied into other GUL repos.
+ * Not part of the public site; drop this file once the decisions in CLAUDE.md's
+ * "Still open" section are settled and baked into the real components.
+ *
+ * Card styling is copied from Projects.astro's existing pattern rather than
+ * invented here — this page documents standards, it doesn't set new ones.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const colors = [
+  { token: 'gul-bg', class: 'bg-gul-bg', hex: '#0a0a09', desc: 'page canvas' },
+  { token: 'gul-surface', class: 'bg-gul-surface', hex: '#171714', desc: 'cards, nav pill, footer' },
+  { token: 'gul-line', class: 'bg-gul-line', hex: '#2c2c27', desc: 'borders on dark surfaces' },
+  { token: 'gul-ink', class: 'bg-gul-ink', hex: '#ece7d8', desc: 'headline / emphasis text' },
+  { token: 'gul-muted', class: 'bg-gul-muted', hex: '#9c988c', desc: 'body text on dark' },
+];
+
+const faqItems = [{ q: '¿Cómo me apunto al GUL?', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' }];
+
+// Callouts differentiate by icon + label, not by colour: the palette (issue #5)
+// is deliberately monochrome for colour-blind safety, so red/green semantic
+// colours aren't added here without the maintainer signing off on an exception.
+const callouts = [
+  {
+    label: 'Aviso',
+    icon: '<circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r="0.75" fill="currentColor" stroke="none"/>',
+    text: 'Información neutra sobre algo que conviene saber.',
+  },
+  {
+    label: 'Éxito',
+    icon: '<path d="M4 12l5 5 11-11"/>',
+    text: 'La acción se ha completado correctamente.',
+  },
+  {
+    label: 'Error',
+    icon: '<path d="M12 3.5l9.5 16.5H2.5z"/><line x1="12" y1="10" x2="12" y2="14.5"/><circle cx="12" cy="17" r="0.75" fill="currentColor" stroke="none"/>',
+    text: 'Algo ha ido mal y hay que corregirlo.',
+  },
+];
+---
+
+<BaseLayout title="Styleguide — GUL">
+  <main class="mx-auto max-w-3xl space-y-16 p-8">
+    <header class="space-y-2 border-b border-gul-line pb-6">
+      <h1 class="text-4xl font-bold text-gul-ink">Styleguide</h1>
+      <p class="text-gul-muted">
+        Página de trabajo para decidir la identidad visual compartida. No forma parte del sitio público.
+      </p>
+    </header>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Colores</h2>
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+        {
+          colors.map((c) => (
+            <div class="space-y-2">
+              <div class={`h-20 rounded-md border border-gul-line ${c.class}`} />
+              <p class="text-sm text-gul-ink">{c.token}</p>
+              <p class="text-xs text-gul-muted">
+                {c.hex} — {c.desc}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Eyebrow</h2>
+      <div class="rounded-md border border-gul-line p-6">
+        <p class="flex items-center gap-3 text-sm font-medium tracking-[0.2em] text-gul-muted uppercase">
+          <span class="h-px w-8 bg-gul-line"></span>
+          Etiqueta antes de un título
+        </p>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Encabezados</h2>
+      <div class="space-y-3 rounded-md border border-gul-line p-6">
+        <h1 class="text-4xl font-bold text-gul-ink">H1 — Grupo de Usuarios de Linux</h1>
+        <h2 class="text-3xl font-bold text-gul-ink">H2 — Grupo de Usuarios de Linux</h2>
+        <h3 class="text-2xl font-semibold text-gul-ink">H3 — Grupo de Usuarios de Linux</h3>
+        <h4 class="text-xl font-semibold text-gul-ink">H4 — Grupo de Usuarios de Linux</h4>
+        <h5 class="text-lg font-semibold text-gul-ink">H5 — Grupo de Usuarios de Linux</h5>
+        <h6 class="text-base font-semibold tracking-wide text-gul-muted uppercase">H6 — Grupo de Usuarios de Linux</h6>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Párrafos</h2>
+      <div class="space-y-4 rounded-md border border-gul-line p-6">
+        <p class="text-lg text-gul-ink">
+          Párrafo destacado (lead) — para la entradilla de una sección, algo más grande que el cuerpo normal.
+        </p>
+        <p class="text-base leading-relaxed text-gul-muted">
+          Párrafo de cuerpo estándar. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Un enlace dentro de texto se ve
+          <a href="#" class="text-gul-ink underline decoration-gul-muted underline-offset-4 hover:text-gul-ink/80">así</a
+          >.
+        </p>
+        <p class="text-sm text-gul-muted">Texto pequeño — pies de foto, notas, metadatos.</p>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Cita</h2>
+      <figure class="rounded-md border border-gul-line p-6 pl-8 border-l-2 border-l-gul-line">
+        <blockquote class="font-serif text-lg text-gul-muted italic">
+          «El software libre es una cuestión de libertad, no de precio.»
+        </blockquote>
+        <figcaption class="mt-2 text-sm text-gul-muted">Richard Stallman</figcaption>
+      </figure>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Listas</h2>
+      <div class="grid gap-6 rounded-md border border-gul-line p-6 sm:grid-cols-2">
+        <div>
+          <p class="mb-2 text-sm text-gul-muted">Sin ordenar (bullet-icon Tux: idea abierta, issue #5)</p>
+          <ul class="list-disc space-y-1 pl-5 text-gul-ink">
+            <li>Primer elemento</li>
+            <li>Segundo elemento</li>
+            <li>Tercer elemento</li>
+          </ul>
+        </div>
+        <div>
+          <p class="mb-2 text-sm text-gul-muted">Ordenada</p>
+          <ol class="list-decimal space-y-1 pl-5 text-gul-ink">
+            <li>Primer paso</li>
+            <li>Segundo paso</li>
+            <li>Tercer paso</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Cards</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="rounded-2xl border border-gul-line bg-gul-surface p-6 transition-colors hover:border-gul-ink/40">
+          <span class="text-xs text-gul-muted">01</span>
+          <a href="#" class="mt-2 block font-medium text-gul-ink">Título de la card</a>
+          <p class="mt-2 text-sm text-gul-muted">Descripción corta de una línea o dos sobre el contenido.</p>
+        </div>
+        <div class="rounded-2xl border border-gul-line bg-gul-surface p-6 transition-colors hover:border-gul-ink/40">
+          <span class="text-xs text-gul-muted">02</span>
+          <a href="#" class="mt-2 block font-medium text-gul-ink">Otra card</a>
+          <p class="mt-2 text-sm text-gul-muted">Mismo patrón que las de Proyectos, reutilizado aquí.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Acordeón</h2>
+      <div class="space-y-2">
+        {
+          faqItems.map((item) => (
+            <details class="rounded-2xl border border-gul-line bg-gul-surface p-4 open:border-gul-ink/30">
+              <summary class="cursor-pointer font-medium text-gul-ink marker:text-gul-muted">{item.q}</summary>
+              <p class="mt-2 text-gul-muted">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Campos de formulario</h2>
+      <div class="grid gap-4 rounded-md border border-gul-line p-6 sm:grid-cols-2">
+        <label class="block space-y-1 text-sm">
+          <span class="font-medium text-gul-ink">Nombre</span>
+          <input
+            type="text"
+            placeholder="Ada Lovelace"
+            class="w-full rounded-md border border-gul-line bg-gul-bg px-3 py-2 text-gul-ink placeholder:text-gul-muted focus:border-gul-ink focus:outline-none"
+          />
+        </label>
+        <label class="block space-y-1 text-sm">
+          <span class="font-medium text-gul-ink">Mensaje</span>
+          <textarea
+            rows="1"
+            placeholder="Escribe aquí…"
+            class="w-full rounded-md border border-gul-line bg-gul-bg px-3 py-2 text-gul-ink placeholder:text-gul-muted focus:border-gul-ink focus:outline-none"
+          />
+        </label>
+        <label class="flex items-center gap-2 text-sm text-gul-ink">
+          <input type="checkbox" class="accent-gul-ink" />
+          Acepto los términos
+        </label>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Badges</h2>
+      <div class="flex flex-wrap items-center gap-3 rounded-md border border-gul-line p-6">
+        <span class="rounded-full bg-gul-ink px-2.5 py-0.5 text-xs font-medium text-gul-bg">Primario</span>
+        <span class="rounded-full border border-gul-line px-2.5 py-0.5 text-xs font-medium text-gul-muted">Secundario</span>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Tabla</h2>
+      <table class="w-full rounded-md border border-gul-line text-left text-sm">
+        <thead>
+          <tr class="border-b border-gul-line text-gul-ink">
+            <th class="p-3 font-semibold">Token</th>
+            <th class="p-3 font-semibold">Uso</th>
+          </tr>
+        </thead>
+        <tbody class="text-gul-muted">
+          <tr class="border-b border-gul-line/50">
+            <td class="p-3">gul-surface</td>
+            <td class="p-3">Cards, nav pill, footer</td>
+          </tr>
+          <tr>
+            <td class="p-3">gul-line</td>
+            <td class="p-3">Bordes sobre superficies oscuras</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Aviso (callout)</h2>
+      <p class="text-xs text-gul-muted">
+        Se diferencian por icono + etiqueta, no por color: la paleta (issue #5) es monocroma a propósito por
+        accesibilidad daltónica. Añadir rojo/verde semántico requeriría el visto bueno del mantenedor.
+      </p>
+      <div class="space-y-3">
+        {
+          callouts.map((c) => (
+            <div class="flex items-start gap-3 rounded-md border border-gul-line bg-gul-surface p-4">
+              <svg viewBox="0 0 24 24" class="mt-0.5 size-5 shrink-0 stroke-current stroke-[1.5] text-gul-ink" fill="none" set:html={c.icon} />
+              <p class="text-sm text-gul-muted">
+                <span class="font-semibold text-gul-ink">{c.label}:</span> {c.text}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Botones y enlaces</h2>
+      <div class="flex flex-wrap items-center gap-4 rounded-md border border-gul-line p-6">
+        <button class="rounded-md bg-gul-ink px-4 py-2 text-sm font-semibold text-gul-bg">Botón primario</button>
+        <button class="rounded-md border border-gul-line px-4 py-2 text-sm font-semibold text-gul-ink">Botón secundario</button>
+        <a href="#" class="text-sm text-gul-ink underline decoration-gul-muted underline-offset-4 hover:text-gul-muted">
+          Enlace de texto
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
