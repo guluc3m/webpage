@@ -20,9 +20,9 @@
 
 <script>
   const CELL = 12; // px per cell (square + gap) — bigger = cheaper
-  const GAP = 3; // px gap between squares — 0 for a solid grid
+  const GAP = 2.5; // px gap between squares — 0 for a solid grid
   const DENSITY = 0.2; // fraction of cells alive on the first frame
-  const STEP_MS = 120; // ms per generation — lower = faster animation
+  const STEP_MS = 140; // ms per generation — lower = faster animation
   // Alive-cell gradient stops, [offset 0-1, color]. Applied once across the whole
   // canvas (not per-cell) so cells read as cut-outs of one continuous gradient.
   const ALIVE_GRADIENT: [number, string][] = [
@@ -31,6 +31,14 @@
   ];
   const DEAD_FILL = '#0a0a09'; // dead-cell squares — --color-gul-bg, solid (not transparent)
   const GRID_FILL = 'transparent'; // canvas background, i.e. the gaps between squares
+
+  // Tux silhouette overlay: a fixed set of cells always reads as Tux, regardless of
+  // whether the automaton underneath is alive or dead there — the life logic still
+  // runs on the full grid, only draw() overrides these cells' color.
+  const TUX_SRC = '/tux.svg';
+  const TUX_FILL = '#ece7d8'; // --color-gul-ink, solid
+  const TUX_HEIGHT_FRACTION = 1.0; // fraction of the grid's rows Tux's height fills
+  const TUX_ALPHA_THRESHOLD = 70; // 0-255, ignores the SVG's antialiased edge pixels
 
   const canvas = document.querySelector<HTMLCanvasElement>('[data-game-of-life]');
   const ctx = canvas?.getContext('2d');
@@ -41,8 +49,29 @@
     let rows = 0;
     let grid: Uint8Array = new Uint8Array(0);
     let aliveFill: CanvasGradient;
+    let tuxMask: Uint8Array = new Uint8Array(0);
 
     const idx = (x: number, y: number) => y * cols + x;
+
+    const tuxImg = new Image();
+    tuxImg.src = TUX_SRC;
+    const tuxReady = tuxImg.decode().catch(() => {}); // ignore load failures, mask stays empty
+
+    // Rasterize the SVG at exactly cols x rows (1px = 1 cell), sitting on the
+    // bottom edge, then read the alpha channel to know which cells are "Tux".
+    function buildTuxMask() {
+      if (!tuxImg.naturalHeight) return;
+      const tmp = document.createElement('canvas');
+      tmp.width = cols;
+      tmp.height = rows;
+      const tctx = tmp.getContext('2d')!;
+      const boxH = Math.round(rows * TUX_HEIGHT_FRACTION);
+      const boxW = Math.round(boxH * (tuxImg.naturalWidth / tuxImg.naturalHeight));
+      tctx.drawImage(tuxImg, Math.round((cols - boxW) / 2), rows - boxH, boxW, boxH);
+      const { data } = tctx.getImageData(0, 0, cols, rows);
+      tuxMask = new Uint8Array(cols * rows);
+      for (let i = 0; i < tuxMask.length; i++) tuxMask[i] = data[i * 4 + 3] > TUX_ALPHA_THRESHOLD ? 1 : 0;
+    }
 
     function reset() {
       // Match the backing store to the element's real size (parent-driven).
@@ -57,6 +86,10 @@
       aliveFill = ctx!.createLinearGradient(width, 0, 0, height);
       for (const [offset, color] of ALIVE_GRADIENT) aliveFill.addColorStop(offset, color);
       draw();
+      tuxReady.then(() => {
+        buildTuxMask();
+        draw();
+      });
     }
 
     function step() {
@@ -86,7 +119,8 @@
       ctx!.fillRect(0, 0, canvas!.width, canvas!.height);
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
-          ctx!.fillStyle = grid[idx(x, y)] ? aliveFill : DEAD_FILL;
+          const i = idx(x, y);
+          ctx!.fillStyle = tuxMask[i] ? TUX_FILL : grid[i] ? aliveFill : DEAD_FILL;
           ctx!.fillRect(x * CELL, y * CELL, CELL - GAP, CELL - GAP);
         }
       }
