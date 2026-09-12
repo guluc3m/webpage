@@ -14,20 +14,23 @@
 import { SOCIALS, CONTACT } from '../config.ts';
 ---
 
-<footer id="legal" class="relative overflow-hidden border-t border-gul-line bg-gul-surface p-6 text-center text-sm text-gul-muted">
+<footer
+  id="legal"
+  class="relative overflow-hidden border-t border-gul-line bg-gul-surface p-6 text-center text-sm text-gul-muted"
+>
   <p class="flex justify-center gap-4">
-    {
-      SOCIALS.map((s) => (
-        <a href={s.href} target="_blank" rel="noopener" class="hover:text-gul-ink">
-          {s.label}
-        </a>
-      ))
-    }
+    {SOCIALS.map((s) => (
+      <a href={s.href} target="_blank" rel="noopener" class="hover:text-gul-ink">
+        {s.label}
+      </a>
+    ))}
   </p>
 
   <!-- Contacto. Email obfuscated on purpose — no mailto:. Telegram is QR-only
        (see the Telegram section); Discord is invite-only via email. -->
-  <p class="mt-4">Contacto: {CONTACT.email}</p>
+  <p id="contacto" class="mt-4">
+    Contacto: {CONTACT.email}
+  </p>
   <p class="mt-1">
     <a href={CONTACT.mailingList} target="_blank" rel="noopener" class="hover:text-gul-ink">
       Lista de correo

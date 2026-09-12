@@ -13,17 +13,70 @@ import Hero from '../components/Hero/Hero.astro';
 import WhatIsGul from '../components/WhatIsGul.astro';
 import Faq from '../components/Faq.astro';
 import Projects from '../components/Projects.astro';
-import Qrs from '../components/Qrs.astro';
 import WhereWeAre from '../components/WhereWeAre.astro';
 
-// Nav links: in-page anchors match each section's `id`. External service links
-// (/jamon, /ctf, /guia, …) can be added here later — Zoe and Radio are gone.
+// Nav: just JAMon, Jornadas and Guía — live services on gul.uc3m.es, not pages
+// in this build (see CLAUDE.md "Subpages & services"). Zoe and Radio are gone.
+//
+// JAMon and Guía sub-items assume /jamon/ exposes a #talleres section the way
+// this page uses section ids; Guía's sub-items link straight to the relevant
+// file in guluc3m/linux-install since /guia/ itself just redirects there.
 const navLinks = [
-  { label: '¿Qué es el GUL?', href: '#que-es-el-gul' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Proyectos', href: '#proyectos' },
-  { label: 'Telegram', href: '#qrs' },
-  { label: '¿Dónde estamos?', href: '#donde-estamos' },
+  {
+    label: 'JAMon',
+    href: '/jamon/',
+    children: [
+      {
+        label: 'Información',
+        href: '/jamon/',
+        icon: 'info',
+        description: 'Qué es la JAMon y cómo participar.',
+      },
+      {
+        label: 'Talleres',
+        href: '/jamon/#talleres',
+        icon: 'wrench',
+        description: 'Charlas y talleres previos a la jam.',
+      },
+      {
+        label: 'Competición',
+        href: 'https://itch.io/jam/gul-jamon-2025',
+        icon: 'trophy',
+        description: 'Inscríbete y sube tu juego en itch.io.',
+      },
+    ],
+  },
+  { label: 'Jornadas', href: '/jornadas/' },
+  {
+    label: 'Guía',
+    href: '/guia/',
+    children: [
+      {
+        label: 'Instalación completa',
+        href: 'https://github.com/guluc3m/linux-install/blob/main/full-install.md',
+        icon: 'download',
+        description: 'Borra Windows y quédate solo con Linux.',
+      },
+      {
+        label: 'Dual boot',
+        href: 'https://github.com/guluc3m/linux-install/blob/main/dualboot-install.md',
+        icon: 'split',
+        description: 'Instala Linux junto a Windows o macOS.',
+      },
+      {
+        label: 'Post-instalación',
+        href: 'https://github.com/guluc3m/linux-install/blob/main/post-install.md',
+        icon: 'checklist',
+        description: 'Primeros pasos tras instalar tu distro.',
+      },
+      {
+        label: 'Solución de problemas',
+        href: 'https://github.com/guluc3m/linux-install/blob/main/troubleshoot.md',
+        icon: 'alert',
+        description: 'Wi-Fi, drivers y otros líos habituales.',
+      },
+    ],
+  },
 ];
 ---
 
@@ -34,7 +87,6 @@ const navLinks = [
     <WhatIsGul />
     <Faq />
     <Projects />
-    <Qrs />
     <WhereWeAre />
   </main>
   <GulFooter />
