@@ -1,0 +1,26 @@
+---
+/**
+ * gul-Button — the only two button looks the site has. Extra attributes
+ * (id, data-*, type…) pass straight through, e.g. for wiring gul-Modal's
+ * trigger/close buttons.
+ */
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'button'> {
+  variant?: 'primary' | 'secondary';
+}
+
+const { variant = 'primary', class: className, ...rest } = Astro.props;
+
+// gul-blue is the decided CTA colour (issue #5 accent); gul-ink text keeps
+// contrast around 4:1 on it — borderline for small text, worth a proper
+// contrast-checker pass if this ever needs to clear a formal audit.
+const variants = {
+  primary: 'bg-gul-blue text-gul-ink',
+  secondary: 'border border-gul-line text-gul-ink',
+};
+---
+
+<button type="button" class:list={['rounded-md px-4 py-2 text-sm font-semibold', variants[variant], className]} {...rest}>
+  <slot />
+</button>
