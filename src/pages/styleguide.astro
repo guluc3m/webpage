@@ -66,7 +66,25 @@ const colors = [
   },
   { token: 'gul-line', class: 'bg-gul-line', hex: '#2c2c27', desc: 'borders on dark surfaces' },
   { token: 'gul-ink', class: 'bg-gul-ink', hex: '#ece7d8', desc: 'headline / emphasis text' },
-  { token: 'gul-muted', class: 'bg-gul-muted', hex: '#9c988c', desc: 'body text on dark' },
+  {
+    token: 'gul-muted',
+    class: 'bg-gul-muted',
+    hex: '#9c988c',
+    desc: 'body text on dark; también el Tux de logo-gul-dark.svg',
+  },
+];
+
+// Decided: the two brand colours, pulled from the logo rather than invented.
+// Single accent pair, shown separately since they're not structural
+// (bg/surface/line/ink/muted above are; these are for accents/CTAs).
+const brandColors = [
+  { token: 'gul-blue', class: 'bg-gul-blue', hex: '#0075b0', desc: 'acento primario, enlaces, CTAs' },
+  {
+    token: 'gul-gray',
+    class: 'bg-gul-gray',
+    hex: '#666666',
+    desc: 'Tux de logo-gul.svg, para fondos claros',
+  },
 ];
 
 const faqItems = [
@@ -120,6 +138,32 @@ const callouts = [
             </p>
           </div>
         ))}
+      </div>
+
+      <div class="space-y-4 rounded-md border border-gul-ink/30 p-6">
+        <p class="text-xs text-gul-muted">
+          Decidido: sacados de <code class="rounded bg-gul-surface px-1 py-0.5 text-gul-ink">logo-gul-dark.svg</code>,
+          no inventados. Un solo acento (azul) + el gris de Tux — nunca varios colores compitiendo
+          entre sí, eso es lo que mantiene la paleta segura para daltonismo.
+        </p>
+        <div class="grid gap-4 sm:grid-cols-3 mb-4">
+          {brandColors.map((c) => (
+            <div class="space-y-2">
+              <div class={`h-20 rounded-md border border-gul-line ${c.class}`} />
+              <p class="text-sm text-gul-ink">{c.token}</p>
+              <p class="text-xs text-gul-muted">
+                {c.hex} — {c.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+        <div class="flex flex-wrap items-center gap-3">
+          <span class="rounded-full bg-gul-blue px-2.5 py-0.5 text-xs font-medium text-gul-bg">Badge primario</span>
+          <a href="#" class="text-sm text-gul-blue underline underline-offset-4">Enlace con acento</a>
+          <div class="rounded-2xl border-2 border-gul-blue bg-gul-surface px-3 py-1.5 text-xs text-gul-muted">
+            Card "hover" simulada
+          </div>
+        </div>
       </div>
     </section>
 

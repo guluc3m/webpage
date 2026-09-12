@@ -18,8 +18,16 @@
 
 /*
  * @theme — the curated GUL palette (issue #5: grey→black gradient, cream text
- * for emphasis). Monochrome on purpose — reads as pixel/retro rather than the
- * "AI glow gradient" look, and is colour-blind-safe by construction.
+ * for emphasis). Monochrome structure, colour-blind-safe by construction; the
+ * two brand colours (blue, gray) are pulled from the logo rather than
+ * invented, and used as a single accent pair — never two competing hues
+ * standing in for meaning.
+ *
+ * Two logo variants, two grays: logo-gul.svg is for light backgrounds — its
+ * Tux silhouette is gul-gray (#666666). logo-gul-dark.svg is for this site's
+ * permanently-dark header, so its Tux uses gul-muted (#9c988c) instead — the
+ * same gray already doing double duty as the main dark-mode body-text colour.
+ * Keep that logo/token pairing in sync if either colour ever changes.
  *
  * Fonts: Inter for body (--font-sans), Space Grotesk for headings
  * (--font-heading, use the `font-heading` class), JetBrains Mono for code
@@ -31,7 +39,10 @@
   --color-gul-surface: #171714; /* cards, nav pill, footer */
   --color-gul-line: #2c2c27; /* borders on dark surfaces */
   --color-gul-ink: #ece7d8; /* headline / emphasis text, cream */
-  --color-gul-muted: #9c988c; /* body text on dark */
+  --color-gul-muted: #9c988c; /* body text on dark; also logo-gul-dark.svg's Tux */
+
+  --color-gul-blue: #0075b0; /* primary accent: links, primary actions */
+  --color-gul-gray: #666666; /* logo-gul.svg's Tux, for light backgrounds */
 
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
   --font-heading: 'Space Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
