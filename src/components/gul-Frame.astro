@@ -16,7 +16,7 @@ interface Props {
   variant?: 'full' | 'corner';
   /** Fill with --color-gul-surface. Off by default — most boxed demo content sits directly on the page. */
   surface?: boolean;
-  /** Full border-color utility class, e.g. 'border-gul-ink/30' for the "decided" callout boxes. */
+  /** Full border-color utility class(es), e.g. 'border-gul-ink/30', or 'border-gul-line hover:border-gul-ink/40' for gul-Card. Goes on the outer (bordered) div — never `class`, which lands on the padded inner one. */
   border?: string;
   /** Padding/layout classes for the box itself (e.g. 'p-6', 'grid gap-4 sm:grid-cols-2'). */
   class?: string;
@@ -25,9 +25,9 @@ interface Props {
 const { variant = 'corner', surface = false, border = 'border-gul-line', class: className } = Astro.props;
 ---
 
-<div class:list={['relative overflow-hidden rounded-md border', border, surface && 'bg-gul-surface', className]}>
+<div class:list={['relative overflow-hidden rounded-md border', border, surface && 'bg-gul-surface']}>
   <PixelDissolve variant={variant} />
-  <div class="relative z-10">
+  <div class:list={['relative z-10', className]}>
     <slot />
   </div>
 </div>
