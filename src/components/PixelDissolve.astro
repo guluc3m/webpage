@@ -54,7 +54,7 @@ const PRESETS: Record<Variant, Required<Omit<Props, 'variant'>>> = {
     alpha: 0.4,
     maxDensity: 0.5,
     xBias: 0.5, // symmetric distance to the corner, so it reads as a blob, not a horizontal band
-    falloff: 7, // steep: the effect only survives within a small radius of the corner
+    falloff: 10, // steep: the effect only survives within a small radius of the corner
     orderedMix: 0.85,
   },
 };
