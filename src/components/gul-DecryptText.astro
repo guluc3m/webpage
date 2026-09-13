@@ -11,12 +11,13 @@ interface Props {
   speed?: number; // ms per glyph swap while a character is still scrambling
   stagger?: number; // ms of lock delay added per character
   class?: string;
+  [attr: string]: unknown;
 }
 
-const { text, as: Tag = 'span', speed = 40, stagger = 28, class: className } = Astro.props;
+const { text, as: Tag = 'span', speed = 40, stagger = 28, class: className, ...rest } = Astro.props;
 ---
 
-<Tag data-decrypt data-speed={speed} data-stagger={stagger} class={className}>{text}</Tag>
+<Tag data-decrypt data-speed={speed} data-stagger={stagger} class={className} {...rest}>{text}</Tag>
 
 <style>
   [data-decrypt] :global([data-state='scramble']) {
