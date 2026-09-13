@@ -1,10 +1,10 @@
 ---
 /**
- * ShaderBackground — "Mesh drift" WebGL1 fragment shader, frozen in time so the
- * only motion left is the cursor spotlight. The recipe's own autonomous drift/
- * blob movement is time-driven inside the shader, so feeding it a constant
- * u_time (instead of elapsed seconds) disables that motion without touching
- * the GLSL itself — the cursor uniforms are the only thing updated per frame.
+ * ShaderBackground — "Mesh drift" WebGL1 fragment shader, frozen in time. The
+ * recipe's own autonomous drift/blob movement is time-driven inside the shader,
+ * so feeding it a constant u_time (instead of elapsed seconds) disables that
+ * motion without touching the GLSL itself — the cursor uniforms are the only
+ * thing updated per frame.
  *
  * Fills its positioned parent; put it behind sibling content with position:
  * absolute from the parent side, same as GameOfLife. GameOfLife's dead-cell
@@ -20,7 +20,7 @@
 
 <script>
   const MAX_DPR = 2;
-  const FROZEN_TIME = 0; // no autonomous motion — only the cursor moves the shader
+  const FROZEN_TIME = 0; // no autonomous motion
 
   // Colour recipe, low → high (#101010, #F5F5F5, #B0B0B0, #3A3A3A).
   const COLORS: [number, number, number][] = [
@@ -34,9 +34,6 @@
   const SURFACE = [1.82, 0.89, -0.12, 1.0] as const; // detail, contrast, brightness, saturation
   const FINISH = [0.0, 1.0, 0.04, 0.03] as const; // hue, vignette, blur, grain
   const TRANSFORM = [7191.0, 0.0, 0.18, 0.0] as const; // seed, rotate, drift, oklab
-  const CURSOR_EFFECT = 4.0; // spotlight
-  const CURSOR_STRENGTH = 1; // spotlight intensity — scales the glow added at the cursor
-  const CURSOR_RADIUS = 0.32;
 
   const VERTEX_SRC = `
     attribute vec2 a_position;
@@ -324,8 +321,6 @@
     const uSurface = gl.getUniformLocation(program, 'u_surface');
     const uFinish = gl.getUniformLocation(program, 'u_finish');
     const uTransform = gl.getUniformLocation(program, 'u_transform');
-    const uSpace = gl.getUniformLocation(program, 'u_space');
-    const uCursor = gl.getUniformLocation(program, 'u_cursor');
 
     const colorData = new Float32Array(8 * 3);
     COLORS.forEach((c, i) => colorData.set(c, i * 3));
@@ -334,23 +329,6 @@
     gl.uniform4f(uSurface, ...SURFACE);
     gl.uniform4f(uFinish, ...FINISH);
     gl.uniform4f(uTransform, ...TRANSFORM);
-
-    // Pointer state, normalized to -1..1 in GL space (y up, origin centre).
-    let pointerX = 0;
-    let pointerY = 0;
-    let targetPresence = 0;
-    let presence = 0;
-
-    const host = canvas.parentElement ?? canvas;
-    host.addEventListener('pointermove', (e: PointerEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      pointerX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      pointerY = (1 - (e.clientY - rect.top) / rect.height) * 2 - 1;
-      targetPresence = 1;
-    });
-    host.addEventListener('pointerleave', () => {
-      targetPresence = 0;
-    });
 
     function resize() {
       const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR);
@@ -368,10 +346,7 @@
     let raf = 0;
     function render() {
       if (!running) return;
-      presence += (targetPresence - presence) * 0.08; // soft fade in/out
       gl!.uniform4f(uScene, canvas!.width, canvas!.height, FROZEN_TIME, COLORS.length);
-      gl!.uniform4f(uSpace, 0, 0, pointerX, pointerY);
-      gl!.uniform4f(uCursor, presence, CURSOR_EFFECT, CURSOR_STRENGTH, CURSOR_RADIUS);
       gl!.drawArrays(gl!.TRIANGLES, 0, 3);
       raf = requestAnimationFrame(render);
     }
