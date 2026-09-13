@@ -5,7 +5,7 @@
  * parent is a <ul> (Tailwind's preflight already strips list bullets, so a
  * card grid built on <ul><li> never needs to fight them off).
  */
-import PixelDissolve from './PixelDissolve.astro';
+import GulFrame from './gul-Frame.astro';
 
 interface Props {
   href: string;
@@ -19,13 +19,10 @@ const { href, title, description, index } = Astro.props;
 const isExternal = href.startsWith('http');
 ---
 
-<div class="relative overflow-hidden rounded-md border border-gul-line bg-gul-surface p-6 transition-colors hover:border-gul-ink/40">
-  <PixelDissolve />
-  <div class="relative z-10">
-    {index && <span class="text-xs text-gul-muted">{index}</span>}
-    <a href={href} class="mt-2 block font-medium text-gul-ink" {...(isExternal ? { target: '_blank', rel: 'noopener' } : {})}>
-      {title}
-    </a>
-    <p class="mt-2 text-sm text-gul-muted">{description}</p>
-  </div>
-</div>
+<GulFrame variant="full" surface class="p-6 transition-colors hover:border-gul-ink/40">
+  {index && <span class="text-xs text-gul-muted">{index}</span>}
+  <a href={href} class="mt-2 block font-medium text-gul-ink" {...(isExternal ? { target: '_blank', rel: 'noopener' } : {})}>
+    {title}
+  </a>
+  <p class="mt-2 text-sm text-gul-muted">{description}</p>
+</GulFrame>
