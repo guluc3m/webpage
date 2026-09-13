@@ -13,12 +13,14 @@ import PixelDissolve from './PixelDissolve.astro';
 interface Props {
   label: string;
   variant?: 'primary' | 'secondary';
+  /** Overrides the variant's default $/> glyph — e.g. ↻ for a refresh action. */
+  icon?: string;
   href?: string;
   class?: string;
   [attr: string]: unknown;
 }
 
-const { label, variant = 'primary', href, class: className, ...rest } = Astro.props;
+const { label, variant = 'primary', icon, href, class: className, ...rest } = Astro.props;
 
 // gul-blue is the decided CTA colour (issue #5 accent); gul-ink text keeps
 // contrast around 4:1 on it — borderline for small text, worth a proper
@@ -51,7 +53,8 @@ const variants = {
     glyphClass: 'text-gul-blue',
   },
 };
-const { classes: variantClasses, glyph, glyphClass } = variants[variant];
+const { classes: variantClasses, glyph: defaultGlyph, glyphClass } = variants[variant];
+const glyph = icon ?? defaultGlyph;
 // relative + overflow-hidden: same recipe as gul-Frame, so PixelDissolve's
 // absolutely-positioned canvas clips to the button's own rounded-md corner
 // instead of gul-Frame's (there's no frame here — the button is its own box).
