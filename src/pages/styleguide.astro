@@ -27,6 +27,7 @@ import GulGallery from '../components/gul-Gallery.astro';
 import GulList from '../components/gul-List.astro';
 import GulAccordion from '../components/gul-Accordion.astro';
 import GulFrame from '../components/gul-Frame.astro';
+import GulCodeBlock from '../components/gul-CodeBlock.astro';
 import PixelDissolve from '../components/PixelDissolve.astro';
 
 // Decided (self-hosted via @fontsource-variable, tokens in global.css @theme).
@@ -348,7 +349,7 @@ const faqItems = [
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Código y teclado</h2>
       <GulFrame class="space-y-4 p-6">
-        <pre><code>sudo apt update &amp;&amp; sudo apt upgrade</code></pre>
+        <GulCodeBlock>sudo apt update &amp;&amp; sudo apt upgrade</GulCodeBlock>
         <p class="text-sm text-gul-muted">
           Código inline, como <code>apt-get</code>, dentro de una frase.
         </p>
