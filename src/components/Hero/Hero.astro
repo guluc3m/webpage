@@ -3,15 +3,14 @@
  * Hero — the first screen. Conway's Game of Life runs as the background
  * (GameOfLife is positioned absolutely inside this section's relative box).
  *
- * Shows a random "fortuna" (GUL in-joke) under the slogan. The initial quote is
- * picked and formatted here; the small client script below lets visitors pick
- * another one without reloading the page.
- *
- * TODO(design): the actual hero design is still to do. Slogan + fortuna are the
- * real 2021 content; layout/styling is placeholder.
+ * Shows a random "fortuna" (GUL in-joke) under the slogan. The quote is picked
+ * and formatted here, at build time — it changes on each rebuild, not per visit.
  */
 import GameOfLife from './GameOfLife.astro';
 import ShaderBackground from './ShaderBackground.astro';
+import GulEyebrow from '../gul-Eyebrow.astro';
+import GulDecryptText from '../gul-DecryptText.astro';
+import GulButton from '../gul-Button.astro';
 import fortunas from '../../data/fortunas.json';
 import { formatFortuna, randomFortuna, type Fortuna } from '../../lib/fortunas.ts';
 
@@ -23,35 +22,20 @@ const fortuna = randomFortuna(formattedFortunas);
   <ShaderBackground />
   <GameOfLife />
   <div class="relative max-w-3xl px-32 py-8">
-    <p class="mb-4 flex items-center gap-3 text-sm font-medium tracking-[0.2em] text-gul-muted uppercase">
-      <span class="h-px w-8 bg-gul-line"></span>
-      Grupo de Usuarios de Linux de la UC3M
-    </p>
+    <GulEyebrow text="Grupo de Usuarios de Linux de la UC3M" class="mb-4" />
     <h1 class="text-5xl font-bold tracking-tight text-gul-ink sm:text-6xl">
-      Nos gusta <em class="font-serif font-normal italic">jugar</em> con la tecnología
+      Nos gusta <em class="italic">jugar</em> con la tecnología
     </h1>
-    <figure class="mt-6 border-l border-gul-line pl-4">
+    <figure class="mt-6">
       {/* whitespace-pre-line: the formatter may put a *stage direction* on its own line */}
-      <blockquote
+      <GulDecryptText
+        as="blockquote"
+        text={fortuna.quote}
+        class="whitespace-pre-line"
         data-fortuna-quote
-        class="whitespace-pre-line font-serif text-lg text-gul-muted italic"
-      >
-        {fortuna.quote}
-      </blockquote>
-      <figcaption data-fortuna-author hidden={!fortuna.author} class="mt-2 text-sm text-gul-muted">
-        {fortuna.author}
-      </figcaption>
-      <button
-        type="button"
-        data-refresh-fortuna
-        class="mt-4 inline-flex cursor-pointer items-center gap-2 border border-gul-line px-2.5 py-1.5 font-mono text-xs tracking-wide text-gul-muted transition-colors hover:border-gul-muted hover:text-gul-ink focus-visible:ring-2 focus-visible:ring-gul-muted focus-visible:ring-offset-2 focus-visible:ring-offset-gul-bg focus-visible:outline-none"
-        aria-label="Mostrar otra fortuna"
-      >
-        <span aria-hidden="true" class="text-sm leading-none">
-          ↻
-        </span>
-        Otra fortuna
-      </button>
+      />
+      <figcaption data-fortuna-author hidden={!fortuna.author}>{fortuna.author}</figcaption>
+      <GulButton variant="secondary" label="Otra fortuna" icon="↻" class="mt-4" data-refresh-fortuna />
     </figure>
   </div>
 </section>

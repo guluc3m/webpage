@@ -2,9 +2,11 @@
 /**
  * Faq — frequently asked questions.
  *
- * Uses native <details>/<summary> so it works without JavaScript.
  * TODO! : real questions and answers (placeholders for now).
  */
+import GulAccordion from './gul-Accordion.astro';
+import GulTerminal from './gul-Terminal.astro';
+
 const items = [
   { q: '¿Cómo me apunto al GUL?', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
   {
@@ -17,14 +19,8 @@ const items = [
 
 <section id="faq" class="mx-auto max-w-3xl p-8">
   <h2 class="text-3xl font-bold text-gul-ink">FAQ</h2>
-  <div class="mt-4 space-y-2">
-    {items.map((item) => (
-      <details class="rounded-2xl border border-gul-line bg-gul-surface p-4 open:border-gul-ink/30">
-        <summary class="cursor-pointer font-medium text-gul-ink marker:text-gul-muted">
-          {item.q}
-        </summary>
-        <p class="mt-2 text-gul-muted">{item.a}</p>
-      </details>
-    ))}
+  <GulTerminal lines={[{ command: 'man faq' }]} />
+  <div class="mt-4">
+    <GulAccordion items={items} />
   </div>
 </section>

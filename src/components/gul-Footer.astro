@@ -7,80 +7,161 @@
  *
  * The registration data below is COPIED VERBATIM from the 2021 site and must not
  * be paraphrased. Update it only against an official association document.
- *
- * TODO(assets): the social links were icons on the old site — swap the text for
- * the SVGs in the assets step.
  */
-import { SOCIALS, CONTACT } from '../config.ts';
+import { SOCIALS, CONTACT, ADDRESS } from '../config.ts';
+
+// `?url` forces Vite to hand back the built asset URL instead of Astro's
+// ImageMetadata object (which a plain <img src> can't consume directly) -
+// static imports only, so each file needs its own line, not a templated path.
+import githubIcon from '../icons/rrss/github.svg?url';
+import youtubeIcon from '../icons/rrss/youtube.svg?url';
+import twitterIcon from '../icons/rrss/twitter.svg?url';
+import igIcon from '../icons/rrss/ig.svg?url';
+import linkedinIcon from '../icons/rrss/linkedin.svg?url';
+import PixelDissolve from './PixelDissolve.astro';
+
+const ICONS: Record<string, string> = {
+  'github.svg': githubIcon,
+  'youtube.svg': youtubeIcon,
+  'twitter.svg': twitterIcon,
+  'ig.svg': igIcon,
+  'linkedin.svg': linkedinIcon,
+};
 ---
 
 <footer
   id="legal"
-  class="relative overflow-hidden border-t border-gul-line bg-gul-surface p-6 text-center text-sm text-gul-muted"
+  data-reveal
+  class="translate-y-8 border-t border-gul-line bg-gul-surface text-sm text-gul-muted opacity-0 transition-all duration-700 ease-out [&.is-visible]:translate-y-0 [&.is-visible]:opacity-100"
 >
-  <p class="flex justify-center gap-4">
-    {SOCIALS.map((s) => (
-      <a href={s.href} target="_blank" rel="noopener" class="hover:text-gul-ink">
-        {s.label}
-      </a>
-    ))}
-  </p>
+  <div class="mx-auto max-w-5xl p-8">
+    <PixelDissolve variant={'corner'} />
 
-  <!-- Contacto. Email obfuscated on purpose — no mailto:. Telegram is QR-only
-       (see the Telegram section); Discord is invite-only via email. -->
-  <p id="contacto" class="mt-4">
-    Contacto: {CONTACT.email}
-  </p>
-  <p class="mt-1">
-    <a href={CONTACT.mailingList} target="_blank" rel="noopener" class="hover:text-gul-ink">
-      Lista de correo
-    </a>{' '}
-    · Discord (reuniones telemáticas): pídenos invitación por correo
-  </p>
+    <div class="grid gap-8 md:grid-cols-3">
+      <div>
+        <h2 class="font-heading text-gul-ink">Encuéntranos</h2>
+        <p class="mt-3 flex gap-3">
+          {SOCIALS.map((s) => (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener"
+              aria-label={s.label}
+              class="opacity-80 hover:opacity-100"
+            >
+              {/* loading="lazy": these SVGs draw themselves in once on load (fill-freeze
+                  animate) - eager-loading would finish that draw off-screen before the
+                  footer ever scrolls into view, so it'd look static. Lazy loading defers
+                  the fetch (and the animation) until it's actually visible. */}
+              <img src={ICONS[s.icon]} alt="" loading="lazy" class="h-8 w-8 invert" />
+            </a>
+          ))}
+        </p>
+      </div>
 
-  <p class="mt-4">
-    El Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid es una asociación declarada
-    de beneficio social por el Ministerio de Hacienda.
-  </p>
-  <p class="mt-2">
-    Domicilio social: Despacho 2.3.C05 del edificio Sabatini. Avenida de la Universidad, 30, 28911
-    Leganés, Madrid, España.
-  </p>
-  <p class="mt-2">
-    C.I.F.: G83296988
-    <br />
-    Número de registro de la comunidad de Madrid: 23500
-    <br />
-    Número de registro del ayuntamiento de Leganés: 795
-  </p>
+      <div>
+        <h2 class="font-heading text-gul-ink">Contáctanos</h2>
+        <!-- Email obfuscated on purpose - no mailto:. Telegram is QR-only
+             (see the Telegram section); Discord is invite-only via email. -->
+        <p class="mt-3">
+          <span class="text-gul-ink">Correo:</span> {CONTACT.email}
+        </p>
+        <p class="mt-1">
+          <span class="text-gul-ink">Visita:</span> {ADDRESS}
+        </p>
+      </div>
 
-  <p class="mt-4">
-    <a
-      href="https://cloud-gul.uc3m.es/s/s5TRM78die8rdAc"
-      target="_blank"
-      rel="noopener"
-      title="link a los estatutos"
-      class="hover:text-gul-ink"
-    >
-      Estatutos
-    </a>
-    |
-    <a
-      href="https://cloud-gul.uc3m.es/s/f8ALGXstCpJa5Lc"
-      target="_blank"
-      rel="noopener"
-      title="link al código de conducta"
-      class="hover:text-gul-ink"
-    >
-      Código de Conducta
-    </a>
-  </p>
+      <div>
+        <h2 class="font-heading text-gul-ink">Documentos</h2>
+        <ul class="mt-3 space-y-1">
+          <li>
+            <a
+              href="https://cloud-gul.uc3m.es/s/s5TRM78die8rdAc"
+              target="_blank"
+              rel="noopener"
+              class="underline decoration-gul-line underline-offset-4 hover:text-gul-ink hover:decoration-gul-ink"
+            >
+              Estatutos
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://cloud-gul.uc3m.es/s/f8ALGXstCpJa5Lc"
+              target="_blank"
+              rel="noopener"
+              class="underline decoration-gul-line underline-offset-4 hover:text-gul-ink hover:decoration-gul-ink"
+            >
+              Código de Conducta
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-  <!-- Ghost wordmark, purely decorative — ignored by assistive tech. -->
-  <p
-    aria-hidden="true"
-    class="pointer-events-none mt-8 -mb-8 truncate text-[12rem] leading-none font-bold text-gul-line select-none sm:text-[16rem]"
-  >
-    GUL
-  </p>
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="py-6">
+        <p class="text-justify">
+          El Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid es una asociación
+          declarada de beneficio social por el Ministerio de Hacienda.
+        </p>
+      </div>
+
+      <div class="py-6">
+        <p>
+          <span class="text-gul-ink">Domicilio social:</span> {ADDRESS}, España.
+          <br />
+          <span class="text-gul-ink">C.I.F.:</span> G83296988
+          <br />
+          <span class="text-gul-ink">Número de registro de la comunidad de Madrid:</span> 23500
+          <br />
+          <span class="text-gul-ink">Número de registro del ayuntamiento de Leganés:</span> 795
+        </p>
+      </div>
+    </div>
+
+    <div class="mx-auto mt-8 flex items-center gap-3">
+      <hr class="flex-1" />
+      <img src="/tux-white-fill.svg" alt="" class="h-8 w-5" />
+      <hr class="flex-1" />
+    </div>
+
+    <div class="mt-4 flex justify-between font-heading text-l">
+      <span>$> GUL UC3M · EST. 1998;</span>
+      <span>{'$HOME = Leganés · Madrid'}</span>
+    </div>
+  </div>
 </footer>
+
+<noscript>
+  <style>
+    /* Without JS the is-visible class never lands - never leave real content (the
+       legal block, contact info) permanently hidden behind a JS-only condition. */
+    [data-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  </style>
+</noscript>
+
+<script>
+  // Reveal-on-scroll: fades/slides the footer in the first time it enters the
+  // viewport. Reduced motion (or JS never running) leaves the opacity-0/
+  // translate-y-8 base styles unshown-forever, so both get an immediate
+  // "is-visible" instead of waiting on the observer.
+  const footer = document.querySelector<HTMLElement>('[data-reveal]');
+  if (footer) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      footer.classList.add('is-visible');
+    } else {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) return;
+          footer.classList.add('is-visible');
+          observer.disconnect();
+        },
+        { threshold: 0.15 },
+      );
+      observer.observe(footer);
+    }
+  }
+</script>

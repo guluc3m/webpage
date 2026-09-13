@@ -4,10 +4,9 @@
  *
  * Shared component (`gul-` prefix) — copied into the other GUL repos. It takes
  * the nav links as a prop so nothing about *this* site's sections is baked in.
- *
- * TODO(design): retro/pixel styling pass once fonts/assets land.
  */
 import GulNav from './gul-Nav.astro';
+import GulButton from './gul-Button.astro';
 
 interface Props {
   links: { label: string; href: string }[];
@@ -24,11 +23,6 @@ const { links } = Astro.props;
   </a>
   <div class="flex items-center gap-8">
     <GulNav links={links} />
-    <a
-      href="#contacto"
-      class="rounded-md bg-gul-ink px-4 py-2 text-sm font-medium text-gul-bg transition-colors hover:bg-white"
-    >
-      Contacta
-    </a>
+    <GulButton href="#contacto" label="Contacta" />
   </div>
 </header>

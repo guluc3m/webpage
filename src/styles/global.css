@@ -8,19 +8,296 @@
 @import 'tailwindcss';
 
 /*
+ * Self-hosted fonts (decided over the pixel-font idea in issue #5 — retro
+ * enough already via the palette + Game of Life background). Variable-weight
+ * builds, one file per family, no Google Fonts CDN call.
+ */
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource-variable/jetbrains-mono';
+
+/*
  * @theme — the curated GUL palette (issue #5: grey→black gradient, cream text
- * for emphasis). Monochrome on purpose — reads as pixel/retro rather than the
- * "AI glow gradient" look, and is colour-blind-safe by construction.
+ * for emphasis). Monochrome structure; the two brand colours (blue, gray) are
+ * pulled from the logo rather than invented, and used as a single accent pair
+ * — never two competing hues standing in for meaning. The green/red/amber
+ * trio is the one deliberate exception, reserved for gul-Callout's
+ * success/error/warning status colouring.
  *
- * Fonts are NOT decided yet: self-host vs CDN, and which pixel display font +
- * readable body font. Until that call is made we ride Tailwind's default system
- * stacks (`font-sans` / `font-serif` / `font-mono`). Don't pick fonts here
- * without the maintainer's say-so.
+ * Two logo variants, two grays: logo-gul.svg is for light backgrounds — its
+ * Tux silhouette is gul-gray (#666666). logo-gul-dark.svg is for this site's
+ * permanently-dark header, so its Tux uses gul-muted (#9c988c) instead — the
+ * same gray already doing double duty as the main dark-mode body-text colour.
+ * Keep that logo/token pairing in sync if either colour ever changes.
+ *
+ * Fonts: Inter for body (--font-sans), Space Grotesk for headings
+ * (--font-heading — applied automatically to every h1–h6, see @layer base
+ * below), JetBrains Mono for code (--font-mono, likewise automatic via
+ * Tailwind's own preflight on code/pre/kbd). Decided by the maintainer after
+ * comparing candidates live in /styleguide — don't swap these without going
+ * through that page again.
  */
 @theme {
   --color-gul-bg: #0a0a09; /* page canvas */
   --color-gul-surface: #171714; /* cards, nav pill, footer */
   --color-gul-line: #2c2c27; /* borders on dark surfaces */
   --color-gul-ink: #ece7d8; /* headline / emphasis text, cream */
-  --color-gul-muted: #9c988c; /* body text on dark */
+  --color-gul-muted: #9c988c; /* body text on dark; also logo-gul-dark.svg's Tux */
+
+  --color-gul-blue: #0075b0; /* primary accent: links, primary actions */
+  --color-gul-gray: #666666; /* logo-gul.svg's Tux, for light backgrounds */
+
+  --color-gul-green: #3fb950; /* callout: success */
+  --color-gul-red: #f85149; /* callout: error */
+  --color-gul-amber: #d29922; /* callout: warning/aviso */
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Space Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+
+  /* Decided breakpoints: 480px (sm, overrides Tailwind's 640px default) and
+     768px (md, same as Tailwind's default — kept explicit so it reads as a
+     decision, not an unexamined default). lg/xl stay at Tailwind's defaults,
+     unused so far. */
+  --breakpoint-sm: 30rem; /* 480px */
+  --breakpoint-md: 48rem; /* 768px */
+}
+
+/*
+ * Concentric radius: rounded-md is the standing choice for a container's
+ * outer edge (see /styleguide → Radios). Anything nested inside it must use
+ * inner-radius = outer-radius − gap, or the inner corner cuts a visible
+ * sliver instead of following the same curve — see
+ * https://www.joshwcomeau.com/css/border-radius/. `rounded-inner-<n>` takes
+ * the same number as the padding utility on the same element (rounded-inner-4
+ * pairs with p-4) and computes it from --radius-md automatically, so it stays
+ * correct if that token's value ever changes. max(0px, …) guards against a
+ * gap bigger than the outer radius, which a bare calc() would make negative
+ * (invalid CSS, dropped) — that's expected for most gaps here, since
+ * rounded-md is only 0.375rem.
+ */
+@utility rounded-inner-* {
+  border-radius: max(0px, calc(var(--radius-md) - --spacing(--value(integer))));
+}
+
+/*
+ * Base-element defaults: a plain <h2> anywhere on the site should already be
+ * correct without anyone remembering to add a class. `@layer base` sits
+ * before Tailwind's utility layer in the cascade, so a utility class on a
+ * specific heading (e.g. font-mono for a one-off) still overrides this.
+ */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+
+  /* Markdown-style prefix: a plain h2/h3 reads like its own source syntax. */
+  h2::before {
+    content: '## ';
+    color: var(--color-gul-blue);
+  }
+  h3::before {
+    content: '### ';
+    color: var(--color-gul-blue);
+  }
+
+  /* Code & keyboard. pre>code resets the inline treatment since pre already
+     supplies its own background/border/padding — avoids a double box. */
+  code,
+  kbd {
+    border-radius: 0.25rem;
+    background-color: var(--color-gul-surface);
+    padding-inline: 0.375rem;
+    padding-block: 0.125rem;
+    color: var(--color-gul-ink);
+  }
+  kbd {
+    border: 1px solid var(--color-gul-line);
+    font-size: 0.75rem;
+  }
+  pre {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-gul-line);
+    background-color: var(--color-gul-surface);
+    padding: 1rem;
+    font-size: 0.875rem;
+    color: var(--color-gul-ink);
+  }
+  pre code {
+    border-radius: 0;
+    background-color: transparent;
+    padding: 0;
+  }
+
+  /* Divider. */
+  hr {
+    border-color: var(--color-gul-line);
+  }
+
+  /* Quote — matches Hero's fortuna quote, the only real usage today. */
+  figure {
+    border-left: 1px solid var(--color-gul-line);
+    padding-left: 1rem;
+  }
+  blockquote {
+    font-size: 1.125rem;
+    font-style: italic;
+    color: var(--color-gul-muted);
+  }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-gul-muted);
+  }
+
+  /* Table. */
+  table {
+    width: 100%;
+    /* Tailwind's preflight sets border-collapse: collapse on every table, and
+       per spec border-radius has no visual effect once borders are collapsed
+       — override back to separate or the rounded corner silently does nothing. */
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-gul-line);
+    text-align: left;
+    font-size: 0.875rem;
+  }
+  thead {
+    color: var(--color-gul-ink);
+  }
+  tbody {
+    color: var(--color-gul-muted);
+  }
+  th,
+  td {
+    padding: 0.75rem;
+  }
+  th {
+    font-weight: 600;
+    /* border-collapse: separate ignores borders on <tr>, so the head/body
+       divider has to live on the cells themselves. */
+    border-bottom: 1px solid var(--color-gul-line);
+  }
+  tbody tr:not(:last-child) td {
+    border-bottom: 1px solid color-mix(in oklab, var(--color-gul-line) 50%, transparent);
+  }
+
+  /* Form fields — excludes checkbox/radio, which are native widgets, not
+     text-like boxes. */
+  input:not([type='checkbox']):not([type='radio']),
+  textarea,
+  select {
+    width: 100%;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-gul-line);
+    background-color: var(--color-gul-bg);
+    padding-inline: 0.75rem;
+    padding-block: 0.5rem;
+    color: var(--color-gul-ink);
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-gul-muted);
+  }
+  input:not([type='checkbox']):not([type='radio']):focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--color-gul-ink);
+    outline: none;
+  }
+  input[type='checkbox'],
+  input[type='radio'] {
+    accent-color: var(--color-gul-ink);
+  }
+
+  /* Disclosure — matches Faq.astro's accordion, the only real usage today.
+     Flat row, no box. The answer lives in a wrapper div so its height can be
+     animated: 0fr → 1fr on a grid track is the one CSS-only way to transition
+     to/from "auto" height (no JS). Author rules already beat the UA rule that
+     hides a closed details' children, so the wrapper stays display:grid even
+     collapsed — overflow:hidden on the inner child clips it mid-transition.
+     The bottom border is the separator between rows and drops away once a
+     row opens, so the revealed answer reads as the separation instead. */
+  details {
+    border-bottom: 1px solid var(--color-gul-line);
+  }
+  details[open] {
+    border-bottom-color: transparent;
+  }
+  summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    font-weight: 500;
+    color: var(--color-gul-ink);
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    content: '';
+    flex-shrink: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid var(--color-gul-muted);
+    border-bottom: 2px solid var(--color-gul-muted);
+    transform: rotate(45deg);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  details[open] summary::after {
+    border-color: var(--color-gul-blue);
+    transform: rotate(-135deg);
+  }
+  /* Chrome 131+ wraps details content in a native ::details-content pseudo
+     that toggles content-visibility/block-size on its own, with no
+     transition — it clips the div below before our own animation can run.
+     Force it out of the way so the div's grid-template-rows trick is the
+     only thing controlling height. */
+  details::details-content {
+    content-visibility: visible;
+    block-size: auto;
+    overflow: visible;
+  }
+  details > div {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+  }
+  details[open] > div {
+    grid-template-rows: 1fr;
+  }
+  details > div > p {
+    overflow: hidden;
+    padding-bottom: 1.25rem;
+    transform: translateY(-0.5rem);
+    opacity: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  details[open] > div > p {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Modal — no real usage yet, formalized ahead of one. */
+  dialog {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-gul-line);
+    background-color: var(--color-gul-surface);
+    padding: 1.5rem;
+    color: var(--color-gul-ink);
+  }
+  dialog::backdrop {
+    background-color: color-mix(in oklab, var(--color-gul-bg) 70%, transparent);
+  }
 }

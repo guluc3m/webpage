@@ -5,6 +5,9 @@
  * Only the Typst report template for now; more get added to the array later.
  * TODO(copy): real descriptions.
  */
+import GulCard from './gul-Card.astro';
+import GulTerminal from './gul-Terminal.astro';
+
 const projects = [
   {
     name: 'Plantilla de informes Typst',
@@ -16,14 +19,16 @@ const projects = [
 
 <section id="proyectos" class="mx-auto max-w-3xl p-8">
   <h2 class="text-3xl font-bold text-gul-ink">Proyectos</h2>
+  <GulTerminal lines={[{ command: 'cd projects && ls' }]} />
   <ul class="mt-4 grid gap-4 sm:grid-cols-2">
     {projects.map((project, i) => (
-      <li class="rounded-2xl border border-gul-line bg-gul-surface p-6 transition-colors hover:border-gul-ink/40">
-        <span class="text-xs text-gul-muted">{String(i + 1).padStart(2, '0')}</span>
-        <a href={project.href} target="_blank" rel="noopener" class="mt-2 block font-medium text-gul-ink">
-          {project.name}
-        </a>
-        <p class="mt-2 text-sm text-gul-muted">{project.description}</p>
+      <li>
+        <GulCard
+          href={project.href}
+          title={project.name}
+          description={project.description}
+          index={String(i + 1).padStart(2, '0')}
+        />
       </li>
     ))}
   </ul>
