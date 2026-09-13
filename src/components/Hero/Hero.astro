@@ -55,6 +55,7 @@ const fortuna = randomFortuna(formattedFortunas);
 
     if (!quote || !author || !next) return;
     quote.textContent = next.quote;
+    quote.dispatchEvent(new CustomEvent('gul:decrypt', { bubbles: true, detail: quote }));
     author.textContent = next.author;
     author.hidden = !next.author;
   });

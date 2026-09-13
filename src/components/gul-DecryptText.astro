@@ -83,5 +83,10 @@ const { text, as: Tag = 'span', speed = 40, stagger = 28, class: className, ...r
 
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.querySelectorAll<HTMLElement>('[data-decrypt]').forEach(decrypt);
+
+    document.addEventListener('gul:decrypt', (event) => {
+      const target = (event as CustomEvent<HTMLElement>).detail;
+      if (target?.matches('[data-decrypt]')) decrypt(target);
+    });
   }
 </script>
