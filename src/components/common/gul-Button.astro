@@ -90,22 +90,6 @@ const classes = [
 }
 
 <style>
-  /* Block cursor, hidden until hover/focus — content lives in CSS so it
-     never touches the accessible name (unlike the glyph, which is a real
-     DOM span with aria-hidden for the same reason). Lives on the z-10
-     content span, not the button itself, so it paints above PixelDissolve's
-     canvas instead of under it (static in-flow content paints below an
-     absolutely-positioned sibling unless it's in its own stacked context).
-     position: absolute takes it out of flow — in flow, it reserved its own
-     width even at opacity: 0, widening the resting button for no visible
-     reason. */
-  [data-gul-btn-content]::after {
-    content: '█';
-    position: absolute;
-    left: 100%;
-    margin-left: 0.125rem;
-    opacity: 0;
-  }
   [data-gul-btn]:hover [data-gul-btn-content]::after,
   [data-gul-btn]:focus-visible [data-gul-btn-content]::after {
     opacity: 1;
