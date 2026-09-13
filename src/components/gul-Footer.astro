@@ -7,80 +7,72 @@
  *
  * The registration data below is COPIED VERBATIM from the 2021 site and must not
  * be paraphrased. Update it only against an official association document.
- *
- * TODO(assets): the social links were icons on the old site — swap the text for
- * the SVGs in the assets step.
  */
-import { SOCIALS, CONTACT } from '../config.ts';
+import { SOCIALS, CONTACT, ADDRESS } from '../config.ts';
 ---
 
-<footer
-  id="legal"
-  class="relative overflow-hidden border-t border-gul-line bg-gul-surface p-6 text-center text-sm text-gul-muted"
->
-  <p class="flex justify-center gap-4">
-    {SOCIALS.map((s) => (
-      <a href={s.href} target="_blank" rel="noopener" class="hover:text-gul-ink">
-        {s.label}
-      </a>
-    ))}
-  </p>
+<footer id="legal" class="border-t border-gul-line bg-gul-surface text-sm text-gul-muted">
+  <div class="mx-auto max-w-5xl p-8">
+    <div class="grid gap-8 md:grid-cols-3">
+      <div>
+        <h2 class="font-heading text-gul-ink">Encuéntranos</h2>
+        <p class="mt-3 flex gap-3">
+          {SOCIALS.map((s) => (
+            <a href={s.href} target="_blank" rel="noopener" aria-label={s.label} class="opacity-80 hover:opacity-100">
+              {/* loading="lazy": these SVGs draw themselves in once on load (fill-freeze
+                  animate) - eager-loading would finish that draw off-screen before the
+                  footer ever scrolls into view, so it'd look static. Lazy loading defers
+                  the fetch (and the animation) until it's actually visible. */}
+              <img src={`/rrss/${s.icon}`} alt="" loading="lazy" class="h-8 w-8 invert" />
+            </a>
+          ))}
+        </p>
+      </div>
 
-  <!-- Contacto. Email obfuscated on purpose — no mailto:. Telegram is QR-only
-       (see the Telegram section); Discord is invite-only via email. -->
-  <p id="contacto" class="mt-4">
-    Contacto: {CONTACT.email}
-  </p>
-  <p class="mt-1">
-    <a href={CONTACT.mailingList} target="_blank" rel="noopener" class="hover:text-gul-ink">
-      Lista de correo
-    </a>{' '}
-    · Discord (reuniones telemáticas): pídenos invitación por correo
-  </p>
+      <div>
+        <h2 class="font-heading text-gul-ink">Contáctanos</h2>
+        <!-- Email obfuscated on purpose - no mailto:. Telegram is QR-only
+             (see the Telegram section); Discord is invite-only via email. -->
+        <p class="mt-3">correo: {CONTACT.email}</p>
+        <p class="mt-1">visita: {ADDRESS}</p>
+      </div>
 
-  <p class="mt-4">
-    El Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid es una asociación declarada
-    de beneficio social por el Ministerio de Hacienda.
-  </p>
-  <p class="mt-2">
-    Domicilio social: Despacho 2.3.C05 del edificio Sabatini. Avenida de la Universidad, 30, 28911
-    Leganés, Madrid, España.
-  </p>
-  <p class="mt-2">
-    C.I.F.: G83296988
-    <br />
-    Número de registro de la comunidad de Madrid: 23500
-    <br />
-    Número de registro del ayuntamiento de Leganés: 795
-  </p>
+      <div>
+        <h2 class="font-heading text-gul-ink">Documentos</h2>
+        <ul class="mt-3 space-y-1">
+          <li>
+            <a href="https://cloud-gul.uc3m.es/s/s5TRM78die8rdAc" target="_blank" rel="noopener" class="hover:text-gul-ink">
+              Estatutos
+            </a>
+          </li>
+          <li>
+            <a href="https://cloud-gul.uc3m.es/s/f8ALGXstCpJa5Lc" target="_blank" rel="noopener" class="hover:text-gul-ink">
+              Código de Conducta
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-  <p class="mt-4">
-    <a
-      href="https://cloud-gul.uc3m.es/s/s5TRM78die8rdAc"
-      target="_blank"
-      rel="noopener"
-      title="link a los estatutos"
-      class="hover:text-gul-ink"
-    >
-      Estatutos
-    </a>
-    |
-    <a
-      href="https://cloud-gul.uc3m.es/s/f8ALGXstCpJa5Lc"
-      target="_blank"
-      rel="noopener"
-      title="link al código de conducta"
-      class="hover:text-gul-ink"
-    >
-      Código de Conducta
-    </a>
-  </p>
+    <div class="mt-8 grid gap-6 md:grid-cols-2 md:divide-x md:divide-gul-line">
+      <div class="flex p-10">
+        <img src="/logo-gul-dark.svg" alt="GUL" class="h-full w-full object-contain" />
+      </div>
 
-  <!-- Ghost wordmark, purely decorative — ignored by assistive tech. -->
-  <p
-    aria-hidden="true"
-    class="font-heading pointer-events-none mt-8 -mb-8 truncate text-[12rem] leading-none font-bold text-gul-line select-none sm:text-[16rem]"
-  >
-    GUL
-  </p>
+      <div class="p-6">
+        <p>
+          El Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid es una asociación declarada
+          de beneficio social por el Ministerio de Hacienda.
+        </p>
+        <p class="mt-2">Domicilio social: {ADDRESS}, España.</p>
+        <p class="mt-2">
+          C.I.F.: G83296988
+          <br />
+          Número de registro de la comunidad de Madrid: 23500
+          <br />
+          Número de registro del ayuntamiento de Leganés: 795
+        </p>
+      </div>
+    </div>
+  </div>
 </footer>

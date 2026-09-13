@@ -42,11 +42,11 @@ const PRESETS: Record<Variant, Required<Omit<Props, 'variant'>>> = {
   full: {
     cell: 3,
     color: '0, 117, 176', // --color-gul-blue
-    alpha: 0.4,
+    alpha: 0.3,
     maxDensity: 0.65,
     xBias: 0.8,
     falloff: 1.6,
-    orderedMix: 0.7,
+    orderedMix: 0.75,
   },
   corner: {
     cell: 3,
@@ -55,7 +55,7 @@ const PRESETS: Record<Variant, Required<Omit<Props, 'variant'>>> = {
     maxDensity: 0.5,
     xBias: 0.5, // symmetric distance to the corner, so it reads as a blob, not a horizontal band
     falloff: 7, // steep: the effect only survives within a small radius of the corner
-    orderedMix: 0.7,
+    orderedMix: 0.85,
   },
 };
 
