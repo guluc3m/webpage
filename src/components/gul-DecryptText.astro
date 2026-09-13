@@ -1,0 +1,83 @@
+---
+/**
+ * gul-DecryptText — text that arrives scrambled and locks into place
+ * left-to-right, once, on load. Plain text with no JS or under
+ * prefers-reduced-motion (progressive enhancement, no SSR/hydration to
+ * worry about since this is static output).
+ */
+interface Props {
+  text: string;
+  as?: 'span' | 'p' | 'blockquote' | 'h1' | 'h2' | 'h3';
+  speed?: number; // ms per glyph swap while a character is still scrambling
+  stagger?: number; // ms of lock delay added per character
+  class?: string;
+}
+
+const { text, as: Tag = 'span', speed = 40, stagger = 28, class: className } = Astro.props;
+---
+
+<Tag data-decrypt data-speed={speed} data-stagger={stagger} class={className}>{text}</Tag>
+
+<style>
+  [data-decrypt] :global([data-state='scramble']) {
+    color: var(--color-gul-line);
+  }
+  [data-decrypt] :global([data-state='lock']) {
+    color: var(--color-gul-muted);
+    transition: color 0.3s ease-out;
+  }
+</style>
+
+<script>
+  const GLYPHS = '#%&@$?!*+=/{}[]<>~^';
+
+  function decrypt(el: HTMLElement) {
+    const text = el.textContent ?? '';
+    const speed = Number(el.dataset.speed) || 40;
+    const stagger = Number(el.dataset.stagger) || 28;
+
+    // Whitespace (incl. the fortuna formatter's stage-direction newlines)
+    // renders as-is, never scrambles, and doesn't consume a stagger slot.
+    const chars = Array.from(text).map((ch) => ({
+      span: document.createElement('span'),
+      ch,
+      lockAt: 0,
+    }));
+    let cursor = 0;
+    for (const c of chars) {
+      c.span.textContent = c.ch;
+      if (/\s/.test(c.ch)) continue;
+      c.lockAt = cursor * stagger + Math.random() * stagger;
+      cursor++;
+    }
+    el.replaceChildren(...chars.map((c) => c.span));
+
+    const t0 = performance.now();
+    let lastSwap = 0;
+    function frame(now: number) {
+      const elapsed = now - t0;
+      const swapGlyphs = elapsed - lastSwap >= speed;
+      let pending = false;
+      for (const c of chars) {
+        if (/\s/.test(c.ch) || c.span.dataset.state === 'lock') continue;
+        if (elapsed >= c.lockAt) {
+          c.span.textContent = c.ch;
+          c.span.dataset.state = 'lock';
+        } else {
+          pending = true;
+          if (swapGlyphs) {
+            c.span.textContent = GLYPHS[(Math.random() * GLYPHS.length) | 0];
+            c.span.dataset.state = 'scramble';
+          }
+        }
+      }
+      if (swapGlyphs) lastSwap = elapsed;
+      if (pending) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll<HTMLElement>('[data-decrypt]').forEach(decrypt);
+  }
+</script>

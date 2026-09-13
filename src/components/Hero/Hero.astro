@@ -9,6 +9,7 @@
 import GameOfLife from './GameOfLife.astro';
 import ShaderBackground from './ShaderBackground.astro';
 import GulEyebrow from '../gul-Eyebrow.astro';
+import GulDecryptText from '../gul-DecryptText.astro';
 import fortunas from '../../data/fortunas.json';
 import { formatFortuna, randomFortuna, type Fortuna } from '../../lib/fortunas.ts';
 
@@ -26,7 +27,7 @@ const fortuna = randomFortuna(formattedFortunas);
     </h1>
     <figure class="mt-6">
       {/* whitespace-pre-line: the formatter may put a *stage direction* on its own line */}
-      <blockquote class="whitespace-pre-line">{fortuna.quote}</blockquote>
+      <GulDecryptText as="blockquote" text={fortuna.quote} class="whitespace-pre-line" />
       {fortuna.author && <figcaption>{fortuna.author}</figcaption>}
     </figure>
   </div>
