@@ -23,6 +23,7 @@ import GulCard from '../components/gul-Card.astro';
 import GulCallout from '../components/gul-Callout.astro';
 import GulTabs from '../components/gul-Tabs.astro';
 import GulModal from '../components/gul-Modal.astro';
+import GulGallery from '../components/gul-Gallery.astro';
 import GulList from '../components/gul-List.astro';
 import GulAccordion from '../components/gul-Accordion.astro';
 
@@ -396,6 +397,20 @@ const faqItems = [
         <GulModal id="demo-modal" triggerLabel="Abrir modal" title="Título del modal">
           Contenido de ejemplo. Nativo (&lt;dialog&gt;), sin librería.
         </GulModal>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Galería</h2>
+      <p class="text-xs text-gul-muted">
+        Expansión al pasar el ratón con flex + <code>:has()</code>, sin JS; clic abre un
+        &lt;dialog&gt; nativo a pantalla completa con anterior/siguiente.
+      </p>
+      <div class="rounded-md border border-gul-line p-6">
+        <GulGallery
+          id="demo-gallery"
+          images={['/real/teclados.jpeg', '/real/teclados2.jpeg', '/real/tux-coche.jpeg', '/real/tux-photofolk.jpeg']}
+        />
       </div>
     </section>
 
