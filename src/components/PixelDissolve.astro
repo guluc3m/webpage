@@ -1,67 +1,189 @@
 ---
 /**
- * PixelDissolve — canvas dithering texture: contiguous 4px cells (no gap, no
- * radius) switched on with a probability that rises toward the top-right
- * corner, all painted at one fixed color/alpha. Density carries the
- * gradient, not per-cell opacity. Decorative background layer for gul-Card /
- * gul-Callout; host it inside a `relative overflow-hidden` container that
- * also sets the border-radius, and put the real content in a sibling with
- * `relative z-10` so it paints above this canvas.
+ * PixelDissolve — canvas ordered-dithering texture: contiguous cells (no
+ * gap, no radius) switched on where a spatial threshold map (Bayer matrix,
+ * blended with a little seeded randomness so the grid doesn't read as a
+ * repeating tile) falls under a density ramp biased toward the top-right
+ * corner. Density carries the gradient — every painted cell uses the same
+ * fixed color/alpha, never per-cell opacity, which is what keeps it reading
+ * as a dissolve instead of TV static. Decorative background layer for
+ * gul-Card / gul-Callout; host it inside a `relative overflow-hidden`
+ * container that also sets the border-radius, and put the real content in a
+ * sibling with `relative z-10` so it paints above this canvas.
+ *
+ * Two named presets cover the two shapes this texture is used in:
+ * `full` (the default) spreads across most of the box — gul-Card,
+ * gul-Callout. `corner` pulls it into a small accent tucked into the
+ * top-right corner, for a plain bordered box that shouldn't read as a card.
+ * Every individual knob is still an overridable prop on top of whichever
+ * preset is picked, so a future one-off doesn't need a third preset.
  */
+type Variant = 'full' | 'corner';
+
+interface Props {
+  variant?: Variant;
+  /** CSS px per cell, before devicePixelRatio scaling. */
+  cell?: number;
+  /** "r, g, b" triplet for the fill color. */
+  color?: string;
+  /** Alpha for every painted cell — kept low: a big per-cell contrast jump reads as static, not texture. */
+  alpha?: number;
+  /** Fill probability at the ramp's hottest point (the corner itself). */
+  maxDensity?: number;
+  /** Ramp weight: 1 = purely left-to-right, 0 = purely bottom-to-top — 0.5 pulls the shape into a quarter-circle around the corner instead of a band. */
+  xBias?: number;
+  /** pow() curve on the ramp — higher falls off faster, shrinking how far the effect reaches from the corner. */
+  falloff?: number;
+  /** 1 = pure Bayer (visible ordered grid), 0 = white noise (clumpy holes). */
+  orderedMix?: number;
+}
+
+const PRESETS: Record<Variant, Required<Omit<Props, 'variant'>>> = {
+  full: {
+    cell: 3,
+    color: '0, 117, 176', // --color-gul-blue
+    alpha: 0.4,
+    maxDensity: 0.65,
+    xBias: 0.8,
+    falloff: 1.6,
+    orderedMix: 0.7,
+  },
+  corner: {
+    cell: 3,
+    color: '0, 117, 176',
+    alpha: 0.4,
+    maxDensity: 0.5,
+    xBias: 0.5, // symmetric distance to the corner, so it reads as a blob, not a horizontal band
+    falloff: 7, // steep: the effect only survives within a small radius of the corner
+    orderedMix: 0.7,
+  },
+};
+
+const { variant = 'full', ...overrides } = Astro.props;
+const preset = PRESETS[variant];
+const {
+  cell = preset.cell,
+  color = preset.color,
+  alpha = preset.alpha,
+  maxDensity = preset.maxDensity,
+  xBias = preset.xBias,
+  falloff = preset.falloff,
+  orderedMix = preset.orderedMix,
+} = overrides;
 ---
 
 <canvas
   data-pixel-dissolve
+  data-cell={cell}
+  data-color={color}
+  data-alpha={alpha}
+  data-max-density={maxDensity}
+  data-x-bias={xBias}
+  data-falloff={falloff}
+  data-ordered-mix={orderedMix}
   aria-hidden="true"
   class="pointer-events-none absolute inset-0 h-full w-full [image-rendering:pixelated]"
 ></canvas>
 
 <script>
-  const CELL = 4; // CSS px per cell, before devicePixelRatio scaling
-  const COLOR = '0, 117, 176'; // --color-gul-blue
-  const ALPHA = 0.35;
-  const MAX_DENSITY = 0.45; // fill probability at the top-right corner itself
-  const FALLOFF = 1.6; // pow curve: density thins out faster than linear away from the corner
+  // 8x8 Bayer threshold map: neighboring cells never get similar thresholds,
+  // which is what makes ordered dithering average to a stable gradient
+  // instead of the clumpy holes plain Math.random() produces per cell. Not a
+  // prop — an implementation detail of the dithering method, not a "look"
+  // knob a consumer would tune.
+  const BAYER8 = [
+    [0, 32, 8, 40, 2, 34, 10, 42],
+    [48, 16, 56, 24, 50, 18, 58, 26],
+    [12, 44, 4, 36, 14, 46, 6, 38],
+    [60, 28, 52, 20, 62, 30, 54, 22],
+    [3, 35, 11, 43, 1, 33, 9, 41],
+    [51, 19, 59, 27, 49, 17, 57, 25],
+    [15, 47, 7, 39, 13, 45, 5, 37],
+    [63, 31, 55, 23, 61, 29, 53, 21],
+  ];
 
-  function draw(canvas: HTMLCanvasElement) {
+  // Seeded PRNG so the pattern is identical every time it's redrawn — plain
+  // Math.random() would re-roll on every resize and flicker the whole card
+  // while a window is being dragged.
+  function mulberry32(seed: number) {
+    return function () {
+      seed |= 0;
+      seed = (seed + 0x6d2b79f5) | 0;
+      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  interface Config {
+    cell: number;
+    color: string;
+    alpha: number;
+    maxDensity: number;
+    xBias: number;
+    falloff: number;
+    orderedMix: number;
+  }
+
+  // Reads back the props Astro wrote as data-* attributes on this canvas —
+  // dataset values are always strings, so numbers need parsing.
+  function readConfig(canvas: HTMLCanvasElement): Config {
+    const { cell, color, alpha, maxDensity, xBias, falloff, orderedMix } = canvas.dataset;
+    return {
+      cell: Number(cell),
+      color: color!,
+      alpha: Number(alpha),
+      maxDensity: Number(maxDensity),
+      xBias: Number(xBias),
+      falloff: Number(falloff),
+      orderedMix: Number(orderedMix),
+    };
+  }
+
+  function draw(canvas: HTMLCanvasElement, config: Config) {
     const rect = canvas.getBoundingClientRect();
     if (rect.width === 0 || rect.height === 0) return;
     const dpr = window.devicePixelRatio || 1;
-    // Floor before use so the backing store is a whole number of device
-    // pixels — a fractional size would push the last row/col of cells
-    // slightly off-grid.
-    const width = Math.floor(rect.width * dpr);
-    const height = Math.floor(rect.height * dpr);
+    const cell = Math.max(1, Math.floor(config.cell * dpr));
+    // Round the backing store down to a whole number of cells — otherwise the
+    // last row/col is a partial cell that `image-rendering: pixelated` then
+    // stretches into a visibly different size.
+    const width = Math.floor((rect.width * dpr) / cell) * cell;
+    const height = Math.floor((rect.height * dpr) / cell) * cell;
     canvas.width = width;
     canvas.height = height;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    const cell = Math.floor(CELL * dpr) || 1;
-    const cols = Math.ceil(width / cell);
-    const rows = Math.ceil(height / cell);
-    const cornerCol = cols - 1;
-    const maxDist = Math.hypot(cornerCol, rows - 1) || 1;
+    const cols = width / cell;
+    const rows = height / cell;
+    const rand = mulberry32(0x9e3779b9);
 
     ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = `rgba(${COLOR}, ${ALPHA})`;
+    ctx.fillStyle = `rgba(${config.color}, ${config.alpha})`;
     for (let row = 0; row < rows; row++) {
+      const ty = 1 - row / Math.max(rows - 1, 1); // 1 at the top, 0 at the bottom
       for (let col = 0; col < cols; col++) {
-        // Distance to the top-right corner (row 0, last col), normalized and
-        // inverted: 0 at the bottom-left edge, 1 at the corner — then
-        // pow-curved so the density (not the alpha) carries the gradient.
-        const proximity = 1 - Math.hypot(col - cornerCol, row) / maxDist;
-        const density = Math.pow(Math.max(proximity, 0), FALLOFF) * MAX_DENSITY;
-        if (Math.random() < density) ctx.fillRect(col * cell, row * cell, cell, cell);
+        const tx = col / Math.max(cols - 1, 1); // 0 at the left, 1 at the right
+        const ramp = tx * config.xBias + ty * (1 - config.xBias);
+        const density = Math.pow(ramp, config.falloff) * config.maxDensity;
+
+        const ordered = (BAYER8[row & 7][col & 7] + 0.5) / 64;
+        const threshold = ordered * config.orderedMix + rand() * (1 - config.orderedMix);
+
+        if (density > threshold) ctx.fillRect(col * cell, row * cell, cell, cell);
       }
     }
   }
 
   // Astro dedupes this script to a single copy even when gul-Card/gul-Callout
   // render many instances on the same page, so find every canvas instead of
-  // assuming there's only one.
+  // assuming there's only one. ResizeObserver (not a window 'resize'
+  // listener) also catches a card changing height on its own — e.g. web font
+  // swap or a container query — not just the viewport resizing.
   document.querySelectorAll<HTMLCanvasElement>('[data-pixel-dissolve]').forEach((canvas) => {
-    draw(canvas);
-    window.addEventListener('resize', () => draw(canvas));
+    const config = readConfig(canvas);
+    const ro = new ResizeObserver(() => draw(canvas, config));
+    ro.observe(canvas);
   });
 </script>

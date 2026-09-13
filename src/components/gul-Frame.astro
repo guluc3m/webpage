@@ -1,0 +1,33 @@
+---
+/**
+ * gul-Frame — the one bordered-box shell used across the site and this
+ * styleguide: rounded-md border, clipped to that radius, with a
+ * PixelDissolve accent baked in. Any "boxed" section/demo should render
+ * through this instead of hand-rolling `rounded-md border border-gul-line`
+ * — that's what keeps the frame (and the dissolve accent) from drifting
+ * between sections, and what let issue #5's corner accent land everywhere
+ * in one place instead of N follow-up edits. gul-Card / gul-Callout also
+ * build on this, with `variant="full"` instead of the plain-box default.
+ */
+import PixelDissolve from './PixelDissolve.astro';
+
+interface Props {
+  /** 'corner' (default): a small accent for a plain box. 'full': dense background, for card/callout-style content. */
+  variant?: 'full' | 'corner';
+  /** Fill with --color-gul-surface. Off by default — most boxed demo content sits directly on the page. */
+  surface?: boolean;
+  /** Full border-color utility class, e.g. 'border-gul-ink/30' for the "decided" callout boxes. */
+  border?: string;
+  /** Padding/layout classes for the box itself (e.g. 'p-6', 'grid gap-4 sm:grid-cols-2'). */
+  class?: string;
+}
+
+const { variant = 'corner', surface = false, border = 'border-gul-line', class: className } = Astro.props;
+---
+
+<div class:list={['relative overflow-hidden rounded-md border', border, surface && 'bg-gul-surface', className]}>
+  <PixelDissolve variant={variant} />
+  <div class="relative z-10">
+    <slot />
+  </div>
+</div>
