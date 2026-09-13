@@ -3,6 +3,7 @@
  * WhatIsGul — "¿Qué es el GUL?" intro section, gallery on the left.
  */
 import GulGallery from './gul-Gallery.astro';
+import GulTerminal from './gul-Terminal.astro';
 ---
 
 <section id="que-es-el-gul" class="mx-auto grid max-w-5xl gap-8 p-8 md:grid-cols-2 md:items-center">
@@ -18,8 +19,7 @@ import GulGallery from './gul-Gallery.astro';
 
   <div>
     <h2 class="text-3xl font-bold text-gul-ink">¿Qué es el GUL?</h2>
-    <p>gul@uc3m $> whoami</p>
-    <p class="text-gul-muted"></p>
+    <GulTerminal lines={[{ command: 'whoami' }]} />
 
     <p class="mt-4 text-gul-muted">
       El <b class="text-gul-ink">Grupo de Usuarios de Linux</b> es una asociación de estudiantes

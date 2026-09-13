@@ -6,6 +6,7 @@
  * TODO(copy): real descriptions.
  */
 import GulCard from './gul-Card.astro';
+import GulTerminal from './gul-Terminal.astro';
 
 const projects = [
   {
@@ -18,7 +19,7 @@ const projects = [
 
 <section id="proyectos" class="mx-auto max-w-3xl p-8">
   <h2 class="text-3xl font-bold text-gul-ink">Proyectos</h2>
-  <p>gul@uc3m $> cd projects && ls</p>
+  <GulTerminal lines={[{ command: 'cd projects && ls' }]} />
   <ul class="mt-4 grid gap-4 sm:grid-cols-2">
     {projects.map((project, i) => (
       <li>

@@ -28,6 +28,7 @@ import GulList from '../components/gul-List.astro';
 import GulAccordion from '../components/gul-Accordion.astro';
 import GulFrame from '../components/gul-Frame.astro';
 import GulCodeBlock from '../components/gul-CodeBlock.astro';
+import GulTerminal from '../components/gul-Terminal.astro';
 import PixelDissolve from '../components/PixelDissolve.astro';
 
 // Decided (self-hosted via @fontsource-variable, tokens in global.css @theme).
@@ -356,6 +357,18 @@ const faqItems = [
         <p class="text-sm text-gul-muted">
           Abre una terminal con <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd>
         </p>
+      </GulFrame>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Terminal</h2>
+      <GulFrame class="p-6">
+        <GulTerminal
+          lines={[
+            { command: 'whoami' },
+            { command: 'hostnamectl | grep Location # Dirección', output: 'Location: Avenida de la Universidad, 30, 28911 Leganés, Madrid' },
+          ]}
+        />
       </GulFrame>
     </section>
 
