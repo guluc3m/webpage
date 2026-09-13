@@ -4,7 +4,7 @@
  * Address copied verbatim from the 2021 site.
  */
 import Map from './Map.astro';
-import GulTerminal from './gul-Terminal.astro';
+import GulTerminal from '@components/gul-Terminal.astro';
 ---
 
 <section id="donde-estamos" class="mx-auto max-w-3xl p-8">
@@ -12,12 +12,12 @@ import GulTerminal from './gul-Terminal.astro';
   <GulTerminal
     lines={[
       {
-        command: 'hostnamectl | grep Location # Dirección',
+        command: 'hostnamectl | grep Location  # Dirección',
         output: 'Location: Avenida de la Universidad, 30, 28911 Leganés, Madrid',
       },
       {
-        command: 'pwd # ¿Dónde estamos?',
-        output: '/home/gul/<b>EdificioSabatini/2.3.C05</b>',
+        command: 'pwd  # Despacho',
+        output: '~/<b>EdificioSabatini/2.3.C05</b>',
       },
     ]}
   />

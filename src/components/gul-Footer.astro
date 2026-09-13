@@ -8,16 +8,16 @@
  * The registration data below is COPIED VERBATIM from the 2021 site and must not
  * be paraphrased. Update it only against an official association document.
  */
-import { SOCIALS, CONTACT, ADDRESS } from '../config.ts';
+import { SOCIALS, CONTACT, ADDRESS } from '@/config.ts';
 
 // `?url` forces Vite to hand back the built asset URL instead of Astro's
 // ImageMetadata object (which a plain <img src> can't consume directly) -
 // static imports only, so each file needs its own line, not a templated path.
-import githubIcon from '../icons/rrss/github.svg?url';
-import youtubeIcon from '../icons/rrss/youtube.svg?url';
-import twitterIcon from '../icons/rrss/twitter.svg?url';
-import igIcon from '../icons/rrss/ig.svg?url';
-import linkedinIcon from '../icons/rrss/linkedin.svg?url';
+import githubIcon from '@icons/rrss/github.svg?url';
+import youtubeIcon from '@icons/rrss/youtube.svg?url';
+import twitterIcon from '@icons/rrss/twitter.svg?url';
+import igIcon from '@icons/rrss/ig.svg?url';
+import linkedinIcon from '@icons/rrss/linkedin.svg?url';
 import PixelDissolve from './PixelDissolve.astro';
 
 const ICONS: Record<string, string> = {
@@ -98,6 +98,12 @@ const ICONS: Record<string, string> = {
       </div>
     </div>
 
+    <div class="mx-auto mt-8 flex items-center gap-3">
+      <hr class="flex-1" />
+      <img src="/gul-icon-white.svg" alt="" class="h-5 w-5" />
+      <hr class="flex-1" />
+    </div>
+
     <div class="grid gap-6 md:grid-cols-2">
       <div class="py-6">
         <p class="text-justify">
@@ -119,16 +125,6 @@ const ICONS: Record<string, string> = {
       </div>
     </div>
 
-    <div class="mx-auto mt-8 flex items-center gap-3">
-      <hr class="flex-1" />
-      <img src="/tux-white-fill.svg" alt="" class="h-8 w-5" />
-      <hr class="flex-1" />
-    </div>
-
-    <div class="mt-4 flex justify-between font-heading text-l">
-      <span>$> GUL UC3M · EST. 1998;</span>
-      <span>{'$HOME = Leganés · Madrid'}</span>
-    </div>
   </div>
 </footer>
 

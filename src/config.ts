@@ -14,7 +14,6 @@ export const SOCIALS = [
 /** email is obfuscated on purpose - render as text, never a mailto: link. */
 export const CONTACT = {
   email: 'info AT gul.uc3m.es',
-  mailingList: 'https://lista-gul.uc3m.es/postorius/lists/lista.gul.uc3m.es/',
 } as const;
 
 /** Office address, copied verbatim from the 2021 site (see CLAUDE.md). Single
