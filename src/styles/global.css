@@ -204,25 +204,75 @@
   }
 
   /* Disclosure — matches Faq.astro's accordion, the only real usage today.
-     rounded-md, same as every other outer container (Radios rule: rounded-md
-     is always the outer edge — the old rounded-2xl here and on gul-Card was
-     a leftover inconsistency from before that rule was made explicit). */
+     Flat row, no box. The answer lives in a wrapper div so its height can be
+     animated: 0fr → 1fr on a grid track is the one CSS-only way to transition
+     to/from "auto" height (no JS). Author rules already beat the UA rule that
+     hides a closed details' children, so the wrapper stays display:grid even
+     collapsed — overflow:hidden on the inner child clips it mid-transition.
+     The bottom border is the separator between rows and drops away once a
+     row opens, so the revealed answer reads as the separation instead. */
   details {
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-gul-line);
-    background-color: var(--color-gul-surface);
-    padding: 1rem;
+    border-bottom: 1px solid var(--color-gul-line);
   }
   details[open] {
-    border-color: color-mix(in oklab, var(--color-gul-ink) 30%, transparent);
+    border-bottom-color: transparent;
   }
   summary {
     cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 0;
     font-weight: 500;
     color: var(--color-gul-ink);
   }
-  summary::marker {
-    color: var(--color-gul-muted);
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    content: '';
+    flex-shrink: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid var(--color-gul-muted);
+    border-bottom: 2px solid var(--color-gul-muted);
+    transform: rotate(45deg);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  details[open] summary::after {
+    border-color: var(--color-gul-blue);
+    transform: rotate(-135deg);
+  }
+  /* Chrome 131+ wraps details content in a native ::details-content pseudo
+     that toggles content-visibility/block-size on its own, with no
+     transition — it clips the div below before our own animation can run.
+     Force it out of the way so the div's grid-template-rows trick is the
+     only thing controlling height. */
+  details::details-content {
+    content-visibility: visible;
+    block-size: auto;
+    overflow: visible;
+  }
+  details > div {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+  }
+  details[open] > div {
+    grid-template-rows: 1fr;
+  }
+  details > div > p {
+    overflow: hidden;
+    padding-bottom: 1.25rem;
+    transform: translateY(-0.5rem);
+    opacity: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  details[open] > div > p {
+    transform: translateY(0);
+    opacity: 1;
   }
 
   /* Modal — no real usage yet, formalized ahead of one. */

@@ -5,12 +5,12 @@
  * Not part of the public site; drop this file once the decisions in CLAUDE.md's
  * "Still open" section are settled and baked into the real components.
  *
- * Composite patterns (button, badge, card, callout, tabs, modal, eyebrow, list)
- * are demoed here through the real shared components in src/components/ —
- * not hand-copied markup — so this page can't drift from what the site
- * actually ships. Single-tag standards (headings, code, tables, forms,
- * details, dialog, quotes) need no component at all: they're @layer base
- * rules in global.css, applied automatically to the bare tag.
+ * Composite patterns (button, badge, card, callout, tabs, modal, eyebrow, list,
+ * accordion) are demoed here through the real shared components in
+ * src/components/ — not hand-copied markup — so this page can't drift from
+ * what the site actually ships. Single-tag standards (headings, code, tables,
+ * forms, dialog, quotes) need no component at all: they're @layer base rules
+ * in global.css, applied automatically to the bare tag.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GulHeader from '../components/gul-Header.astro';
@@ -24,6 +24,7 @@ import GulCallout from '../components/gul-Callout.astro';
 import GulTabs from '../components/gul-Tabs.astro';
 import GulModal from '../components/gul-Modal.astro';
 import GulList from '../components/gul-List.astro';
+import GulAccordion from '../components/gul-Accordion.astro';
 
 // Decided (self-hosted via @fontsource-variable, tokens in global.css @theme).
 // Read straight from the real classes — no separate demo styling to drift out
@@ -97,8 +98,6 @@ const brandColors = [
   },
 ];
 
-// <details> has no variants (unlike button/badge/card), so it stays a plain
-// tag styled by @layer base — no gul-Accordion component needed.
 const faqItems = [
   { q: '¿Cómo me apunto al GUL?', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
 ];
@@ -375,14 +374,7 @@ const faqItems = [
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Acordeón</h2>
-      <div class="space-y-2">
-        {faqItems.map((item) => (
-          <details>
-            <summary>{item.q}</summary>
-            <p class="mt-2 text-gul-muted">{item.a}</p>
-          </details>
-        ))}
-      </div>
+      <GulAccordion items={faqItems} />
     </section>
 
     <section class="space-y-4">

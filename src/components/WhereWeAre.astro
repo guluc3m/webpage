@@ -8,14 +8,14 @@ import Map from './Map.astro';
 
 <section id="donde-estamos" class="mx-auto max-w-3xl p-8">
   <h2 class="text-3xl font-bold text-gul-ink">¿Dónde estamos?</h2>
-  <address class="mt-2 text-gul-muted not-italic">
+  <div>
     <p>gul@uc3m $> hostnamectl | grep Location # Dirección</p>
     <p>Location: Avenida de la Universidad, 30, 28911 Leganés, Madrid</p>
     <p>gul@uc3m $> pwd # ¿Dónde estamos?</p>
     <p>
       /home/gul/<b>EdificioSabatini/2.3.C05</b>
     </p>
-  </address>
+  </div>
   <div class="mt-4 overflow-hidden rounded-md border border-gul-line">
     <Map />
   </div>
