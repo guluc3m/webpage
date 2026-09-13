@@ -1,31 +1,37 @@
 ---
 /**
- * gul-Callout — aviso/éxito/error. Differentiated by icon + label, never by
- * colour: the palette (issue #5) is deliberately monochrome for colour-blind
- * safety, so adding red/green here would need the maintainer's sign-off first.
+ * gul-Callout — aviso/éxito/error. Icon + label + a status colour on the
+ * title (green/red/amber, the one deliberate exception to the monochrome
+ * palette — see global.css's @theme comment).
  */
 import GulFrame from './gul-Frame.astro';
 
 interface Props {
-  variant: 'info' | 'success' | 'error';
+  variant: 'warning' | 'success' | 'error';
   label: string;
 }
 
 const { variant, label } = Astro.props;
 
 const ICONS = {
-  info: '<circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r="0.75" fill="currentColor" stroke="none"/>',
+  warning: '<circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r="0.75" fill="currentColor" stroke="none"/>',
   success: '<path d="M4 12l5 5 11-11"/>',
   error:
     '<path d="M12 3.5l9.5 16.5H2.5z"/><line x1="12" y1="10" x2="12" y2="14.5"/><circle cx="12" cy="17" r="0.75" fill="currentColor" stroke="none"/>',
+} as const;
+
+const TITLE_COLOR = {
+  warning: 'text-gul-amber',
+  success: 'text-gul-green',
+  error: 'text-gul-red',
 } as const;
 ---
 
 <GulFrame variant="full" surface class="p-4">
   <div class="flex items-start gap-3">
-    <svg viewBox="0 0 24 24" class="mt-0.5 size-5 shrink-0 stroke-current stroke-[1.5] text-gul-ink" fill="none" set:html={ICONS[variant]} />
+    <svg viewBox="0 0 24 24" class={`mt-0.5 size-5 shrink-0 stroke-current stroke-[1.5] ${TITLE_COLOR[variant]}`} fill="none" set:html={ICONS[variant]} />
     <p class="text-sm text-gul-muted">
-      <span class="font-semibold text-gul-ink">{label}:</span> <slot />
+      <span class={`font-semibold ${TITLE_COLOR[variant]}`}>{label}:</span> <slot />
     </p>
   </div>
 </GulFrame>

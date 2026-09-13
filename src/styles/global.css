@@ -18,10 +18,11 @@
 
 /*
  * @theme — the curated GUL palette (issue #5: grey→black gradient, cream text
- * for emphasis). Monochrome structure, colour-blind-safe by construction; the
- * two brand colours (blue, gray) are pulled from the logo rather than
- * invented, and used as a single accent pair — never two competing hues
- * standing in for meaning.
+ * for emphasis). Monochrome structure; the two brand colours (blue, gray) are
+ * pulled from the logo rather than invented, and used as a single accent pair
+ * — never two competing hues standing in for meaning. The green/red/amber
+ * trio is the one deliberate exception, reserved for gul-Callout's
+ * success/error/warning status colouring.
  *
  * Two logo variants, two grays: logo-gul.svg is for light backgrounds — its
  * Tux silhouette is gul-gray (#666666). logo-gul-dark.svg is for this site's
@@ -45,6 +46,10 @@
 
   --color-gul-blue: #0075b0; /* primary accent: links, primary actions */
   --color-gul-gray: #666666; /* logo-gul.svg's Tux, for light backgrounds */
+
+  --color-gul-green: #3fb950; /* callout: success */
+  --color-gul-red: #f85149; /* callout: error */
+  --color-gul-amber: #d29922; /* callout: warning/aviso */
 
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
   --font-heading: 'Space Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
@@ -164,18 +169,11 @@
     text-align: left;
     font-size: 0.875rem;
   }
-  thead tr {
-    border-bottom: 1px solid var(--color-gul-line);
+  thead {
     color: var(--color-gul-ink);
   }
   tbody {
     color: var(--color-gul-muted);
-  }
-  tbody tr {
-    border-bottom: 1px solid color-mix(in oklab, var(--color-gul-line) 50%, transparent);
-  }
-  tbody tr:last-child {
-    border-bottom: none;
   }
   th,
   td {
@@ -183,6 +181,12 @@
   }
   th {
     font-weight: 600;
+    /* border-collapse: separate ignores borders on <tr>, so the head/body
+       divider has to live on the cells themselves. */
+    border-bottom: 1px solid var(--color-gul-line);
+  }
+  tbody tr:not(:last-child) td {
+    border-bottom: 1px solid color-mix(in oklab, var(--color-gul-line) 50%, transparent);
   }
 
   /* Form fields — excludes checkbox/radio, which are native widgets, not
