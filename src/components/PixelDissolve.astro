@@ -1,0 +1,67 @@
+---
+/**
+ * PixelDissolve — canvas dithering texture: contiguous 4px cells (no gap, no
+ * radius) switched on with a probability that rises toward the top-right
+ * corner, all painted at one fixed color/alpha. Density carries the
+ * gradient, not per-cell opacity. Decorative background layer for gul-Card /
+ * gul-Callout; host it inside a `relative overflow-hidden` container that
+ * also sets the border-radius, and put the real content in a sibling with
+ * `relative z-10` so it paints above this canvas.
+ */
+---
+
+<canvas
+  data-pixel-dissolve
+  aria-hidden="true"
+  class="pointer-events-none absolute inset-0 h-full w-full [image-rendering:pixelated]"
+></canvas>
+
+<script>
+  const CELL = 4; // CSS px per cell, before devicePixelRatio scaling
+  const COLOR = '0, 117, 176'; // --color-gul-blue
+  const ALPHA = 0.35;
+  const MAX_DENSITY = 0.45; // fill probability at the top-right corner itself
+  const FALLOFF = 1.6; // pow curve: density thins out faster than linear away from the corner
+
+  function draw(canvas: HTMLCanvasElement) {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) return;
+    const dpr = window.devicePixelRatio || 1;
+    // Floor before use so the backing store is a whole number of device
+    // pixels — a fractional size would push the last row/col of cells
+    // slightly off-grid.
+    const width = Math.floor(rect.width * dpr);
+    const height = Math.floor(rect.height * dpr);
+    canvas.width = width;
+    canvas.height = height;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const cell = Math.floor(CELL * dpr) || 1;
+    const cols = Math.ceil(width / cell);
+    const rows = Math.ceil(height / cell);
+    const cornerCol = cols - 1;
+    const maxDist = Math.hypot(cornerCol, rows - 1) || 1;
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = `rgba(${COLOR}, ${ALPHA})`;
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        // Distance to the top-right corner (row 0, last col), normalized and
+        // inverted: 0 at the bottom-left edge, 1 at the corner — then
+        // pow-curved so the density (not the alpha) carries the gradient.
+        const proximity = 1 - Math.hypot(col - cornerCol, row) / maxDist;
+        const density = Math.pow(Math.max(proximity, 0), FALLOFF) * MAX_DENSITY;
+        if (Math.random() < density) ctx.fillRect(col * cell, row * cell, cell, cell);
+      }
+    }
+  }
+
+  // Astro dedupes this script to a single copy even when gul-Card/gul-Callout
+  // render many instances on the same page, so find every canvas instead of
+  // assuming there's only one.
+  document.querySelectorAll<HTMLCanvasElement>('[data-pixel-dissolve]').forEach((canvas) => {
+    draw(canvas);
+    window.addEventListener('resize', () => draw(canvas));
+  });
+</script>

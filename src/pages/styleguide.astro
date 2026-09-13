@@ -26,6 +26,7 @@ import GulModal from '../components/gul-Modal.astro';
 import GulGallery from '../components/gul-Gallery.astro';
 import GulList from '../components/gul-List.astro';
 import GulAccordion from '../components/gul-Accordion.astro';
+import PixelDissolve from '../components/PixelDissolve.astro';
 
 // Decided (self-hosted via @fontsource-variable, tokens in global.css @theme).
 // Read straight from the real classes — no separate demo styling to drift out
@@ -151,6 +152,18 @@ const faqItems = [
         <div class="flex flex-wrap items-center gap-3">
           <GulBadge>Badge primario</GulBadge>
           <a href="#" class="text-sm text-gul-blue underline underline-offset-4">Enlace con acento</a>
+        </div>
+        <div class="space-y-2">
+          <div class="relative h-20 overflow-hidden rounded-md border border-gul-line bg-gul-surface">
+            <PixelDissolve />
+          </div>
+          <p class="text-sm text-gul-ink">PixelDissolve</p>
+          <p class="text-xs text-gul-muted">
+            fondo de gul-Card / gul-Callout: dithering por densidad de celdas de 4px (no por
+            opacidad), más denso hacia la esquina superior derecha. Componente en
+            <code>src/components/PixelDissolve.astro</code>, se coloca dentro de un contenedor
+            <code>relative overflow-hidden</code> con el radio deseado.
+          </p>
         </div>
       </div>
     </section>
