@@ -91,6 +91,16 @@
     font-family: var(--font-heading);
   }
 
+  /* Markdown-style prefix: a plain h2/h3 reads like its own source syntax. */
+  h2::before {
+    content: '## ';
+    color: var(--color-gul-blue);
+  }
+  h3::before {
+    content: '### ';
+    color: var(--color-gul-blue);
+  }
+
   /* Code & keyboard. pre>code resets the inline treatment since pre already
      supplies its own background/border/padding — avoids a double box. */
   code,
