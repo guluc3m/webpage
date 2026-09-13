@@ -123,7 +123,7 @@ Los componentes viven en `src/components/`. Se importan y se usan como etiquetas
 
 ```astro
 ---
-import Faq from '../components/Faq.astro';
+import Faq from '@components/Faq.astro';
 ---
 
 <Faq />

@@ -8,11 +8,11 @@
  */
 import GameOfLife from './GameOfLife.astro';
 import ShaderBackground from './ShaderBackground.astro';
-import GulEyebrow from '../gul-Eyebrow.astro';
-import GulDecryptText from '../gul-DecryptText.astro';
-import GulButton from '../gul-Button.astro';
-import fortunas from '../../data/fortunas.json';
-import { formatFortuna, randomFortuna, type Fortuna } from '../../lib/fortunas.ts';
+import GulEyebrow from '@components/common/gul-Eyebrow.astro';
+import GulDecryptText from '@components/common/gul-DecryptText.astro';
+import GulButton from '@components/common/gul-Button.astro';
+import fortunas from '@data/fortunas.json';
+import { formatFortuna, randomFortuna, type Fortuna } from '@lib/fortunas.ts';
 
 const formattedFortunas = (fortunas as Fortuna[]).map(formatFortuna);
 const fortuna = randomFortuna(formattedFortunas);

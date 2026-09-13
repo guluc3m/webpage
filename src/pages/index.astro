@@ -6,15 +6,15 @@
  * content lives in each component under src/components/, not here. To reorder the
  * page, reorder these tags.
  */
-import BaseLayout from '../layouts/BaseLayout.astro';
-import GulHeader from '../components/gul-Header.astro';
-import GulFooter from '../components/gul-Footer.astro';
-import Hero from '../components/Hero/Hero.astro';
-import WhatIsGul from '../components/WhatIsGul.astro';
-import Faq from '../components/Faq.astro';
-import Projects from '../components/Projects.astro';
-import WhereWeAre from '../components/WhereWeAre.astro';
-import { navLinks } from '../data/navLinks';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import GulHeader from '@components/common/gul-Header.astro';
+import GulFooter from '@components/common/gul-Footer.astro';
+import Hero from '@components/sections/Hero/Hero.astro';
+import WhatIsGul from '@components/sections/WhatIsGul.astro';
+import Faq from '@components/sections/Faq.astro';
+import Projects from '@components/sections/Projects.astro';
+import WhereWeAre from '@components/sections/WhereWeAre.astro';
+import { navLinks } from '@data/navLinks';
 ---
 
 <BaseLayout title="GUL UC3M">

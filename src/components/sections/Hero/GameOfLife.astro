@@ -14,10 +14,10 @@
  * from the parent side.
  */
 import { readFileSync } from 'node:fs';
-import { computeTuxBitmap } from '../../lib/tuxBitmap.ts';
+import { computeTuxBitmap } from '@lib/tuxBitmap.ts';
 
 // Rasterized once per build, not per visitor — see src/lib/tux.ts.
-const tuxSvg = readFileSync(new URL('../../../public/tux.svg', import.meta.url));
+const tuxSvg = readFileSync(new URL('../../../../public/tux.svg', import.meta.url));
 const tuxBitmap = await computeTuxBitmap(tuxSvg, 100, 80); // 100 = bitmap height in units, not screen px; 70 = alpha threshold, tuned by eye
 ---
 
@@ -35,7 +35,7 @@ const tuxBitmap = await computeTuxBitmap(tuxSvg, 100, 80); // 100 = bitmap heigh
 </script>
 
 <script>
-  import { sampleTuxMask, type TuxBitmap } from '../../lib/tux.ts';
+  import { sampleTuxMask, type TuxBitmap } from '@lib/tux.ts';
 
   declare global {
     interface Window {
