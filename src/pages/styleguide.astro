@@ -26,6 +26,7 @@ import GulModal from '../components/gul-Modal.astro';
 import GulGallery from '../components/gul-Gallery.astro';
 import GulList from '../components/gul-List.astro';
 import GulAccordion from '../components/gul-Accordion.astro';
+import GulFrame from '../components/gul-Frame.astro';
 import PixelDissolve from '../components/PixelDissolve.astro';
 
 // Decided (self-hosted via @fontsource-variable, tokens in global.css @theme).
@@ -116,7 +117,7 @@ const faqItems = [
       </p>
     </header>
 
-    <p class="text-xs font-semibold tracking-[0.3em] text-gul-muted uppercase">Estilos base</p>
+    <h2 class="text-3xl font-semibold text-gul-muted uppercase">Estilos base</h2>
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Colores</h2>
@@ -132,7 +133,7 @@ const faqItems = [
         ))}
       </div>
 
-      <div class="space-y-4 rounded-md border border-gul-ink/30 p-6">
+      <GulFrame border="border-gul-ink/30" class="space-y-4 p-6">
         <p class="text-xs text-gul-muted">
           Decidido: sacados de <code>logo-gul-dark.svg</code>, no inventados. Un solo acento
           (azul) + el gris de Tux — nunca varios colores compitiendo entre sí, eso es lo que
@@ -159,13 +160,13 @@ const faqItems = [
           </div>
           <p class="text-sm text-gul-ink">PixelDissolve</p>
           <p class="text-xs text-gul-muted">
-            fondo de gul-Card / gul-Callout: dithering por densidad de celdas de 4px (no por
-            opacidad), más denso hacia la esquina superior derecha. Componente en
-            <code>src/components/PixelDissolve.astro</code>, se coloca dentro de un contenedor
-            <code>relative overflow-hidden</code> con el radio deseado.
+            fondo de gul-Card / gul-Callout: dithering ordenado (matriz de Bayer + algo de ruido
+            con semilla fija) por densidad de celdas de 3px, nunca por opacidad — más denso hacia
+            la esquina superior derecha, se apaga antes de llegar a la zona de texto. El marco de
+            este mismo recuadro ya lleva la variante "corner" vía <code>gul-Frame</code>.
           </p>
         </div>
-      </div>
+      </GulFrame>
     </section>
 
     <section class="space-y-4">
@@ -176,11 +177,11 @@ const faqItems = [
       </p>
       <div class="grid gap-4 sm:grid-cols-3">
         {fontStacks.map((f) => (
-          <div class="space-y-1 rounded-md border border-gul-line p-4">
+          <GulFrame class="space-y-1 p-4">
             <p class={`${f.class} text-lg text-gul-ink`}>Grupo de Usuarios de Linux</p>
             <p class="text-xs text-gul-muted">{f.label}</p>
             <p class={`${f.class} text-xs text-gul-muted`}>áéíóú ñ ¿¡ 0123456789</p>
-          </div>
+          </GulFrame>
         ))}
       </div>
     </section>
@@ -196,7 +197,7 @@ const faqItems = [
         ))}
       </div>
 
-      <div class="space-y-4 rounded-md border border-gul-ink/30 p-6">
+      <GulFrame border="border-gul-ink/30" class="space-y-4 p-6">
         <p class="text-xs text-gul-muted">
           Regla: <code>rounded-md</code> es siempre el borde exterior. Lo anidado dentro usa
           <code>rounded-inner-N</code>, con la misma N que su padding (<code>p-N</code>), y
@@ -222,7 +223,7 @@ const faqItems = [
             <p class="max-w-32 text-xs text-gul-muted">p-1 (0.25rem) &lt; 0.375rem → radio real de 0.125rem</p>
           </div>
         </div>
-      </div>
+      </GulFrame>
     </section>
 
     <p class="text-xs text-gul-muted">
@@ -275,7 +276,7 @@ const faqItems = [
         Único patrón real hoy: <code>focus-visible:text-gul-ink</code> en el nav (cambio de
         color, sin anillo). Prueba a navegar con Tab.
       </p>
-      <div class="flex flex-wrap items-center gap-4 rounded-md border border-gul-line p-6">
+      <GulFrame class="flex flex-wrap items-center gap-4 p-6">
         <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gul-muted outline-none focus-visible:text-gul-ink">
           Enlace enfocable
         </a>
@@ -285,21 +286,21 @@ const faqItems = [
         >
           Botón enfocable
         </button>
-      </div>
+      </GulFrame>
     </section>
 
-    <p class="text-xs font-semibold tracking-[0.3em] text-gul-muted uppercase">Componentes</p>
+    <h2 class="text-3xl font-semibold text-gul-muted uppercase">Componentes</h2>
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Eyebrow</h2>
-      <div class="rounded-md border border-gul-line p-6">
+      <GulFrame class="p-6">
         <GulEyebrow text="Etiqueta antes de un título" />
-      </div>
+      </GulFrame>
     </section>
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Encabezados</h2>
-      <div class="space-y-3 rounded-md border border-gul-line p-6">
+      <GulFrame class="space-y-3 p-6">
         <h1 class="text-4xl font-bold text-gul-ink">H1 — Grupo de Usuarios de Linux</h1>
         <h2 class="text-3xl font-bold text-gul-ink">H2 — Grupo de Usuarios de Linux</h2>
         <h3 class="text-2xl font-semibold text-gul-ink">H3 — Grupo de Usuarios de Linux</h3>
@@ -308,12 +309,12 @@ const faqItems = [
         <h6 class="text-base font-semibold tracking-wide text-gul-muted uppercase">
           H6 — Grupo de Usuarios de Linux
         </h6>
-      </div>
+      </GulFrame>
     </section>
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Párrafos</h2>
-      <div class="space-y-4 rounded-md border border-gul-line p-6">
+      <GulFrame class="space-y-4 p-6">
         <p class="text-lg text-gul-ink">
           Párrafo destacado (lead) — para la entradilla de una sección, algo más grande que el
           cuerpo normal.
@@ -331,22 +332,22 @@ const faqItems = [
           .
         </p>
         <p class="text-sm text-gul-muted">Texto pequeño — pies de foto, notas, metadatos.</p>
-      </div>
+      </GulFrame>
     </section>
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Cita</h2>
-      <div class="rounded-md border border-gul-line p-6">
+      <GulFrame class="p-6">
         <figure>
           <blockquote>«El software libre es una cuestión de libertad, no de precio.»</blockquote>
           <figcaption>Richard Stallman</figcaption>
         </figure>
-      </div>
+      </GulFrame>
     </section>
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Código y teclado</h2>
-      <div class="space-y-4 rounded-md border border-gul-line p-6">
+      <GulFrame class="space-y-4 p-6">
         <pre><code>sudo apt update &amp;&amp; sudo apt upgrade</code></pre>
         <p class="text-sm text-gul-muted">
           Código inline, como <code>apt-get</code>, dentro de una frase.
@@ -354,12 +355,12 @@ const faqItems = [
         <p class="text-sm text-gul-muted">
           Abre una terminal con <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd>
         </p>
-      </div>
+      </GulFrame>
     </section>
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Listas</h2>
-      <div class="grid gap-6 rounded-md border border-gul-line p-6 sm:grid-cols-2">
+      <GulFrame class="grid gap-6 p-6 sm:grid-cols-2">
         <div>
           <p class="mb-2 text-sm text-gul-muted">
             Sin ordenar (bullet-icon Tux: idea abierta, issue #5)
@@ -370,7 +371,7 @@ const faqItems = [
           <p class="mb-2 text-sm text-gul-muted">Ordenada</p>
           <GulList ordered items={['Primer paso', 'Segundo paso', 'Tercer paso']} />
         </div>
-      </div>
+      </GulFrame>
     </section>
 
     <section class="space-y-4">
@@ -406,11 +407,11 @@ const faqItems = [
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Modal</h2>
-      <div class="rounded-md border border-gul-line p-6">
+      <GulFrame class="p-6">
         <GulModal id="demo-modal" triggerLabel="Abrir modal" title="Título del modal">
           Contenido de ejemplo. Nativo (&lt;dialog&gt;), sin librería.
         </GulModal>
-      </div>
+      </GulFrame>
     </section>
 
     <section class="space-y-4">
@@ -419,17 +420,17 @@ const faqItems = [
         Expansión al pasar el ratón con flex + <code>:has()</code>, sin JS; clic abre un
         &lt;dialog&gt; nativo a pantalla completa con anterior/siguiente.
       </p>
-      <div class="rounded-md border border-gul-line p-6">
+      <GulFrame class="p-6">
         <GulGallery
           id="demo-gallery"
           images={['/real/teclados.jpeg', '/real/teclados2.jpeg', '/real/tux-coche.jpeg', '/real/tux-photofolk.jpeg']}
         />
-      </div>
+      </GulFrame>
     </section>
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Campos de formulario</h2>
-      <div class="grid gap-4 rounded-md border border-gul-line p-6 sm:grid-cols-2">
+      <GulFrame class="grid gap-4 p-6 sm:grid-cols-2">
         <label class="block space-y-1 text-sm">
           <span class="font-medium text-gul-ink">Nombre</span>
           <input type="text" placeholder="Ada Lovelace" />
@@ -461,15 +462,15 @@ const faqItems = [
           <input type="checkbox" />
           Acepto los términos
         </label>
-      </div>
+      </GulFrame>
     </section>
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Badges</h2>
-      <div class="flex flex-wrap items-center gap-3 rounded-md border border-gul-line p-6">
+      <GulFrame class="flex flex-wrap items-center gap-3 p-6">
         <GulBadge variant="primary">Primario</GulBadge>
         <GulBadge variant="secondary">Secundario</GulBadge>
-      </div>
+      </GulFrame>
     </section>
 
     <section class="space-y-4">
@@ -510,7 +511,7 @@ const faqItems = [
 
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Botones y enlaces</h2>
-      <div class="flex flex-wrap items-center gap-4 rounded-md border border-gul-line p-6">
+      <GulFrame class="flex flex-wrap items-center gap-4 p-6">
         <GulButton variant="primary">Botón primario</GulButton>
         <GulButton variant="secondary">Botón secundario</GulButton>
         <a
@@ -519,7 +520,7 @@ const faqItems = [
         >
           Enlace de texto
         </a>
-      </div>
+      </GulFrame>
     </section>
   </main>
   <GulFooter />
