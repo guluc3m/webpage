@@ -23,7 +23,10 @@ const { text, as: Tag = 'span', speed = 40, stagger = 28, class: className } = A
     color: var(--color-gul-line);
   }
   [data-decrypt] :global([data-state='lock']) {
-    color: var(--color-gul-muted);
+    /* currentColor, not a fixed token: callers (Hero's blockquote, gul-Button's
+       ink text) set their own final color via inherited CSS — this just
+       animates into whatever that is. */
+    color: currentColor;
     transition: color 0.3s ease-out;
   }
 </style>

@@ -17,13 +17,13 @@ interface Props {
 const { triggerLabel, title, id } = Astro.props;
 ---
 
-<GulButton data-gul-modal-open={id}>{triggerLabel}</GulButton>
+<GulButton data-gul-modal-open={id} label={triggerLabel} />
 <dialog id={id} data-gul-modal>
   <h3 class="text-lg font-semibold text-gul-ink">{title}</h3>
   <div class="mt-2 text-sm text-gul-muted">
     <slot />
   </div>
-  <GulButton variant="secondary" class="mt-4" data-gul-modal-close={id}>Cerrar</GulButton>
+  <GulButton variant="secondary" class="mt-4" data-gul-modal-close={id} label="Cerrar" />
 </dialog>
 
 <script>

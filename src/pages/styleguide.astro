@@ -512,12 +512,13 @@ const faqItems = [
     <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Botones y enlaces</h2>
       <GulFrame class="flex flex-wrap items-center gap-4 p-6">
-        <GulButton variant="primary">Botón primario</GulButton>
-        <GulButton variant="secondary">Botón secundario</GulButton>
+        <GulButton variant="primary" label="Botón primario" />
+        <GulButton variant="secondary" label="Botón secundario" />
         <a
           href="#"
-          class="text-sm text-gul-ink underline decoration-gul-muted underline-offset-4 hover:text-gul-muted"
+          class="inline-flex items-center gap-1 font-mono text-sm text-gul-ink underline decoration-gul-muted underline-offset-4 hover:text-gul-muted"
         >
+          <span aria-hidden="true" class="text-gul-blue">»</span>
           Enlace de texto
         </a>
       </GulFrame>

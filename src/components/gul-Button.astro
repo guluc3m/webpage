@@ -3,35 +3,120 @@
  * gul-Button — the only two button looks the site has. Renders <a> when href
  * is given (e.g. the header's "Contacta" CTA, an in-page anchor), <button
  * type="button"> otherwise. Extra attributes (id, data-*…) pass straight
- * through, e.g. for wiring gul-Modal's trigger/close buttons.
+ * through, e.g. for wiring gul-Modal's trigger/close buttons. Label is a
+ * prop (not a slot) so it can pass through as plain text to GulDecryptText,
+ * same scramble-in effect as the Hero fortuna quote.
  */
+import GulDecryptText from './gul-DecryptText.astro';
+import PixelDissolve from './PixelDissolve.astro';
+
 interface Props {
+  label: string;
   variant?: 'primary' | 'secondary';
   href?: string;
   class?: string;
   [attr: string]: unknown;
 }
 
-const { variant = 'primary', href, class: className, ...rest } = Astro.props;
+const { label, variant = 'primary', href, class: className, ...rest } = Astro.props;
 
 // gul-blue is the decided CTA colour (issue #5 accent); gul-ink text keeps
 // contrast around 4:1 on it — borderline for small text, worth a proper
 // contrast-checker pass if this ever needs to clear a formal audit.
+//
+// Terminal-prompt look: each variant gets a mono glyph prefix ($, >) echoing
+// the shell/markdown language the rest of the site already uses (h2/h3's
+// "## " prefix in global.css). aria-hidden since it's decorative, not part
+// of the button's accessible name.
+// Primary's glyph sits on the blue fill itself, so it stays ink (same as the
+// label) rather than repeating gul-blue, which would vanish on its own
+// background; secondary's glyph carries the accent since its background is
+// the page canvas.
+//
+// Hover/focus: terminal "selected line" invert (bg and text swap) plus a
+// blinking block cursor after the label, both via [data-gul-btn]'s scoped
+// style below. Primary's glyph has no explicit colour (glyphClass: ''), so
+// it inherits the label's currentColor and inverts along with it for free;
+// secondary's glyph keeps its fixed blue accent through the invert.
 const variants = {
-  primary: 'bg-gul-blue text-gul-ink',
-  secondary: 'border border-gul-line text-gul-ink',
+  primary: {
+    classes: 'bg-gul-blue text-gul-ink hover:bg-gul-ink hover:text-gul-blue focus-visible:bg-gul-ink focus-visible:text-gul-blue',
+    glyph: '>',
+    glyphClass: '',
+  },
+  secondary: {
+    classes:
+      'border border-gul-line text-gul-ink hover:border-gul-ink hover:bg-gul-ink hover:text-gul-bg focus-visible:border-gul-ink focus-visible:bg-gul-ink focus-visible:text-gul-bg',
+    glyph: '$',
+    glyphClass: 'text-gul-blue',
+  },
 };
-const classes = ['rounded-md px-4 py-2 text-sm font-semibold', variants[variant], className];
+const { classes: variantClasses, glyph, glyphClass } = variants[variant];
+// relative + overflow-hidden: same recipe as gul-Frame, so PixelDissolve's
+// absolutely-positioned canvas clips to the button's own rounded-md corner
+// instead of gul-Frame's (there's no frame here — the button is its own box).
+const classes = [
+  'relative overflow-hidden rounded-md px-3 py-2 text-sm font-semibold font-mono transition-colors duration-100',
+  variantClasses,
+  className,
+];
 ---
 
 {
   href ? (
-    <a href={href} class:list={classes} {...rest}>
-      <slot />
+    <a href={href} class:list={classes} data-gul-btn {...rest}>
+      <PixelDissolve variant="corner" />
+      <span class="relative z-10 inline-flex items-center gap-1" data-gul-btn-content>
+        <span aria-hidden="true" class:list={[glyphClass]}>
+          {glyph}
+        </span>
+        <GulDecryptText text={label} />
+      </span>
     </a>
   ) : (
-    <button type="button" class:list={classes} {...rest}>
-      <slot />
+    <button type="button" class:list={classes} data-gul-btn {...rest}>
+      <PixelDissolve variant="corner" />
+      <span class="relative z-10 inline-flex items-center gap-1" data-gul-btn-content>
+        <span aria-hidden="true" class:list={[glyphClass]}>
+          {glyph}
+        </span>
+        <GulDecryptText text={label} />
+      </span>
     </button>
   )
 }
+
+<style>
+  /* Block cursor, hidden until hover/focus — content lives in CSS so it
+     never touches the accessible name (unlike the glyph, which is a real
+     DOM span with aria-hidden for the same reason). Lives on the z-10
+     content span, not the button itself, so it paints above PixelDissolve's
+     canvas instead of under it (static in-flow content paints below an
+     absolutely-positioned sibling unless it's in its own stacked context).
+     position: absolute takes it out of flow — in flow, it reserved its own
+     width even at opacity: 0, widening the resting button for no visible
+     reason. */
+  [data-gul-btn-content]::after {
+    content: '█';
+    position: absolute;
+    left: 100%;
+    margin-left: 0.125rem;
+    opacity: 0;
+  }
+  [data-gul-btn]:hover [data-gul-btn-content]::after,
+  [data-gul-btn]:focus-visible [data-gul-btn-content]::after {
+    opacity: 1;
+    animation: gul-caret-blink 1s steps(2, jump-none) infinite;
+  }
+  @keyframes gul-caret-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-gul-btn]:hover [data-gul-btn-content]::after,
+    [data-gul-btn]:focus-visible [data-gul-btn-content]::after {
+      animation: none;
+    }
+  }
+</style>
