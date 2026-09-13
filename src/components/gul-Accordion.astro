@@ -1,0 +1,22 @@
+---
+/**
+ * gul-Accordion — disclosure list (FAQ-style). Renders plain <details>/
+ * <summary> so it works without JavaScript; <details> has no variants of
+ * its own, so all the visual styling (flat row, separator, chevron, height
+ * animation) lives in global.css's @layer base and applies automatically.
+ */
+interface Props {
+  items: { q: string; a: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<div>
+  {items.map((item) => (
+    <details>
+      <summary>{item.q}</summary>
+      <div><p class="text-gul-muted">{item.a}</p></div>
+    </details>
+  ))}
+</div>

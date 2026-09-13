@@ -3,12 +3,8 @@
  * Hero — the first screen. Conway's Game of Life runs as the background
  * (GameOfLife is positioned absolutely inside this section's relative box).
  *
- * Shows a random "fortuna" (GUL in-joke) under the slogan. The initial quote is
- * picked and formatted here; the small client script below lets visitors pick
- * another one without reloading the page.
- *
- * TODO(design): the actual hero design is still to do. Slogan + fortuna are the
- * real 2021 content; layout/styling is placeholder.
+ * Shows a random "fortuna" (GUL in-joke) under the slogan. The quote is picked
+ * and formatted here, at build time — it changes on each rebuild, not per visit.
  */
 import GameOfLife from './GameOfLife.astro';
 import ShaderBackground from './ShaderBackground.astro';
