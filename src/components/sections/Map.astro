@@ -16,19 +16,12 @@
   class="h-96 w-full bg-gul-surface grayscale"
   role="img"
   aria-label="Mapa: sede del GUL en el edificio Sabatini, Leganés"
-></div>
-
+/>
 <script>
   import L from 'leaflet';
   import 'leaflet/dist/leaflet.css';
-  // Vite rewrites these to hashed asset URLs; without it Leaflet's default marker
-  // images 404. No shadowUrl: the site has no drop shadows anywhere, pin included.
-  import iconUrl from 'leaflet/dist/images/marker-icon.png';
-  import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
 
-  L.Icon.Default.mergeOptions({ iconUrl, iconRetinaUrl });
-
-  const OFFICE: [number, number] = [40.33228, -3.76589];
+  const OFFICE: [number, number] = [40.33252, -3.76728];
 
   const el = document.querySelector<HTMLElement>('[data-map]');
   if (el) {
