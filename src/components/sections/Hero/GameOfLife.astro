@@ -13,12 +13,11 @@
  * It fills its positioned parent. Put it behind content with absolute positioning
  * from the parent side.
  */
-import { readFileSync } from 'node:fs';
 import { computeTuxBitmap } from '@lib/tuxBitmap.ts';
+import tuxSvg from '/tux.svg?raw';
 
 // Rasterized once per build, not per visitor — see src/lib/tux.ts.
-const tuxSvg = readFileSync(new URL('../../../../public/tux.svg', import.meta.url));
-const tuxBitmap = await computeTuxBitmap(tuxSvg, 100, 80); // 100 = bitmap height in units, not screen px; 70 = alpha threshold, tuned by eye
+const tuxBitmap = await computeTuxBitmap(Buffer.from(tuxSvg), 100, 80); // 100 = bitmap height in units, not screen px; 80 = alpha threshold, tuned by eye
 ---
 
 <canvas
