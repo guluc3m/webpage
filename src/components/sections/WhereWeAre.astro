@@ -12,15 +12,20 @@ import GulTerminal from '@components/common/gul-Terminal.astro';
   <GulTerminal
     lines={[
       {
-        command: 'hostnamectl | grep Location  # Dirección',
-        output: 'Location: Avenida de la Universidad, 30, 28911 Leganés, Madrid',
+        command: 'hostnamectl | grep Location',
+        output: 'Location: Despacho 2.3.C05, Edificio Sabatini, EPS-UC3M',
       },
       {
-        command: 'pwd  # Despacho',
-        output: '~/<b>EdificioSabatini/2.3.C05</b>',
+        command: 'which EPS-UC3M',
+        output: 'Avenida de la Universidad, 30, 28911 Leganés, Madrid',
       },
     ]}
   />
+
+  <div class="m-4" rounded-md>
+    <img src="/real/despacho.jpg" alt="Despacho del GUL" class="gul-gallery-image" />
+  </div>
+
   <div class="mt-4 overflow-hidden rounded-md border border-gul-line">
     <Map />
   </div>

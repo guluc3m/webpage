@@ -5,8 +5,14 @@
  * fullscreen <dialog> lightbox with prev/next — same native-dialog trick as
  * gul-Modal, so focus trap and Escape-to-close come for free.
  */
+
+interface Image {
+  src: string,
+  alt: string
+}
+
 interface Props {
-  images: string[];
+  images: Image[];
   /** Unique per gallery on the page — wires the lightbox's own dialog element. */
   id: string;
   class?: string;
@@ -17,9 +23,9 @@ const { images, id, class: className } = Astro.props;
 
 <div class:list={['gul-gallery flex h-96 w-full gap-2', className]} data-gul-gallery={id}>
   {
-    images.map((src, i) => (
+    images.map((img, i) => (
       <button type="button" class="gul-gallery-tile relative min-w-0 flex-1 overflow-hidden rounded-md" data-index={i}>
-        <img src={src} alt={`Imagen ${i + 1}`} class="h-full w-full object-cover" />
+        <img src={img.src} alt={img.alt} class="h-full w-full object-cover" />
         <span class="gul-gallery-tile-overlay absolute inset-0 bg-gul-bg" />
       </button>
     ))
