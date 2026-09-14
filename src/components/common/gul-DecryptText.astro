@@ -30,6 +30,10 @@ const { text, as: Tag = 'span', speed = 40, stagger = 28, class: className, ...r
     color: currentColor;
     transition: color 0.3s ease-out;
   }
+  [data-decrypt] :global([data-decrypt-word]) {
+    display: inline-block;
+    white-space: nowrap;
+  }
 </style>
 
 <script>
@@ -54,7 +58,31 @@ const { text, as: Tag = 'span', speed = 40, stagger = 28, class: className, ...r
       c.lockAt = cursor * stagger + Math.random() * stagger;
       cursor++;
     }
-    el.replaceChildren(...chars.map((c) => c.span));
+    // Keep each word together and reserve its final width before scrambling.
+    // Individual character spans are needed for the animation, but their
+    // random glyphs have different widths in proportional fonts and would
+    // otherwise make the browser continuously recalculate line breaks.
+    const content = document.createDocumentFragment();
+    const words: HTMLSpanElement[] = [];
+    let word: HTMLSpanElement | undefined;
+    for (const c of chars) {
+      if (/\s/.test(c.ch)) {
+        content.append(c.span);
+        word = undefined;
+        continue;
+      }
+      if (!word) {
+        word = document.createElement('span');
+        word.dataset.decryptWord = '';
+        words.push(word);
+        content.append(word);
+      }
+      word.append(c.span);
+    }
+    el.replaceChildren(content);
+    for (const word of words) {
+      word.style.width = `${word.getBoundingClientRect().width}px`;
+    }
 
     const t0 = performance.now();
     let lastSwap = 0;

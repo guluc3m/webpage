@@ -62,7 +62,7 @@ const fortuna = randomFortuna(formattedFortunas);
 
     // compute a random offset so it's never the same fortuna
     const current = formattedFortunas.findIndex((fortuna) => fortuna.quote === quote?.textContent);
-    const offset = 1 + Math.floor(Math.random() * (formattedFortunas.length - 1));
+    const offset = 1 + Math.floor(Math.random() * (formattedFortunas.length - 2));
     const next = formattedFortunas[(current + offset) % formattedFortunas.length];
 
     if (!quote || !author || !next) return;
