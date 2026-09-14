@@ -20,6 +20,7 @@ import GulEyebrow from '@components/common/gul-Eyebrow.astro';
 import GulButton from '@components/common/gul-Button.astro';
 import GulBadge from '@components/common/gul-Badge.astro';
 import GulCard from '@components/common/gul-Card.astro';
+import GulRepoCard from '@components/common/gul-RepoCard.astro';
 import GulCallout from '@components/common/gul-Callout.astro';
 import GulTabs from '@components/common/gul-Tabs.astro';
 import GulModal from '@components/common/gul-Modal.astro';
@@ -399,6 +400,15 @@ const faqItems = [
         <GulCard href="#" index="01" title="Título de la card" description="Descripción corta de una línea o dos sobre el contenido." />
         <GulCard href="#" index="02" title="Otra card" description="Mismo componente que las de Proyectos, reutilizado aquí." />
       </div>
+      <GulRepoCard
+        href="https://github.com/guluc3m/report-template-typst"
+        name="report-template-typst"
+        description="Plantilla de Typst para memorias de trabajos, laboratorios, etc. de la UC3M"
+        language="Typst"
+        stars={12}
+        forks={4}
+        badge="Public template"
+      />
     </section>
 
     <section class="space-y-4">

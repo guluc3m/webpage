@@ -1,0 +1,78 @@
+---
+/**
+ * gul-RepoCard — card for a linked GitHub repo: name, optional status badge
+ * (template/fork/archived), description, language, stars, forks. Same
+ * gul-Frame/gul-Badge shell as gul-Card, styled after GitHub's own
+ * pinned-repo cards.
+ */
+import GulFrame from './gul-Frame.astro';
+import GulBadge from './gul-Badge.astro';
+import { renderInlineMarkdown } from '@lib/markdown';
+
+interface Props {
+  href: string;
+  name: string;
+  description: string;
+  language?: string;
+  stars?: number;
+  forks?: number;
+  /** e.g. "Public template", "Archived", "Fork" — omit for a plain repo. */
+  badge?: string;
+}
+
+const { href, name, description, language, stars = 0, forks = 0, badge } = Astro.props;
+
+// Hand-drawn outline icons (24x24, stroke-based) — matches gul-Nav's ICONS, no icon library.
+const ICONS = {
+  repo: '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 3v18"/>',
+  star: '<polygon points="12,3 14.9,9.6 22,10.4 16.7,15.1 18.2,22 12,18.3 5.8,22 7.3,15.1 2,10.4 9.1,9.6"/>',
+  fork: '<circle cx="7" cy="5" r="2"/><circle cx="17" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M7 7v3a3 3 0 0 0 3 3h4a3 3 0 0 0 3-3V7M12 13v4"/>',
+} as const;
+---
+
+<GulFrame
+  variant="full"
+  surface
+  border="border-gul-line transition-colors hover:border-gul-ink/40"
+  class="flex h-38 w-full flex-col p-4"
+>
+  <div class="flex flex-wrap items-center gap-1">
+    <svg
+      viewBox="0 0 24 24"
+      class="size-4 shrink-0 stroke-current stroke-[1.5] text-gul-muted"
+      fill="none"
+      set:html={ICONS.repo}
+    />
+    <a href={href} target="_blank" rel="noopener" class="font-medium text-gul-blue hover:underline">
+      {name}
+    </a>
+    {badge && <GulBadge variant="secondary">{badge}</GulBadge>}
+  </div>
+  <p class="mt-2 line-clamp-2 text-sm text-gul-muted" set:html={renderInlineMarkdown(description)} />
+  <div class="mt-auto flex flex-wrap items-center gap-4 pt-4 text-xs text-gul-muted font-mono">
+    {language && (
+      <span class="flex items-center gap-1.5">
+        <span class="size-2.5 rounded-full bg-gul-blue"></span>
+        {language}
+      </span>
+    )}
+    <span class="flex items-center gap-1">
+      <svg
+        viewBox="0 0 24 24"
+        class="size-3.5 stroke-current stroke-[1.5]"
+        fill="none"
+        set:html={ICONS.star}
+      />
+      {stars}
+    </span>
+    <span class="flex items-center gap-1">
+      <svg
+        viewBox="0 0 24 24"
+        class="size-3.5 stroke-current stroke-[1.5]"
+        fill="none"
+        set:html={ICONS.fork}
+      />
+      {forks}
+    </span>
+  </div>
+</GulFrame>

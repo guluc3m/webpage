@@ -1,18 +1,63 @@
 ---
 /**
- * Projects — cards, each linking out to the project's own page/repo.
- *
- * Only the Typst report template for now; more get added to the array later.
- * TODO(copy): real descriptions.
+ * Projects — the org's featured GitHub repos (github.com/guluc3m's pinned
+ * repos), rendered as gul-RepoCard. Stars/forks/description are a snapshot
+ * pulled from the GitHub API at time of writing — no build-time fetch (see
+ * fortunas for the pattern this repo uses when live data is worth it),
+ * update the array by hand when it drifts.
  */
-import GulCard from '@components/common/gul-Card.astro';
+import GulRepoCard from '@components/common/gul-RepoCard.astro';
 import GulTerminal from '@components/common/gul-Terminal.astro';
 
-const projects = [
+const repos = [
   {
-    name: 'Plantilla de informes Typst',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'report-template-typst',
+    description: 'Plantilla de Typst para memorias de trabajos, laboratorios, etc. de la UC3M',
     href: 'https://github.com/guluc3m/report-template-typst',
+    language: 'Typst',
+    stars: 12,
+    forks: 4,
+  },
+  {
+    name: 'uc3m-thesis-ieee-typst',
+    description:
+    'Typst Bachelor Thesis template for the Universidad Carlos III de Madrid, IEEE style',
+    href: 'https://github.com/guluc3m/uc3m-thesis-ieee-typst',
+    language: 'Typst',
+    stars: 6,
+    forks: 0,
+  },
+  {
+    name: 'Teclados',
+    description: 'Split keyboards to guapos que hicimos. Nos quemamos los dedos',
+    href: '/proyectos/teclados',
+    language: 'Soldadura',
+    stars: 1,
+    forks: 0,
+  },
+  {
+    name: 'linux-install',
+    description: 'Guía de instalación de Linux del GUL',
+    href: 'https://github.com/guluc3m/linux-install',
+    language: 'Shell',
+    stars: 10,
+    forks: 0,
+  },
+  {
+    name: 'opengl-group',
+    description: 'Grupo de aprendizaje de OpenGL',
+    href: 'https://github.com/guluc3m/opengl-group',
+    language: 'C++',
+    stars: 0,
+    forks: 0,
+  },
+  {
+    name: 'webpage',
+    description: 'Página principal de GUL UC3M',
+    href: 'https://github.com/guluc3m/webpage',
+    language: 'JavaScript',
+    stars: 1,
+    forks: 0,
   },
 ];
 ---
@@ -21,13 +66,15 @@ const projects = [
   <h2 class="text-3xl font-bold text-gul-ink">Proyectos</h2>
   <GulTerminal lines={[{ command: 'ls projects/' }]} />
   <ul class="mt-4 grid gap-4 sm:grid-cols-2">
-    {projects.map((project, i) => (
+    {repos.map((repo) => (
       <li>
-        <GulCard
-          href={project.href}
-          title={project.name}
-          description={project.description}
-          index={String(i + 1).padStart(2, '0')}
+        <GulRepoCard
+          href={repo.href}
+          name={repo.name}
+          description={repo.description}
+          language={repo.language}
+          stars={repo.stars}
+          forks={repo.forks}
         />
       </li>
     ))}
