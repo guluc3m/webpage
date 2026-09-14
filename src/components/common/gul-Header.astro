@@ -6,7 +6,7 @@
  * the nav links as a prop so nothing about *this* site's sections is baked in.
  */
 import GulNav from './gul-Nav.astro';
-import GulButton from './gul-Button.astro';
+import GulContactDropdown from './gul-ContactDropdown.astro';
 
 interface Props {
   links: { label: string; href: string }[];
@@ -23,6 +23,6 @@ const { links } = Astro.props;
   </a>
   <div class="flex items-center gap-8">
     <GulNav links={links} />
-    <GulButton href="#contacto" label="Contacta" />
+    <GulContactDropdown />
   </div>
 </header>

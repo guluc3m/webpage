@@ -18,6 +18,7 @@ import { navLinks } from '@data/navLinks';
 import GulFooter from '@components/common/gul-Footer.astro';
 import GulEyebrow from '@components/common/gul-Eyebrow.astro';
 import GulButton from '@components/common/gul-Button.astro';
+import GulContactDropdown from '@components/common/gul-ContactDropdown.astro';
 import GulBadge from '@components/common/gul-Badge.astro';
 import GulCard from '@components/common/gul-Card.astro';
 import GulRepoCard from '@components/common/gul-RepoCard.astro';
@@ -542,6 +543,7 @@ const faqItems = [
       <GulFrame class="flex flex-wrap items-center gap-4 p-6">
         <GulButton variant="primary" label="Botón primario" />
         <GulButton variant="secondary" label="Botón secundario" />
+        <GulContactDropdown id="gul-contact-menu-styleguide" />
         <a
           href="#"
           class="inline-flex items-center gap-1 font-mono text-sm text-gul-ink underline decoration-gul-muted underline-offset-4 hover:text-gul-muted"

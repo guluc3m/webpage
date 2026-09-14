@@ -6,7 +6,7 @@
 export const SOCIALS = [
   { label: 'GitHub', href: 'https://github.com/guluc3m', icon: 'github.svg' },
   { label: 'YouTube', href: 'https://youtube.com/c/guluc3m', icon: 'youtube.svg' },
-  { label: 'X (Twitter)', href: 'https://x.com/guluc3m', icon: 'twitter.svg' },
+  { label: 'Twitter', href: 'https://twitter.com/guluc3m', icon: 'twitter.svg' },
   { label: 'Instagram', href: 'https://www.instagram.com/guluc3m/', icon: 'ig.svg' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/gul-uc3m/', icon: 'linkedin.svg' },
 ] as const;
