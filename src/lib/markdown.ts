@@ -10,7 +10,7 @@ export function renderInlineMarkdown(value: string): string {
   for (const match of value.matchAll(token)) {
     result += escapeHtml(value.slice(lastIndex, match.index));
     if (match[1]) {
-      result += `<strong>${escapeHtml(match[1])}</strong>`;
+      result += `<b class="text-gul-ink">${escapeHtml(match[1])}</b>`;
     } else if (match[2]) {
       result += `<em>${escapeHtml(match[2])}</em>`;
     } else {

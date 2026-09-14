@@ -447,7 +447,11 @@ const faqItems = [
       <GulFrame class="p-6">
         <GulGallery
           id="demo-gallery"
-          images={['/real/teclados.jpeg', '/real/teclados2.jpeg', '/real/tux-coche.jpeg', '/real/tux-photofolk.jpeg']}
+          images={[
+            {src: '/real/teclados.jpeg', alt: "Taller teclados"},
+            {src: '/real/teclados2.jpeg', alt: "Taller teclados (2)"},
+            {src: '/real/feria.jpg', alt: "Feria de Asociaciones"},
+          ]}
         />
       </GulFrame>
     </section>
