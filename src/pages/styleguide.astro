@@ -31,6 +31,7 @@ import GulAccordion from '@components/common/gul-Accordion.astro';
 import GulFrame from '@components/common/gul-Frame.astro';
 import GulCodeBlock from '@components/common/gul-CodeBlock.astro';
 import GulTerminal from '@components/common/gul-Terminal.astro';
+import GulCommitsGrid from '@components/common/gul-CommitsGrid.astro';
 import PixelDissolve from '@components/common/PixelDissolve.astro';
 
 // Decided (self-hosted via @fontsource-variable, tokens in global.css @theme).
@@ -386,6 +387,11 @@ const faqItems = [
           <GulList ordered items={['Primer paso', 'Segundo paso', 'Tercer paso']} />
         </div>
       </GulFrame>
+    </section>
+
+    <section class="space-y-4">
+      <h2>Commits grid</h2>
+      <GulCommitsGrid />
     </section>
 
     <section class="space-y-4">

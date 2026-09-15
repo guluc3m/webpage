@@ -61,6 +61,38 @@
      unused so far. */
   --breakpoint-sm: 30rem; /* 480px */
   --breakpoint-md: 48rem; /* 768px */
+
+  /* gul-CommitsGrid: lit cells fade from the idle gul-line square to their
+     (per-cell) --highlight color; unlit cells occasionally flicker through
+     it and back, like a commit graph re-rendering. Both keyframes swap
+     between two opaque colors (never a bordered cell fading through
+     transparency) — a bordered rounded-corner cell animating its own
+     background-color renders a blocky, unantialiased corner in Chromium at
+     this cell size, hence gul-CommitsGrid's cells have no border. `both`
+     (not just `forwards`) so the pre-delay state is also the idle color,
+     since each cell has its own per-cell animation-delay. --animate-* here
+     is how Tailwind v4 defines an `animate-*` utility without a
+     tailwind.config.js. */
+  --animate-highlight: highlight 1.8s ease both;
+  --animate-flash: flash 1.8s ease both;
+}
+
+@keyframes highlight {
+  from {
+    background-color: var(--color-gul-line);
+  }
+  to {
+    background-color: var(--highlight);
+  }
+}
+@keyframes flash {
+  0%,
+  100% {
+    background-color: var(--color-gul-line);
+  }
+  50% {
+    background-color: var(--highlight);
+  }
 }
 
 /*
