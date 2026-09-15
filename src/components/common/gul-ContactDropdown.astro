@@ -74,6 +74,16 @@ const instagram = SOCIALS.find((social) => social.icon === 'ig.svg')!;
       menu.hidden = !open;
     };
 
+    const hoverCapable = () => window.matchMedia('(hover: hover)').matches;
+
+    contact.addEventListener('pointerenter', () => {
+      if (hoverCapable()) setOpen(true);
+    });
+
+    contact.addEventListener('pointerleave', () => {
+      if (hoverCapable()) setOpen(false);
+    });
+
     trigger.addEventListener('click', () => {
       setOpen(menu.hidden === true);
     });
