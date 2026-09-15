@@ -4,11 +4,14 @@
  */
 import GulAccordion from '@components/common/gul-Accordion.astro';
 import GulTerminal from '@components/common/gul-Terminal.astro';
+import { CONTACT, obfuscateEmail } from '@/config.ts';
+
+const obfuscatedEmail = obfuscateEmail(CONTACT.email);
 
 const items = [
   {
     q: '¿Cómo me apunto al GUL?',
-    a: 'Es tan fácil como entrar a nuestros grupos de Telegram. Para evitar que se nos metan bots continuamente, son por invitación, y por lo tanto tendrás que mandarnos un correo a **info AT gul.uc3m.es**, o enviarnos un MD a nuestro Twitter, [@guluc3m](https://twitter.com/guluc3m).',
+    a: `Es tan fácil como entrar a nuestros grupos de Telegram. Para evitar que se nos metan bots continuamente, son por invitación, y por lo tanto tendrás que mandarnos un correo a ${obfuscatedEmail}, o enviarnos un MD a nuestro Twitter, [@guluc3m](https://twitter.com/guluc3m).`,
   },
   {
     q: '¿Hay que saber Linux?',
@@ -24,7 +27,7 @@ const items = [
   },
   {
     q: 'Tengo "x" problema con Linux... ¿me podéis ayudar?',
-    a: '¡Por supuesto! Envíanos un correo a **info AT gul.uc3m.es** y veremos qué podemos hacer.',
+    a: `¡Por supuesto! Envíanos un correo a ${obfuscatedEmail} y veremos qué podemos hacer.`,
   },
 ];
 ---

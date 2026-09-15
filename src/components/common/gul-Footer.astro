@@ -8,7 +8,7 @@
  * The registration data below is COPIED VERBATIM from the 2021 site and must not
  * be paraphrased. Update it only against an official association document.
  */
-import { SOCIALS, CONTACT, ADDRESS } from '@/config.ts';
+import { SOCIALS, CONTACT, ADDRESS, obfuscateEmail } from '@/config.ts';
 
 // `?url` forces Vite to hand back the built asset URL instead of Astro's
 // ImageMetadata object (which a plain <img src> can't consume directly) -
@@ -61,10 +61,16 @@ const ICONS: Record<string, string> = {
 
       <div>
         <h2 class="text-sm font-normal">Contáctanos</h2>
-        <!-- Email obfuscated on purpose - no mailto:. Telegram is QR-only
-             (see the Telegram section); Discord is invite-only via email. -->
+        <!-- Email is obfuscated in the generated HTML and resolved client-side. -->
         <p class="mt-3">
-          <span class="text-gul-ink">Correo:</span> {CONTACT.email}
+          <span class="text-gul-ink">Correo:</span>{' '}
+          <a
+            href="#"
+            data-gul-email
+            class="text-gul-muted underline decoration-gul-line underline-offset-4 hover:text-gul-ink hover:decoration-gul-ink"
+          >
+            <span data-gul-email-text>{obfuscateEmail(CONTACT.email)}</span>
+          </a>
         </p>
         <p class="mt-1">
           <span class="text-gul-ink">Visita:</span> {ADDRESS}

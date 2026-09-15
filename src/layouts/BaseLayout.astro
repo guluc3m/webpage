@@ -56,5 +56,17 @@ const ogImage = new URL('/og-image.png', Astro.site);
   </head>
   <body class="bg-gul-bg text-gul-ink">
     <slot />
+
+    <script>
+      // de-obfuscate email address (client-side) to prevent bots (not using JS)
+      document.querySelectorAll<HTMLAnchorElement>('[data-gul-email]').forEach((link) => {
+        const text = link.querySelector<HTMLElement>('[data-gul-email-text]') ?? link;
+        const email = text.textContent?.replace(' AT ', '@').trim();
+        if (!email) return;
+
+        text.textContent = email;
+        link.href = `mailto:${email}`;
+      });
+    </script>
   </body>
 </html>

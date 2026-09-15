@@ -11,10 +11,13 @@ export const SOCIALS = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/gul-uc3m/', icon: 'linkedin.svg' },
 ] as const;
 
-/** email is obfuscated on purpose - render as text, never a mailto: link. */
+/** Email address. Components obfuscate it before rendering HTML. */
 export const CONTACT = {
-  email: 'info AT gul.uc3m.es',
+  email: 'info@gul.uc3m.es',
 } as const;
+
+/** obfuscates email addresses for the generated HTML to _try_ and disuade bots. This is intended to be used at build time */
+export const obfuscateEmail = (email: string) => email.replace('@', ' AT ');
 
 /** Office address, copied verbatim from the 2021 site (see CLAUDE.md). Single
  * source so the footer's "visita" line and legal block never drift apart. */
