@@ -96,6 +96,31 @@
     font-family: var(--font-heading);
   }
 
+  /* Type scale: the one place size/weight/color for a bare heading is set —
+     every section title on the page and in /styleguide used to re-type
+     "text-3xl font-bold text-gul-ink" by hand on every single <h2>. A
+     heading that wants to look different overrides these with its own
+     utility class (e.g. gul-Modal's h3, gul-Footer's h2s) — utilities live
+     in a later Tailwind layer, so they still win over this. */
+  h1 {
+    @apply text-4xl font-bold text-gul-ink;
+  }
+  h2 {
+    @apply text-3xl font-bold text-gul-ink;
+  }
+  h3 {
+    @apply text-2xl font-semibold text-gul-ink;
+  }
+  h4 {
+    @apply text-xl font-semibold text-gul-ink;
+  }
+  h5 {
+    @apply text-lg font-semibold text-gul-ink;
+  }
+  h6 {
+    @apply text-base font-semibold tracking-wide text-gul-muted uppercase;
+  }
+
   /* Markdown-style prefix: a plain h2/h3 reads like its own source syntax. */
   h2::before {
     content: '## ';
@@ -191,6 +216,9 @@
 
   /* Form fields — excludes checkbox/radio, which are native widgets, not
      text-like boxes. */
+  label {
+    @apply text-sm text-gul-ink;
+  }
   input:not([type='checkbox']):not([type='radio']),
   textarea,
   select {

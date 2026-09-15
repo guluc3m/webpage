@@ -114,7 +114,7 @@ const faqItems = [
   <GulHeader links={navLinks} />
   <main class="mx-auto max-w-3xl space-y-16 p-8">
     <header class="space-y-2 border-b border-gul-line pb-6">
-      <h1 class="text-4xl font-bold text-gul-ink">Styleguide</h1>
+      <h1>Styleguide</h1>
       <p class="text-gul-muted">
         Página de trabajo para decidir la identidad visual compartida. No forma parte del sitio
         público.
@@ -124,7 +124,7 @@ const faqItems = [
     <h2 class="text-3xl font-semibold text-gul-muted uppercase">Estilos base</h2>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Colores</h2>
+      <h2>Colores</h2>
       <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
         {colors.map((c) => (
           <div class="space-y-2">
@@ -174,7 +174,7 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Tipografía</h2>
+      <h2>Tipografía</h2>
       <p class="text-xs text-gul-muted">
         Decidido y autohospedado (@fontsource-variable, sin CDN) — tokens reales en
         <code>global.css</code>.
@@ -191,7 +191,7 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Radios</h2>
+      <h2>Radios</h2>
       <div class="flex flex-wrap gap-6">
         {radii.map((r) => (
           <div class="space-y-2 text-center">
@@ -236,7 +236,7 @@ const faqItems = [
     </p>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Espaciado</h2>
+      <h2>Espaciado</h2>
       <p class="text-xs text-gul-muted">
         Escala por defecto de Tailwind (pasos de 0.25rem) — sin token propio todavía.
       </p>
@@ -253,7 +253,7 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Breakpoints</h2>
+      <h2>Breakpoints</h2>
       <table>
         <thead>
           <tr>
@@ -275,7 +275,7 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Foco (accesibilidad)</h2>
+      <h2>Foco (accesibilidad)</h2>
       <p class="text-xs text-gul-muted">
         Único patrón real hoy: <code>focus-visible:text-gul-ink</code> en el nav (cambio de
         color, sin anillo). Prueba a navegar con Tab.
@@ -293,31 +293,29 @@ const faqItems = [
       </GulFrame>
     </section>
 
-    <h2 class="text-3xl font-semibold text-gul-muted uppercase">Componentes</h2>
+    <h2 class="text-5xl font-semibold text-gul-muted uppercase">Componentes</h2>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Eyebrow</h2>
+      <h2>Eyebrow</h2>
       <GulFrame class="p-6">
         <GulEyebrow text="Etiqueta antes de un título" />
       </GulFrame>
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Encabezados</h2>
+      <h2>Encabezados</h2>
       <GulFrame class="space-y-3 p-6">
-        <h1 class="text-4xl font-bold text-gul-ink">H1 — Grupo de Usuarios de Linux</h1>
-        <h2 class="text-3xl font-bold text-gul-ink">H2 — Grupo de Usuarios de Linux</h2>
-        <h3 class="text-2xl font-semibold text-gul-ink">H3 — Grupo de Usuarios de Linux</h3>
-        <h4 class="text-xl font-semibold text-gul-ink">H4 — Grupo de Usuarios de Linux</h4>
-        <h5 class="text-lg font-semibold text-gul-ink">H5 — Grupo de Usuarios de Linux</h5>
-        <h6 class="text-base font-semibold tracking-wide text-gul-muted uppercase">
-          H6 — Grupo de Usuarios de Linux
-        </h6>
+        <h1>H1 — Grupo de Usuarios de Linux</h1>
+        <h2>H2 — Grupo de Usuarios de Linux</h2>
+        <h3>H3 — Grupo de Usuarios de Linux</h3>
+        <h4>H4 — Grupo de Usuarios de Linux</h4>
+        <h5>H5 — Grupo de Usuarios de Linux</h5>
+        <h6>H6 — Grupo de Usuarios de Linux</h6>
       </GulFrame>
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Párrafos</h2>
+      <h2>Párrafos</h2>
       <GulFrame class="space-y-4 p-6">
         <p class="text-lg text-gul-ink">
           Párrafo destacado (lead) — para la entradilla de una sección, algo más grande que el
@@ -340,7 +338,7 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Cita</h2>
+      <h2>Cita</h2>
       <GulFrame class="p-6">
         <figure>
           <blockquote>«El software libre es una cuestión de libertad, no de precio.»</blockquote>
@@ -350,7 +348,7 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Código y teclado</h2>
+      <h2>Código y teclado</h2>
       <GulFrame class="space-y-4 p-6">
         <GulCodeBlock>sudo apt update &amp;&amp; sudo apt upgrade</GulCodeBlock>
         <p class="text-sm text-gul-muted">
@@ -363,7 +361,7 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Terminal</h2>
+      <h2>Terminal</h2>
       <GulFrame class="p-6">
         <GulTerminal
           lines={[
@@ -375,7 +373,7 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Listas</h2>
+      <h2>Listas</h2>
       <GulFrame class="grid gap-6 p-6 sm:grid-cols-2">
         <div>
           <p class="mb-2 text-sm text-gul-muted">
@@ -391,12 +389,12 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Divisor</h2>
+      <h2>Divisor</h2>
       <hr />
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Cards</h2>
+      <h2>Cards</h2>
       <div class="grid gap-4 sm:grid-cols-2">
         <GulCard href="#" index="01" title="Título de la card" description="Descripción corta de una línea o dos sobre el contenido." />
         <GulCard href="#" index="02" title="Otra card" description="Mismo componente que las de Proyectos, reutilizado aquí." />
@@ -413,12 +411,12 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Acordeón</h2>
+      <h2>Acordeón</h2>
       <GulAccordion items={faqItems} />
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Tabs</h2>
+      <h2>Tabs</h2>
       <GulTabs
         tabs={[
           { id: 'instalacion', label: 'Instalación' },
@@ -431,7 +429,7 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Modal</h2>
+      <h2>Modal</h2>
       <GulFrame class="p-6">
         <GulModal id="demo-modal" triggerLabel="Abrir modal" title="Título del modal">
           Contenido de ejemplo. Nativo (&lt;dialog&gt;), sin librería.
@@ -440,7 +438,7 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Galería</h2>
+      <h2>Galería</h2>
       <p class="text-xs text-gul-muted">
         Expansión al pasar el ratón con flex + <code>:has()</code>, sin JS; clic abre un
         &lt;dialog&gt; nativo a pantalla completa con anterior/siguiente.
@@ -458,17 +456,17 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Campos de formulario</h2>
+      <h2>Campos de formulario</h2>
       <GulFrame class="grid gap-4 p-6 sm:grid-cols-2">
-        <label class="block space-y-1 text-sm">
+        <label class="block space-y-1">
           <span class="font-medium text-gul-ink">Nombre</span>
           <input type="text" placeholder="Ada Lovelace" />
         </label>
-        <label class="block space-y-1 text-sm">
+        <label class="block space-y-1">
           <span class="font-medium text-gul-ink">Mensaje</span>
           <textarea rows="1" placeholder="Escribe aquí…"></textarea>
         </label>
-        <label class="block space-y-1 text-sm">
+        <label class="block space-y-1">
           <span class="font-medium text-gul-ink">Comisión</span>
           <select>
             <option>Sysadmin</option>
@@ -478,16 +476,16 @@ const faqItems = [
         </label>
         <fieldset class="space-y-1 text-sm">
           <legend class="font-medium text-gul-ink">Nivel</legend>
-          <label class="flex items-center gap-2 text-gul-ink">
+          <label class="flex items-center gap-2">
             <input type="radio" name="nivel" />
             Principiante
           </label>
-          <label class="flex items-center gap-2 text-gul-ink">
+          <label class="flex items-center gap-2">
             <input type="radio" name="nivel" />
             Con experiencia
           </label>
         </fieldset>
-        <label class="flex items-center gap-2 text-sm text-gul-ink">
+        <label class="flex items-center gap-2">
           <input type="checkbox" />
           Acepto los términos
         </label>
@@ -495,7 +493,7 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Badges</h2>
+      <h2>Badges</h2>
       <GulFrame class="flex flex-wrap items-center gap-3 p-6">
         <GulBadge variant="primary">Primario</GulBadge>
         <GulBadge variant="secondary">Secundario</GulBadge>
@@ -503,7 +501,7 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Tabla</h2>
+      <h2>Tabla</h2>
       <table>
         <thead>
           <tr>
@@ -525,7 +523,7 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Aviso (callout)</h2>
+      <h2>Aviso (callout)</h2>
       <p class="text-xs text-gul-muted">
         Se diferencian por icono + etiqueta, no por color: la paleta (issue #5) es monocroma a
         propósito por accesibilidad daltónica. Añadir rojo/verde semántico requeriría el visto bueno
@@ -539,7 +537,7 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gul-ink">Botones y enlaces</h2>
+      <h2>Botones y enlaces</h2>
       <GulFrame class="flex flex-wrap items-center gap-4 p-6">
         <GulButton variant="primary" label="Botón primario" />
         <GulButton variant="secondary" label="Botón secundario" />

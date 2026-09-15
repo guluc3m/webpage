@@ -19,7 +19,7 @@ const { triggerLabel, title, id } = Astro.props;
 
 <GulButton data-gul-modal-open={id} label={triggerLabel} />
 <dialog id={id} data-gul-modal>
-  <h3 class="text-lg font-semibold text-gul-ink">{title}</h3>
+  <h3 class="text-lg">{title}</h3>
   <div class="mt-2 text-sm text-gul-muted">
     <slot />
   </div>
