@@ -1,0 +1,86 @@
+---
+/**
+ * /actividades — histórico de talleres y charlas del GUL (guluc3m/webpage#9).
+ * Datos en src/data/actividades.ts; esta página solo ordena, filtra (título,
+ * tag, ponente) y pinta. El filtrado corre en el cliente porque depende de
+ * lo que el usuario teclea/elige, no hay nada que precomputar en build.
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import GulHeader from '@components/common/gul-Header.astro';
+import GulFooter from '@components/common/gul-Footer.astro';
+import GulActividadCard from '@components/common/gul-ActividadCard.astro';
+import { navLinks } from '@data/navLinks';
+import actividadesData from '@data/actividades.json';
+import type { Actividad } from '@data/actividades';
+
+const actividades = actividadesData as Actividad[];
+
+// yyyy/mm/dd sorts correctly as a plain string, no Date needed for ordering.
+const sorted = [...actividades].sort((a, b) => b.date.localeCompare(a.date));
+const tags = [...new Set(sorted.flatMap((a) => a.tags))].sort();
+const speakers = [...new Set(sorted.flatMap((a) => a.speakers.map((s) => s.name)))].sort();
+---
+
+<BaseLayout title="Actividades · GUL UC3M">
+  <GulHeader links={navLinks} />
+  <main class="mx-auto max-w-gul-content gul-gutter py-8">
+    <h1>Actividades</h1>
+
+    <div class="mt-4 grid gap-3 sm:grid-cols-3">
+      <input type="search" placeholder="Buscar por título…" data-filter-search />
+      <select data-filter-tag>
+        <option value="">Todos los tags</option>
+        {tags.map((t) => <option value={t}>{t}</option>)}
+      </select>
+      <select data-filter-speaker>
+        <option value="">Todos los ponentes</option>
+        {speakers.map((s) => <option value={s}>{s}</option>)}
+      </select>
+    </div>
+
+    <ul class="mt-8 space-y-24 border-l border-gul-line pl-6" data-actividades-list>
+      {sorted.map((a) => (
+        <li
+          class="-ml-[calc(1.5rem+1px)] pl-6"
+          data-actividad
+          data-title={a.title.toLowerCase()}
+          data-tags={a.tags.join(',').toLowerCase()}
+          data-speakers={a.speakers.map((s) => s.name).join(',').toLowerCase()}
+        >
+          <GulActividadCard actividad={a} />
+        </li>
+      ))}
+    </ul>
+
+    <p class="mt-8 hidden text-sm text-gul-muted" data-actividades-empty>Ninguna actividad coincide con el filtro.</p>
+  </main>
+  <GulFooter />
+</BaseLayout>
+
+<script>
+  const search = document.querySelector<HTMLInputElement>('[data-filter-search]')!;
+  const tagFilter = document.querySelector<HTMLSelectElement>('[data-filter-tag]')!;
+  const speakerFilter = document.querySelector<HTMLSelectElement>('[data-filter-speaker]')!;
+  const items = document.querySelectorAll<HTMLLIElement>('[data-actividad]');
+  const empty = document.querySelector<HTMLElement>('[data-actividades-empty]')!;
+
+  function applyFilters() {
+    const q = search.value.trim().toLowerCase();
+    const tag = tagFilter.value.toLowerCase();
+    const speaker = speakerFilter.value.toLowerCase();
+    let visible = 0;
+
+    items.forEach((item) => {
+      const matches =
+        item.dataset.title!.includes(q) &&
+        (!tag || item.dataset.tags!.split(',').includes(tag)) &&
+        (!speaker || item.dataset.speakers!.split(',').includes(speaker));
+      item.hidden = !matches;
+      if (matches) visible++;
+    });
+
+    empty.hidden = visible > 0;
+  }
+
+  [search, tagFilter, speakerFilter].forEach((el) => el.addEventListener('input', applyFilters));
+</script>

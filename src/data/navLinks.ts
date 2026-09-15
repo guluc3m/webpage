@@ -30,6 +30,7 @@ export const navLinks = [
     ],
   },
   { label: 'Jornadas', href: '/jornadas/' },
+  { label: 'Actividades', href: '/actividades/' },
   {
     label: 'Guía',
     href: '/guia/',

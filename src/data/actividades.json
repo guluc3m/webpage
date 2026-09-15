@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Teclados",
+    "date": "2026/05/01",
+    "description": "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    "speakers": [{ "name": "John Smith" }, { "name": "Jane Doe" }],
+    "photo": "https://pbs.twimg.com/media/HHs3K92WAAAJ9_J?format=jpg&name=small",
+    "tags": ["Soldadura"],
+    "repository": "https://github.com/davidphilipbarr/Sweep"
+  },
+  {
+    "title": "Introducción al Autohospedaje de Servicios y Webs",
+    "date": "2026/05/07",
+    "cartel": "https://pbs.twimg.com/media/HHn4rxuXMAM8RJ5?format=jpg&name=small",
+    "description": "¿Que haces usando tu portatil del 2006 como pisapapeles? Métele Debian, y te enseñamos como exponer tus páginas y proyectos este jueves 07 de mayo, a las 13:00 en el aula 2.3.C03. ¡No te pierdas esta oportunidad para crear tu propia B2B SaaS, con 5 clientes anuales!",
+    "speakers": [{ "name": "Jorge Saghin", "link": "https://github.com/z4na14" }],
+    "tags": ["Proxmox"],
+    "video": "https://www.youtube.com/watch?v=xB3y_q-H6fE",
+    "transparencias": "https://ftp.z4na14.dev/semana_postgrado_self-hosting.pdf"
+  },
+  {
+    "title": "Taller presencial: Introduccion a C",
+    "date": "2026/02/18",
+    "description": "¿Qué es un Makefile?, ¿Por qué los punteros son tan complicados?, ¿¿Desde cuándo puedo usar funciones como argumentos?? Tranquilo, nosotros también hemos pasado por esa etapa, y te vamos a ayudar a que sufras lo menos posible este miércoles 18 de febrero, a las 13:00 en el aula 2.3.C01. No te preocupes, vas a salir de aquí con más dudas sobre punteros que cuando entraste, pero esa es la parte divertida del lenguaje.",
+    "speakers": [{ "name": "Jorge Saghin", "link": "https://github.com/z4na14" }],
+    "tags": ["C"]
+  }
+]

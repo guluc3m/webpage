@@ -1,0 +1,88 @@
+---
+/**
+ * gul-ActividadCard — one entry in the /actividades timeline. With a
+ * cartel/photo, the image bleeds past the card on three sides (top, bottom,
+ * right) instead of living inside it — top/bottom are negative insets, not a
+ * fixed height, so the bleed always matches whatever height the card ends up
+ * with. The list's row gap must stay >= 2x that bleed or two photos collide;
+ * see actividades.astro's `space-y-24`. Mobile drops the overlap entirely.
+ */
+import GulFrame from './gul-Frame.astro';
+import GulBadge from './gul-Badge.astro';
+import type { Actividad } from '@data/actividades';
+
+interface Props {
+  actividad: Actividad;
+}
+
+const { actividad: a } = Astro.props;
+const image = a.cartel ?? a.photo; // same slot (poster vs. snapshot), never both at once — see the Actividad type.
+
+const formatDate = (date: string) =>
+  new Date(date.replaceAll('/', '-')).toLocaleDateString('es-ES', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+---
+
+<div class="flex flex-col sm:block sm:relative">
+  {image && (
+    <a
+      href={image}
+      target="_blank"
+      rel="noopener"
+      class="order-first mb-4 block h-56 w-full overflow-hidden rounded-md border border-gul-line sm:order-none sm:absolute sm:-top-10 sm:-right-[60px] sm:-bottom-10 sm:z-[2] sm:mb-0 sm:h-auto sm:w-[280px]"
+    >
+      <img src={image} alt="" class="h-full w-full object-cover" />
+    </a>
+  )}
+  <GulFrame class:list={['p-8', image && 'sm:pr-[340px]']}>
+    <time class="text-xs text-gul-muted" datetime={a.date.replaceAll('/', '-')}>
+      {formatDate(a.date)}
+    </time>
+    <h2 class="mt-1">{a.title}</h2>
+    {a.description && <p class="mt-1 text-sm text-gul-muted">{a.description}</p>}
+
+    {a.speakers.length > 0 && (
+      <p class="mt-2 text-sm text-gul-muted">
+        {a.speakers.map((s, i) => (
+          <>
+            {i > 0 && ', '}
+            {s.link ? (
+              <a href={s.link} target="_blank" rel="noopener" class="text-gul-ink underline decoration-gul-line underline-offset-4 hover:decoration-gul-ink">
+                {s.name}
+              </a>
+            ) : (
+              s.name
+            )}
+          </>
+        ))}
+      </p>
+    )}
+
+    {a.tags.length > 0 && (
+      <p class="mt-2 flex flex-wrap gap-1.5">
+        {a.tags.map((t) => (
+          <GulBadge variant="secondary">{t}</GulBadge>
+        ))}
+      </p>
+    )}
+
+    {(a.video || a.repository || a.transparencias) && (
+      <p class="mt-2 flex flex-wrap gap-3 text-sm">
+        {[
+          { href: a.video, label: 'Vídeo' },
+          { href: a.repository, label: 'Repositorio' },
+          { href: a.transparencias, label: 'Transparencias' },
+        ]
+          .filter((link) => link.href)
+          .map((link) => (
+            <a href={link.href} target="_blank" rel="noopener" class="text-gul-ink underline decoration-gul-line underline-offset-4 hover:decoration-gul-ink">
+              {link.label}
+            </a>
+          ))}
+      </p>
+    )}
+  </GulFrame>
+</div>
