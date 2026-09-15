@@ -11,11 +11,13 @@ import ShaderBackground from './ShaderBackground.astro';
 import GulEyebrow from '@components/common/gul-Eyebrow.astro';
 import GulDecryptText from '@components/common/gul-DecryptText.astro';
 import GulButton from '@components/common/gul-Button.astro';
+import GulAchievement from '@components/common/gul-Achievement.astro';
 import fortunas from '@data/fortunas.json';
 import { formatFortuna, type Fortuna } from '@lib/fortunas.ts';
 
 const formattedFortunas = (fortunas as Fortuna[]).map(formatFortuna);
-const fortuna = formattedFortunas[Math.floor(Math.random() * formattedFortunas.length)];
+const fortunaIndex = Math.floor(Math.random() * formattedFortunas.length);
+const fortuna = formattedFortunas[fortunaIndex];
 ---
 
 <section id="inicio" class="relative flex min-h-screen items-center overflow-hidden">
@@ -46,38 +48,66 @@ const fortuna = formattedFortunas[Math.floor(Math.random() * formattedFortunas.l
         class="whitespace-pre-line"
         data-fortuna-quote
       />
-      <figcaption data-fortuna-author hidden={!fortuna.author}>{fortuna.author}</figcaption>
-      <GulButton variant="secondary" label="Otra fortuna" icon="↻" class="mt-4" data-refresh-fortuna />
+      <figcaption data-fortuna-author hidden={!fortuna.author}>
+        {fortuna.author}
+      </figcaption>
+      <GulButton
+        variant="secondary"
+        label="Otra fortuna"
+        icon="↻"
+        class="mt-4"
+        data-refresh-fortuna
+      />
     </figure>
   </div>
+
+  <GulAchievement id="fortunas-completadas" text="Has leído todas las fortunas" />
 </section>
 
-<script define:vars={{ formattedFortunas, fortuna }}>
+<script define:vars={{ formattedFortunas, fortunaIndex }}>
   const quote = document.querySelector('[data-fortuna-quote]');
   const author = document.querySelector('[data-fortuna-author]');
   const refresh = document.querySelector('[data-refresh-fortuna]');
 
-  const fortunas = new Set(formattedFortunas); // full set of fortunas
-  const repeated = new Set([fortuna]); // set of repeated fortunas
+  // Use indexes rather than the fortuna objects themselves. `define:vars`
+  // serializes each variable separately, so the initial fortuna object does
+  // not share identity with the matching object in `formattedFortunas`.
+  const fortunasIndexes = new Set(formattedFortunas.map((_, index) => index));
+  const repeatedIndexes = new Set([fortunaIndex]);
+  let currentFortunaIndex = fortunaIndex;
+  let achievement_unlocked = false;
 
   refresh?.addEventListener('click', () => {
     // compute a random fortuna. we ensure no fortuna is repeated, until all
     // fortunas are covered.
+    let available = Array.from(fortunasIndexes.difference(repeatedIndexes));
 
-    if (repeated.size == fortunas.size) {
+    if (available.length === 0) {
       // all fortunas were done, repeat
-      repeated.clear();
+      repeatedIndexes.clear();
+      // prevent show the same fortuna again
+      repeatedIndexes.add(currentFortunaIndex);
+      available = Array.from(fortunasIndexes.difference(repeatedIndexes));
     }
 
-    const available = Array.from(fortunas.difference(repeated));
-    const random_i = Math.floor(Math.random() * available.length);
-    const next = available[random_i];
-    repeated.add(next);
+    const nextIndex = available[Math.floor(Math.random() * available.length)];
+    const next = formattedFortunas[nextIndex];
+
+    repeatedIndexes.add(nextIndex);
+    currentFortunaIndex = nextIndex;
 
     if (!quote || !author || !next) return;
     quote.textContent = next.quote;
     quote.dispatchEvent(new CustomEvent('gul:decrypt', { bubbles: true, detail: quote }));
     author.textContent = next.author;
     author.hidden = !next.author;
+
+    // show achievement
+    if (!achievement_unlocked && fortunasIndexes.size === repeatedIndexes.size) {
+      document.dispatchEvent(
+        new CustomEvent('gul:achievement:show', { detail: 'fortunas-completadas' }),
+      );
+      achievement_unlocked = true;
+    }
   });
 </script>

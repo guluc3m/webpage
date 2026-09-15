@@ -32,6 +32,7 @@ import GulFrame from '@components/common/gul-Frame.astro';
 import GulCodeBlock from '@components/common/gul-CodeBlock.astro';
 import GulTerminal from '@components/common/gul-Terminal.astro';
 import GulCommitsGrid from '@components/common/gul-CommitsGrid.astro';
+import GulAchievement from '@components/common/gul-Achievement.astro';
 import PixelDissolve from '@components/common/PixelDissolve.astro';
 
 // Decided (self-hosted via @fontsource-variable, tokens in global.css @theme).
@@ -557,6 +558,28 @@ const faqItems = [
         </a>
       </GulFrame>
     </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Logro</h2>
+      <p class="text-sm text-gul-muted">
+        Toast de logro reutilizable: pasa el texto del logro mediante la prop <code>text</code>.
+      </p>
+      <GulFrame class="flex items-center justify-between gap-4 p-6">
+        <span class="text-sm text-gul-muted">Ejemplo de notificación</span>
+        <GulButton id="styleguide-achievement-trigger" variant="secondary" label="Mostrar logro" />
+      </GulFrame>
+      <GulAchievement id="styleguide-achievement" text="Has completado el ejemplo del styleguide" />
+    </section>
   </main>
   <GulFooter />
 </BaseLayout>
+
+<script>
+  const trigger = document.querySelector<HTMLButtonElement>('#styleguide-achievement-trigger');
+
+  trigger?.addEventListener('click', () => {
+    document.dispatchEvent(
+      new CustomEvent('gul:achievement:show', { detail: 'styleguide-achievement' }),
+    );
+  });
+</script>
