@@ -1253,5 +1253,9 @@ var fortunas = [
     [
         "Para calcular esa cantidad masiva. M A S I V A (jeje) de datos",
         "Javier Garcia Blas (HPC)"
+    ],
+    [
+        "No sabía que la CPU usaba memoria",
+        "Un muerdeantenas del GUL"
     ]
 ]
