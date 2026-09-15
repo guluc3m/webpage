@@ -62,6 +62,12 @@
   --breakpoint-sm: 30rem; /* 480px */
   --breakpoint-md: 48rem; /* 768px */
 
+  /* Reading-width column shared by every non-gallery section (Faq, Projects,
+     WhereWeAre, the footer) via `max-w-gul-content` — change it here once
+     instead of hunting down each `max-w-*`. WhatIsGul's two-column gallery
+     stays on its own max-w-5xl, that's a different layout, not this column. */
+  --container-gul-content: 62rem;
+
   /* gul-CommitsGrid: lit cells fade from the idle gul-line square to their
      (per-cell) --highlight color; unlit cells occasionally flicker through
      it and back, like a commit graph re-rendering. Both keyframes swap
@@ -110,6 +116,15 @@
  */
 @utility rounded-inner-* {
   border-radius: max(0px, calc(var(--radius-md) - --spacing(--value(integer))));
+}
+
+/*
+ * Single source for the page's side gutter — `main` and the footer's inner
+ * wrapper both need the exact same value or content jumps sideways where one
+ * ends and the other begins.
+ */
+@utility gul-gutter {
+  padding-inline: --spacing(4);
 }
 
 /*
