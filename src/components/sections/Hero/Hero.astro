@@ -12,10 +12,10 @@ import GulEyebrow from '@components/common/gul-Eyebrow.astro';
 import GulDecryptText from '@components/common/gul-DecryptText.astro';
 import GulButton from '@components/common/gul-Button.astro';
 import fortunas from '@data/fortunas.json';
-import { formatFortuna, randomFortuna, type Fortuna } from '@lib/fortunas.ts';
+import { formatFortuna, type Fortuna } from '@lib/fortunas.ts';
 
 const formattedFortunas = (fortunas as Fortuna[]).map(formatFortuna);
-const fortuna = randomFortuna(formattedFortunas);
+const fortuna = formattedFortunas[Math.floor(Math.random() * formattedFortunas.length)];
 ---
 
 <section id="inicio" class="relative flex min-h-screen items-center overflow-hidden">
@@ -52,18 +52,27 @@ const fortuna = randomFortuna(formattedFortunas);
   </div>
 </section>
 
-<script define:vars={{ formattedFortunas }}>
+<script define:vars={{ formattedFortunas, fortuna }}>
   const quote = document.querySelector('[data-fortuna-quote]');
   const author = document.querySelector('[data-fortuna-author]');
   const refresh = document.querySelector('[data-refresh-fortuna]');
 
-  refresh?.addEventListener('click', () => {
-    // new fortuna
+  const fortunas = new Set(formattedFortunas); // full set of fortunas
+  const repeated = new Set([fortuna]); // set of repeated fortunas
 
-    // compute a random offset so it's never the same fortuna
-    const current = formattedFortunas.findIndex((fortuna) => fortuna.quote === quote?.textContent);
-    const offset = 1 + Math.floor(Math.random() * (formattedFortunas.length - 2));
-    const next = formattedFortunas[(current + offset) % formattedFortunas.length];
+  refresh?.addEventListener('click', () => {
+    // compute a random fortuna. we ensure no fortuna is repeated, until all
+    // fortunas are covered.
+
+    if (repeated.size == fortunas.size) {
+      // all fortunas were done, repeat
+      repeated.clear();
+    }
+
+    const available = Array.from(fortunas.difference(repeated));
+    const random_i = Math.floor(Math.random() * available.length);
+    const next = available[random_i];
+    repeated.add(next);
 
     if (!quote || !author || !next) return;
     quote.textContent = next.quote;

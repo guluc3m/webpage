@@ -52,8 +52,3 @@ export function formatFortuna({ quote, author }: Fortuna): FormattedFortuna {
 
   return { quote: q, author: author ? `— ${author}` : '' };
 }
-
-/** Pick a random entry. Called once per build. */
-export function randomFortuna(fortunas: Fortuna[]): Fortuna {
-  return fortunas[Math.floor(Math.random() * fortunas.length)];
-}
