@@ -1,11 +1,10 @@
 # Reglas generales de formato:
 # - Usen siempre `quote: |-`
 # - Las fortunas simples, e.g. "me gustan los pies", son de una línea; si tienen
-#   "setup"; e.g.
+#   "setup" también; e.g.
 #     "*luisda hablando del logo de GNOME* me gustan los pies", o
 #     "(a # voz en grito en el despacho) ¡Debian la chupa!)", o
 #     "no os preoupéis, que no me voy a ir a ningún sitio *no se le volvió a ver*",
-#   poned el _setup_ en otra línea
 # - Las conversaciones también en multilínea y con `-` y `"`, e.g.:
 #   - Profe: "Aquí tienes tu examen"
 #   - Alumno: "¿Cúando es la recuperación?"
@@ -85,8 +84,7 @@
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
-    *En referencia al láser del laboratorio*
-    Obsérvese el uso de "caracterizar", no "destrozar".
+    *En referencia al láser del laboratorio* Obsérvese el uso de "caracterizar", no "destrozar".
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
@@ -119,8 +117,7 @@
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
-    *Sonido de mensaje en un móvil a las nueve de la mañana*
-    ¡Coño! Si que llega pronto... ¿Qué pone? ¿"Ya me he levantado"?
+    *Sonido de mensaje en un móvil a las nueve de la mañana* ¡Coño! Si que llega pronto... ¿Qué pone? ¿"Ya me he levantado"?
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
@@ -148,8 +145,7 @@
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
-    *Encuentra un pelo en la pizarra*
-    ¡Vaya por Dios, un pelo! A saber que estuvo haciendo la pizarra ayer por la noche.
+    *Encuentra un pelo en la pizarra* ¡Vaya por Dios, un pelo! A saber que estuvo haciendo la pizarra ayer por la noche.
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
@@ -230,8 +226,7 @@
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
-    *Describiendo el experimento de Young*
-    Todo a oscuras, la película preparada para captar las variaciones infinitesimales de luz de las interferencias del láser... y la mujer abriendo la puerta: "¿Vienes a comer?".
+    *Describiendo el experimento de Young* Todo a oscuras, la película preparada para captar las variaciones infinitesimales de luz de las interferencias del láser... y la mujer abriendo la puerta: "¿Vienes a comer?".
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
@@ -371,8 +366,7 @@
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
-    *Toda la clase hablando*
-    Si hay alguien explicándolo por ahí, yo lo explico mejor. Más que nada los años de experiencia, un título, un doctorado... Eso da para mucho.
+    *Toda la clase hablando* Si hay alguien explicándolo por ahí, yo lo explico mejor. Más que nada los años de experiencia, un título, un doctorado... Eso da para mucho.
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
@@ -444,13 +438,11 @@
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
-    *Pinta una theta (letra griega) grande y se queda mirándola*
-    Esto es una teta y no la de Yola Berrocal.
+    *Pinta una theta (letra griega) grande y se queda mirándola* Esto es una teta y no la de Yola Berrocal.
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
-    *Comentando todas la publicaciones que ha dejado en reprografía*
-    Parezco el del Círculo de Lectores. La ostia.
+    *Comentando todas la publicaciones que ha dejado en reprografía* Parezco el del Círculo de Lectores. La ostia.
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
@@ -629,8 +621,7 @@
   author: Alberto (del LIR)
 
 - quote: |-
-    Profesor: "[..] y para ello utilizamos una interfaz estrecha... y que sea estrecha no es necesariamente malo [..]"
-    *Se escucha las carcajadas de los alumnos*
+    [..] y para ello utilizamos una interfaz estrecha... y que sea estrecha no es necesariamente malo [..] *Se escucha las carcajadas de los alumnos*
   author: Vicente y el sexo
 
 - quote: |-
@@ -647,13 +638,11 @@
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
-    *Describiendo un experimento con un CD*
-    Eso lo hacéis en casa para que digan: "Que niño más raro, lleva cinco minutos mirando un CD."
+    *Describiendo un experimento con un CD* Eso lo hacéis en casa para que digan: "Que niño más raro, lleva cinco minutos mirando un CD."
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
-    *Hablando de Hola Mundo Radio*
-    Somos potencialmente el programa de radio más escuchado del mundo.
+    *Hablando de Hola Mundo Radio* Somos potencialmente el programa de radio más escuchado del mundo.
   author: Roberto Muñoz
 
 - quote: |-
@@ -684,8 +673,7 @@
   author: Fernando Jurado (autómatas molones)
 
 - quote: |-
-    *Alumna termina un ejercicio en la pizarra.*
-    - Profesor (con una sonrisita): "¿Estás completamente satisfecha?"
+    *Alumna termina un ejercicio en la pizarra.* (con una sonrisita) ¿Estás completamente satisfecha?
   author: Fernando Jurado (aguante máximo)
 
 - quote: |-
@@ -803,8 +791,7 @@
   author: Carlos Linares (Heurística y Optimización)
 
 - quote: |-
-    - Alumna: *Suelta un estornudo agudo*
-    - Profesor: "Mi gato suena igual".
+    *Una alumna suelta un estornudo agudo* Mi gato suena igual
   author: Criptografía con los de GMAC
 
 - quote: |-

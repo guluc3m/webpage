@@ -10,14 +10,30 @@ interface Props {
   as?: 'span' | 'p' | 'blockquote' | 'h1' | 'h2' | 'h3';
   speed?: number; // ms per glyph swap while a character is still scrambling
   stagger?: number; // ms of lock delay added per character
+  decryptOnLoad?: boolean;
   class?: string;
   [attr: string]: unknown;
 }
 
-const { text, as: Tag = 'span', speed = 40, stagger = 28, class: className, ...rest } = Astro.props;
+const {
+  text,
+  as: Tag = 'span',
+  speed = 40,
+  stagger = 28,
+  decryptOnLoad = true,
+  class: className,
+  ...rest
+} = Astro.props;
 ---
 
-<Tag data-decrypt data-speed={speed} data-stagger={stagger} class={className} {...rest}>{text}</Tag>
+<Tag
+  data-decrypt
+  data-decrypt-on-load={decryptOnLoad}
+  data-speed={speed}
+  data-stagger={stagger}
+  class={className}
+  {...rest}>{text}</Tag
+>
 
 <style>
   [data-decrypt] :global([data-state='scramble']) {
@@ -110,7 +126,9 @@ const { text, as: Tag = 'span', speed = 40, stagger = 28, class: className, ...r
   }
 
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll<HTMLElement>('[data-decrypt]').forEach(decrypt);
+    document
+      .querySelectorAll<HTMLElement>('[data-decrypt][data-decrypt-on-load="true"]')
+      .forEach(decrypt);
 
     document.addEventListener('gul:decrypt', (event) => {
       const target = (event as CustomEvent<HTMLElement>).detail;

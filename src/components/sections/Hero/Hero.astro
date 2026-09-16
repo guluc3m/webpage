@@ -13,10 +13,10 @@ import GulDecryptText from '@components/common/gul-DecryptText.astro';
 import GulButton from '@components/common/gul-Button.astro';
 import GulAchievement from '@components/common/gul-Achievement.astro';
 import { loadFortunas } from '@lib/fortunas.ts';
+import rawFortunas from '@data/fortunas.yaml?raw';
 
-const formattedFortunas = loadFortunas();
-const fortunaIndex = Math.floor(Math.random() * formattedFortunas.length);
-const fortuna = formattedFortunas[fortunaIndex];
+const formattedFortunas = loadFortunas(rawFortunas);
+const fortuna = formattedFortunas[Math.floor(Math.random() * formattedFortunas.length)]; // fallback fortuna
 ---
 
 <section id="inicio" class="relative flex min-h-screen items-center overflow-hidden">
@@ -44,6 +44,7 @@ const fortuna = formattedFortunas[fortunaIndex];
       <GulDecryptText
         as="blockquote"
         text={fortuna.quote}
+        decryptOnLoad={false}
         class="whitespace-pre-line"
         data-fortuna-quote
       />
@@ -60,10 +61,13 @@ const fortuna = formattedFortunas[fortunaIndex];
     </figure>
   </div>
 
-  <GulAchievement id="fortunas-completadas" text="Has leído las {formattedFortunas.lenght} fortunas" />
+  <GulAchievement
+    id="fortunas-completadas"
+    text="Has leído todas las {formattedFortunas.lenght} fortunas"
+  />
 </section>
 
-<script define:vars={{ formattedFortunas, fortunaIndex }}>
+<script define:vars={{ formattedFortunas }}>
   const quote = document.querySelector('[data-fortuna-quote]');
   const author = document.querySelector('[data-fortuna-author]');
   const refresh = document.querySelector('[data-refresh-fortuna]');
@@ -72,11 +76,11 @@ const fortuna = formattedFortunas[fortunaIndex];
   // serializes each variable separately, so the initial fortuna object does
   // not share identity with the matching object in `formattedFortunas`.
   const fortunasIndexes = new Set(formattedFortunas.map((_, index) => index));
-  const repeatedIndexes = new Set([fortunaIndex]);
-  let currentFortunaIndex = fortunaIndex;
+  const repeatedIndexes = new Set();
+  let currentFortunaIndex = 0;
   let achievement_unlocked = false;
 
-  refresh?.addEventListener('click', () => {
+  function randomFortuna(animate = true) {
     // compute a random fortuna. we ensure no fortuna is repeated, until all
     // fortunas are covered.
     let available = Array.from(fortunasIndexes.difference(repeatedIndexes));
@@ -95,18 +99,26 @@ const fortuna = formattedFortunas[fortunaIndex];
     repeatedIndexes.add(nextIndex);
     currentFortunaIndex = nextIndex;
 
-    if (!quote || !author || !next) return;
+    // show fortuna
     quote.textContent = next.quote;
-    quote.dispatchEvent(new CustomEvent('gul:decrypt', { bubbles: true, detail: quote }));
+    if (animate) {
+      quote.dispatchEvent(new CustomEvent('gul:decrypt', { bubbles: true, detail: quote }));
+    }
     author.textContent = next.author;
     author.hidden = !next.author;
 
-    // show achievement
+    // achievement
     if (!achievement_unlocked && fortunasIndexes.size === repeatedIndexes.size) {
       document.dispatchEvent(
         new CustomEvent('gul:achievement:show', { detail: 'fortunas-completadas' }),
       );
       achievement_unlocked = true;
     }
-  });
+  };
+
+  // as the build part will always provide the same "fallback" fortuna, we
+  // re-generate a new random fortuna client-side
+  randomFortuna(false);
+
+  refresh?.addEventListener('click', randomFortuna);
 </script>

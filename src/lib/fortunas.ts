@@ -8,7 +8,6 @@
  */
 
 import { parse } from 'yaml';
-import rawFortunas from '@data/fortunas.yaml?raw'; // ?raw: a plain string, so invalid YAML syntax doesn't blow up the import itself.
 
 export interface Fortuna {
   quote: string;
@@ -18,33 +17,66 @@ export interface Fortuna {
 const isMultiline = (s: string): boolean => /\r\n|\r|\n/.test(s);
 
 /**
- * Rules (single-line quotes only — multi-line quotes are left untouched)
+ * Transforms the one-line setup/action into multiple lines. Supports multiple delimeters.
+ * e.g. `"*se sienta* saben aquel que diu..."` a `"*se sienta*\nsaben aquel que diu..."`
+ * @param s string
+ * @returns
  */
-function formatFortuna({ quote, author }: Fortuna): Fortuna {
+function splitAtActions(s: string): string {
+  const action = /\*[^*\n]+?\*/g;
+  const parts: string[] = [];
+  let cursor = 0;
+
+  for (const match of s.matchAll(action)) {
+    const before = s.slice(cursor, match.index).trim();
+    if (before) parts.push(before);
+    parts.push(match[0]);
+    cursor = (match.index ?? 0) + match[0].length;
+  }
+
+  const after = s.slice(cursor).trim();
+  if (after) parts.push(after);
+
+  return parts.length ? parts.join('\n') : s;
+}
+
+/**
+ * Formats the fortuna by adding guillemets in the correct places and other things
+ */
+export function formatFortuna({ quote, author }: Fortuna): Fortuna {
   let q = quote;
 
   if (!isMultiline(q)) {
+    // remove stray "."
     if (q.endsWith('.') && !q.endsWith('...')) {
       q = q.slice(0, -1);
     }
 
-    // Normalise stray guillemets to plain quotes.
+    // normalise stray guillemets
     q = q.replace('«', '"').replace('»', '"');
 
-    const first = q.indexOf('*');
-    const last = q.lastIndexOf('*');
-    if (first >= 0 && first !== last) {
-      if (first === 0) {
-        // *setup* at the start — "+ 2" skips the "*" and the space after it.
-        q = q.slice(0, last + 1) + '\n«' + q.slice(last + 2) + '»';
-      } else if (last === q.length - 1) {
-        // *action* at the end — "- 1" drops the space before the "*".
-        q = '«' + q.slice(0, first - 1) + '»\n' + q.slice(first);
-      }
+    // split setup/action
+    q = splitAtActions(q);
+
+    // add guillemets to the quote, leaving setup/action lines alone.
+    const lines = q.split('\n');
+    const isAction = (line: string): boolean => /^\*[^*\n]+\*$/.test(line);
+
+    if (lines.some(isAction)) {
+      let quoteFound = false;
+      q = lines
+        .map((line) => {
+          if (isAction(line) || quoteFound) return line;
+          quoteFound = true;
+          return `«${line}»`;
+        })
+        .join('\n');
     } else {
       q = `«${q}»`;
     }
   }
+
+  // multilines are left untouched
 
   return { quote: q, author: author ? `— ${author}` : '' };
 }
@@ -61,7 +93,7 @@ export function isValidFortuna(f: Partial<Fortuna>): f is Fortuna {
 }
 
 // Loads and formats fortunas
-export function loadFortunas(): Fortuna[] {
+export function loadFortunas(rawFortunas: string): Fortuna[] {
   try {
     return (parse(rawFortunas) as Partial<Fortuna>[]).filter(isValidFortuna).map(formatFortuna);
   } catch (err) {
