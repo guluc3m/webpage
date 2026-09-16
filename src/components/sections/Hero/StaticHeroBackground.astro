@@ -3,8 +3,8 @@
  * StaticHeroBackground — build-time fallback for the hero canvases.
  *
  * JavaScript paints the live shader and Game of Life layers over this SVG. If
- * JavaScript is unavailable, the same dark grid treatment and Tux silhouette
- * are still present in the server-rendered HTML.
+ * JavaScript is unavailable, the server-rendered HTML keeps only the base
+ * background and a Tux silhouette on non-mobile layouts.
  */
 import { computeTuxBitmap } from '@lib/tuxBitmap.ts';
 import { sampleTuxMask } from '@lib/tux.ts';
@@ -18,13 +18,6 @@ const GAP = 2;
 
 const tuxBitmap = await computeTuxBitmap(Buffer.from(tuxSvg), 80, 80);
 
-// A seeded field keeps builds reproducible while giving the no-JS state some
-// of the same visual texture as the first Game of Life frame.
-function seeded(x: number, y: number) {
-  const value = Math.sin(x * 12.9898 + y * 78.233 + 7191) * 43758.5453;
-  return value - Math.floor(value);
-}
-
 const variants = [
   {
     name: 'wide',
@@ -33,7 +26,6 @@ const variants = [
     rows: 90,
     showTux: true,
     tuxHeightFraction: 0.86,
-    aliveOpacity: 0.44,
   }, // 16:9
   {
     name: 'standard',
@@ -42,7 +34,6 @@ const variants = [
     rows: 80,
     showTux: true,
     tuxHeightFraction: 0.86,
-    aliveOpacity: 0.44,
   }, // 16:10
   {
     name: 'compact',
@@ -51,7 +42,6 @@ const variants = [
     rows: 90,
     showTux: true,
     tuxHeightFraction: 0.86,
-    aliveOpacity: 0.44,
   }, // 4:3
   {
     name: 'mobile',
@@ -60,7 +50,6 @@ const variants = [
     rows: 195,
     showTux: false,
     tuxHeightFraction: 0,
-    aliveOpacity: 0.5,
   }, // 9:19.5
 ].map((variant) => {
   const tuxMask = sampleTuxMask(
@@ -77,9 +66,8 @@ const variants = [
       x,
       y,
       tux: variant.showTux && tuxMask[index] === 1,
-      alive: seeded(x, y) < 0.2,
     };
-  }).filter(({ tux, alive }) => tux || alive);
+  }).filter(({ tux }) => tux);
 
   return { ...variant, cells };
 });
@@ -91,7 +79,7 @@ const variants = [
   document.documentElement.classList.add('js');
 </script>
 
-{variants.map(({ name, className, cols, rows, cells, aliveOpacity }) => (
+{variants.map(({ className, cols, rows, cells }) => (
   <svg
     aria-hidden="true"
     class:list={[
@@ -101,20 +89,14 @@ const variants = [
     viewBox={`0 0 ${cols * CELL} ${rows * CELL}`}
     preserveAspectRatio="none"
   >
-    <defs>
-      <linearGradient id={`hero-static-alive-${name}`} x1="1" y1="0" x2="0" y2="1">
-        <stop offset="30%" stop-color="#9c988c" stop-opacity={aliveOpacity} />
-        <stop offset="100%" stop-color="#0075b0" stop-opacity={aliveOpacity} />
-      </linearGradient>
-    </defs>
-    <rect width="100%" height="100%" fill="#0a0a09" />
-    {cells.map(({ x, y, tux, alive }) => (
+    <rect width="100%" height="100%" fill="transparent" />
+    {cells.map(({ x, y }) => (
       <rect
         x={x * CELL}
         y={y * CELL}
         width={CELL - GAP}
         height={CELL - GAP}
-        fill={tux ? '#ece7d8' : alive ? `url(#hero-static-alive-${name})` : '#0a0a09'}
+        fill="#ece7d8"
       />
     ))}
   </svg>
@@ -126,9 +108,21 @@ const variants = [
   }
 
   .hero-static-background--wide,
-  .hero-static-background--compact,
+  .hero-static-background--standard,
+  .hero-static-background--compact {
+    display: none;
+    background:
+      linear-gradient(135deg, rgba(141, 140, 156, 0.1) 0%, rgb(0 117 176 / 0.05) 100%),
+      #050504;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
   .hero-static-background--mobile {
     display: none;
+    background: #0a0a09;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
   }
 
   @media (min-aspect-ratio: 17 / 10) {
@@ -153,7 +147,9 @@ const variants = [
     }
   }
 
-  @media (max-aspect-ratio: 3 / 4) {
+  /* Match the canvas fallback: Tux is intentionally desktop/tablet-only so
+     text retains contrast on every phone orientation. */
+  @media (max-width: 29.999rem), (max-aspect-ratio: 3 / 4) {
     .hero-static-background--standard,
     .hero-static-background--compact {
       display: none;
