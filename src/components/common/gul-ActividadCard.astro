@@ -52,7 +52,7 @@ const formatDate = (date: string) =>
         </p>
       )}
 
-      {a.speakers.length > 0 && (
+      {a.speakers && a.speakers.length > 0 && (
         <p class="mt-2 text-sm text-gul-muted">
           {a.speakers.map((s, i) => (
             <>

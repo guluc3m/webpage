@@ -10,15 +10,28 @@ import GulHeader from '@components/common/gul-Header.astro';
 import GulFooter from '@components/common/gul-Footer.astro';
 import GulActividadCard from '@components/common/gul-ActividadCard.astro';
 import { navLinks } from '@data/navLinks';
-import actividadesData from '@data/actividades.json';
-import type { Actividad } from '@data/actividades';
+import { loadActividades } from '@data/actividades';
 
-const actividades = actividadesData as Actividad[];
+const actividades = loadActividades();
 
 // yyyy/mm/dd sorts correctly as a plain string, no Date needed for ordering.
 const sorted = [...actividades].sort((a, b) => b.date.localeCompare(a.date));
 const tags = [...new Set(sorted.flatMap((a) => a.tags))].sort();
-const speakers = [...new Set(sorted.flatMap((a) => a.speakers.map((s) => s.name)))].sort();
+const speakers = [...new Set(sorted.flatMap((a) => (a.speakers ?? []).map((s) => s.name)))].sort();
+
+// A "curso" runs September→August, named after its starting year (e.g. "curso 2026" = Sept 2026–Aug 2027).
+const cursoStart = (date: string) => {
+  const [year, month] = date.split('/').map(Number);
+  return month >= 9 ? year : year - 1;
+};
+const now = new Date();
+const currentCurso = now.getMonth() + 1 >= 9 ? now.getFullYear() : now.getFullYear() - 1;
+const oldestCurso = sorted.length > 0 ? Math.min(...sorted.map((a) => cursoStart(a.date))) : currentCurso;
+
+// One row per curso (newest first), each holding that curso's activities — empty cursos still get a divider.
+const cursoRows = Array.from({ length: currentCurso - oldestCurso + 1 }, (_, i) => currentCurso - i).map(
+  (curso) => ({ curso, items: sorted.filter((a) => cursoStart(a.date) === curso) }),
+);
 ---
 
 <BaseLayout title="Actividades · GUL UC3M">
@@ -39,16 +52,26 @@ const speakers = [...new Set(sorted.flatMap((a) => a.speakers.map((s) => s.name)
     </div>
 
     <ul class="mt-8 space-y-10 border-l border-gul-line pl-6" data-actividades-list>
-      {sorted.map((a) => (
-        <li
-          class="-ml-[calc(1.5rem+1px)] pl-6"
-          data-actividad
-          data-title={a.title.toLowerCase()}
-          data-tags={a.tags.join(',').toLowerCase()}
-          data-speakers={a.speakers.map((s) => s.name).join(',').toLowerCase()}
-        >
-          <GulActividadCard actividad={a} />
-        </li>
+      {cursoRows.map(({ curso, items }) => (
+        <>
+          <li class="-ml-[calc(1.5rem+1px)] pl-6" data-curso-marker={curso} data-curso-count={items.length}>
+            <p class="text-sm font-medium tracking-[0.2em] text-gul-muted uppercase">
+              Curso {curso}–{curso + 1}
+            </p>
+          </li>
+          {items.map((a) => (
+            <li
+              class="-ml-[calc(1.5rem+1px)] pl-6"
+              data-actividad
+              data-curso={curso}
+              data-title={a.title.toLowerCase()}
+              data-tags={a.tags.join(',').toLowerCase()}
+              data-speakers={(a.speakers ?? []).map((s) => s.name).join(',').toLowerCase()}
+            >
+              <GulActividadCard actividad={a} />
+            </li>
+          ))}
+        </>
       ))}
     </ul>
 
@@ -62,6 +85,7 @@ const speakers = [...new Set(sorted.flatMap((a) => a.speakers.map((s) => s.name)
   const tagFilter = document.querySelector<HTMLSelectElement>('[data-filter-tag]')!;
   const speakerFilter = document.querySelector<HTMLSelectElement>('[data-filter-speaker]')!;
   const items = document.querySelectorAll<HTMLLIElement>('[data-actividad]');
+  const cursoMarkers = document.querySelectorAll<HTMLLIElement>('[data-curso-marker]');
   const empty = document.querySelector<HTMLElement>('[data-actividades-empty]')!;
 
   function applyFilters() {
@@ -69,6 +93,7 @@ const speakers = [...new Set(sorted.flatMap((a) => a.speakers.map((s) => s.name)
     const tag = tagFilter.value.toLowerCase();
     const speaker = speakerFilter.value.toLowerCase();
     let visible = 0;
+    const visibleCursos = new Set<string>();
 
     items.forEach((item) => {
       const matches =
@@ -76,7 +101,17 @@ const speakers = [...new Set(sorted.flatMap((a) => a.speakers.map((s) => s.name)
         (!tag || item.dataset.tags!.split(',').includes(tag)) &&
         (!speaker || item.dataset.speakers!.split(',').includes(speaker));
       item.hidden = !matches;
-      if (matches) visible++;
+      if (matches) {
+        visible++;
+        visibleCursos.add(item.dataset.curso!);
+      }
+    });
+
+    // A curso with no activities yet (the current one) always shows; one with activities
+    // hides once the filter matches none of them.
+    cursoMarkers.forEach((marker) => {
+      const hasActividades = marker.dataset.cursoCount !== '0';
+      marker.hidden = hasActividades && !visibleCursos.has(marker.dataset.cursoMarker!);
     });
 
     empty.hidden = visible > 0;
