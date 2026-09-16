@@ -1,6 +1,7 @@
-// Shape agreed in guluc3m/webpage#9. Data lives in actividades.json (edit
+// Shape agreed in guluc3m/webpage#9. Data lives in actividades.yaml (edit
 // entries there); this file only types it.
-import rawActividades from './actividades.json?raw'; // ?raw: a plain string, so invalid JSON syntax doesn't blow up the import itself.
+import { parse } from 'yaml';
+import rawActividades from './actividades.yaml?raw'; // ?raw: a plain string, so invalid YAML syntax doesn't blow up the import itself.
 
 export interface Actividad {
   title: string;
@@ -30,14 +31,14 @@ export function isValidActividad(a: Partial<Actividad>): a is Actividad {
   return ok;
 }
 
-// Parse by hand (rather than a static JSON import) so a broken hand-edit — invalid JSON
+// Parse by hand (rather than a static YAML import) so a broken hand-edit — invalid YAML
 // syntax, not just a missing field — degrades to an empty list instead of taking the whole
-// build down with the JSON parser's own error page.
+// build down with the parser's own error page.
 export function loadActividades(): Actividad[] {
   try {
-    return (JSON.parse(rawActividades) as Partial<Actividad>[]).filter(isValidActividad);
+    return (parse(rawActividades) as Partial<Actividad>[]).filter(isValidActividad);
   } catch (err) {
-    console.warn(`[actividades] actividades.json inválido, se muestra vacío: ${err}`);
+    console.warn(`[actividades] actividades.yaml inválido, se muestra vacío: ${err}`);
     return [];
   }
 }
