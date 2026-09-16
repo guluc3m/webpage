@@ -5,28 +5,33 @@
  */
 import Map from './Map.astro';
 import GulTerminal from '@components/common/gul-Terminal.astro';
+import GulFrame from '@components/common/gul-Frame.astro';
 ---
 
 <section id="donde-estamos" class="mx-auto max-w-gul-content py-8">
   <h2>¿Dónde estamos?</h2>
-  <GulTerminal
-    lines={[
-      {
-        command: 'hostnamectl | grep Location',
-        output: 'Location: <b>Despacho 2.3.C05, Edificio Sabatini, EPS-UC3M</b>',
-      },
-      {
-        command: 'which EPS-UC3M',
-        output: '<b>Avenida de la Universidad, 30, 28911 Leganés, Madrid</b>',
-      },
-    ]}
-  />
+  <div class="mt-4 grid gap-4 sm:grid-cols-20">
+    <div class="flex flex-col gap-4 sm:col-span-11">
+      <GulTerminal
+        lines={[
+          {
+            command: 'hostnamectl | grep Location',
+            output: 'Location: <b>Despacho 2.3.C05, Edificio Sabatini, EPS-UC3M</b>',
+          },
+          {
+            command: 'which EPS-UC3M',
+            output: '<b>Avenida de la Universidad, 30, 28911 Leganés, Madrid</b>',
+          },
+        ]}
+      />
 
-  <div class="m-4" rounded-md>
-    <img src="/real/despacho.jpg" alt="Despacho del GUL" class="gul-gallery-image" />
-  </div>
+      <GulFrame surface class="p-2">
+        <img src="/real/despacho.jpg" alt="Despacho del GUL" class="w-full rounded-md" />
+      </GulFrame>
+    </div>
 
-  <div class="mt-4 overflow-hidden rounded-md border border-gul-line">
-    <Map />
+    <div class="overflow-hidden rounded-md border border-gul-line sm:col-span-9">
+      <Map />
+    </div>
   </div>
 </section>
