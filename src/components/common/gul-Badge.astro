@@ -16,6 +16,9 @@ const variants = {
 };
 ---
 
-<span class:list={['rounded-full px-2.5 py-0.5 text-xs font-medium', variants[variant], className]} {...rest}>
+<span
+  class:list={['rounded-full px-2.5 py-0.5 text-xs font-medium', variants[variant], className]}
+  {...rest}
+>
   <slot />
 </span>

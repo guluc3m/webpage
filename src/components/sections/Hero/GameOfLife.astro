@@ -127,7 +127,9 @@ const tuxBitmap = await computeTuxBitmap(Buffer.from(tuxSvg), 100, 80); // 100 =
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
           const i = idx(x, y);
-          const showTux = tuxMask[i] && (revealStep >= TUX_REVEAL_STEPS || Math.random() < revealStep / TUX_REVEAL_STEPS);
+          const showTux =
+            tuxMask[i] &&
+            (revealStep >= TUX_REVEAL_STEPS || Math.random() < revealStep / TUX_REVEAL_STEPS);
           ctx!.fillStyle = showTux ? TUX_FILL : grid[i] ? aliveFill : DEAD_FILL;
           ctx!.fillRect(x * CELL, y * CELL, CELL - GAP, CELL - GAP);
         }

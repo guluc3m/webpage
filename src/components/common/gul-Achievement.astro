@@ -22,7 +22,9 @@ const { id, text } = Astro.props;
   aria-hidden="true"
   hidden
 >
-  <span class="fortuna-achievement__icon" aria-hidden="true">★</span>
+  <span class="fortuna-achievement__icon" aria-hidden="true">
+    ★
+  </span>
   <span>
     <strong class="fortuna-achievement__title">¡Logro desbloqueado!</strong>
     <span class="fortuna-achievement__message">{text}</span>
@@ -66,7 +68,9 @@ const { id, text } = Astro.props;
     border: 1px solid var(--color-gul-blue);
     border-radius: var(--radius-md);
     background: color-mix(in srgb, var(--color-gul-surface) 94%, var(--color-gul-blue));
-    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-gul-blue) 30%, transparent), 0 1rem 3rem rgb(0 0 0 / 35%);
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--color-gul-blue) 30%, transparent),
+      0 1rem 3rem rgb(0 0 0 / 35%);
     padding: 0.75rem 1rem;
     color: var(--color-gul-ink);
     opacity: 0;

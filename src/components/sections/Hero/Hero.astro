@@ -50,11 +50,7 @@ const fortuna = formattedFortunas[Math.floor(Math.random() * formattedFortunas.l
       />
       <figcaption data-fortuna-author-wrap hidden={!fortuna.author}>
         <span aria-hidden="true">— </span>
-        <GulDecryptText
-          text={fortuna.author}
-          decryptOnLoad={false}
-          data-fortuna-author
-        />
+        <GulDecryptText text={fortuna.author} decryptOnLoad={false} data-fortuna-author />
       </figcaption>
       <GulButton
         variant="secondary"
@@ -137,7 +133,7 @@ const fortuna = formattedFortunas[Math.floor(Math.random() * formattedFortunas.l
       );
       achievement_unlocked = true;
     }
-  };
+  }
 
   // as the build part will always provide the same "fallback" fortuna, we
   // re-generate a new random fortuna client-side

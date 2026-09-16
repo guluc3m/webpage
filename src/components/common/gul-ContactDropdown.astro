@@ -20,12 +20,7 @@ const instagram = SOCIALS.find((social) => social.icon === 'ig.svg')!;
 ---
 
 <div class="relative" data-gul-contact>
-  <GulButton
-    label="Contacta"
-    aria-expanded="false"
-    aria-controls={id}
-    data-gul-contact-trigger
-  />
+  <GulButton label="Contacta" aria-expanded="false" aria-controls={id} data-gul-contact-trigger />
 
   <div
     id={id}
@@ -47,7 +42,9 @@ const instagram = SOCIALS.find((social) => social.icon === 'ig.svg')!;
       class="flex items-center gap-3 rounded-md p-2 text-gul-muted transition-colors hover:bg-gul-ink/10 hover:text-gul-ink focus-visible:bg-gul-ink/10 focus-visible:text-gul-ink"
     >
       <img src={twitterIcon} alt="" class="size-4 invert" />
-      <span>@guluc3m <span class="sr-only">en Twitter</span></span>
+      <span>
+        @guluc3m <span class="sr-only">en Twitter</span>
+      </span>
     </a>
 
     <a
@@ -57,7 +54,9 @@ const instagram = SOCIALS.find((social) => social.icon === 'ig.svg')!;
       class="flex items-center gap-3 rounded-md p-2 text-gul-muted transition-colors hover:bg-gul-ink/10 hover:text-gul-ink focus-visible:bg-gul-ink/10 focus-visible:text-gul-ink"
     >
       <img src={instagramIcon} alt="" class="size-4 invert" />
-      <span>@guluc3m <span class="sr-only">en Instagram</span></span>
+      <span>
+        @guluc3m <span class="sr-only">en Instagram</span>
+      </span>
     </a>
   </div>
 </div>
@@ -102,13 +101,17 @@ const instagram = SOCIALS.find((social) => social.icon === 'ig.svg')!;
 </script>
 
 <style is:global>
-  [data-gul-contact][data-state='open'] [data-gul-contact-trigger]
-    [data-gul-btn-content] > span:first-child {
+  [data-gul-contact][data-state='open']
+    [data-gul-contact-trigger]
+    [data-gul-btn-content]
+    > span:first-child {
     font-size: 0;
   }
 
-  [data-gul-contact][data-state='open'] [data-gul-contact-trigger]
-    [data-gul-btn-content] > span:first-child::after {
+  [data-gul-contact][data-state='open']
+    [data-gul-contact-trigger]
+    [data-gul-btn-content]
+    > span:first-child::after {
     content: 'v';
     font-size: 0.875rem;
   }

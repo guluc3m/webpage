@@ -10,11 +10,17 @@ test('renders the supported inline markdown', () => {
 });
 
 test('escapes HTML while preserving plain text', () => {
-  assert.equal(renderInlineMarkdown('<script>alert(1)</script>'), '&lt;script&gt;alert(1)&lt;/script&gt;');
+  assert.equal(
+    renderInlineMarkdown('<script>alert(1)</script>'),
+    '&lt;script&gt;alert(1)&lt;/script&gt;',
+  );
 });
 
 test('only renders HTTP(S) links', () => {
-  assert.equal(renderInlineMarkdown('[unsafe](javascript:alert(1))'), '[unsafe](javascript:alert(1))');
+  assert.equal(
+    renderInlineMarkdown('[unsafe](javascript:alert(1))'),
+    '[unsafe](javascript:alert(1))',
+  );
 });
 
 test('renders obfuscated email text as a client-resolved mail link', () => {

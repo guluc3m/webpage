@@ -42,7 +42,8 @@ const { label, variant = 'primary', icon, href, class: className, ...rest } = As
 // secondary's glyph keeps its fixed blue accent through the invert.
 const variants = {
   primary: {
-    classes: 'bg-gul-blue text-gul-ink hover:bg-gul-ink hover:text-gul-blue focus-visible:bg-gul-ink focus-visible:text-gul-blue',
+    classes:
+      'bg-gul-blue text-gul-ink hover:bg-gul-ink hover:text-gul-blue focus-visible:bg-gul-ink focus-visible:text-gul-blue',
     glyph: '>',
     glyphClass: '',
   },
@@ -65,29 +66,27 @@ const classes = [
 ];
 ---
 
-{
-  href ? (
-    <a href={href} class:list={classes} data-gul-btn {...rest}>
-      <PixelDissolve variant="corner" />
-      <span class="relative z-10 inline-flex items-center gap-1" data-gul-btn-content>
-        <span aria-hidden="true" class:list={[glyphClass]}>
-          {glyph}
-        </span>
-        <GulDecryptText text={label} />
+{href ? (
+  <a href={href} class:list={classes} data-gul-btn {...rest}>
+    <PixelDissolve variant="corner" />
+    <span class="relative z-10 inline-flex items-center gap-1" data-gul-btn-content>
+      <span aria-hidden="true" class:list={[glyphClass]}>
+        {glyph}
       </span>
-    </a>
-  ) : (
-    <button type="button" class:list={classes} data-gul-btn {...rest}>
-      <PixelDissolve variant="corner" />
-      <span class="relative z-10 inline-flex items-center gap-1" data-gul-btn-content>
-        <span aria-hidden="true" class:list={[glyphClass]}>
-          {glyph}
-        </span>
-        <GulDecryptText text={label} />
+      <GulDecryptText text={label} />
+    </span>
+  </a>
+) : (
+  <button type="button" class:list={classes} data-gul-btn {...rest}>
+    <PixelDissolve variant="corner" />
+    <span class="relative z-10 inline-flex items-center gap-1" data-gul-btn-content>
+      <span aria-hidden="true" class:list={[glyphClass]}>
+        {glyph}
       </span>
-    </button>
-  )
-}
+      <GulDecryptText text={label} />
+    </span>
+  </button>
+)}
 
 <style>
   [data-gul-btn]:hover [data-gul-btn-content]::after,

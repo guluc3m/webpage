@@ -7,8 +7,8 @@
  */
 
 interface Image {
-  src: string,
-  alt: string
+  src: string;
+  alt: string;
 }
 
 interface Props {
@@ -22,44 +22,57 @@ const { images, id, class: className } = Astro.props;
 ---
 
 <div class:list={['gul-gallery flex h-96 w-full gap-2', className]} data-gul-gallery={id}>
-  {
-    images.map((img, i) => (
-      <button type="button" class="gul-gallery-tile relative min-w-0 flex-1 overflow-hidden rounded-md" data-index={i}>
-        <img src={img.src} alt={img.alt} class="h-full w-full object-cover" />
-        <span class="gul-gallery-tile-overlay absolute inset-0 bg-gul-bg" />
-      </button>
-    ))
-  }
+  {images.map((img, i) => (
+    <button
+      type="button"
+      class="gul-gallery-tile relative min-w-0 flex-1 overflow-hidden rounded-md"
+      data-index={i}
+    >
+      <img src={img.src} alt={img.alt} class="h-full w-full object-cover" />
+      <span class="gul-gallery-tile-overlay absolute inset-0 bg-gul-bg" />
+    </button>
+  ))}
 </div>
 
 <dialog id={id} data-gul-gallery-view class="gul-gallery-view">
-  <button type="button" data-gul-gallery-close class="gul-gallery-control gul-gallery-close" aria-label="Cerrar">
+  <button
+    type="button"
+    data-gul-gallery-close
+    class="gul-gallery-control gul-gallery-close"
+    aria-label="Cerrar"
+  >
     <svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="2">
       <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
     </svg>
   </button>
 
-  {
-    images.length > 1 && (
-      <button type="button" data-gul-gallery-prev class="gul-gallery-control gul-gallery-prev" aria-label="Anterior">
-        <svg viewBox="0 0 24 24" class="size-8" fill="none" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-    )
-  }
+  {images.length > 1 && (
+    <button
+      type="button"
+      data-gul-gallery-prev
+      class="gul-gallery-control gul-gallery-prev"
+      aria-label="Anterior"
+    >
+      <svg viewBox="0 0 24 24" class="size-8" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+  )}
 
   <img data-gul-gallery-image alt="" class="gul-gallery-image" />
 
-  {
-    images.length > 1 && (
-      <button type="button" data-gul-gallery-next class="gul-gallery-control gul-gallery-next" aria-label="Siguiente">
-        <svg viewBox="0 0 24 24" class="size-8" fill="none" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-    )
-  }
+  {images.length > 1 && (
+    <button
+      type="button"
+      data-gul-gallery-next
+      class="gul-gallery-control gul-gallery-next"
+      aria-label="Siguiente"
+    >
+      <svg viewBox="0 0 24 24" class="size-8" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  )}
 
   {images.length > 1 && <p data-gul-gallery-counter class="gul-gallery-counter" />}
 </dialog>
@@ -164,13 +177,21 @@ const { images, id, class: className } = Astro.props;
       if (counter) counter.textContent = `${index + 1} / ${sources.length}`;
     }
 
-    tiles.forEach((tile, i) => tile.addEventListener('click', () => {
-      show(i);
-      dialog.showModal();
-    }));
-    dialog.querySelector('[data-gul-gallery-close]')?.addEventListener('click', () => dialog.close());
-    dialog.querySelector('[data-gul-gallery-prev]')?.addEventListener('click', () => show(index - 1));
-    dialog.querySelector('[data-gul-gallery-next]')?.addEventListener('click', () => show(index + 1));
+    tiles.forEach((tile, i) =>
+      tile.addEventListener('click', () => {
+        show(i);
+        dialog.showModal();
+      }),
+    );
+    dialog
+      .querySelector('[data-gul-gallery-close]')
+      ?.addEventListener('click', () => dialog.close());
+    dialog
+      .querySelector('[data-gul-gallery-prev]')
+      ?.addEventListener('click', () => show(index - 1));
+    dialog
+      .querySelector('[data-gul-gallery-next]')
+      ?.addEventListener('click', () => show(index + 1));
     // Click on the backdrop area (the dialog element itself, not a child) closes it.
     dialog.addEventListener('click', (e) => {
       if (e.target === dialog) dialog.close();

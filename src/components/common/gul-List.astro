@@ -16,5 +16,7 @@ const Tag = ordered ? 'ol' : 'ul';
 ---
 
 <Tag class:list={[ordered ? 'list-decimal' : 'list-disc', 'space-y-1 pl-5 text-gul-ink']}>
-  {items.map((item) => <li>{item}</li>)}
+  {items.map((item) => (
+    <li>{item}</li>
+  ))}
 </Tag>

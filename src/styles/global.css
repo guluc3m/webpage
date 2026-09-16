@@ -328,7 +328,9 @@
     border-right: 2px solid var(--color-gul-muted);
     border-bottom: 2px solid var(--color-gul-muted);
     transform: rotate(45deg);
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease;
   }
   details[open] summary::after {
     border-color: var(--color-gul-blue);
@@ -357,7 +359,9 @@
     padding-bottom: 1.25rem;
     transform: translateY(-0.5rem);
     opacity: 0;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
   }
   details[open] > div > p {
     transform: translateY(0);

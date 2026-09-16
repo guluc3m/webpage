@@ -29,7 +29,11 @@ const { triggerLabel, title, id } = Astro.props;
 <script>
   document.querySelectorAll<HTMLDialogElement>('[data-gul-modal]').forEach((dialog) => {
     const id = dialog.id;
-    document.querySelector<HTMLButtonElement>(`[data-gul-modal-open="${id}"]`)?.addEventListener('click', () => dialog.showModal());
-    document.querySelector<HTMLButtonElement>(`[data-gul-modal-close="${id}"]`)?.addEventListener('click', () => dialog.close());
+    document
+      .querySelector<HTMLButtonElement>(`[data-gul-modal-open="${id}"]`)
+      ?.addEventListener('click', () => dialog.showModal());
+    document
+      .querySelector<HTMLButtonElement>(`[data-gul-modal-close="${id}"]`)
+      ?.addEventListener('click', () => dialog.close());
   });
 </script>

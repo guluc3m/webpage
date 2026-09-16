@@ -32,8 +32,10 @@ const {
   data-speed={speed}
   data-stagger={stagger}
   class={className}
-  {...rest}>{text}</Tag
+  {...rest}
 >
+  {text}
+</Tag>
 
 <style>
   [data-decrypt] :global([data-state='scramble']) {

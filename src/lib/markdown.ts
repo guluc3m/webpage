@@ -1,7 +1,12 @@
 /** Render the small inline-markdown subset used by gul-Accordion. */
 export function renderInlineMarkdown(value: string): string {
   const escapeHtml = (text: string) =>
-    text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
 
   const token =
     /\*\*([^*]+)\*\*|_([^_]+)_|([A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+ AT [A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+)|\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;

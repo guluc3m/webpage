@@ -34,22 +34,24 @@ const { lines, class: className } = Astro.props;
 ---
 
 <div class:list={['font-mono text-sm', className]} data-gul-terminal>
-  {
-    lines.map((line) => (
-      <p>
-        <span class="text-gul-blue">gul@uc3m $&gt;</span>{' '}
-        <span data-terminal-cmd>
-          <span data-terminal-cmd-text>{line.command}</span>
-          <span data-terminal-cursor class="hidden">
-            █
-          </span>
+  {lines.map((line) => (
+    <p>
+      <span class="text-gul-blue">gul@uc3m $&gt;</span>{' '}
+      <span data-terminal-cmd>
+        <span data-terminal-cmd-text>{line.command}</span>
+        <span data-terminal-cursor class="hidden">
+          █
         </span>
-        {line.output && (
-          <span data-terminal-output class="mt-1 block text-gul-muted opacity-0" set:html={line.output} />
-        )}
-      </p>
-    ))
-  }
+      </span>
+      {line.output && (
+        <span
+          data-terminal-output
+          class="mt-1 block text-gul-muted opacity-0"
+          set:html={line.output}
+        />
+      )}
+    </p>
+  ))}
 </div>
 
 <style>
@@ -120,7 +122,9 @@ const { lines, class: className } = Astro.props;
     // Command text is already the real, final text (see the comment up top)
     // — reduced motion only needs to reveal the outputs, which start hidden.
     terminals.forEach((el) => {
-      el.querySelectorAll<HTMLElement>('[data-terminal-output]').forEach((out) => out.classList.remove('opacity-0'));
+      el.querySelectorAll<HTMLElement>('[data-terminal-output]').forEach((out) =>
+        out.classList.remove('opacity-0'),
+      );
     });
   } else {
     const observer = new IntersectionObserver(

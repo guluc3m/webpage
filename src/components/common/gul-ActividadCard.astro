@@ -38,7 +38,12 @@ const formatDate = (date: string) =>
     </a>
   )}
   <div class="min-w-0 flex-1">
-    <GulFrame surface border="border-gul-line transition-colors hover:border-gul-ink/40" class="p-8" variant='full'>
+    <GulFrame
+      surface
+      border="border-gul-line transition-colors hover:border-gul-ink/40"
+      class="p-8"
+      variant="full"
+    >
       <time class="text-xs text-gul-muted" datetime={a.date.replaceAll('/', '-')}>
         {formatDate(a.date)}
       </time>
@@ -73,7 +78,7 @@ const formatDate = (date: string) =>
           ))}
         </p>
       )}
-      
+
       {a.description && <p class="mt-1 text-sm text-gul-muted">{a.description}</p>}
 
       {(a.video || a.repository || a.transparencias) && (

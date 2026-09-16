@@ -18,39 +18,37 @@ const { tabs } = Astro.props;
 
 <div data-gul-tabs class="rounded-md border border-gul-line p-6">
   <div role="tablist" class="flex gap-1 border-b border-gul-line">
-    {
-      tabs.map((tab, i) => (
-        <button
-          type="button"
-          role="tab"
-          aria-selected={i === 0 ? 'true' : 'false'}
-          aria-controls={`${tab.id}-panel`}
-          id={`${tab.id}-trigger`}
-          data-gul-tab
-          class:list={[
-            'border-b-2 px-3 py-2 text-sm font-medium',
-            i === 0 ? 'border-gul-ink text-gul-ink' : 'border-transparent text-gul-muted hover:text-gul-ink',
-          ]}
-        >
-          {tab.label}
-        </button>
-      ))
-    }
-  </div>
-  {
-    tabs.map((tab, i) => (
-      <div
-        role="tabpanel"
-        id={`${tab.id}-panel`}
-        aria-labelledby={`${tab.id}-trigger`}
-        data-gul-tabpanel
-        hidden={i !== 0}
-        class="pt-4 text-sm text-gul-muted"
+    {tabs.map((tab, i) => (
+      <button
+        type="button"
+        role="tab"
+        aria-selected={i === 0 ? 'true' : 'false'}
+        aria-controls={`${tab.id}-panel`}
+        id={`${tab.id}-trigger`}
+        data-gul-tab
+        class:list={[
+          'border-b-2 px-3 py-2 text-sm font-medium',
+          i === 0
+            ? 'border-gul-ink text-gul-ink'
+            : 'border-transparent text-gul-muted hover:text-gul-ink',
+        ]}
       >
-        <slot name={tab.id} />
-      </div>
-    ))
-  }
+        {tab.label}
+      </button>
+    ))}
+  </div>
+  {tabs.map((tab, i) => (
+    <div
+      role="tabpanel"
+      id={`${tab.id}-panel`}
+      aria-labelledby={`${tab.id}-trigger`}
+      data-gul-tabpanel
+      hidden={i !== 0}
+      class="pt-4 text-sm text-gul-muted"
+    >
+      <slot name={tab.id} />
+    </div>
+  ))}
 </div>
 
 <script>

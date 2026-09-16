@@ -7,14 +7,20 @@ import GulGallery from '@components/common/gul-Gallery.astro';
 import GulTerminal from '@components/common/gul-Terminal.astro';
 ---
 
-<section id="que-es-el-gul" class="mx-auto grid max-w-gul-content gap-8 py-8 md:grid-cols-2 md:items-center">
+<section
+  id="que-es-el-gul"
+  class="mx-auto grid max-w-gul-content gap-8 py-8 md:grid-cols-2 md:items-center"
+>
   <GulFrame class="p-2">
     <GulGallery
       id="que-es-el-gul-gallery"
       images={[
         { src: '/real/teclados.jpeg', alt: 'Miembros del GUL soldando un teclado split' },
         { src: '/real/charla.jpg', alt: 'Charla del GUL atestada de gente' },
-        { src: '/real/install.jpeg', alt: 'Portátil instalando Linux con Ventoy y un fondo del GUL' },
+        {
+          src: '/real/install.jpeg',
+          alt: 'Portátil instalando Linux con Ventoy y un fondo del GUL',
+        },
         {
           src: '/real/feria.jpg',
           alt: 'GUL en la Feria de Asociaciones. El presi con camiseta roja del GUL abrazando a un peluche de Tux',

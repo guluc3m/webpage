@@ -26,12 +26,14 @@ const cursoStart = (date: string) => {
 };
 const now = new Date();
 const currentCurso = now.getMonth() + 1 >= 9 ? now.getFullYear() : now.getFullYear() - 1;
-const oldestCurso = sorted.length > 0 ? Math.min(...sorted.map((a) => cursoStart(a.date))) : currentCurso;
+const oldestCurso =
+  sorted.length > 0 ? Math.min(...sorted.map((a) => cursoStart(a.date))) : currentCurso;
 
 // One row per curso (newest first), each holding that curso's activities — empty cursos still get a divider.
-const cursoRows = Array.from({ length: currentCurso - oldestCurso + 1 }, (_, i) => currentCurso - i).map(
-  (curso) => ({ curso, items: sorted.filter((a) => cursoStart(a.date) === curso) }),
-);
+const cursoRows = Array.from(
+  { length: currentCurso - oldestCurso + 1 },
+  (_, i) => currentCurso - i,
+).map((curso) => ({ curso, items: sorted.filter((a) => cursoStart(a.date) === curso) }));
 ---
 
 <BaseLayout title="Actividades · GUL UC3M">
@@ -43,11 +45,15 @@ const cursoRows = Array.from({ length: currentCurso - oldestCurso + 1 }, (_, i) 
       <input type="search" placeholder="Buscar por título…" data-filter-search />
       <select data-filter-tag>
         <option value="">Todos los tags</option>
-        {tags.map((t) => <option value={t}>{t}</option>)}
+        {tags.map((t) => (
+          <option value={t}>{t}</option>
+        ))}
       </select>
       <select data-filter-speaker>
         <option value="">Todos los ponentes</option>
-        {speakers.map((s) => <option value={s}>{s}</option>)}
+        {speakers.map((s) => (
+          <option value={s}>{s}</option>
+        ))}
       </select>
     </div>
 
@@ -66,7 +72,10 @@ const cursoRows = Array.from({ length: currentCurso - oldestCurso + 1 }, (_, i) 
               data-curso={curso}
               data-title={a.title.toLowerCase()}
               data-tags={a.tags.join(',').toLowerCase()}
-              data-speakers={(a.speakers ?? []).map((s) => s.name).join(',').toLowerCase()}
+              data-speakers={(a.speakers ?? [])
+                .map((s) => s.name)
+                .join(',')
+                .toLowerCase()}
             >
               <GulActividadCard actividad={a} />
             </li>
@@ -75,7 +84,9 @@ const cursoRows = Array.from({ length: currentCurso - oldestCurso + 1 }, (_, i) 
       ))}
     </ul>
 
-    <p class="mt-8 hidden text-sm text-gul-muted" data-actividades-empty>Ninguna actividad coincide con el filtro.</p>
+    <p class="mt-8 hidden text-sm text-gul-muted" data-actividades-empty>
+      Ninguna actividad coincide con el filtro.
+    </p>
   </main>
   <GulFooter />
 </BaseLayout>
