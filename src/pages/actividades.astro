@@ -10,7 +10,7 @@ import GulHeader from '@components/common/gul-Header.astro';
 import GulFooter from '@components/common/gul-Footer.astro';
 import GulActividadCard from '@components/common/gul-ActividadCard.astro';
 import { navLinks } from '@data/navLinks';
-import { loadActividades } from '@data/actividades';
+import { loadActividades } from '@lib/actividades';
 
 const actividades = loadActividades();
 
@@ -54,14 +54,14 @@ const cursoRows = Array.from({ length: currentCurso - oldestCurso + 1 }, (_, i) 
     <ul class="mt-8 space-y-10 border-l border-gul-line pl-6" data-actividades-list>
       {cursoRows.map(({ curso, items }) => (
         <>
-          <li class="-ml-[calc(1.5rem+1px)] pl-6" data-curso-marker={curso} data-curso-count={items.length}>
+          <li class="-ml-6.25 pl-6" data-curso-marker={curso} data-curso-count={items.length}>
             <p class="text-sm font-medium tracking-[0.2em] text-gul-muted uppercase">
               Curso {curso}–{curso + 1}
             </p>
           </li>
           {items.map((a) => (
             <li
-              class="-ml-[calc(1.5rem+1px)] pl-6"
+              class="-ml-6.25 pl-6"
               data-actividad
               data-curso={curso}
               data-title={a.title.toLowerCase()}

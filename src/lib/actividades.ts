@@ -1,7 +1,7 @@
 // Shape agreed in guluc3m/webpage#9. Data lives in actividades.yaml (edit
 // entries there); this file only types it.
 import { parse } from 'yaml';
-import rawActividades from './actividades.yaml?raw'; // ?raw: a plain string, so invalid YAML syntax doesn't blow up the import itself.
+import rawActividades from '@data/actividades.yaml?raw'; // ?raw: a plain string, so invalid YAML syntax doesn't blow up the import itself.
 
 export interface Actividad {
   title: string;
@@ -18,7 +18,7 @@ export interface Actividad {
 
 const dateRe = /^\d{4}\/\d{2}\/\d{2}$/;
 
-// A malformed JSON entry (bad hand-edit) must not take the whole static build down —
+// A malformed entry (bad hand-edit) must not take the whole static build down —
 // drop it and warn instead of letting a missing field throw mid-render.
 export function isValidActividad(a: Partial<Actividad>): a is Actividad {
   const ok =
