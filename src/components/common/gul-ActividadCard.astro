@@ -1,11 +1,11 @@
 ---
 /**
  * gul-ActividadCard — one entry in the /actividades timeline. With a
- * cartel/photo, the image bleeds past the card on three sides (top, bottom,
- * right) instead of living inside it — top/bottom are negative insets, not a
- * fixed height, so the bleed always matches whatever height the card ends up
- * with. The list's row gap must stay >= 2x that bleed or two photos collide;
- * see actividades.astro's `space-y-24`. Mobile drops the overlap entirely.
+ * cartel/photo, the image sits beside the frame in a row that stays inside
+ * the list's width; the photo is a fixed column and the frame takes the rest.
+ * The photo keeps its own aspect ratio, so the two columns rarely match in
+ * height — `items-center` lines up their midpoints instead of their tops.
+ * Mobile stacks them, photo first.
  */
 import GulFrame from './gul-Frame.astro';
 import GulBadge from './gul-Badge.astro';
@@ -26,63 +26,76 @@ const formatDate = (date: string) =>
   });
 ---
 
-<div class="flex flex-col sm:block sm:relative">
+<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
   {image && (
     <a
       href={image}
       target="_blank"
       rel="noopener"
-      class="order-first mb-4 block h-56 w-full overflow-hidden rounded-md border border-gul-line sm:order-none sm:absolute sm:-top-10 sm:-right-[60px] sm:-bottom-10 sm:z-[2] sm:mb-0 sm:h-auto sm:w-[280px]"
+      class="order-first block h-56 w-full overflow-hidden rounded-md border border-gul-line sm:order-last sm:h-auto sm:w-[280px] sm:shrink-0"
     >
       <img src={image} alt="" class="h-full w-full object-cover" />
     </a>
   )}
-  <GulFrame class:list={['p-8', image && 'sm:pr-[340px]']}>
-    <time class="text-xs text-gul-muted" datetime={a.date.replaceAll('/', '-')}>
-      {formatDate(a.date)}
-    </time>
-    <h2 class="mt-1">{a.title}</h2>
-    {a.description && <p class="mt-1 text-sm text-gul-muted">{a.description}</p>}
+  <div class="min-w-0 flex-1">
+    <GulFrame surface border="border-gul-line transition-colors hover:border-gul-ink/40" class="p-8">
+      <time class="text-xs text-gul-muted" datetime={a.date.replaceAll('/', '-')}>
+        {formatDate(a.date)}
+      </time>
+      <h2 class="mt-1">{a.title}</h2>
 
-    {a.speakers.length > 0 && (
-      <p class="mt-2 text-sm text-gul-muted">
-        {a.speakers.map((s, i) => (
-          <>
-            {i > 0 && ', '}
-            {s.link ? (
-              <a href={s.link} target="_blank" rel="noopener" class="text-gul-ink underline decoration-gul-line underline-offset-4 hover:decoration-gul-ink">
-                {s.name}
-              </a>
-            ) : (
-              s.name
-            )}
-          </>
-        ))}
-      </p>
-    )}
-
-    {a.tags.length > 0 && (
-      <p class="mt-2 flex flex-wrap gap-1.5">
-        {a.tags.map((t) => (
-          <GulBadge variant="secondary">{t}</GulBadge>
-        ))}
-      </p>
-    )}
-
-    {(a.video || a.repository || a.transparencias) && (
-      <p class="mt-2 flex flex-wrap gap-3 text-sm">
-        {[
-          { href: a.video, label: 'Vídeo' },
-          { href: a.repository, label: 'Repositorio' },
-          { href: a.transparencias, label: 'Transparencias' },
-        ]
-          .filter((link) => link.href)
-          .map((link) => (
-            <a href={link.href} target="_blank" rel="noopener" class="text-gul-ink underline decoration-gul-line underline-offset-4 hover:decoration-gul-ink">
-              {link.label}
-            </a>
+      {a.tags.length > 0 && (
+        <p class="mt-2 flex flex-wrap gap-1.5">
+          {a.tags.map((t) => (
+            <GulBadge variant="secondary">{t}</GulBadge>
           ))}
-      </p>
-    )}
-  </GulFrame>
+        </p>
+      )}
+
+      {a.speakers.length > 0 && (
+        <p class="mt-2 text-sm text-gul-muted">
+          {a.speakers.map((s, i) => (
+            <>
+              {i > 0 && ', '}
+              {s.link ? (
+                <a
+                  href={s.link}
+                  target="_blank"
+                  rel="noopener"
+                  class="text-gul-ink underline decoration-gul-line underline-offset-4 hover:decoration-gul-ink"
+                >
+                  {s.name}
+                </a>
+              ) : (
+                s.name
+              )}
+            </>
+          ))}
+        </p>
+      )}
+      
+      {a.description && <p class="mt-1 text-sm text-gul-muted">{a.description}</p>}
+
+      {(a.video || a.repository || a.transparencias) && (
+        <p class="mt-2 flex flex-wrap gap-3 text-sm">
+          {[
+            { href: a.video, label: 'Vídeo' },
+            { href: a.repository, label: 'Repositorio' },
+            { href: a.transparencias, label: 'Transparencias' },
+          ]
+            .filter((link) => link.href)
+            .map((link) => (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener"
+                class="text-gul-ink underline decoration-gul-line underline-offset-4 hover:decoration-gul-ink"
+              >
+                {link.label}
+              </a>
+            ))}
+        </p>
+      )}
+    </GulFrame>
+  </div>
 </div>
