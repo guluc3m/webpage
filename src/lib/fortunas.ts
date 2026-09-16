@@ -7,15 +7,11 @@
  * browser.
  */
 
+import { parse } from 'yaml';
+import rawFortunas from '@data/fortunas.yaml?raw'; // ?raw: a plain string, so invalid YAML syntax doesn't blow up the import itself.
+
 export interface Fortuna {
   quote: string;
-  author: string;
-}
-
-export interface FormattedFortuna {
-  /** May contain one "\n": a *stage-direction* line kept outside the guillemets. */
-  quote: string;
-  /** "— Autor", or "" when the entry has no author. */
   author: string;
 }
 
@@ -24,7 +20,7 @@ const isMultiline = (s: string): boolean => /\r\n|\r|\n/.test(s);
 /**
  * Rules (single-line quotes only — multi-line quotes are left untouched)
  */
-export function formatFortuna({ quote, author }: Fortuna): FormattedFortuna {
+function formatFortuna({ quote, author }: Fortuna): Fortuna {
   let q = quote;
 
   if (!isMultiline(q)) {
@@ -51,4 +47,25 @@ export function formatFortuna({ quote, author }: Fortuna): FormattedFortuna {
   }
 
   return { quote: q, author: author ? `— ${author}` : '' };
+}
+
+/**
+ * Checks if a fortuna is valid
+ * @param f fortuna to check (Object format)
+ * @returns `true` if valid fortuna, `false` otherwise
+ */
+export function isValidFortuna(f: Partial<Fortuna>): f is Fortuna {
+  const ok = !!f.quote && !!f.author;
+  if (!ok) console.warn(`[fortunas] entrada incompleta, se omite: ${JSON.stringify(f)}`);
+  return ok;
+}
+
+// Loads and formats fortunas
+export function loadFortunas(): Fortuna[] {
+  try {
+    return (parse(rawFortunas) as Partial<Fortuna>[]).filter(isValidFortuna).map(formatFortuna);
+  } catch (err) {
+    console.warn(`[fortunas] fortunas.yaml inválido, se muestra vacío: ${err}`);
+    return [];
+  }
 }

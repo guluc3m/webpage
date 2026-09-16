@@ -12,10 +12,9 @@ import GulEyebrow from '@components/common/gul-Eyebrow.astro';
 import GulDecryptText from '@components/common/gul-DecryptText.astro';
 import GulButton from '@components/common/gul-Button.astro';
 import GulAchievement from '@components/common/gul-Achievement.astro';
-import fortunas from '@data/fortunas.json';
-import { formatFortuna, type Fortuna } from '@lib/fortunas.ts';
+import { loadFortunas } from '@lib/fortunas.ts';
 
-const formattedFortunas = (fortunas as Fortuna[]).map(formatFortuna);
+const formattedFortunas = loadFortunas();
 const fortunaIndex = Math.floor(Math.random() * formattedFortunas.length);
 const fortuna = formattedFortunas[fortunaIndex];
 ---
@@ -61,7 +60,7 @@ const fortuna = formattedFortunas[fortunaIndex];
     </figure>
   </div>
 
-  <GulAchievement id="fortunas-completadas" text="Has leído todas las fortunas" />
+  <GulAchievement id="fortunas-completadas" text="Has leído las {formattedFortunas.lenght} fortunas" />
 </section>
 
 <script define:vars={{ formattedFortunas, fortunaIndex }}>
