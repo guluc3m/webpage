@@ -10,33 +10,24 @@
  */
 import GulFrame from './gul-Frame.astro';
 
-interface Props {
-  text?: string;
-}
+const text = 'GULN';
 
-const { text = 'LINUX ♡' } = Astro.props;
-
-// Row-major 5x7 bitmap per glyph (classic LED-matrix font; ♡ is hand-drawn pixel art).
+// Row-major 5x7 bitmap per glyph (classic LED-matrix font).
 const letterPatterns: Record<string, number[]> = {
-  L: [0, 5, 10, 15, 20, 25, 30, 31, 32, 33, 34],
-  I: [0, 1, 2, 3, 4, 7, 12, 17, 22, 27, 30, 31, 32, 33, 34],
-  N: [0, 4, 5, 6, 9, 10, 12, 14, 15, 17, 19, 20, 23, 24, 25, 29, 30, 34],
-  U: [0, 4, 5, 9, 10, 14, 15, 19, 20, 24, 25, 29, 31, 32, 33],
-  X: [0, 4, 6, 8, 12, 17, 22, 26, 28, 30, 34],
-  ' ': [],
-  '♡': [6, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 27],
+  G: [1, 2, 3, 5, 6, 10, 11, 15, 16, 18, 19, 20, 21, 24, 25, 26, 29, 31, 32, 33],
+  U: [0, 1, 4, 5, 6, 9, 10, 11, 14, 15, 16, 19, 20, 21, 24, 25, 26, 29, 31, 32, 33],
+  L: [0, 1, 5, 6, 10, 11, 15, 16, 20, 21, 25, 26, 30, 31, 32, 33, 34],
+  N: [3, 9, 10, 11, 12, 14, 19, 20, 21, 22, 24, 29, 33],
+  // Two dot eyes over a U-shaped smile — no outline, reads as ":)" rather than a face-in-a-circle.
 };
 
 const LETTER_COLS = 5;
 const CELL_GAP = 1; // blank column between letters
-const SIDE_PADDING = 2; // blank columns of margin on each side of the word
+const SIDE_PADDING = 1; // blank columns of margin on each side of the word
 const GRID_HEIGHT = 7; // fixed GitHub-graph shape (7 rows)
 
 function cleanText(str: string): string {
-  const upper = str
-    .toUpperCase()
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '');
+  const upper = str.toUpperCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   return [...upper].filter((char) => char in letterPatterns).join('');
 }
 
@@ -59,7 +50,7 @@ const highlighted = new Set<number>();
 // intensity is what reads as a commit-activity graph.
 const BLUE_SHADES = ['#3fa9dc', '#0075b0', '#004a70'];
 const randomShade = () => BLUE_SHADES[Math.floor(Math.random() * BLUE_SHADES.length)];
-const randomDelay = () => `${(Math.random() * 1.8).toFixed(2)}s`;
+const randomDelay = () => `${(Math.random() * 1.6).toFixed(2)}s`;
 
 const cells = Array.from({ length: GRID_WIDTH * GRID_HEIGHT }, (_, index) => {
   const isHighlighted = highlighted.has(index);
@@ -71,17 +62,24 @@ const cells = Array.from({ length: GRID_WIDTH * GRID_HEIGHT }, (_, index) => {
 <GulFrame surface class="w-full overflow-x-auto p-3">
   <div
     class="grid w-max gap-[3px]"
-    style={{ gridTemplateColumns: `repeat(${GRID_WIDTH}, 11px)`, gridTemplateRows: `repeat(${GRID_HEIGHT}, 11px)` }}
+    style={{
+      gridTemplateColumns: `repeat(${GRID_WIDTH}, 11px)`,
+      gridTemplateRows: `repeat(${GRID_HEIGHT}, 11px)`,
+    }}
   >
-    {
-      cells.map(({ isHighlighted, flash, color, delay }) => (
-        <div
-          class:list={['h-[11px] w-[11px] rounded-xs bg-gul-line', isHighlighted && 'animate-highlight', flash && 'animate-flash']}
-          style={
-            isHighlighted || flash ? ({ '--highlight': color, animationDelay: delay } as Record<string, string>) : undefined
-          }
-        />
-      ))
-    }
+    {cells.map(({ isHighlighted, flash, color, delay }) => (
+      <div
+        class:list={[
+          'h-[11px] w-[11px] rounded-xs bg-gul-line',
+          isHighlighted && 'animate-highlight',
+          flash && 'animate-flash',
+        ]}
+        style={
+          isHighlighted || flash
+            ? ({ '--highlight': color, animationDelay: delay } as Record<string, string>)
+            : undefined
+        }
+      />
+    ))}
   </div>
 </GulFrame>

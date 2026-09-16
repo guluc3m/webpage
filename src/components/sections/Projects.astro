@@ -8,6 +8,7 @@
  */
 import GulRepoCard from '@components/common/gul-RepoCard.astro';
 import GulTerminal from '@components/common/gul-Terminal.astro';
+import GulCommitsGrid from '@components/common/gul-CommitsGrid.astro';
 
 const repos = [
   {
@@ -21,7 +22,7 @@ const repos = [
   {
     name: 'uc3m-thesis-ieee-typst',
     description:
-    'Typst Bachelor Thesis template for the Universidad Carlos III de Madrid, IEEE style',
+      'Typst Bachelor Thesis template for the Universidad Carlos III de Madrid, IEEE style',
     href: 'https://github.com/guluc3m/uc3m-thesis-ieee-typst',
     language: 'Typst',
     stars: 6,
@@ -65,18 +66,53 @@ const repos = [
 <section id="proyectos" class="mx-auto max-w-gul-content py-8">
   <h2>Proyectos</h2>
   <GulTerminal lines={[{ command: 'ls projects/' }]} />
-  <ul class="mt-4 grid gap-4 sm:grid-cols-2">
-    {repos.map((repo) => (
-      <li>
-        <GulRepoCard
-          href={repo.href}
-          name={repo.name}
-          description={repo.description}
-          language={repo.language}
-          stars={repo.stars}
-          forks={repo.forks}
-        />
-      </li>
-    ))}
-  </ul>
+  <div class="mt-4 grid items-center gap-8 lg:grid-cols-10">
+    <div class="sm:col-span-6">
+      <ul class="grid gap-4 sm:grid-cols-2">
+        {repos.map((repo) => (
+          <li>
+            <GulRepoCard
+              href={repo.href}
+              name={repo.name}
+              description={repo.description}
+              language={repo.language}
+              stars={repo.stars}
+              forks={repo.forks}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="sm:col-span-4">
+      <p class="text-justify text-gul-muted">
+        Desde <i>el</i> GUL desarrollamos talleres, charlas, JAMs, proyectos... Nos empeñamos en
+        hacer una gran cantidad de actividades con las que promover el software libre.
+      </p>
+      <p class="mt-4 text-justify text-gul-muted">
+        No hace falta saber programar ni haber usado Linux antes: la mayoría empezó igual que tú, en
+        una charla, un taller o una{' '}
+        <i>
+          <b>install party</b>
+        </i>{' '}
+        con la que instalar tú primera distro, y de ahí a picar código o soldar un teclado hay solo
+        un paso.{' '}
+        <b>
+          <a
+            href="/actividades/"
+            target="_blank"
+            rel="noopener"
+            class="text-gul-ink underline decoration-gul-line underline-offset-4 hover:decoration-gul-ink"
+          >
+            Aquí, puedes ver todas las actividades
+          </a>
+        </b>{' '}
+        que hacemos.
+      </p>
+
+      <div class="mt-4">
+        <GulCommitsGrid />
+      </div>
+    </div>
+  </div>
 </section>

@@ -79,8 +79,8 @@
      since each cell has its own per-cell animation-delay. --animate-* here
      is how Tailwind v4 defines an `animate-*` utility without a
      tailwind.config.js. */
-  --animate-highlight: highlight 1.8s ease both;
-  --animate-flash: flash 1.8s ease both;
+  --animate-highlight: highlight 3.6s ease both;
+  --animate-flash: flash 3.6s ease both;
 }
 
 @keyframes highlight {
