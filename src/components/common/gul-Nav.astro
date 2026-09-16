@@ -78,13 +78,14 @@ const linkClass =
     {links.map((link) =>
       link.children ? (
         <li>
-          <button
-            type="button"
+          <a
+            href={link.href}
             class={triggerClass}
             data-gul-trigger={slug(link.label)}
             data-state="closed"
             aria-expanded="false"
             aria-controls="gul-nav-viewport-content"
+            aria-haspopup="true"
           >
             {link.label}
             <svg
@@ -94,7 +95,7 @@ const linkClass =
             >
               <path d="M6 9l6 6 6-6" />
             </svg>
-          </button>
+          </a>
         </li>
       ) : (
         <li>
@@ -215,13 +216,13 @@ const linkClass =
     const viewport = nav.querySelector<HTMLElement>('[data-gul-viewport]');
     const viewportContent = nav.querySelector<HTMLElement>('[data-gul-viewport-content]');
     const panelHighlight = nav.querySelector<HTMLElement>('[data-gul-panel-highlight]');
-    const triggers = nav.querySelectorAll<HTMLButtonElement>('[data-gul-trigger]');
+    const triggers = nav.querySelectorAll<HTMLAnchorElement>('[data-gul-trigger]');
     const hoverCapable = () => window.matchMedia('(hover: hover)').matches;
     let activeValue: string | null = null;
 
     if (list && highlight) wireHighlight(list, highlight);
 
-    function openPanel(trigger: HTMLButtonElement) {
+    function openPanel(trigger: HTMLAnchorElement) {
       if (!viewport || !viewportContent) return;
       const value = trigger.dataset.gulTrigger ?? '';
       const template = nav.querySelector<HTMLTemplateElement>(
@@ -274,7 +275,12 @@ const linkClass =
         if (hoverCapable()) openPanel(trigger);
       });
       trigger.addEventListener('focus', () => openPanel(trigger));
-      trigger.addEventListener('click', () => openPanel(trigger));
+      // Keep the top-level href as the no-JS fallback. With JS enabled, the
+      // anchor becomes the dropdown trigger instead of navigating away.
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        openPanel(trigger);
+      });
     });
 
     nav.addEventListener('mouseleave', () => {

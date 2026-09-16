@@ -8,6 +8,7 @@
  */
 import GameOfLife from './GameOfLife.astro';
 import ShaderBackground from './ShaderBackground.astro';
+import StaticHeroBackground from './StaticHeroBackground.astro';
 import GulEyebrow from '@components/common/gul-Eyebrow.astro';
 import GulDecryptText from '@components/common/gul-DecryptText.astro';
 import GulButton from '@components/common/gul-Button.astro';
@@ -20,6 +21,7 @@ const fortuna = formattedFortunas[Math.floor(Math.random() * formattedFortunas.l
 ---
 
 <section id="inicio" class="relative flex min-h-screen items-center overflow-hidden">
+  <StaticHeroBackground />
   <ShaderBackground />
   <GameOfLife />
   <div class="relative max-w-3xl px-32 py-8">

@@ -1,0 +1,166 @@
+---
+/**
+ * StaticHeroBackground — build-time fallback for the hero canvases.
+ *
+ * JavaScript paints the live shader and Game of Life layers over this SVG. If
+ * JavaScript is unavailable, the same dark grid treatment and Tux silhouette
+ * are still present in the server-rendered HTML.
+ */
+import { computeTuxBitmap } from '@lib/tuxBitmap.ts';
+import { sampleTuxMask } from '@lib/tux.ts';
+import tuxSvg from '/tux.svg?raw';
+
+// Keep the build-time coordinate system close to the desktop hero's 16:10
+// aspect ratio. The SVG is responsive, so this avoids visibly wide cells and
+// a horizontally stretched Tux at the viewport sizes this layout targets.
+const CELL = 10;
+const GAP = 2;
+
+const tuxBitmap = await computeTuxBitmap(Buffer.from(tuxSvg), 80, 80);
+
+// A seeded field keeps builds reproducible while giving the no-JS state some
+// of the same visual texture as the first Game of Life frame.
+function seeded(x: number, y: number) {
+  const value = Math.sin(x * 12.9898 + y * 78.233 + 7191) * 43758.5453;
+  return value - Math.floor(value);
+}
+
+const variants = [
+  {
+    name: 'wide',
+    className: 'hero-static-background--wide',
+    cols: 160,
+    rows: 90,
+    showTux: true,
+    tuxHeightFraction: 0.86,
+    aliveOpacity: 0.44,
+  }, // 16:9
+  {
+    name: 'standard',
+    className: 'hero-static-background--standard',
+    cols: 128,
+    rows: 80,
+    showTux: true,
+    tuxHeightFraction: 0.86,
+    aliveOpacity: 0.44,
+  }, // 16:10
+  {
+    name: 'compact',
+    className: 'hero-static-background--compact',
+    cols: 120,
+    rows: 90,
+    showTux: true,
+    tuxHeightFraction: 0.86,
+    aliveOpacity: 0.44,
+  }, // 4:3
+  {
+    name: 'mobile',
+    className: 'hero-static-background--mobile',
+    cols: 90,
+    rows: 195,
+    showTux: false,
+    tuxHeightFraction: 0,
+    aliveOpacity: 0.5,
+  }, // 9:19.5
+].map((variant) => {
+  const tuxMask = sampleTuxMask(
+    tuxBitmap,
+    variant.cols,
+    variant.rows,
+    variant.tuxHeightFraction,
+    0.9,
+  );
+  const cells = Array.from({ length: variant.cols * variant.rows }, (_, index) => {
+    const x = index % variant.cols;
+    const y = Math.floor(index / variant.cols);
+    return {
+      x,
+      y,
+      tux: variant.showTux && tuxMask[index] === 1,
+      alive: seeded(x, y) < 0.2,
+    };
+  }).filter(({ tux, alive }) => tux || alive);
+
+  return { ...variant, cells };
+});
+---
+
+{/* Run before the large inline SVGs are parsed, so JS-enabled browsers never
+    get a chance to paint the no-JS artwork. */}
+<script is:inline>
+  document.documentElement.classList.add('js');
+</script>
+
+{variants.map(({ name, className, cols, rows, cells, aliveOpacity }) => (
+  <svg
+    aria-hidden="true"
+    class:list={[
+      'hero-static-background pointer-events-none absolute inset-0 h-full w-full',
+      className,
+    ]}
+    viewBox={`0 0 ${cols * CELL} ${rows * CELL}`}
+    preserveAspectRatio="none"
+  >
+    <defs>
+      <linearGradient id={`hero-static-alive-${name}`} x1="1" y1="0" x2="0" y2="1">
+        <stop offset="30%" stop-color="#9c988c" stop-opacity={aliveOpacity} />
+        <stop offset="100%" stop-color="#0075b0" stop-opacity={aliveOpacity} />
+      </linearGradient>
+    </defs>
+    <rect width="100%" height="100%" fill="#0a0a09" />
+    {cells.map(({ x, y, tux, alive }) => (
+      <rect
+        x={x * CELL}
+        y={y * CELL}
+        width={CELL - GAP}
+        height={CELL - GAP}
+        fill={tux ? '#ece7d8' : alive ? `url(#hero-static-alive-${name})` : '#0a0a09'}
+      />
+    ))}
+  </svg>
+))}
+
+<style>
+  html.js .hero-static-background {
+    display: none !important;
+  }
+
+  .hero-static-background--wide,
+  .hero-static-background--compact,
+  .hero-static-background--mobile {
+    display: none;
+  }
+
+  @media (min-aspect-ratio: 17 / 10) {
+    .hero-static-background--standard,
+    .hero-static-background--compact,
+    .hero-static-background--mobile {
+      display: none;
+    }
+
+    .hero-static-background--wide {
+      display: block;
+    }
+  }
+
+  @media (max-aspect-ratio: 3 / 2) and (min-aspect-ratio: 1 / 1) {
+    .hero-static-background--standard {
+      display: none;
+    }
+
+    .hero-static-background--compact {
+      display: block;
+    }
+  }
+
+  @media (max-aspect-ratio: 3 / 4) {
+    .hero-static-background--standard,
+    .hero-static-background--compact {
+      display: none;
+    }
+
+    .hero-static-background--mobile {
+      display: block;
+    }
+  }
+</style>

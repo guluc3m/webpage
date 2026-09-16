@@ -20,7 +20,7 @@ export function renderInlineMarkdown(value: string): string {
     if (match[1]) {
       const text = escapeHtml(match[1]);
       result += isObfuscatedEmail(match[1])
-        ? `<a href="#" data-gul-email class="text-gul-ink underline decoration-gul-line underline-offset-4 hover:decoration-gul-ink"><b data-gul-email-text>${text}</b></a>`
+        ? `<a data-gul-email class="text-gul-ink underline decoration-gul-line underline-offset-4 hover:decoration-gul-ink"><b data-gul-email-text>${text}</b></a>`
         : `<b class="text-gul-ink">${text}</b>`;
     } else if (match[2]) {
       result += `<em>${escapeHtml(match[2])}</em>`;

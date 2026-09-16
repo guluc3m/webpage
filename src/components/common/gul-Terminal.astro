@@ -70,6 +70,16 @@ const { lines, class: className } = Astro.props;
   }
 </style>
 
+<noscript>
+  <style>
+    /* Terminal output starts hidden for the JS animation, but must remain
+       visible when JavaScript is disabled. */
+    [data-terminal-output] {
+      opacity: 1 !important;
+    }
+  </style>
+</noscript>
+
 <script>
   function sleep(ms: number) {
     return new Promise((resolve) => window.setTimeout(resolve, ms));

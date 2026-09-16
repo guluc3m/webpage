@@ -20,7 +20,13 @@ const instagram = SOCIALS.find((social) => social.icon === 'ig.svg')!;
 ---
 
 <div class="relative" data-gul-contact>
-  <GulButton label="Contacta" aria-expanded="false" aria-controls={id} data-gul-contact-trigger />
+  <GulButton
+    label="Contacta"
+    href="#contact"
+    aria-expanded="false"
+    aria-controls={id}
+    data-gul-contact-trigger
+  />
 
   <div
     id={id}
@@ -63,9 +69,15 @@ const instagram = SOCIALS.find((social) => social.icon === 'ig.svg')!;
 
 <script>
   document.querySelectorAll<HTMLElement>('[data-gul-contact]').forEach((contact) => {
-    const trigger = contact.querySelector<HTMLButtonElement>('[data-gul-contact-trigger]');
+    const trigger = contact.querySelector<HTMLAnchorElement>('[data-gul-contact-trigger]');
     const menu = contact.querySelector<HTMLElement>('[data-gul-contact-menu]');
     if (!trigger || !menu) return;
+
+    // The href is the progressive-enhancement fallback. Once this script is
+    // active, Contacta is a menu button rather than a navigation link.
+    trigger.removeAttribute('href');
+    trigger.setAttribute('role', 'button');
+    trigger.setAttribute('tabindex', '0');
 
     const setOpen = (open: boolean) => {
       trigger.setAttribute('aria-expanded', String(open));
