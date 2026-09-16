@@ -78,7 +78,7 @@ export function formatFortuna({ quote, author }: Fortuna): Fortuna {
 
   // multilines are left untouched
 
-  return { quote: q, author: author ? `— ${author}` : '' };
+  return { quote: q, author };
 }
 
 /**

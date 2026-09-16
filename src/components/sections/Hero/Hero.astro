@@ -48,8 +48,13 @@ const fortuna = formattedFortunas[Math.floor(Math.random() * formattedFortunas.l
         class="whitespace-pre-line"
         data-fortuna-quote
       />
-      <figcaption data-fortuna-author hidden={!fortuna.author}>
-        {fortuna.author}
+      <figcaption data-fortuna-author-wrap hidden={!fortuna.author}>
+        <span aria-hidden="true">— </span>
+        <GulDecryptText
+          text={fortuna.author}
+          decryptOnLoad={false}
+          data-fortuna-author
+        />
       </figcaption>
       <GulButton
         variant="secondary"
@@ -70,6 +75,7 @@ const fortuna = formattedFortunas[Math.floor(Math.random() * formattedFortunas.l
 <script define:vars={{ formattedFortunas }}>
   const quote = document.querySelector('[data-fortuna-quote]');
   const author = document.querySelector('[data-fortuna-author]');
+  const authorWrap = document.querySelector('[data-fortuna-author-wrap]');
   const refresh = document.querySelector('[data-refresh-fortuna]');
 
   // Use indexes rather than the fortuna objects themselves. `define:vars`
@@ -79,6 +85,17 @@ const fortuna = formattedFortunas[Math.floor(Math.random() * formattedFortunas.l
   const repeatedIndexes = new Set();
   let currentFortunaIndex = 0;
   let achievement_unlocked = false;
+
+  function decryptAuthor() {
+    if (!authorWrap.hidden) {
+      author.removeAttribute('data-decrypt-paused');
+      document.dispatchEvent(new CustomEvent('gul:decrypt:resume', { detail: author }));
+    }
+  }
+
+  quote.addEventListener('gul:decrypt:complete', (event) => {
+    if (event.target === quote) decryptAuthor();
+  });
 
   function randomFortuna(animate = true) {
     // compute a random fortuna. we ensure no fortuna is repeated, until all
@@ -105,7 +122,13 @@ const fortuna = formattedFortunas[Math.floor(Math.random() * formattedFortunas.l
       quote.dispatchEvent(new CustomEvent('gul:decrypt', { bubbles: true, detail: quote }));
     }
     author.textContent = next.author;
-    author.hidden = !next.author;
+    authorWrap.hidden = !next.author;
+    if (animate && next.author) {
+      author.dataset.decryptPaused = 'true';
+      document.dispatchEvent(new CustomEvent('gul:decrypt', { detail: author }));
+    } else {
+      author.removeAttribute('data-decrypt-paused');
+    }
 
     // achievement
     if (!achievement_unlocked && fortunasIndexes.size === repeatedIndexes.size) {

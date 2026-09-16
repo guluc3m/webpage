@@ -7,7 +7,7 @@
  */
 interface Props {
   text: string;
-  as?: 'span' | 'p' | 'blockquote' | 'h1' | 'h2' | 'h3';
+  as?: 'span' | 'p' | 'blockquote' | 'figcaption' | 'h1' | 'h2' | 'h3';
   speed?: number; // ms per glyph swap while a character is still scrambling
   stagger?: number; // ms of lock delay added per character
   decryptOnLoad?: boolean;
@@ -99,16 +99,34 @@ const {
     for (const word of words) {
       word.style.width = `${word.getBoundingClientRect().width}px`;
     }
+    // Scramble synchronously after measuring the final text, so the original
+    // value never gets painted between a refresh and the first animation frame.
+    for (const c of chars) {
+      if (!/\s/.test(c.ch)) {
+        c.span.textContent = GLYPHS[(Math.random() * GLYPHS.length) | 0];
+        c.span.dataset.state = 'scramble';
+      }
+    }
 
-    const t0 = performance.now();
+    let t0 = performance.now();
     let lastSwap = 0;
+    const state = {
+      paused: el.dataset.decryptPaused === 'true',
+      resume() {
+        state.paused = false;
+        t0 = performance.now();
+        lastSwap = 0;
+      },
+    };
+    activeDecryptions.set(el, state);
+
     function frame(now: number) {
       const elapsed = now - t0;
       const swapGlyphs = elapsed - lastSwap >= speed;
       let pending = false;
       for (const c of chars) {
         if (/\s/.test(c.ch) || c.span.dataset.state === 'lock') continue;
-        if (elapsed >= c.lockAt) {
+        if (!state.paused && elapsed >= c.lockAt) {
           c.span.textContent = c.ch;
           c.span.dataset.state = 'lock';
         } else {
@@ -120,10 +138,16 @@ const {
         }
       }
       if (swapGlyphs) lastSwap = elapsed;
-      if (pending) requestAnimationFrame(frame);
+      if (pending) {
+        requestAnimationFrame(frame);
+      } else {
+        el.dispatchEvent(new CustomEvent('gul:decrypt:complete', { bubbles: true, detail: el }));
+      }
     }
     requestAnimationFrame(frame);
   }
+
+  const activeDecryptions = new WeakMap<HTMLElement, { resume: () => void }>();
 
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document
@@ -133,6 +157,10 @@ const {
     document.addEventListener('gul:decrypt', (event) => {
       const target = (event as CustomEvent<HTMLElement>).detail;
       if (target?.matches('[data-decrypt]')) decrypt(target);
+    });
+    document.addEventListener('gul:decrypt:resume', (event) => {
+      const target = (event as CustomEvent<HTMLElement>).detail;
+      activeDecryptions.get(target)?.resume();
     });
   }
 </script>

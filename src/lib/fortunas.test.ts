@@ -6,10 +6,10 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { formatFortuna } from './fortunas.ts';
 
-test('wraps a plain quote, removes one trailing period, and formats the author', () => {
+test('wraps a plain quote, removes one trailing period, and preserves the author', () => {
   assert.deepEqual(formatFortuna({ quote: 'Hola mundo.', author: 'Nadie' }), {
     quote: '«Hola mundo»',
-    author: '— Nadie',
+    author: 'Nadie',
   });
 });
 
@@ -52,6 +52,6 @@ test('multi-line quotes are left untouched', () => {
   assert.equal(formatFortuna({ quote: raw, author: 'X' }).quote, raw);
 });
 
-test('no author -> no dash prefix', () => {
+test('preserves an empty author', () => {
   assert.equal(formatFortuna({ quote: 'Sin autor.', author: '' }).author, '');
 });
