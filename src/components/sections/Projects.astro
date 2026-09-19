@@ -63,12 +63,16 @@ const repos = [
 ];
 ---
 
-<section id="proyectos" class="mx-auto max-w-gul-content py-8">
+<section id="proyectos" class="gul-gutter mx-auto max-w-gul-content py-8">
   <h2>Proyectos</h2>
   <GulTerminal lines={[{ command: 'ls projects/' }]} />
-  <div class="mt-4 grid items-center gap-8 lg:grid-cols-10">
-    <div class="sm:col-span-6">
-      <ul class="grid gap-4 sm:grid-cols-2">
+  {/* Los tres prefijos tienen que coincidir: con `md:grid-cols-10` en el
+      contenedor y `sm:col-span-*` en los hijos, entre 480px y 768px el grid no
+      tiene plantilla y los col-span generan 10 columnas implícitas — la
+      sección se parte en dos justo en el ancho de un móvil. */}
+  <div class="mt-4 grid items-center gap-8 md:grid-cols-10">
+    <div class="md:col-span-6">
+      <ul class="grid gap-4 md:grid-cols-2">
         {repos.map((repo) => (
           <li>
             <GulRepoCard
@@ -84,7 +88,9 @@ const repos = [
       </ul>
     </div>
 
-    <div class="sm:col-span-4">
+    {/* En una columna el texto va primero: explica qué son los proyectos antes
+        de soltar la rejilla de tarjetas. En md+ manda el orden del DOM. */}
+    <div class="order-first md:order-none md:col-span-4">
       <p class="text-justify text-gul-muted">
         Desde <i>el</i> GUL desarrollamos talleres, charlas, JAMs, proyectos... Nos empeñamos en
         hacer una gran cantidad de actividades con las que promover el software libre.
