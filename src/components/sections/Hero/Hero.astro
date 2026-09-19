@@ -14,7 +14,6 @@
  * blocking the parser, and the browser can cache it between visits.
  */
 import GameOfLife from './GameOfLife.astro';
-import ShaderBackground from './ShaderBackground.astro';
 import StaticHeroBackground from './StaticHeroBackground.astro';
 import GulEyebrow from '@components/common/gul-Eyebrow.astro';
 import GulDecryptText from '@components/common/gul-DecryptText.astro';
@@ -34,7 +33,6 @@ const fortuna = formattedFortunas[fortunaIndex];
     como si no estuviera, dejando el hero más alto que la pantalla visible. */}
 <section id="inicio" class="relative flex min-h-svh items-center overflow-hidden">
   <StaticHeroBackground />
-  <ShaderBackground />
   <GameOfLife />
   <div class="relative max-w-3xl px-4 py-8 sm:px-8 md:px-32">
     <GulEyebrow class="mb-4">
