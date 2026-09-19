@@ -17,6 +17,9 @@ interface Props {
 
 const { actividad: a } = Astro.props;
 const image = a.cartel ?? a.photo; // same slot (poster vs. snapshot), never both at once — see the Actividad type.
+// ponytail: los carteles siguen sirviéndose desde public/ sin optimizar. Su
+// ruta viene del YAML como cadena, así que <Image> de Astro no encaja sin un
+// import.meta.glob; con lazy loading basta mientras la lista sea corta.
 
 // day "00" means "month only" (no exact date yet) — show just month + year.
 const hasNoDay = (date: string) => date.endsWith('/00');
@@ -36,22 +39,22 @@ const formatDate = (date: string) =>
 const datetime = hasNoDay(a.date) ? a.date.slice(0, 7) : a.date.replaceAll('/', '-');
 ---
 
-<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+<div class="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
   {image && (
     <a
       href={image}
       target="_blank"
       rel="noopener"
-      class="order-first block h-56 w-full overflow-hidden rounded-md border border-gul-line transition-colors hover:border-gul-ink/40 sm:order-last sm:h-auto sm:w-[280px] sm:shrink-0"
+      class="order-first block h-56 w-full overflow-hidden rounded-md border border-gul-line transition-colors hover:border-gul-ink/40 md:order-last md:h-auto md:w-[280px] md:shrink-0"
     >
-      <img src={image} alt="" class="h-full w-full object-cover" />
+      <img src={image} alt="" loading="lazy" decoding="async" class="h-full w-full object-cover" />
     </a>
   )}
   <div class="min-w-0 flex-1">
     <GulFrame
       surface
       border="border-gul-line transition-colors hover:border-gul-ink/40"
-      class="p-8"
+      class="p-4 md:p-8"
       variant="full"
     >
       <time class="text-xs text-gul-muted" datetime={datetime}>
