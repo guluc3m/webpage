@@ -6,6 +6,11 @@
  * the browser's `<script/>` below. The map only initialises once its container
  * is on screen (IntersectionObserver) to avoid loading tiles no one sees.
  *
+ * Leaflet is pulled in with a dynamic import inside that observer, not a static
+ * one at the top: a static import ships 150KB of JS plus a render-blocking
+ * stylesheet to everyone who opens the page, even though the map sits at the
+ * bottom. Import it late and the whole thing stays off the first paint.
+ *
  * Coordinates carried over from the 2021 site. Tiles run through a grayscale
  * filter (below) to keep the map inside the site's monochrome palette.
  */
@@ -18,26 +23,34 @@
   aria-label="Mapa: sede del GUL en el edificio Sabatini, Leganés"
 />
 <script>
-  import L from 'leaflet';
-  import 'leaflet/dist/leaflet.css';
+  // `?url` keeps Leaflet's stylesheet an asset instead of a style module:
+  // importing the .css itself would make Astro hoist it into a render-blocking
+  // <link> in every page's <head>, which is the thing this component avoids.
+  import leafletCss from 'leaflet/dist/leaflet.css?url';
 
   const OFFICE: [number, number] = [40.33252, -3.76728];
 
   const el = document.querySelector<HTMLElement>('[data-map]');
   if (el) {
-    let map: L.Map | undefined;
-    const observer = new IntersectionObserver((entries) => {
-      if (!entries[0].isIntersecting || map) return;
+    const observer = new IntersectionObserver(async (entries) => {
+      if (!entries[0].isIntersecting) return;
+      // Before any await: the observer can fire again while Leaflet downloads,
+      // and initialising the same div twice throws.
+      observer.disconnect();
+      document.head.insertAdjacentHTML('beforeend', `<link rel="stylesheet" href="${leafletCss}">`);
+      const { default: L } = await import('leaflet');
       // Sin dragging en móvil: un mapa a ancho completo que captura el
       // arrastre vertical atrapa el scroll de la página. L.Browser.mobile es
       // la propia detección de Leaflet, no hace falta un matchMedia aparte.
-      map = L.map(el, { scrollWheelZoom: false, dragging: !L.Browser.mobile }).setView(OFFICE, 17);
+      const map = L.map(el, { scrollWheelZoom: false, dragging: !L.Browser.mobile }).setView(
+        OFFICE,
+        17,
+      );
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap',
         maxZoom: 19,
       }).addTo(map);
       L.marker(OFFICE).addTo(map);
-      observer.disconnect();
     });
     observer.observe(el);
   }

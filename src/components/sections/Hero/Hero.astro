@@ -3,11 +3,17 @@
  * Hero — the first screen. Conway's Game of Life runs as the background
  * (GameOfLife is positioned absolutely inside this section's relative box).
  *
- * Shows a random "fortuna" (GUL in-joke) under the slogan. The quote is picked
- * and formatted here, at build time — it changes on each rebuild, not per visit.
+ * Shows a random "fortuna" (GUL in-joke) under the slogan. The build renders
+ * one so the section is never empty; the script below fetches the rest from
+ * /fortunas.json and re-rolls it, so the quote differs per visit, and "Otra
+ * fortuna" keeps handing out new ones.
+ *
+ * That list used to be inlined here through define:vars: 50KB of JSON in the
+ * HTML of every visit, a quarter of the page, unminifiable and re-downloaded
+ * every time. As its own file it is fetched after the first paint instead of
+ * blocking the parser, and the browser can cache it between visits.
  */
 import GameOfLife from './GameOfLife.astro';
-import ShaderBackground from './ShaderBackground.astro';
 import StaticHeroBackground from './StaticHeroBackground.astro';
 import GulEyebrow from '@components/common/gul-Eyebrow.astro';
 import GulDecryptText from '@components/common/gul-DecryptText.astro';
@@ -17,14 +23,16 @@ import { loadFortunas } from '@lib/fortunas.ts';
 import rawFortunas from '@data/fortunas.yaml?raw';
 
 const formattedFortunas = loadFortunas(rawFortunas);
-const fortuna = formattedFortunas[Math.floor(Math.random() * formattedFortunas.length)]; // fallback fortuna
+// The index travels to the client so the first click can't hand back the
+// fortuna already on screen.
+const fortunaIndex = Math.floor(Math.random() * formattedFortunas.length);
+const fortuna = formattedFortunas[fortunaIndex];
 ---
 
 {/* min-h-svh, no min-h-screen: 100vh en móvil cuenta la barra del navegador
     como si no estuviera, dejando el hero más alto que la pantalla visible. */}
 <section id="inicio" class="relative flex min-h-svh items-center overflow-hidden">
   <StaticHeroBackground />
-  <ShaderBackground />
   <GameOfLife />
   <div class="relative max-w-3xl px-4 py-8 sm:px-8 md:px-32">
     <GulEyebrow class="mb-4">
@@ -51,6 +59,7 @@ const fortuna = formattedFortunas[Math.floor(Math.random() * formattedFortunas.l
         decryptOnLoad={false}
         class="whitespace-pre-line"
         data-fortuna-quote
+        data-fortuna-index={fortunaIndex}
       />
       <figcaption data-fortuna-author-wrap hidden={!fortuna.author}>
         <span aria-hidden="true">— </span>
@@ -68,80 +77,90 @@ const fortuna = formattedFortunas[Math.floor(Math.random() * formattedFortunas.l
 
   <GulAchievement
     id="fortunas-completadas"
-    text="Has leído todas las {formattedFortunas.lenght} fortunas"
+    text={`Has leído todas las ${formattedFortunas.length} fortunas`}
   />
 </section>
 
-<script define:vars={{ formattedFortunas }}>
-  const quote = document.querySelector('[data-fortuna-quote]');
-  const author = document.querySelector('[data-fortuna-author]');
-  const authorWrap = document.querySelector('[data-fortuna-author-wrap]');
-  const refresh = document.querySelector('[data-refresh-fortuna]');
+<script>
+  import type { Fortuna } from '@lib/fortunas.ts'; // type-only: nothing from that module ships
 
-  // Use indexes rather than the fortuna objects themselves. `define:vars`
-  // serializes each variable separately, so the initial fortuna object does
-  // not share identity with the matching object in `formattedFortunas`.
-  const fortunasIndexes = new Set(formattedFortunas.map((_, index) => index));
-  const repeatedIndexes = new Set();
-  let currentFortunaIndex = 0;
-  let achievement_unlocked = false;
+  const quote = document.querySelector<HTMLElement>('[data-fortuna-quote]');
+  const author = document.querySelector<HTMLElement>('[data-fortuna-author]');
+  const authorWrap = document.querySelector<HTMLElement>('[data-fortuna-author-wrap]');
+  const refresh = document.querySelector<HTMLElement>('[data-refresh-fortuna]');
 
-  function decryptAuthor() {
-    if (!authorWrap.hidden) {
-      author.removeAttribute('data-decrypt-paused');
-      document.dispatchEvent(new CustomEvent('gul:decrypt:resume', { detail: author }));
+  if (quote && author && authorWrap && refresh) {
+    // Fetched once, and kept as the promise rather than the array so two fast
+    // clicks can't start two downloads. A failed fetch clears it so the next
+    // click retries (and leaves the build's fortuna on screen).
+    let fortunas: Promise<Fortuna[]> | undefined;
+    const getFortunas = () =>
+      (fortunas ??= fetch('/fortunas.json')
+        .then((response) => response.json() as Promise<Fortuna[]>)
+        .catch(() => {
+          fortunas = undefined;
+          return [];
+        }));
+
+    // Indexes, not objects: they have to match the positions in /fortunas.json,
+    // which is the same array the build picked the initial fortuna from.
+    let currentIndex = Number(quote.dataset.fortunaIndex);
+    const seen = new Set([currentIndex]);
+    let achievementUnlocked = false;
+
+    function decryptAuthor() {
+      if (!authorWrap!.hidden) {
+        author!.removeAttribute('data-decrypt-paused');
+        document.dispatchEvent(new CustomEvent('gul:decrypt:resume', { detail: author }));
+      }
     }
+
+    quote.addEventListener('gul:decrypt:complete', (event) => {
+      if (event.target === quote) decryptAuthor();
+    });
+
+    async function nextFortuna(animate = true) {
+      const all = await getFortunas();
+      // No repeats until every fortuna has been shown, then a fresh round that
+      // excludes whatever is currently on screen.
+      if (seen.size >= all.length) {
+        seen.clear();
+        seen.add(currentIndex);
+      }
+      const available = all.map((_, index) => index).filter((index) => !seen.has(index));
+      if (!available.length) return; // empty list, or a single fortuna
+
+      currentIndex = available[Math.floor(Math.random() * available.length)];
+      seen.add(currentIndex);
+      const next = all[currentIndex];
+
+      quote!.textContent = next.quote;
+      if (animate) {
+        quote!.dispatchEvent(new CustomEvent('gul:decrypt', { bubbles: true, detail: quote }));
+      }
+      author!.textContent = next.author;
+      authorWrap!.hidden = !next.author;
+      if (animate && next.author) {
+        author!.dataset.decryptPaused = 'true';
+        document.dispatchEvent(new CustomEvent('gul:decrypt', { detail: author }));
+      } else {
+        author!.removeAttribute('data-decrypt-paused');
+      }
+
+      if (!achievementUnlocked && seen.size === all.length) {
+        document.dispatchEvent(
+          new CustomEvent('gul:achievement:show', { detail: 'fortunas-completadas' }),
+        );
+        achievementUnlocked = true;
+      }
+    }
+
+    // The build's fortuna keeps the hero from ever being empty (and is what
+    // no-JS visitors read); the list lands right after and re-rolls it, so the
+    // quote changes per visit and not per deploy. No animation here: the swap
+    // should pass unnoticed, the decrypt effect is for the button.
+    nextFortuna(false);
+
+    refresh.addEventListener('click', () => nextFortuna());
   }
-
-  quote.addEventListener('gul:decrypt:complete', (event) => {
-    if (event.target === quote) decryptAuthor();
-  });
-
-  function randomFortuna(animate = true) {
-    // compute a random fortuna. we ensure no fortuna is repeated, until all
-    // fortunas are covered.
-    let available = Array.from(fortunasIndexes.difference(repeatedIndexes));
-
-    if (available.length === 0) {
-      // all fortunas were done, repeat
-      repeatedIndexes.clear();
-      // prevent show the same fortuna again
-      repeatedIndexes.add(currentFortunaIndex);
-      available = Array.from(fortunasIndexes.difference(repeatedIndexes));
-    }
-
-    const nextIndex = available[Math.floor(Math.random() * available.length)];
-    const next = formattedFortunas[nextIndex];
-
-    repeatedIndexes.add(nextIndex);
-    currentFortunaIndex = nextIndex;
-
-    // show fortuna
-    quote.textContent = next.quote;
-    if (animate) {
-      quote.dispatchEvent(new CustomEvent('gul:decrypt', { bubbles: true, detail: quote }));
-    }
-    author.textContent = next.author;
-    authorWrap.hidden = !next.author;
-    if (animate && next.author) {
-      author.dataset.decryptPaused = 'true';
-      document.dispatchEvent(new CustomEvent('gul:decrypt', { detail: author }));
-    } else {
-      author.removeAttribute('data-decrypt-paused');
-    }
-
-    // achievement
-    if (!achievement_unlocked && fortunasIndexes.size === repeatedIndexes.size) {
-      document.dispatchEvent(
-        new CustomEvent('gul:achievement:show', { detail: 'fortunas-completadas' }),
-      );
-      achievement_unlocked = true;
-    }
-  }
-
-  // as the build part will always provide the same "fallback" fortuna, we
-  // re-generate a new random fortuna client-side
-  randomFortuna(false);
-
-  refresh?.addEventListener('click', randomFortuna);
 </script>
