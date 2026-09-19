@@ -28,7 +28,10 @@
     let map: L.Map | undefined;
     const observer = new IntersectionObserver((entries) => {
       if (!entries[0].isIntersecting || map) return;
-      map = L.map(el, { scrollWheelZoom: false }).setView(OFFICE, 17);
+      // Sin dragging en móvil: un mapa a ancho completo que captura el
+      // arrastre vertical atrapa el scroll de la página. L.Browser.mobile es
+      // la propia detección de Leaflet, no hace falta un matchMedia aparte.
+      map = L.map(el, { scrollWheelZoom: false, dragging: !L.Browser.mobile }).setView(OFFICE, 17);
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap',
         maxZoom: 19,
