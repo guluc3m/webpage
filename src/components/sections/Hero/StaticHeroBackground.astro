@@ -10,67 +10,30 @@ import { computeTuxBitmap } from '@lib/tuxBitmap.ts';
 import { sampleTuxMask } from '@lib/tux.ts';
 import tuxSvg from '/tux.svg?raw';
 
-// Keep the build-time coordinate system close to the desktop hero's 16:10
-// aspect ratio. The SVG is responsive, so this avoids visibly wide cells and
-// a horizontally stretched Tux at the viewport sizes this layout targets.
+// Una sola rejilla para todo el escritorio, en 16:10. Antes había tres (16:9,
+// 16:10, 4:3) porque el SVG se estiraba con preserveAspectRatio="none" y cada
+// relación de aspecto necesitaba la suya para no deformar las celdas: sumaban
+// 167KB de los 312KB del HTML y llegaban íntegras a cada móvil, que no pinta
+// ninguna. Con "xMaxYMax meet" la escala es uniforme (celdas cuadradas en
+// cualquier viewport), Tux queda entero y anclado abajo a la derecha, y el
+// hueco sobrante lo cubre el degradado de fondo del CSS — que es justo lo que
+// hace también el canvas, así que fallback y versión con JS coinciden.
 const CELL = 10;
 const GAP = 2;
+const COLS = 128;
+const ROWS = 80;
+const TUX_HEIGHT_FRACTION = 0.86;
+const TUX_X_FRACTION = 0.9;
 
 const tuxBitmap = await computeTuxBitmap(Buffer.from(tuxSvg), 80, 80);
+const tuxMask = sampleTuxMask(tuxBitmap, COLS, ROWS, TUX_HEIGHT_FRACTION, TUX_X_FRACTION);
 
-const variants = [
-  {
-    name: 'wide',
-    className: 'hero-static-background--wide',
-    cols: 160,
-    rows: 90,
-    showTux: true,
-    tuxHeightFraction: 0.86,
-  }, // 16:9
-  {
-    name: 'standard',
-    className: 'hero-static-background--standard',
-    cols: 128,
-    rows: 80,
-    showTux: true,
-    tuxHeightFraction: 0.86,
-  }, // 16:10
-  {
-    name: 'compact',
-    className: 'hero-static-background--compact',
-    cols: 120,
-    rows: 90,
-    showTux: true,
-    tuxHeightFraction: 0.86,
-  }, // 4:3
-  {
-    name: 'mobile',
-    className: 'hero-static-background--mobile',
-    cols: 90,
-    rows: 195,
-    showTux: false,
-    tuxHeightFraction: 0,
-  }, // 9:19.5
-].map((variant) => {
-  const tuxMask = sampleTuxMask(
-    tuxBitmap,
-    variant.cols,
-    variant.rows,
-    variant.tuxHeightFraction,
-    0.9,
-  );
-  const cells = Array.from({ length: variant.cols * variant.rows }, (_, index) => {
-    const x = index % variant.cols;
-    const y = Math.floor(index / variant.cols);
-    return {
-      x,
-      y,
-      tux: variant.showTux && tuxMask[index] === 1,
-    };
-  }).filter(({ tux }) => tux);
-
-  return { ...variant, cells };
-});
+// Sólo las celdas encendidas: el resto del fondo lo pone el CSS.
+const cells = Array.from({ length: COLS * ROWS }, (_, index) => ({
+  x: index % COLS,
+  y: Math.floor(index / COLS),
+  tux: tuxMask[index] === 1,
+})).filter(({ tux }) => tux);
 ---
 
 {/* Run before the large inline SVGs are parsed, so JS-enabled browsers never
@@ -79,41 +42,33 @@ const variants = [
   document.documentElement.classList.add('js');
 </script>
 
-{variants.map(({ className, cols, rows, cells }) => (
-  <svg
-    aria-hidden="true"
-    class:list={[
-      'hero-static-background pointer-events-none absolute inset-0 h-full w-full',
-      className,
-    ]}
-    viewBox={`0 0 ${cols * CELL} ${rows * CELL}`}
-    preserveAspectRatio="none"
-  >
-    <rect width="100%" height="100%" fill="transparent" />
-    {cells.map(({ x, y }) => (
-      <rect
-        x={x * CELL}
-        y={y * CELL}
-        width={CELL - GAP}
-        height={CELL - GAP}
-        fill="#ece7d8"
-      />
-    ))}
-  </svg>
-))}
+<svg
+  aria-hidden="true"
+  class="hero-static-background hero-static-background--desktop pointer-events-none absolute inset-0 h-full w-full"
+  viewBox={`0 0 ${COLS * CELL} ${ROWS * CELL}`}
+  preserveAspectRatio="xMaxYMax meet"
+>
+  {cells.map(({ x, y }) => (
+    <rect x={x * CELL} y={y * CELL} width={CELL - GAP} height={CELL - GAP} fill="#ece7d8" />
+  ))}
+</svg>
+
+{/* En móvil no hay Tux (taparía el texto), así que la variante se queda en el
+    color de fondo: un div, sin SVG que descargar. */}
+<div
+  aria-hidden="true"
+  class="hero-static-background hero-static-background--mobile pointer-events-none absolute inset-0"
+></div>
 
 <style>
   html.js .hero-static-background {
     display: none !important;
   }
 
-  .hero-static-background--wide,
-  .hero-static-background--standard,
-  .hero-static-background--compact {
-    display: none;
+  .hero-static-background--desktop {
+    display: block;
     background:
-      linear-gradient(135deg, rgba(141, 140, 156, 0.1) 0%, rgb(0 117 176 / 0.05) 100%),
-      #050504;
+      linear-gradient(135deg, rgba(141, 140, 156, 0.1) 0%, rgb(0 117 176 / 0.05) 100%), #050504;
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
@@ -121,37 +76,13 @@ const variants = [
   .hero-static-background--mobile {
     display: none;
     background: #0a0a09;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
   }
 
-  @media (min-aspect-ratio: 17 / 10) {
-    .hero-static-background--standard,
-    .hero-static-background--compact,
-    .hero-static-background--mobile {
-      display: none;
-    }
-
-    .hero-static-background--wide {
-      display: block;
-    }
-  }
-
-  @media (max-aspect-ratio: 3 / 2) and (min-aspect-ratio: 1 / 1) {
-    .hero-static-background--standard {
-      display: none;
-    }
-
-    .hero-static-background--compact {
-      display: block;
-    }
-  }
-
-  /* Match the canvas fallback: Tux is intentionally desktop/tablet-only so
-     text retains contrast on every phone orientation. */
+  /* Misma condición que NO_TUX en GameOfLife.astro: Tux es sólo de escritorio
+     y tablet, para que el texto conserve contraste en cualquier orientación de
+     teléfono. Si se cambia aquí, cambiarla también allí. */
   @media (max-width: 29.999rem), (max-aspect-ratio: 3 / 4) {
-    .hero-static-background--standard,
-    .hero-static-background--compact {
+    .hero-static-background--desktop {
       display: none;
     }
 

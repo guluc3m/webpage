@@ -17,7 +17,7 @@ const { tabs } = Astro.props;
 ---
 
 <div data-gul-tabs class="rounded-md border border-gul-line p-6">
-  <div role="tablist" class="flex gap-1 border-b border-gul-line">
+  <div role="tablist" class="flex flex-wrap gap-1 border-b border-gul-line">
     {tabs.map((tab, i) => (
       <button
         type="button"

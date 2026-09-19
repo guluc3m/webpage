@@ -35,6 +35,11 @@ import GulCommitsGrid from '@components/common/gul-CommitsGrid.astro';
 import GulAchievement from '@components/common/gul-Achievement.astro';
 import PixelDissolve from '@components/common/PixelDissolve.astro';
 
+// Import desde src/assets: gul-Gallery espera ImageMetadata, no una ruta.
+import teclados from '@assets/real/teclados.jpeg';
+import teclados2 from '@assets/real/teclados2.jpeg';
+import feria from '@assets/real/feria.jpg';
+
 // Decided (self-hosted via @fontsource-variable, tokens in global.css @theme).
 // Read straight from the real classes — no separate demo styling to drift out
 // of sync with the actual site.
@@ -67,12 +72,11 @@ const spacingScale = [
 ];
 
 // sm/md decididos y ya en @theme (global.css) — sm ya no es el 640px por
-// defecto de Tailwind, se redefinió a 480px. lg/xl siguen en el default,
-// sin caso de uso.
+// defecto de Tailwind, se redefinió a 480px. lg/xl siguen en el default.
 const breakpoints = [
-  { prefix: 'sm', minWidth: '480px', note: 'decidido — Hero, Proyectos, footer' },
-  { prefix: 'md', minWidth: '768px', note: 'decidido — sin aplicar todavía a un componente real' },
-  { prefix: 'lg', minWidth: '1024px', note: 'default de Tailwind, sin uso' },
+  { prefix: 'sm', minWidth: '480px', note: 'sigue siendo un móvil — sólo tipografía y espaciado' },
+  { prefix: 'md', minWidth: '768px', note: 'el salto de una columna a dos: nav, secciones, cards' },
+  { prefix: 'lg', minWidth: '1024px', note: 'default de Tailwind — filtros de /actividades' },
   { prefix: 'xl', minWidth: '1280px', note: 'default de Tailwind, sin uso' },
 ];
 
@@ -268,24 +272,33 @@ const faqItems = [
 
     <section class="space-y-4">
       <h2>Breakpoints</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Prefijo</th>
-            <th>min-width</th>
-            <th>Uso</th>
-          </tr>
-        </thead>
-        <tbody>
-          {breakpoints.map((b) => (
+      <GulCallout variant="warning" label="La regla">
+        <code>sm:</code> son 480px, que sigue siendo un teléfono: úsalo sólo para tipografía y
+        espaciado. Cualquier cosa que convierta una columna en dos va en <code>md:</code> (768px).
+        Saltárselo es lo que hacía que el layout de escritorio se activara en el ancho de un móvil.
+      </GulCallout>
+      {/* Las tablas son width:100%, sin contenedor de scroll: una tabla ancha
+          arrastra el scroll horizontal de toda la página en móvil. */}
+      <div class="overflow-x-auto">
+        <table>
+          <thead>
             <tr>
-              <td>{b.prefix}:</td>
-              <td>{b.minWidth}</td>
-              <td>{b.note}</td>
+              <th>Prefijo</th>
+              <th>min-width</th>
+              <th>Uso</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {breakpoints.map((b) => (
+              <tr>
+                <td>{b.prefix}:</td>
+                <td>{b.minWidth}</td>
+                <td>{b.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section class="space-y-4">
@@ -310,7 +323,9 @@ const faqItems = [
       </GulFrame>
     </section>
 
-    <h2 class="text-5xl font-semibold text-gul-muted uppercase">Componentes</h2>
+    {/* "COMPONENTES" es una sola palabra: a text-5xl no cabe por debajo de
+        480px y arrastra el scroll horizontal de la página entera. */}
+    <h2 class="text-3xl font-semibold text-gul-muted uppercase sm:text-5xl">Componentes</h2>
 
     <section class="space-y-4">
       <h2>Eyebrow</h2>
@@ -482,9 +497,9 @@ const faqItems = [
         <GulGallery
           id="demo-gallery"
           images={[
-            { src: '/real/teclados.jpeg', alt: 'Taller teclados' },
-            { src: '/real/teclados2.jpeg', alt: 'Taller teclados (2)' },
-            { src: '/real/feria.jpg', alt: 'Feria de Asociaciones' },
+            { src: teclados, alt: 'Taller teclados' },
+            { src: teclados2, alt: 'Taller teclados (2)' },
+            { src: feria, alt: 'Feria de Asociaciones' },
           ]}
         />
       </GulFrame>
@@ -537,24 +552,31 @@ const faqItems = [
 
     <section class="space-y-4">
       <h2>Tabla</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Token</th>
-            <th>Uso</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>gul-surface</td>
-            <td>Cards, nav pill, footer</td>
-          </tr>
-          <tr>
-            <td>gul-line</td>
-            <td>Bordes sobre superficies oscuras</td>
-          </tr>
-        </tbody>
-      </table>
+      <p class="text-xs text-gul-muted">
+        Siempre dentro de un <code>div.overflow-x-auto</code>: la regla base es{' '}
+        <code>width: 100%</code> sin contenedor de scroll, así que una tabla ancha arrastra el
+        scroll horizontal de toda la página en móvil.
+      </p>
+      <div class="overflow-x-auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Token</th>
+              <th>Uso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>gul-surface</td>
+              <td>Cards, nav pill, footer</td>
+            </tr>
+            <tr>
+              <td>gul-line</td>
+              <td>Bordes sobre superficies oscuras</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section class="space-y-4">

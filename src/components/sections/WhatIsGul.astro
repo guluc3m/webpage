@@ -5,24 +5,28 @@
 import GulFrame from '@components/common/gul-Frame.astro';
 import GulGallery from '@components/common/gul-Gallery.astro';
 import GulTerminal from '@components/common/gul-Terminal.astro';
+
+// Import, no ruta de public/: así pasan por <Image> y se sirven redimensionadas
+// (los originales son de 1280-2048px de ancho).
+import teclados from '@assets/real/teclados.jpeg';
+import charla from '@assets/real/charla.jpg';
+import install from '@assets/real/install.jpeg';
+import feria from '@assets/real/feria.jpg';
 ---
 
 <section
   id="que-es-el-gul"
-  class="mx-auto grid max-w-gul-content gap-8 py-8 md:grid-cols-2 md:items-center"
+  class="gul-gutter mx-auto grid max-w-gul-content gap-8 py-8 md:grid-cols-2 md:items-center"
 >
   <GulFrame class="p-2">
     <GulGallery
       id="que-es-el-gul-gallery"
       images={[
-        { src: '/real/teclados.jpeg', alt: 'Miembros del GUL soldando un teclado split' },
-        { src: '/real/charla.jpg', alt: 'Charla del GUL atestada de gente' },
+        { src: teclados, alt: 'Miembros del GUL soldando un teclado split' },
+        { src: charla, alt: 'Charla del GUL atestada de gente' },
+        { src: install, alt: 'Portátil instalando Linux con Ventoy y un fondo del GUL' },
         {
-          src: '/real/install.jpeg',
-          alt: 'Portátil instalando Linux con Ventoy y un fondo del GUL',
-        },
-        {
-          src: '/real/feria.jpg',
+          src: feria,
           alt: 'GUL en la Feria de Asociaciones. El presi con camiseta roja del GUL abrazando a un peluche de Tux',
         },
       ]}
