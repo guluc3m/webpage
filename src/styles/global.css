@@ -57,8 +57,12 @@
 
   /* Decided breakpoints: 480px (sm, overrides Tailwind's 640px default) and
      768px (md, same as Tailwind's default — kept explicit so it reads as a
-     decision, not an unexamined default). lg/xl stay at Tailwind's defaults,
-     unused so far. */
+     decision, not an unexamined default). lg/xl stay at Tailwind's defaults.
+
+     REGLA: `sm:` son 480px, que sigue siendo un teléfono — úsalo sólo para
+     tipografía y espaciado. Cualquier cosa que convierta una columna en dos
+     va en `md:`. Usar `sm:` para eso activa el layout de escritorio justo en
+     el ancho de un móvil. Ver /styleguide → Breakpoints. */
   --breakpoint-sm: 30rem; /* 480px */
   --breakpoint-md: 48rem; /* 768px */
 
@@ -332,7 +336,10 @@
       transform 0.2s ease,
       border-color 0.2s ease;
   }
-  details[open] summary::after {
+  /* `> summary`, no `summary` a secas: con <details> anidados (el burger del
+     nav) un selector descendiente le pone la flecha de "abierto" a todos los
+     submenús en cuanto se abre el de fuera. */
+  details[open] > summary::after {
     border-color: var(--color-gul-blue);
     transform: rotate(-135deg);
   }
