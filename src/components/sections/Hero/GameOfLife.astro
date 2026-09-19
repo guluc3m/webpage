@@ -67,6 +67,11 @@ const tuxBitmap = await computeTuxBitmap(Buffer.from(tuxSvg), 100, 80); // 100 =
   // chance (growing each generation) of showing as Tux instead of its plain cell — a
   // flicker that settles into the full silhouette. Skipped entirely under reduced motion.
   const TUX_REVEAL_STEPS = 8;
+  // Misma condición que la variante "mobile" de StaticHeroBackground, que ya
+  // se dibuja sin Tux: a 480px el ancho del Tux sale a ~69 columnas sobre una
+  // rejilla de 48, así que quedaría recortado y encima del texto. El Game of
+  // Life sigue corriendo debajo; lo único que se salta es el overlay.
+  const NO_TUX = '(max-width: 29.999rem), (max-aspect-ratio: 3 / 4)';
 
   const canvas = document.querySelector<HTMLCanvasElement>('[data-game-of-life]');
   const ctx = canvas?.getContext('2d');
@@ -94,7 +99,10 @@ const tuxBitmap = await computeTuxBitmap(Buffer.from(tuxSvg), 100, 80); // 100 =
       // Diagonal top-right → bottom-left; depends on canvas size, rebuilt on resize.
       aliveFill = ctx!.createLinearGradient(width, 0, 0, height);
       for (const [offset, color] of ALIVE_GRADIENT) aliveFill.addColorStop(offset, color);
-      tuxMask = sampleTuxMask(window.__tuxBitmap, cols, rows, TUX_HEIGHT_FRACTION, TUX_X_FRACTION);
+      // Se recalcula en cada reset(), así que girar el móvil ya lo reevalúa.
+      tuxMask = window.matchMedia(NO_TUX).matches
+        ? new Uint8Array(cols * rows)
+        : sampleTuxMask(window.__tuxBitmap, cols, rows, TUX_HEIGHT_FRACTION, TUX_X_FRACTION);
       revealStep = reduceMotion ? TUX_REVEAL_STEPS : 0;
       draw();
     }
@@ -166,12 +174,23 @@ const tuxBitmap = await computeTuxBitmap(Buffer.from(tuxSvg), 100, 80); // 100 =
     // cost) for no layout reason — devicePixelRatio changes on zoom but not on
     // a real resize, so use it to tell the two apart and skip rebuilding on zoom.
     let lastDPR = window.devicePixelRatio;
+    let lastWidth = window.innerWidth;
     window.addEventListener('resize', () => {
       const dpr = window.devicePixelRatio;
       if (dpr !== lastDPR) {
         lastDPR = dpr;
         return;
       }
+      // En móvil, mostrar/ocultar la barra del navegador dispara 'resize' con
+      // el mismo DPR: sin esta guarda la rejilla se reconstruye y se
+      // re-aleatoriza cada vez que el usuario cambia de dirección al hacer
+      // scroll. Un resize que sólo cambia el alto en un dispositivo sin ratón
+      // es siempre la barra; girar el móvil cambia el ancho y sí reconstruye.
+      // ponytail: heurística por puntero. Si algún día importa el alto exacto
+      // en táctil (split-screen), ajustar el backing store sin re-sembrar.
+      const widthChanged = window.innerWidth !== lastWidth;
+      lastWidth = window.innerWidth;
+      if (!widthChanged && !window.matchMedia('(hover: hover)').matches) return;
       reset();
     });
 
