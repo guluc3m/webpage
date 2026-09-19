@@ -3,15 +3,17 @@
  * WhereWeAre — "¿Dónde estamos?" section: the map plus the postal address.
  * Address copied verbatim from the 2021 site.
  */
+import { Image } from 'astro:assets';
 import Map from './Map.astro';
 import GulTerminal from '@components/common/gul-Terminal.astro';
 import GulFrame from '@components/common/gul-Frame.astro';
+import despacho from '@assets/real/despacho.jpg';
 ---
 
-<section id="donde-estamos" class="mx-auto max-w-gul-content py-8">
+<section id="donde-estamos" class="gul-gutter mx-auto max-w-gul-content py-8">
   <h2>¿Dónde estamos?</h2>
-  <div class="mt-4 grid gap-4 sm:grid-cols-10">
-    <div class="flex flex-col gap-4 sm:col-span-6">
+  <div class="mt-4 grid gap-4 md:grid-cols-10">
+    <div class="flex flex-col gap-4 md:col-span-6">
       <GulTerminal
         lines={[
           {
@@ -26,11 +28,17 @@ import GulFrame from '@components/common/gul-Frame.astro';
       />
 
       <GulFrame surface class="p-2">
-        <img src="/real/despacho.jpg" alt="Despacho del GUL" class="w-full rounded-md" />
+        <Image
+          src={despacho}
+          alt="Despacho del GUL"
+          widths={[400, 800]}
+          sizes="(min-width: 48rem) 40vw, 100vw"
+          class="w-full rounded-md"
+        />
       </GulFrame>
     </div>
 
-    <div class="overflow-hidden rounded-md border border-gul-line sm:col-span-4">
+    <div class="overflow-hidden rounded-md border border-gul-line md:col-span-4">
       <Map />
     </div>
   </div>
