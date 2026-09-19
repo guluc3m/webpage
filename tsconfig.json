@@ -9,6 +9,10 @@
     "plugins": [{ "name": "@astrojs/ts-plugin" }],
     "paths": {
       "@/*": ["./src/*"],
+      // src/assets, no public/: las imágenes que pasan por <Image> de Astro
+      // tienen que estar dentro de src para que las optimice (srcset, webp,
+      // width/height). En public/ se sirven tal cual.
+      "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@data/*": ["./src/data/*"],
       "@icons/*": ["./src/icons/*"],
