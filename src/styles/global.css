@@ -354,18 +354,25 @@
   details[open] > div {
     grid-template-rows: 1fr;
   }
-  details > div > p {
+  /* Reglas sobre el hijo del wrapper (el grid item), no sobre un tag concreto:
+     así el mecanismo sirve para cualquier contenido, no solo el <p> del FAQ.
+     overflow:hidden anula su min-height automática, que si no impide que la
+     fila 0fr colapse; el fade tapa además el padding propio del item, que
+     sigue ocupando alto aunque la fila mida 0. */
+  details > div > * {
     overflow: hidden;
-    padding-bottom: 1.25rem;
     transform: translateY(-0.5rem);
     opacity: 0;
     transition:
       transform 0.2s ease,
       opacity 0.2s ease;
   }
-  details[open] > div > p {
+  details[open] > div > * {
     transform: translateY(0);
     opacity: 1;
+  }
+  details > div > p {
+    padding-bottom: 1.25rem;
   }
 
   /* Modal — no real usage yet, formalized ahead of one. */
