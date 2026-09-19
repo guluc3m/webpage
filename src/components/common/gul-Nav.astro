@@ -15,7 +15,11 @@
  * until JS clones it into the shared viewport; this is the same one-viewport
  * pattern Radix's NavigationMenu uses under the hood.
  *
- * TODO(design): mobile menu (burger), active-link highlight.
+ * Todo esto es sólo md+ (768px): la fila no cabe por debajo de ~674px. En
+ * móvil se sustituye por un burger <details>, que abre y cierra sin JS y
+ * hereda de @layer base la animación de altura y la flecha de los submenús.
+ *
+ * TODO(design): active-link highlight.
  */
 interface NavChild {
   label: string;
@@ -34,9 +38,11 @@ interface NavLink {
 
 interface Props {
   links: NavLink[];
+  /** Utilidades de colocación para el <nav> (p. ej. el `order-*` del header). */
+  class?: string;
 }
 
-const { links } = Astro.props;
+const { links, class: className } = Astro.props;
 
 // External links get target/rel; in-page anchors and other site paths don't.
 const isExternal = (href: string) => href.startsWith('http');
@@ -68,8 +74,63 @@ const linkClass =
   'relative z-10 flex h-9 items-center rounded-md px-4 text-sm font-medium text-gul-muted outline-none transition-colors hover:text-gul-ink focus-visible:text-gul-ink';
 ---
 
-<nav aria-label="Principal" data-gul-nav class="relative">
-  <ul class="relative flex flex-wrap items-center gap-1">
+<nav aria-label="Principal" data-gul-nav class:list={['relative', className]}>
+  {/* Burger (< md). <details> nativo: abre sin JS y sigue funcionando con el
+      script desactivado. Los submenús son <details> anidados, que ya traen su
+      flecha y su transición de altura de @layer base — aquí sólo se anula lo
+      que sobra para un burger (borde inferior y la flecha del propio ≡). */}
+  <details class="gul-burger relative border-b-0 md:hidden">
+    <summary
+      class="flex size-9 cursor-pointer items-center justify-center rounded-md px-0 py-0 text-gul-muted hover:text-gul-ink"
+      aria-label="Menú"
+    >
+      <svg viewBox="0 0 24 24" class="size-5 stroke-current stroke-2" fill="none">
+        <path d="M4 7h16M4 12h16M4 17h16" />
+      </svg>
+    </summary>
+    {/* El ancho se recorta al viewport porque el panel se ancla a la izquierda
+        del burger, que en móvil es el primer elemento del header. */}
+    <div class="absolute top-full left-0 z-20 mt-2 w-[min(20rem,calc(100vw-2rem))]">
+      <ul class="rounded-md border border-gul-line bg-gul-surface/95 p-2 backdrop-blur-md">
+        {links.map((link) => (
+          <li>
+            {link.children ? (
+              <details class="border-b-0">
+                <summary class="rounded-md px-3 py-2 text-sm font-medium text-gul-muted">
+                  {link.label}
+                </summary>
+                <div>
+                  <ul class="space-y-1 pb-2 pl-3">
+                    {link.children.map((child) => (
+                      <li>
+                        <a
+                          href={child.href}
+                          class="block rounded-md px-3 py-2 text-sm text-gul-muted hover:bg-gul-ink/10 hover:text-gul-ink"
+                          {...(isExternal(child.href) ? { target: '_blank', rel: 'noopener' } : {})}
+                        >
+                          {child.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </details>
+            ) : (
+              <a
+                href={link.href}
+                class="block rounded-md px-3 py-2 text-sm font-medium text-gul-muted hover:bg-gul-ink/10 hover:text-gul-ink"
+                {...(isExternal(link.href) ? { target: '_blank', rel: 'noopener' } : {})}
+              >
+                {link.label}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </details>
+
+  <ul class="relative hidden flex-wrap items-center gap-1 md:flex">
     <!-- Sliding highlight pill: JS moves this behind whichever item is hovered/focused. -->
     <span
       data-gul-highlight
@@ -116,7 +177,7 @@ const linkClass =
        what reads as "fluid" rather than things popping in and out. -->
   <div
     data-gul-viewport
-    class="pointer-events-none absolute top-full left-0 z-20 w-80 origin-top overflow-hidden rounded-md border border-gul-line bg-gul-surface/90 opacity-0 backdrop-blur-md transition-[left,height,opacity] duration-200 ease-out"
+    class="pointer-events-none absolute top-full left-0 z-20 hidden w-80 origin-top overflow-hidden rounded-md border border-gul-line bg-gul-surface/90 opacity-0 backdrop-blur-md transition-[left,height,opacity] duration-200 ease-out md:block"
     style="height: 0px"
   >
     <div class="relative">
@@ -181,6 +242,13 @@ const linkClass =
       animation: none;
     }
   }
+
+  /* La flecha que @layer base pone en todo <summary> sobra en el burger: su
+     indicador es el propio icono ≡. Los <details> de dentro del panel sí la
+     conservan. */
+  .gul-burger > summary::after {
+    content: none;
+  }
 </style>
 
 <script>
@@ -211,7 +279,9 @@ const linkClass =
   }
 
   document.querySelectorAll<HTMLElement>('[data-gul-nav]').forEach((nav) => {
-    const list = nav.querySelector<HTMLElement>('ul');
+    // `:scope >` y no `ul` a secas: el burger también tiene listas, y están
+    // antes en el DOM — el highlight deslizante es sólo de la fila de md+.
+    const list = nav.querySelector<HTMLElement>(':scope > ul');
     const highlight = nav.querySelector<HTMLElement>('[data-gul-highlight]');
     const viewport = nav.querySelector<HTMLElement>('[data-gul-viewport]');
     const viewportContent = nav.querySelector<HTMLElement>('[data-gul-viewport-content]');
