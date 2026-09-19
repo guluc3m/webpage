@@ -1,60 +1,37 @@
 ---
 /**
- * StaticHeroBackground — build-time fallback for the hero canvases.
+ * StaticHeroBackground — no-JS fallback for the hero canvases.
  *
- * JavaScript paints the live shader and Game of Life layers over this SVG. If
- * JavaScript is unavailable, the server-rendered HTML keeps only the base
- * background and a Tux silhouette on non-mobile layouts.
+ * JavaScript paints the live layers over this. If JavaScript is unavailable,
+ * what stays is the base background plus a Tux silhouette on non-mobile
+ * layouts, loaded as a CSS background from /hero-fallback.svg
+ * (src/pages/hero-fallback.svg.ts).
+ *
+ * The artwork is a background image, not inline markup, precisely so it costs
+ * nothing: browsers don't request backgrounds of `display: none` elements, and
+ * both branches below are hidden whenever the artwork is not needed — with JS
+ * (html.js) and on phones (media query).
  */
-import { computeTuxBitmap } from '@lib/tuxBitmap.ts';
-import { sampleTuxMask } from '@lib/tux.ts';
-import tuxSvg from '/tux.svg?raw';
-
-// Una sola rejilla para todo el escritorio, en 16:10. Antes había tres (16:9,
-// 16:10, 4:3) porque el SVG se estiraba con preserveAspectRatio="none" y cada
-// relación de aspecto necesitaba la suya para no deformar las celdas: sumaban
-// 167KB de los 312KB del HTML y llegaban íntegras a cada móvil, que no pinta
-// ninguna. Con "xMaxYMax meet" la escala es uniforme (celdas cuadradas en
-// cualquier viewport), Tux queda entero y anclado abajo a la derecha, y el
-// hueco sobrante lo cubre el degradado de fondo del CSS — que es justo lo que
-// hace también el canvas, así que fallback y versión con JS coinciden.
-const CELL = 10;
-const GAP = 2;
-const COLS = 128;
-const ROWS = 80;
-const TUX_HEIGHT_FRACTION = 0.86;
-const TUX_X_FRACTION = 0.9;
-
-const tuxBitmap = await computeTuxBitmap(Buffer.from(tuxSvg), 80, 80);
-const tuxMask = sampleTuxMask(tuxBitmap, COLS, ROWS, TUX_HEIGHT_FRACTION, TUX_X_FRACTION);
-
-// Sólo las celdas encendidas: el resto del fondo lo pone el CSS.
-const cells = Array.from({ length: COLS * ROWS }, (_, index) => ({
-  x: index % COLS,
-  y: Math.floor(index / COLS),
-  tux: tuxMask[index] === 1,
-})).filter(({ tux }) => tux);
 ---
 
-{/* Run before the large inline SVGs are parsed, so JS-enabled browsers never
-    get a chance to paint the no-JS artwork. */}
+{/* Runs before the hero renders, so JS-enabled browsers never paint the no-JS
+    artwork. */}
 <script is:inline>
   document.documentElement.classList.add('js');
 </script>
 
-<svg
+{/* The URL lives in a style attribute, not in the <style> block below: the
+    file is a page route (src/pages/hero-fallback.svg.ts), so it doesn't exist
+    on disk while the bundler resolves stylesheets and would be reported as a
+    broken reference on every build. */}
+<div
   aria-hidden="true"
-  class="hero-static-background hero-static-background--desktop pointer-events-none absolute inset-0 h-full w-full"
-  viewBox={`0 0 ${COLS * CELL} ${ROWS * CELL}`}
-  preserveAspectRatio="xMaxYMax meet"
->
-  {cells.map(({ x, y }) => (
-    <rect x={x * CELL} y={y * CELL} width={CELL - GAP} height={CELL - GAP} fill="#ece7d8" />
-  ))}
-</svg>
+  style="--hero-fallback: url('/hero-fallback.svg')"
+  class="hero-static-background hero-static-background--desktop pointer-events-none absolute inset-0"
+></div>
 
-{/* En móvil no hay Tux (taparía el texto), así que la variante se queda en el
-    color de fondo: un div, sin SVG que descargar. */}
+{/* No Tux on phones (it would sit on top of the text), so this branch is just
+    the background colour. */}
 <div
   aria-hidden="true"
   class="hero-static-background hero-static-background--mobile pointer-events-none absolute inset-0"
@@ -67,10 +44,13 @@ const cells = Array.from({ length: COLS * ROWS }, (_, index) => ({
 
   .hero-static-background--desktop {
     display: block;
+    /* background-position/size stand in for the SVG's old
+       preserveAspectRatio="xMaxYMax meet": square cells, Tux whole and
+       anchored bottom-right, gradient behind the leftover space. */
     background:
-      linear-gradient(135deg, rgba(141, 140, 156, 0.1) 0%, rgb(0 117 176 / 0.05) 100%), #050504;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+      var(--hero-fallback) right bottom / contain no-repeat,
+      linear-gradient(135deg, rgba(141, 140, 156, 0.1) 0%, rgb(0 117 176 / 0.05) 100%),
+      #050504;
   }
 
   .hero-static-background--mobile {
@@ -78,9 +58,9 @@ const cells = Array.from({ length: COLS * ROWS }, (_, index) => ({
     background: #0a0a09;
   }
 
-  /* Misma condición que NO_TUX en GameOfLife.astro: Tux es sólo de escritorio
-     y tablet, para que el texto conserve contraste en cualquier orientación de
-     teléfono. Si se cambia aquí, cambiarla también allí. */
+  /* Same condition as NO_TUX in GameOfLife.astro: Tux is desktop and tablet
+     only, so the text keeps its contrast in any phone orientation. If it
+     changes here, change it there too. */
   @media (max-width: 29.999rem), (max-aspect-ratio: 3 / 4) {
     .hero-static-background--desktop {
       display: none;
