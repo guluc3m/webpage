@@ -59,7 +59,12 @@ const cells = Array.from({ length: GRID_WIDTH * GRID_HEIGHT }, (_, index) => {
 });
 ---
 
-<GulFrame surface class="w-full overflow-x-auto p-3">
+{/* `w-0 min-w-full` y no `w-full`: la rejilla mide 347px fijos (celdas de 11px)
+    y overflow-x-auto por sí solo no impide que ese ancho se propague hacia
+    arriba como min-content — a 360px empujaba toda la sección de Proyectos
+    fuera del viewport. Con el ancho declarado a 0, la caja no aporta nada al
+    tamaño intrínseco del padre y min-w-full la estira hasta el hueco real. */}
+<GulFrame surface class="w-0 min-w-full overflow-x-auto p-3">
   <div
     class="grid w-max gap-[3px]"
     style={{
