@@ -3,10 +3,12 @@
  * Hero — the first screen. Conway's Game of Life runs as the background
  * (GameOfLife is positioned absolutely inside this section's relative box).
  *
- * Shows a random "fortuna" (GUL in-joke) under the slogan. The build renders
- * one so the section is never empty; the script below fetches the rest from
- * /fortunas.json and re-rolls it, so the quote differs per visit, and "Otra
- * fortuna" keeps handing out new ones.
+ * Shows a random "fortuna" (GUL in-joke) under the slogan. The build picks one
+ * so the section is never empty and no-JS visitors read it; with JS the client
+ * re-rolls it from /fortunas.json so the quote differs per visit, and "Otra
+ * fortuna" keeps handing out new ones, without repeats until every one has been
+ * shown. The quote block stays hidden until that first re-roll lands, so the
+ * build's pick is never painted and the swap is invisible (no pop-in).
  *
  * That list used to be inlined here through define:vars: 50KB of JSON in the
  * HTML of every visit, a quarter of the page, unminifiable and re-downloaded
@@ -51,7 +53,7 @@ const fortuna = formattedFortunas[fortunaIndex];
     <h1 class="text-4xl tracking-tight sm:text-5xl md:text-6xl">
       Nos gusta <em class="italic">jugar</em> con la tecnología
     </h1>
-    <figure class="mt-6">
+    <figure class="mt-6" data-fortuna-figure data-fortuna-pending>
       {/* whitespace-pre-line: the formatter may put a *stage direction* on its own line */}
       <GulDecryptText
         as="blockquote"
@@ -88,6 +90,7 @@ const fortuna = formattedFortunas[fortunaIndex];
   const author = document.querySelector<HTMLElement>('[data-fortuna-author]');
   const authorWrap = document.querySelector<HTMLElement>('[data-fortuna-author-wrap]');
   const refresh = document.querySelector<HTMLElement>('[data-refresh-fortuna]');
+  const figure = document.querySelector<HTMLElement>('[data-fortuna-figure]');
 
   if (quote && author && authorWrap && refresh) {
     // Fetched once, and kept as the promise rather than the array so two fast
@@ -102,10 +105,17 @@ const fortuna = formattedFortunas[fortunaIndex];
           return [];
         }));
 
+    // Kick the request off immediately: the figure stays hidden until the
+    // re-roll below is applied, so the sooner it lands the sooner it shows.
+    void getFortunas();
+
     // Indexes, not objects: they have to match the positions in /fortunas.json,
     // which is the same array the build picked the initial fortuna from.
     let currentIndex = Number(quote.dataset.fortunaIndex);
-    const seen = new Set([currentIndex]);
+    // Starts empty: the build's fortuna is replaced before the figure is
+    // revealed, so counting it as read would unlock the achievement one fortuna
+    // early. Only re-rolls that actually get shown count.
+    const seen = new Set<number>();
     let achievementUnlocked = false;
 
     function decryptAuthor() {
@@ -127,7 +137,11 @@ const fortuna = formattedFortunas[fortunaIndex];
         seen.clear();
         seen.add(currentIndex);
       }
-      const available = all.map((_, index) => index).filter((index) => !seen.has(index));
+      // Exclude what is on screen so a click always changes the quote; on the
+      // first call that is the build's fortuna, which is never revealed.
+      const available = all
+        .map((_, index) => index)
+        .filter((index) => index !== currentIndex && !seen.has(index));
       if (!available.length) return; // empty list, or a single fortuna
 
       currentIndex = available[Math.floor(Math.random() * available.length)];
@@ -155,12 +169,20 @@ const fortuna = formattedFortunas[fortunaIndex];
       }
     }
 
-    // The build's fortuna keeps the hero from ever being empty (and is what
-    // no-JS visitors read); the list lands right after and re-rolls it, so the
-    // quote changes per visit and not per deploy. No animation here: the swap
-    // should pass unnoticed, the decrypt effect is for the button.
-    nextFortuna(false);
+    // Re-roll the build's fortuna per visit, then reveal. The figure is hidden
+    // by `html.js` until here, so this swap is never painted.
+    void nextFortuna(false).finally(() => figure?.removeAttribute('data-fortuna-pending'));
 
     refresh.addEventListener('click', () => nextFortuna());
   }
 </script>
+
+<style>
+  /* `html.js` is set by StaticHeroBackground before this block renders. Hiding
+     the figure until the client re-rolls keeps the build's fortuna from being
+     painted and then swapped. Without JS the class is absent, so the build's
+     fortuna is what visitors read. */
+  html.js [data-fortuna-figure][data-fortuna-pending] {
+    visibility: hidden;
+  }
+</style>
