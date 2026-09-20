@@ -126,3 +126,23 @@
     su origen en 2018 como una gamejam.
   cartel: https://pbs.twimg.com/media/G04vx8mWYAA9MIr?format=jpg&name=medium
   tags: [JAM]
+
+- title: HackSpain 2026
+  date: 2026/09/20
+  description: >-
+    Corría el otoño de 2026 cuando los chicos super sexis del GUL, hartos de ver a los larp-masters y sus secuaces token-maxers saqueando las GPUs a cambio de prompts kilométricos, decidieron plantar cara. Durante un largo y doloroso fin de semana se enfrentaron a la secta de los malvados 'AI-experts' de LinkedIn, que había impuesto el maleficio del token maxing sobre la Universidad Politécnica de Madrid.
+  # Esto no es serio, pero seguramente les haga gracia y lo dejen
+  speakers:
+    - name: Albert Giurgiu
+      link: https://github.com/fedes1to
+    - name: Henry Díaz
+      link: https://github.com/h3nry-d1az
+    - name: Luisda
+      link: https://github.com/rajayonin
+    - name: Jorge Saghin
+      link: https://github.com/z4na14
+    - name: Héctor Molina (Les dió una pizza como voluntario y ya)
+      link: https://github.com/Toriomg
+  photo: /actividades/hackspain.png
+  tags: [Hackathon]
+  repository: https://github.com/guluc3m/hackspain26
