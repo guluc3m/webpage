@@ -15,12 +15,16 @@ interface Props {
   variant?: 'primary' | 'secondary';
   /** Overrides the variant's default $/> glyph — e.g. ↻ for a refresh action. */
   icon?: string;
+  /** Keyboard hint rendered as a <kbd> in place of the variant glyph, before
+      the label, e.g. "R". Decorative: pair it with a title/aria-label on the
+      button for the full sentence. On hover/focus the keycap fills gul-blue. */
+  hint?: string;
   href?: string;
   class?: string;
   [attr: string]: unknown;
 }
 
-const { label, variant = 'primary', icon, href, class: className, ...rest } = Astro.props;
+const { label, variant = 'primary', icon, hint, href, class: className, ...rest } = Astro.props;
 
 // gul-blue is the decided CTA colour (issue #5 accent); gul-ink text keeps
 // contrast around 4:1 on it — borderline for small text, worth a proper
@@ -70,9 +74,18 @@ const classes = [
   <a href={href} class:list={classes} data-gul-btn {...rest}>
     <PixelDissolve variant="corner" />
     <span class="relative z-10 inline-flex items-center gap-1" data-gul-btn-content>
-      <span aria-hidden="true" class:list={[glyphClass]}>
-        {glyph}
-      </span>
+      {hint ? (
+        <kbd
+          aria-hidden="true"
+          class="mr-1 font-sans text-[0.65rem] leading-none transition-colors duration-100"
+        >
+          {hint}
+        </kbd>
+      ) : (
+        <span aria-hidden="true" class:list={[glyphClass]}>
+          {glyph}
+        </span>
+      )}
       <GulDecryptText text={label} />
     </span>
   </a>
@@ -80,9 +93,18 @@ const classes = [
   <button type="button" class:list={classes} data-gul-btn {...rest}>
     <PixelDissolve variant="corner" />
     <span class="relative z-10 inline-flex items-center gap-1" data-gul-btn-content>
-      <span aria-hidden="true" class:list={[glyphClass]}>
-        {glyph}
-      </span>
+      {hint ? (
+        <kbd
+          aria-hidden="true"
+          class="mr-1 font-sans text-[0.65rem] leading-none transition-colors duration-100"
+        >
+          {hint}
+        </kbd>
+      ) : (
+        <span aria-hidden="true" class:list={[glyphClass]}>
+          {glyph}
+        </span>
+      )}
       <GulDecryptText text={label} />
     </span>
   </button>
@@ -93,6 +115,15 @@ const classes = [
   [data-gul-btn]:focus-visible [data-gul-btn-content]::after {
     opacity: 1;
     animation: gul-caret-blink 1s steps(2, jump-none) infinite;
+  }
+  /* On hover/focus the hint's keycap fills with the gul-blue accent and the
+     letter stays ink — the primary button's own white-on-blue pairing, so the
+     hint stays legible once the button inverts to its cream fill. */
+  [data-gul-btn]:hover kbd,
+  [data-gul-btn]:focus-visible kbd {
+    background-color: var(--color-gul-blue);
+    border-color: var(--color-gul-blue);
+    color: var(--color-gul-ink);
   }
   @keyframes gul-caret-blink {
     50% {

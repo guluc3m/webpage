@@ -70,7 +70,8 @@ const fortuna = formattedFortunas[fortunaIndex];
       <GulButton
         variant="secondary"
         label="Otra fortuna"
-        icon="↻"
+        hint="R"
+        title="Pulsa R en cualquier momento para otra fortuna"
         class="mt-4"
         data-refresh-fortuna
       />
@@ -174,6 +175,29 @@ const fortuna = formattedFortunas[fortunaIndex];
     void nextFortuna(false).finally(() => figure?.removeAttribute('data-fortuna-pending'));
 
     refresh.addEventListener('click', () => nextFortuna());
+
+    // "r" re-rolls from anywhere, except while typing (inputs, textareas,
+    // contenteditable) or when a modifier makes it someone else's shortcut.
+    // Rate-limited so holding the key down doesn't burn through every fortuna.
+    const REROLL_COOLDOWN_MS = 200;
+    let lastReroll = 0;
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'r' && event.key !== 'R') return;
+      if (event.metaKey || event.ctrlKey || event.altKey) return;
+      const target = event.target as HTMLElement | null;
+      if (
+        target?.isContentEditable ||
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target instanceof HTMLSelectElement
+      ) {
+        return;
+      }
+      const now = performance.now();
+      if (now - lastReroll < REROLL_COOLDOWN_MS) return;
+      lastReroll = now;
+      void nextFortuna();
+    });
   }
 </script>
 
