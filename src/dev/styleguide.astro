@@ -2,7 +2,8 @@
 /**
  * /styleguide — working page to lock down HTML-element-level standards (h1–h6,
  * paragraphs, lists, cards, buttons) before they're copied into other GUL repos.
- * Not part of the public site; drop this file once the decisions in CLAUDE.md's
+ * Dev-only: served by `pnpm dev`, never built (route injected in
+ * astro.config.mjs). Drop this file once the decisions in CLAUDE.md's
  * "Still open" section are settled and baked into the real components.
  *
  * Composite patterns (button, badge, card, callout, tabs, modal, eyebrow, list,
@@ -76,7 +77,11 @@ const spacingScale = [
 const breakpoints = [
   { prefix: 'sm', minWidth: '480px', note: 'sigue siendo un móvil — sólo tipografía y espaciado' },
   { prefix: 'md', minWidth: '768px', note: 'el salto de una columna a dos: nav, secciones, cards' },
-  { prefix: 'lg', minWidth: '1024px', note: 'default de Tailwind — filtros y ancho extra de /actividades' },
+  {
+    prefix: 'lg',
+    minWidth: '1024px',
+    note: 'default de Tailwind — filtros y ancho extra de /actividades',
+  },
   { prefix: 'xl', minWidth: '1280px', note: 'default de Tailwind, sin uso' },
 ];
 

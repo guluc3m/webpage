@@ -14,7 +14,21 @@ export default defineConfig({
   site: 'https://gul.uc3m.es',
   // Emits sitemap-index.xml (+ sitemap-0.xml) into dist/ at build time. Needs
   // `site` set above. robots.txt points crawlers at it.
-  integrations: [sitemap()],
+  integrations: [
+    sitemap(),
+    // /styleguide only exists under `astro dev`: it lives outside src/pages/
+    // so the production build never emits it (nor lists it in the sitemap).
+    {
+      name: 'dev-styleguide',
+      hooks: {
+        'astro:config:setup': ({ command, injectRoute }) => {
+          if (command === 'dev') {
+            injectRoute({ pattern: '/styleguide', entrypoint: './src/dev/styleguide.astro' });
+          }
+        },
+      },
+    },
+  ],
   // No SSR. Pages are prerendered at build time. This is the default; pinned
   // explicitly so a stray `getStaticPaths` / adapter change can't flip it.
   output: 'static',
