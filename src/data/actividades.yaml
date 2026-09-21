@@ -1,13 +1,15 @@
 # Lista de actividades del GUL. Edita esta lista para añadir/quitar eventos.
 # - title: XXXVI Jornadas Técnicas
 #   date: 2027/02/00
+#   type: Charla # uno de: Charla, Taller, Hackathon, Install party, Game jam
 #   description: >-
 #     Son una serie de charlas y/o talleres relacionados con el Software Libre,
 #     Linux, la informatica, la ingenieria... ¡Jornadas Tecnicas!
-#   tags: [Jornadas Técnicas, Taller, Charla]
+#   tags: [Jornadas Técnicas]
 
 - title: Teclados
   date: 2026/05/01
+  type: Taller
   description: Nos juntamos unos cuantos para hacer unos teclados to' wapos
   photo: https://pbs.twimg.com/media/HHs3K92WAAAJ9_J?format=jpg&name=small
   tags: [Hardware]
@@ -15,6 +17,7 @@
 
 - title: Introducción al Autohospedaje de Servicios y Webs
   date: 2026/05/07
+  type: Charla
   cartel: https://pbs.twimg.com/media/HHn4rxuXMAM8RJ5?format=jpg&name=small
   description: >-
     ¿Que haces usando tu portatil del 2006 como pisapapeles? Métele Debian, y
@@ -23,12 +26,13 @@
   participants:
     - name: Jorge Saghin
       link: https://github.com/z4na14
-  tags: [Proxmox, Charla]
+  tags: [Proxmox]
   video: https://www.youtube.com/watch?v=xB3y_q-H6fE
   transparencias: https://ftp.z4na14.dev/semana_postgrado_self-hosting.pdf
 
 - title: 'Taller presencial: Introduccion a C'
   date: 2026/02/18
+  type: Taller
   description: >-
     ¿Qué es un Makefile?, ¿Por qué los punteros son tan complicados?, ¿¿Desde
     cuándo puedo usar funciones como argumentos?? Tranquilo, nosotros también
@@ -38,20 +42,21 @@
   participants:
     - name: Jorge Saghin
       link: https://github.com/z4na14
-  tags: [C, Taller]
+  tags: [C]
   cartel: https://pbs.twimg.com/media/HAjzAeHXEAAqVCa?format=jpg&name=4096x4096
 
 - title: Linux Install Party
   date: 2026/02/12
+  type: Install party
   description: >-
     ¿Cómo que necesitas cuenta para usar MS Paint en Windows 11? Te enseñamos
     nosotros a usar Gimp, y de paso te instalamos Linux. Pssst, también tenemos Excalidraw
     por si no te gusta Gimp, tú solo ven.
   cartel: https://pbs.twimg.com/media/G_sIN7tXIAES7GA?format=jpg&name=4096x4096
-  tags: [Install party]
 
 - title: Intro Git & Github
   date: 2025/11/12
+  type: Taller
   description: >-
     ¿Eres de los que al hacer un trabajo comparte el código por mail o por
     drive? ¿Has oído hablar de Github pero nunca has tenido claro qué es y
@@ -67,10 +72,11 @@
     - name: Guillermo González
       link: https://github.com/giyermo
   video: https://www.youtube.com/watch?v=oDJsZ8ywq0o
-  tags: [Git, Taller]
+  tags: [Git]
 
 - title: Escribe memorias de p*** madre con Typst
   date: 2025/11/19
+  type: Charla
   description: >-
     ¿Cansado de que Word reviente cualquier documento cuando mueves una
     imagen 🤢? Desde GUL te invitamos a que vengas y aprendas Typst, una
@@ -81,10 +87,11 @@
     - name: Luisda
       link: https://github.com/rajayonin
   video: https://www.youtube.com/watch?v=Apaqtno3ACE&feature=youtu.be
-  tags: [Typst, Charla]
+  tags: [Typst]
 
 - title: Minicurso express de Git ✨ Avanzado ✨
   date: 2026/01/13
+  type: Charla
   description: >-
     Charla 100% improvisada sobre temas algo más avanzados de Git, centrada
     en el workflow típico de desarrollo.
@@ -96,6 +103,7 @@
 
 - title: Linux Install Party
   date: 2025/10/07
+  type: Install party
   description: >-
     ¿Qué haces aun usando Windows 10? Microsoft está a punto de volver tu
     ordenador en un pisapapeles, ¿y no piensas hacer nada? Celebremos juntos
@@ -103,10 +111,10 @@
   cartel: https://pbs.twimg.com/media/G14xx8yWIAAUqtS?format=jpg&name=4096x4096
   video: https://www.youtube.com/watch?v=Apaqtno3ACE&feature=youtu.be
   repository: https://github.com/guluc3m/linux-install
-  tags: [Install]
 
 - title: Ampliación de C para "normies"
   date: 2025/02/07
+  type: Taller
   description: >-
     ¿Qué haces aun usando Windows 10? Microsoft está a punto de volver tu
     ordenador en un pisapapeles, ¿y no piensas hacer nada? Celebremos juntos
@@ -114,18 +122,19 @@
   cartel: https://pbs.twimg.com/media/Gj5ctk6WkAAShkb?format=jpg&name=medium
   video: https://www.youtube.com/watch?v=Apaqtno3ACE&feature=youtu.be
   transparencias: https://github.com/z4na14/c-taller-intro
-  tags: [C, Taller]
+  tags: [C]
 
 - title: GUL JAMon
   date: 2025/09/22
+  type: Game jam
   description: >-
     La GUL Jamón es el evento del GUL UC3M dedicado a los videojuegos. Tuvo
     su origen en 2018 como una gamejam.
   cartel: https://pbs.twimg.com/media/G04vx8mWYAA9MIr?format=jpg&name=medium
-  tags: [Game jam]
 
 - title: HackSpain 2026
   date: 2026/09/20
+  type: Hackathon
   description: >-
     Corría el otoño de 2026 cuando los chicos super sexis del GUL, hartos de ver a los larp-masters y sus secuaces token-maxers saqueando las GPUs a cambio de prompts kilométricos, decidieron plantar cara. Durante un largo y doloroso fin de semana se enfrentaron a la secta de los malvados 'AI-experts' de LinkedIn, que había impuesto el maleficio del token maxing sobre la Universidad Politécnica de Madrid.
   # Esto no es serio, pero seguramente les haga gracia y lo dejen
@@ -141,5 +150,4 @@
     - name: Héctor Molina
       link: https://github.com/Toriomg
   photo: /actividades/hackspain.png
-  tags: [Hackathon]
   repository: https://github.com/guluc3m/hackspain26

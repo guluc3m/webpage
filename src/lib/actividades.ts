@@ -3,9 +3,21 @@
 import { parse } from 'yaml';
 import rawActividades from '@data/actividades.yaml?raw'; // ?raw: a plain string, so invalid YAML syntax doesn't blow up the import itself.
 
+// Tipo de actividad: vocabulario cerrado. Cada entrada declara exactamente uno
+// (antes se deducía de tags "fijados" a mano; ahora es un campo explícito).
+export const ACTIVIDAD_TYPES = [
+  'Charla',
+  'Taller',
+  'Hackathon',
+  'Install party',
+  'Game jam',
+] as const;
+export type ActividadType = (typeof ACTIVIDAD_TYPES)[number];
+
 export interface Actividad {
   title: string;
   date: string; // yyyy/mm/dd
+  type: ActividadType;
   description?: string;
   cartel?: string; // poster image URL
   video?: string; // YouTube link
@@ -13,7 +25,7 @@ export interface Actividad {
   transparencias?: string;
   photo?: string; // usually one OR the other of cartel/photo, not both
   participants?: { name: string; link?: string }[];
-  tags: string[];
+  tags?: string[]; // temas (Git, C, Hardware…); el tipo ya no va aquí
 }
 
 const dateRe = /^\d{4}\/\d{2}\/\d{2}$/;
@@ -25,8 +37,9 @@ export function isValidActividad(a: Partial<Actividad>): a is Actividad {
     !!a.title &&
     !!a.date &&
     dateRe.test(a.date) &&
+    (ACTIVIDAD_TYPES as readonly string[]).includes(a.type ?? '') &&
     (a.participants === undefined || Array.isArray(a.participants)) &&
-    Array.isArray(a.tags);
+    (a.tags === undefined || Array.isArray(a.tags));
   if (!ok) console.warn(`[actividades] entrada incompleta, se omite: ${JSON.stringify(a)}`);
   return ok;
 }

@@ -1,10 +1,11 @@
 ---
 /**
  * gul-ActividadFilters — columna de filtros de /actividades: búsqueda por
- * título, tags y participantes multi-selección (chips), y fecha por curso +
- * cuatrimestre. En md+ es una columna lateral sticky; en móvil se pliega
- * tras el botón "Filtros" (CSS puro guiado por aria-expanded). Cada grupo es
- * un <details> colapsado por defecto, con contador de seleccionados y un
+ * título, tipo de actividad (abierto por defecto), tags y participantes
+ * multi-selección (chips), y fecha por curso + cuatrimestre. En md+ es una
+ * columna lateral sticky; en móvil se pliega tras el botón "Filtros" (CSS
+ * puro guiado por aria-expanded). Cada grupo es un <details> colapsado por
+ * defecto (salvo Tipo, que va abierto) con contador de seleccionados y un
  * "Limpiar" que vacía solo ese grupo.
  *
  * El script hace el filtrado client-side: consulta los <li data-actividad>
@@ -15,13 +16,15 @@ import filterIcon from '@icons/ui/filter.svg?url';
 import searchIcon from '@icons/ui/search.svg?url';
 
 interface Props {
+  /** Tipos de actividad (`type`), en orden fijo. */
+  types: string[];
   tags: string[];
   participants: string[];
   /** Cursos (años de inicio, p.ej. 2025 para 2025/26), más nuevo primero. */
   cursos: number[];
 }
 
-const { tags, participants, cursos } = Astro.props;
+const { types, tags, participants, cursos } = Astro.props;
 
 // Cuatrimestres dentro de un curso: el 1.º va de sep a ene y el 2.º de feb a
 // ago (febrero es ya segundo cuatrimestre en la UC3M).
@@ -67,6 +70,41 @@ const semesters = [
     class="gul-filters-panel mt-3 rounded-md border border-gul-line bg-gul-surface p-4"
     data-filters-panel
   >
+    <details open data-filter-group>
+      <summary class="py-3">
+        <span class="flex items-center gap-2">
+          Tipo
+          <span
+            class="rounded-full bg-gul-blue px-2 py-0.5 text-xs font-semibold"
+            data-group-count="type"
+            hidden
+          ></span>
+        </span>
+      </summary>
+      <div>
+        <div class="pb-4">
+          <div class="flex flex-wrap gap-1.5" data-chip-group="type">
+            {types.map((t) => (
+              <button
+                type="button"
+                class="gul-chip"
+                data-chip="type"
+                data-value={t}
+                aria-pressed="false"
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+          <div class="pt-2">
+            <button type="button" class="gul-mini" data-clear-group="type">
+              Limpiar
+            </button>
+          </div>
+        </div>
+      </div>
+    </details>
+
     <details data-filter-group>
       <summary class="py-3">
         <span class="flex items-center gap-2">
@@ -95,41 +133,6 @@ const semesters = [
           </div>
           <div class="pt-2">
             <button type="button" class="gul-mini" data-clear-group="tags">
-              Limpiar
-            </button>
-          </div>
-        </div>
-      </div>
-    </details>
-
-    <details data-filter-group>
-      <summary class="py-3">
-        <span class="flex items-center gap-2">
-          Participantes
-          <span
-            class="rounded-full bg-gul-blue px-2 py-0.5 text-xs font-semibold"
-            data-group-count="participants"
-            hidden
-          ></span>
-        </span>
-      </summary>
-      <div>
-        <div class="pb-4">
-          <div class="flex flex-wrap gap-1.5" data-chip-group="participants">
-            {participants.map((s) => (
-              <button
-                type="button"
-                class="gul-chip"
-                data-chip="participants"
-                data-value={s}
-                aria-pressed="false"
-              >
-                {s}
-              </button>
-            ))}
-          </div>
-          <div class="pt-2">
-            <button type="button" class="gul-mini" data-clear-group="participants">
               Limpiar
             </button>
           </div>
@@ -186,6 +189,41 @@ const semesters = [
           </div>
           <div class="pt-2">
             <button type="button" class="gul-mini" data-clear-group="fecha">
+              Limpiar
+            </button>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details data-filter-group>
+      <summary class="py-3">
+        <span class="flex items-center gap-2">
+          Participantes
+          <span
+            class="rounded-full bg-gul-blue px-2 py-0.5 text-xs font-semibold"
+            data-group-count="participants"
+            hidden
+          ></span>
+        </span>
+      </summary>
+      <div>
+        <div class="pb-4">
+          <div class="flex flex-wrap gap-1.5" data-chip-group="participants">
+            {participants.map((s) => (
+              <button
+                type="button"
+                class="gul-chip"
+                data-chip="participants"
+                data-value={s}
+                aria-pressed="false"
+              >
+                {s}
+              </button>
+            ))}
+          </div>
+          <div class="pt-2">
+            <button type="button" class="gul-mini" data-clear-group="participants">
               Limpiar
             </button>
           </div>
@@ -282,9 +320,10 @@ const semesters = [
   const empty = document.querySelector<HTMLElement>('[data-actividades-empty]')!;
   const countLine = document.querySelector<HTMLElement>('[data-actividades-count]')!;
 
-  type Group = 'tags' | 'participants' | 'cursos' | 'semesters';
-  const groups: Group[] = ['tags', 'participants', 'cursos', 'semesters'];
+  type Group = 'type' | 'tags' | 'participants' | 'cursos' | 'semesters';
+  const groups: Group[] = ['type', 'tags', 'participants', 'cursos', 'semesters'];
   const selected: Record<Group, Set<string>> = {
+    type: new Set(),
     tags: new Set(),
     participants: new Set(),
     cursos: new Set(),
@@ -339,6 +378,7 @@ const semesters = [
       const date = item.dataset.date!;
       const matches =
         item.dataset.title!.includes(q) &&
+        (selected.type.size === 0 || selected.type.has(item.dataset.type!)) &&
         (selected.tags.size === 0 ||
           item.dataset.tags!.split(',').some((t) => selected.tags.has(t))) &&
         (selected.participants.size === 0 ||

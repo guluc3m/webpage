@@ -13,7 +13,7 @@ import GulFooter from '@components/common/gul-Footer.astro';
 import GulActividadCard from '@components/common/gul-ActividadCard.astro';
 import GulActividadFilters from '@components/common/gul-ActividadFilters.astro';
 import { navLinks } from '@data/navLinks';
-import { loadActividades } from '@lib/actividades';
+import { ACTIVIDAD_TYPES, loadActividades } from '@lib/actividades';
 
 const actividades = loadActividades();
 
@@ -36,16 +36,14 @@ const cursoRows = Array.from(
   (_, i) => currentCurso - i,
 ).map((curso) => ({ curso, items: sorted.filter((a) => cursoStart(a.date) === curso) }));
 
-// Tags ordenados para el filtro: los tipos de actividad más comunes primero
-// (fijados a mano — con una sola aparición, la frecuencia no los sube), y el
-// resto por frecuencia y alfabético. Los participants van alfabéticos.
-const pinnedTags = ['charla', 'taller', 'hackathon', 'install party', 'game jam'];
+// Tipos de actividad presentes, en el orden fijo de ACTIVIDAD_TYPES (el
+// vocabulario del campo `type`). Los tags son solo temas, ordenados por
+// frecuencia y alfabéticamente. Los participants van alfabéticos.
+const typeCounts = new Set(sorted.map((a) => a.type));
+const types = ACTIVIDAD_TYPES.filter((t) => typeCounts.has(t));
 const tagCounts = new Map<string, number>();
-for (const a of sorted) for (const t of a.tags) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
+for (const a of sorted) for (const t of a.tags ?? []) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
 const tags = [...tagCounts.keys()].sort((a, b) => {
-  const pa = pinnedTags.indexOf(a.toLowerCase());
-  const pb = pinnedTags.indexOf(b.toLowerCase());
-  if (pa !== pb) return (pa === -1 ? Infinity : pa) - (pb === -1 ? Infinity : pb);
   const byCount = (tagCounts.get(b) ?? 0) - (tagCounts.get(a) ?? 0);
   return byCount !== 0 ? byCount : a.localeCompare(b, 'es');
 });
@@ -61,6 +59,7 @@ const participants = [
 
     <div class="mt-6 md:grid md:grid-cols-[16rem_minmax(0,1fr)] md:gap-10">
       <GulActividadFilters
+        types={types}
         tags={tags}
         participants={participants}
         cursos={cursoRows.map(({ curso }) => curso)}
@@ -90,7 +89,8 @@ const participants = [
                   data-curso={curso}
                   data-title={a.title.toLowerCase()}
                   data-date={a.date.replaceAll('/', '-')}
-                  data-tags={a.tags.join(',').toLowerCase()}
+                  data-type={a.type.toLowerCase()}
+                  data-tags={(a.tags ?? []).join(',').toLowerCase()}
                   data-participants={(a.participants ?? [])
                     .map((s) => s.name)
                     .join(',')

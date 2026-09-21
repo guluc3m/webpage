@@ -62,9 +62,10 @@ const datetime = hasNoDay(a.date) ? a.date.slice(0, 7) : a.date.replaceAll('/', 
       </time>
       <h2 class="mt-1">{a.title}</h2>
 
-      {a.tags.length > 0 && (
-        <p class="mt-2 flex flex-wrap gap-1.5">
-          {a.tags.map((t) => (
+      {(a.type || (a.tags ?? []).length > 0) && (
+        <p class="mt-2 flex flex-wrap items-center gap-1.5">
+          <GulBadge variant="primary">{a.type}</GulBadge>
+          {(a.tags ?? []).map((t) => (
             <GulBadge variant="secondary">{t}</GulBadge>
           ))}
         </p>
