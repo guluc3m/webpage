@@ -9,7 +9,7 @@ export function renderInlineMarkdown(value: string): string {
       .replace(/'/g, '&#39;');
 
   const token =
-    /\*\*([^*]+)\*\*|_([^_]+)_|([A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+ AT [A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+)|\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+    /\*\*([^*]+)\*\*|_([^_]+)_|([A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+ AT [A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+)|\[([^\]]+)\]\((\/[^\s)]*|https?:\/\/[^\s)]+)\)/g;
   const isObfuscatedEmail = (text: string) =>
     /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+ AT [A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+$/.test(text);
   let result = '';
@@ -28,9 +28,10 @@ export function renderInlineMarkdown(value: string): string {
       const text = escapeHtml(match[3]);
       result += `<a href="#" data-gul-email class="text-gul-ink underline decoration-gul-line underline-offset-4 hover:decoration-gul-ink"><span data-gul-email-text>${text}</span></a>`;
     } else {
-      result += `<a href="${escapeHtml(match[5])}"
-        target="_blank"
-        rel="noopener"
+      const href = escapeHtml(match[5]);
+      const external = /^https?:\/\//.test(match[5]);
+      result += `<a href="${href}"
+        ${external ? 'target="_blank" rel="noopener"' : ''}
         class="text-gul-ink underline decoration-gul-line underline-offset-4 hover:decoration-gul-ink"
       >${escapeHtml(match[4])}</a>`;
     }
