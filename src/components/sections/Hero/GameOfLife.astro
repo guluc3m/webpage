@@ -23,7 +23,7 @@ const tuxBitmap = await computeTuxBitmap(Buffer.from(tuxSvg), 100, 80); // 100 =
 <canvas
   data-game-of-life
   aria-hidden="true"
-  class="pointer-events-none absolute inset-0 h-full w-full opacity-35"
+  class="pointer-events-none absolute inset-0 h-full w-full"
 ></canvas>
 
 <script define:vars={{ tuxBitmap }}>
@@ -54,6 +54,9 @@ const tuxBitmap = await computeTuxBitmap(Buffer.from(tuxSvg), 100, 80); // 100 =
   ];
   const DEAD_FILL = '#0a0a09'; // dead-cell squares — --color-gul-bg, solid (not transparent)
   const GRID_FILL = 'transparent'; // canvas background, i.e. the gaps between squares
+  // Dims the automaton so the fortuna on top stays readable. Applied per cell, not
+  // as CSS opacity on the canvas, so Tux keeps full contrast.
+  const CELL_ALPHA = 0.45;
 
   // Tux silhouette overlay: a fixed set of cells always reads as Tux, regardless of
   // whether the automaton underneath is alive or dead there — the life logic still
@@ -138,6 +141,7 @@ const tuxBitmap = await computeTuxBitmap(Buffer.from(tuxSvg), 100, 80); // 100 =
           const showTux =
             tuxMask[i] &&
             (revealStep >= TUX_REVEAL_STEPS || Math.random() < revealStep / TUX_REVEAL_STEPS);
+          ctx!.globalAlpha = showTux ? 1 : CELL_ALPHA;
           ctx!.fillStyle = showTux ? TUX_FILL : grid[i] ? aliveFill : DEAD_FILL;
           ctx!.fillRect(x * CELL, y * CELL, CELL - GAP, CELL - GAP);
         }
