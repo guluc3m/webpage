@@ -203,10 +203,14 @@ const labelTextClass =
 
   <!-- Shared dropdown viewport: one panel that morphs position/height between
        items, instead of a separate popup per trigger — that shared morph is
-       what reads as "fluid" rather than things popping in and out. -->
+       what reads as "fluid" rather than things popping in and out.
+       `fixed` y no `absolute`: al revelarse la etiqueta de un enlace el <nav>
+       cambia de ancho, y un panel anclado a él arrastraría ese desplazamiento
+       después de haberse colocado. Anclado al viewport, el recorte contra los
+       bordes de la ventana es exacto. -->
   <div
     data-gul-viewport
-    class="pointer-events-none absolute top-full left-0 z-20 hidden w-80 origin-top overflow-hidden rounded-md border border-gul-line bg-gul-surface/90 opacity-0 backdrop-blur-md transition-[left,height,opacity] duration-200 ease-out md:block"
+    class="pointer-events-none fixed z-20 hidden w-80 origin-top overflow-hidden rounded-md border border-gul-line bg-gul-surface/90 opacity-0 backdrop-blur-md transition-[left,height,opacity] duration-200 ease-out md:block"
     style="height: 0px"
   >
     <div class="relative">
@@ -335,19 +339,21 @@ const labelTextClass =
       const panelList = viewportContent.querySelector<HTMLElement>('ul');
       if (panelList && panelHighlight) wireHighlight(panelList, panelHighlight);
 
-      const navRect = nav.getBoundingClientRect();
       const triggerRect = trigger.getBoundingClientRect();
       const viewportWidth = viewport.offsetWidth;
       const margin = 12;
       const desiredLeft = triggerRect.left + triggerRect.width / 2 - viewportWidth / 2;
+      // clientWidth y no innerWidth: éste incluye la barra de scroll vertical,
+      // así que el panel se salía por la derecha y aparecía scroll horizontal.
       const clampedLeft = Math.min(
         Math.max(desiredLeft, margin),
-        window.innerWidth - viewportWidth - margin,
+        document.documentElement.clientWidth - viewportWidth - margin,
       );
 
       viewport.style.opacity = '1';
       viewport.style.pointerEvents = 'auto';
-      viewport.style.left = `${clampedLeft - navRect.left}px`;
+      viewport.style.left = `${clampedLeft}px`;
+      viewport.style.top = `${triggerRect.bottom + 8}px`;
       viewport.style.height = `${viewportContent.scrollHeight}px`;
     }
 
@@ -375,6 +381,16 @@ const labelTextClass =
         openPanel(trigger);
       });
     });
+
+    // Pasar a un enlace sin desplegable cierra el que hubiera abierto: salir
+    // del <nav> no basta, porque esos enlaces están dentro de él.
+    nav
+      .querySelectorAll<HTMLAnchorElement>(':scope > ul > li > a:not([data-gul-trigger])')
+      .forEach((link) => {
+        link.addEventListener('pointerenter', () => {
+          if (hoverCapable() && activeValue) closePanel();
+        });
+      });
 
     nav.addEventListener('mouseleave', () => {
       if (hoverCapable() && activeValue) closePanel();

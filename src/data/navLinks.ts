@@ -33,6 +33,7 @@ export const navLinks = [
       },
     ],
   },
+  { label: 'Nextcloud', href: '/ftp/', icon: 'nextcloud' },
   { label: 'Jornadas', href: '/jornadas/', icon: 'calendar' },
   { label: 'Actividades', href: '/actividades/', icon: 'checklist' },
   {
