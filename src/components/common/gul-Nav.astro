@@ -1,40 +1,21 @@
 ---
 /**
  * gul-Nav — the navigation link list: en md+ cada enlace es sólo su icono y
- * revela el título al pasar el ratón, más un único "viewport" de desplegable
- * compartido (JAMon, Guía) que se mueve y redimensiona entre unos y otros en
- * vez de abrir un panel distinto por cada uno.
+ * revela el título al pasar el ratón.
  *
  * Shared component (`gul-` prefix): meant to be copied into the other GUL repos,
  * so it takes its links as a prop instead of hard-coding this site's sections.
  * gul-Header renders it.
  *
- * Styled after a shadcn-style animated navigation menu (single shared
- * "viewport" panel), but built with plain CSS/JS instead of
- * React + framer-motion — this is a static Astro site, so that stack would be
- * dead weight for one nav. Each dropdown's markup lives in a <template>, inert
- * until JS clones it into the shared viewport; this is the same one-viewport
- * pattern Radix's NavigationMenu uses under the hood.
- *
  * Todo esto es sólo md+ (768px): la fila no cabe por debajo de ~674px. En
- * móvil se sustituye por un burger <details>, que abre y cierra sin JS y
- * hereda de @layer base la animación de altura y la flecha de los submenús.
+ * móvil se sustituye por un burger <details>, que abre y cierra sin JS.
  *
  * TODO(design): active-link highlight.
  */
-interface NavChild {
-  label: string;
-  href: string;
-  description: string;
-  icon: string;
-}
-
 interface NavLink {
   label: string;
   /** In-page anchor (`#faq`) or absolute URL (`https://gul.uc3m.es/ctf`). */
   href: string;
-  /** Submenu items shown as icon + title + description, e.g. JAMon, Guía. */
-  children?: NavChild[];
   /** Icono del estado compacto en md+ (clave de ICONS). */
   icon?: string;
 }
@@ -49,28 +30,16 @@ const { links, class: className } = Astro.props;
 
 // External links get target/rel; in-page anchors and other site paths don't.
 const isExternal = (href: string) => href.startsWith('http');
-const slug = (label: string) =>
-  label
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]+/g, '-');
 
 // Hand-drawn outline icons (24x24, stroke-based) — no icon library dependency.
 const ICONS = {
   info: '<circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r="0.75" fill="currentColor" stroke="none"/>',
-  wrench:
-    '<rect x="4" y="4" width="7" height="7" rx="1" transform="rotate(45 7.5 7.5)"/><rect x="13" y="13" width="7" height="7" rx="1" transform="rotate(45 16.5 16.5)"/>',
-  trophy:
-    '<polygon points="12,3 14.2,9 20.5,9 15.5,12.8 17.3,19 12,15.3 6.7,19 8.5,12.8 3.5,9 9.8,9"/>',
-  download: '<path d="M12 3v12M7 10l5 5 5-5M4 19h16"/>',
-  split: '<path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/>',
   checklist:
     '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h5M7.5 16l1.7 1.7L12.5 14.5"/>',
-  alert:
-    '<path d="M12 3.5l9.5 16.5H2.5z"/><line x1="12" y1="10" x2="12" y2="14.5"/><circle cx="12" cy="17" r="0.75" fill="currentColor" stroke="none"/>',
   calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
   book: '<path d="M4 4h7a2 2 0 012 2v14a2 2 0 00-2-2H4zM20 4h-7a2 2 0 00-2 2v14a2 2 0 012-2h7z"/>',
+  folder:
+    '<path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>',
 } as const;
 
 // Fallback: los iconos vienen de datos (navLinks.ts), no de un literal tipado.
@@ -92,23 +61,22 @@ const iconFile = (name?: string) => iconFiles[`../../icons/header/${name}.svg`];
 // Estado compacto: sólo el icono. El fondo lo pinta el propio enlace (y no una
 // píldora deslizante aparte) porque su ancho cambia al revelarse el texto.
 const itemClass =
-  'group flex h-11 cursor-pointer items-center rounded-md px-2 text-sm font-medium text-gul-muted outline-none transition-colors hover:bg-gul-ink/10 hover:text-gul-ink focus-visible:bg-gul-ink/10 focus-visible:text-gul-ink data-[state=open]:bg-gul-ink/10 data-[state=open]:text-gul-ink';
+  'group flex h-11 cursor-pointer items-center rounded-md px-2 text-sm font-medium text-gul-muted outline-none transition-colors hover:bg-gul-ink/10 hover:text-gul-ink focus-visible:bg-gul-ink/10 focus-visible:text-gul-ink';
 // El texto vive en una pista de grid que va de 0fr a 1fr. La caja que recorta
 // tiene ancho 0 mientras el texto conserva el suyo y desborda: las letras se
 // descubren como bajo una cortina, sin desplazarse físicamente, y el icono no
 // se mueve.
 const labelTrackClass =
-  'grid grid-cols-[0fr] transition-[grid-template-columns] duration-300 ease-out group-hover:grid-cols-[1fr] group-focus-visible:grid-cols-[1fr] group-data-[state=open]:grid-cols-[1fr] motion-reduce:transition-none';
+  'grid grid-cols-[0fr] transition-[grid-template-columns] duration-300 ease-out group-hover:grid-cols-[1fr] group-focus-visible:grid-cols-[1fr] motion-reduce:transition-none';
 const labelClipClass = 'overflow-hidden';
 const labelTextClass =
-  'inline-block pl-2 whitespace-nowrap opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 group-focus-visible:opacity-100 group-data-[state=open]:opacity-100 motion-reduce:transition-none';
+  'inline-block pl-2 whitespace-nowrap opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none';
 ---
 
-<nav aria-label="Principal" data-gul-nav class:list={['relative', className]}>
+<nav aria-label="Principal" class:list={['relative', className]}>
   {/* Burger (< md). <details> nativo: abre sin JS y sigue funcionando con el
-      script desactivado. Los submenús son <details> anidados, que ya traen su
-      flecha y su transición de altura de @layer base — aquí sólo se anula lo
-      que sobra para un burger (borde inferior y la flecha del propio ≡). */}
+      script desactivado. Aquí sólo se anula lo que sobra para un burger (borde
+      inferior y la flecha del propio ≡). */}
   <details class="gul-burger relative border-b-0 md:hidden">
     <summary
       class="flex size-9 cursor-pointer items-center justify-center rounded-md px-0 py-0 text-gul-muted hover:text-gul-ink"
@@ -124,36 +92,13 @@ const labelTextClass =
       <ul class="rounded-md border border-gul-line bg-gul-surface/95 p-2 backdrop-blur-md">
         {links.map((link) => (
           <li>
-            {link.children ? (
-              <details class="border-b-0">
-                <summary class="rounded-md px-3 py-2 text-sm font-medium text-gul-muted">
-                  {link.label}
-                </summary>
-                <div>
-                  <ul class="space-y-1 pb-2 pl-3">
-                    {link.children.map((child) => (
-                      <li>
-                        <a
-                          href={child.href}
-                          class="block rounded-md px-3 py-2 text-sm text-gul-muted hover:bg-gul-ink/10 hover:text-gul-ink"
-                          {...(isExternal(child.href) ? { target: '_blank', rel: 'noopener' } : {})}
-                        >
-                          {child.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </details>
-            ) : (
-              <a
-                href={link.href}
-                class="block rounded-md px-3 py-2 text-sm font-medium text-gul-muted hover:bg-gul-ink/10 hover:text-gul-ink"
-                {...(isExternal(link.href) ? { target: '_blank', rel: 'noopener' } : {})}
-              >
-                {link.label}
-              </a>
-            )}
+            <a
+              href={link.href}
+              class="block rounded-md px-3 py-2 text-sm font-medium text-gul-muted hover:bg-gul-ink/10 hover:text-gul-ink"
+              {...(isExternal(link.href) ? { target: '_blank', rel: 'noopener' } : {})}
+            >
+              {link.label}
+            </a>
           </li>
         ))}
       </ul>
@@ -166,17 +111,7 @@ const labelTextClass =
         <a
           href={link.href}
           class={itemClass}
-          {...(link.children
-            ? {
-                'data-gul-trigger': slug(link.label),
-                'data-state': 'closed',
-                'aria-expanded': 'false',
-                'aria-controls': 'gul-nav-viewport-content',
-                'aria-haspopup': 'true',
-              }
-            : isExternal(link.href)
-              ? { target: '_blank', rel: 'noopener' }
-              : {})}
+          {...(isExternal(link.href) ? { target: '_blank', rel: 'noopener' } : {})}
         >
           {iconFile(link.icon) ? (
             <span
@@ -200,212 +135,12 @@ const labelTextClass =
       </li>
     ))}
   </ul>
-
-  <!-- Shared dropdown viewport: one panel that morphs position/height between
-       items, instead of a separate popup per trigger — that shared morph is
-       what reads as "fluid" rather than things popping in and out.
-       `fixed` y no `absolute`: al revelarse la etiqueta de un enlace el <nav>
-       cambia de ancho, y un panel anclado a él arrastraría ese desplazamiento
-       después de haberse colocado. Anclado al viewport, el recorte contra los
-       bordes de la ventana es exacto. -->
-  <div
-    data-gul-viewport
-    class="pointer-events-none fixed z-20 hidden w-80 origin-top overflow-hidden rounded-md border border-gul-line bg-gul-surface/90 opacity-0 backdrop-blur-md transition-[left,height,opacity] duration-200 ease-out md:block"
-    style="height: 0px"
-  >
-    <div class="relative">
-      <!-- Píldora deslizante, sólo dentro del panel abierto. -->
-      <span
-        data-gul-panel-highlight
-        class="pointer-events-none absolute rounded-md bg-gul-ink/10 opacity-0 transition-[transform,width,height,opacity] duration-200 ease-out"
-      ></span>
-      <div id="gul-nav-viewport-content" data-gul-viewport-content></div>
-    </div>
-  </div>
-
-  {links
-    .filter((link) => link.children)
-    .map((link) => (
-      <template data-gul-panel={slug(link.label)}>
-        <ul class="gul-viewport-fade space-y-1 p-2">
-          {link.children!.map((child) => (
-            <li>
-              <a
-                href={child.href}
-                class="relative z-10 flex items-start gap-3 rounded-md p-2"
-                {...(isExternal(child.href) ? { target: '_blank', rel: 'noopener' } : {})}
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  class="mt-0.5 size-4 shrink-0 stroke-current stroke-[1.5]"
-                  fill="none"
-                  set:html={icon(child.icon)}
-                />
-                <span>
-                  <span class="block text-sm font-medium text-gul-ink">{child.label}</span>
-                  <span class="block text-xs text-gul-muted">{child.description}</span>
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </template>
-    ))}
 </nav>
 
 <style>
-  /* Fade+lift the freshly-cloned content in on every panel switch. A plain
-     CSS class re-plays automatically because each swap clones a brand new
-     element — no JS restart trick needed. */
-  .gul-viewport-fade {
-    animation: gul-viewport-fade-in 150ms ease-out;
-  }
-  @keyframes gul-viewport-fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(2px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .gul-viewport-fade {
-      animation: none;
-    }
-  }
-
   /* La flecha que @layer base pone en todo <summary> sobra en el burger: su
-     indicador es el propio icono ≡. Los <details> de dentro del panel sí la
-     conservan. */
+     indicador es el propio icono ≡. */
   .gul-burger > summary::after {
     content: none;
   }
 </style>
-
-<script>
-  // Nav behaviour beyond plain CSS:
-  // - dropdown triggers share ONE viewport panel that moves/resizes between
-  //   items (rather than each trigger owning its own popup) — that shared
-  //   morph is what makes switching between JAMon/Guía read as fluid
-  // - opens on hover/focus, closes on outside click, Escape, or leaving the nav
-  // Wires a highlight pill to slide behind whichever <a>/<button> inside an
-  // <li> of `container` is hovered. Sólo el panel: en la fila del header el
-  // ancho de cada enlace cambia al revelarse el texto, y una píldora medida al
-  // entrar el ratón se quedaría corta.
-  function wireHighlight(container: HTMLElement, highlight: HTMLElement) {
-    const items = container.querySelectorAll<HTMLElement>(':scope > li > :is(a, button)');
-    items.forEach((item) => {
-      item.addEventListener('mouseenter', () => {
-        const r = item.getBoundingClientRect();
-        const cr = container.getBoundingClientRect();
-        highlight.style.opacity = '1';
-        highlight.style.width = `${r.width}px`;
-        highlight.style.height = `${r.height}px`;
-        highlight.style.transform = `translate(${r.left - cr.left}px, ${r.top - cr.top}px)`;
-      });
-    });
-    container.addEventListener('mouseleave', () => {
-      highlight.style.opacity = '0';
-    });
-  }
-
-  document.querySelectorAll<HTMLElement>('[data-gul-nav]').forEach((nav) => {
-    const viewport = nav.querySelector<HTMLElement>('[data-gul-viewport]');
-    const viewportContent = nav.querySelector<HTMLElement>('[data-gul-viewport-content]');
-    const panelHighlight = nav.querySelector<HTMLElement>('[data-gul-panel-highlight]');
-    const triggers = nav.querySelectorAll<HTMLAnchorElement>('[data-gul-trigger]');
-    const hoverCapable = () => window.matchMedia('(hover: hover)').matches;
-    let activeValue: string | null = null;
-
-    function openPanel(trigger: HTMLAnchorElement) {
-      if (!viewport || !viewportContent) return;
-      const value = trigger.dataset.gulTrigger ?? '';
-      const template = nav.querySelector<HTMLTemplateElement>(
-        `template[data-gul-panel="${value}"]`,
-      );
-      if (!template) return;
-
-      activeValue = value;
-      triggers.forEach((t) => {
-        const isThis = t === trigger;
-        t.dataset.state = isThis ? 'open' : 'closed';
-        t.setAttribute('aria-expanded', String(isThis));
-      });
-
-      if (panelHighlight) panelHighlight.style.opacity = '0';
-      viewportContent.replaceChildren(template.content.cloneNode(true));
-      const panelList = viewportContent.querySelector<HTMLElement>('ul');
-      if (panelList && panelHighlight) wireHighlight(panelList, panelHighlight);
-
-      const triggerRect = trigger.getBoundingClientRect();
-      const viewportWidth = viewport.offsetWidth;
-      const margin = 12;
-      const desiredLeft = triggerRect.left + triggerRect.width / 2 - viewportWidth / 2;
-      // clientWidth y no innerWidth: éste incluye la barra de scroll vertical,
-      // así que el panel se salía por la derecha y aparecía scroll horizontal.
-      const clampedLeft = Math.min(
-        Math.max(desiredLeft, margin),
-        document.documentElement.clientWidth - viewportWidth - margin,
-      );
-
-      viewport.style.opacity = '1';
-      viewport.style.pointerEvents = 'auto';
-      viewport.style.left = `${clampedLeft}px`;
-      viewport.style.top = `${triggerRect.bottom + 8}px`;
-      viewport.style.height = `${viewportContent.scrollHeight}px`;
-    }
-
-    function closePanel() {
-      if (!viewport) return;
-      activeValue = null;
-      viewport.style.opacity = '0';
-      viewport.style.pointerEvents = 'none';
-      viewport.style.height = '0px';
-      triggers.forEach((t) => {
-        t.dataset.state = 'closed';
-        t.setAttribute('aria-expanded', 'false');
-      });
-    }
-
-    triggers.forEach((trigger) => {
-      trigger.addEventListener('pointerenter', () => {
-        if (hoverCapable()) openPanel(trigger);
-      });
-      trigger.addEventListener('focus', () => openPanel(trigger));
-      // Keep the top-level href as the no-JS fallback. With JS enabled, the
-      // anchor becomes the dropdown trigger instead of navigating away.
-      trigger.addEventListener('click', (event) => {
-        event.preventDefault();
-        openPanel(trigger);
-      });
-    });
-
-    // Pasar a un enlace sin desplegable cierra el que hubiera abierto: salir
-    // del <nav> no basta, porque esos enlaces están dentro de él.
-    nav
-      .querySelectorAll<HTMLAnchorElement>(':scope > ul > li > a:not([data-gul-trigger])')
-      .forEach((link) => {
-        link.addEventListener('pointerenter', () => {
-          if (hoverCapable() && activeValue) closePanel();
-        });
-      });
-
-    nav.addEventListener('mouseleave', () => {
-      if (hoverCapable() && activeValue) closePanel();
-    });
-
-    nav.addEventListener('focusout', (event) => {
-      if (!nav.contains(event.relatedTarget as Node)) closePanel();
-    });
-
-    document.addEventListener('click', (event) => {
-      if (activeValue && !nav.contains(event.target as Node)) closePanel();
-    });
-
-    nav.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && activeValue) closePanel();
-    });
-  });
-</script>
