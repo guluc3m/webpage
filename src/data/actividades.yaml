@@ -1,16 +1,16 @@
 # Lista de actividades del GUL. Edita esta lista para añadir/quitar eventos.
-- title: Jornadas Técnicas XXXVI
-  date: 2027/02/00
-  description: >-
-    Son una serie de charlas y/o talleres relacionados con el Software Libre,
-    Linux, la informatica, la ingenieria... ¡Jornadas Tecnicas!
-  tags: [Jornadas, Taller, Charla]
+# - title: XXXVI Jornadas Técnicas
+#   date: 2027/02/00
+#   description: >-
+#     Son una serie de charlas y/o talleres relacionados con el Software Libre,
+#     Linux, la informatica, la ingenieria... ¡Jornadas Tecnicas!
+#   tags: [Jornadas Técnicas, Taller, Charla]
 
 - title: Teclados
   date: 2026/05/01
-  description: Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+  description: Nos juntamos unos cuantos para hacer unos teclados to' wapos
   photo: https://pbs.twimg.com/media/HHs3K92WAAAJ9_J?format=jpg&name=small
-  tags: [Soldadura]
+  tags: [Hardware]
   repository: https://github.com/davidphilipbarr/Sweep
 
 - title: Introducción al Autohospedaje de Servicios y Webs
@@ -18,8 +18,7 @@
   cartel: https://pbs.twimg.com/media/HHn4rxuXMAM8RJ5?format=jpg&name=small
   description: >-
     ¿Que haces usando tu portatil del 2006 como pisapapeles? Métele Debian, y
-    te enseñamos como exponer tus páginas y proyectos este jueves 07 de mayo,
-    a las 13:00 en el aula 2.3.C03. ¡No te pierdas esta oportunidad para crear
+    te enseñamos como exponer tus páginas y proyectos. ¡No te pierdas esta oportunidad para crear
     tu propia B2B SaaS, con 5 clientes anuales!
   participants:
     - name: Jorge Saghin
@@ -34,8 +33,7 @@
     ¿Qué es un Makefile?, ¿Por qué los punteros son tan complicados?, ¿¿Desde
     cuándo puedo usar funciones como argumentos?? Tranquilo, nosotros también
     hemos pasado por esa etapa, y te vamos a ayudar a que sufras lo menos
-    posible este miércoles 18 de febrero, a las 13:00 en el aula 2.3.C01. No
-    te preocupes, vas a salir de aquí con más dudas sobre punteros que cuando
+    posible... No te preocupes, vas a salir de aquí con más dudas sobre punteros que cuando
     entraste, pero esa es la parte divertida del lenguaje.
   participants:
     - name: Jorge Saghin
@@ -47,17 +45,16 @@
   date: 2026/02/12
   description: >-
     ¿Cómo que necesitas cuenta para usar MS Paint en Windows 11? Te enseñamos
-    nosotros a usar Gimp, y de paso te instalamos Linux este jueves 12 de
-    febrero a las 13:00 en el aula 2.3.B05. Pssst, también tenemos Excalidraw
+    nosotros a usar Gimp, y de paso te instalamos Linux. Pssst, también tenemos Excalidraw
     por si no te gusta Gimp, tú solo ven.
   cartel: https://pbs.twimg.com/media/G_sIN7tXIAES7GA?format=jpg&name=4096x4096
-  tags: [Install]
+  tags: [Install party]
 
 - title: Intro Git & Github
   date: 2025/11/12
   description: >-
     ¿Eres de los que al hacer un trabajo comparte el código por mail o por
-    drive ? ¿ Has oído hablar de Github pero nunca has tenido claro qué es y
+    drive? ¿Has oído hablar de Github pero nunca has tenido claro qué es y
     cómo funciona? Cambia esto y aprende a trabajar con control de versiones
     como un profesional. En este taller, junto con GUL, aprenderemos que es
     Git y por qué hemos de usarlo. Aprenderemos conceptos claves y
@@ -70,13 +67,13 @@
     - name: Guillermo González
       link: https://github.com/giyermo
   video: https://www.youtube.com/watch?v=oDJsZ8ywq0o
-  tags: [Git, Github, Taller]
+  tags: [Git, Taller]
 
 - title: Escribe memorias de p*** madre con Typst
   date: 2025/11/19
   description: >-
     ¿Cansado de que Word reviente cualquier documento cuando mueves una
-    imagen🤢? Desde GUL te invitamos a que vengas y aprendas Typst, una
+    imagen 🤢? Desde GUL te invitamos a que vengas y aprendas Typst, una
     herramienta que te permitirá escribir documentos de manera más rápida,
     cómoda y simplemente mejor.
   cartel: https://pbs.twimg.com/media/G5Z06RVWEAA9ThR?format=jpg&name=large
@@ -102,7 +99,7 @@
   description: >-
     ¿Qué haces aun usando Windows 10? Microsoft está a punto de volver tu
     ordenador en un pisapapeles, ¿y no piensas hacer nada? Celebremos juntos
-    la muerte de Windows 10 este 7 de octubre en el aula 2.3.C03
+    la muerte de Windows 10.
   cartel: https://pbs.twimg.com/media/G14xx8yWIAAUqtS?format=jpg&name=4096x4096
   video: https://www.youtube.com/watch?v=Apaqtno3ACE&feature=youtu.be
   repository: https://github.com/guluc3m/linux-install
@@ -125,7 +122,7 @@
     La GUL Jamón es el evento del GUL UC3M dedicado a los videojuegos. Tuvo
     su origen en 2018 como una gamejam.
   cartel: https://pbs.twimg.com/media/G04vx8mWYAA9MIr?format=jpg&name=medium
-  tags: [JAM]
+  tags: [Game jam]
 
 - title: HackSpain 2026
   date: 2026/09/20
@@ -141,7 +138,7 @@
       link: https://github.com/rajayonin
     - name: Jorge Saghin
       link: https://github.com/z4na14
-    - name: Héctor Molina (Les dió una pizza como voluntario y ya)
+    - name: Héctor Molina
       link: https://github.com/Toriomg
   photo: /actividades/hackspain.png
   tags: [Hackathon]
