@@ -21,7 +21,7 @@
     te enseñamos como exponer tus páginas y proyectos este jueves 07 de mayo,
     a las 13:00 en el aula 2.3.C03. ¡No te pierdas esta oportunidad para crear
     tu propia B2B SaaS, con 5 clientes anuales!
-  speakers:
+  participants:
     - name: Jorge Saghin
       link: https://github.com/z4na14
   tags: [Proxmox, Charla]
@@ -37,7 +37,7 @@
     posible este miércoles 18 de febrero, a las 13:00 en el aula 2.3.C01. No
     te preocupes, vas a salir de aquí con más dudas sobre punteros que cuando
     entraste, pero esa es la parte divertida del lenguaje.
-  speakers:
+  participants:
     - name: Jorge Saghin
       link: https://github.com/z4na14
   tags: [C, Taller]
@@ -64,7 +64,7 @@
     trabajaremos de manera colaborativa a través de una simulación en equipo
     donde podrás poner en práctica todo lo aprendido.
   cartel: https://pbs.twimg.com/media/G5BArDEXMAASmED?format=jpg&name=900x900
-  speakers:
+  participants:
     - name: Albert Giurgiu
       link: https://github.com/fedes1to
     - name: Guillermo González
@@ -80,7 +80,7 @@
     herramienta que te permitirá escribir documentos de manera más rápida,
     cómoda y simplemente mejor.
   cartel: https://pbs.twimg.com/media/G5Z06RVWEAA9ThR?format=jpg&name=large
-  speakers:
+  participants:
     - name: Luisda
       link: https://github.com/rajayonin
   video: https://www.youtube.com/watch?v=Apaqtno3ACE&feature=youtu.be
@@ -91,7 +91,7 @@
   description: >-
     Charla 100% improvisada sobre temas algo más avanzados de Git, centrada
     en el workflow típico de desarrollo.
-  speakers:
+  participants:
     - name: Luisda
       link: https://github.com/rajayonin
   video: https://www.youtube.com/watch?v=FeJH90RQ68M
@@ -132,7 +132,7 @@
   description: >-
     Corría el otoño de 2026 cuando los chicos super sexis del GUL, hartos de ver a los larp-masters y sus secuaces token-maxers saqueando las GPUs a cambio de prompts kilométricos, decidieron plantar cara. Durante un largo y doloroso fin de semana se enfrentaron a la secta de los malvados 'AI-experts' de LinkedIn, que había impuesto el maleficio del token maxing sobre la Universidad Politécnica de Madrid.
   # Esto no es serio, pero seguramente les haga gracia y lo dejen
-  speakers:
+  participants:
     - name: Albert Giurgiu
       link: https://github.com/fedes1to
     - name: Henry Díaz

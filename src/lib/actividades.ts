@@ -12,7 +12,7 @@ export interface Actividad {
   repository?: string;
   transparencias?: string;
   photo?: string; // usually one OR the other of cartel/photo, not both
-  speakers?: { name: string; link?: string }[];
+  participants?: { name: string; link?: string }[];
   tags: string[];
 }
 
@@ -25,7 +25,7 @@ export function isValidActividad(a: Partial<Actividad>): a is Actividad {
     !!a.title &&
     !!a.date &&
     dateRe.test(a.date) &&
-    (a.speakers === undefined || Array.isArray(a.speakers)) &&
+    (a.participants === undefined || Array.isArray(a.participants)) &&
     Array.isArray(a.tags);
   if (!ok) console.warn(`[actividades] entrada incompleta, se omite: ${JSON.stringify(a)}`);
   return ok;

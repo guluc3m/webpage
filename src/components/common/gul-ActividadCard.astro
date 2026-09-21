@@ -70,9 +70,9 @@ const datetime = hasNoDay(a.date) ? a.date.slice(0, 7) : a.date.replaceAll('/', 
         </p>
       )}
 
-      {a.speakers && a.speakers.length > 0 && (
+      {a.participants && a.participants.length > 0 && (
         <p class="mt-2 text-sm text-gul-muted">
-          {a.speakers.map((s, i) => (
+          {a.participants.map((s, i) => (
             <>
               {i > 0 && ', '}
               {s.link ? (
