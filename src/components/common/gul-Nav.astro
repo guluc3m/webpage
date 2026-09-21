@@ -1,15 +1,16 @@
 ---
 /**
- * gul-Nav — the navigation link list: a sliding hover highlight plus a single
- * shared dropdown "viewport" (JAMon, Guía) that morphs position/size between
- * items instead of popping open a separate panel per trigger.
+ * gul-Nav — the navigation link list: en md+ cada enlace es sólo su icono y
+ * revela el título al pasar el ratón, más un único "viewport" de desplegable
+ * compartido (JAMon, Guía) que se mueve y redimensiona entre unos y otros en
+ * vez de abrir un panel distinto por cada uno.
  *
  * Shared component (`gul-` prefix): meant to be copied into the other GUL repos,
  * so it takes its links as a prop instead of hard-coding this site's sections.
  * gul-Header renders it.
  *
  * Styled after a shadcn-style animated navigation menu (single shared
- * "viewport" panel, sliding highlight), but built with plain CSS/JS instead of
+ * "viewport" panel), but built with plain CSS/JS instead of
  * React + framer-motion — this is a static Astro site, so that stack would be
  * dead weight for one nav. Each dropdown's markup lives in a <template>, inert
  * until JS clones it into the shared viewport; this is the same one-viewport
@@ -25,7 +26,7 @@ interface NavChild {
   label: string;
   href: string;
   description: string;
-  icon: keyof typeof ICONS;
+  icon: string;
 }
 
 interface NavLink {
@@ -34,6 +35,8 @@ interface NavLink {
   href: string;
   /** Submenu items shown as icon + title + description, e.g. JAMon, Guía. */
   children?: NavChild[];
+  /** Icono del estado compacto en md+ (clave de ICONS). */
+  icon?: string;
 }
 
 interface Props {
@@ -66,12 +69,26 @@ const ICONS = {
     '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h5M7.5 16l1.7 1.7L12.5 14.5"/>',
   alert:
     '<path d="M12 3.5l9.5 16.5H2.5z"/><line x1="12" y1="10" x2="12" y2="14.5"/><circle cx="12" cy="17" r="0.75" fill="currentColor" stroke="none"/>',
+  calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+  book: '<path d="M4 4h7a2 2 0 012 2v14a2 2 0 00-2-2H4zM20 4h-7a2 2 0 00-2 2v14a2 2 0 012-2h7z"/>',
 } as const;
 
-const triggerClass =
-  'group relative z-10 flex h-9 cursor-pointer items-center gap-1.5 rounded-md px-4 text-sm font-medium text-gul-muted outline-none transition-colors hover:text-gul-ink focus-visible:text-gul-ink data-[state=open]:text-gul-ink';
-const linkClass =
-  'relative z-10 flex h-9 items-center rounded-md px-4 text-sm font-medium text-gul-muted outline-none transition-colors hover:text-gul-ink focus-visible:text-gul-ink';
+// Fallback: los iconos vienen de datos (navLinks.ts), no de un literal tipado.
+const icon = (name?: string) => ICONS[name as keyof typeof ICONS] ?? ICONS.info;
+
+// Estado compacto: sólo el icono. El fondo lo pinta el propio enlace (y no una
+// píldora deslizante aparte) porque su ancho cambia al revelarse el texto.
+const itemClass =
+  'group flex h-11 cursor-pointer items-center rounded-md px-2 text-sm font-medium text-gul-muted outline-none transition-colors hover:bg-gul-ink/10 hover:text-gul-ink focus-visible:bg-gul-ink/10 focus-visible:text-gul-ink data-[state=open]:bg-gul-ink/10 data-[state=open]:text-gul-ink';
+// El texto vive en una pista de grid que va de 0fr a 1fr. La caja que recorta
+// tiene ancho 0 mientras el texto conserva el suyo y desborda: las letras se
+// descubren como bajo una cortina, sin desplazarse físicamente, y el icono no
+// se mueve.
+const labelTrackClass =
+  'grid grid-cols-[0fr] transition-[grid-template-columns] duration-300 ease-out group-hover:grid-cols-[1fr] group-focus-visible:grid-cols-[1fr] group-data-[state=open]:grid-cols-[1fr] motion-reduce:transition-none';
+const labelClipClass = 'overflow-hidden';
+const labelTextClass =
+  'inline-block pl-2 whitespace-nowrap opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 group-focus-visible:opacity-100 group-data-[state=open]:opacity-100 motion-reduce:transition-none';
 ---
 
 <nav aria-label="Principal" data-gul-nav class:list={['relative', className]}>
@@ -130,46 +147,38 @@ const linkClass =
     </div>
   </details>
 
-  <ul class="relative hidden flex-wrap items-center gap-1 md:flex">
-    <!-- Sliding highlight pill: JS moves this behind whichever item is hovered/focused. -->
-    <span
-      data-gul-highlight
-      class="pointer-events-none absolute rounded-md bg-gul-ink/10 opacity-0 transition-[transform,width,height,opacity] duration-200 ease-out"
-    ></span>
-    {links.map((link) =>
-      link.children ? (
-        <li>
-          <a
-            href={link.href}
-            class={triggerClass}
-            data-gul-trigger={slug(link.label)}
-            data-state="closed"
-            aria-expanded="false"
-            aria-controls="gul-nav-viewport-content"
-            aria-haspopup="true"
-          >
-            {link.label}
-            <svg
-              viewBox="0 0 24 24"
-              class="size-3 stroke-current stroke-2 transition-transform group-data-[state=open]:rotate-180"
-              fill="none"
-            >
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </a>
-        </li>
-      ) : (
-        <li>
-          <a
-            href={link.href}
-            class={linkClass}
-            {...(isExternal(link.href) ? { target: '_blank', rel: 'noopener' } : {})}
-          >
-            {link.label}
-          </a>
-        </li>
-      ),
-    )}
+  <ul class="hidden flex-wrap items-center gap-1 md:flex">
+    {links.map((link) => (
+      <li>
+        <a
+          href={link.href}
+          class={itemClass}
+          {...(link.children
+            ? {
+                'data-gul-trigger': slug(link.label),
+                'data-state': 'closed',
+                'aria-expanded': 'false',
+                'aria-controls': 'gul-nav-viewport-content',
+                'aria-haspopup': 'true',
+              }
+            : isExternal(link.href)
+              ? { target: '_blank', rel: 'noopener' }
+              : {})}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            class="size-7.5 shrink-0 stroke-current stroke-[1.5]"
+            fill="none"
+            set:html={icon(link.icon)}
+          />
+          <span class={labelTrackClass}>
+            <span class={labelClipClass}>
+              <span class={labelTextClass}>{link.label}</span>
+            </span>
+          </span>
+        </a>
+      </li>
+    ))}
   </ul>
 
   <!-- Shared dropdown viewport: one panel that morphs position/height between
@@ -181,7 +190,7 @@ const linkClass =
     style="height: 0px"
   >
     <div class="relative">
-      <!-- Same sliding highlight as the header row, scoped to whichever panel is showing. -->
+      <!-- Píldora deslizante, sólo dentro del panel abierto. -->
       <span
         data-gul-panel-highlight
         class="pointer-events-none absolute rounded-md bg-gul-ink/10 opacity-0 transition-[transform,width,height,opacity] duration-200 ease-out"
@@ -206,7 +215,7 @@ const linkClass =
                   viewBox="0 0 24 24"
                   class="mt-0.5 size-4 shrink-0 stroke-current stroke-[1.5]"
                   fill="none"
-                  set:html={ICONS[child.icon]}
+                  set:html={icon(child.icon)}
                 />
                 <span>
                   <span class="block text-sm font-medium text-gul-ink">{child.label}</span>
@@ -253,14 +262,14 @@ const linkClass =
 
 <script>
   // Nav behaviour beyond plain CSS:
-  // - a highlight pill that slides to whichever trigger/link is hovered
   // - dropdown triggers share ONE viewport panel that moves/resizes between
   //   items (rather than each trigger owning its own popup) — that shared
   //   morph is what makes switching between JAMon/Guía read as fluid
   // - opens on hover/focus, closes on outside click, Escape, or leaving the nav
   // Wires a highlight pill to slide behind whichever <a>/<button> inside an
-  // <li> of `container` is hovered — used for both the header row and the
-  // panel, which share the same <ul><li><a> shape.
+  // <li> of `container` is hovered. Sólo el panel: en la fila del header el
+  // ancho de cada enlace cambia al revelarse el texto, y una píldora medida al
+  // entrar el ratón se quedaría corta.
   function wireHighlight(container: HTMLElement, highlight: HTMLElement) {
     const items = container.querySelectorAll<HTMLElement>(':scope > li > :is(a, button)');
     items.forEach((item) => {
@@ -279,18 +288,12 @@ const linkClass =
   }
 
   document.querySelectorAll<HTMLElement>('[data-gul-nav]').forEach((nav) => {
-    // `:scope >` y no `ul` a secas: el burger también tiene listas, y están
-    // antes en el DOM — el highlight deslizante es sólo de la fila de md+.
-    const list = nav.querySelector<HTMLElement>(':scope > ul');
-    const highlight = nav.querySelector<HTMLElement>('[data-gul-highlight]');
     const viewport = nav.querySelector<HTMLElement>('[data-gul-viewport]');
     const viewportContent = nav.querySelector<HTMLElement>('[data-gul-viewport-content]');
     const panelHighlight = nav.querySelector<HTMLElement>('[data-gul-panel-highlight]');
     const triggers = nav.querySelectorAll<HTMLAnchorElement>('[data-gul-trigger]');
     const hoverCapable = () => window.matchMedia('(hover: hover)').matches;
     let activeValue: string | null = null;
-
-    if (list && highlight) wireHighlight(list, highlight);
 
     function openPanel(trigger: HTMLAnchorElement) {
       if (!viewport || !viewportContent) return;

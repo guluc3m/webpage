@@ -8,6 +8,10 @@ export const navLinks = [
   {
     label: 'JAMon',
     href: '/jamon/',
+    // `icon` es el estado compacto del enlace en md+: el texto sólo aparece al
+    // pasar el ratón. Placeholders hasta que haya arte propio (ver ICONS en
+    // gul-Nav.astro).
+    icon: 'trophy',
     children: [
       {
         label: 'Información',
@@ -29,11 +33,12 @@ export const navLinks = [
       },
     ],
   },
-  { label: 'Jornadas', href: '/jornadas/' },
-  { label: 'Actividades', href: '/actividades/' },
+  { label: 'Jornadas', href: '/jornadas/', icon: 'calendar' },
+  { label: 'Actividades', href: '/actividades/', icon: 'checklist' },
   {
     label: 'Guía',
     href: '/guia/',
+    icon: 'book',
     children: [
       {
         label: 'Instalación completa',
