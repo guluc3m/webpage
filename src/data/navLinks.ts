@@ -6,12 +6,12 @@
 // file in guluc3m/linux-install since /guia/ itself just redirects there.
 export const navLinks = [
   {
-    label: 'JAMon',
+    label: 'GUL JAMon',
     href: '/jamon/',
     // `icon` es el estado compacto del enlace en md+: el texto sólo aparece al
-    // pasar el ratón. Placeholders hasta que haya arte propio (ver ICONS en
-    // gul-Nav.astro).
-    icon: 'trophy',
+    // pasar el ratón. Un nombre de archivo de src/icons/header/ si existe; si
+    // no, una clave de los placeholders de ICONS en gul-Nav.astro.
+    icon: 'guljamon',
     children: [
       {
         label: 'Información',

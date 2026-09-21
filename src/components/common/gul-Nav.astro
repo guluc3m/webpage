@@ -76,6 +76,19 @@ const ICONS = {
 // Fallback: los iconos vienen de datos (navLinks.ts), no de un literal tipado.
 const icon = (name?: string) => ICONS[name as keyof typeof ICONS] ?? ICONS.info;
 
+// Iconos propios: basta con dejar el .svg en src/icons/header/ y poner su
+// nombre (sin extensión) en navLinks.ts. Se pintan como máscara sobre
+// `bg-current` en vez de <img> para que sigan el color del enlace al hacer
+// hover — un <img> se quedaría con el color del archivo.
+const iconFiles = import.meta.glob<string>('../../icons/header/*.svg', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+// Las comillas de url("...") no sobran: Vite inlina los svg pequeños como data
+// URI, y esos llevan paréntesis que cortarían el token sin comillas.
+const iconFile = (name?: string) => iconFiles[`../../icons/header/${name}.svg`];
+
 // Estado compacto: sólo el icono. El fondo lo pinta el propio enlace (y no una
 // píldora deslizante aparte) porque su ancho cambia al revelarse el texto.
 const itemClass =
@@ -165,12 +178,19 @@ const labelTextClass =
               ? { target: '_blank', rel: 'noopener' }
               : {})}
         >
-          <svg
-            viewBox="0 0 24 24"
-            class="size-7.5 shrink-0 stroke-current stroke-[1.5]"
-            fill="none"
-            set:html={icon(link.icon)}
-          />
+          {iconFile(link.icon) ? (
+            <span
+              class="size-7.5 shrink-0 bg-current"
+              style={`mask: url("${iconFile(link.icon)}") center / contain no-repeat`}
+            />
+          ) : (
+            <svg
+              viewBox="0 0 24 24"
+              class="size-7.5 shrink-0 stroke-current stroke-[1.5]"
+              fill="none"
+              set:html={icon(link.icon)}
+            />
+          )}
           <span class={labelTrackClass}>
             <span class={labelClipClass}>
               <span class={labelTextClass}>{link.label}</span>
