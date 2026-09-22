@@ -8,7 +8,8 @@
 #   tags: [C, Python]
 #   participants:
 #     - name: Carlos Tercero
-#       link: https://codeberg.org/cum3
+#       link: https://codeberg.org/cum3 # opcional; si el nombre existe, se reutiliza
+#     - Otra Persona
 
 - title: Teclados
   date: 2026/05/01
@@ -43,8 +44,7 @@
     posible... No te preocupes, vas a salir de aquí con más dudas sobre punteros que cuando
     entraste, pero esa es la parte divertida del lenguaje.
   participants:
-    - name: Jorge Saghin
-      link: https://github.com/z4na14
+    - Jorge Saghin
   tags: [C]
   cartel: https://pbs.twimg.com/media/HAjzAeHXEAAqVCa?format=jpg&name=4096x4096
 
@@ -63,8 +63,7 @@
   description: >-
     Una conversación sobre cómo la asociación fomenta un espacio colaborativo donde cualquier persona puede aprender, compartir y disfrutar de la informática y del ecosistema Linux.
   participants:
-    - name: Jorge Saghin
-      link: https://github.com/z4na14
+    - Jorge Saghin
     - name: Luis Daniel Casais
       link: https://github.com/rajayonin
   photo: https://www.uc3m.es/asociaciones-estudiantes/media/asociaciones-estudiantes/img/grande/original/en-ig_gul-uc3m_2866.../gul-uc3m-web.jpg
@@ -100,9 +99,8 @@
     cómoda y simplemente mejor.
   cartel: https://pbs.twimg.com/media/G5Z06RVWEAA9ThR?format=jpg&name=large
   participants:
-    - name: Luis Daniel Casais
-      link: https://github.com/rajayonin
-  video: https://www.youtube.com/watch?v=Apaqtno3ACE&feature=youtu.be
+    - Luis Daniel Casais
+  video: https://www.youtube.com/watch?v=Apaqtno3ACE
   tags: [Typst]
 
 - title: Minicurso express de Git ✨ Avanzado ✨
@@ -112,8 +110,7 @@
     Charla 100% improvisada sobre temas algo más avanzados de Git, centrada
     en el workflow típico de desarrollo.
   participants:
-    - name: Luis Daniel Casais
-      link: https://github.com/rajayonin
+    - Luis Daniel Casais
   video: https://www.youtube.com/watch?v=FeJH90RQ68M
   tags: [Git]
 
@@ -125,7 +122,7 @@
     ordenador en un pisapapeles, ¿y no piensas hacer nada? Celebremos juntos
     la muerte de Windows 10.
   cartel: https://pbs.twimg.com/media/G14xx8yWIAAUqtS?format=jpg&name=4096x4096
-  video: https://www.youtube.com/watch?v=Apaqtno3ACE&feature=youtu.be
+  video: https://www.youtube.com/watch?v=Apaqtno3ACE
   repository: https://github.com/guluc3m/linux-install
 
 - title: Ampliación de C para "normies"
@@ -136,7 +133,7 @@
     ordenador en un pisapapeles, ¿y no piensas hacer nada? Celebremos juntos
     la muerte de Windows 10 este 7 de octubre en el aula 2.3.C03
   cartel: https://pbs.twimg.com/media/Gj5ctk6WkAAShkb?format=jpg&name=medium
-  video: https://www.youtube.com/watch?v=Apaqtno3ACE&feature=youtu.be
+  video: https://www.youtube.com/watch?v=Apaqtno3ACE
   transparencias: https://github.com/z4na14/c-taller-intro
   tags: [C]
 
@@ -155,14 +152,11 @@
     Corría el otoño de 2026 cuando los chicos super sexis del GUL, hartos de ver a los larp-masters y sus secuaces token-maxers saqueando las GPUs a cambio de prompts kilométricos, decidieron plantar cara. Durante un largo y doloroso fin de semana se enfrentaron a la secta de los malvados 'AI-experts' de LinkedIn, que había impuesto el maleficio del token maxing sobre la Universidad Politécnica de Madrid.
   # Esto no es serio, pero seguramente les haga gracia y lo dejen
   participants:
-    - name: Albert Giurgiu
-      link: https://github.com/fedes1to
+    - Albert Giurgiu
     - name: Henry Díaz
       link: https://github.com/h3nry-d1az
-    - name: Luis Daniel Casais
-      link: https://github.com/rajayonin
-    - name: Jorge Saghin
-      link: https://github.com/z4na14
+    - Luis Daniel Casais
+    - Jorge Saghin
     - name: Héctor Molina
       link: https://github.com/Toriomg
   photo: /actividades/hackspain.png
