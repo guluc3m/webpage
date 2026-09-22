@@ -11,6 +11,7 @@ export const ACTIVIDAD_TYPES = [
   'Hackathon',
   'Install party',
   'Game jam',
+  'Pódcast',
 ] as const;
 export type ActividadType = (typeof ACTIVIDAD_TYPES)[number];
 

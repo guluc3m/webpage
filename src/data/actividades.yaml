@@ -1,11 +1,14 @@
 # Lista de actividades del GUL. Edita esta lista para añadir/quitar eventos.
 # - title: XXXVI Jornadas Técnicas
 #   date: 2027/02/00
-#   type: Charla # uno de: Charla, Taller, Hackathon, Install party, Game jam
+#   type: Charla # uno de: Charla, Taller, Hackathon, Install party, Game jam, Pódcast
 #   description: >-
 #     Son una serie de charlas y/o talleres relacionados con el Software Libre,
 #     Linux, la informatica, la ingenieria... ¡Jornadas Tecnicas!
-#   tags: [Jornadas Técnicas]
+#   tags: [C, Python]
+#   participants:
+#     - name: Carlos Tercero
+#       link: https://codeberg.org/cum3
 
 - title: Teclados
   date: 2026/05/01
@@ -54,6 +57,19 @@
     por si no te gusta Gimp, tú solo ven.
   cartel: https://pbs.twimg.com/media/G_sIN7tXIAES7GA?format=jpg&name=4096x4096
 
+- title: Pódcast de Asociaciones UC3M
+  date: 2025/12/19
+  type: Pódcast
+  description: >-
+    Una conversación sobre cómo la asociación fomenta un espacio colaborativo donde cualquier persona puede aprender, compartir y disfrutar de la informática y del ecosistema Linux.
+  participants:
+    - name: Jorge Saghin
+      link: https://github.com/z4na14
+    - name: Luis Daniel Casais
+      link: https://github.com/rajayonin
+  photo: https://www.uc3m.es/asociaciones-estudiantes/media/asociaciones-estudiantes/img/grande/original/en-ig_gul-uc3m_2866.../gul-uc3m-web.jpg
+  video: https://www.youtube.com/watch?v=UaF5FAdkjU4
+
 - title: Intro Git & Github
   date: 2025/11/12
   type: Taller
@@ -84,7 +100,7 @@
     cómoda y simplemente mejor.
   cartel: https://pbs.twimg.com/media/G5Z06RVWEAA9ThR?format=jpg&name=large
   participants:
-    - name: Luisda
+    - name: Luis Daniel Casais
       link: https://github.com/rajayonin
   video: https://www.youtube.com/watch?v=Apaqtno3ACE&feature=youtu.be
   tags: [Typst]
@@ -96,7 +112,7 @@
     Charla 100% improvisada sobre temas algo más avanzados de Git, centrada
     en el workflow típico de desarrollo.
   participants:
-    - name: Luisda
+    - name: Luis Daniel Casais
       link: https://github.com/rajayonin
   video: https://www.youtube.com/watch?v=FeJH90RQ68M
   tags: [Git]
@@ -143,7 +159,7 @@
       link: https://github.com/fedes1to
     - name: Henry Díaz
       link: https://github.com/h3nry-d1az
-    - name: Luisda
+    - name: Luis Daniel Casais
       link: https://github.com/rajayonin
     - name: Jorge Saghin
       link: https://github.com/z4na14
