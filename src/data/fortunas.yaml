@@ -28,11 +28,11 @@
 
 - quote: |-
     - Persona: "En los IDE de Linux se echa de menos que te permitan ir a la definicion del metodo/variable..."
-    - Jesus (dando saltitos y moviendo los brazos) "Eso lo tiene VIM, eso lo tiene VIM, eso lo tienen VIM..."
-  author: Jesus Espino (El tiene vim o vim le tiene a el?)
+    - Jesús (dando saltitos y moviendo los brazos) "Eso lo tiene VIM, eso lo tiene VIM, eso lo tienen VIM..."
+  author: Jesús Espino (¿él tiene Vim o Vim le tiene a él?)
 
 - quote: |-
-    Quería dar las gracias, sobre todo a mi misma.
+    Quería dar las gracias, sobre todo a mí misma.
   author: Ana
 
 - quote: |-
@@ -214,7 +214,7 @@
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
-    Pedimos presupuesto para un array de 60 lasers: siete mil millones de doláres. Fuimos y le compramos todo el stock al chino de la esquina: "lásel balato". Eso sí, cuando enseñamos el proyecto no decimos de donde lo sacamos.
+    Pedimos presupuesto para un array de 60 lásers: siete mil millones de doláres. Fuimos y le compramos todo el stock al chino de la esquina: "lásel balato". Eso sí, cuando enseñamos el proyecto no decimos de donde lo sacamos.
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
@@ -248,7 +248,7 @@
   author: Goyi (Sistemas Operativos)
 
 - quote: |-
-    Dime que polvo tienes y te diré que arquitectura usas
+    Dime qué polvo tienes y te diré que arquitectura usas
   author: Javier Sánchez-Arévalo
 
 - quote: |-
@@ -282,7 +282,7 @@
   author: Diego Bodas (Metodologia)
 
 - quote: |-
-    *Suena un movil*
+    *Suena un móvil*
     - Profesor: "¿Puedes responder fuera de clase por favor?"
     - Alumno: "No, si he rechazado la llamada..."
     - Profesor: "No no, que contestes fuera..."
@@ -291,7 +291,7 @@
   author: Agapito (primer año que da teoría)
 
 - quote: |-
-    ¿Hoy habeis comido en paila? Porque no parais de hablar...
+    ¿Hoy habeis comido en paila? Porque no paráis de hablar...
   author: Agapito (¿?¿?¿?)
 
 - quote: |-
@@ -299,7 +299,7 @@
   author: Cualquier estudiante con asignaturas del DEI
 
 - quote: |-
-    Las prácticas de la asignatura se realizaran en Linux, si teneis alguna duda preguntad a los del GUL que os las resolverán sin problemas.
+    Las prácticas de la asignatura se realizarán en Linux, si tenéis alguna duda preguntad a los del GUL que os las resolverán sin problemas.
   author: F. Javier Crespo (ADA)
 
 - quote: |-
@@ -489,7 +489,7 @@
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
-    Como no tenía nada que hacer me fui al banco a discutir con el de la ventanilla.
+    Como no tenía nada que hacer, me fui al banco a discutir con el de la ventanilla.
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
@@ -505,7 +505,7 @@
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
-    Ya saben que a mi no me gusta la polemica ni nada de eso, pero... sarge es para maricas.
+    Ya saben que a mí no me gusta la polemica ni nada de eso, pero... sarge es para maricas.
   author: Jesus Espino, no Flamewars
 
 - quote: |-
@@ -520,8 +520,9 @@
   author: Manuel Sánchez Pena (Electrónica)
 
 - quote: |-
-    - Profesor: "Vuestra practica no me compila."
-    - Alumno: "Pues que raro, a mi si que me compilaba, ¿qué versión del compilador de JAVA usan?."P: "Pues no se... la... 1.8."
+    - Profesor: "Vuestra práctica no me compila."
+    - Alumno: "Pues qué raro, a mí si que me compilaba, ¿qué versión del compilador de JAVA usan?"
+    - P: "Pues no se... la... 1.8."
     *NOTA: A fecha de hoy la versión más reciente es la 'JAVA 2 SE SDK 5.0 Update 3' (=1.5) y la inmediatamente anterior es la 'JAVA 2 SE SDK 1.4.2_08'*
   author: Juan Manuel Alonso Weber (Informática Teórica I)
 
@@ -553,12 +554,12 @@
     Me gusta satisfacer... y satisfacerlas.
   author: Vicente
 
-- quote: Yo se que tocamientos hay que hacerle al codigo...
+- quote: Yo sé qué tocamientos hay que hacerle al código...
   author: Vicente (Pensado en voz alta)
 
 - quote: |-
     A ver, por favor, un poco de silencio... Antes de comenzar la clase vamos a jugar a las cartas... *Saca una baraja y comienza a barajar*
-  author: Jaime Garcia (Nuevos Metodos de Enseñanza)
+  author: Jaime Garcia (Nuevos Métodos de Enseñanza)
 
 - quote: |-
     Profesor:"¿Conoceis el libro de Bush (1945)?"
@@ -568,11 +569,11 @@
 
 - quote: |-
     Cuanto más grande, más pequeño.
-  author: Samuel (El tamaño no importa)
+  author: Samuel (el tamaño no importa)
 
 - quote: |-
-    ¿Sabeis lo que es un lenguaje natural? El que hablamos. Bueno aunque no se si el mio es natural.
-  author: Agapito 1º dia de I.Teorica
+    ¿Sabeis lo que es un lenguaje natural? El que hablamos. Bueno, aunque no sé si el mío es natural.
+  author: Agapito (1er día de I. Teórica)
 
 - quote: |-
     Pero no "nada" de "imperceptible" sino "nada" de "nada", de "no", de "me fumo un cigarrito y paso de todo".
@@ -580,15 +581,15 @@
 
 - quote: |-
     Profesor: "¿Alguno ha compilado un kernel alguna vez?"
-    *Solo levanta la mano un alumno*
+    *Sólo levanta la mano un alumno*
     Profesor: "Bueno... ¿quien tiene instalado Linux en casa?"
     *Levantan la mano 4 o 5*
     Profesor: "Vale. Al menos espero que tengais más vida social que yo."
   author: Alejandro Calderón (Friki incomprendido)
 
 - quote: |-
-    ¿Estás de cachondeo ahora?¿O llevas así toda la tarde?
-  author: Jesús Espino (Con su ovación correspondiente)
+    ¿Estás de cachondeo ahora? ¿O llevas así toda la tarde?
+  author: Jesús Espino (con su ovación correspondiente)
 
 - quote: |-
     En lo que instalo una Gentoo, sale la siguiente version estable de Debian
@@ -604,7 +605,7 @@
 
 - quote: |-
     Las chicas son más lesbianas que los chicos
-  author: Jeda
+  author: JEDA
 
 - quote: |-
     No sabéis la suerte que habéis tenido de que el profesor de mañana se olvidase de que tenía que dar dos horas de clase. Ahora la parte más difícil de la asignatura no entra a examen. No echéis lotería... más suerte que esto no se puede tener.
@@ -627,8 +628,7 @@
   author: Anónimo (Complejidad Computacional)
 
 - quote: |-
-    El infinito en óptica está muy lejos, gracias a Dios, porque si no se le
-    jode el invento a las películas de Batman.
+    El infinito en óptica está muy lejos, gracias a Dios, porque si no se le jode el invento a las películas de Batman.
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
@@ -644,12 +644,11 @@
   author: Roberto Muñoz
 
 - quote: |-
-    Y así, podéis perfectamente saltaros la Wi-Fi de la universidad. Espero que
-    el chico de redes que está por ahí no se mosquee.
+    Y así, podéis perfectamente saltaros la Wi-Fi de la universidad. Espero que el chico de redes que está por ahí no se mosquee.
   author: Javier Sánchez Arévalo (Curso de Seguridad en Red)
 
 - quote: |-
-    La máquina solo entiende código fuente, es decir, binario como por ejemplo: 1100017... no, siete no.
+    La máquina sólo entiende código fuente, es decir, binario; como por ejemplo: 1100017... no, siete no.
   author: Paula de Toledo (profesora de programación)
 
 - quote: |-
@@ -678,11 +677,11 @@
     *Entra un alumno en clase*
     - Profesor: "¿Cómo te llamas?"
     - Alumno: "Guillermo"
-    - Profesor: "Ya lo sabía; era para ver si te acordabas."
+    - Profesor: "Ya lo sabía, era para ver si te acordabas."
   author: Fernando Jurado (festival del humor)
 
 - quote: |-
-    Los grupos de prácticas mejor de 4 personas, dos parejitas. Y los que seáis más liberales o raritos podéis hacer trios
+    Los grupos de prácticas mejor de 4 personas, dos parejitas. Y los que seáis más liberales o raritos podéis hacer tríos
   author: Fernando Jurado y la diversidad sexual
 
 - quote: |-
@@ -706,7 +705,7 @@
   author: Fernando Jurado (porque él lo vale)
 
 - quote: |-
-    El método de cifrado Cesar se llama así porque fué usado por Julio Cesar en la Guerra de las Galaxias
+    El método de cifrado César se llama así porque fué usado por Julio César en la Guerra de las Galaxias
   author: Almudena Alcaide (usa la fuerza, César)
 
 - quote: |-
@@ -752,7 +751,7 @@
     - Javi: "Vamos a empezar primero con lo que nos queda de teoría y luego haremos el test."
     - Alumno: "¿Lo podemos votar?"
     - Javi: "Claro, votemos. ¿Quíen quiere acabar primero la teoría?"
-    *Solo levanta él la mano.*
+    *Sólo levanta él la mano.*
     - Javi: "¡Vaya, hay mayoría! Ahora vamos a acabar con los árboles R."
   author: Javier Calle (resistance is futile)
 
@@ -761,7 +760,7 @@
   author: Roberto Muñoz
 
 - quote: |-
-    Es un reporte automatico que no entiendo que significa, pero segun entiendo la teoria es normal que ocurra. Vamos, que no tengo ni puta idea, pero no creo que sea algo malo.
+    Es un reporte automático que no entiendo que significa, pero segun entiendo la teoria es normal que ocurra. Vamos, que no tengo ni puta idea, pero no creo que sea algo malo.
   author: Banga
 
 - quote: |-
@@ -810,7 +809,7 @@
   author: Casti (Empresariales)
 
 - quote: |-
-    Porque Java o JavaScript es interpretado y lento y da muchos problemas de incompatibilidad.
+    Porque Java, o JavaScript, es interpretado y lento, y da muchos problemas de incompatibilidad.
   author: Jesús Manuel Poza (Ingeniería de Software)
 
 - quote: |-
@@ -838,7 +837,7 @@
   author: David Expósito (Sistemas Operativos)
 
 - quote: |-
-    (A la profesora de Multimedia) ¡He buscado la película más putamente gay que existe y aún así no ha salido por ningún puto lada nada de LGBT!
+    (A la profesora de Multimedia) ¡He buscado la película más putamente gay que existe y aún así no ha salido por ningún puto lado nada de LGBT!
   author: Luisda (frustración por el web scraping)
 
 - quote: |-
@@ -947,7 +946,7 @@
   author: Daniel Garzón (Criptografía y seguridad informática)
 
 - quote: |-
-    Os estoy enseñando casos en los que solo se me produce un 1... Estos casos me ponen, luego os explicaré por qué.
+    Os estoy enseñando casos en los que sólo se me produce un 1... Estos casos me ponen, luego os explicaré por qué.
   author: Daniel Garzón (Criptografía y seguridad informática)
 
 - quote: |-
@@ -979,7 +978,7 @@
   author: Daniel Garzon (Criptografía y seguridad informática)
 
 - quote: |-
-    A mi me encantan los legos, mi casa esta llena de legos, mi cama también lo está... ¿queréis ver mis legos?
+    A mí me encantan los legos, mi casa esta llena de legos, mi cama también lo está... ¿queréis ver mis legos?
   author: Javier García (Estructura de computadores)
 
 - quote: |-
@@ -1000,11 +999,11 @@
 
 - quote: |-
     Rust esta bien
-  author: José Antonio (en el fondo le encanta)
+  author: Jose Antonio (en el fondo le encanta)
 
 - quote: |-
     Es muy grande, pensaba que iba a ser más pequeño
-  author: José Antonio
+  author: Jose Antonio
 
 - quote: |-
     Buscad a una señora con un bebé en Twitter. Si no la encontraís, buscad un bebé... Por ejemplo, me he traído un bebé...
@@ -1035,7 +1034,7 @@
   author: Pedro (Redes de ordenadores)
 
 - quote: |-
-    Vosotros mismos corregireis los trabajos de los demás, y teneis que tener un poco de ética. Si mi amigo es un paquete es un paquete. Nos tomamos algo, pero eres un paquete tio.
+    Vosotros mismos corregiréis los trabajos de los demás, y teneis que tener un poco de ética. Si mi amigo es un paquete es un paquete. Nos tomamos algo, pero eres un paquete tio.
   author: Daniel Garzon (Criptografía y seguridad informática)
 
 - quote: |-
@@ -1079,7 +1078,7 @@
   author: Luisda
 
 - quote: |-
-    Creo que, después de los judios, es lo peor que le ha pasado a la humanidad
+    Creo que, después de los judíos, es lo peor que le ha pasado a la humanidad
   author: Danié hablando sobre NodeJS
 
 - quote: |-
@@ -1136,11 +1135,11 @@
 
 - quote: |-
     Esto es como compilar el kernel de Linux estando borracho
-  author: José Maria de Fuentes García-Romero de Tejada, aka Chema
+  author: José María de Fuentes García-Romero de Tejada, aka Chema
 
 - quote: |-
-    Esto lo ponéis en las encuestas, el profesor sabe levantar la ceja y hacer el pajarito
-  author: José Maria de Fuentes García-Romero de Tejada, aka Chema
+    Esto lo ponéis en las encuestas: "El profesor sabe levantar la ceja y hacer el pajarito"
+  author: José María de Fuentes García-Romero de Tejada, aka Chema
 
 - quote: |-
     Que Dios te lo pague, porque yo no lo voy a hacer
@@ -1148,11 +1147,11 @@
 
 - quote: |-
     ¿Lo habéis entendido?... Es probable que me inmole en los próximos minutos
-  author: José Maria de Fuentes García-Romero de Tejada, aka Chema
+  author: José María de Fuentes García-Romero de Tejada, aka Chema
 
 - quote: |-
-    Como no saqueis todos un 10, no os voy a enseñar mi pajarito, os lo teneis que ganar
-  author: José Maria de Fuentes García-Romero de Tejada, aka Chema
+    Como no saquéis todos un 10, no os voy a enseñar mi pajarito, os lo teneis que ganar
+  author: José María de Fuentes García-Romero de Tejada, aka Chema
 
 - quote: |-
     Mi correo este finde parecía AliExpress, sólo me escribían chinos
@@ -1167,15 +1166,15 @@
   author: Jose Antonio
 
 - quote: |-
-    Maria quería ver Bambi 2, pero en vez de bambi se descargó la peli del fontanero sexy
-  author: José Maria de Fuentes García-Romero de Tejada, aka Chema
+    María quería ver Bambi 2, pero en vez de bambi se descargó la peli del fontanero sexy
+  author: José María de Fuentes García-Romero de Tejada, aka Chema
 
 - quote: |-
     Si no os compila la práctica porque vuestro CMake llama por telefono a tu abuela, no pasa nada
   author: Carlos Linares
 
 - quote: |-
-    Voy a sacarme el doctorado solo para ser el Dr. Matamoros
+    Voy a sacarme el doctorado sólo para ser el Dr. Matamoros
   author: Samuel Matamoros
 
 - quote: |-
@@ -1187,7 +1186,7 @@
   author: Albert
 
 - quote: |-
-    Soy el Vocal, no la Consonante, a mi dejadme en paz
+    Soy el Vocal, no la Consonante, a mí dejadme en paz
   author: Jose Antonio
 
 - quote: |-
@@ -1196,14 +1195,14 @@
 
 - quote: |-
     A lo mejor tu madre habla en C++ y tu padre en Haskell
-  author: Carlos Linares
+  author: Carlos Linares (Heurística)
 
 - quote: |-
     Un programa con un comportamiento no definido puede hasta dejar embarazada a tu gata, incluso si no tienes gata
-  author: JD
+  author: JD (Arquitectura de Computadores)
 
 - quote: |-
-    Me la pela. Tu sacas el informe como quieras
+    Me la pela. Tú sacas el informe como quieras
   author: Daniel Garzon (Seguridad en dispositivos móviles)
 
 - quote: |-
@@ -1212,7 +1211,7 @@
   author: Miguel (diseñador gráfico)
 
 - quote: |-
-    Aquí no os presentéis con las manos vacías que acabamos a ostias aquí en el laboratorio.
+    Aquí no os presentéis con las manos vacías, que acabamos a ostias aquí en el laboratorio.
   author: Daniel Garzon (Seguridad en dispositivos móviles)
 
 - quote: |-
@@ -1220,7 +1219,7 @@
   author: Jorge sobre su "servidor"
 
 - quote: |-
-    Lo de consultarlo con la almohada y entregarlo el domingo es una mierda, a mi me lo entregais el viernes. ¿Sabeis lo que les pone a los jefes eso? Les pone nivel se van al baño a tocarse.
+    Lo de consultarlo con la almohada y entregarlo el domingo es una mierda, a mí me lo entregais el viernes. ¿Sabeis lo que les pone a los jefes eso? Les pone nivel se van al baño a tocarse.
   author: Daniel Garzon (Seguridad en dispositivos móviles)
 
 - quote: Me voy a auto-proclamar rumano
@@ -1255,7 +1254,7 @@
 
 - quote: |-
     Es más cómodo por delante que por detrás
-  author: Maria Paz Sesmero Lorente
+  author: María Paz Sesmero Lorente
 
 - quote: |-
     - Alumno: "¿Si suspendo el parcial...?"
@@ -1271,7 +1270,7 @@
   author: Luisda hablando sobre "First Dates"
 
 - quote: |-
-    Qué cojones, que redes ni que mierda; un Python, si tienes tanto azucar tanta insulina... ni agentes ni mierdas.
+    Qué cojones, qué redes ni qué mierda; un Python, si tienes tanto azucar tanta insulina... ni agentes ni mierdas.
   author: Daniel Garzon (Seguridad en dispositivos móviles)
 
 - quote: |-
@@ -1283,7 +1282,7 @@
   author: Alejandro Calderón (Sistemas distribuidos)
 
 - quote: |-
-    - Jorge: "A mi me vendió la carrera Calderón. Hizo bien, si no estaría estudiando periodismo."
+    - Jorge: "A mí me vendió la carrera Calderón. Hizo bien, si no estaría estudiando periodismo."
     - Miguel: "Te salvó de ser un letrasado"
   author: Jorge y Miguel (¿por qué nos hemos metido a informática?)
 
@@ -1320,6 +1319,3 @@
     Han payificado C++
   author: Noa Fernández
 
-- quote: |-
-    No sabía que la CPU usaba memoria
-  author: Un muerdeant
