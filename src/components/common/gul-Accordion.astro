@@ -1,0 +1,27 @@
+---
+/**
+ * gul-Accordion — disclosure list (FAQ-style). Renders plain <details>/
+ * <summary> so it works without JavaScript; <details> has no variants of
+ * its own, so all the visual styling (flat row, separator, chevron, height
+ * animation) lives in global.css's @layer base and applies automatically.
+ * Handles basic Markdown (bold, italics, links).
+ */
+interface Props {
+  items: { q: string; a: string }[];
+}
+
+import { renderInlineMarkdown } from '@lib/markdown';
+
+const { items } = Astro.props;
+---
+
+<div>
+  {items.map((item) => (
+    <details>
+      <summary>{item.q}</summary>
+      <div>
+        <p class="text-gul-muted" set:html={renderInlineMarkdown(item.a)} />
+      </div>
+    </details>
+  ))}
+</div>

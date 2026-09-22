@@ -1,0 +1,21 @@
+---
+/**
+ * gul-Eyebrow — the small labelled line above a title.
+ * Custom content can be provided through the default slot.
+ */
+interface Props {
+  text?: string;
+  class?: string;
+}
+
+const { text = '', class: className } = Astro.props;
+---
+
+<p
+  class:list={[
+    'flex items-center gap-3 text-sm font-medium tracking-[0.2em] text-gul-muted uppercase',
+    className,
+  ]}
+>
+  <slot>{text}</slot>
+</p>

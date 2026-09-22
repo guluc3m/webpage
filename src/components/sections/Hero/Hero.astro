@@ -1,0 +1,212 @@
+---
+/**
+ * Hero — the first screen. Conway's Game of Life runs as the background
+ * (GameOfLife is positioned absolutely inside this section's relative box).
+ *
+ * Shows a random "fortuna" (GUL in-joke) under the slogan. The build picks one
+ * so the section is never empty and no-JS visitors read it; with JS the client
+ * re-rolls it from /fortunas.json so the quote differs per visit, and "Otra
+ * fortuna" keeps handing out new ones, without repeats until every one has been
+ * shown. The quote block stays hidden until that first re-roll lands, so the
+ * build's pick is never painted and the swap is invisible (no pop-in).
+ *
+ * That list used to be inlined here through define:vars: 50KB of JSON in the
+ * HTML of every visit, a quarter of the page, unminifiable and re-downloaded
+ * every time. As its own file it is fetched after the first paint instead of
+ * blocking the parser, and the browser can cache it between visits.
+ */
+import GameOfLife from './GameOfLife.astro';
+import StaticHeroBackground from './StaticHeroBackground.astro';
+import GulEyebrow from '@components/common/gul-Eyebrow.astro';
+import GulDecryptText from '@components/common/gul-DecryptText.astro';
+import GulButton from '@components/common/gul-Button.astro';
+import GulAchievement from '@components/common/gul-Achievement.astro';
+import { loadFortunas } from '@lib/fortunas.ts';
+import rawFortunas from '@data/fortunas.yaml?raw';
+
+const formattedFortunas = loadFortunas(rawFortunas);
+// The index travels to the client so the first click can't hand back the
+// fortuna already on screen.
+const fortunaIndex = Math.floor(Math.random() * formattedFortunas.length);
+const fortuna = formattedFortunas[fortunaIndex];
+---
+
+{/* min-h-svh, no min-h-screen: 100vh en móvil cuenta la barra del navegador
+    como si no estuviera, dejando el hero más alto que la pantalla visible. */}
+<section id="inicio" class="relative flex min-h-svh items-center overflow-hidden">
+  <StaticHeroBackground />
+  <GameOfLife />
+  <div class="relative max-w-3xl px-4 py-8 sm:px-8 md:px-32">
+    <GulEyebrow class="mb-4">
+      <span>
+        Grupo de Usuarios de Linux de la{' '}
+        <a
+          href="https://uc3m.es"
+          target="_blank"
+          rel="noopener"
+          class="underline decoration-gul-line underline-offset-4 hover:text-gul-ink hover:decoration-gul-ink"
+        >
+          UC3M
+        </a>
+      </span>
+    </GulEyebrow>
+    <h1 class="text-4xl tracking-tight sm:text-5xl md:text-6xl">
+      Nos gusta <em class="italic">jugar</em> con la tecnología
+    </h1>
+    <figure class="mt-6" data-fortuna-figure data-fortuna-pending>
+      {/* whitespace-pre-line: the formatter may put a *stage direction* on its own line */}
+      <GulDecryptText
+        as="blockquote"
+        text={fortuna.quote}
+        decryptOnLoad={false}
+        class="whitespace-pre-line"
+        data-fortuna-quote
+        data-fortuna-index={fortunaIndex}
+      />
+      <figcaption data-fortuna-author-wrap hidden={!fortuna.author}>
+        <span aria-hidden="true">— </span>
+        <GulDecryptText text={fortuna.author} decryptOnLoad={false} data-fortuna-author />
+      </figcaption>
+      <GulButton
+        variant="secondary"
+        label="Otra fortuna"
+        hint="R"
+        title="Pulsa R en cualquier momento para otra fortuna"
+        class="mt-4"
+        data-refresh-fortuna
+      />
+    </figure>
+  </div>
+
+  <GulAchievement
+    id="fortunas-completadas"
+    text={`Has leído todas las ${formattedFortunas.length} fortunas`}
+  />
+</section>
+
+<script>
+  import type { Fortuna } from '@lib/fortunas.ts'; // type-only: nothing from that module ships
+
+  const quote = document.querySelector<HTMLElement>('[data-fortuna-quote]');
+  const author = document.querySelector<HTMLElement>('[data-fortuna-author]');
+  const authorWrap = document.querySelector<HTMLElement>('[data-fortuna-author-wrap]');
+  const refresh = document.querySelector<HTMLElement>('[data-refresh-fortuna]');
+  const figure = document.querySelector<HTMLElement>('[data-fortuna-figure]');
+
+  if (quote && author && authorWrap && refresh) {
+    // Fetched once, and kept as the promise rather than the array so two fast
+    // clicks can't start two downloads. A failed fetch clears it so the next
+    // click retries (and leaves the build's fortuna on screen).
+    let fortunas: Promise<Fortuna[]> | undefined;
+    const getFortunas = () =>
+      (fortunas ??= fetch('/fortunas.json')
+        .then((response) => response.json() as Promise<Fortuna[]>)
+        .catch(() => {
+          fortunas = undefined;
+          return [];
+        }));
+
+    // Kick the request off immediately: the figure stays hidden until the
+    // re-roll below is applied, so the sooner it lands the sooner it shows.
+    void getFortunas();
+
+    // Indexes, not objects: they have to match the positions in /fortunas.json,
+    // which is the same array the build picked the initial fortuna from.
+    let currentIndex = Number(quote.dataset.fortunaIndex);
+    // Starts empty: the build's fortuna is replaced before the figure is
+    // revealed, so counting it as read would unlock the achievement one fortuna
+    // early. Only re-rolls that actually get shown count.
+    const seen = new Set<number>();
+    let achievementUnlocked = false;
+
+    function decryptAuthor() {
+      if (!authorWrap!.hidden) {
+        author!.removeAttribute('data-decrypt-paused');
+        document.dispatchEvent(new CustomEvent('gul:decrypt:resume', { detail: author }));
+      }
+    }
+
+    quote.addEventListener('gul:decrypt:complete', (event) => {
+      if (event.target === quote) decryptAuthor();
+    });
+
+    async function nextFortuna(animate = true) {
+      const all = await getFortunas();
+      // No repeats until every fortuna has been shown, then a fresh round that
+      // excludes whatever is currently on screen.
+      if (seen.size >= all.length) {
+        seen.clear();
+        seen.add(currentIndex);
+      }
+      // Exclude what is on screen so a click always changes the quote; on the
+      // first call that is the build's fortuna, which is never revealed.
+      const available = all
+        .map((_, index) => index)
+        .filter((index) => index !== currentIndex && !seen.has(index));
+      if (!available.length) return; // empty list, or a single fortuna
+
+      currentIndex = available[Math.floor(Math.random() * available.length)];
+      seen.add(currentIndex);
+      const next = all[currentIndex];
+
+      quote!.textContent = next.quote;
+      if (animate) {
+        quote!.dispatchEvent(new CustomEvent('gul:decrypt', { bubbles: true, detail: quote }));
+      }
+      author!.textContent = next.author;
+      authorWrap!.hidden = !next.author;
+      if (animate && next.author) {
+        author!.dataset.decryptPaused = 'true';
+        document.dispatchEvent(new CustomEvent('gul:decrypt', { detail: author }));
+      } else {
+        author!.removeAttribute('data-decrypt-paused');
+      }
+
+      if (!achievementUnlocked && seen.size === all.length) {
+        document.dispatchEvent(
+          new CustomEvent('gul:achievement:show', { detail: 'fortunas-completadas' }),
+        );
+        achievementUnlocked = true;
+      }
+    }
+
+    // Re-roll the build's fortuna per visit, then reveal. The figure is hidden
+    // by `html.js` until here, so this swap is never painted.
+    void nextFortuna(false).finally(() => figure?.removeAttribute('data-fortuna-pending'));
+
+    refresh.addEventListener('click', () => nextFortuna());
+
+    // "r" re-rolls from anywhere, except while typing (inputs, textareas,
+    // contenteditable) or when a modifier makes it someone else's shortcut.
+    // Rate-limited so holding the key down doesn't burn through every fortuna.
+    const REROLL_COOLDOWN_MS = 200;
+    let lastReroll = 0;
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'r' && event.key !== 'R') return;
+      if (event.metaKey || event.ctrlKey || event.altKey) return;
+      const target = event.target as HTMLElement | null;
+      if (
+        target?.isContentEditable ||
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target instanceof HTMLSelectElement
+      ) {
+        return;
+      }
+      const now = performance.now();
+      if (now - lastReroll < REROLL_COOLDOWN_MS) return;
+      lastReroll = now;
+      void nextFortuna();
+    });
+  }
+</script>
+
+<style>
+  /* `html.js` is set by StaticHeroBackground before this block renders. Hiding
+     the figure until the client re-rolls keeps the build's fortuna from being
+     painted and then swapped. Without JS the class is absent, so the build's
+     fortuna is what visitors read. */
+  html.js [data-fortuna-figure][data-fortuna-pending] {
+    visibility: hidden;
+  }
+</style>

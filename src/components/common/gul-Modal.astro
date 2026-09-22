@@ -1,0 +1,39 @@
+---
+/**
+ * gul-Modal — a trigger button + native <dialog>. showModal()/close() give us
+ * the focus trap and Escape-to-close for free, so the script is just wiring.
+ * <dialog> itself needs no classes — its look comes from @layer base in
+ * global.css.
+ */
+import GulButton from './gul-Button.astro';
+
+interface Props {
+  triggerLabel: string;
+  title: string;
+  /** Unique per modal on the page — used to wire the trigger/close buttons. */
+  id: string;
+}
+
+const { triggerLabel, title, id } = Astro.props;
+---
+
+<GulButton data-gul-modal-open={id} label={triggerLabel} />
+<dialog id={id} data-gul-modal>
+  <h3 class="text-lg">{title}</h3>
+  <div class="mt-2 text-sm text-gul-muted">
+    <slot />
+  </div>
+  <GulButton variant="secondary" class="mt-4" data-gul-modal-close={id} label="Cerrar" />
+</dialog>
+
+<script>
+  document.querySelectorAll<HTMLDialogElement>('[data-gul-modal]').forEach((dialog) => {
+    const id = dialog.id;
+    document
+      .querySelector<HTMLButtonElement>(`[data-gul-modal-open="${id}"]`)
+      ?.addEventListener('click', () => dialog.showModal());
+    document
+      .querySelector<HTMLButtonElement>(`[data-gul-modal-close="${id}"]`)
+      ?.addEventListener('click', () => dialog.close());
+  });
+</script>

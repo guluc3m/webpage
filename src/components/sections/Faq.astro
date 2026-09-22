@@ -1,0 +1,41 @@
+---
+/**
+ * Faq — frequently asked questions.
+ */
+import GulAccordion from '@components/common/gul-Accordion.astro';
+import GulTerminal from '@components/common/gul-Terminal.astro';
+import { CONTACT, obfuscateEmail } from '@/config.ts';
+
+const obfuscatedEmail = obfuscateEmail(CONTACT.email);
+
+const items = [
+  {
+    q: '¿Cómo me apunto al GUL?',
+    a: `Es tan fácil como entrar a nuestros grupos de Telegram. Para evitar que se nos metan bots continuamente, son por invitación, y por lo tanto tendrás que mandarnos un correo a ${obfuscatedEmail}, o enviarnos un MD a nuestro Twitter, [@guluc3m](https://twitter.com/guluc3m).`,
+  },
+  {
+    q: '¿Hay que saber Linux?',
+    a: '¡No! Aquí venimos a aprender. Por supuesto que _esperamos_ que te instales Linux en algún momento, pero aún así, siempre que quieras hablar de tecnología y/o software libre, serás bienvenido. Si quieres instalar Linux, o aprender un poquito más, échale un vistazo a nuestra [guía de instalación](/guia).',
+  },
+  {
+    q: '¿Cuándo quedáis?',
+    a: 'Intentamos reunirnos al menos una vez al mes, y tenemos reuniones "generales" una vez al cuatrimestre. También hacemos distintos talleres y charlas, a las que por supuesto estás invitado. También estamos unos u otros de vez en cuando en el despacho, así que si te pasas y está la puerta abierta u oyes ruido dentro, no temas en saludar.',
+  },
+  {
+    q: '¿Dónde anunciáis vuestras actividades?',
+    a: 'A través de nuestras redes sociales (Twitter: [@guluc3m](https://twitter.com/guluc3m), Instagram: [@guluc3m](https://instagram.com/guluc3m)), y en la aplicación [Open uc3m](https://openuc3m.com/). ¡Síguenos para no perderte nada! También publicamos todas nuestras actividades pasadas en la [página de actividades](/actividades).',
+  },
+  {
+    q: 'Tengo "x" problema con Linux... ¿me podéis ayudar?',
+    a: `¡Por supuesto! Envíanos un correo a ${obfuscatedEmail} y veremos qué podemos hacer.`,
+  },
+];
+---
+
+<section id="faq" class="gul-gutter mx-auto max-w-gul-content py-8">
+  <h2>FAQ</h2>
+  <GulTerminal lines={[{ command: 'man faq' }]} />
+  <div class="mt-4">
+    <GulAccordion items={items} />
+  </div>
+</section>

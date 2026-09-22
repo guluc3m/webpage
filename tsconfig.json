@@ -1,0 +1,25 @@
+{
+  // TypeScript config for the whole project. Extends Astro's "strict" preset
+  // (which itself turns on `strict: true` and Astro-specific options). The Astro
+  // VS Code extension and `pnpm check` (astro check) both read this file.
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    // Lets .ts/.tsx files resolve `.astro` imports and get IntelliSense for them
+    // in the editor. Harmless for the CLI build.
+    "plugins": [{ "name": "@astrojs/ts-plugin" }],
+    "paths": {
+      "@/*": ["./src/*"],
+      // src/assets, no public/: las imágenes que pasan por <Image> de Astro
+      // tienen que estar dentro de src para que las optimice (srcset, webp,
+      // width/height). En public/ se sirven tal cual.
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@data/*": ["./src/data/*"],
+      "@icons/*": ["./src/icons/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@lib/*": ["./src/lib/*"]
+    }
+  },
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"]
+}

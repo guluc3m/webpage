@@ -1,0 +1,34 @@
+---
+/**
+ * gul-Header — the site header: GUL logo + navigation.
+ *
+ * Shared component (`gul-` prefix) — copied into the other GUL repos. It takes
+ * the nav links as a prop so nothing about *this* site's sections is baked in.
+ */
+import GulNav from './gul-Nav.astro';
+import GulContactDropdown from './gul-ContactDropdown.astro';
+
+interface Props {
+  links: { label: string; href: string }[];
+}
+
+const { links } = Astro.props;
+---
+
+{/* gul-gutter en móvil (no px-6) para que el logo caiga en la misma línea
+    vertical que el contenido de las secciones y del footer. */}
+<header class="gul-gutter sticky top-0 z-50 flex items-center gap-4 border-b border-gul-line/60 bg-gul-bg/70 py-3 backdrop-blur-md md:gap-8 md:px-6">
+  {/* Una sola fila flex con `order`: en móvil el burger va primero (su panel
+      se ancla a la izquierda y así nunca se sale del viewport) y en md+ el
+      logo recupera la primera posición. `mr-auto` en el logo es lo que empuja
+      nav y Contacta al borde derecho en ambos casos. */}
+  <GulNav links={links} class="order-1 md:order-2" />
+  <a href="/" aria-label="Inicio" class="order-2 mr-auto md:order-1">
+    {/* Dark variant: the site is always dark, and logo-gul.svg's lettering
+        (#1a1a1a) is illegible against the near-black header. */}
+    <img src="/logo-gul-dark.svg" alt="GUL UC3M" class="h-8 w-auto" />
+  </a>
+  <div class="order-3">
+    <GulContactDropdown />
+  </div>
+</header>

@@ -1,0 +1,153 @@
+---
+/**
+ * gul-Achievement — generic Steam-style achievement toast.
+ * To trigger showing it, dispatch `gul:achievement:show` with this component's
+ * id as the event detail.
+ */
+interface Props {
+  id: string;
+  text: string;
+}
+
+const { id, text } = Astro.props;
+---
+
+<div
+  id={id}
+  class="fortuna-achievement"
+  data-achievement
+  role="status"
+  aria-live="polite"
+  aria-atomic="true"
+  aria-hidden="true"
+  hidden
+>
+  <span class="fortuna-achievement__icon" aria-hidden="true">
+    ★
+  </span>
+  <span>
+    <strong class="fortuna-achievement__title">¡Logro desbloqueado!</strong>
+    <span class="fortuna-achievement__message">{text}</span>
+  </span>
+</div>
+
+<script define:vars={{ id }}>
+  const achievement = document.getElementById(id);
+
+  const showAchievement = (event) => {
+    if (event.detail !== id) return;
+    if (!achievement) return;
+
+    achievement.hidden = false;
+    achievement.setAttribute('aria-hidden', 'false');
+    // Force a reflow so the animation can be replayed on every full cycle.
+    achievement.classList.remove('is-visible');
+    void achievement.offsetWidth;
+    achievement.classList.add('is-visible');
+  };
+
+  document.addEventListener('gul:achievement:show', showAchievement);
+
+  achievement?.addEventListener('animationend', () => {
+    achievement.hidden = true;
+    achievement.setAttribute('aria-hidden', 'true');
+    achievement.classList.remove('is-visible');
+  });
+</script>
+
+<style>
+  .fortuna-achievement {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 20;
+    display: flex;
+    width: min(22rem, calc(100vw - 2rem));
+    align-items: center;
+    gap: 0.75rem;
+    border: 1px solid var(--color-gul-blue);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--color-gul-surface) 94%, var(--color-gul-blue));
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--color-gul-blue) 30%, transparent),
+      0 1rem 3rem rgb(0 0 0 / 35%);
+    padding: 0.75rem 1rem;
+    color: var(--color-gul-ink);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(1.5rem) scale(0.96);
+  }
+
+  .fortuna-achievement.is-visible {
+    animation: fortuna-achievement 5s ease both;
+  }
+
+  .fortuna-achievement__icon {
+    display: grid;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid var(--color-gul-amber);
+    border-radius: 0.25rem;
+    background: color-mix(in srgb, var(--color-gul-amber) 16%, var(--color-gul-bg));
+    color: var(--color-gul-amber);
+    font-size: 1.35rem;
+  }
+
+  .fortuna-achievement__title,
+  .fortuna-achievement__message {
+    display: block;
+  }
+
+  .fortuna-achievement__title {
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+  }
+
+  .fortuna-achievement__message {
+    margin-top: 0.125rem;
+    color: var(--color-gul-muted);
+    font-size: 0.75rem;
+  }
+
+  @keyframes fortuna-achievement {
+    0% {
+      opacity: 0;
+      transform: translateY(1.5rem) scale(0.96);
+    }
+    12%,
+    78% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(1.5rem) scale(0.96);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fortuna-achievement.is-visible {
+      animation: fortuna-achievement-reduced 5s linear both;
+    }
+  }
+
+  @keyframes fortuna-achievement-reduced {
+    0%,
+    78% {
+      opacity: 1;
+      transform: none;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 30rem) {
+    .fortuna-achievement {
+      right: 1rem;
+      bottom: 1rem;
+    }
+  }
+</style>

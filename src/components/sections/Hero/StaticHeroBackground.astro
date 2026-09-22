@@ -1,0 +1,61 @@
+---
+/**
+ * StaticHeroBackground — what sits behind the hero's Game of Life canvas.
+ *
+ * Two layers. The base gradient is always there: the canvas leaves a 2px gap
+ * between cells, and those gaps need to be darker than the dead cells
+ * (--color-gul-bg) or the grid stops reading as a grid.
+ *
+ * On top of it, only when JavaScript is off, the Tux silhouette the canvas
+ * would otherwise draw, as a CSS background from /hero-fallback.svg
+ * (src/pages/hero-fallback.svg.ts). It is a background image and not inline
+ * markup so it costs nothing: browsers don't request backgrounds of
+ * `display: none` elements, and this one is hidden both with JS (html.js) and
+ * on phones, where Tux would sit on top of the text.
+ */
+---
+
+{/* Runs before the hero renders, so JS-enabled browsers never paint the no-JS
+    artwork. */}
+<script is:inline>
+  document.documentElement.classList.add('js');
+</script>
+
+<div aria-hidden="true" class="hero-base pointer-events-none absolute inset-0"></div>
+
+{/* The URL lives in a style attribute, not in the <style> block below: the
+    file is a page route (src/pages/hero-fallback.svg.ts), so it doesn't exist
+    on disk while the bundler resolves stylesheets and would be reported as a
+    broken reference on every build. */}
+<div
+  aria-hidden="true"
+  style="--hero-fallback: url('/hero-fallback.svg')"
+  class="hero-tux-fallback pointer-events-none absolute inset-0"
+></div>
+
+<style>
+  .hero-base {
+    background:
+      linear-gradient(135deg, rgba(141, 140, 156, 0.1) 0%, rgb(0 117 176 / 0.05) 100%), #050504;
+  }
+
+  .hero-tux-fallback {
+    /* background-position/size stand in for the SVG's old
+       preserveAspectRatio="xMaxYMax meet": square cells, Tux whole and
+       anchored bottom-right. */
+    background: var(--hero-fallback) right bottom / contain no-repeat;
+  }
+
+  html.js .hero-tux-fallback {
+    display: none;
+  }
+
+  /* Same condition as NO_TUX in GameOfLife.astro: Tux is desktop and tablet
+     only, so the text keeps its contrast in any phone orientation. If it
+     changes here, change it there too. */
+  @media (max-width: 29.999rem), (max-aspect-ratio: 3 / 4) {
+    .hero-tux-fallback {
+      display: none;
+    }
+  }
+</style>

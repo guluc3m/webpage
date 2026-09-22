@@ -1,0 +1,90 @@
+---
+/**
+ * gul-CommitsGrid — GitHub-contributions-graph pixel art spelling out a word,
+ * styled after the site's own commit history, rendered inside the shared
+ * gul-Frame shell so it matches every other boxed section. Everything (which
+ * cells light up, their color/delay/flicker) is computed here at build time,
+ * same as fortunas — the grid never changes after load, so there's no reason
+ * to ship JS for it. Letter bitmaps only cover G/U/L: this always renders the
+ * GUL mark, not an arbitrary-text widget.
+ */
+import GulFrame from './gul-Frame.astro';
+
+const text = 'GULN';
+
+// Row-major 5x7 bitmap per glyph (classic LED-matrix font).
+const letterPatterns: Record<string, number[]> = {
+  G: [1, 2, 3, 5, 6, 10, 11, 15, 16, 18, 19, 20, 21, 24, 25, 26, 29, 31, 32, 33],
+  U: [0, 1, 4, 5, 6, 9, 10, 11, 14, 15, 16, 19, 20, 21, 24, 25, 26, 29, 31, 32, 33],
+  L: [0, 1, 5, 6, 10, 11, 15, 16, 20, 21, 25, 26, 30, 31, 32, 33, 34],
+  N: [3, 9, 10, 11, 12, 14, 19, 20, 21, 22, 24, 29, 33],
+  // Two dot eyes over a U-shaped smile — no outline, reads as ":)" rather than a face-in-a-circle.
+};
+
+const LETTER_COLS = 5;
+const CELL_GAP = 1; // blank column between letters
+const SIDE_PADDING = 1; // blank columns of margin on each side of the word
+const GRID_HEIGHT = 7; // fixed GitHub-graph shape (7 rows)
+
+function cleanText(str: string): string {
+  const upper = str.toUpperCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  return [...upper].filter((char) => char in letterPatterns).join('');
+}
+
+const cleaned = cleanText(text);
+const contentWidth = cleaned.length * (LETTER_COLS + CELL_GAP) - CELL_GAP;
+const colStart = SIDE_PADDING;
+const GRID_WIDTH = contentWidth + SIDE_PADDING * 2;
+
+const highlighted = new Set<number>();
+[...cleaned].forEach((char, letterIndex) => {
+  const colOffset = colStart + letterIndex * (LETTER_COLS + CELL_GAP);
+  letterPatterns[char].forEach((pos) => {
+    const row = Math.floor(pos / LETTER_COLS);
+    const col = pos % LETTER_COLS;
+    highlighted.add(row * GRID_WIDTH + col + colOffset);
+  });
+});
+
+// Shades of the single gul-blue accent (never a second hue) — the varying
+// intensity is what reads as a commit-activity graph.
+const BLUE_SHADES = ['#3fa9dc', '#0075b0', '#004a70'];
+const randomShade = () => BLUE_SHADES[Math.floor(Math.random() * BLUE_SHADES.length)];
+const randomDelay = () => `${(Math.random() * 1.6).toFixed(2)}s`;
+
+const cells = Array.from({ length: GRID_WIDTH * GRID_HEIGHT }, (_, index) => {
+  const isHighlighted = highlighted.has(index);
+  const flash = !isHighlighted && Math.random() < 0.3;
+  return { isHighlighted, flash, color: randomShade(), delay: randomDelay() };
+});
+---
+
+{/* `w-0 min-w-full` y no `w-full`: la rejilla mide 347px fijos (celdas de 11px)
+    y overflow-x-auto por sí solo no impide que ese ancho se propague hacia
+    arriba como min-content — a 360px empujaba toda la sección de Proyectos
+    fuera del viewport. Con el ancho declarado a 0, la caja no aporta nada al
+    tamaño intrínseco del padre y min-w-full la estira hasta el hueco real. */}
+<GulFrame surface class="w-0 min-w-full overflow-x-auto p-3">
+  <div
+    class="grid w-max gap-[3px]"
+    style={{
+      gridTemplateColumns: `repeat(${GRID_WIDTH}, 11px)`,
+      gridTemplateRows: `repeat(${GRID_HEIGHT}, 11px)`,
+    }}
+  >
+    {cells.map(({ isHighlighted, flash, color, delay }) => (
+      <div
+        class:list={[
+          'h-[11px] w-[11px] rounded-xs bg-gul-line',
+          isHighlighted && 'animate-highlight',
+          flash && 'animate-flash',
+        ]}
+        style={
+          isHighlighted || flash
+            ? ({ '--highlight': color, animationDelay: delay } as Record<string, string>)
+            : undefined
+        }
+      />
+    ))}
+  </div>
+</GulFrame>

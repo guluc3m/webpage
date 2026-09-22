@@ -1,0 +1,6 @@
+# Served at /robots.txt (files in public/ are copied verbatim to the site root).
+# Fully permissive — no analytics, nothing to hide.
+User-agent: *
+Disallow:
+
+Sitemap: https://gul.uc3m.es/sitemap-index.xml

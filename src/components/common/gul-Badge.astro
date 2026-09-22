@@ -1,0 +1,24 @@
+---
+/**
+ * gul-Badge — small pill label. Same primary/secondary split as gul-Button.
+ */
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'span'> {
+  variant?: 'primary' | 'secondary';
+}
+
+const { variant = 'primary', class: className, ...rest } = Astro.props;
+
+const variants = {
+  primary: 'bg-gul-blue text-gul-ink',
+  secondary: 'border border-gul-line text-gul-muted',
+};
+---
+
+<span
+  class:list={['rounded-full px-2.5 py-0.5 text-xs font-medium', variants[variant], className]}
+  {...rest}
+>
+  <slot />
+</span>

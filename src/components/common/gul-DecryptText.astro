@@ -1,0 +1,168 @@
+---
+/**
+ * gul-DecryptText — text that arrives scrambled and locks into place
+ * left-to-right, once, on load. Plain text with no JS or under
+ * prefers-reduced-motion (progressive enhancement, no SSR/hydration to
+ * worry about since this is static output).
+ */
+interface Props {
+  text: string;
+  as?: 'span' | 'p' | 'blockquote' | 'figcaption' | 'h1' | 'h2' | 'h3';
+  speed?: number; // ms per glyph swap while a character is still scrambling
+  stagger?: number; // ms of lock delay added per character
+  decryptOnLoad?: boolean;
+  class?: string;
+  [attr: string]: unknown;
+}
+
+const {
+  text,
+  as: Tag = 'span',
+  speed = 40,
+  stagger = 28,
+  decryptOnLoad = true,
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<Tag
+  data-decrypt
+  data-decrypt-on-load={decryptOnLoad}
+  data-speed={speed}
+  data-stagger={stagger}
+  class={className}
+  {...rest}
+>
+  {text}
+</Tag>
+
+<style>
+  [data-decrypt] :global([data-state='scramble']) {
+    color: var(--color-gul-line);
+  }
+  [data-decrypt] :global([data-state='lock']) {
+    /* currentColor, not a fixed token: callers (Hero's blockquote, gul-Button's
+       ink text) set their own final color via inherited CSS — this just
+       animates into whatever that is. */
+    color: currentColor;
+    transition: color 0.3s ease-out;
+  }
+  [data-decrypt] :global([data-decrypt-word]) {
+    display: inline-block;
+    white-space: nowrap;
+  }
+</style>
+
+<script>
+  const GLYPHS = '#%&@$?!*+=/{}[]<>~^';
+
+  function decrypt(el: HTMLElement) {
+    const text = el.textContent ?? '';
+    const speed = Number(el.dataset.speed) || 40;
+    const stagger = Number(el.dataset.stagger) || 28;
+
+    // Whitespace (incl. the fortuna formatter's stage-direction newlines)
+    // renders as-is, never scrambles, and doesn't consume a stagger slot.
+    const chars = Array.from(text).map((ch) => ({
+      span: document.createElement('span'),
+      ch,
+      lockAt: 0,
+    }));
+    let cursor = 0;
+    for (const c of chars) {
+      c.span.textContent = c.ch;
+      if (/\s/.test(c.ch)) continue;
+      c.lockAt = cursor * stagger + Math.random() * stagger;
+      cursor++;
+    }
+    // Keep each word together and reserve its final width before scrambling.
+    // Individual character spans are needed for the animation, but their
+    // random glyphs have different widths in proportional fonts and would
+    // otherwise make the browser continuously recalculate line breaks.
+    const content = document.createDocumentFragment();
+    const words: HTMLSpanElement[] = [];
+    let word: HTMLSpanElement | undefined;
+    for (const c of chars) {
+      if (/\s/.test(c.ch)) {
+        content.append(c.span);
+        word = undefined;
+        continue;
+      }
+      if (!word) {
+        word = document.createElement('span');
+        word.dataset.decryptWord = '';
+        words.push(word);
+        content.append(word);
+      }
+      word.append(c.span);
+    }
+    el.replaceChildren(content);
+    for (const word of words) {
+      word.style.width = `${word.getBoundingClientRect().width}px`;
+    }
+    // Scramble synchronously after measuring the final text, so the original
+    // value never gets painted between a refresh and the first animation frame.
+    for (const c of chars) {
+      if (!/\s/.test(c.ch)) {
+        c.span.textContent = GLYPHS[(Math.random() * GLYPHS.length) | 0];
+        c.span.dataset.state = 'scramble';
+      }
+    }
+
+    let t0 = performance.now();
+    let lastSwap = 0;
+    const state = {
+      paused: el.dataset.decryptPaused === 'true',
+      resume() {
+        state.paused = false;
+        t0 = performance.now();
+        lastSwap = 0;
+      },
+    };
+    activeDecryptions.set(el, state);
+
+    function frame(now: number) {
+      const elapsed = now - t0;
+      const swapGlyphs = elapsed - lastSwap >= speed;
+      let pending = false;
+      for (const c of chars) {
+        if (/\s/.test(c.ch) || c.span.dataset.state === 'lock') continue;
+        if (!state.paused && elapsed >= c.lockAt) {
+          c.span.textContent = c.ch;
+          c.span.dataset.state = 'lock';
+        } else {
+          pending = true;
+          if (swapGlyphs) {
+            c.span.textContent = GLYPHS[(Math.random() * GLYPHS.length) | 0];
+            c.span.dataset.state = 'scramble';
+          }
+        }
+      }
+      if (swapGlyphs) lastSwap = elapsed;
+      if (pending) {
+        requestAnimationFrame(frame);
+      } else {
+        el.dispatchEvent(new CustomEvent('gul:decrypt:complete', { bubbles: true, detail: el }));
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  const activeDecryptions = new WeakMap<HTMLElement, { resume: () => void }>();
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document
+      .querySelectorAll<HTMLElement>('[data-decrypt][data-decrypt-on-load="true"]')
+      .forEach(decrypt);
+
+    document.addEventListener('gul:decrypt', (event) => {
+      const target = (event as CustomEvent<HTMLElement>).detail;
+      if (target?.matches('[data-decrypt]')) decrypt(target);
+    });
+    document.addEventListener('gul:decrypt:resume', (event) => {
+      const target = (event as CustomEvent<HTMLElement>).detail;
+      activeDecryptions.get(target)?.resume();
+    });
+  }
+</script>

@@ -1,0 +1,246 @@
+---
+/**
+ * gul-Gallery — horizontal filmstrip; hovering a tile grows it and shrinks
+ * its siblings (pure CSS flex-grow + :has(), no JS). Clicking opens a
+ * fullscreen <dialog> lightbox with prev/next — same native-dialog trick as
+ * gul-Modal, so focus trap and Escape-to-close come for free.
+ */
+
+import { Image, getImage } from 'astro:assets';
+// ImageMetadata es un tipo global de Astro, pero ESLint no lo ve: se importa
+// explícitamente para que `pnpm lint` no lo marque como no definido.
+import type { ImageMetadata } from 'astro';
+
+interface GalleryImage {
+  /** Import desde src/assets — no una ruta de public/, o Astro no la optimiza. */
+  src: ImageMetadata;
+  alt: string;
+}
+
+interface Props {
+  images: GalleryImage[];
+  /** Unique per gallery on the page — wires the lightbox's own dialog element. */
+  id: string;
+  class?: string;
+}
+
+const { images, id, class: className } = Astro.props;
+
+// El tile va por <Image> (srcset + width/height, pesos de móvil), pero el
+// lightbox se abre a pantalla completa y necesita una versión grande: se
+// genera aparte y viaja en data-full, que es lo que lee el script.
+const tiles = await Promise.all(
+  images.map(async (img) => ({
+    ...img,
+    full: (await getImage({ src: img.src, width: 1600 })).src,
+  })),
+);
+---
+
+{/* Por debajo de md es un carrusel con scroll-snap: cuatro tiles repartidos en
+    480px salen a ~113px de ancho por 384 de alto (astillas), y el efecto de
+    hover no existe en táctil. En md+ vuelve el filmstrip. */}
+<div
+  class:list={[
+    'gul-gallery flex h-56 w-full snap-x snap-mandatory gap-2 overflow-x-auto md:h-96 md:snap-none md:overflow-visible',
+    className,
+  ]}
+  data-gul-gallery={id}
+>
+  {tiles.map((img, i) => (
+    <button
+      type="button"
+      class="gul-gallery-tile relative w-4/5 shrink-0 snap-center overflow-hidden rounded-md md:w-auto md:min-w-0 md:shrink md:flex-1"
+      data-index={i}
+      data-full={img.full}
+    >
+      <Image
+        src={img.src}
+        alt={img.alt}
+        widths={[400, 800]}
+        sizes="(min-width: 48rem) 25vw, 80vw"
+        class="h-full w-full object-cover"
+      />
+      <span class="gul-gallery-tile-overlay absolute inset-0 bg-gul-bg" />
+    </button>
+  ))}
+</div>
+
+<dialog id={id} data-gul-gallery-view class="gul-gallery-view">
+  <button
+    type="button"
+    data-gul-gallery-close
+    class="gul-gallery-control gul-gallery-close"
+    aria-label="Cerrar"
+  >
+    <svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  {images.length > 1 && (
+    <button
+      type="button"
+      data-gul-gallery-prev
+      class="gul-gallery-control gul-gallery-prev"
+      aria-label="Anterior"
+    >
+      <svg viewBox="0 0 24 24" class="size-8" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+  )}
+
+  <img data-gul-gallery-image alt="" class="gul-gallery-image" />
+
+  {images.length > 1 && (
+    <button
+      type="button"
+      data-gul-gallery-next
+      class="gul-gallery-control gul-gallery-next"
+      aria-label="Siguiente"
+    >
+      <svg viewBox="0 0 24 24" class="size-8" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  )}
+
+  {images.length > 1 && <p data-gul-gallery-counter class="gul-gallery-counter" />}
+</dialog>
+
+<style>
+  /* El filmstrip entero (crecer al pasar el ratón y el velo que se levanta al
+     hacerlo) depende de :hover, que en táctil no se dispara: allí sólo dejaría
+     las fotos veladas para siempre. El reparto base lo llevan las utilidades
+     md:flex-1 del template, que es lo mismo que `flex: 1 1 0%`. */
+  .gul-gallery-tile-overlay {
+    opacity: 0;
+  }
+
+  @media (hover: hover) {
+    .gul-gallery-tile {
+      transition: flex-grow 0.4s ease;
+    }
+    .gul-gallery-tile:hover {
+      flex-grow: 3;
+    }
+    .gul-gallery:has(.gul-gallery-tile:hover) .gul-gallery-tile:not(:hover) {
+      flex-grow: 0.5;
+    }
+    .gul-gallery-tile-overlay {
+      opacity: 0.3;
+      transition: opacity 0.3s ease;
+    }
+    .gul-gallery-tile:hover .gul-gallery-tile-overlay {
+      opacity: 0;
+    }
+  }
+
+  /* Fullscreen lightbox — overrides the card-shaped default dialog from
+     @layer base since this one has to fill the viewport edge-to-edge.
+     display must stay scoped to [open] — an unconditional `display: flex`
+     here would beat the UA's `dialog:not([open]) { display: none }` (author
+     styles win over UA styles at equal specificity) and show it always. */
+  dialog.gul-gallery-view {
+    position: fixed;
+    inset: 0;
+    /* dvw/dvh, no vw/vh: en móvil 100vh ignora la barra del navegador y empuja
+       los controles inferiores fuera de la pantalla. */
+    max-width: 100dvw;
+    max-height: 100dvh;
+    width: 100dvw;
+    height: 100dvh;
+    border: none;
+    background: transparent;
+    padding: 1rem;
+  }
+  dialog.gul-gallery-view[open] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  dialog.gul-gallery-view::backdrop {
+    background-color: color-mix(in oklab, var(--color-gul-bg) 85%, transparent);
+  }
+  .gul-gallery-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+  }
+  .gul-gallery-control {
+    position: absolute;
+    /* El SVG solo deja un área táctil de ~24px; el padding la sube a ~44. */
+    padding: 0.5rem;
+    color: var(--color-gul-ink);
+  }
+  .gul-gallery-control:hover {
+    color: var(--color-gul-muted);
+  }
+  .gul-gallery-close {
+    top: 1rem;
+    right: 1rem;
+  }
+  .gul-gallery-prev {
+    left: 1rem;
+  }
+  .gul-gallery-next {
+    right: 1rem;
+  }
+  .gul-gallery-counter {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: var(--radius-md);
+    background-color: color-mix(in oklab, var(--color-gul-surface) 80%, transparent);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: var(--color-gul-ink);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-gul-gallery]').forEach((root) => {
+    const id = root.dataset.gulGallery!;
+    const dialog = document.getElementById(id) as HTMLDialogElement | null;
+    const tiles = Array.from(root.querySelectorAll<HTMLButtonElement>('.gul-gallery-tile'));
+    // data-full es la versión grande; el <img> del tile es la miniatura.
+    const sources = tiles.map((tile) => tile.dataset.full ?? tile.querySelector('img')!.src);
+    if (!dialog || sources.length === 0) return;
+
+    const image = dialog.querySelector<HTMLImageElement>('[data-gul-gallery-image]')!;
+    const counter = dialog.querySelector<HTMLElement>('[data-gul-gallery-counter]');
+    let index = 0;
+
+    function show(i: number) {
+      index = (i + sources.length) % sources.length;
+      image.src = sources[index]!;
+      image.alt = `Imagen ${index + 1}`;
+      if (counter) counter.textContent = `${index + 1} / ${sources.length}`;
+    }
+
+    tiles.forEach((tile, i) =>
+      tile.addEventListener('click', () => {
+        show(i);
+        dialog.showModal();
+      }),
+    );
+    dialog
+      .querySelector('[data-gul-gallery-close]')
+      ?.addEventListener('click', () => dialog.close());
+    dialog
+      .querySelector('[data-gul-gallery-prev]')
+      ?.addEventListener('click', () => show(index - 1));
+    dialog
+      .querySelector('[data-gul-gallery-next]')
+      ?.addEventListener('click', () => show(index + 1));
+    // Click on the backdrop area (the dialog element itself, not a child) closes it.
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+  });
+</script>

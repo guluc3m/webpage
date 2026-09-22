@@ -1,0 +1,77 @@
+---
+/**
+ * WhatIsGul — "¿Qué es el GUL?" intro section, gallery on the left.
+ */
+import GulFrame from '@components/common/gul-Frame.astro';
+import GulGallery from '@components/common/gul-Gallery.astro';
+import GulTerminal from '@components/common/gul-Terminal.astro';
+
+// Import, no ruta de public/: así pasan por <Image> y se sirven redimensionadas
+// (los originales son de 1280-2048px de ancho).
+import teclados from '@assets/real/teclados.jpeg';
+import charla from '@assets/real/charla.jpg';
+import install from '@assets/real/install.jpeg';
+import feria from '@assets/real/feria.jpg';
+---
+
+<section
+  id="que-es-el-gul"
+  class="gul-gutter mx-auto grid max-w-gul-content gap-8 py-8 md:grid-cols-2 md:items-center"
+>
+  <GulFrame class="p-2">
+    <GulGallery
+      id="que-es-el-gul-gallery"
+      images={[
+        { src: teclados, alt: 'Miembros del GUL soldando un teclado split' },
+        { src: charla, alt: 'Charla del GUL atestada de gente' },
+        { src: install, alt: 'Portátil instalando Linux con Ventoy y un fondo del GUL' },
+        {
+          src: feria,
+          alt: 'GUL en la Feria de Asociaciones. El presi con camiseta roja del GUL abrazando a un peluche de Tux',
+        },
+      ]}
+    />
+  </GulFrame>
+
+  <div>
+    <h2>¿Qué es el GUL?</h2>
+    <GulTerminal lines={[{ command: 'whoami' }]} />
+
+    <p class="mt-4 text-justify text-gul-muted">
+      El <b class="text-gul-ink">Grupo de Usuarios de Linux</b> es una asociación de estudiantes
+      unidos por nuestras inquietudes en torno a los ordenadores, la informática y, en concreto, la
+      idea común de la utilización y promoción del{' '}
+      <a
+        href="https://www.gnu.org/philosophy/free-sw.es.html"
+        target="_blank"
+        rel="noopener"
+        class="text-gul-ink underline decoration-gul-line underline-offset-4 hover:decoration-gul-ink"
+      >
+        <b>software libre</b>
+      </a>
+      .
+    </p>
+
+    <p class="mt-4 text-justify text-gul-muted">
+      Llevamos{' '}
+      <b class="text-gul-ink">
+        <span data-years-since="1995">28</span> años
+      </b>{' '}
+      reuniéndonos para aprender y compartir conocimientos, así como organizando decenas de
+      talleres, charlas, hackatones, y <i>game jams</i>. Si no estás aquí por la fiesta, también
+      tenemos algunos grupos de trabajo enfocados en distintas áreas de la informática y la
+      tecnología, como <b class="text-gul-ink"> programación</b>,{' '}
+      <b class="text-gul-ink"> juegos</b> o <b class="text-gul-ink">IA</b>.
+    </p>
+  </div>
+</section>
+
+<script>
+  // Computed client-side on purpose, not baked in at build time - otherwise a
+  // site that isn't rebuilt every year would freeze on the count from its last build.
+  const el = document.querySelector<HTMLElement>('[data-years-since]');
+  if (el) {
+    const foundedYear = Number(el.dataset.yearsSince);
+    el.textContent = String(new Date().getFullYear() - foundedYear);
+  }
+</script>

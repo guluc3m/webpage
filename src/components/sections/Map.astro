@@ -1,0 +1,70 @@
+---
+/**
+ * Map — Leaflet map with OpenStreetMap tiles and a single pin on the GUL office.
+ *
+ * Client-side island: Leaflet needs `window`/`document`, so all of it runs in
+ * the browser's `<script/>` below. The map only initialises once its container
+ * is on screen (IntersectionObserver) to avoid loading tiles no one sees.
+ *
+ * Leaflet is pulled in with a dynamic import inside that observer, not a static
+ * one at the top: a static import ships 150KB of JS plus a render-blocking
+ * stylesheet to everyone who opens the page, even though the map sits at the
+ * bottom. Import it late and the whole thing stays off the first paint.
+ *
+ * Coordinates carried over from the 2021 site. Tiles run through a grayscale
+ * filter (below) to keep the map inside the site's monochrome palette.
+ */
+---
+
+<div
+  data-map
+  class="h-full min-h-96 w-full bg-gul-surface grayscale"
+  role="img"
+  aria-label="Mapa: sede del GUL en el edificio Sabatini, Leganés"
+/>
+<script>
+  // `?url` keeps Leaflet's stylesheet an asset instead of a style module:
+  // importing the .css itself would make Astro hoist it into a render-blocking
+  // <link> in every page's <head>, which is the thing this component avoids.
+  import leafletCss from 'leaflet/dist/leaflet.css?url';
+
+  const OFFICE: [number, number] = [40.33252, -3.76728];
+
+  const el = document.querySelector<HTMLElement>('[data-map]');
+  if (el) {
+    const observer = new IntersectionObserver(async (entries) => {
+      if (!entries[0].isIntersecting) return;
+      // Before any await: the observer can fire again while Leaflet downloads,
+      // and initialising the same div twice throws.
+      observer.disconnect();
+      document.head.insertAdjacentHTML('beforeend', `<link rel="stylesheet" href="${leafletCss}">`);
+      const { default: L } = await import('leaflet');
+      // Sin dragging en móvil: un mapa a ancho completo que captura el
+      // arrastre vertical atrapa el scroll de la página. L.Browser.mobile es
+      // la propia detección de Leaflet, no hace falta un matchMedia aparte.
+      const map = L.map(el, { scrollWheelZoom: false, dragging: !L.Browser.mobile }).setView(
+        OFFICE,
+        17,
+      );
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap',
+        maxZoom: 19,
+      }).addTo(map);
+      L.marker(OFFICE).addTo(map);
+    });
+    observer.observe(el);
+  }
+</script>
+
+<style>
+  /* Leaflet's own leaflet.css puts a drop shadow on the zoom controls and
+     popups. :global() reaches them since Leaflet injects this markup at
+     runtime — it never exists in this component's template. */
+  :global(.leaflet-bar),
+  :global(.leaflet-control-layers),
+  :global(.leaflet-popup-content-wrapper),
+  :global(.leaflet-popup-tip),
+  :global(.leaflet-tooltip) {
+    box-shadow: none;
+  }
+</style>

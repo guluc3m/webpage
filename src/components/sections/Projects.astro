@@ -1,0 +1,123 @@
+---
+/**
+ * Projects — the org's featured GitHub repos (github.com/guluc3m's pinned
+ * repos), rendered as gul-RepoCard. Stars/forks/description are a snapshot
+ * pulled from the GitHub API at time of writing — no build-time fetch (see
+ * fortunas for the pattern this repo uses when live data is worth it),
+ * update the array by hand when it drifts.
+ */
+import GulRepoCard from '@components/common/gul-RepoCard.astro';
+import GulTerminal from '@components/common/gul-Terminal.astro';
+import GulCommitsGrid from '@components/common/gul-CommitsGrid.astro';
+
+const repos = [
+  {
+    name: 'report-template-typst',
+    description: 'Plantilla de Typst para memorias de trabajos, laboratorios, etc. de la UC3M',
+    href: 'https://github.com/guluc3m/report-template-typst',
+    language: 'Typst',
+    stars: 12,
+    forks: 4,
+  },
+  {
+    name: 'uc3m-thesis-ieee-typst',
+    description: 'Plantilla de Typst para TFG/TFM de la UC3M',
+    href: 'https://github.com/guluc3m/uc3m-thesis-ieee-typst',
+    language: 'Typst',
+    stars: 6,
+    forks: 0,
+  },
+  {
+    name: 'linux-install',
+    description: 'Guía de instalación de Linux del GUL',
+    href: 'https://github.com/guluc3m/linux-install',
+    language: 'Shell',
+    stars: 10,
+    forks: 0,
+  },
+  {
+    name: 'opengl-group',
+    description: 'Grupo de aprendizaje de OpenGL',
+    href: 'https://github.com/guluc3m/opengl-group',
+    language: 'C++',
+    stars: 0,
+    forks: 0,
+  },
+  {
+    name: 'webpage',
+    description: 'Página principal de GUL UC3M',
+    href: 'https://github.com/guluc3m/webpage',
+    language: 'TypeScript',
+    stars: 1,
+    forks: 0,
+  },
+  {
+    name: 'zoe-lib-python',
+    description: 'El asistente virtual del GUL',
+    href: 'https://github.com/guluc3m/zoe-lib-python',
+    language: 'Python',
+    stars: 4,
+    forks: 0,
+  },
+];
+---
+
+<section id="proyectos" class="gul-gutter mx-auto max-w-gul-content py-8">
+  <h2>Proyectos</h2>
+  <GulTerminal lines={[{ command: 'ls projects/' }]} />
+  {/* Los tres prefijos tienen que coincidir: con `md:grid-cols-10` en el
+      contenedor y `sm:col-span-*` en los hijos, entre 480px y 768px el grid no
+      tiene plantilla y los col-span generan 10 columnas implícitas — la
+      sección se parte en dos justo en el ancho de un móvil. */}
+  <div class="mt-4 grid items-center gap-8 md:grid-cols-10">
+    <div class="md:col-span-6">
+      <ul class="grid gap-4 md:grid-cols-2">
+        {repos.map((repo) => (
+          <li>
+            <GulRepoCard
+              href={repo.href}
+              name={repo.name}
+              description={repo.description}
+              language={repo.language}
+              stars={repo.stars}
+              forks={repo.forks}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* En una columna el texto va primero: explica qué son los proyectos antes
+        de soltar la rejilla de tarjetas. En md+ manda el orden del DOM. */}
+    <div class="order-first md:order-none md:col-span-4">
+      <p class="text-justify text-gul-muted">
+        Desde <i>el</i> GUL desarrollamos talleres, charlas, JAMs, proyectos... Nos empeñamos en
+        hacer una gran cantidad de actividades con las que promover el software libre.
+      </p>
+      <p class="mt-4 text-justify text-gul-muted">
+        No hace falta saber programar ni haber usado Linux antes: la mayoría empezó igual que tú, en
+        una charla, un taller o una{' '}
+        <i>
+          <b>install party</b>
+        </i>{' '}
+        con la que instalar tú primera distro, y de ahí a picar código o soldar un teclado hay solo
+        un paso.{' '}
+        <b>
+          <a
+            href="/actividades/"
+            target="_blank"
+            rel="noopener"
+            class="text-gul-ink underline decoration-gul-line underline-offset-4 hover:decoration-gul-ink"
+          >
+            Aquí, puedes ver todas las actividades
+          </a>
+        </b>{' '}
+        que hacemos.
+      </p>
+
+      <div class="mt-4">
+        <GulCommitsGrid />
+      </div>
+    </div>
+  </div>
+</section>

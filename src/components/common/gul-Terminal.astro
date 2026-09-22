@@ -1,0 +1,152 @@
+---
+/**
+ * gul-Terminal — the "gul@uc3m $> " prompt used as a section header/wink
+ * across the page (¿Qué es el GUL?, Proyectos, ¿Dónde estamos?, FAQ). Each
+ * line's command types in character by character with a blinking cursor;
+ * its output (if any) prints all at once right after, the way a real shell
+ * would never "type" its own output. Multiple lines in the same block run
+ * one after another, not all at once. Starts once the block scrolls into
+ * view — not on page load, since most of these sections sit well below the
+ * fold — and skips straight to the finished state under
+ * prefers-reduced-motion.
+ *
+ * Command text is rendered for real up front (same call as gul-DecryptText:
+ * the DOM's own textContent is the source of truth, read back and re-typed
+ * by the script) so it's still there with no JS or if the script fails.
+ */
+interface Line {
+  command: string;
+  /**
+   * Printed instantly once the command finishes typing. Omit for a bare
+   * command with no output. Raw HTML (not escaped) so a line can bold a
+   * word the way the surrounding page copy already does with <b> — every
+   * caller is a page author, not user input.
+   */
+  output?: string;
+}
+
+interface Props {
+  lines: Line[];
+  class?: string;
+}
+
+const { lines, class: className } = Astro.props;
+---
+
+<div class:list={['font-mono text-sm', className]} data-gul-terminal>
+  {lines.map((line) => (
+    <p>
+      <span class="text-gul-blue">gul@uc3m $&gt;</span>{' '}
+      <span data-terminal-cmd>
+        <span data-terminal-cmd-text>{line.command}</span>
+        <span data-terminal-cursor class="hidden">
+          █
+        </span>
+      </span>
+      {line.output && (
+        <span
+          data-terminal-output
+          class="mt-1 block text-gul-muted opacity-0"
+          set:html={line.output}
+        />
+      )}
+    </p>
+  ))}
+</div>
+
+<style>
+  [data-terminal-cursor] {
+    animation: gul-terminal-blink 1s steps(2, jump-none) infinite;
+  }
+  @keyframes gul-terminal-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-terminal-cursor] {
+      animation: none;
+    }
+  }
+</style>
+
+<noscript>
+  <style>
+    /* Terminal output starts hidden for the JS animation, but must remain
+       visible when JavaScript is disabled. */
+    [data-terminal-output] {
+      opacity: 1 !important;
+    }
+  </style>
+</noscript>
+
+<script>
+  function sleep(ms: number) {
+    return new Promise((resolve) => window.setTimeout(resolve, ms));
+  }
+
+  async function play(el: HTMLElement) {
+    const lines = el.querySelectorAll<HTMLElement>('p');
+
+    // Clear every line's command text up front, and hide every line but the
+    // first entirely — the loop below only reveals/types one line at a
+    // time, so a later line (prompt included) would otherwise sit fully
+    // visible, or show its real server-rendered text, before its own turn.
+    const originals = new Map<HTMLElement, string>();
+    lines.forEach((line, i) => {
+      const textEl = line.querySelector<HTMLElement>('[data-terminal-cmd-text]');
+      if (textEl) {
+        originals.set(textEl, textEl.textContent ?? '');
+        textEl.textContent = '';
+      }
+      if (i > 0) line.classList.add('hidden');
+    });
+
+    for (const line of lines) {
+      const textEl = line.querySelector<HTMLElement>('[data-terminal-cmd-text]');
+      const cursor = line.querySelector<HTMLElement>('[data-terminal-cursor]');
+      const output = line.querySelector<HTMLElement>('[data-terminal-output]');
+      if (!textEl || !cursor) continue;
+
+      line.classList.remove('hidden');
+      const text = originals.get(textEl) ?? '';
+      cursor.classList.remove('hidden');
+      for (let i = 1; i <= text.length; i++) {
+        textEl.textContent = text.slice(0, i);
+        await sleep(30 + Math.random() * 60);
+      }
+      cursor.classList.add('hidden');
+
+      if (output) {
+        await sleep(200);
+        output.classList.remove('opacity-0');
+      }
+      await sleep(400);
+    }
+  }
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const terminals = document.querySelectorAll<HTMLElement>('[data-gul-terminal]');
+
+  if (reduceMotion) {
+    // Command text is already the real, final text (see the comment up top)
+    // — reduced motion only needs to reveal the outputs, which start hidden.
+    terminals.forEach((el) => {
+      el.querySelectorAll<HTMLElement>('[data-terminal-output]').forEach((out) =>
+        out.classList.remove('opacity-0'),
+      );
+    });
+  } else {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          play(entry.target as HTMLElement);
+          obs.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.3 },
+    );
+    terminals.forEach((el) => observer.observe(el));
+  }
+</script>

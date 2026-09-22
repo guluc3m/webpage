@@ -1,0 +1,72 @@
+---
+/**
+ * BaseLayout — the HTML skeleton every page is wrapped in.
+ *
+ * It owns the <head>: charset, viewport, <title>, meta description, canonical
+ * URL, Open Graph / Twitter card tags and the favicon. Page content goes in the
+ * default <slot />. The site is currently a single page, but this stays a
+ * separate layout so it can be copied into the other GUL repos unchanged.
+ *
+ * Usage:
+ *   <BaseLayout title="…" description="…">…page…</BaseLayout>
+ */
+import '../styles/global.css';
+
+interface Props {
+  /** Goes in <title> and og:title. Keep it short. */
+  title: string;
+  /** Meta description + og:description. One sentence. */
+  description?: string;
+}
+
+const {
+  title,
+  // Default carried over verbatim from the 2021 site's <meta description>.
+  description = 'El Grupo de Usuarios de Linux es una asociación de estudiantes unidos por nuestras inquietudes en torno a los ordenadores, la informática y, en concreto, la idea común de la utilización y promoción del software libre.',
+} = Astro.props;
+
+// Astro.site comes from `site` in astro.config.mjs. Used to build absolute URLs,
+// which Open Graph and the canonical tag require.
+const canonical = new URL(Astro.url.pathname, Astro.site);
+// Provisional preview image (1200×630). Replaced with the final design once the
+// visual direction is settled.
+const ogImage = new URL('/og-image.png', Astro.site);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="canonical" href={canonical} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="es_ES" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body class="bg-gul-bg text-gul-ink">
+    <slot />
+
+    <script>
+      // de-obfuscate email address (client-side) to prevent bots (not using JS)
+      document.querySelectorAll<HTMLAnchorElement>('[data-gul-email]').forEach((link) => {
+        const text = link.querySelector<HTMLElement>('[data-gul-email-text]') ?? link;
+        const email = text.textContent?.replace(' AT ', '@').trim();
+        if (!email) return;
+
+        text.textContent = email;
+        link.href = `mailto:${email}`;
+      });
+    </script>
+  </body>
+</html>

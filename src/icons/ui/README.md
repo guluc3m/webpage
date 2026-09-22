@@ -1,0 +1,1 @@
+All icons sourced from [Material Line Icons, by Vjacheslav Trushkin](https://icon-sets.iconify.design/line-md/), under MIT license.

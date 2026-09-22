@@ -1,0 +1,74 @@
+---
+/**
+ * gul-Tabs — accessible tabs (role="tab"/"tabpanel", aria-selected), toggled
+ * by a small vanilla script. Pass panel content via named slots keyed by
+ * each tab's id: <Fragment slot={tab.id}>…</Fragment>.
+ */
+interface Tab {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  tabs: Tab[];
+}
+
+const { tabs } = Astro.props;
+---
+
+<div data-gul-tabs class="rounded-md border border-gul-line p-6">
+  <div role="tablist" class="flex flex-wrap gap-1 border-b border-gul-line">
+    {tabs.map((tab, i) => (
+      <button
+        type="button"
+        role="tab"
+        aria-selected={i === 0 ? 'true' : 'false'}
+        aria-controls={`${tab.id}-panel`}
+        id={`${tab.id}-trigger`}
+        data-gul-tab
+        class:list={[
+          'border-b-2 px-3 py-2 text-sm font-medium',
+          i === 0
+            ? 'border-gul-ink text-gul-ink'
+            : 'border-transparent text-gul-muted hover:text-gul-ink',
+        ]}
+      >
+        {tab.label}
+      </button>
+    ))}
+  </div>
+  {tabs.map((tab, i) => (
+    <div
+      role="tabpanel"
+      id={`${tab.id}-panel`}
+      aria-labelledby={`${tab.id}-trigger`}
+      data-gul-tabpanel
+      hidden={i !== 0}
+      class="pt-4 text-sm text-gul-muted"
+    >
+      <slot name={tab.id} />
+    </div>
+  ))}
+</div>
+
+<script>
+  // Click a [data-gul-tab], show its matching [data-gul-tabpanel] via
+  // aria-controls, hide the rest. No library — a handful of DOM calls.
+  document.querySelectorAll<HTMLElement>('[data-gul-tabs]').forEach((tabs) => {
+    const buttons = tabs.querySelectorAll<HTMLButtonElement>('[data-gul-tab]');
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        buttons.forEach((b) => {
+          b.setAttribute('aria-selected', String(b === button));
+          b.classList.toggle('border-gul-ink', b === button);
+          b.classList.toggle('text-gul-ink', b === button);
+          b.classList.toggle('border-transparent', b !== button);
+          b.classList.toggle('text-gul-muted', b !== button);
+        });
+        tabs.querySelectorAll<HTMLElement>('[data-gul-tabpanel]').forEach((panel) => {
+          panel.hidden = panel.id !== button.getAttribute('aria-controls');
+        });
+      });
+    });
+  });
+</script>

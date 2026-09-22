@@ -1,0 +1,121 @@
+---
+/**
+ * /actividades — histórico de talleres y charlas del GUL (guluc3m/webpage#9).
+ * Datos en src/data/actividades.yaml; esta página ordena y pinta, y calcula
+ * las opciones de los filtros, que viven en gul-ActividadFilters (panel
+ * lateral en md+, panel plegable tras el botón "Filtros" en móvil). El
+ * filtrado corre en el cliente porque depende de lo que el usuario teclea/
+ * elige, no hay nada que precomputar en build.
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import GulHeader from '@components/common/gul-Header.astro';
+import GulFooter from '@components/common/gul-Footer.astro';
+import GulActividadCard from '@components/common/gul-ActividadCard.astro';
+import GulActividadFilters from '@components/common/gul-ActividadFilters.astro';
+import { navLinks } from '@data/navLinks';
+import { ACTIVIDAD_TYPES, loadActividades } from '@lib/actividades';
+
+const actividades = loadActividades();
+
+// yyyy/mm/dd sorts correctly as a plain string, no Date needed for ordering.
+const sorted = [...actividades].sort((a, b) => b.date.localeCompare(a.date));
+
+// A "curso" runs September→August, named after its starting year (e.g. "curso 2026" = Sept 2026–Aug 2027).
+const cursoStart = (date: string) => {
+  const [year, month] = date.split('/').map(Number);
+  return month >= 9 ? year : year - 1;
+};
+const now = new Date();
+const currentCurso = now.getMonth() + 1 >= 9 ? now.getFullYear() : now.getFullYear() - 1;
+const oldestCurso =
+  sorted.length > 0 ? Math.min(...sorted.map((a) => cursoStart(a.date))) : currentCurso;
+
+// One row per curso (newest first), each holding that curso's activities — empty cursos still get a divider.
+const cursoRows = Array.from(
+  { length: currentCurso - oldestCurso + 1 },
+  (_, i) => currentCurso - i,
+).map((curso) => ({ curso, items: sorted.filter((a) => cursoStart(a.date) === curso) }));
+
+// Tipos de actividad presentes, en el orden fijo de ACTIVIDAD_TYPES (el
+// vocabulario del campo `type`). Los tags son solo temas, ordenados por
+// frecuencia y alfabéticamente. Los participants van alfabéticos.
+const typeCounts = new Set(sorted.map((a) => a.type));
+const types = ACTIVIDAD_TYPES.filter((t) => typeCounts.has(t));
+const tagCounts = new Map<string, number>();
+for (const a of sorted) for (const t of a.tags ?? []) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
+const tags = [...tagCounts.keys()].sort((a, b) => {
+  const byCount = (tagCounts.get(b) ?? 0) - (tagCounts.get(a) ?? 0);
+  return byCount !== 0 ? byCount : a.localeCompare(b, 'es');
+});
+const participants = [
+  ...new Set(sorted.flatMap((a) => (a.participants ?? []).map((s) => s.name))),
+].sort((a, b) => a.localeCompare(b, 'es'));
+---
+
+<BaseLayout title="Actividades · GUL UC3M">
+  <GulHeader links={navLinks} />
+  <main class="mx-auto max-w-gul-content gul-gutter py-8 lg:max-w-7xl">
+    <h1>Actividades</h1>
+
+    <div class="mt-6 md:grid md:grid-cols-[16rem_minmax(0,1fr)] md:gap-10">
+      <GulActividadFilters
+        types={types}
+        tags={tags}
+        participants={participants}
+        cursos={cursoRows.map(({ curso }) => curso)}
+      />
+
+      <div class="mt-8 md:mt-0">
+        <p class="text-sm text-gul-muted" data-actividades-count aria-live="polite"></p>
+
+        <ul class="mt-6 space-y-10 border-l border-gul-line pl-6" data-actividades-list>
+          {cursoRows.map(({ curso, items }) => (
+            <>
+              {/* El -ml compensa el pl-6 del ul, así que left-0 es el borde izquierdo:
+                  el punto se centra ahí sobre la línea de la cronología. */}
+              <li
+                class="relative -ml-6.25 pl-6 before:absolute before:top-1/2 before:left-0 before:size-2.5 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-gul-muted"
+                data-curso-marker={curso}
+                data-curso-count={items.length}
+              >
+                <p class="text-sm font-medium tracking-[0.2em] text-gul-muted uppercase">
+                  Curso {curso}–{curso + 1}
+                </p>
+              </li>
+              {items.map((a) => (
+                <li
+                  class="-ml-6.25 pl-6"
+                  data-actividad
+                  data-curso={curso}
+                  data-title={a.title.toLowerCase()}
+                  data-date={a.date.replaceAll('/', '-')}
+                  data-type={a.type.toLowerCase()}
+                  data-tags={(a.tags ?? []).join(',').toLowerCase()}
+                  data-participants={(a.participants ?? [])
+                    .map((s) => s.name)
+                    .join(',')
+                    .toLowerCase()}
+                >
+                  <GulActividadCard actividad={a} />
+                </li>
+              ))}
+            </>
+          ))}
+        </ul>
+
+        <p class="mt-8 hidden text-sm text-gul-muted" data-actividades-empty>
+          Ninguna actividad coincide con los filtros.
+          <button
+            type="button"
+            class="ml-1 cursor-pointer text-xs tracking-wider text-gul-blue uppercase underline disabled:cursor-default disabled:text-gul-line"
+            data-filters-clear
+            disabled
+          >
+            Limpiar filtros
+          </button>
+        </p>
+      </div>
+    </div>
+  </main>
+  <GulFooter />
+</BaseLayout>

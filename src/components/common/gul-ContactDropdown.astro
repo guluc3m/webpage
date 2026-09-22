@@ -1,0 +1,130 @@
+---
+/**
+ * gul-ContactDropdown — the compact contact menu used in the site header.
+ * Contact details stay in config.ts so the header and footer cannot drift.
+ */
+import { CONTACT, SOCIALS, obfuscateEmail } from '@/config.ts';
+import GulButton from './gul-Button.astro';
+
+import emailIcon from '@icons/rrss/email.svg?url';
+import twitterIcon from '@icons/rrss/twitter.svg?url';
+import instagramIcon from '@icons/rrss/ig.svg?url';
+
+interface Props {
+  id?: string;
+}
+
+const { id = 'gul-contact-menu' } = Astro.props;
+const twitter = SOCIALS.find((social) => social.icon === 'twitter.svg')!;
+const instagram = SOCIALS.find((social) => social.icon === 'ig.svg')!;
+---
+
+<div class="relative" data-gul-contact>
+  <GulButton
+    label="Contacta"
+    href="#contact"
+    aria-expanded="false"
+    aria-controls={id}
+    data-gul-contact-trigger
+  />
+
+  <div
+    id={id}
+    data-gul-contact-menu
+    hidden
+    class="absolute top-full right-0 z-20 w-max origin-top-right rounded-md border border-gul-line bg-gul-surface/95 p-2 pt-3 text-sm backdrop-blur-md"
+  >
+    <div class="flex items-center gap-3 rounded-md p-2 text-gul-muted">
+      <img src={emailIcon} alt="" class="size-4 shrink-0 invert" />
+      <a href="#" data-gul-email class="grow hover:text-gul-ink">
+        <span data-gul-email-text>{obfuscateEmail(CONTACT.email)}</span>
+      </a>
+    </div>
+
+    <a
+      href={twitter.href}
+      target="_blank"
+      rel="noopener"
+      class="flex items-center gap-3 rounded-md p-2 text-gul-muted transition-colors hover:bg-gul-ink/10 hover:text-gul-ink focus-visible:bg-gul-ink/10 focus-visible:text-gul-ink"
+    >
+      <img src={twitterIcon} alt="" class="size-4 invert" />
+      <span>
+        @guluc3m <span class="sr-only">en Twitter</span>
+      </span>
+    </a>
+
+    <a
+      href={instagram.href}
+      target="_blank"
+      rel="noopener"
+      class="flex items-center gap-3 rounded-md p-2 text-gul-muted transition-colors hover:bg-gul-ink/10 hover:text-gul-ink focus-visible:bg-gul-ink/10 focus-visible:text-gul-ink"
+    >
+      <img src={instagramIcon} alt="" class="size-4 invert" />
+      <span>
+        @guluc3m <span class="sr-only">en Instagram</span>
+      </span>
+    </a>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-gul-contact]').forEach((contact) => {
+    const trigger = contact.querySelector<HTMLAnchorElement>('[data-gul-contact-trigger]');
+    const menu = contact.querySelector<HTMLElement>('[data-gul-contact-menu]');
+    if (!trigger || !menu) return;
+
+    // The href is the progressive-enhancement fallback. Once this script is
+    // active, Contacta is a menu button rather than a navigation link.
+    trigger.removeAttribute('href');
+    trigger.setAttribute('role', 'button');
+    trigger.setAttribute('tabindex', '0');
+
+    const setOpen = (open: boolean) => {
+      trigger.setAttribute('aria-expanded', String(open));
+      contact.dataset.state = open ? 'open' : 'closed';
+      menu.hidden = !open;
+    };
+
+    const hoverCapable = () => window.matchMedia('(hover: hover)').matches;
+
+    contact.addEventListener('pointerenter', () => {
+      if (hoverCapable()) setOpen(true);
+    });
+
+    contact.addEventListener('pointerleave', () => {
+      if (hoverCapable()) setOpen(false);
+    });
+
+    trigger.addEventListener('click', () => {
+      setOpen(menu.hidden === true);
+    });
+
+    contact.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        trigger.focus();
+      }
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!contact.contains(event.target as Node)) setOpen(false);
+    });
+  });
+</script>
+
+<style is:global>
+  [data-gul-contact][data-state='open']
+    [data-gul-contact-trigger]
+    [data-gul-btn-content]
+    > span:first-child {
+    font-size: 0;
+  }
+
+  [data-gul-contact][data-state='open']
+    [data-gul-contact-trigger]
+    [data-gul-btn-content]
+    > span:first-child::after {
+    content: 'v';
+    font-size: 0.875rem;
+  }
+</style>

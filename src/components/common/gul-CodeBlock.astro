@@ -1,0 +1,80 @@
+---
+/**
+ * gul-CodeBlock — a <pre><code> block (base style from global.css) with a
+ * copy-to-clipboard button pinned to its corner. Only for a command/snippet
+ * worth copying whole; a one-word inline <code> in a sentence stays bare
+ * <code>, no wrapper needed (see /styleguide → Código y teclado).
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={['relative', className]} data-gul-codeblock>
+  <pre><code><slot /></code></pre>
+  <button
+    type="button"
+    data-gul-copy
+    aria-label="Copiar"
+    class="absolute top-1/2 right-3 -translate-y-1/2 text-gul-muted hover:text-gul-ink"
+  >
+    <svg
+      data-icon="copy"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+    </svg>
+    <svg
+      data-icon="check"
+      class="hidden"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+  </button>
+</div>
+
+<script>
+  // navigator.clipboard.writeText is the platform API for this — no
+  // dependency needed. Reads the code element's own textContent instead of
+  // duplicating the snippet into a data-attribute, so it can't drift.
+  document.querySelectorAll<HTMLElement>('[data-gul-codeblock]').forEach((block) => {
+    const btn = block.querySelector<HTMLButtonElement>('[data-gul-copy]');
+    const code = block.querySelector('code');
+    const copyIcon = btn?.querySelector<SVGElement>('[data-icon="copy"]');
+    const checkIcon = btn?.querySelector<SVGElement>('[data-icon="check"]');
+    if (!btn || !code || !copyIcon || !checkIcon) return;
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(code.textContent ?? '');
+      } catch {
+        return;
+      }
+      copyIcon.classList.add('hidden');
+      checkIcon.classList.remove('hidden');
+      btn.setAttribute('aria-label', 'Copiado');
+      window.setTimeout(() => {
+        copyIcon.classList.remove('hidden');
+        checkIcon.classList.add('hidden');
+        btn.setAttribute('aria-label', 'Copiar');
+      }, 1500);
+    });
+  });
+</script>
