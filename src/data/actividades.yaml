@@ -1,7 +1,7 @@
 # Lista de actividades del GUL. Edita esta lista para añadir/quitar eventos. Los campos son:
 # - title
 # - date (yyyy/mm/dd)
-# - type (uno de: Charla, Taller, Hackathon, Install party, Game jam, Pódcast)
+# - type (uno de: Charla, Taller, Hackathon, Install party, Game jam, Pódcast, Jornadas Técnicas)
 # - poster?
 # - link?
 # - repository?
