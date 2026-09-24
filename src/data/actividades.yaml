@@ -216,6 +216,168 @@
   participants:
     - Andrés Domínguez Jordán de Urríes
 
+
+- title: Introducción a Bacula
+  date: 2005/11/21  # del vídeo sólo pude sacar "lunes 21", y justo coincide que el 2005/11/21 fue lunes... menuda puta potra
+  type: Charla
+  tags: [Bacula]
+  video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Bacula/bacula-video.ogg
+  description: Estructura de un servicio de backup genérico y su aplicación usando Bacula
+  participants:
+    - José Manuel Ferrer
+
+- title: Comandos Básicos de Unix
+  date: 2005/11/16
+  type: Charla
+  tags: [Linux, Terminal]
+  slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Comandos_Basicos/Comandos_Basicos_Noviemtre_2005.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Comandos_Basicos/Comandos_Basicos_Noviemtre_2005.tex
+  participants:
+    - Claudio Jiménez Castillo
+
+- title: Construcción de paquetes Debian
+  date: 2005/07/11
+  type: Charla
+  tags: [Linux, Debian]
+  slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Construccion%20de%20paquetes%20debian/paquetes.beamer.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Construccion%20de%20paquetes%20debian/Paquetes_Debian-video.ogg
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Construccion%20de%20paquetes%20debian/
+  participants:
+    - Jesús Espino García
+
+- title: Introducción a Java
+  date: 2005/11/24
+  type: Charla
+  tags: [Java]
+  slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Curso%20Java%20-%20GUL%20-%20UC3M/curso_java.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Curso%20Java%20-%20GUL%20-%20UC3M/
+  participants:
+    - Fernando Cerezal López
+
+- title: Curso de Orientación a Objetos
+  date: 2005/11/24
+  type: Charla
+  tags: [Programación]
+  slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Curso%20Orientacion%20Objetos%20-%20GUL%20-%20UC3M/curso_oo.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Curso%20Orientacion%20Objetos%20-%20GUL%20-%20UC3M/
+  participants:
+    - Fernando Cerezal López
+
+- title: Esbuilds y desarrollo en Gentoo
+  date: 2005/12/11
+  type: Charla
+  tags: [Linux, Gentoo]
+  video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/ebuilds/ebuilds-video.ogg
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/ebuilds/ebuilds-dev-gentoo-html.tar.bz2
+  participants:
+    - name: Fernando J. Pereda
+      link: https://blogs.gentoo.org/ferdy/
+
+- title: Curso de GIMP
+  date: 2005/11/22  # lo he sacao del minuto 00:11:02 del vídeo
+  type: Charla
+  tags: [GIMP]
+  video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/gimp/gimp-video.ogg
+  participants:
+    - Luis de Bethencourt
+
+- title: Montaje e instalación de ordenadores
+  date: 2005/11/16  # 00:50:23 en el vídeo :3
+  type: Charla
+  tags: [Hardware]
+  video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Montaje_PC/montajepc-video.ogg
+  participants:
+    - Roberto Muñoz
+
+- title: Introducción a Perl
+  date: 2005/11/21  # alrededor de 00:24:25 he leído algo de 'lun 21'
+  type: Charla
+  tags: [Perl]
+  video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Perl/perl-video.ogg
+  participants:
+    - José Manuel Ferrer
+    - J. J. Rodríguez Buleo
+
+- title: Power shell scripting
+  date: 2005/12/09
+  type: Charla
+  tags: [Bash]
+  video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Power_Shell_Scripting%20-%20GUL%20UC3M/PowerShellScripting.ogg
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Power_Shell_Scripting%20-%20GUL%20UC3M/bash-html.tar.bz2
+  participants:
+    - Fernando J. Pereda
+
+- title: Presentación del GUL
+  date: 2004/11/08
+  type: Charla
+  tags: [GUL]
+  slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Presentacion%20del%20GUL%20-%20GUL%20UC3M/presentacion.beamer.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Presentacion%20del%20GUL%20-%20GUL%20UC3M/
+
+- title: Programación en Python
+  date: 2004/11/18
+  type: Charla
+  tags: [Python]
+  slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Programacion%20en%20Python%20-%20GUL%20UC3M/python.beamer.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Programacion%20en%20Python%20-%20GUL%20UC3M/
+  participants:
+    - Jesús Espino García
+
+- title: Desarrolo de aplicaciones Python-GTK
+  date: 2005/11/23
+  type: Charla
+  tags: [Python]
+  slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Python%20GTK%20-%20GUL%20UC3M/pygtk.beamer.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Python%20GTK%20-%20GUL%20UC3M/
+  video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Python%20GTK%20-%20GUL%20UC3M/python-gtk-video.ogg
+  participants:
+    - Jesús Espino García
+
+- title: ¿Qué es el software libre?
+  date: 2005/11/23
+  type: Charla
+  tags: [Software Libre]
+  slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Que%20es%20el%20Software%20Libre%20-%20GUL%20UC3M/software_libre.beamer.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Que%20es%20el%20Software%20Libre%20-%20GUL%20UC3M/
+  participants:
+    - Jesús Espino García
+
+- title: Ruby on Rails, Ajax y Web2.0
+  date: 2005/11/29
+  type: Charla
+  tags: [Ruby on Rails]
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/ruby_on_rails_ajax_web2.0_gul_uc3m/rails.tar.gz
+  video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/ruby_on_rails_ajax_web2.0_gul_uc3m/ruby-video.ogg
+  participants:
+    - Felipe Talavera Armero
+
+- title: Tarde de Web (parte 1)
+  date: 2005/11/18
+  type: Charla
+  tags: [HTML, Apache, PostgreSQL, PHP]
+  video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Tarde%20de%20Web%20-%20GUL%20UC3M/tardeweb1-video.ogg
+  slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Tarde%20de%20Web%20-%20GUL%20UC3M/iso-latin-1/pdf/index.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Tarde%20de%20Web%20-%20GUL%20UC3M/iso-latin-1/
+  participants:
+    - David Muñoz Díaz
+
+- title: Tarde de Web (parte 2)
+  date: 2005/11/18
+  type: Charla
+  tags: [HTML, Apache, PostgreSQL, PHP]
+  video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Tarde%20de%20Web%20-%20GUL%20UC3M/tardeweb-II-video.ogg
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Tarde%20de%20Web%20-%20GUL%20UC3M/iso-latin-1/
+  participants:
+    - David Muñoz Díaz
+
+- title: Introducción a UML
+  date: 2005/11/19  # me lo he inventao
+  type: Charla
+  tags: [UML]
+  video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/uml/uml-video.ogg
+  participants:
+    - Vicente Palacios
+
 - title: Teclados
   date: 2026/05/01
   type: Taller
