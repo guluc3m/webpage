@@ -108,6 +108,114 @@
   participants:
     - Sergio Gil Pérez de la Manga
 
+- title: PHP + MySQL
+  date: 2003/11/12
+  type: Charla
+  tags: [PHP, MySQL]
+  slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/charla_php.tar.gz
+  description: Capitulo de Estudiantes de ACM de la URJC
+  participants:
+    - Miguel Ángel Hernando Fernández
+
+- title: Seguridad GNU/Linux
+  date: 2003/11/12
+  type: Charla
+  description: Capitulo de Estudiantes de ACM de la URJC
+  tags: [Ciberseguridad]
+  slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/charla_seguridad.tar.gz
+  participants:
+    - Álvaro Navarro Clemente
+    - Jaime Pérez Crespo
+
+- title: Instalación y configuración de un servidor web
+  date: 2002/11/28
+  type: Taller
+  tags: [Apache, self-hosting]
+  slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_apache.tgz
+  participants:
+    - Héctor Cordobés de la Calle
+
+- title: Introducción a AWK
+  date: 2003/04/08
+  type: Taller
+  tags: [AWK]
+  slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_awk.pdf.gz
+  source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_awk_src.tgz
+  participants:
+    - Jesús Espino García
+
+- title: Curso de Bash
+  date: 2004/03/24
+  type: Taller
+  tags: [Bash]
+  slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_bash.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_bash.tex
+  participants:
+    - Raúl Caballo Ortega
+
+- title: Aplicaciones web con Java
+  date: 2003/04/03
+  type: Taller
+  tags: [Java]
+  slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso-java.pdf.gz
+  source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_java_src.tgz
+  participants:
+    - Raúl Caballo Ortega
+    - Álvaro Sánchez-Mariscal
+
+- title: II Curso de introducción a CVS
+  date: 2003/04/02
+  type: Taller
+  tags: [CVS]
+  slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso-cvs.pdf.gz
+  source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso-cvs_src.tgz
+  participants:
+    - Álvaro Sánchez-Mariscal
+
+- title: Java y Software Libre
+  date: 2003/04/04
+  type: Charla
+  tags: [Java, Software Libre]
+  slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso-java-swlibre.pdf.gz
+  source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso-java-swlibre_src.tgz
+  participants:
+    - Álvaro Sánchez-Mariscal
+
+- title: Perl básico
+  date: 2003/03/18
+  type: Taller
+  tags: [Perl]
+  slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_perl.pdf.gz
+  participants:
+    - Raúl Caballo Ortega
+
+- title: ¿Qué es el Software Libre?
+  date: 2003/03/31
+  type: Charla
+  tags: [Software Libre]
+  slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_sl.pdf.gz
+  source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_sl.pdf.gz
+  participants:
+    - Pablo Barrera González
+    - Sergio Gutiérrez Santos
+
+- title: Curso de Vim
+  date: 2004/04/01
+  type: Taller
+  tags: [Vim]
+  slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_vim.pdf.gz
+  source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_vim_src.tar.gz
+  participants:
+    - Jesús Espino García
+
+- title: Programación gráfica con gtk+
+  date: 2004/03/25
+  type: Taller
+  tags: [GIMP]
+  source: https://cloud-gul.uc3m.es/actividades/2003/marzo/gtk_html.tar.gz
+  participants:
+    - Andrés Domínguez Jordán de Urríes
+
 - title: Teclados
   date: 2026/05/01
   type: Taller
@@ -127,7 +235,7 @@
   participants:
     - name: Jorge Saghin
       link: https://github.com/z4na14
-  tags: [Proxmox]
+  tags: [Proxmox, self-hosting]
   video: https://www.youtube.com/watch?v=xB3y_q-H6fE
   slides: https://ftp.z4na14.dev/semana_postgrado_self-hosting.pdf
 
