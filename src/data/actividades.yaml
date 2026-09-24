@@ -4,7 +4,7 @@
 # - type (uno de: Charla, Taller, Hackathon, Install party, Game jam, Pódcast, Jornadas Técnicas)
 # - poster?
 # - link?
-# - repository?
+# - source?
 # - slides?
 # - photo?
 # - tags? (lista)
@@ -16,7 +16,7 @@
   description: Nos juntamos unos cuantos para hacer unos teclados to' wapos
   photo: https://pbs.twimg.com/media/HHs3K92WAAAJ9_J?format=jpg&name=small
   tags: [Hardware]
-  repository: https://github.com/davidphilipbarr/Sweep
+  source: https://github.com/davidphilipbarr/Sweep
 
 - title: Introducción al Autohospedaje de Servicios y Webs
   date: 2026/05/07
@@ -122,7 +122,7 @@
     la muerte de Windows 10.
   poster: https://pbs.twimg.com/media/G14xx8yWIAAUqtS?format=jpg&name=4096x4096
   video: https://www.youtube.com/watch?v=Apaqtno3ACE
-  repository: https://github.com/guluc3m/linux-install
+  source: https://github.com/guluc3m/linux-install
 
 - title: Ampliación de C para "normies"
   date: 2025/02/07
@@ -160,4 +160,4 @@
       link: https://github.com/Toriomg
   link: https://hackspain.com/
   photo: /actividades/hackspain.png
-  repository: https://github.com/guluc3m/hackspain26
+  source: https://github.com/guluc3m/hackspain26

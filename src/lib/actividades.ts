@@ -29,7 +29,7 @@ export interface Actividad {
   poster?: string; // poster image URL
   video?: string; // YouTube link
   link?: string;
-  repository?: string;
+  source?: string;
   slides?: string;
   photo?: string; // usually one OR the other of cartel/photo, not both
   participants?: Participant[];
