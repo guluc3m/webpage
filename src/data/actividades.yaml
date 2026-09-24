@@ -21,11 +21,12 @@
 
 - title: Curso de Comandos Básicos
   date: 2003/11/12
-  type: Taller
+  type: Charla
   slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/comandos_basicos.pdf.gz
   tags: [Linux, Terminal]
   participants:
-    - Jesús Espino García
+    - name: Jesús Espino García
+      link: https://github.com/jespino
     - Jesús Lanchas Sampablo
 
 - title: Instalación de Debian GNU/Linux
@@ -39,7 +40,7 @@
 
 - title: Curso de Correo Electrónico - Postfix
   date: 2002/12/01
-  type: Taller
+  type: Charla
   tags: [Postfix]
   participants:
     - Sergio Hernández Rueda
@@ -47,7 +48,7 @@
 
 - title: Curso de Octave
   date: 2003/04/03
-  type: Taller
+  type: Charla
   slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/curso_octave.pdf.gz
   tags: [Octave]
   participants:
@@ -55,7 +56,7 @@
 
 - title: 'IPv6: Introducción y configuración en GNU/Linux'
   date: 2002/11/28
-  type: Taller
+  type: Charla
   slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/IPv6_gul.pdf.gz
   tags: [IPv6]
   participants:
@@ -63,7 +64,7 @@
 
 - title: Curso avanzado de LaTeX (2a parte)
   date: 2003/03/31
-  type: Taller
+  type: Charla
   slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/LaTeX_avanzado_2.pdf.gz
   tags: [LaTeX]
   participants:
@@ -72,7 +73,7 @@
 - title: IV Charla sobre LaTeX (parte I)
   # date: 2003/04/05  # esto es lo que pone en las traspas, pero tiene cero sentido...
   date: 2003/04/03
-  type: Taller
+  type: Charla
   slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latex_I.pdf.gz
   tags: [LaTeX]
   participants:
@@ -80,21 +81,21 @@
 
 - title: IV Charla sobre LaTeX (parte II) - Entornos Matemáticos
   date: 2003/04/03
-  type: Taller
+  type: Charla
   slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latexII-matematico.pdf.gz
   source: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latexII-codigo-tex.tgz
   tags: [LaTeX]
 
 - title: IV Charla sobre LaTeX (parte III) - Índice y Bibliografía
   date: 2003/04/03
-  type: Taller
+  type: Charla
   slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latexII-indice-bibliografia.pdf.gz
   source: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latexII-codigo-tex.tgz
   tags: [LaTeX]
 
 - title: Curso de LaTeX
   date: 2003/11/11
-  type: Taller
+  type: Charla
   slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latex_trans.ps.gz
   tags: [LaTeX]
   participants:
@@ -102,7 +103,7 @@
 
 - title: Curso de LaTeX (continuación)
   date: 2004/03/24
-  type: Taller
+  type: Charla
   source: https://cloud-gul.uc3m.es/actividades/2002/noviembre/LaTeX-src.tar.gz
   tags: [LaTeX]
   participants:
@@ -129,7 +130,7 @@
 
 - title: Instalación y configuración de un servidor web
   date: 2002/11/28
-  type: Taller
+  type: Charla
   tags: [Apache, self-hosting]
   slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_apache.tgz
   participants:
@@ -137,7 +138,7 @@
 
 - title: Introducción a AWK
   date: 2003/04/08
-  type: Taller
+  type: Charla
   tags: [AWK]
   slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_awk.pdf.gz
   source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_awk_src.tgz
@@ -146,7 +147,7 @@
 
 - title: Curso de Bash
   date: 2004/03/24
-  type: Taller
+  type: Charla
   tags: [Bash]
   slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_bash.pdf
   source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_bash.tex
@@ -155,7 +156,7 @@
 
 - title: Aplicaciones web con Java
   date: 2003/04/03
-  type: Taller
+  type: Charla
   tags: [Java]
   slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso-java.pdf.gz
   source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_java_src.tgz
@@ -165,7 +166,7 @@
 
 - title: II Curso de introducción a CVS
   date: 2003/04/02
-  type: Taller
+  type: Charla
   tags: [CVS]
   slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso-cvs.pdf.gz
   source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso-cvs_src.tgz
@@ -183,7 +184,7 @@
 
 - title: Perl básico
   date: 2003/03/18
-  type: Taller
+  type: Charla
   tags: [Perl]
   slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_perl.pdf.gz
   participants:
@@ -201,7 +202,7 @@
 
 - title: Curso de Vim
   date: 2004/04/01
-  type: Taller
+  type: Charla
   tags: [Vim]
   slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_vim.pdf.gz
   source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_vim_src.tar.gz
@@ -210,7 +211,7 @@
 
 - title: Programación gráfica con gtk+
   date: 2004/03/25
-  type: Taller
+  type: Charla
   tags: [GIMP]
   source: https://cloud-gul.uc3m.es/actividades/2003/marzo/gtk_html.tar.gz
   participants:
@@ -287,7 +288,8 @@
   tags: [Hardware]
   video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Montaje_PC/montajepc-video.ogg
   participants:
-    - Roberto Muñoz
+    - name: Roberto Muñoz
+      link: https://github.com/queltosh
 
 - title: Introducción a Perl
   date: 2005/11/21  # alrededor de 00:24:25 he leído algo de 'lun 21'
@@ -471,7 +473,8 @@
   video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Mono/Gul-MonoNetLibre-03-04-06.mpg
   source: https://cloud-gul.uc3m.es/actividades/2006/marzo/Mono/mono_net_libre.tex
   participants:
-    - Samuel Rodríguez Sevilla
+    - name: Samuel Rodríguez Sevilla
+      link: https://github.com/laparca
 
 - title: Introducción a OpenGL
   date: 2006/03/22  # misma ropa que en la de Blender
@@ -610,9 +613,9 @@
   video: https://www.youtube.com/watch?v=xB3y_q-H6fE
   slides: https://ftp.z4na14.dev/semana_postgrado_self-hosting.pdf
 
-- title: 'Taller presencial: Introduccion a C'
+- title: Introduccion a C
   date: 2026/02/18
-  type: Taller
+  type: Charla
   description: >-
     ¿Qué es un Makefile?, ¿Por qué los punteros son tan complicados?, ¿¿Desde
     cuándo puedo usar funciones como argumentos?? Tranquilo, nosotros también
@@ -647,7 +650,7 @@
 
 - title: Intro Git & Github
   date: 2025/11/12
-  type: Taller
+  type: Charla
   description: >-
     ¿Eres de los que al hacer un trabajo comparte el código por mail o por
     drive? ¿Has oído hablar de Github pero nunca has tenido claro qué es y
@@ -703,7 +706,7 @@
 
 - title: Ampliación de C para "normies"
   date: 2025/02/07
-  type: Taller
+  type: Charla
   description: >-
     ¿Qué haces aun usando Windows 10? Microsoft está a punto de volver tu
     ordenador en un pisapapeles, ¿y no piensas hacer nada? Celebremos juntos
