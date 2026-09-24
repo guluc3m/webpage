@@ -378,6 +378,215 @@
   participants:
     - Vicente Palacios
 
+- title: Introducción a AWK
+  date: 2006/04/05
+  type: Charla
+  tags: [AWK]
+  source: https://cloud-gul.uc3m.es/actividades/2006/marzo/AWK/awk-source.tar.gz
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/AWK/Gul-AWK-05-04-06.ogv
+  participants:
+    - Jesús Espino García
+
+- title: Introducción a Blender
+  date: 2006/03/22  # 00:02:33 'mie'... asumo que es el 22
+  type: Charla
+  tags: [Blender]
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Blender/blender-video.ogg
+  participants:
+    - Luis de Bethencourt
+
+- title: eBox
+  date: 2006/04/04
+  type: Charla
+  tags: []
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/eBox/Gul-eBox-04-04-06.mpg
+
+- title: Creación de distribuciones con GenDist
+  date: 2006/04/30  # 00:43:34 Thu Mar 30
+  type: Charla
+  tags: [Linux]
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/GenDist/gendist-video.ogg
+  participants:
+    - Jesús Espino García
+
+- title: 'Programación Funcional: Haskell'
+  date: 2006/04/03
+  type: Charla
+  tags: [Haskell]
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Haskell/Gul-Haskell-03-04-06.mpg
+  participants:
+    - Federico G. Mon Trotti
+    - Jesús Espino García
+
+- title: JavaScript - El lenguaje de los navegadores
+  date: 2006/09/24
+  type: Charla
+  tags: [JavaScript]
+  source: https://cloud-gul.uc3m.es/actividades/2006/marzo/JavaScript/javascript.tar.gz
+  participants:
+    - Víctor Pimentel Rodríguez
+
+- title: Joomla!
+  date: 2006/04/30  # lleva la misma ropa que en la charla de GenDist
+  type: Charla
+  tags: [Joomla]
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/joomla/joomla-video.ogg
+  participants:
+    - Jesús Espino García
+
+- title: LaTeX - La imprenta en casa
+  date: 2006/03/29
+  type: Charla
+  tags: [LaTeX]
+  slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/LaTeX/latex.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/LaTeX/latex-video.ogg
+  source: https://cloud-gul.uc3m.es/actividades/2006/marzo/LaTeX/latex.tex
+  participants:
+    - Sergio Gil Pérez de la Manga
+    - Juan Ramón Martín Blanco
+
+- title: LaTeX avanzado - Pero avanzado que te cagas
+  date: 2006/03/29
+  type: Charla
+  tags: [LaTeX]
+  slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/LaTeX%202/latex2prn.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/LaTeX%202/latex-avanzado-video.ogg
+  source: https://cloud-gul.uc3m.es/actividades/2006/marzo/LaTeX%202/latex2.tar.bz2
+  participants:
+    - Sergio Gil Pérez de la Manga
+
+- title: 'LUC3M: El Linux de la Carlos III'
+  date: 2006/03/27
+  type: Charla
+  tags: [Linux]
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/LUC3M/Gul-LUC3M-27-03-06.mpg
+  participants:
+    - Jesús Espino García
+
+- title: Mono - .Net libre
+  date: 2006/04/03
+  type: Charla
+  tags: [.NET]
+  slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/Mono/mono_net_libre.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Mono/Gul-MonoNetLibre-03-04-06.mpg
+  source: https://cloud-gul.uc3m.es/actividades/2006/marzo/Mono/mono_net_libre.tex
+  participants:
+    - Samuel Rodríguez Sevilla
+
+- title: Introducción a OpenGL
+  date: 2006/03/22  # misma ropa que en la de Blender
+  type: Charla
+  tags: [OpenGL]
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/OpenGL/opengl-video.ogg
+  participants:
+    - Luis de Bethencourt
+
+- title: Sistemas RAID en Linux
+  date: 2006/04/06
+  type: Charla
+  tags: [RAID]
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Raid/Gul-RAID-06-04-06.mpg
+  participants:
+    - name: Alejandro Calderón Mateos
+      link: https://researchportal.uc3m.es/display/inv15001
+
+- title: Montaje de una red doméstica
+  date: 2006/03/28
+  type: Charla
+  tags: [Redes]
+  slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/Red_domestica/red_domestica.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2006/marzo/Red_domestica/red_domestica.tex
+  participants:
+    - Fernando Cerezal López
+
+- title: Seguridad en Red
+  date: 2006/04/07
+  type: Charla
+  tags: [Ciberseguridad, Redes]
+  slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/Seguridad_en_red/Seguridad%20en%20Red.pdf
+  participants:
+    - Javier Sánchez-Arévalo Díaz
+
+- title: Seguridad en Linux
+  date: 2006/04/07
+  type: Charla
+  tags: [Ciberseguridad]
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/SeguridadEnLinux/Gul-SeguridadEnLinux-07-04-06.mpg
+
+- title: Sistemas de Ficheros
+  date: 2006/04/06
+  type: Charla
+  tags: [Ficheros]
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Sistemas%20de%20Ficheros/Gul-SistemasDeFicheros-06-04-06.mpg
+  slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/Sistemas%20de%20Ficheros/sistemas_de_ficheros.odp
+  participants:
+    - Jesús Espino García
+
+- title: 'Subversion: Desarrollo colaborativo'
+  date: 2006/04/04
+  type: Charla
+  tags: [Subversion]
+  slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/Subversion/subversion-2006.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Subversion/Gul-Subversion-04-04-06.mpg
+  source: https://cloud-gul.uc3m.es/actividades/2006/marzo/Subversion/Subversion%20-%20codigo%202006.tar.gz
+  participants:
+    - Claudio Jiménez Castillo
+
+- title: Vim
+  date: 2006/03/05
+  type: Charla
+  tags: [Vim]
+  slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/Vim/vim-2006.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Vim/Gul-Vim-05-04-06.ogv
+  source: https://cloud-gul.uc3m.es/actividades/2006/marzo/Vim/vim-codigo-2006.tar.gz
+  participants:
+    - Claudio Jiménez Castillo
+
+- title: Introducción a GNU/Linux (Leganés)
+  date: 2006/10/02  # me he inventao el día
+  type: Charla
+  tags: [Linux, GUL]
+  slides: https://cloud-gul.uc3m.es/actividades/2006/noviembre/introduccion/introduccion-leganes.pdf 
+  participants:
+    - Fernando Cerezal
+    - Claudio Jiménez
+    - Roberto Muñoz
+
+- title: Introducción a GNU/Linux (Getafe)
+  date: 2006/10/03  # me he inventao el día
+  type: Charla
+  tags: [Linux, GUL]
+  slides: https://cloud-gul.uc3m.es/actividades/2006/noviembre/introduccion/introduccion-getafe.pdf 
+  participants:
+    - Fernando Cerezal
+    - Claudio Jiménez
+    - Roberto Muñoz
+
+- title:
+  date: 
+  type: Charla
+  tags: []
+  slides: 
+  participants:
+    - 
+
+- title:
+  date: 
+  type: Charla
+  tags: []
+  slides: 
+  participants:
+    - 
+
+- title:
+  date: 
+  type: Charla
+  tags: []
+  slides: 
+  participants:
+    - 
+
+
 - title: Teclados
   date: 2026/05/01
   type: Taller
