@@ -11,6 +11,103 @@
 # - tags? (lista)
 # - participants? (`{name, link}` o, si nombre ya existe, nombre directo y se reutiliza el link)
 
+- title: Linux como alternativa a Windows
+  date: 2002/12/01
+  type: Charla
+  slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/alternativa.pdf.gz
+  tags: [Linux]
+  participants:
+    - Diego Gómez Díaz
+
+- title: Curso de Comandos Básicos
+  date: 2003/11/12
+  type: Taller
+  slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/comandos_basicos.pdf.gz
+  tags: [Linux, Terminal]
+  participants:
+    - Jesús Espino García
+    - Jesús Lanchas Sampablo
+
+- title: Instalación de Debian GNU/Linux
+  date: 2003/12/11
+  type: Install party
+  slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/instalacion_debian.ps.gz
+  tags: [Linux]
+  participants:
+    - Jesús Espino García
+    - Jesús Lanchas Sampablo
+
+- title: Curso de Correo Electrónico - Postfix
+  date: 2002/12/01
+  type: Taller
+  tags: [Postfix]
+  participants:
+    - Sergio Hernández Rueda
+    - Juan Jose Rodríguez Buleo
+
+- title: Curso de Octave
+  date: 2003/04/03
+  type: Taller
+  slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/curso_octave.pdf.gz
+  tags: [Octave]
+  participants:
+    - Pablo Barrera González
+
+- title: 'IPv6: Introducción y configuración en GNU/Linux'
+  date: 2002/11/28
+  type: Taller
+  slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/IPv6_gul.pdf.gz
+  tags: [IPv6]
+  participants:
+    - Carlos Jesús Bernardos Cano
+
+- title: Curso avanzado de LaTeX (2a parte)
+  date: 2003/03/31
+  type: Taller
+  slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/LaTeX_avanzado_2.pdf.gz
+  tags: [LaTeX]
+  participants:
+    - Miguel Ángel Hernández Jiménez
+
+- title: IV Charla sobre LaTeX (parte I)
+  # date: 2003/04/05  # esto es lo que pone en las traspas, pero tiene cero sentido...
+  date: 2003/04/03
+  type: Taller
+  slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latex_I.pdf.gz
+  tags: [LaTeX]
+  participants:
+    - Javier Sánchez-Arévalo Díaz
+
+- title: IV Charla sobre LaTeX (parte II) - Entornos Matemáticos
+  date: 2003/04/03
+  type: Taller
+  slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latexII-matematico.pdf.gz
+  source: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latexII-codigo-tex.tgz
+  tags: [LaTeX]
+
+- title: IV Charla sobre LaTeX (parte III) - Índice y Bibliografía
+  date: 2003/04/03
+  type: Taller
+  slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latexII-indice-bibliografia.pdf.gz
+  source: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latexII-codigo-tex.tgz
+  tags: [LaTeX]
+
+- title: Curso de LaTeX
+  date: 2003/11/11
+  type: Taller
+  slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latex_trans.ps.gz
+  tags: [LaTeX]
+  participants:
+    - Ramón Casero Cañas
+
+- title: Curso de LaTeX (continuación)
+  date: 2004/03/24
+  type: Taller
+  source: https://cloud-gul.uc3m.es/actividades/2002/noviembre/LaTeX-src.tar.gz
+  tags: [LaTeX]
+  participants:
+    - Sergio Gil Pérez de la Manga
+
 - title: Teclados
   date: 2026/05/01
   type: Taller
