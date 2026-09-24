@@ -10,19 +10,21 @@
 import GulFrame from './gul-Frame.astro';
 import GulBadge from './gul-Badge.astro';
 import type { Actividad } from '@/lib/actividades';
+import { renderInlineMarkdown } from '@lib/markdown';
 
 interface Props {
   actividad: Actividad;
 }
 
 const { actividad: a } = Astro.props;
-const image = a.cartel ?? a.photo; // same slot (poster vs. snapshot), never both at once — see the Actividad type.
+const image = a.poster ?? a.photo; // same slot (poster vs. snapshot), never both at once — see the Actividad type.
 
 // Hand-drawn outline icons (24x24, stroke-based) — matches gul-RepoCard's ICONS, no icon library.
 const ICONS = {
   video: '<circle cx="12" cy="12" r="9"/><polygon points="10,8 16,12 10,16"/>',
   repo: '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 3v18"/>',
   slides: '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/>',
+  link: '<path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.2 1.2"/><path d="M14 11a5 5 0 0 0-7.1-.1l-2 2a5 5 0 0 0 7.1 7.1l1.2-1.2"/>',
 } as const;
 // ponytail: los carteles siguen sirviéndose desde public/ sin optimizar. Su
 // ruta viene del YAML como cadena, así que <Image> de Astro no encaja sin un
@@ -52,7 +54,7 @@ const datetime = hasNoDay(a.date) ? a.date.slice(0, 7) : a.date.replaceAll('/', 
       href={image}
       target="_blank"
       rel="noopener"
-      class="order-first block h-56 w-full overflow-hidden rounded-md border border-gul-line transition-colors hover:border-gul-ink/40 md:order-last md:h-auto md:w-[280px] md:shrink-0"
+      class="order-first block h-56 w-full overflow-hidden rounded-md border border-gul-line transition-colors hover:border-gul-ink/40 md:order-last md:h-auto md:w-70 md:shrink-0"
     >
       <img src={image} alt="" loading="lazy" decoding="async" class="h-full w-full object-cover" />
     </a>
@@ -100,14 +102,17 @@ const datetime = hasNoDay(a.date) ? a.date.slice(0, 7) : a.date.replaceAll('/', 
         </p>
       )}
 
-      {a.description && <p class="mt-1 text-sm text-gul-muted">{a.description}</p>}
+      {a.description && (
+        <p class="mt-1 text-sm text-gul-muted" set:html={renderInlineMarkdown(a.description)} />
+      )}
 
-      {(a.video || a.repository || a.transparencias) && (
+      {(a.video || a.repository || a.slides || a.link) && (
         <p class="mt-3 flex flex-wrap items-center gap-2 text-sm">
           {[
             { href: a.video, label: 'Vídeo', icon: ICONS.video },
             { href: a.repository, label: 'Repositorio', icon: ICONS.repo },
-            { href: a.transparencias, label: 'Transparencias', icon: ICONS.slides },
+            { href: a.slides, label: 'Transparencias', icon: ICONS.slides },
+            { href: a.link, label: 'Link', icon: ICONS.link },
           ]
             .filter((link) => link.href)
             .map((link) => (

@@ -1,15 +1,14 @@
-# Lista de actividades del GUL. Edita esta lista para añadir/quitar eventos.
-# - title: XXXVI Jornadas Técnicas
-#   date: 2027/02/00
-#   type: Charla # uno de: Charla, Taller, Hackathon, Install party, Game jam, Pódcast
-#   description: >-
-#     Son una serie de charlas y/o talleres relacionados con el Software Libre,
-#     Linux, la informatica, la ingenieria... ¡Jornadas Tecnicas!
-#   tags: [C, Python]
-#   participants:
-#     - name: Carlos Tercero
-#       link: https://codeberg.org/cum3 # opcional; si el nombre existe, se reutiliza
-#     - Otra Persona
+# Lista de actividades del GUL. Edita esta lista para añadir/quitar eventos. Los campos son:
+# - title
+# - date (yyyy/mm/dd)
+# - type (uno de: Charla, Taller, Hackathon, Install party, Game jam, Pódcast)
+# - poster?
+# - link?
+# - repository?
+# - slides?
+# - photo?
+# - tags? (lista)
+# - participants? (`{name, link}` o, si nombre ya existe, nombre directo y se reutiliza el link)
 
 - title: Teclados
   date: 2026/05/01
@@ -22,7 +21,7 @@
 - title: Introducción al Autohospedaje de Servicios y Webs
   date: 2026/05/07
   type: Charla
-  cartel: https://pbs.twimg.com/media/HHn4rxuXMAM8RJ5?format=jpg&name=small
+  poster: https://pbs.twimg.com/media/HHn4rxuXMAM8RJ5?format=jpg&name=small
   description: >-
     ¿Que haces usando tu portatil del 2006 como pisapapeles? Métele Debian, y
     te enseñamos como exponer tus páginas y proyectos. ¡No te pierdas esta oportunidad para crear
@@ -32,7 +31,7 @@
       link: https://github.com/z4na14
   tags: [Proxmox]
   video: https://www.youtube.com/watch?v=xB3y_q-H6fE
-  transparencias: https://ftp.z4na14.dev/semana_postgrado_self-hosting.pdf
+  slides: https://ftp.z4na14.dev/semana_postgrado_self-hosting.pdf
 
 - title: 'Taller presencial: Introduccion a C'
   date: 2026/02/18
@@ -46,7 +45,7 @@
   participants:
     - Jorge Saghin
   tags: [C]
-  cartel: https://pbs.twimg.com/media/HAjzAeHXEAAqVCa?format=jpg&name=4096x4096
+  poster: https://pbs.twimg.com/media/HAjzAeHXEAAqVCa?format=jpg&name=4096x4096
 
 - title: Linux Install Party
   date: 2026/02/12
@@ -55,7 +54,7 @@
     ¿Cómo que necesitas cuenta para usar MS Paint en Windows 11? Te enseñamos
     nosotros a usar Gimp, y de paso te instalamos Linux. Pssst, también tenemos Excalidraw
     por si no te gusta Gimp, tú solo ven.
-  cartel: https://pbs.twimg.com/media/G_sIN7tXIAES7GA?format=jpg&name=4096x4096
+  poster: https://pbs.twimg.com/media/G_sIN7tXIAES7GA?format=jpg&name=4096x4096
 
 - title: Pódcast de Asociaciones UC3M
   date: 2025/12/19
@@ -80,7 +79,7 @@
     Git y por qué hemos de usarlo. Aprenderemos conceptos claves y
     trabajaremos de manera colaborativa a través de una simulación en equipo
     donde podrás poner en práctica todo lo aprendido.
-  cartel: https://pbs.twimg.com/media/G5BArDEXMAASmED?format=jpg&name=900x900
+  poster: https://pbs.twimg.com/media/G5BArDEXMAASmED?format=jpg&name=900x900
   participants:
     - name: Albert Giurgiu
       link: https://github.com/fedes1to
@@ -97,7 +96,7 @@
     imagen 🤢? Desde GUL te invitamos a que vengas y aprendas Typst, una
     herramienta que te permitirá escribir documentos de manera más rápida,
     cómoda y simplemente mejor.
-  cartel: https://pbs.twimg.com/media/G5Z06RVWEAA9ThR?format=jpg&name=large
+  poster: https://pbs.twimg.com/media/G5Z06RVWEAA9ThR?format=jpg&name=large
   participants:
     - Luis Daniel Casais
   video: https://www.youtube.com/watch?v=Apaqtno3ACE
@@ -121,7 +120,7 @@
     ¿Qué haces aun usando Windows 10? Microsoft está a punto de volver tu
     ordenador en un pisapapeles, ¿y no piensas hacer nada? Celebremos juntos
     la muerte de Windows 10.
-  cartel: https://pbs.twimg.com/media/G14xx8yWIAAUqtS?format=jpg&name=4096x4096
+  poster: https://pbs.twimg.com/media/G14xx8yWIAAUqtS?format=jpg&name=4096x4096
   video: https://www.youtube.com/watch?v=Apaqtno3ACE
   repository: https://github.com/guluc3m/linux-install
 
@@ -132,9 +131,9 @@
     ¿Qué haces aun usando Windows 10? Microsoft está a punto de volver tu
     ordenador en un pisapapeles, ¿y no piensas hacer nada? Celebremos juntos
     la muerte de Windows 10 este 7 de octubre en el aula 2.3.C03
-  cartel: https://pbs.twimg.com/media/Gj5ctk6WkAAShkb?format=jpg&name=medium
+  poster: https://pbs.twimg.com/media/Gj5ctk6WkAAShkb?format=jpg&name=medium
   video: https://www.youtube.com/watch?v=Apaqtno3ACE
-  transparencias: https://github.com/z4na14/c-taller-intro
+  slides: https://github.com/z4na14/c-taller-intro
   tags: [C]
 
 - title: GUL JAMon
@@ -143,7 +142,7 @@
   description: >-
     La GUL Jamón es el evento del GUL UC3M dedicado a los videojuegos. Tuvo
     su origen en 2018 como una gamejam.
-  cartel: https://pbs.twimg.com/media/G04vx8mWYAA9MIr?format=jpg&name=medium
+  poster: https://pbs.twimg.com/media/G04vx8mWYAA9MIr?format=jpg&name=medium
 
 - title: HackSpain 2026
   date: 2026/09/20
@@ -159,5 +158,6 @@
     - Jorge Saghin
     - name: Héctor Molina
       link: https://github.com/Toriomg
+  link: https://hackspain.com/
   photo: /actividades/hackspain.png
   repository: https://github.com/guluc3m/hackspain26

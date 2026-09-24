@@ -25,10 +25,11 @@ export interface Actividad {
   date: string; // yyyy/mm/dd
   type: ActividadType;
   description?: string;
-  cartel?: string; // poster image URL
+  poster?: string; // poster image URL
   video?: string; // YouTube link
+  link?: string;
   repository?: string;
-  transparencias?: string;
+  slides?: string;
   photo?: string; // usually one OR the other of cartel/photo, not both
   participants?: Participant[];
   tags?: string[]; // temas (Git, C, Hardware…); el tipo ya no va aquí
