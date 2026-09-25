@@ -1320,7 +1320,7 @@
   date: 2012/11/09
   type: Charla
   jornadas: 17
-  tags: [Redes]
+  tags: [Redes, Radio]
   slides: https://cloud-gul.uc3m.es/actividades/2012/noviembre/Radioenlaces/curso_radioenlaces.pdf
   source: https://cloud-gul.uc3m.es/actividades/2012/noviembre/Radioenlaces/curso_radioenlaces.tex
   participants:
@@ -1788,6 +1788,55 @@
   video: https://youtu.be/2uRJSePdCTM
   participants:
     - Óscar Seguro Alonso
+
+- title: Una radio a tu alcance
+  description: >-
+    Se realizaron dos programas de radio en directo en LA ISLA.FM, con la ayuda
+    de los participantes.
+  type: Taller
+  tags: [Radio]
+  date: 2015/03/12
+  participants:
+    - name: Sixto Fernández
+      link: https://twitter.com/djtangosix
+    - Rubén de la Peña
+    - Adrián Borja Pimentel
+    - Adrián Casado Rivas
+
+- title: Talleres de Arduino
+  type: Taller
+  tags: [Arduino]
+  date: 2015/05/12  # me invento el día, por las facturas debería ser al menos en mayo
+  participants:
+    - Adrián Borja Pimentel
+
+- title: Ser un Hacker
+  type: Charla
+  description: >-
+    La charla buscará informar sobre distintos campos desde el punto de vista de
+    un hacker experimentado, destacando el activismo hacker, hacking ético,
+    posibilidades, oportunidades y futuro profesional entre otras cosas. También
+    se pretende que dicha charla motive y genere interés hacia la filosofía
+    hacker.
+  date: 2015/10/05
+  poster: https://cloud-gul.uc3m.es/actividades/2015/semana2015.png
+  slides: https://cloud-gul.uc3m.es/actividades/2015/Ser%20un%20hacker.pptx
+  participants:
+    - Adrián Borja Pimentel
+
+- title: Linux en 90' para no desesperarte en las prácticas
+  type: Charla
+  description: >-
+    El propósito de la actividad es que los asistentes se familiaricen con el
+    Sistema Operativo Linux, especialmente en su entorno de consola, para que
+    las prácticas de la carrera desarrolladas en este entorno les sean menos
+    costosas. Se trabajarán conjuntos de comandos básicos, conjuntos de comandos
+    avanzados y se darán consejos útiles. Será impartido por estudiantes y
+    ex-estudiantes de la UC3M, algunos con más de 10 años de experiencia en
+    LINUX y que son conocedores de la formación complementaria conveniente.
+  date: 2015/10/07
+  tags: [Linux, Terminal]
+  poster: https://cloud-gul.uc3m.es/actividades/2015/semana2015.png
 
 - title: Con las serpientes Sí se juega (Pygame)
   description: >-
