@@ -1297,6 +1297,44 @@
   participants:
     - Manuel Jiménez
 
+- title: Introducción a Arduino
+  date: 2012/11/09
+  type: Charla
+  jornadas: 17
+  tags: [Arduino]
+  slides: https://cloud-gul.uc3m.es/actividades/2012/noviembre/Arduino/curso_arduino.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2012/noviembre/Arduino/curso_arduino.tex
+  participants:
+    - Fernando Cerezal López
+
+- title: Introducción a LaTeX
+  date: 2012/11/07
+  type: Charla
+  jornadas: 17
+  tags: [LaTeX]
+  source: https://cloud-gul.uc3m.es/actividades/2012/noviembre/Latex/latex.zip
+  participants:
+    - Paula González Muñoz
+
+- title: Cálculo de radioenlaces
+  date: 2012/11/09
+  type: Charla
+  jornadas: 17
+  tags: [Redes]
+  slides: https://cloud-gul.uc3m.es/actividades/2012/noviembre/Radioenlaces/curso_radioenlaces.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2012/noviembre/Radioenlaces/curso_radioenlaces.tex
+  participants:
+    - Fernando Cerezal López
+
+- title: Traduciendo Aplicaciones de GNOME
+  date: 2012/11/11
+  type: Charla
+  jornadas: 17
+  tags: [Linux, GNOME]
+  slides: https://cloud-gul.uc3m.es/actividades/2012/noviembre/TraduccionGnome/Traduccion%20GNOME.odp
+  participants:
+    - Daniel Mustieles García
+
 - title: Teclados
   date: 2026/05/01
   type: Taller
