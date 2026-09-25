@@ -288,7 +288,7 @@
   tags: [Hardware]
   video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Montaje_PC/montajepc-video.ogg
   participants:
-    - name: Roberto Muñoz
+    - name: Roberto Muñoz Gómez
       link: https://github.com/queltosh
 
 - title: Introducción a Perl
@@ -553,7 +553,7 @@
   participants:
     - Fernando Cerezal
     - Claudio Jiménez
-    - Roberto Muñoz
+    - Roberto Muñoz Gómez
 
 - title: Introducción a GNU/Linux (Getafe)
   date: 2006/10/03  # me he inventao el día
@@ -563,7 +563,7 @@
   participants:
     - Fernando Cerezal
     - Claudio Jiménez
-    - Roberto Muñoz
+    - Roberto Muñoz Gómez
 
 - title: Ajax en Java EE
   date: 2007/06/19  # sacado de la fecha de creación del PDF
@@ -987,6 +987,215 @@
   slides: https://cloud-gul.uc3m.es/actividades/2009/noviembre/servicios_nube/Desplegando_Servicios_en_la_Nube.odp
   participants:
     - Javier Turégano Molina
+
+- title: Computación voluntaria (BOINC)
+  date: 2010/03/01
+  type: Charla
+  jornadas: 14
+  tags: [BOINC]
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/boinc/boinc.mpg
+  participants:
+    - Borja Bergua
+
+- title: Medida de la calidad del software
+  date: 2010/03/05  # 00:36:20
+  type: Charla
+  jornadas: 14
+  tags: []
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/calidad_sw/calidad_sw.mpg
+  participants:
+    - David Muñoz Díaz
+
+- title: Criptografía para todos los días
+  date: 2010/03/04
+  type: Charla
+  jornadas: 14
+  tags: [Ciberseguridad]
+  slides: https://cloud-gul.uc3m.es/actividades/2010/marzo/criptografia/presentacion_cripto_marzo_10.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/criptografia/criptografia.mpg
+  participants:
+    - Daniel Marcos Martín
+
+- title: Administrando los servidores del GUL (I)
+  date: 2010/03/12  # me he inventao el día
+  type: Charla
+  jornadas: 14
+  tags: [Self-hosting]
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/gul-root/gul-root1.mpg
+  participants:
+    - Fernando Cerezal López
+
+- title: Administrando los servidores del GUL (II)
+  date: 2010/03/12  # 00:03:41
+  type: Charla
+  jornadas: 14
+  tags: [Self-hosting]
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/gul-root/gul-root2.mpg
+  participants:
+    - Fernando Cerezal López
+    - Roberto Muñoz Gómez
+
+- title: Administrando JBoss
+  date: 2010/02/01
+  type: Charla
+  tags: [JBoss]
+  slides: https://cloud-gul.uc3m.es/actividades/2010/marzo/jboss/administrando-jboss.odp
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/jboss/jboss.mpg
+  participants:
+    - Javier Turégano Molina
+
+- title: Joomla 1.5
+  date: 2010/03/04
+  type: Charla
+  jornadas: 14
+  tags: [Joomla]
+  slides: https://cloud-gul.uc3m.es/actividades/2010/marzo/joomla/Joomla.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/joomla/joomla.mpg
+  source: https://cloud-gul.uc3m.es/actividades/2010/marzo/joomla/Joomla.odp
+  participants:
+    - Tania Pérez
+
+- title: Memoria dinámica
+  date: 2010/03/09
+  type: Charla
+  jornadas: 14
+  tags: [Programación, C]
+  slides: https://cloud-gul.uc3m.es/actividades/2010/marzo/memoria_dinamica/Memoria%20Dinamica.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/memoria_dinamica/memoria_dinamica.mpg
+  source: https://cloud-gul.uc3m.es/actividades/2010/marzo/memoria_dinamica/Memoria%20Dinamica.odp
+  participants:
+    - Tania Pérez
+
+- title: Módulos del Kernel
+  date: 2010/03/02
+  type: Charla
+  jornadas: 14
+  tags: [Linux]
+  slides: https://cloud-gul.uc3m.es/actividades/2010/marzo/modulos_del_kernel/kernel_modules_handout.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/modulos_del_kernel/modulos.mpg
+  source: https://cloud-gul.uc3m.es/actividades/2010/marzo/modulos_del_kernel/examples/
+  participants:
+    - Roberto Muñoz Gómez
+
+- title: OpenGL para principiantes
+  date: 2010/03/03  # 00:28:22 'mie 3'
+  type: Charla
+  jornadas: 14
+  tags: [OpenGL]
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/opengl/opengl1.mpg
+  participants:
+    - José Hevia
+
+- title: Producción ultrarrápida de podcasts en Linux
+  date: 2010/03/02
+  type: Charla
+  jornadas: 14
+  tags: [Podcasts, Linux]
+  slides: https://cloud-gul.uc3m.es/actividades/2010/marzo/podcasting/Produccion_utrarapida_de_podcast.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/podcasting/podcasting.mpg
+  source: https://cloud-gul.uc3m.es/actividades/2010/marzo/podcasting/scripts.tar.gz
+  participants:
+    - Miguel Peris
+
+- title: Taller de Python
+  date: 2010/03/12  # 00:00:22 'vie 12'
+  type: Charla
+  jornadas: 14
+  tags: [Python]
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/python/python.mpg
+  participants:
+    - David Muñoz Díaz
+
+- title: Taller de Ruby
+  date: 2010/03/12  # 00:21:22 'vie 12'
+  type: Charla
+  jornadas: 14
+  tags: [Ruby]
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/ruby/ruby.mpg
+  participants:
+    - David Muñoz Díaz
+
+- title: Securizando un servidor
+  date: 2010/03/04
+  type: Charla
+  jornadas: 14
+  tags: [Ciberseguridad]
+  slides: https://cloud-gul.uc3m.es/actividades/2010/marzo/seguridad/presentacion_seg_marzo_10.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/seguridad/securizar.mpg
+  participants:
+    - Daniel Marcos Martín
+
+- title: Sistemas de Ficheros
+  date: 2010/03/03  # 00:00:09
+  type: Charla
+  jornadas: 14
+  tags: [Ficheros]
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/sistemas_de_ficheros/ficheros.ogv
+  participants:
+    - Jesús Espino García
+
+- title: 'Xplico: concept, features, demo'
+  date: 2010/03/10
+  type: Charla
+  jornadas: 14
+  tags: [Redes, Xplico]
+  slides: https://cloud-gul.uc3m.es/actividades/2010/marzo/xplico/xplico.slideshow.odp
+  participants:
+    - Carlos Gacimartin
+
+- title: Desarrollando Aplicaciones para Android
+  date: 2010/11/14
+  type: Charla
+  jornadas: 15
+  tags: [Android]
+  slides: https://cloud-gul.uc3m.es/actividades/2010/noviembre/desarrollando_aplicaciones_para_Android/Desarrollando%20aplicaciones%20para%20Android.pdf
+  participants:
+    - Tania Pérez
+
+- title: Edición de audio con Audacity
+  date: 2010/11/11
+  type: Charla
+  jornadas: 15
+  tags: [Audacity]
+  slides: https://cloud-gul.uc3m.es/actividades/2010/noviembre/edicion_de_audio_con_audacity/Edicion_de_audio_con_Audacity.pdf
+  participants:
+    - Miguel Peris
+
+- title: Entendiendo y Optimizando MySQL
+  date: 2010/11/10
+  type: Charla
+  jornadas: 15
+  tags: [MySQL]
+  slides: https://cloud-gul.uc3m.es/actividades/2010/noviembre/Entendiendo%20y%20Optimizando%20MySQL/Entendiendo%20y%20Optimizando%20MySQL.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2010/noviembre/Entendiendo%20y%20Optimizando%20MySQL/
+  participants:
+    - Jesús Espino García
+
+- title: Introducción a Git
+  date: 2010/11/10
+  type: Charla
+  jornadas: 15
+  tags: [Git]
+  slides: https://cloud-gul.uc3m.es/actividades/2010/noviembre/Git/Git.pdf
+
+- title: Herramientas libres para hacer prácticas
+  date: 2010/11/09  # me he inventao el día
+  type: Charla
+  jornadas: 15
+  tags: [Software Libre]
+  source: https://cloud-gul.uc3m.es/actividades/2010/noviembre/herramientas_libres_practicas/
+  participants:
+    - Samuel Rodríguez Sevilla
+
+- title: Illumos y OpenIndiana - ¡Este muerto está muy vivo!
+  date: 2010/11/09
+  type: Charla
+  jornadas: 15
+  tags: [Linux, Solaris]
+  source: https://cloud-gul.uc3m.es/actividades/2010/noviembre/illumos/illumos-gul2010.tar.gz.gz
+  participants:
+    - Jose Castro
+    - Miguel Vidal
 
 - title: Teclados
   date: 2026/05/01
