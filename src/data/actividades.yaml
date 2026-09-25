@@ -738,6 +738,105 @@
   participants:
     - Jose María Chumo Mata
 
+- title: Alta Disponibilidad y Balanceo de Carga en Linux
+  date: 2008/03/04  # me he inventao el día
+  type: Charla
+  jornadas: 11
+  tags: [Linux]
+  slides: https://cloud-gul.uc3m.es/actividades/2008/marzo/AltaDisponibilidad/AltaDisponibilidad-BalanceoCarga.odp
+  poster: https://cloud-gul.uc3m.es/actividades/2008/marzo/carteles/cartel_v2_3.png
+  participants:
+    - Javier Turégano Molina
+
+- title: Aprendiendo a depurar código
+  date: 2008/03/13
+  type: Charla
+  jornadas: 11
+  tags: [Programación]
+  slides: https://cloud-gul.uc3m.es/actividades/2008/marzo/AprendiendoADepurarCodigo/depuracion.pdf
+  poster: https://cloud-gul.uc3m.es/actividades/2008/marzo/carteles/cartel_v2_3.png
+  participants:
+    - Borja Bergua Guerra
+
+- title: Mi C
+  date: 2008/03/13
+  type: Charla
+  jornadas: 11
+  tags: [C]
+  source: https://cloud-gul.uc3m.es/actividades/2008/marzo/C/miC.zip
+  poster: https://cloud-gul.uc3m.es/actividades/2008/marzo/carteles/cartel_v2_3.png
+
+- title: Presentación OpenSolaris y Comunidad
+  date: 2008/03/09
+  jornadas: 11
+  type: Charla
+  tags: [Linux, OpenSolaris]
+  slides: https://cloud-gul.uc3m.es/actividades/2008/marzo/IntroAOpenSolaris/jornadas%20UC3M.pdf
+  poster: https://cloud-gul.uc3m.es/actividades/2008/marzo/carteles/cartel_v2_3.png
+  participants:
+    - Víctor M. Fernández Gómez
+
+- title: Introducción a OpenBiblio
+  date: 2008/03/06
+  jornadas: 11
+  type: Charla
+  tags: [OpenBiblio]
+  slides: https://cloud-gul.uc3m.es/actividades/2008/marzo/OpenBiblio/openbiblio.odp
+  poster: https://cloud-gul.uc3m.es/actividades/2008/marzo/carteles/cartel_v2_3.png
+  participants:
+    - David Muñoz Díaz
+
+- title: Ruby on Rails - Desarrollo web que no duele
+  date: 2008/03/06
+  type: Charla
+  jornadas: 11
+  tags: [Ruby on Rails]
+  slides: https://cloud-gul.uc3m.es/actividades/2008/marzo/Ruby%20On%20Rails/rubyonrails.pdf
+  poster: https://cloud-gul.uc3m.es/actividades/2008/marzo/carteles/cartel_v2_3.png
+  participants:
+    - Sergio Gil Pérez de la Manga
+
+- title: Usabilidad
+  date: 2008/03/14
+  type: Charla
+  jornadas: 11
+  tags: []
+  slides: https://cloud-gul.uc3m.es/actividades/2008/marzo/Usabilidad/usabilidad.pdf
+  poster: https://cloud-gul.uc3m.es/actividades/2008/marzo/carteles/cartel_v2_3.png
+  participants:
+    - Luis de Bethencourt
+
+- title: Virtualización en OpenSolaris
+  date: 2008/03/18
+  type: Charla
+  jornadas: 11
+  tags: [Linux, OpenSolaris, Virtualización]
+  slides: https://cloud-gul.uc3m.es/actividades/2008/marzo/VirtualizacionEnOpenSolaris/Virtualizacion_en_OpenSolaris.pdf
+  poster: https://cloud-gul.uc3m.es/actividades/2008/marzo/carteles/cartel_v2_3.png
+  participants:
+    - Víctor M. Fernández Gómez
+
+- title: Los moteres de la web 2.0
+  description: Un repaso por las tecnologías que hacen posible esta nueva experiencia
+  date: 2008/03/06
+  type: Charla
+  jornadas: 11
+  tags: []
+  slides: https://cloud-gul.uc3m.es/actividades/2008/marzo/web20/index.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2008/marzo/web20/
+  poster: https://cloud-gul.uc3m.es/actividades/2008/marzo/carteles/cartel_v2_3.png
+  participants:
+    - David Muñoz Díaz
+
+- title: Introducción a OpenLDAP
+  date: 2008/11/14
+  type: Charla
+  jornadas: 12
+  tags: [OpenLDAP]
+  slides: https://cloud-gul.uc3m.es/actividades/2008/noviembre/OpenLDAP/OpenLdap.odp
+  participants:
+    - Javier Turégano Molina
+
 - title: Teclados
   date: 2026/05/01
   type: Taller
