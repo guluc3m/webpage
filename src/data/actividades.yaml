@@ -1197,6 +1197,106 @@
     - Jose Castro
     - Miguel Vidal
 
+- title: Análisis Forense - Seguridad en Linux (parte I)
+  date: 2011/03/17  # 00:14:24
+  type: Charla
+  jornadas: 16
+  tags: [Ciberseguridad]
+  video: https://cloud-gul.uc3m.es/actividades/2011/marzo/analisis_forense/analisis_forense_parte1.ogv
+  participants:
+    - Daniel Marcos Martín  # 00:06:53
+
+- title: Análisis Forense - Seguridad en Linux (parte II)
+  date: 2011/03/17
+  type: Charla
+  jornadas: 16
+  tags: [Ciberseguridad]
+  video: https://cloud-gul.uc3m.es/actividades/2011/marzo/analisis_forense/analisis_forense_parte2.ogv
+  participants:
+    - Daniel Marcos Martín
+
+- title: Calidad en IT es más cobertura de pruebas
+  date: 2011/03/18
+  type: Charla
+  jornadas: 16
+  tags: [Programación]
+  slides: https://cloud-gul.uc3m.es/actividades/2011/marzo/calidad_en_IT_es_mas_que_cobertura_de_pruebas/Calidad-IT%202011marGUL.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2011/marzo/calidad_en_IT_es_mas_que_cobertura_de_pruebas/Calidad-IT%202011marGUL.odp
+  video: https://cloud-gul.uc3m.es/actividades/2011/marzo/calidad_en_IT_es_mas_que_cobertura_de_pruebas/calidad_en_IT_es_mas_que_cobertura_de_pruebas.ogv
+  participants:
+    - Igor Zubiaurre García  # es el último modificador del ODP
+
+- title: Introducción informal a Django
+  date: 2011/03/16
+  type: Charla
+  jornadas: 16
+  tags: [Python]
+  source: https://cloud-gul.uc3m.es/actividades/2011/marzo/desarrollo_web_con_django/charla_django.rar
+  video: https://cloud-gul.uc3m.es/actividades/2011/marzo/desarrollo_web_con_django/desarrollo_web_con_django.ogv
+
+- title: 20 trucos con GIMP
+  date: 2011/03/18  # 00:10:12 'vie 18'
+  type: Charla
+  jornadas: 16
+  tags: [GIMP]
+  video: https://cloud-gul.uc3m.es/actividades/2011/marzo/gimp_20_trucos/gimp_20_trucos.ogv
+  link: https://jesusda.com
+
+- title: guifi.net
+  date: 2011/03/18  # me he inventao el día
+  type: Charla
+  jornadas: 16
+  tags: [Redes, Software Libre]
+  video: https://cloud-gul.uc3m.es/actividades/2011/marzo/guifi.net/guifi.net.ogv
+
+- title: HTML5 + CSS3
+  date: 2011/03/16
+  type: Charla
+  jornadas: 16
+  tags: [HTML]
+  video: https://cloud-gul.uc3m.es/actividades/2011/marzo/html5_css3/html5_css3.ogv
+  participants:
+    - Israel Gutiérrez
+
+- title: Introducción al Sistema Operativo Android
+  date: 2011/03/15  # 00:47:34
+  type: Charla
+  jornadas: 16
+  tags: [Android]
+  video: https://cloud-gul.uc3m.es/actividades/2011/marzo/introduccion_a_android/introduccion_a_android.ogv
+  participants:
+    - Aitor Mendaza Ormaza
+
+- title: Programación con Android
+  date: 2011/03/15  # el mismo día que la otra charla
+  type: Charla
+  jornadas: 16
+  tags: [Android]
+  video: https://cloud-gul.uc3m.es/actividades/2011/marzo/programacion_con_android/programacion_con_android.ogv
+  participants:
+    - Aitor Mendaza Ormaza
+
+- title: Introducción a Arduino
+  date: 2011/03/16
+  type: Charla
+  jornadas: 16
+  tags: [Arduino]
+  source: https://cloud-gul.uc3m.es/actividades/2011/marzo/introduccion_arduino/charla_arduino.rar
+  video: https://cloud-gul.uc3m.es/actividades/2011/marzo/introduccion_arduino/charla_arduino.rar
+  participants:
+    - name: Javier Aguirre
+      link: https://javaguirre.net/
+
+- title: ¡Alerta, servidor LAMP comprometido!
+  date: 2011/03/14  # 00:09:05 'lun 14'
+  type: Charla
+  jornadas: 16
+  tags: [Ciberseguridad]
+  slides: https://cloud-gul.uc3m.es/actividades/2011/marzo/servidor_lamp_comprometido/lamp-intrusion.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2011/marzo/servidor_lamp_comprometido/servidor_lamp_comprometido.ogv
+  participants:
+    - Manuel Jiménez
+
 - title: Teclados
   date: 2026/05/01
   type: Taller
