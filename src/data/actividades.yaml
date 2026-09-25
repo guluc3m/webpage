@@ -565,30 +565,178 @@
     - Claudio Jiménez
     - Roberto Muñoz
 
-- title:
-  date: 
+- title: Ajax en Java EE
+  date: 2007/06/19  # sacado de la fecha de creación del PDF
+  type: Charla
+  tags: [Java]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/AjaxEnJava/Ajax.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2007/marzo/AjaxEnJava/ajaxenJava-video.ogg
+  participants:
+    - Álvaro Sanchez-Mariscal
+
+- title: Clustering de alta disponibilidad
+  date: 2007/03/26
+  jornadas: 9
   type: Charla
   tags: []
-  slides: 
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/clustering/clustering.odp
   participants:
-    - 
+    - Héctor Cordobés
 
-- title:
-  date: 
+- title: El lenguaje de programación C
+  date: 2007/03/28
+  jornadas: 9
   type: Charla
-  tags: []
-  slides: 
+  tags: [C]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/cursoDeC/charla-c.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2007/marzo/cursoDeC/CursoDeC-video.ogg
+  source: https://cloud-gul.uc3m.es/actividades/2007/marzo/cursoDeC/charla-c.odp
   participants:
-    - 
+    - Fernando J. Pereda
 
-- title:
-  date: 
+- title: Empezando con GNU/Linux
+  date: 2007/03/19
+  jornadas: 9
   type: Charla
-  tags: []
-  slides: 
+  tags: [Linux]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/empezando%20con%20linux/Empezando%20Con%20Linux.pdf
   participants:
-    - 
+    - Paula Nuño Villalba
 
+- title: Introducción a Gentoo Linux
+  date: 2007/04/10
+  type: Charla
+  tags: [Linux, Gentoo]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/gentoo/charla-gentoo.pdf
+  participants:
+    - Jaime Martín Jiménez
+
+- title: Desarrollo de aplicaciones Java EE con Structs 2, Spring y EJB 3.0
+  date: 2007/06/19  # sacado de la fecha de creación del PDF
+  type: Charla
+  tags: [Java]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/JavaEE-Struts2-Spring-EJB3/JavaEE-Struts2-Spring-EJB3.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2007/marzo/JavaEE-Struts2-Spring-EJB3/struts-video.ogg
+  participants:
+    - Daniel Ortega
+
+- title: Curso de Joomla
+  date: 2007/03/27  # 00:08:00... he cogido la fecha más alta
+  type: Charla
+  tags: [Joomla]
+  video: https://cloud-gul.uc3m.es/actividades/2007/marzo/joomla/joomla-video.ogg
+  participants:
+    - Jesús Espino García
+    - Franck Scipion
+
+- title: LaTeX - Introducción
+  date: 2007/03/22
+  type: Charla
+  tags: [LaTeX]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/LaTeX/latex-intro.pdf
+  participants:
+    - Sergio Gil Pérez de la Manga
+
+- title: Novedades en Java 5 y 6
+  date: 2007/06/19  # sacado de la fecha de creación del PDF
+  type: Charla
+  tags: [Java]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/novedadesJavaSE5y6/
+  participants:
+    - Juan Alaminos
+
+- title: Participación en el Software Libre
+  date: 2007/03/20
+  type: Charla
+  tags: [Software Libre]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/participacionSL/curso_Participacion.pdf
+  participants:
+    - Fernando Cerezal López
+
+- title: ¿Qué es el Software Libre?
+  date: 2007/03/20
+  type: Charla
+  tags: [Software Libre]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/queEsElSL/curso_SL.pdf
+  participants:
+    - Fernando Cerezal López
+
+- title: Montaje de una red doméstica
+  date: 2007/03/21
+  type: Charla
+  tags: [Redes]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/redDomestica/red_domestica.pdf
+  participants:
+    - Fernando Cerezal López
+
+- title: Ruby on Rails - Desarrollo web que no duele
+  date: 2007/03/29
+  type: Charla
+  tags: [Ruby on Rails]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/RubyOnRails/ror.pdf
+  participants:
+    - Sergio Gil Pérez de la Manga
+
+- title: Tarde de Web 2007
+  date: 2007/03/23
+  type: Charla
+  tags: [Web]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/tarde_de_web/tarde_de_web_2007.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2007/marzo/tarde_de_web/Cabaret.tar.gz
+
+
+- title: Threads et al.
+  date: 2007/03/28
+  jornadas: 9
+  type: Charla
+  tags: [Programación]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/threads/slides.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2007/marzo/threads/slides.odp
+
+- title: 'Virtualización: Introducción y toma de contacto'
+  date: 2007/03/25
+  type: Charla
+  tags: [Virtualización]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/virtualizacion/jt2007.pdf
+  participants:
+    - Alejandro Calderón Mateos
+
+- title: 'LaTeX: La imprenta en casa'
+  date: 2007/11/14
+  jornadas: 10
+  type: Charla
+  tags: [LaTeX]
+  source: https://cloud-gul.uc3m.es/actividades/2007/noviembre/LaTeX/LaTeX_nov_2007.zip
+  participants:
+    - David Muñoz Díaz  # sólo pone 'David', voy a asumir que es este
+
+- title: Aplicaciones web con PHP
+  date: 2007/11/08
+  jornadas: 10
+  type: Charla
+  tags: [PHP]
+  source: https://cloud-gul.uc3m.es/actividades/2007/noviembre/PHP/php.tar.gz
+  participants:
+    - Samuel Rodríguez Sevilla
+
+- title: Linux desde terminal
+  date: 2007/11/06
+  jornadas: 10
+  type: Charla
+  tags: [Linux, Terminal]
+  source: https://cloud-gul.uc3m.es/actividades/2007/noviembre/Terminal/terminalNoviembre2007.tar.bz2
+  participants:
+    - Claudio Jiménez Castillo
+
+- title: Vim
+  date: 2007/11/12
+  type: Charla
+  jornadas: 10
+  tags: [Vim]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/noviembre/Vim/vim-11-2007.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2007/noviembre/Vim/vim-11-2007_fuentes.zip
+  participants:
+    - Jose María Chumo Mata
 
 - title: Teclados
   date: 2026/05/01
