@@ -11,6 +11,10 @@
 # - tags? (lista)
 # - participants? (`{name, link}` o, si nombre ya existe, nombre directo y se reutiliza el link)
 
+- title: III Congreso Hispalinux
+  date: 2000/11/10
+  type: Charla  # TODO: "congreso"
+
 - title: Linux como alternativa a Windows
   date: 2002/12/01
   type: Charla
@@ -1389,17 +1393,117 @@
     - name: Paula González Muñoz
       link: https://twitter.com/pgonmu
 
+- title: ¿Qué es el software Libre?
+  date: 2013/10/21
+  type: Charla
+  jornadas: 23
+  tags: [Software Libre]
+  participants:
+    - Roberto Muñoz Gómez
+
+- title: Cliente multidispositivo con Lungojs
+  date: 2013/10/22
+  type: Charla
+  jornadas: 23
+  tags: [JavaScript]
+  participants:
+    - Adolfo Sanz de Diego
+
+- title: ERPs en sistemas UNIX/LINUX
+  date: 2013/10/22
+  type: Charla
+  jornadas: 23
+  tags: [Linux]
+  participants:
+    - name: Antonio Mejias
+      link: https://twitter.com/cyfuss_com
+
+- title: 'Graph Databases: a little connected tour'
+  date: 2013/10/23
+  type: Charla
+  jornadas: 23
+  tags: [Matemáticas]
+  participants:
+    - name: Francisco Fernandez
+      link: https://twitter.com/fcofdez
+
+- title: Hacking en aplicaciones Web y su defensa 
+  date: 2013/10/23
+  type: Charla
+  jornadas: 23
+  tags: [Ciberseguridad]
+  participants:
+    - Yago Pérez Sáiz
+
+- title: Virtualización de escritorios en LINUX
+  date: 2013/10/24
+  type: Charla
+  jornadas: 23
+  tags: [Virtualización]
+
+- title: Pruebas automáticas y despliegue continuo
+  date: 2013/10/24
+  type: Charla
+  jornadas: 23
+  tags: [Software]
+  participants:
+    - Alejandro Fernández
+
+- title: 'Zoe: la asistente del GUL'
+  date: 2013/10/25
+  type: Charla
+  jornadas: 23
+  tags: [GUL, Zoe]
+  participants:
+    - David Muñoz Díaz
+
+- title: Opengl ES 2.0 [Juegos Moviles]
+  date: 2013/10/25
+  type: Charla
+  jornadas: 23
+  tags: [Videojuegos, Android, OpenGL]
+
 - title: Presentación GUL-UC3M
-  date: 2014/03/19  # me he inventao el día
+  date: 2014/03/17
   type: Charla
   jornadas: 24
+  poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
   tags: [GUL]
   slides: https://cloud-gul.uc3m.es/actividades/2014/marzo/GUL_UC3M.pdf
+
+- title: Introducción a Linux
+  date: 2014/03/17
+  type: Charla
+  jornadas: 24
+  poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
+  tags: [Linux]
+  participants:
+    - Miguel Vaello
+
+- title: Curso de C
+  date: 2014/03/17
+  type: Charla
+  jornadas: 24
+  poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
+  tags: [C]
+  participants:
+    - David Muñoz Díaz
+
+- title: 'Introducción a los lenguajes funcionales: Scala'
+  date: 2014/03/18
+  type: Charla
+  jornadas: 24
+  poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
+  tags: [Scala]
+  participants:
+    - David Muñoz Díaz
 
 - title: Introducción a Arduino
   date: 2014/03/21
   type: Charla
   jornadas: 24
+  poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
+  photo: https://pbs.twimg.com/media/BjQ4dIRIMAAYbN6?format=jpg&name=900x900
   tags: [Arduino]
   slides: https://cloud-gul.uc3m.es/actividades/2014/marzo/Introduccion_a_Arduino_Fernando_Cerezal.pdf
   video: https://youtu.be/dqUH0RYws6c
@@ -1410,6 +1514,7 @@
 - title: Licencias al desnudo
   date: 2014/04/18
   type: Charla
+  poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
   jornadas: 24
   tags: [Software Libre]
   slides: https://cloud-gul.uc3m.es/actividades/2014/marzo/Licencias_al_Desnudo_Victor_Mendez.pdf
@@ -1422,6 +1527,7 @@
   date: 2014/03/19
   type: Charla
   jornadas: 24
+  poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
   tags: [Ciberseguridad]
   slides: https://cloud-gul.uc3m.es/actividades/2014/marzo/Seguridad_Informatica_Yago_Perez.pdf
   video: https://youtu.be/QbcxkwydELA
@@ -1429,10 +1535,20 @@
     - name: Yago Pérez Sáiz
       link: https://twitter.com/yag_91
 
+- title: Bitcoin
+  date: 2014/03/19
+  type: Charla
+  jornadas: 24
+  poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
+  tags: [Bitcoin]
+  participants:
+    - Eva Morano
+
 - title: Introduction to WebRTC
   date: 2014/03/20
   type: Charla
   jornadas: 24
+  poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
   tags: [Redes]
   slides: https://cloud-gul.uc3m.es/actividades/2014/marzo/WebRTC_Luis_Lopez.pdf
   source: https://cloud-gul.uc3m.es/actividades/2014/marzo/WebRTC_Luis_Lopez.pptx
@@ -1445,6 +1561,7 @@
   date: 2014/03/19
   type: Charla
   jornadas: 24
+  poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
   tags: [GUL, Zoe]
   slides: https://cloud-gul.uc3m.es/actividades/2014/marzo/WebRTC_Luis_Lopez.pdf
   source: https://cloud-gul.uc3m.es/actividades/2014/marzo/WebRTC_Luis_Lopez.pptx
@@ -1453,29 +1570,71 @@
   participants:
     - David Muñoz Díaz
 
+- title: Diseño Web
+  date: 2014/03/20
+  type: Charla
+  jornadas: 24
+  poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
+  tags: [C]
+  participants:
+    - Alejandro Baldominos
+
 - title: Promesas en JavaScript
   date: 2014/03/18
   type: Charla
   jornadas: 24
+  poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
   tags: [JavaScript]
   video: https://youtu.be/ecku_iQ0U6A
   participants:
     - Juanra Martín
 
+- title: Android
+  date: 2014/03/18
+  type: Charla
+  jornadas: 24
+  poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
+  photo: https://pbs.twimg.com/media/BjMAU4-IIAIL75m?format=jpg&name=900x900
+  tags: [Android]
+  participants:
+    - Javier Sánchez
+
+- title: Cómo funciona un ordenador y cómo montar el tuyo desde cero
+  date: 2014/03/21
+  type: Charla
+  jornadas: 24
+  poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
+  photo: https://pbs.twimg.com/media/BjRgtiIIEAEs-hU?format=jpg&name=900x900
+  tags: [Hardware]
+  participants:
+    - Fernando Cerezal López
+    - Adrián Casado Rivas
+
 - title: Servidores de Alto Rendimiento en GNU/Linux
   date: 2014/11/10
   type: Charla
   jornadas: 25
+  poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
   tags: [Self-hosting, Linux]
   video: https://www.youtube.com/live/-ymalcq5uvI
   participants:
     - name: Ivan Casco Valero
       link: https://twitter.com/ivicv
 
+- title: Crea tu propia distribución basa da en debian con Simple -CDD
+  date: 2014/11/13
+  type: Charla
+  jornadas: 25
+  poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
+  tags: [Linux, Debian]
+  participants:
+    - Miguel Vaello
+
 - title: Depuración con GDB
   date: 2014/11/10
   type: Charla
   jornadas: 25
+  poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
   tags: [Programación, GDB]
   video: https://www.youtube.com/live/Q0GmaiK9lk4
   participants:
@@ -1489,6 +1648,7 @@
   date: 2014/11/11
   type: Charla
   jornadas: 25
+  poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
   tags: [Self-hosting]
   video: https://www.youtube.com/live/mA5V5Gf6D-E
   participants:
@@ -1499,6 +1659,7 @@
   date: 2014/11/12
   type: Charla
   jornadas: 25
+  poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
   tags: [Software Libre]
   video: https://www.youtube.com/live/URDxkHB4_CY
   participants:
@@ -1512,6 +1673,7 @@
   date: 2014/11/12
   type: Charla
   jornadas: 25
+  poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
   tags: [Python]
   video: https://www.youtube.com/live/ntje4xkrkkw
   participants:
@@ -1524,6 +1686,7 @@
   date: 2014/11/12
   type: Charla
   jornadas: 25
+  poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
   tags: [Programación, Haskell]
   video: https://www.youtube.com/live/yKE1uMoTn54
   participants:
@@ -1535,6 +1698,7 @@
   date: 2014/11/13
   type: Charla
   jornadas: 25
+  poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
   tags: [Software, GUL]
   video: https://www.youtube.com/live/K83aQyv-d6k
   participants:
@@ -1545,6 +1709,7 @@
   date: 2014/11/13
   type: Charla
   jornadas: 25
+  poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
   tags: [Software]
   video: https://www.youtube.com/live/ffLcFjNU3P4
   participants:
@@ -1558,8 +1723,10 @@
   date: 2014/11/14
   type: Charla
   jornadas: 25
+  poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
   tags: []
   video: https://www.youtube.com/live/xqbliMWoHxY
+  photo: https://pbs.twimg.com/media/B2aUfqgIYAA4qXV?format=jpg&name=medium
   participants:
     - name: Israel Gutiérrez
       link: https://twitter.com/gootyfer
@@ -1568,6 +1735,7 @@
   date: 2014/11/14
   type: Charla
   jornadas: 25
+  poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
   tags: [GUL, Zoe]
   video: https://www.youtube.com/live/9gLKd3oJyiA
   participants:
@@ -1579,7 +1747,6 @@
   type: Charla
   tags: [GUL]
   video: https://youtu.be/pt9XD8phIRg
-  poster: https://cloud-gul.uc3m.es/actividades/2015/Noviembre/semana2015.png
   participants:
     - name: Adrián Casado Rivas
       link: https://twitter.com/strikercr
@@ -1590,7 +1757,7 @@
   type: Charla
   tags: [Linux, Terminal]
   video: https://youtu.be/2qZBUa93MQ8
-  poster: https://cloud-gul.uc3m.es/actividades/2015/Noviembre/semana2015.png
+  photo: https://pbs.twimg.com/media/Bz6WTySIgAAIZsq?format=jpg&name=4096x4096
   participants:
     - Fernando Cerezal López
     - Adrián Casado Rivas
@@ -1601,9 +1768,15 @@
   type: Charla
   tags: [GUL]
   video: https://youtu.be/UrCzTtv-5so
-  poster: https://cloud-gul.uc3m.es/actividades/2015/Noviembre/semana2015.png
   participants:
     - Adrián Casado Rivas
+
+- title: Feria de Asociaciones 2014
+  date: 2014/10/17
+  type: Charla  # TODO: feria
+  tags: [GUL]
+  photo: https://pbs.twimg.com/media/B0JXospIUAAhG8m?format=jpg&name=4096x4096
+
 
 - title: 'Markdown & Pandoc: not another Word'
   description: Creación de documentos académicos mediante Markdown.
@@ -2062,6 +2235,56 @@
   slides: https://cloud-gul.uc3m.es/actividades/2016/Noviembre/oscar_crackea_rom_y_actualiza_android.pdf
   participants:
     - Óscar Seguro Alonso
+
+- title: De cero a mantener la calma en LINUX
+  description: >-
+    El propósito de la actividad es que los asistentes se familiaricen con el
+    Sistema Operativo Linux, especialmente en su entorno de consola, para que
+    las prácticas de la carrera desarrolladas en este entorno les sean menos
+    costosas. Se trabajarán conjuntos de comandos básicos, conjuntos de comandos
+    avanzados y se darán consejos útiles. Será impartido por estudiantes y
+    ex-estudiantes de la UC3M, algunos con más de 10 años de experiencia en
+    LINUX y que son conocedores de la formación complementaria conveniente.
+  date: 2016/10/03  # me invento el día
+  type: Charla
+  tags: [Linux, Terminal]
+
+- title: Una radio a tu alcance
+  description: >-
+    La actividad consiste en la realización de un programa de radio en directo
+    por parte de Dj Tango, locutor, productor y dj con 16 años de experiencia.
+    Durante el desarrollo del programa, Tango aportará su visión del medio
+    radiofónico desde su experiencia. Se profundizará en conceptos clave y al
+    finalizar el programa, se organizará un coloquio con los asistentes. Tango
+    ha trabajado en LOCA FM, siendo uno de los facilitadores de su expansión
+    nacional y ha fundado laisla.fm, una radio únicamente online financiada
+    mediante crowfunding. Su programa La Isla ha sido galardonando cuatro veces
+    como mejor programa de radio en directo en los premios nacionales de música
+    electrónica VMA.
+    de los participantes.
+  type: Taller
+  tags: [Radio]
+  date: 2016/10/06  # me invento el día
+  participants:
+    - name: Sixto Fernández
+      link: https://twitter.com/djtangosix
+
+- title: WhatssApp o Telegram, o como te condicionan las TIC
+  type: Taller
+  description: >-
+    Al estilo de las charlas TEDx, en esta actividad se realizarán tres charlas
+    relámpago que pretenden mover la conciencia de los asistentes y hacer
+    reflexionar sobre tres temas de marcada actualidad tecnológica y sus
+    repercusiones en nuestro modo de vida.
+  date: 2016/10/04  # me invento el día
+
+- title: Taller de IoT
+  type: Taller
+  tags: [IoT]
+  date: 2016/10/21  # también el 28
+  participants:
+    - Axel Blanco
+
 
 - title: Teclados
   date: 2026/05/01
