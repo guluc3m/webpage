@@ -11,7 +11,6 @@ export const ACTIVIDAD_TYPES = [
   'Hackathon',
   'Install party',
   'Game jam',
-  'Jornadas Técnicas',
   'Pódcast',
 ] as const;
 export type ActividadType = (typeof ACTIVIDAD_TYPES)[number];
@@ -26,8 +25,9 @@ export interface Actividad {
   date: string; // yyyy/mm/dd
   type: ActividadType;
   description?: string;
-  poster?: string; // poster image URL
-  video?: string; // YouTube link
+  jornadas?: number; // jornadas técnicas edition
+  poster?: string;
+  video?: string;
   link?: string;
   source?: string;
   slides?: string;

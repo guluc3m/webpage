@@ -13,7 +13,12 @@
           "description": "Supports basic markdown",
           "type": "string"
         },
+        "jornadas": {
+          "description": "Jornadas Técnicas edition the activity belongs to",
+          "type": "number"
+        },
         "link": {
+          "description": "Generic link to add",
           "type": "string"
         },
         "participants": {
