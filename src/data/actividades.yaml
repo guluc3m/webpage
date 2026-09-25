@@ -752,7 +752,7 @@
   date: 2008/03/13
   type: Charla
   jornadas: 11
-  tags: [Programación]
+  tags: [Programación, GDB]
   slides: https://cloud-gul.uc3m.es/actividades/2008/marzo/AprendiendoADepurarCodigo/depuracion.pdf
   poster: https://cloud-gul.uc3m.es/actividades/2008/marzo/carteles/cartel_v2_3.png
   participants:
@@ -1388,6 +1388,220 @@
   participants:
     - name: Paula González Muñoz
       link: https://twitter.com/pgonmu
+
+- title: Presentación GUL-UC3M
+  date: 2014/03/19  # me he inventao el día
+  type: Charla
+  jornadas: 24
+  tags: [GUL]
+  slides: https://cloud-gul.uc3m.es/actividades/2014/marzo/GUL_UC3M.pdf
+
+- title: Introducción a Arduino
+  date: 2014/03/21
+  type: Charla
+  jornadas: 24
+  tags: [Arduino]
+  slides: https://cloud-gul.uc3m.es/actividades/2014/marzo/Introduccion_a_Arduino_Fernando_Cerezal.pdf
+  video: https://youtu.be/dqUH0RYws6c
+  participants:
+    - name: Fernando Cerezal López
+      link: https://twitter.com/fcerezal
+
+- title: Licencias al desnudo
+  date: 2014/04/18
+  type: Charla
+  jornadas: 24
+  tags: [Software Libre]
+  slides: https://cloud-gul.uc3m.es/actividades/2014/marzo/Licencias_al_Desnudo_Victor_Mendez.pdf
+  source: https://prezi.com/lw6fad-t59nv/licencias-al-desnudo
+  video: https://youtu.be/efJUoGxWCUk
+  participants:
+    - Víctor M. Fernández Gómez
+
+- title: Seguridad Informática
+  date: 2014/03/19
+  type: Charla
+  jornadas: 24
+  tags: [Ciberseguridad]
+  slides: https://cloud-gul.uc3m.es/actividades/2014/marzo/Seguridad_Informatica_Yago_Perez.pdf
+  video: https://youtu.be/QbcxkwydELA
+  participants:
+    - name: Yago Pérez Sáiz
+      link: https://twitter.com/yag_91
+
+- title: Introduction to WebRTC
+  date: 2014/03/20
+  type: Charla
+  jornadas: 24
+  tags: [Redes]
+  slides: https://cloud-gul.uc3m.es/actividades/2014/marzo/WebRTC_Luis_Lopez.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2014/marzo/WebRTC_Luis_Lopez.pptx
+  video: https://youtu.be/SBG4Ib1qZWc
+  participants:
+    - name: Luis López
+      link: https://twitter.com/kurentoms
+
+- title: Zoe
+  date: 2014/03/19
+  type: Charla
+  jornadas: 24
+  tags: [GUL, Zoe]
+  slides: https://cloud-gul.uc3m.es/actividades/2014/marzo/WebRTC_Luis_Lopez.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2014/marzo/WebRTC_Luis_Lopez.pptx
+  link: https://github.com/guluc3m/gul-zoe
+  video: https://youtu.be/3ApdZpXHGns
+  participants:
+    - David Muñoz Díaz
+
+- title: Promesas en JavaScript
+  date: 2014/03/18
+  type: Charla
+  jornadas: 24
+  tags: [JavaScript]
+  video: https://youtu.be/ecku_iQ0U6A
+  participants:
+    - Juanra Martín
+
+
+- title: Servidores de Alto Rendimiento en GNU/Linux
+  date: 2014/11/10
+  type: Charla
+  jornadas: 25
+  tags: [Self-hosting, Linux]
+  video: https://www.youtube.com/live/-ymalcq5uvI
+  participants:
+    - name: Ivan Casco Valero
+      link: https://twitter.com/ivicv
+
+- title: Depuración con GDB
+  date: 2014/11/10
+  type: Charla
+  jornadas: 25
+  tags: [Programación, GDB]
+  video: https://www.youtube.com/live/Q0GmaiK9lk4
+  participants:
+    - name: Samuel Rodríguez Sevilla
+      link: https://twitter.com/laparca
+
+- title: Administración de un servidor con WhatsApp
+  description: >-
+    Automatización de tareas. Envia comandos desde whatshapp y haz que sean
+    comprensibles por tu Linux.
+  date: 2014/11/11
+  type: Charla
+  jornadas: 25
+  tags: [Self-hosting]
+  video: https://www.youtube.com/live/mA5V5Gf6D-E
+  participants:
+    - Alberto Fernández
+
+- title: Licencias Open Source & Free Software... ¿Por qué?
+  description: Las principales licencias de "Free Software" u "Open Source".
+  date: 2014/11/12
+  type: Charla
+  jornadas: 25
+  tags: [Software Libre]
+  video: https://www.youtube.com/live/URDxkHB4_CY
+  participants:
+    - name: Adolfo Santiago
+      link: https://twitter.com/adolphenom
+
+- title: Can I haz ur pythons?
+  description: >-
+    Charla de nivel medio de python, con ejemplos prácticos con algún ORM entre
+    medias, framework web y cosas asíncronas.
+  date: 2014/11/12
+  type: Charla
+  jornadas: 25
+  tags: [Python]
+  video: https://www.youtube.com/live/ntje4xkrkkw
+  participants:
+    - name: Rafael Medina García
+      link: https://twitter.com/rmed_dev
+    - name: Francisco Javier Honduvilla Coto
+      link: https://twitter.com/javierhonduco
+
+- title: 'Programación funcional: Porno para programadores'
+  date: 2014/11/12
+  type: Charla
+  jornadas: 25
+  tags: [Programación, Haskell]
+  video: https://www.youtube.com/live/yKE1uMoTn54
+  participants:
+    - name: David Muñoz Díaz
+      link: https://twitter.com/voiser
+
+- title: Aplicación web. Cómo se ha hecho GULTalks
+  description: ¿Necesitas hacer una aplicación web y no sabes por donde empezar?
+  date: 2014/11/13
+  type: Charla
+  jornadas: 25
+  tags: [Software, GUL]
+  video: https://www.youtube.com/live/K83aQyv-d6k
+  participants:
+    - name: Miguel Vaello
+      link: https://github.com/mvaello
+
+- title: Contratos de Desarrollo Software
+  date: 2014/11/13
+  type: Charla
+  jornadas: 25
+  tags: [Software]
+  video: https://www.youtube.com/live/ffLcFjNU3P4
+  participants:
+    - name: Víctor Méndez
+      link: http://twitter.com/_vmendez
+
+- title: Hackea tu educación en la universidad
+  description: >-
+    Si lo que aprendes en la uni se te queda corto, te cuento las claves para
+    hackear tu educación en este periodo.
+  date: 2014/11/14
+  type: Charla
+  jornadas: 25
+  tags: []
+  video: https://www.youtube.com/live/xqbliMWoHxY
+  participants:
+    - name: Israel Gutiérrez
+      link: https://twitter.com/gootyfer
+
+- title: Zoe en casa
+  date: 2014/11/14
+  type: Charla
+  jornadas: 25
+  tags: [GUL]
+  video: https://www.youtube.com/live/9gLKd3oJyiA
+  participants:
+    - Rafael Medina García
+
+- title: Grupo de Usuarios Linux UC3M
+  description: 'Actividad realizada en la #ISemanaAsociaciones de la UC3M'
+  date: 2014/10/13
+  type: Charla
+  tags: [GUL]
+  video: https://youtu.be/pt9XD8phIRg
+  participants:
+    - name: Adrián Casado Rivas
+      link: https://twitter.com/strikercr
+
+- title: Linux en 90' para no desesperarse en las prácticas
+  description: 'Actividad realizada en la #ISemanaAsociaciones de la UC3M'
+  date: 2014/10/14
+  type: Charla
+  tags: [Linux, Terminal]
+  video: https://youtu.be/2qZBUa93MQ8
+  participants:
+    - Fernando Cerezal López
+    - Adrián Casado Rivas
+
+- title: 'Hackers UC3M: no sólo para programadores'
+  description: 'Actividad realizada en la #ISemanaAsociaciones de la UC3M'
+  date: 2014/10/15
+  type: Charla
+  tags: [GUL]
+  video: https://youtu.be/UrCzTtv-5so
+  participants:
+    - Adrián Casado Rivas
 
 - title: Teclados
   date: 2026/05/01
