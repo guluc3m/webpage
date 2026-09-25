@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=schema/fortunas.schema.json
 # Reglas generales de formato:
 # - Usen siempre `quote: |-`
 # - Las fortunas simples, e.g. "me gustan los pies", son de una línea; si tienen

@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=schema/actividades.schema.json
 # Lista de actividades del GUL. Edita esta lista para añadir/quitar eventos. Los campos son:
 # - title
 # - date (yyyy/mm/dd)

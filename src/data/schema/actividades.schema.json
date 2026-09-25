@@ -1,0 +1,101 @@
+{
+  "$ref": "#/definitions/Actividades",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Actividad": {
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "description": "yyyy/mm/dd",
+          "type": "string"
+        },
+        "description": {
+          "description": "Supports basic markdown",
+          "type": "string"
+        },
+        "link": {
+          "type": "string"
+        },
+        "participants": {
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/definitions/Participant"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        "photo": {
+          "type": "string"
+        },
+        "poster": {
+          "type": "string"
+        },
+        "slides": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/ActividadType"
+        },
+        "video": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "date",
+        "type"
+      ],
+      "type": "object"
+    },
+    "ActividadType": {
+      "enum": [
+        "Charla",
+        "Taller",
+        "Hackathon",
+        "Install party",
+        "Game jam",
+        "Jornadas Técnicas",
+        "Pódcast"
+      ],
+      "type": "string"
+    },
+    "Actividades": {
+      "items": {
+        "$ref": "#/definitions/Actividad"
+      },
+      "type": "array"
+    },
+    "Participant": {
+      "additionalProperties": false,
+      "properties": {
+        "link": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    }
+  }
+}

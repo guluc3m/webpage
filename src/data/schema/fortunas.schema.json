@@ -1,0 +1,31 @@
+{
+  "$ref": "#/definitions/Fortunas",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Fortuna": {
+      "additionalProperties": false,
+      "properties": {
+        "quote": {
+          "description": "- Usen siempre `quote: |-`\n- Las fortunas simples, e.g. \"me gustan los pies\", son de una línea; si tienen \"setup\" también; e.g.\n    \"*luisda hablando del logo de GNOME* me gustan los pies\", o\n    \"(a voz en grito en el despacho) ¡Debian la chupa!)\", o\n    \"no os preoupéis, que no me voy a ir a ningún sitio *no se le volvió a ver*\"\n- Las conversaciones también en multilínea y con `-` y `\"`, e.g.:\n  - Profe: \"Aquí tienes tu examen\"\n  - Alumno: \"¿Cúando es la recuperación?\"\n- Como usan `|-` (sensible a saltos de línea), las fortunas de una línea dejadlas en una línea.",
+          "type": "string"
+        },
+        "author": {
+          "description": "- Si la fortuna la ha soltado un profe en clase, pues \"Profesor Con Apellidos (Asignatura)\"\n- Si es otro random/miembro, nombre/mote, e.g. \"Epi\"\n- Comentarios, etc. al final y en minúscula, e.g. \"Pepe (un grande)\" o \"Eumelia y su perrito\"",
+          "type": "string"
+        }
+      },
+      "required": [
+        "quote",
+        "author"
+      ],
+      "type": "object"
+    },
+    "Fortunas": {
+      "items": {
+        "$ref": "#/definitions/Fortuna"
+      },
+      "type": "array"
+    }
+  }
+}
+
