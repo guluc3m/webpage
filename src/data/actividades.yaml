@@ -1789,6 +1789,231 @@
   participants:
     - Óscar Seguro Alonso
 
+- title: Con las serpientes Sí se juega (Pygame)
+  description: >-
+    El desarrollo de videojuegos amateur lleva unos cuantos años viviendo su
+    momento más dulce: cada vez tenemos más herramientas gratuitas y los medios
+    para formarnos están más a nuestro alcance que nunca. Sin embargo, los
+    novatos en la materia tendemos a ser ambiciosos y no es raro que alguna vez
+    pensemos en empezar construyendo la casa por el tejado haciendo uso de
+    motores complejos como Unity o Unreal Engine. Para algo los hacen de libre
+    acceso, ¿no?
+  date: 2016/04/15
+  type: Charla
+  jornadas: 28
+  poster: https://cloud-gul.uc3m.es/actividades/2016/Abril/cartel-gul_xxviii-jt.png
+  tags: [Videojuegos, Python]
+  video: https://youtu.be/szcQXacWsgM
+  source: https://github.com/skeleborg/charla-pygame
+  participants:
+    - name: Patricia Fernández
+      link: https://twitter.com/skeleborg
+
+- title: 'Go: Nil for null people'
+  description: >-
+    Charla de introducción a Go, lenguaje de programación desarrollado por
+    Google en 2009.
+  date: 2016/04/12
+  type: Charla
+  jornadas: 28
+  poster: https://cloud-gul.uc3m.es/actividades/2016/Abril/cartel-gul_xxviii-jt.png
+  tags: [Golang]
+  video: https://youtu.be/KkgQRzU4a0g
+  participants:
+    - name: Lucas Menéndez
+      link: https://twitter.com/lucasmenendev
+
+- title: Gimp Quickies!
+  description: >-
+    GIMP es un potente software de tratamiento digital de imágenes, y además es
+    libre y gratuito, lo que nos hace soñar con unicornios! Sin embargo, la
+    primera impresión que recibimos al abrir el programa puede llegar a ser algo
+    intimidante. No os preocupéis, os enseñaré lo básico para que vuestra
+    primera cita con GIMP sea amor a primera vista.
+  date: 2016/04/13  # 00:04:11 'mié'
+  type: Charla
+  jornadas: 28
+  poster: https://cloud-gul.uc3m.es/actividades/2016/Abril/cartel-gul_xxviii-jt.png
+  tags: [GIMP]
+  video: https://youtu.be/Axi-OkYPhXo
+  participants:
+    - name: Clara Luis Miguenza
+      link: https://twitter.com/vocalyre
+
+- title: Desarrollo web express con Grails 3
+  description: >-
+    Usando el framework libre Grails, se propone la realización de una
+    aplicación web totalmente funcional desde 0, hasta la creación de su war
+    para ser desplegado en producción. Aplicando y configurando plugins como el
+    de Spring Security Core para la securización, y otros interesantes, pero
+    sobre todo focalizado en saber resolver un futuro desarrollo con otros
+    plugins que sean necesarios.
+  date: 2016/04/14  # 00:03:14 'jue'
+  type: Charla
+  jornadas: 28
+  poster: https://cloud-gul.uc3m.es/actividades/2016/Abril/cartel-gul_xxviii-jt.png
+  tags: [Java]
+  video: https://youtu.be/Ubv0zUy8_-I
+  participants:
+    - name: Manuel Quindimil López
+      link: https://twitter.com/quindimildev
+
+- title: An Evening with Zoe
+  description: >-
+    Zoe mola. Puedes extenderla como quieras y usando el lenguaje que te dé la
+    gana. Así que hagamos algo chulo con ella. En una Raspberry pi. Con casinos.
+  date: 2016/04/13
+  type: Charla
+  jornadas: 28
+  poster: https://cloud-gul.uc3m.es/actividades/2016/Abril/cartel-gul_xxviii-jt.png
+  tags: [GUL, Zoe, Raspberry Pi]
+  video: https://youtu.be/ZmI7BtqIjw8
+  participants:
+    - David Muñoz Díaz
+
+- title: NodeOS
+  description: >-
+    NodeOS es un sistema operativo minimalista basado en Linux y usando Node.js
+    como espacio de usuario principalmente orientado a servidores en la nube,
+    pero también puede ser usado en sistemas embebidos y en el futuro como
+    sistema de escritorio.
+  date: 2016/04/12
+  type: Charla
+  jornadas: 28
+  poster: https://cloud-gul.uc3m.es/actividades/2016/Abril/cartel-gul_xxviii-jt.png
+  tags: [Linux]
+  video: https://youtu.be/aK9ixiOE2Hs
+  participants:
+    - name: Jesús Leganés Combarro
+      link: https://twitter.com/el_piranna
+
+- title: Pretend that you're Hercule Poirot
+  description: >-
+    Charla/Taller sobre LaTeX, qué es, porqué mola tanto, cómo funciona y
+    ejemplos varios de cosas que se pueden hacer. Desde documentos de texto,
+    pasando por gráficas, diapositivas... Y con el dinero que te ahorras de las
+    licencias de Word te compras barcos.
+  date: 2016/04/11
+  type: Charla
+  jornadas: 28
+  poster: https://cloud-gul.uc3m.es/actividades/2016/Abril/cartel-gul_xxviii-jt.png
+  tags: [LaTeX]
+  video: https://youtu.be/WmXXdEpmSRY
+  participants:
+    - name: Daniel Rodríguez López
+      link: https://github.com/patataman
+
+- title: Git al Rescate
+  description: >-
+    En esta charla veremos una introducción de Git con algunos ejemplos
+    interactivos. Después hablaremos del paradigma de trabajo Git-flow y
+    comentaremos las principales herramientas con las que facilitar este
+    trabajo. Además, durante la charla intentaremos ver por qué Git puede ser
+    útil no solo de cara a las prácticas si no en nuestro día a día.
+  date: 2016/04/11
+  type: Charla
+  jornadas: 28
+  tags: [Git]
+  video: https://youtu.be/zqe1gRCWs3o
+  participants:
+    - name: Axel Blanco
+      link: https://twitter.com/drimmark
+
+- title: SCRUM! De la teoría a la práctica
+  description: >-
+    Todos trabajamos en equipo, todos trabajamos bajo una metodología y desde
+    hace cinco años ¡todos somos ágiles! Es un orgullo decir que hacemos dailys,
+    que dividimos el desarrollo en sprints, que el cliente ve la entrega de
+    valor periódicamente. Pero ¿tenemos todos clara la teoría? ¿se aplica igual
+    en todas las organizaciones? ¿debemos ser esclavos de la metodología?
+  date: 2016/11/14
+  type: Charla
+  jornadas: 29
+  tags: [SCRUM]
+  video: https://youtu.be/8OgOA_mP-sw
+  slides: https://cloud-gul.uc3m.es/actividades/2016/Noviembre/adrian_scrum_teoria_practica.pdf
+  participants:
+    - Adrián Casado Rivas
+
+- title: El mejor lenguaje del mundo
+  description: >-
+    Si quieres aprender cómo se fabrica un lenguaje, un compilador, un DSL o una
+    máquina virtual, esto te interesa.
+  date: 2016/11/15
+  type: Charla
+  jornadas: 29
+  tags: [Programación]
+  video: https://youtu.be/9KwWPxBUKKA
+  slides: https://cloud-gul.uc3m.es/actividades/2016/Noviembre/david_the_best_language_in_the_world.pdf
+  participants:
+    - David Muñoz Díaz
+
+- title: Espiando procesos en Linux
+  description: >-
+    En muchas ocasiones nos encontramos que nuestro programa no funciona como
+    esperábamos ʕノ•ᴥ•ʔノ ︵ ┻━┻. A veces el consumo de CPU es demasiado alto. En
+    otras ocasiones no obtenemos una respuesta esperada por la red. Quizás los
+    logs no se escriben donde debieran... o peor aún, el proceso parece estar
+    parado sin motivo aparente. En esta charla veremos, con ejemplos prácticos,
+    algunas de las herramientas que empecé a usar (este verano yayyy!) para
+    investigar nuestros programas.  Aunque pueda parecer que sólo tiene
+    aplicación en el mundo de sistemas o de bajo nivel, veremos cómo esto es
+    súper útil (y apasionante!!! :D) en lenguajes de (muy?) alto nivel (en mi
+    caso, Ruby) y en situaciones en las que todos nos encontramos como
+    programadores :)
+  date: 2016/11/16
+  type: Charla
+  jornadas: 29
+  tags: [Linux]
+  video: https://youtu.be/B7KZHrf1bds
+  slides: https://cloud-gul.uc3m.es/actividades/2016/Noviembre/honduco_espiando_procesos_en_linux.pdf
+  participants:
+    - Javier Honduvilla Coto
+
+- title: La serpiente que quería sumar
+  description: >-
+    En esta charla haremos una introducción a varias librerías matemáticas de
+    python, tanto enfocadas al cálculo como a las gráficas y la muestra de
+    datos. Veremos tambien un breve repaso a algunas librerías basadas en estas
+    pensadas para machine learning o data science.
+  date: 2016/11/16
+  type: Charla
+  jornadas: 29
+  tags: [Python]
+  video: https://youtu.be/TA9esBKswqY
+  participants:
+    - Axel Blanco
+
+- title: Mucha más que el dilema del prisionero
+  description: >-
+    El dilema del prisionero, influencias en negociaciones, economía mundial,
+    tensiones politicas. La Teoría de Juegos está presente en muchos aspectos de
+    nuestra vida sin ser del todo conscientes. En esta charla veremos una
+    introducción a esta disciplina y una perpectiva general a los puntos más
+    relevantes de este fascinante área de la matemática.
+  date: 2016/11/17
+  type: Charla
+  jornadas: 29
+  tags: [Matemáticas]
+  video: https://youtu.be/jKB2a7Ae-dA
+  participants:
+    - Clara Luis Miguenza
+    - Axel Blanco
+
+- title: Crakea la ROM y actualiza tu Android
+  description: >-
+    ¿Tu móvil va cada vez más lento? ¿Y si pruebas a cambiarle la instalación
+    que tiene de Android por defecto? Podrías actualizar Android, e incluso,
+    ponerle un Sistema Operativo más ligero (como FirefoxOS, basado en HTML5).
+  date: 2016/11/18
+  type: Charla
+  jornadas: 29
+  tags: [Android]
+  video: https://youtu.be/KkZ2mwOczmM
+  slides: https://cloud-gul.uc3m.es/actividades/2016/Noviembre/oscar_crackea_rom_y_actualiza_android.pdf
+  participants:
+    - Óscar Seguro Alonso
+
 - title: Teclados
   date: 2026/05/01
   type: Taller
