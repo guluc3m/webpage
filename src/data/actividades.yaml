@@ -1001,7 +1001,7 @@
   date: 2010/03/05  # 00:36:20
   type: Charla
   jornadas: 14
-  tags: []
+  tags: [Software]
   video: https://cloud-gul.uc3m.es/actividades/2010/marzo/calidad_sw/calidad_sw.mpg
   participants:
     - David Muñoz Díaz
@@ -1191,7 +1191,7 @@
   date: 2010/11/09
   type: Charla
   jornadas: 15
-  tags: [Linux, Solaris]
+  tags: [Linux, OpenSolaris]
   source: https://cloud-gul.uc3m.es/actividades/2010/noviembre/illumos/illumos-gul2010.tar.gz.gz
   participants:
     - Jose Castro
@@ -1219,7 +1219,7 @@
   date: 2011/03/18
   type: Charla
   jornadas: 16
-  tags: [Programación]
+  tags: [Software]
   slides: https://cloud-gul.uc3m.es/actividades/2011/marzo/calidad_en_IT_es_mas_que_cobertura_de_pruebas/Calidad-IT%202011marGUL.pdf
   source: https://cloud-gul.uc3m.es/actividades/2011/marzo/calidad_en_IT_es_mas_que_cobertura_de_pruebas/Calidad-IT%202011marGUL.odp
   video: https://cloud-gul.uc3m.es/actividades/2011/marzo/calidad_en_IT_es_mas_que_cobertura_de_pruebas/calidad_en_IT_es_mas_que_cobertura_de_pruebas.ogv
@@ -1334,6 +1334,60 @@
   slides: https://cloud-gul.uc3m.es/actividades/2012/noviembre/TraduccionGnome/Traduccion%20GNOME.odp
   participants:
     - Daniel Mustieles García
+
+- title: Introducción a Arduino
+  date: 2013/04/12
+  type: Charla
+  jornadas: 18
+  tags: [Arduino]
+  slides: https://cloud-gul.uc3m.es/actividades/2013/abril/arduino/curso_arduino_abril.pdf
+  participants:
+    - Fernando Cerezal López
+
+- title: Git Internals
+  date: 2013/04/11
+  type: Charla
+  jornadas: 18
+  tags: [Git]
+  slides: https://cloud-gul.uc3m.es/actividades/2013/abril/git-internals/git-internals.pdf
+  participants:
+    - Jesús Espino García
+
+- title: Full Metal Mongo
+  date: 2013/04/08
+  type: Charla
+  jornadas: 18
+  tags: [MongoDB, BBDD]
+  slides: https://cloud-gul.uc3m.es/actividades/2013/abril/mongoDB/full_metal_mongo.pdf
+
+- title: El Zoo NoSQL
+  date: 2013/04/08
+  type: Charla
+  jornadas: 18
+  tags: [BBDD]
+  source: https://cloud-gul.uc3m.es/actividades/2013/abril/noSQL/zoo-nosql-reveal.tar.gz
+  participants:
+    - name: Alejandro Fernández
+      link: https://twitter.com/pinchito
+
+- title: La alternativa ágil
+  date: 2013/04/09  # me he inventao el día
+  type: Charla
+  jornadas: 18
+  tags: [Software, Agile]
+  slides: https://cloud-gul.uc3m.es/actividades/2013/abril/scrum/laalternativaagil-v5-7-110922174650-phpapp01.pdf
+  participants:
+    - Xavier Albaladejo
+
+- title: Detección de vulnerabilidades en Linux
+  date: 2013/04/15  # el día viene del ODP
+  type: Charla
+  jornadas: 18
+  tags: [Ciberseguridad, Linux]
+  slides: https://cloud-gul.uc3m.es/actividades/2013/abril/vulnerabilidades/vulnerabilidades.odp
+  participants:
+    - name: Paula González Muñoz
+      link: https://twitter.com/pgonmu
 
 - title: Teclados
   date: 2026/05/01
