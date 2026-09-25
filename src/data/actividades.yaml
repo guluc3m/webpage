@@ -837,6 +837,157 @@
   participants:
     - Javier Turégano Molina
 
+- title: Análisis de redes con WireShark
+  date: 2009/03/10
+  type: Charla
+  jornadas: 12
+  tags: [Redes, Wireshark]
+  slides: https://cloud-gul.uc3m.es/actividades/2009/marzo/Analisis%20de%20redes%20con%20WireShark/wireshark.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2009/marzo/Analisis%20de%20redes%20con%20WireShark/
+  video: https://cloud-gul.uc3m.es/actividades/2009/marzo/Analisis%20de%20redes%20con%20WireShark/Analisis%20de%20redes%20con%20WireShark.ogg
+  participants:
+    - Jesús Espino García
+
+- title: 'GNU build system (Autotools): Autoconf, Automake y Libtool'
+  date: 2009/03/12
+  type: Charla
+  jornadas: 12
+  tags: [Autotools]
+  slides: https://cloud-gul.uc3m.es/actividades/2009/marzo/autotools/autotools.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2009/marzo/autotools/autotools.ogg
+  source: https://cloud-gul.uc3m.es/actividades/2009/marzo/autotools/
+  participants:
+    - Borja Bergua Guerra
+
+- title: Comandos Básicos
+  date: 2009/03/09  # el ODP dice que se empezó el 8 (domingo)...
+  type: Charla
+  jornadas: 12
+  tags: [Linux, Terminal]
+  slides: https://cloud-gul.uc3m.es/actividades/2009/marzo/Comandos_basicos/Comandos%20Basicos.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2009/marzo/Comandos_basicos/Comandos%20Basicos.odp
+  participants:
+    - Tanie Pérez Asensio
+
+- title: Entendiendo C++
+  date: 2009/03/11
+  type: Charla
+  jornadas: 12
+  tags: [C++]
+  slides: https://cloud-gul.uc3m.es/actividades/2009/marzo/Entendiendo%20C%2B%2B/cpp.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2009/marzo/Entendiendo%20C%2B%2B/cpp.tex
+  video: https://cloud-gul.uc3m.es/actividades/2009/marzo/Entendiendo%20C%2B%2B/Entendiendo_C%2B%2B.ogg
+  participants:
+    - Samuel Rodríguez Sevilla
+
+- title: Entendiendo el Kernel de Linux
+  date: 2009/03/13
+  type: Charla
+  jornadas: 12
+  tags: [Linux]
+  slides: https://cloud-gul.uc3m.es/actividades/2009/marzo/Entendiendo%20el%20Kernel%20de%20Linux/linux.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2009/marzo/Entendiendo%20el%20Kernel%20de%20Linux/Entendiendo%20el%20Kernel%20de%20Linux.ogg
+  source: https://cloud-gul.uc3m.es/actividades/2009/marzo/Entendiendo%20el%20Kernel%20de%20Linux/
+  participants:
+    - Jesús Espino García
+    - Samuel Rodríguez Sevilla
+
+- title: Mejorando el rendimiento de tu Linux
+  date: 2009/03/13
+  type: Charla
+  jornadas: 12
+  tags: [Linux]
+  slides: https://cloud-gul.uc3m.es/actividades/2009/marzo/Mejorando%20el%20rendimiento%20de%20tu%20Linux/tunning.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2009/marzo/Mejorando%20el%20rendimiento%20de%20tu%20Linux/Mejorando%20el%20rendimiento%20de%20tu%20Linux.ogg
+  source: https://cloud-gul.uc3m.es/actividades/2009/marzo/Mejorando%20el%20rendimiento%20de%20tu%20Linux/
+  participants:
+    - Jesús Espino García
+
+- title: Presentación del GUL
+  date: 2009/03/09
+  type: Charla
+  jornadas: 12
+  tags: [GUL]
+  slides: https://cloud-gul.uc3m.es/actividades/2009/marzo/presentacion_gul/presentacion.beamer.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2009/marzo/presentacion_gul/
+
+- title: ¿Qué es el Software Libre?
+  date: 2009/03/09
+  type: Charla
+  jornadas: 12
+  tags: [Software Libre]
+  slides: https://cloud-gul.uc3m.es/actividades/2009/marzo/Que_Es_El_Software_Libre/curso_QESL.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2009/marzo/Que_Es_El_Software_Libre/Que_Es_El_Software_Libre.ogg
+  participants:
+    - Fernando Cerezal López
+
+- title: Retoque fotográfico con GIMP
+  date: 2009/03/10  # 00:06:26
+  type: Charla
+  jornadas: 12
+  tags: [GIMP]
+  video: https://cloud-gul.uc3m.es/actividades/2009/marzo/Retoque%20fotografico%20con%20GIMP/Retoque%20fotografico%20con%20GIMP.ogg
+  participants:
+    - Ana Esther Rodríguez
+
+- title: Cómo montar una solución profesional de correo electrónico con Software Libre
+  date: 2009/03/12
+  type: Charla
+  jornadas: 12
+  tags: [E-mail]
+  slides: https://cloud-gul.uc3m.es/actividades/2009/marzo/Soluciones%20Profesionales%20Correo%20Software%20Libre/SolucionesProfesionalesCorreoSoftwareLibre.odp
+  video: https://cloud-gul.uc3m.es/actividades/2009/marzo/Soluciones%20Profesionales%20Correo%20Software%20Libre/Soluciones%20Profesionales%20Correo%20Software%20Libre.ogg
+  participants:
+    - Javier Turégano Molina
+
+- title: Comandos Básicos
+  date: 2009/10/29  # me he inventao el día
+  type: Charla
+  jornadas: 13
+  tags: [Terminal]
+  slides: https://cloud-gul.uc3m.es/actividades/2009/noviembre/Comandos_basicos/Comandos%20Basicos.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2009/noviembre/Comandos_basicos/Comandos%20Basicos.odp
+  participants:
+    - Tania Pérez
+
+- title: Introducción a Lenguaje C
+  date: 2009/10/29
+  type: Charla
+  jornadas: 13
+  tags: [C]
+  slides: https://cloud-gul.uc3m.es/actividades/2009/noviembre/Introduccion_a_lenguaje_c/Introduccion%20a%20Lenguaje%20C.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2009/noviembre/Introduccion_a_lenguaje_c/Introduccion%20a%20Lenguaje%20C.odp
+  participants:
+    - Tania Pérez
+
+- title: Introducción a Linux
+  date: 2009/10/26
+  type: Charla
+  jornadas: 13
+  tags: [Linux]
+  slides: https://cloud-gul.uc3m.es/actividades/2009/noviembre/Introduccion_a_linux/Introduccion%20a%20Linux.pdf
+  source: https://cloud-gul.uc3m.es/actividades/2009/noviembre/Introduccion_a_linux/Introduccion%20a%20Linux.odp
+  participants:
+    - Tania Pérez
+
+- title: Podcasting en Linux
+  date: 2009/10/29
+  type: Charla
+  jornadas: 13
+  tags: [Linux, Podcast]
+  slides: https://cloud-gul.uc3m.es/actividades/2009/noviembre/podcasting_en_linux/podcasting_en_linux.pdf
+  participants:
+    - Miguel Peris
+
+- title: Desplegando Servicios en la Nube
+  date: 2009/10/30
+  type: Charla
+  jornadas: 13
+  tags: [Cloud]
+  slides: https://cloud-gul.uc3m.es/actividades/2009/noviembre/servicios_nube/Desplegando_Servicios_en_la_Nube.odp
+  participants:
+    - Javier Turégano Molina
+
 - title: Teclados
   date: 2026/05/01
   type: Taller
