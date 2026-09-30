@@ -2358,7 +2358,7 @@
   description: >-
     Una conversación sobre cómo la asociación fomenta un espacio colaborativo donde cualquier persona puede aprender, compartir y disfrutar de la informática y del ecosistema Linux.
   participants:
-    - Jorge Saghin
+    - name: Jorge Saghin
       link: https://github.com/z4na14
     - name: Luis Daniel Casais
       link: https://github.com/rajayonin
