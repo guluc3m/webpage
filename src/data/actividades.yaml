@@ -1301,6 +1301,29 @@
   participants:
     - Manuel Jiménez
 
+- title: Cena de navidad 2011
+  date: 2011/12/17
+  type: Charla  # TODO: nuevo tipo
+  photo: https://raw.githubusercontent.com/guluc3m/gul-web/refs/heads/master/html/img/68bd9e03fe39627c8258f66d3e4bd998/2011-12-17_22-09-11_HDR.jpg
+
+- title: Fiesta de instalación de software libre
+  date: 2012/01/28
+  type: Install party
+  tags: [Software Libre, Linux]
+  description: >-
+    La [cooperativa de enseñanza José Ramón Otero](http://www.jrotero.org) está
+    organizando unas jornadas sobre software libre. En ella los alumnos de FP
+    mostrarán sus proyectos realizados con software libre: música, vídeo,
+    retoque fotográfico, etc. También habrá sala de juegos para los más pequeños
+    y charlas (técnicas y no-tan-técnicas) para los padres y los alumnos. Varias
+    asociaciones y empresas nos hemos apuntado a la fiesta. Aunque estamos en
+    plena organización, hemos confirmado estas charlas: Jesús hablará de
+    Mercurial, un software que permite gestionar diferentes versiones y ramas de
+    trabajo de documentos de texto, código fuente, etc. Roberto comentará las
+    alternativas libres a los programas privativos más comunes. David dará una
+    charla titulada _Mitos, realidades y miedos de Internet_.
+  link: https://apuntatealafiesta.com
+
 - title: Introducción a Arduino
   date: 2012/11/09
   type: Charla
