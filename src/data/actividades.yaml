@@ -2309,36 +2309,77 @@
     - Axel Blanco
 
 
+- title: Memorias de TFG en LaTeX
+  date: 2025/02/06
+  type: Charla
+  poster: https://cloud-gul.uc3m.es/actividades/2025/Memorias%20de%20TFG%20en%20LaTeX/cartel.png
+  description: >-
+    ¿Te toca empezar la memoria del TFG y estás pensando en hacerlo en Word 🤢?
+    Qué pasa, ¿te da miedo usar una herramienta de verdad?
+  participants:
+    - Luis Daniel Casais
+  slides: https://cloud-gul.uc3m.es/actividades/2025/Memorias%20de%20TFG%20en%20LaTeX/transparencias.pdf
+  source: https://github.com/rajayonin/latex-thesis
+  video: https://youtu.be/a197TAd7Wsw
+  tags: [LaTeX]
 
 - title: Ampliación de C para "normies"
   date: 2025/02/07
   type: Charla
   description: >-
-    ¿Qué haces aun usando Windows 10? Microsoft está a punto de volver tu
-    ordenador en un pisapapeles, ¿y no piensas hacer nada? Celebremos juntos
-    la muerte de Windows 10 este 7 de octubre en el aula 2.3.C03
+    ¿Qué es un puntero? ¿Y un Makefile? ¿Que narices le ha metido el profe a ese Struct? ¿¿Desde cuando puedo usar funciones como argumentos en C??
   poster: https://pbs.twimg.com/media/Gj5ctk6WkAAShkb?format=jpg&name=medium
+  participants:
+    - Jorge Saghin
   video: https://www.youtube.com/watch?v=Apaqtno3ACE
-  slides: https://github.com/z4na14/c-taller-intro
+  slides: https://cloud-gul.uc3m.es/actividades/2025/C%20para%20%22normies%22/transparencias.pdf
+  source: https://github.com/z4na14/c-taller-intro
   tags: [C]
 
-- title: GUL JAMon
+- title: Linux Install Party
+  date: 2025/02/13
+  type: Install party
+  tags: [Linux]
+  description: >-
+    Nuestra tradicional Install Party de Linux.
+  poster: https://cloud-gul.uc3m.es/actividades/2025/Linux%20Install%20Party/cartel-febrero.jpg
+  source: https://github.com/guluc3m/linux-install
+
+- title: GUL JAMón
   date: 2025/09/22
   type: Game jam
   description: >-
-    La GUL Jamón es el evento del GUL UC3M dedicado a los videojuegos. Tuvo
-    su origen en 2018 como una gamejam.
+    La GUL Jamón es el evento del GUL UC3M dedicado a los videojuegos. El tema de este año es "Suben las temperaturas"
   poster: https://pbs.twimg.com/media/G04vx8mWYAA9MIr?format=jpg&name=medium
+  photo: https://pbs.twimg.com/media/G2c1O0VWgAAf45d?format=jpg&name=medium
+  participants:
+    - Jorge Saghin
+    - Jose Antonio Verde
+    - Luis Daniel Casais
+    - name: Jorge Lázaro
+      link: https://github.com/JorgeyGari
+  link: https://itch.io/jam/gul-jamon-2025
+  tags: [Videojuegos]
+
+- title: Jornadas de Bienvenida 2025
+  date: 2025/10/08
+  type: Charla  # TODO: feria de asociaciones
+  description: >-
+    Nos acercamos con el resto de asociaciones a las tradicionales Jornadas de
+    Bienvenida. En esta ocasión nos traímos el recién estrenado
+    [Hollow Knight: Silksong](https://hollowknightsilksong.com/) para demostrar
+    que se puede jugar perfectamente en Linux.
+  photo: https://pbs.twimg.com/media/G0U9wREWMAErF4O?format=jpg&name=large
 
 - title: Linux Install Party
   date: 2025/10/07
   type: Install party
+  tags: [Linux]
   description: >-
     ¿Qué haces aun usando Windows 10? Microsoft está a punto de volver tu
     ordenador en un pisapapeles, ¿y no piensas hacer nada? Celebremos juntos
     la muerte de Windows 10.
-  poster: https://pbs.twimg.com/media/G14xx8yWIAAUqtS?format=jpg&name=4096x4096
-  video: https://www.youtube.com/watch?v=Apaqtno3ACE
+  poster: https://cloud-gul.uc3m.es/actividades/2025/Linux%20Install%20Party/cartel-octubre.png
   source: https://github.com/guluc3m/linux-install
 
 - title: Intro Git & Github
@@ -2358,10 +2399,14 @@
       link: https://github.com/fedes1to
     - name: Guillermo González
       link: https://github.com/giyermo
+    - Hugo Centeno Sanz
   video: https://www.youtube.com/watch?v=oDJsZ8ywq0o
+  link: https://cloud-gul.uc3m.es/actividades/2025/Taller%20de%20git%20(GUL%20x%20AISC)/transparencias.pdf
+  photo: https://res.cloudinary.com/dpchpoort/image/upload/aisc_madrid/events/event19/gallery/img_691e19a418df99.91840928.webp
+  slides: https://cloud-gul.uc3m.es/actividades/2025/Taller%20de%20git%20(GUL%20x%20AISC)/transparencias.pdf
   tags: [Git]
 
-- title: Escribe memorias de p*** madre con Typst
+- title: 'Memorias de p**** madre: Introducción a Typst'
   date: 2025/11/19
   type: Charla
   description: >-
@@ -2369,10 +2414,12 @@
     imagen 🤢? Desde GUL te invitamos a que vengas y aprendas Typst, una
     herramienta que te permitirá escribir documentos de manera más rápida,
     cómoda y simplemente mejor.
-  poster: https://pbs.twimg.com/media/G5Z06RVWEAA9ThR?format=jpg&name=large
+  poster: https://cloud-gul.uc3m.es/actividades/2025/Memorias%20de%20p***%20madre%20en%20typst/cartel.png
   participants:
     - Luis Daniel Casais
   video: https://www.youtube.com/watch?v=Apaqtno3ACE
+  source: https://github.com/rajayonin/typst-intro
+  slides: https://cloud-gul.uc3m.es/actividades/2025/Memorias%20de%20p%2A%2A%2A%20madre%20en%20typst/transparencias.pdf
   tags: [Typst]
 
 - title: Pódcast de Asociaciones UC3M
@@ -2407,6 +2454,7 @@
     nosotros a usar Gimp, y de paso te instalamos Linux. Pssst, también tenemos Excalidraw
     por si no te gusta Gimp, tú solo ven.
   poster: https://pbs.twimg.com/media/G_sIN7tXIAES7GA?format=jpg&name=4096x4096
+  tags: [Linux]
 
 - title: Introduccion a C
   date: 2026/02/18
@@ -2415,17 +2463,19 @@
     ¿Qué es un Makefile?, ¿Por qué los punteros son tan complicados?, ¿¿Desde
     cuándo puedo usar funciones como argumentos?? Tranquilo, nosotros también
     hemos pasado por esa etapa, y te vamos a ayudar a que sufras lo menos
-    posible... No te preocupes, vas a salir de aquí con más dudas sobre punteros que cuando
-    entraste, pero esa es la parte divertida del lenguaje.
+    posible... No te preocupes, vas a salir de aquí con más dudas sobre punteros
+    que cuando entraste, pero esa es la parte divertida del lenguaje.
+  poster: https://pbs.twimg.com/media/HAjzAeHXEAAqVCa?format=jpg&name=4096x4096
+  slides: https://cloud-gul.uc3m.es/actividades/2026/Introducci%C3%B3n%20a%20C/trasparencias.pdf
+  source: https://github.com/z4na14/c-taller-intro
   participants:
     - Jorge Saghin
   tags: [C]
-  poster: https://pbs.twimg.com/media/HAjzAeHXEAAqVCa?format=jpg&name=4096x4096
 
 - title: Teclados
   date: 2026/05/01
   type: Taller
-  description: Nos juntamos unos cuantos para hacer unos teclados to' wapos
+  description: Nos juntamos unos cuantos para hacer unos teclados to' wapos.
   photo: https://pbs.twimg.com/media/HHs3K92WAAAJ9_J?format=jpg&name=small
   tags: [Hardware]
   source: https://github.com/davidphilipbarr/Sweep
@@ -2436,20 +2486,26 @@
   poster: https://pbs.twimg.com/media/HHn4rxuXMAM8RJ5?format=jpg&name=small
   description: >-
     ¿Que haces usando tu portatil del 2006 como pisapapeles? Métele Debian, y
-    te enseñamos como exponer tus páginas y proyectos. ¡No te pierdas esta oportunidad para crear
-    tu propia B2B SaaS, con 5 clientes anuales!
+    te enseñamos como exponer tus páginas y proyectos. ¡No te pierdas esta
+    oportunidad para crear tu propia B2B SaaS, con 5 clientes anuales!
   participants:
     - name: Jorge Saghin
       link: https://github.com/z4na14
   tags: [Proxmox, self-hosting]
   video: https://www.youtube.com/watch?v=xB3y_q-H6fE
+  link: https://z4na14.dev/blog/self-hosted-1/
   slides: https://cloud-gul.uc3m.es/actividades/2026/Introducci%C3%B3n%20al%20autohospedaje%20de%20servicios%20y%20webs/semana_postgrado_self-hosting.pdf
 
 - title: HackSpain 2026
   date: 2026/09/20
   type: Hackathon
   description: >-
-    Corría el otoño de 2026 cuando los chicos super sexis del GUL, hartos de ver a los larp-masters y sus secuaces token-maxers saqueando las GPUs a cambio de prompts kilométricos, decidieron plantar cara. Durante un largo y doloroso fin de semana se enfrentaron a la secta de los malvados 'AI-experts' de LinkedIn, que había impuesto el maleficio del token maxing sobre la Universidad Politécnica de Madrid.
+    Corría el otoño de 2026 cuando los chicos super sexis del GUL, hartos de ver
+    a los larp-masters y sus secuaces _token-maxers_ saqueando las GPUs a cambio
+    de prompts kilométricos, decidieron plantar cara. Durante un largo y
+    doloroso fin de semana se enfrentaron a la secta de los malvados
+    'AI-experts' de LinkedIn, que había impuesto el maleficio del _token-maxing_
+    sobre la Universidad Politécnica de Madrid.
   # Esto no es serio, pero seguramente les haga gracia y lo dejen
   participants:
     - Albert Giurgiu
