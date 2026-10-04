@@ -2304,6 +2304,56 @@
     - Axel Blanco
 
 
+- title: Introducción a C++ Moderno
+  date: 2024/09/19
+  type: Charla
+  poster: https://cloud-gul.uc3m.es/actividades/2024/Introducci%C3%B3n%20a%20C%2B%2B%20moderno/cartel.png
+  description: >-
+    Para los que tienen Arquitortura de Computadores, o simplemente quieren
+    aprender cómo se debe programar en C++, de forma segura y aprovechando todas
+    las cosas nuevas.
+  participants:
+    - name: Jose Antonio Verde
+      link: https://github.com/joseaverde
+    - Luis Daniel Casais
+  tags: [C++]
+  slides: https://cloud-gul.uc3m.es/actividades/2024/Introducci%C3%B3n%20a%20C%2B%2B%20moderno/transparencias.pdf
+  source: https://github.com/joseaverde/modern-cpp
+
+- title: Linux Install Party
+  date: 2024/09/17
+  type: Install party
+  tags: [Linux]
+  poster: https://cloud-gul.uc3m.es/actividades/2024/Linux%20Install%20Party/cartel.png
+
+- title: GNU/Linux y el FOSS
+  date: 2024/03/11
+  type: Charla
+  description: >-
+    Charla introductoria a Linux y el Software Libre para el T3chfest Ed Day,
+    enfocada a estudiantes de secundaria y bachillerato.
+  photo: https://pbs.twimg.com/media/GIZDkkSWEAAQRCv?format=jpg&name=large
+  participants:
+    - Jose Antonio Verde
+    - Luis Daniel Casais
+  slides: https://cloud-gul.uc3m.es/actividades/2024/Linux%20y%20el%20OSS/transparencias.pdf
+  source: https://github.com/guluc3m/foss-example
+  link: https://t3chfest.es/2024/institutos/
+  tags: [Linux, Software Libre]
+
+- title: Memorias de prácticas en LaTeX
+  type: Charla
+  date: 2024/09/30
+  description: >-
+    Para cualquiera que quiera hacer unas memorias de prácticas de una forma
+    bonita y poco dolorosa, enseñaremos a usar nuestra plantilla de memorias en
+    LaTeX, y haremos una introducción a la herramienta.
+  participants:
+    - Luis Daniel Casais
+  poster: https://cloud-gul.uc3m.es/actividades/2024/Memorias%20de%20pr%C3%A1cticas%20en%20LaTeX/cartel.png
+  source: https://github.com/guluc3m/report-template-latex
+  tags: [LaTeX]
+
 - title: Memorias de TFG en LaTeX
   date: 2025/02/06
   type: Charla
