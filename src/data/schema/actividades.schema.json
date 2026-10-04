@@ -62,11 +62,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "title",
-        "date",
-        "type"
-      ],
+      "required": ["title", "date", "type"],
       "type": "object"
     },
     "ActividadType": {
@@ -77,7 +73,9 @@
         "Install party",
         "Game jam",
         "Jornadas Técnicas",
-        "Pódcast"
+        "Pódcast",
+        "Congreso",
+        "Feria de Asociaciones"
       ],
       "type": "string"
     },
@@ -97,9 +95,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "name"
-      ],
+      "required": ["name"],
       "type": "object"
     }
   }

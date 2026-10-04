@@ -2,7 +2,7 @@
 # Lista de actividades del GUL. Edita esta lista para añadir/quitar eventos. Los campos son:
 # - title
 # - date (yyyy/mm/dd)
-# - type (uno de: Charla, Taller, Hackathon, Install party, Game jam, Pódcast, Jornadas Técnicas)
+# - type (uno de: Charla, Taller, Hackathon, Install party, Game jam, Pódcast, Jornadas Técnicas, Congreso, Feria de Asociaciones)
 # - poster?
 # - link?
 # - source?
@@ -13,7 +13,7 @@
 
 - title: III Congreso Hispalinux
   date: 2000/11/10
-  type: Charla  # TODO: "congreso"
+  type: Congreso
 
 - title: Linux como alternativa a Windows
   date: 2002/12/01
@@ -1301,11 +1301,6 @@
   participants:
     - Manuel Jiménez
 
-- title: Cena de navidad 2011
-  date: 2011/12/17
-  type: Charla  # TODO: nuevo tipo
-  photo: https://raw.githubusercontent.com/guluc3m/gul-web/refs/heads/master/html/img/68bd9e03fe39627c8258f66d3e4bd998/2011-12-17_22-09-11_HDR.jpg
-
 - title: Fiesta de instalación de software libre
   date: 2012/01/28
   type: Install party
@@ -1796,7 +1791,7 @@
 
 - title: Feria de Asociaciones 2014
   date: 2014/10/17
-  type: Charla  # TODO: feria
+  type: Feria de Asociaciones
   tags: [GUL]
   photo: https://pbs.twimg.com/media/B0JXospIUAAhG8m?format=jpg&name=4096x4096
 
@@ -2363,7 +2358,7 @@
 
 - title: Jornadas de Bienvenida 2025
   date: 2025/10/08
-  type: Charla  # TODO: feria de asociaciones
+  type: Feria de Asociaciones
   description: >-
     Nos acercamos con el resto de asociaciones a las tradicionales Jornadas de
     Bienvenida. En esta ocasión nos traímos el recién estrenado

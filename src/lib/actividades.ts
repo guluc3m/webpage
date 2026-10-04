@@ -13,6 +13,8 @@ export const ACTIVIDAD_TYPES = [
   'Game jam',
   'Jornadas Técnicas',
   'Pódcast',
+  'Congreso',
+  'Feria de Asociaciones'
 ] as const;
 export type ActividadType = (typeof ACTIVIDAD_TYPES)[number];
 
