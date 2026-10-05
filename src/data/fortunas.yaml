@@ -4,7 +4,7 @@
 # - Las fortunas simples, e.g. "me gustan los pies", son de una línea; si tienen
 #   "setup" también; e.g.
 #     "*luisda hablando del logo de GNOME* me gustan los pies", o
-#     "(a # voz en grito en el despacho) ¡Debian la chupa!)", o
+#     "(a # voz en grito en el despacho) ¡Debian la chupa!", o
 #     "no os preoupéis, que no me voy a ir a ningún sitio *no se le volvió a ver*",
 # - Las conversaciones también en multilínea y con `-` y `"`, e.g.:
 #   - Profe: "Aquí tienes tu examen"

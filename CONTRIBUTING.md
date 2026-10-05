@@ -36,18 +36,31 @@ no obligatorio.
 
 ## Añadir una fortuna
 
-Las citas/frases internas viven en [`src/data/fortunas.json`](./src/data/fortunas.json),
-una entrada por línea lógica:
+Las fortunas viven en [`src/data/fortunas.yaml`](./src/data/fortunas.yaml).
 
-```json
-{ "quote": "La frase, tal cual se dijo", "author": "Quién y en qué contexto" }
+```yaml
+- quote: |-
+    La cita
+  author: El Autor
 ```
 
-- Edita el JSON **a mano** y abre un PR. Lo ideal es un commit de una línea.
-- Si no tiene autor claro, deja `"author": ""`.
-- El formateo (« », quitar el punto final, tramos `*entre asteriscos*`) lo hace
-  `src/lib/fortunas.ts` en el build — tú solo metes el texto crudo. Si tocas ese
-  fichero, añade o ajusta un caso en `src/lib/fortunas.test.ts`.
+Reglas generales de formato:
+- Usen siempre `quote: |-`
+- Las fortunas simples, e.g. `"me gustan los pies"`, son de una línea; si tienen "setup" también; e.g.
+    `"*luisda hablando del logo de GNOME* me gustan los pies"`, o
+    `"(a # voz en grito en el despacho) ¡Debian la chupa!"`, o
+    `"no os preoupéis, que no me voy a ir a ningún sitio *no se le volvió a ver*"`,
+- Las conversaciones también en multilínea y con `-` y `"`, e.g.:
+  ```
+  - Profe: "Aquí tienes tu examen"
+  - Alumno: "¿Cúando es la recuperación?"
+  ```
+- Como usan `|-` (sensible a saltos de línea), las fortunas de una línea dejadlas en una línea.
+- Autores:
+  - Si la fortuna la ha soltado un profe en clase, pues `"Profesor Con Apellidos (Asignatura)"`
+  - Si es otro random/miembro, nombre/mote, e.g. `"Epi"`
+  - Comentarios, etc. al final y en minúscula, e.g. `"Pepe (un grande)"` o `"Eumelia y su perrito"`
+
 
 ## Estilo
 
