@@ -62,11 +62,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "title",
-        "date",
-        "type"
-      ],
+      "required": ["title", "date", "type"],
       "type": "object"
     },
     "ActividadType": {
@@ -97,9 +93,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "name"
-      ],
+      "required": ["name"],
       "type": "object"
     }
   }
