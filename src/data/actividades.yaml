@@ -2303,6 +2303,133 @@
   participants:
     - Axel Blanco
 
+- title: trabajo final2 finalfinal bueno - copia.py
+  description: >-
+    Un taller de introduccion a Git y GitHub
+  type: Charla
+  tags: [Git]
+  date: 2023/10/30
+  poster: https://cloud-gul.uc3m.es/actividades/2023/Introducci%C3%B3n%20a%20Git/cartel.png
+  slides: https://cloud-gul.uc3m.es/actividades/2023/Introducci%C3%B3n%20a%20Git/Taller_de_Git.pdf
+  source: https://github.com/guluc3m/tutorial_git
+  participants:
+    - Jorge Lázaro
+    - Luis Daniel Casais
+
+- title: Linux404^2
+  type: Install party
+  tags: [Linux]
+  date: 2023/02/17
+  poster: https://cloud-gul.uc3m.es/actividades/2023/Linux%20Install%20Party/cartel-feb.png
+  slides: https://cloud-gul.uc3m.es/actividades/2023/Linux%20Install%20Party/traspas-feb.pdf
+  participants:
+    - Luis Daniel Casais
+
+- title: Linux404
+  type: Install party
+  tags: [Linux]
+  date: 2023/10/05
+  poster: https://cloud-gul.uc3m.es/actividades/2023/Linux%20Install%20Party/cartel-oct.png
+  slides: https://cloud-gul.uc3m.es/actividades/2023/Linux%20Install%20Party/traspas-oct.pdf
+  source: https://github.com/joseaverde/linux-install-party
+  participants:
+    - Jose Antonio Verde
+
+- title: Te has instalado Linux... ahora, ¿qué?
+  type: Jornadas Técnicas
+  jornadas: 35
+  tags: [Linux]
+  date: 2023/04/11
+  slides: https://cloud-gul.uc3m.es/actividades/2023/XXXV%20Jornadas%20T%C3%A9cnicas/te-has-instalado-linux-ahora-que.pdf
+  source: https://github.com/rajayonin/linux-now-what
+  video: https://youtu.be/XpQujpVKliA
+  participants:
+    - Luis Daniel Casais
+
+- title: 'Tiotéate: Aspectos a tener en cuenta en el diseño de una solución IoT'
+  type: Jornadas Técnicas
+  description: >-
+    Consideraciones a tener en cuenta en el diseño de una solución IoT.
+  jornadas: 35
+  tags: [IoT]
+  date: 2023/04/11
+  slides: https://cloud-gul.uc3m.es/actividades/2023/XXXV%20Jornadas%20T%C3%A9cnicas/te-has-instalado-linux-ahora-que.pdf
+  video: https://youtu.be/TfRrXrGIsKY
+  participants:
+    - name: Álvaro García
+      link: https://es.linkedin.com/in/alvarogarciabarcena
+
+- title: Monta un laboratorio de informática, en "dos patadas"
+  type: Jornadas Técnicas
+  description: >-
+    Desgrana paso a paso los servicios que se necesitan para montar un
+    laboratorio de informática: servidores, virtualización, servicios (web,
+    cuentas y almacenamiento, autenticación, correo), monitorización y clientes.
+  jornadas: 35
+  tags: [Virtualización]
+  date: 2023/04/12
+  slides: https://cloud-gul.uc3m.es/actividades/2023/XXXV%20Jornadas%20T%C3%A9cnicas/Monta%20un%20laboratorio%20de%20inform%C3%A1tica%2C%20en%20dos%20patadas.pdf
+  video: https://youtu.be/_1Z-LtgHSdE
+  participants:
+    - name: Jaime Pons
+      link: https://www.aprendolinux.com/
+
+- title: ¡Virtualízame ésta! Primeros pasos con CloudStack
+  type: Jornadas Técnicas
+  description: >-
+    Introducción a la instalación y configuración de CloudStack. Administración
+    de infraestructura. Creación de proyectos, ISOS, instancias y configuración
+    de accesos.
+  jornadas: 35
+  tags: [CloudStack, Virtualización]
+  date: 2023/04/13
+  slides: https://cloud-gul.uc3m.es/actividades/2023/XXXV%20Jornadas%20T%C3%A9cnicas/%C2%A1Virtual%C3%ADzame%20%C3%A9sta%21%20Primeros%20pasos%20con%20Cloudstack.pdf
+  video: https://youtu.be/qOvGq66RCpE
+  participants:
+    - name: Óscar Pérez
+      link: https://www.lab.inf.uc3m.es/
+
+- title: 'Nix OS: Linux dentro de 10 años'
+  type: Jornadas Técnicas
+  description: >-
+    Explora las características únicas de NixOS, la distribución Linux del
+    futuro que revolucioná la gestión de paquetes y la configuración del sistema
+    operativo.
+  jornadas: 35
+  tags: [Nix, Linux]
+  date: 2023/04/13
+  slides: https://cloud-gul.uc3m.es/actividades/2023/XXXV%20Jornadas%20T%C3%A9cnicas/Nix%20OS%20-%20Linux%20dentro%20de%2010%20a%C3%B1os.pdf
+  source: https://github.com/Baitinq/nixos-presentation
+  video: https://youtu.be/SbzrxUaZSN8
+  participants:
+    - name: Manuel Palenzuela
+      link: https://baitinq.ml
+
+- title: 'G.I.M.P.: GIMP Is (for) Meme Production'
+  type: Jornadas Técnicas
+  description: >-
+    Taller básico de GIMP, un software open-source para la edición de imágenes, aplicándolo a memes. 
+  jornadas: 35
+  tags: [GIMP]
+  date: 2023/04/14
+  video: https://youtu.be/KhkrQXv0t-Q?si=zmTv83-TgaNEmUCw
+  participants:
+    - Luis Daniel Casais
+
+- title: make a_great_day_with_docker
+  type: Jornadas Técnicas
+  description: >-
+    Introducción al mundo de Docker, y a cómo sacarle el máximo partido a ésta
+    útil herramienta.
+  jornadas: 35
+  tags: [Docker]
+  date: 2023/04/14
+  slides: https://cloud-gul.uc3m.es/actividades/2023/XXXV%20Jornadas%20T%C3%A9cnicas/make%20a_great_day_with_docker.pdf
+  video: https://youtu.be/aN8_3rWtv80
+  participants:
+    - name: Lisardo Prieto
+      link: https://github.com/lpgonzalez
+
 
 - title: Introducción a C++ Moderno
   date: 2024/09/19
