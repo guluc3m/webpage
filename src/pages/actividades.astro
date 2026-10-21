@@ -14,8 +14,9 @@ import GulActividadCard from '@components/common/gul-ActividadCard.astro';
 import GulActividadFilters from '@components/common/gul-ActividadFilters.astro';
 import { navLinks } from '@data/navLinks';
 import { ACTIVIDAD_TYPES, loadActividades } from '@lib/actividades';
+import rawActividades from '@data/actividades.yaml?raw'; // ?raw: a plain string, so invalid YAML syntax doesn't blow up the import itself.
 
-const actividades = loadActividades();
+const actividades = loadActividades(rawActividades);
 
 // yyyy/mm/dd sorts correctly as a plain string, no Date needed for ordering.
 const sorted = [...actividades].sort((a, b) => b.date.localeCompare(a.date));
