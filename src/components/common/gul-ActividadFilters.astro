@@ -2,9 +2,9 @@
 /**
  * gul-ActividadFilters — columna de filtros de /actividades: búsqueda por
  * título, tipo de actividad (abierto por defecto), tags y participantes
- * multi-selección (chips), y fecha por curso + cuatrimestre. En md+ es una
- * columna lateral sticky; en móvil se pliega tras el botón "Filtros" (CSS
- * puro guiado por aria-expanded). Cada grupo es un <details> colapsado por
+ * multi-selección (chips), y fecha por rango de cursos + cuatrimestre. En
+ * md+ es una columna lateral sticky; en móvil se pliega tras el botón
+ * "Filtros" (CSS puro guiado por aria-expanded). Cada grupo es un <details> colapsado por
  * defecto (salvo Tipo, que va abierto) con contador de seleccionados y un
  * "Limpiar" que vacía solo ese grupo.
  *
@@ -25,6 +25,9 @@ interface Props {
 }
 
 const { types, tags, participants, cursos } = Astro.props;
+const minCurso = Math.min(...cursos);
+const maxCurso = Math.max(...cursos);
+const cursoLabel = (curso: number) => `${curso}/${String(curso + 1).slice(2)}`;
 
 // Cuatrimestres dentro de un curso: el 1.º va de sep a ene y el 2.º de feb a
 // ago (febrero es ya segundo cuatrimestre en la UC3M).
@@ -154,19 +157,29 @@ const semesters = [
       <div>
         <div class="pb-4">
           <div class="space-y-3">
-            <div>
-              <p class="pb-1.5 text-xs tracking-wider text-gul-muted uppercase">Curso</p>
-              <div class="flex flex-wrap gap-1.5" data-chip-group="cursos">
-                {cursos.map((curso) => (
-                  <button
-                    type="button"
-                    class="gul-chip"
-                    data-chip="cursos"
-                    data-value={String(curso)}
-                    aria-pressed="false"
-                  >
-                    {curso}/{String(curso + 1).slice(2)}
-                  </button>
+            {/* Un chip por curso ya no cabe (son 25+). Dos <input type="range">
+                superpuestos hacen de slider con dos tiradores: nativo, y se
+                maneja también con las flechas del teclado. */}
+            <div data-curso-range-box style={`--a: 0; --b: 1`}>
+              <p class="flex justify-between pb-1.5 text-xs tracking-wider text-gul-muted uppercase">
+                <span>Curso</span>
+                <span class="tracking-normal text-gul-ink normal-case" data-curso-range-label>
+                  {cursoLabel(minCurso)} – {cursoLabel(maxCurso)}
+                </span>
+              </p>
+              <div class="gul-range relative h-5">
+                <div class="absolute inset-x-0 top-1/2 h-1 -translate-y-1/2 rounded-full bg-gul-line" />
+                <div class="gul-range-fill absolute top-1/2 h-1 -translate-y-1/2 rounded-full bg-gul-blue" />
+                {(['from', 'to'] as const).map((bound) => (
+                  <input
+                    type="range"
+                    min={minCurso}
+                    max={maxCurso}
+                    step="1"
+                    value={bound === 'from' ? minCurso : maxCurso}
+                    aria-label={bound === 'from' ? 'Desde el curso' : 'Hasta el curso'}
+                    data-curso-range={bound}
+                  />
                 ))}
               </div>
             </div>
@@ -297,6 +310,57 @@ const semesters = [
     color: var(--color-gul-blue);
   }
 
+  /* Slider de cursos: dos inputs range apilados con el carril vacío. Solo los
+     tiradores reciben el ratón, así cada uno se arrastra aunque el otro input
+     esté encima. --a/--b (0–1) son los extremos que pone el script; el relleno
+     descuenta medio tirador a cada lado para empezar y acabar en su centro. */
+  .gul-range {
+    --thumb: 1rem;
+  }
+  .gul-range input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    appearance: none;
+    pointer-events: none;
+  }
+  .gul-range input::-webkit-slider-thumb {
+    appearance: none;
+    width: var(--thumb);
+    height: var(--thumb);
+    border-radius: 9999px;
+    border: 2px solid var(--color-gul-surface);
+    background: var(--color-gul-ink);
+    cursor: grab;
+    pointer-events: auto;
+  }
+  .gul-range input::-moz-range-thumb {
+    width: var(--thumb);
+    height: var(--thumb);
+    border-radius: 9999px;
+    border: 2px solid var(--color-gul-surface);
+    background: var(--color-gul-ink);
+    cursor: grab;
+    pointer-events: auto;
+  }
+  .gul-range input::-moz-range-track {
+    background: transparent;
+  }
+  .gul-range input:focus-visible::-webkit-slider-thumb {
+    outline: 2px solid var(--color-gul-blue);
+  }
+  .gul-range input:focus-visible::-moz-range-thumb {
+    outline: 2px solid var(--color-gul-blue);
+  }
+  .gul-range-fill {
+    left: calc(var(--thumb) / 2 + (100% - var(--thumb)) * var(--a));
+    right: calc(var(--thumb) / 2 + (100% - var(--thumb)) * (1 - var(--b)));
+  }
+
   /* Botoncito de texto (limpiar). */
   .gul-mini {
     font-size: 0.7rem;
@@ -325,18 +389,44 @@ const semesters = [
   const empty = document.querySelector<HTMLElement>('[data-actividades-empty]')!;
   const countLine = document.querySelector<HTMLElement>('[data-actividades-count]')!;
 
-  type Group = 'type' | 'tags' | 'participants' | 'cursos' | 'semesters';
-  const groups: Group[] = ['type', 'tags', 'participants', 'cursos', 'semesters'];
+  type Group = 'type' | 'tags' | 'participants' | 'semesters';
+  const groups: Group[] = ['type', 'tags', 'participants', 'semesters'];
   const selected: Record<Group, Set<string>> = {
     type: new Set(),
     tags: new Set(),
     participants: new Set(),
-    cursos: new Set(),
     semesters: new Set(),
   };
 
-  // El badge del grupo Fecha cuenta curso + cuatrimestre juntos.
-  const fechaBadge = () => selected.cursos.size + selected.semesters.size;
+  // Rango de cursos. Los tiradores se pueden cruzar: el rango es siempre del
+  // menor al mayor, así que da igual cuál se arrastre.
+  const rangeBox = panel.querySelector<HTMLElement>('[data-curso-range-box]')!;
+  const rangeLabel = panel.querySelector<HTMLElement>('[data-curso-range-label]')!;
+  const cursoFrom = panel.querySelector<HTMLInputElement>('[data-curso-range="from"]')!;
+  const cursoTo = panel.querySelector<HTMLInputElement>('[data-curso-range="to"]')!;
+  const minCurso = Number(cursoFrom.min);
+  const maxCurso = Number(cursoFrom.max);
+  const cursoLow = () => Math.min(cursoFrom.valueAsNumber, cursoTo.valueAsNumber);
+  const cursoHigh = () => Math.max(cursoFrom.valueAsNumber, cursoTo.valueAsNumber);
+  const rangeActive = () => cursoLow() > minCurso || cursoHigh() < maxCurso;
+  const inCursoRange = (curso: number) => curso >= cursoLow() && curso <= cursoHigh();
+  const cursoLabel = (curso: number) => `${curso}/${String(curso + 1).slice(2)}`;
+  function clearCursoRange() {
+    cursoFrom.value = String(minCurso);
+    cursoTo.value = String(maxCurso);
+  }
+  function syncCursoRange() {
+    const span = maxCurso - minCurso || 1;
+    rangeBox.style.setProperty('--a', String((cursoLow() - minCurso) / span));
+    rangeBox.style.setProperty('--b', String((cursoHigh() - minCurso) / span));
+    rangeLabel.textContent =
+      cursoLow() === cursoHigh()
+        ? cursoLabel(cursoLow())
+        : `${cursoLabel(cursoLow())} – ${cursoLabel(cursoHigh())}`;
+  }
+
+  // El badge del grupo Fecha cuenta el rango (como uno) + los cuatrimestres.
+  const fechaBadge = () => Number(rangeActive()) + selected.semesters.size;
 
   // Cuatrimestre desde la fecha yyyy-mm-dd del item: sep–ene → c1, feb–ago → c2.
   const semesterOf = (date: string) => {
@@ -363,7 +453,8 @@ const semesters = [
       badge.hidden = n === 0;
     });
 
-    const total = groups.reduce((n, g) => n + selected[g].size, 0);
+    syncCursoRange();
+    const total = groups.reduce((n, g) => n + selected[g].size, 0) + Number(rangeActive());
     const toggleBadge = document.querySelector<HTMLElement>('[data-filters-badge]')!;
     toggleBadge.textContent = String(total);
     toggleBadge.hidden = total === 0;
@@ -388,7 +479,7 @@ const semesters = [
           item.dataset.tags!.split(',').some((t) => selected.tags.has(t))) &&
         (selected.participants.size === 0 ||
           item.dataset.participants!.split(',').some((p) => selected.participants.has(p))) &&
-        (selected.cursos.size === 0 || selected.cursos.has(item.dataset.curso!)) &&
+        inCursoRange(Number(item.dataset.curso)) &&
         (selected.semesters.size === 0 || selected.semesters.has(semesterOf(date)));
       item.hidden = !matches;
       if (matches) {
@@ -430,7 +521,7 @@ const semesters = [
       const group = clearGroup.dataset.clearGroup;
       // El grupo Fecha cuenta curso y cuatrimestre juntos; los limpia a la vez.
       if (group === 'fecha') {
-        setGroup('cursos', new Set());
+        clearCursoRange();
         setGroup('semesters', new Set());
       } else {
         setGroup(group as Group, new Set());
@@ -441,12 +532,15 @@ const semesters = [
 
     if (target.closest('[data-filters-clear]')) {
       search.value = '';
+      clearCursoRange();
       groups.forEach((g) => setGroup(g, new Set()));
       applyFilters();
     }
   });
 
   search.addEventListener('input', applyFilters);
+  cursoFrom.addEventListener('input', applyFilters);
+  cursoTo.addEventListener('input', applyFilters);
 
   toggle.addEventListener('click', () => {
     toggle.setAttribute('aria-expanded', String(toggle.getAttribute('aria-expanded') !== 'true'));
