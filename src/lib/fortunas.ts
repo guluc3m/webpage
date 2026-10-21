@@ -1,7 +1,7 @@
 /**
  * fortunas.ts — formatting for the GUL in-jokes/quotes ("fortunas").
  *
- * The quotes live in src/data/fortunas.json. This module turns a raw entry into
+ * The quotes live in src/data/fortunas.yaml. This module turns a raw entry into
  * display text. It runs AT BUILD TIME only (the site is static) — Hero.astro
  * picks one at random while Astro builds the page, so nothing here ships to the
  * browser.
@@ -82,22 +82,34 @@ export function formatFortuna({ quote, author }: Fortuna): Fortuna {
 }
 
 /**
- * Checks if a fortuna is valid
- * @param f fortuna to check (Object format)
- * @returns `true` if valid fortuna, `false` otherwise
+ * Strict loader: throws on a YAML syntax error (the message carries the line)
+ * or on an entry without quote/author. The tests run this on the real file.
  */
-export function isValidFortuna(f: Partial<Fortuna>): f is Fortuna {
-  const ok = !!f.quote && !!f.author;
-  if (!ok) console.warn(`[fortunas] entrada incompleta, se omite: ${JSON.stringify(f)}`);
-  return ok;
+export function parseFortunas(rawFortunas: string): Fortuna[] {
+  const entries: unknown = parse(rawFortunas);
+  if (!Array.isArray(entries)) throw new Error('fortunas.yaml debe ser una lista');
+
+  return entries.map((f: Partial<Fortuna> | null, i) => {
+    if (typeof f?.quote !== 'string' || !f.quote || typeof f.author !== 'string' || !f.author) {
+      throw new Error(`la fortuna nº ${i + 1} no tiene quote y author: ${JSON.stringify(f)}`);
+    }
+    return formatFortuna({ quote: f.quote, author: f.author });
+  });
 }
 
-// Loads and formats fortunas
+// One broken entry invalidates the whole file, so the build swaps in this
+// instead of crashing; CI is what catches the mistake.
+export const FALLBACK_FORTUNA: Fortuna = {
+  quote: '«Alguien ha roto fortunas.yaml»',
+  author: 'el build',
+};
+
+// Build-time loader: never empty, never throws.
 export function loadFortunas(rawFortunas: string): Fortuna[] {
   try {
-    return (parse(rawFortunas) as Partial<Fortuna>[]).filter(isValidFortuna).map(formatFortuna);
+    return parseFortunas(rawFortunas);
   } catch (err) {
-    console.warn(`[fortunas] fortunas.yaml inválido, se muestra vacío: ${err}`);
-    return [];
+    console.error(`[fortunas] fortunas.yaml inválido, se usa la fortuna de reserva: ${err}`);
+    return [FALLBACK_FORTUNA];
   }
 }
