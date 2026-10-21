@@ -1,0 +1,167 @@
+---
+/**
+ * gul-Lightbox — fullscreen <dialog> with prev/next over a list of image URLs.
+ * Any element with `data-gul-lightbox-open={id}` (and optionally
+ * `data-index`) opens it; native dialog gives focus trap and Escape for free.
+ */
+
+interface Props {
+  /** Unique per lightbox on the page — what the triggers point at. */
+  id: string;
+  images: { src: string; alt: string }[];
+}
+
+const { id, images } = Astro.props;
+---
+
+<dialog id={id} data-gul-lightbox={JSON.stringify(images)} class="gul-lightbox">
+  <button
+    type="button"
+    data-gul-lightbox-close
+    class="gul-lightbox-control gul-lightbox-close"
+    aria-label="Cerrar"
+  >
+    <svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  {images.length > 1 && (
+    <button
+      type="button"
+      data-gul-lightbox-prev
+      class="gul-lightbox-control gul-lightbox-prev"
+      aria-label="Anterior"
+    >
+      <svg viewBox="0 0 24 24" class="size-8" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+  )}
+
+  <img data-gul-lightbox-image alt="" class="gul-lightbox-image" />
+
+  {images.length > 1 && (
+    <button
+      type="button"
+      data-gul-lightbox-next
+      class="gul-lightbox-control gul-lightbox-next"
+      aria-label="Siguiente"
+    >
+      <svg viewBox="0 0 24 24" class="size-8" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  )}
+
+  {images.length > 1 && <p data-gul-lightbox-counter class="gul-lightbox-counter" />}
+</dialog>
+
+<style>
+  /* Overrides the card-shaped default dialog from @layer base since this one
+     has to fill the viewport edge-to-edge. display must stay scoped to [open]
+     — an unconditional `display: flex` here would beat the UA's
+     `dialog:not([open]) { display: none }` (author styles win over UA styles
+     at equal specificity) and show it always. */
+  dialog.gul-lightbox {
+    position: fixed;
+    inset: 0;
+    /* dvw/dvh, no vw/vh: en móvil 100vh ignora la barra del navegador y empuja
+       los controles inferiores fuera de la pantalla. */
+    max-width: 100dvw;
+    max-height: 100dvh;
+    width: 100dvw;
+    height: 100dvh;
+    border: none;
+    background: transparent;
+    padding: 1rem;
+  }
+  dialog.gul-lightbox[open] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  dialog.gul-lightbox::backdrop {
+    background-color: color-mix(in oklab, var(--color-gul-bg) 85%, transparent);
+  }
+  .gul-lightbox-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+  }
+  .gul-lightbox-control {
+    position: absolute;
+    /* El SVG solo deja un área táctil de ~24px; el padding la sube a ~44. */
+    padding: 0.5rem;
+    color: var(--color-gul-ink);
+    cursor: pointer;
+  }
+  .gul-lightbox-control:hover {
+    color: var(--color-gul-muted);
+  }
+  .gul-lightbox-close {
+    top: 1rem;
+    right: 1rem;
+  }
+  .gul-lightbox-prev {
+    left: 1rem;
+  }
+  .gul-lightbox-next {
+    right: 1rem;
+  }
+  .gul-lightbox-counter {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: var(--radius-md);
+    background-color: color-mix(in oklab, var(--color-gul-surface) 80%, transparent);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: var(--color-gul-ink);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLDialogElement>('[data-gul-lightbox]').forEach((dialog) => {
+    const images: { src: string; alt: string }[] = JSON.parse(dialog.dataset.gulLightbox!);
+    const image = dialog.querySelector<HTMLImageElement>('[data-gul-lightbox-image]')!;
+    const counter = dialog.querySelector<HTMLElement>('[data-gul-lightbox-counter]');
+    let index = 0;
+
+    // Only the current image is loaded, plus the next one warmed up so "Siguiente"
+    // feels instant — never the whole set, some actividades have many photos.
+    function show(i: number) {
+      index = (i + images.length) % images.length;
+      image.src = images[index]!.src;
+      image.alt = images[index]!.alt;
+      if (counter) counter.textContent = `${index + 1} / ${images.length}`;
+      if (images.length > 1) new Image().src = images[(index + 1) % images.length]!.src;
+    }
+
+    document
+      .querySelectorAll<HTMLElement>(`[data-gul-lightbox-open="${dialog.id}"]`)
+      .forEach((trigger) =>
+        trigger.addEventListener('click', () => {
+          show(Number(trigger.dataset.index ?? 0));
+          dialog.showModal();
+        }),
+      );
+    dialog
+      .querySelector('[data-gul-lightbox-close]')
+      ?.addEventListener('click', () => dialog.close());
+    dialog
+      .querySelector('[data-gul-lightbox-prev]')
+      ?.addEventListener('click', () => show(index - 1));
+    dialog
+      .querySelector('[data-gul-lightbox-next]')
+      ?.addEventListener('click', () => show(index + 1));
+    // Click on the backdrop area (the dialog element itself, not a child) closes it.
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+  });
+</script>

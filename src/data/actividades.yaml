@@ -7,7 +7,7 @@
 # - link?
 # - source?
 # - slides?
-# - photo?
+# - photos? (lista de fotos del evento; con cartel, se ven al pulsarlo)
 # - tags? (lista)
 # - participants? (`{name, link}` o, si nombre ya existe, nombre directo y se reutiliza el link)
 
@@ -221,9 +221,8 @@
   participants:
     - Andrés Domínguez Jordán de Urríes
 
-
 - title: Introducción a Bacula
-  date: 2005/11/21  # del vídeo sólo pude sacar "lunes 21", y justo coincide que el 2005/11/21 fue lunes... menuda puta potra
+  date: 2005/11/21 # del vídeo sólo pude sacar "lunes 21", y justo coincide que el 2005/11/21 fue lunes... menuda puta potra
   type: Charla
   tags: [Bacula]
   video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Bacula/bacula-video.ogg
@@ -279,7 +278,7 @@
       link: https://blogs.gentoo.org/ferdy/
 
 - title: Curso de GIMP
-  date: 2005/11/22  # lo he sacao del minuto 00:11:02 del vídeo
+  date: 2005/11/22 # lo he sacao del minuto 00:11:02 del vídeo
   type: Charla
   tags: [GIMP]
   video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/gimp/gimp-video.ogg
@@ -287,7 +286,7 @@
     - Luis de Bethencourt
 
 - title: Montaje e instalación de ordenadores
-  date: 2005/11/16  # 00:50:23 en el vídeo :3
+  date: 2005/11/16 # 00:50:23 en el vídeo :3
   type: Charla
   tags: [Hardware]
   video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Montaje_PC/montajepc-video.ogg
@@ -296,7 +295,7 @@
       link: https://github.com/queltosh
 
 - title: Introducción a Perl
-  date: 2005/11/21  # alrededor de 00:24:25 he leído algo de 'lun 21'
+  date: 2005/11/21 # alrededor de 00:24:25 he leído algo de 'lun 21'
   type: Charla
   tags: [Perl]
   video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Perl/perl-video.ogg
@@ -377,7 +376,7 @@
     - David Muñoz Díaz
 
 - title: Introducción a UML
-  date: 2005/11/19  # me lo he inventao
+  date: 2005/11/19 # me lo he inventao
   type: Charla
   tags: [UML]
   video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/uml/uml-video.ogg
@@ -394,7 +393,7 @@
     - Jesús Espino García
 
 - title: Introducción a Blender
-  date: 2006/03/22  # 00:02:33 'mie'... asumo que es el 22
+  date: 2006/03/22 # 00:02:33 'mie'... asumo que es el 22
   type: Charla
   tags: [Blender]
   video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Blender/blender-video.ogg
@@ -408,7 +407,7 @@
   video: https://cloud-gul.uc3m.es/actividades/2006/marzo/eBox/Gul-eBox-04-04-06.mpg
 
 - title: Creación de distribuciones con GenDist
-  date: 2006/04/30  # 00:43:34 Thu Mar 30
+  date: 2006/04/30 # 00:43:34 Thu Mar 30
   type: Charla
   tags: [Linux]
   video: https://cloud-gul.uc3m.es/actividades/2006/marzo/GenDist/gendist-video.ogg
@@ -433,7 +432,7 @@
     - Víctor Pimentel Rodríguez
 
 - title: Joomla!
-  date: 2006/04/30  # lleva la misma ropa que en la charla de GenDist
+  date: 2006/04/30 # lleva la misma ropa que en la charla de GenDist
   type: Charla
   tags: [Joomla]
   video: https://cloud-gul.uc3m.es/actividades/2006/marzo/joomla/joomla-video.ogg
@@ -481,7 +480,7 @@
       link: https://github.com/laparca
 
 - title: Introducción a OpenGL
-  date: 2006/03/22  # misma ropa que en la de Blender
+  date: 2006/03/22 # misma ropa que en la de Blender
   type: Charla
   tags: [OpenGL]
   video: https://cloud-gul.uc3m.es/actividades/2006/marzo/OpenGL/opengl-video.ogg
@@ -550,27 +549,27 @@
     - Claudio Jiménez Castillo
 
 - title: Introducción a GNU/Linux (Leganés)
-  date: 2006/10/02  # me he inventao el día
+  date: 2006/10/02 # me he inventao el día
   type: Charla
   tags: [Linux, GUL]
-  slides: https://cloud-gul.uc3m.es/actividades/2006/noviembre/introduccion/introduccion-leganes.pdf 
+  slides: https://cloud-gul.uc3m.es/actividades/2006/noviembre/introduccion/introduccion-leganes.pdf
   participants:
     - Fernando Cerezal
     - Claudio Jiménez
     - Roberto Muñoz Gómez
 
 - title: Introducción a GNU/Linux (Getafe)
-  date: 2006/10/03  # me he inventao el día
+  date: 2006/10/03 # me he inventao el día
   type: Charla
   tags: [Linux, GUL]
-  slides: https://cloud-gul.uc3m.es/actividades/2006/noviembre/introduccion/introduccion-getafe.pdf 
+  slides: https://cloud-gul.uc3m.es/actividades/2006/noviembre/introduccion/introduccion-getafe.pdf
   participants:
     - Fernando Cerezal
     - Claudio Jiménez
     - Roberto Muñoz Gómez
 
 - title: Ajax en Java EE
-  date: 2007/06/19  # sacado de la fecha de creación del PDF
+  date: 2007/06/19 # sacado de la fecha de creación del PDF
   type: Charla
   tags: [Java]
   slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/AjaxEnJava/Ajax.pdf
@@ -616,7 +615,7 @@
     - Jaime Martín Jiménez
 
 - title: Desarrollo de aplicaciones Java EE con Structs 2, Spring y EJB 3.0
-  date: 2007/06/19  # sacado de la fecha de creación del PDF
+  date: 2007/06/19 # sacado de la fecha de creación del PDF
   type: Charla
   tags: [Java]
   slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/JavaEE-Struts2-Spring-EJB3/JavaEE-Struts2-Spring-EJB3.pdf
@@ -625,7 +624,7 @@
     - Daniel Ortega
 
 - title: Curso de Joomla
-  date: 2007/03/27  # 00:08:00... he cogido la fecha más alta
+  date: 2007/03/27 # 00:08:00... he cogido la fecha más alta
   type: Charla
   tags: [Joomla]
   video: https://cloud-gul.uc3m.es/actividades/2007/marzo/joomla/joomla-video.ogg
@@ -642,7 +641,7 @@
     - Sergio Gil Pérez de la Manga
 
 - title: Novedades en Java 5 y 6
-  date: 2007/06/19  # sacado de la fecha de creación del PDF
+  date: 2007/06/19 # sacado de la fecha de creación del PDF
   type: Charla
   tags: [Java]
   slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/novedadesJavaSE5y6/
@@ -688,7 +687,6 @@
   slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/tarde_de_web/tarde_de_web_2007.pdf
   source: https://cloud-gul.uc3m.es/actividades/2007/marzo/tarde_de_web/Cabaret.tar.gz
 
-
 - title: Threads et al.
   date: 2007/03/28
   jornadas: 9
@@ -712,7 +710,7 @@
   tags: [LaTeX]
   source: https://cloud-gul.uc3m.es/actividades/2007/noviembre/LaTeX/LaTeX_nov_2007.zip
   participants:
-    - David Muñoz Díaz  # sólo pone 'David', voy a asumir que es este
+    - David Muñoz Díaz # sólo pone 'David', voy a asumir que es este
 
 - title: Aplicaciones web con PHP
   date: 2007/11/08
@@ -743,7 +741,7 @@
     - Jose María Chumo Mata
 
 - title: Alta Disponibilidad y Balanceo de Carga en Linux
-  date: 2008/03/04  # me he inventao el día
+  date: 2008/03/04 # me he inventao el día
   type: Charla
   jornadas: 11
   tags: [Linux]
@@ -864,7 +862,7 @@
     - Borja Bergua Guerra
 
 - title: Comandos Básicos
-  date: 2009/03/09  # el ODP dice que se empezó el 8 (domingo)...
+  date: 2009/03/09 # el ODP dice que se empezó el 8 (domingo)...
   type: Charla
   jornadas: 12
   tags: [Linux, Terminal]
@@ -926,7 +924,7 @@
     - Fernando Cerezal López
 
 - title: Retoque fotográfico con GIMP
-  date: 2009/03/10  # 00:06:26
+  date: 2009/03/10 # 00:06:26
   type: Charla
   jornadas: 12
   tags: [GIMP]
@@ -945,7 +943,7 @@
     - Javier Turégano Molina
 
 - title: Comandos Básicos
-  date: 2009/10/29  # me he inventao el día
+  date: 2009/10/29 # me he inventao el día
   type: Charla
   jornadas: 13
   tags: [Terminal]
@@ -1002,7 +1000,7 @@
     - Borja Bergua
 
 - title: Medida de la calidad del software
-  date: 2010/03/05  # 00:36:20
+  date: 2010/03/05 # 00:36:20
   type: Charla
   jornadas: 14
   tags: [Software]
@@ -1021,7 +1019,7 @@
     - Daniel Marcos Martín
 
 - title: Administrando los servidores del GUL (I)
-  date: 2010/03/12  # me he inventao el día
+  date: 2010/03/12 # me he inventao el día
   type: Charla
   jornadas: 14
   tags: [Self-hosting]
@@ -1030,7 +1028,7 @@
     - Fernando Cerezal López
 
 - title: Administrando los servidores del GUL (II)
-  date: 2010/03/12  # 00:03:41
+  date: 2010/03/12 # 00:03:41
   type: Charla
   jornadas: 14
   tags: [Self-hosting]
@@ -1082,7 +1080,7 @@
     - Roberto Muñoz Gómez
 
 - title: OpenGL para principiantes
-  date: 2010/03/03  # 00:28:22 'mie 3'
+  date: 2010/03/03 # 00:28:22 'mie 3'
   type: Charla
   jornadas: 14
   tags: [OpenGL]
@@ -1102,7 +1100,7 @@
     - Miguel Peris
 
 - title: Taller de Python
-  date: 2010/03/12  # 00:00:22 'vie 12'
+  date: 2010/03/12 # 00:00:22 'vie 12'
   type: Charla
   jornadas: 14
   tags: [Python]
@@ -1111,7 +1109,7 @@
     - David Muñoz Díaz
 
 - title: Taller de Ruby
-  date: 2010/03/12  # 00:21:22 'vie 12'
+  date: 2010/03/12 # 00:21:22 'vie 12'
   type: Charla
   jornadas: 14
   tags: [Ruby]
@@ -1130,7 +1128,7 @@
     - Daniel Marcos Martín
 
 - title: Sistemas de Ficheros
-  date: 2010/03/03  # 00:00:09
+  date: 2010/03/03 # 00:00:09
   type: Charla
   jornadas: 14
   tags: [Ficheros]
@@ -1183,7 +1181,7 @@
   slides: https://cloud-gul.uc3m.es/actividades/2010/noviembre/Git/Git.pdf
 
 - title: Herramientas libres para hacer prácticas
-  date: 2010/11/09  # me he inventao el día
+  date: 2010/11/09 # me he inventao el día
   type: Charla
   jornadas: 15
   tags: [Software Libre]
@@ -1202,13 +1200,13 @@
     - Miguel Vidal
 
 - title: Análisis Forense - Seguridad en Linux (parte I)
-  date: 2011/03/17  # 00:14:24
+  date: 2011/03/17 # 00:14:24
   type: Charla
   jornadas: 16
   tags: [Ciberseguridad]
   video: https://cloud-gul.uc3m.es/actividades/2011/marzo/analisis_forense/analisis_forense_parte1.ogv
   participants:
-    - Daniel Marcos Martín  # 00:06:53
+    - Daniel Marcos Martín # 00:06:53
 
 - title: Análisis Forense - Seguridad en Linux (parte II)
   date: 2011/03/17
@@ -1228,7 +1226,7 @@
   source: https://cloud-gul.uc3m.es/actividades/2011/marzo/calidad_en_IT_es_mas_que_cobertura_de_pruebas/Calidad-IT%202011marGUL.odp
   video: https://cloud-gul.uc3m.es/actividades/2011/marzo/calidad_en_IT_es_mas_que_cobertura_de_pruebas/calidad_en_IT_es_mas_que_cobertura_de_pruebas.ogv
   participants:
-    - Igor Zubiaurre García  # es el último modificador del ODP
+    - Igor Zubiaurre García # es el último modificador del ODP
 
 - title: Introducción informal a Django
   date: 2011/03/16
@@ -1239,7 +1237,7 @@
   video: https://cloud-gul.uc3m.es/actividades/2011/marzo/desarrollo_web_con_django/desarrollo_web_con_django.ogv
 
 - title: 20 trucos con GIMP
-  date: 2011/03/18  # 00:10:12 'vie 18'
+  date: 2011/03/18 # 00:10:12 'vie 18'
   type: Charla
   jornadas: 16
   tags: [GIMP]
@@ -1247,7 +1245,7 @@
   link: https://jesusda.com
 
 - title: guifi.net
-  date: 2011/03/18  # me he inventao el día
+  date: 2011/03/18 # me he inventao el día
   type: Charla
   jornadas: 16
   tags: [Redes, Software Libre]
@@ -1263,7 +1261,7 @@
     - Israel Gutiérrez
 
 - title: Introducción al Sistema Operativo Android
-  date: 2011/03/15  # 00:47:34
+  date: 2011/03/15 # 00:47:34
   type: Charla
   jornadas: 16
   tags: [Android]
@@ -1272,7 +1270,7 @@
     - Aitor Mendaza Ormaza
 
 - title: Programación con Android
-  date: 2011/03/15  # el mismo día que la otra charla
+  date: 2011/03/15 # el mismo día que la otra charla
   type: Charla
   jornadas: 16
   tags: [Android]
@@ -1292,7 +1290,7 @@
       link: https://javaguirre.net/
 
 - title: ¡Alerta, servidor LAMP comprometido!
-  date: 2011/03/14  # 00:09:05 'lun 14'
+  date: 2011/03/14 # 00:09:05 'lun 14'
   type: Charla
   jornadas: 16
   tags: [Ciberseguridad]
@@ -1393,7 +1391,7 @@
       link: https://twitter.com/pinchito
 
 - title: La alternativa ágil
-  date: 2013/04/09  # me he inventao el día
+  date: 2013/04/09 # me he inventao el día
   type: Charla
   jornadas: 18
   tags: [Software, Agile]
@@ -1402,7 +1400,7 @@
     - Xavier Albaladejo
 
 - title: Detección de vulnerabilidades en Linux
-  date: 2013/04/15  # el día viene del ODP
+  date: 2013/04/15 # el día viene del ODP
   type: Charla
   jornadas: 18
   tags: [Ciberseguridad, Linux]
@@ -1445,7 +1443,7 @@
     - name: Francisco Fernandez
       link: https://twitter.com/fcofdez
 
-- title: Hacking en aplicaciones Web y su defensa 
+- title: Hacking en aplicaciones Web y su defensa
   date: 2013/10/23
   type: Charla
   jornadas: 23
@@ -1521,7 +1519,8 @@
   type: Charla
   jornadas: 24
   poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
-  photo: https://pbs.twimg.com/media/BjQ4dIRIMAAYbN6?format=jpg&name=900x900
+  photos:
+    - https://pbs.twimg.com/media/BjQ4dIRIMAAYbN6?format=jpg&name=900x900
   tags: [Arduino]
   slides: https://cloud-gul.uc3m.es/actividades/2014/marzo/Introduccion_a_Arduino_Fernando_Cerezal.pdf
   video: https://youtu.be/dqUH0RYws6c
@@ -1612,7 +1611,8 @@
   type: Charla
   jornadas: 24
   poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
-  photo: https://pbs.twimg.com/media/BjMAU4-IIAIL75m?format=jpg&name=900x900
+  photos:
+    - https://pbs.twimg.com/media/BjMAU4-IIAIL75m?format=jpg&name=900x900
   tags: [Android]
   participants:
     - Javier Sánchez
@@ -1622,7 +1622,8 @@
   type: Charla
   jornadas: 24
   poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
-  photo: https://pbs.twimg.com/media/BjRgtiIIEAEs-hU?format=jpg&name=900x900
+  photos:
+    - https://pbs.twimg.com/media/BjRgtiIIEAEs-hU?format=jpg&name=900x900
   tags: [Hardware]
   participants:
     - Fernando Cerezal López
@@ -1744,7 +1745,8 @@
   poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
   tags: []
   video: https://www.youtube.com/live/xqbliMWoHxY
-  photo: https://pbs.twimg.com/media/B2aUfqgIYAA4qXV?format=jpg&name=medium
+  photos:
+    - https://pbs.twimg.com/media/B2aUfqgIYAA4qXV?format=jpg&name=medium
   participants:
     - name: Israel Gutiérrez
       link: https://twitter.com/gootyfer
@@ -1775,7 +1777,8 @@
   type: Charla
   tags: [Linux, Terminal]
   video: https://youtu.be/2qZBUa93MQ8
-  photo: https://pbs.twimg.com/media/Bz6WTySIgAAIZsq?format=jpg&name=4096x4096
+  photos:
+    - https://pbs.twimg.com/media/Bz6WTySIgAAIZsq?format=jpg&name=4096x4096
   participants:
     - Fernando Cerezal López
     - Adrián Casado Rivas
@@ -1793,8 +1796,8 @@
   date: 2014/10/17
   type: Feria de Asociaciones
   tags: [GUL]
-  photo: https://pbs.twimg.com/media/B0JXospIUAAhG8m?format=jpg&name=4096x4096
-
+  photos:
+    - https://pbs.twimg.com/media/B0JXospIUAAhG8m?format=jpg&name=4096x4096
 
 - title: 'Markdown & Pandoc: not another Word'
   description: Creación de documentos académicos mediante Markdown.
@@ -1833,7 +1836,7 @@
       link: https://twitter.com/akey
 
 - title: JavaScript, JS everywhere!
-  description: Lo más hipster del front-end y del back-end con JS. 
+  description: Lo más hipster del front-end y del back-end con JS.
   date: 2015/05/23
   type: Charla
   jornadas: 26
@@ -1878,7 +1881,7 @@
     - Adolfo Santiago
 
 - title: "Schrödinger's Flask: ¿vive la serpiente?"
-  description: Aplicaciones web indoloras con Python + Flask 
+  description: Aplicaciones web indoloras con Python + Flask
   date: 2015/11/23
   type: Charla
   jornadas: 27
@@ -1970,7 +1973,7 @@
     monto'
   description: >-
     Taller semiteórico en el que se mostrarán cuáles son los pasos a seguir
-    para, con las piezas necesarias, montar un ordenador. 
+    para, con las piezas necesarias, montar un ordenador.
   date: 2015/11/27
   type: Charla
   jornadas: 27
@@ -1997,7 +2000,7 @@
 - title: Talleres de Arduino
   type: Taller
   tags: [Arduino]
-  date: 2015/05/12  # me invento el día, por las facturas debería ser al menos en mayo
+  date: 2015/05/12 # me invento el día, por las facturas debería ser al menos en mayo
   participants:
     - Adrián Borja Pimentel
 
@@ -2070,7 +2073,7 @@
     primera impresión que recibimos al abrir el programa puede llegar a ser algo
     intimidante. No os preocupéis, os enseñaré lo básico para que vuestra
     primera cita con GIMP sea amor a primera vista.
-  date: 2016/04/13  # 00:04:11 'mié'
+  date: 2016/04/13 # 00:04:11 'mié'
   type: Charla
   jornadas: 28
   poster: https://cloud-gul.uc3m.es/actividades/2016/Abril/cartel-gul_xxviii-jt.png
@@ -2088,7 +2091,7 @@
     de Spring Security Core para la securización, y otros interesantes, pero
     sobre todo focalizado en saber resolver un futuro desarrollo con otros
     plugins que sean necesarios.
-  date: 2016/04/14  # 00:03:14 'jue'
+  date: 2016/04/14 # 00:03:14 'jue'
   type: Charla
   jornadas: 28
   poster: https://cloud-gul.uc3m.es/actividades/2016/Abril/cartel-gul_xxviii-jt.png
@@ -2263,7 +2266,7 @@
     avanzados y se darán consejos útiles. Será impartido por estudiantes y
     ex-estudiantes de la UC3M, algunos con más de 10 años de experiencia en
     LINUX y que son conocedores de la formación complementaria conveniente.
-  date: 2016/10/03  # me invento el día
+  date: 2016/10/03 # me invento el día
   type: Charla
   tags: [Linux, Terminal]
 
@@ -2282,7 +2285,7 @@
     de los participantes.
   type: Taller
   tags: [Radio]
-  date: 2016/10/06  # me invento el día
+  date: 2016/10/06 # me invento el día
   participants:
     - name: Sixto Fernández
       link: https://twitter.com/djtangosix
@@ -2294,12 +2297,12 @@
     relámpago que pretenden mover la conciencia de los asistentes y hacer
     reflexionar sobre tres temas de marcada actualidad tecnológica y sus
     repercusiones en nuestro modo de vida.
-  date: 2016/10/04  # me invento el día
+  date: 2016/10/04 # me invento el día
 
 - title: Taller de IoT
   type: Taller
   tags: [IoT]
-  date: 2016/10/21  # también el 28
+  date: 2016/10/21 # también el 28
   participants:
     - Axel Blanco
 
@@ -2408,7 +2411,7 @@
 - title: 'G.I.M.P.: GIMP Is (for) Meme Production'
   type: Jornadas Técnicas
   description: >-
-    Taller básico de GIMP, un software open-source para la edición de imágenes, aplicándolo a memes. 
+    Taller básico de GIMP, un software open-source para la edición de imágenes, aplicándolo a memes.
   jornadas: 35
   tags: [GIMP]
   date: 2023/04/14
@@ -2429,7 +2432,6 @@
   participants:
     - name: Lisardo Prieto
       link: https://github.com/lpgonzalez
-
 
 - title: Introducción a C++ Moderno
   date: 2024/09/19
@@ -2459,7 +2461,8 @@
   description: >-
     Charla introductoria a Linux y el Software Libre para el T3chfest Ed Day,
     enfocada a estudiantes de secundaria y bachillerato.
-  photo: https://pbs.twimg.com/media/GIZDkkSWEAAQRCv?format=jpg&name=large
+  photos:
+    - https://pbs.twimg.com/media/GIZDkkSWEAAQRCv?format=jpg&name=large
   participants:
     - Jose Antonio Verde
     - Luis Daniel Casais
@@ -2523,7 +2526,8 @@
   description: >-
     La GUL Jamón es el evento del GUL UC3M dedicado a los videojuegos. El tema de este año es "Suben las temperaturas"
   poster: https://pbs.twimg.com/media/G04vx8mWYAA9MIr?format=jpg&name=medium
-  photo: https://pbs.twimg.com/media/G2c1O0VWgAAf45d?format=jpg&name=medium
+  photos:
+    - https://pbs.twimg.com/media/G2c1O0VWgAAf45d?format=jpg&name=medium
   participants:
     - Jorge Saghin
     - Jose Antonio Verde
@@ -2541,7 +2545,8 @@
     Bienvenida. En esta ocasión nos traímos el recién estrenado
     [Hollow Knight: Silksong](https://hollowknightsilksong.com/) para demostrar
     que se puede jugar perfectamente en Linux.
-  photo: https://pbs.twimg.com/media/G0U9wREWMAErF4O?format=jpg&name=large
+  photos:
+    - https://pbs.twimg.com/media/G0U9wREWMAErF4O?format=jpg&name=large
 
 - title: Linux Install Party
   date: 2025/10/07
@@ -2574,7 +2579,8 @@
     - Hugo Centeno Sanz
   video: https://www.youtube.com/watch?v=oDJsZ8ywq0o
   link: https://cloud-gul.uc3m.es/actividades/2025/Taller%20de%20git%20(GUL%20x%20AISC)/transparencias.pdf
-  photo: https://res.cloudinary.com/dpchpoort/image/upload/aisc_madrid/events/event19/gallery/img_691e19a418df99.91840928.webp
+  photos:
+    - https://res.cloudinary.com/dpchpoort/image/upload/aisc_madrid/events/event19/gallery/img_691e19a418df99.91840928.webp
   slides: https://cloud-gul.uc3m.es/actividades/2025/Taller%20de%20git%20(GUL%20x%20AISC)/transparencias.pdf
   tags: [Git]
 
@@ -2604,7 +2610,8 @@
       link: https://github.com/z4na14
     - name: Luis Daniel Casais
       link: https://github.com/rajayonin
-  photo: https://www.uc3m.es/asociaciones-estudiantes/media/asociaciones-estudiantes/img/grande/original/en-ig_gul-uc3m_2866.../gul-uc3m-web.jpg
+  photos:
+    - https://www.uc3m.es/asociaciones-estudiantes/media/asociaciones-estudiantes/img/grande/original/en-ig_gul-uc3m_2866.../gul-uc3m-web.jpg
   video: https://www.youtube.com/watch?v=UaF5FAdkjU4
 
 - title: Minicurso express de Git ✨ Avanzado ✨
@@ -2648,7 +2655,8 @@
   date: 2026/05/01
   type: Taller
   description: Nos juntamos unos cuantos para hacer unos teclados to' wapos.
-  photo: https://pbs.twimg.com/media/HHs3K92WAAAJ9_J?format=jpg&name=small
+  photos:
+    - https://pbs.twimg.com/media/HHs3K92WAAAJ9_J?format=jpg&name=small
   tags: [Hardware]
   source: https://github.com/davidphilipbarr/Sweep
 
@@ -2688,5 +2696,22 @@
     - name: Héctor Molina
       link: https://github.com/Toriomg
   link: https://hackspain.com/
-  photo: /actividades/hackspain.png
+  poster: https://hackspain.com/og-landing.png
+  photos:
+    - /actividades/hackspain.png
   source: https://github.com/guluc3m/hackspain26
+
+- title: Linux Install Party
+  date: 2026/09/30
+  type: Install party
+  description: >-
+    Microsoft sueltame del brazo por favor, no quiero que me metas publicidad
+    como mi fondo de pantalla dentro de Windows. En vez, me voy a ir con los chicos
+    del GUL este 30 de septiembre, en el 2.3.C01, y voy a estar con ellos de
+    14:00 a 15:30 instalándome Linux en mi portátil, y ayudando a la gente que venga a
+    que haga lo mismo ¡Seguro que más gente se anima a pasarse a un sistema operativo
+    libre, seguro y completamente gratuito!
+  photos:
+    - https://pbs.twimg.com/media/HTdtWyAXcAAzybm?format=jpg&name=small
+  poster: https://pbs.twimg.com/media/HS--mmuXYAAFYzu?format=jpg&name=medium
+  tags: [Linux]

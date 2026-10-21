@@ -34,8 +34,12 @@
           },
           "type": "array"
         },
-        "photo": {
-          "type": "string"
+        "photos": {
+          "description": "Photos of the event; the poster, if any, stays the cover",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "poster": {
           "type": "string"

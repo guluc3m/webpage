@@ -45,3 +45,8 @@ test('an unknown type is a broken entry', () => {
   const { errors } = parseActividades('- title: A\n  date: 2020/01/01\n  type: Fiesta\n');
   assert.match(errors[0], /type desconocido: "Fiesta"/);
 });
+
+test('photos must be a list, a lone URL is a broken entry', () => {
+  const { errors } = parseActividades(entry('A') + '  photos: https://example.org/a.jpg\n');
+  assert.match(errors[0], /photos no es una lista/);
+});

@@ -33,7 +33,7 @@ export interface Actividad {
   link?: string;
   source?: string;
   slides?: string;
-  photo?: string; // usually one OR the other of cartel/photo, not both
+  photos?: string[]; // del evento; si hay poster, el poster sigue siendo la portada
   participants?: Participant[];
   tags?: string[]; // temas (Git, C, Hardware…); el tipo ya no va aquí
 }
@@ -75,7 +75,7 @@ const dateRe = /^\d{4}\/\d{2}\/\d{2}$/;
 // Why an entry is unusable, or null if it is fine.
 function actividadProblem(a: unknown): string | null {
   if (!a || typeof a !== 'object' || Array.isArray(a)) return 'no es un objeto';
-  const { title, date, type, participants, tags } = a as Record<string, unknown>;
+  const { title, date, type, participants, tags, photos } = a as Record<string, unknown>;
   if (typeof title !== 'string' || !title) return 'falta title';
   if (typeof date !== 'string' || !dateRe.test(date)) return 'date no es yyyy/mm/dd';
   if (!(ACTIVIDAD_TYPES as readonly string[]).includes(type as string))
@@ -83,6 +83,7 @@ function actividadProblem(a: unknown): string | null {
   if (participants !== undefined && !Array.isArray(participants))
     return 'participants no es una lista';
   if (tags !== undefined && !Array.isArray(tags)) return 'tags no es una lista';
+  if (photos !== undefined && !Array.isArray(photos)) return 'photos no es una lista';
   return null;
 }
 
