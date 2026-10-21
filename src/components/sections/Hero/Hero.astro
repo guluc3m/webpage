@@ -181,7 +181,7 @@ const fortuna = formattedFortunas[fortunaIndex];
     // One fortuna per press: holding the key would otherwise auto-repeat
     // through every fortuna, so the key has to be released first. The cooldown
     // still caps frantic tapping.
-    const REROLL_COOLDOWN_MS = 200;
+    const REROLL_COOLDOWN_MS = 600;
     let lastReroll = 0;
     let rHeld = false;
     const isR = (event: KeyboardEvent) => event.key === 'r' || event.key === 'R';
