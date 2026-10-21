@@ -67,14 +67,16 @@ const fortuna = formattedFortunas[fortunaIndex];
         <span aria-hidden="true">— </span>
         <GulDecryptText text={fortuna.author} decryptOnLoad={false} data-fortuna-author />
       </figcaption>
-      <GulButton
-        variant="secondary"
-        label="Otra fortuna"
-        hint="R"
-        title="Pulsa R en cualquier momento para otra fortuna"
-        class="mt-4"
-        data-refresh-fortuna
-      />
+      {/* The tooltip sits on a wrapper: the button's overflow-hidden would clip it. */}
+      <span class="mt-4 inline-block" data-tooltip="Pulsa R en cualquier momento para otra fortuna">
+        <GulButton
+          variant="secondary"
+          label="Otra fortuna"
+          hint="R"
+          aria-keyshortcuts="R"
+          data-refresh-fortuna
+        />
+      </span>
     </figure>
   </div>
 

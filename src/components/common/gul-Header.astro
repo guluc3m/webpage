@@ -34,11 +34,14 @@ const { links } = Astro.props;
     {/* Filled by the script from localStorage, so it starts empty. */}
     <ul class="flex items-center gap-1" aria-label="Logros" data-gul-stars hidden></ul>
     <template data-gul-star>
-      <li
-        class="gul-star size-4 bg-gul-amber"
-        role="img"
-        style={`mask: url("${starIcon}") center / contain no-repeat`}
-      ></li>
+      {/* The mask goes on an inner span: on the <li> it would also clip the
+          tooltip that data-tooltip draws on it. */}
+      <li class="gul-star" role="img">
+        <span
+          class="block size-4 bg-gul-amber"
+          style={`mask: url("${starIcon}") center / contain no-repeat`}
+        ></span>
+      </li>
     </template>
   </div>
   <div class="order-3">
@@ -54,7 +57,7 @@ const { links } = Astro.props;
     if (!stars || !template || stars.querySelector(`[data-id="${CSS.escape(id)}"]`)) return;
     const star = template.content.firstElementChild!.cloneNode(true) as HTMLLIElement;
     star.dataset.id = id;
-    star.title = text;
+    star.dataset.tooltip = text;
     star.setAttribute('aria-label', `Logro: ${text}`);
     star.classList.toggle('is-new', isNew);
     stars.append(star);
