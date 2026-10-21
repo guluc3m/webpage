@@ -17,9 +17,12 @@ import { renderInlineMarkdown } from '@lib/markdown';
 
 interface Props {
   actividad: Actividad;
+  /** Nivel del heading del título: 'h2' suelto en /actividades, 'h3' dentro de un gul-CongresoCard. */
+  heading?: 'h2' | 'h3';
 }
 
-const { actividad: a } = Astro.props;
+const { actividad: a, heading = 'h2' } = Astro.props;
+const Title = heading;
 // The cartel goes first and stays the cover; the photos are what happened after.
 const images = [a.poster, ...(a.photos ?? [])]
   .filter((src): src is string => !!src)
@@ -103,7 +106,7 @@ const datetime = hasNoDay(a.date) ? a.date.slice(0, 7) : a.date.replaceAll('/', 
       <time class="text-xs text-gul-muted" datetime={datetime}>
         {formatDate(a.date)}
       </time>
-      <h2 class="mt-1">{a.title}</h2>
+      <Title class="mt-1">{a.title}</Title>
 
       {(a.type || (a.tags ?? []).length > 0) && (
         <p class="mt-2 flex flex-wrap items-center gap-1.5">

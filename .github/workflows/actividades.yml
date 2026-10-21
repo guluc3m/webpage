@@ -1,18 +1,24 @@
-# Checks every entry of actividades.yaml, so a broken one shows up as a red
-# check on the PR instead of silently missing from the site.
+# Checks every entry of actividades.yaml and congresos.yaml, so a broken one
+# shows up as a red check on the PR instead of silently missing from the site.
 name: Actividades
 
 on:
   pull_request:
     paths:
       - src/data/actividades.yaml
+      - src/data/congresos.yaml
       - src/lib/actividades.ts
+      - src/lib/congresos.ts
       - src/lib/actividades.test.ts
+      - src/lib/congresos.test.ts
   push:
     paths:
       - src/data/actividades.yaml
+      - src/data/congresos.yaml
       - src/lib/actividades.ts
+      - src/lib/congresos.ts
       - src/lib/actividades.test.ts
+      - src/lib/congresos.test.ts
 
 jobs:
   test:
@@ -33,7 +39,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Only this file, not `pnpm test`: the actividades check must not go red
-      # because of an unrelated test.
-      - name: Test actividades
-        run: node --test src/lib/actividades.test.ts
+      # Only these files, not `pnpm test`: the actividades check must not go
+      # red because of an unrelated test.
+      - name: Test actividades and congresos
+        run: node --test src/lib/actividades.test.ts src/lib/congresos.test.ts

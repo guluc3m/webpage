@@ -1,0 +1,134 @@
+{
+  "$ref": "#/definitions/Congresos",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Actividad": {
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "description": "yyyy/mm/dd",
+          "type": "string"
+        },
+        "description": {
+          "description": "Supports basic markdown",
+          "type": "string"
+        },
+        "link": {
+          "description": "Generic link to add",
+          "type": "string"
+        },
+        "participants": {
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/definitions/Participant"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        "photos": {
+          "description": "Photos of the event; the congreso poster, if any, is the cover",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "slides": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/ActividadType"
+        },
+        "video": {
+          "type": "string"
+        }
+      },
+      "required": ["title", "date", "type"],
+      "type": "object"
+    },
+    "ActividadType": {
+      "enum": [
+        "Charla",
+        "Taller",
+        "Hackathon",
+        "Install party",
+        "Game jam",
+        "Pódcast",
+        "Congreso",
+        "Feria de Asociaciones"
+      ],
+      "type": "string"
+    },
+    "Congreso": {
+      "additionalProperties": false,
+      "properties": {
+        "activities": {
+          "description": "The grouped activities; dates order them on the page",
+          "items": {
+            "$ref": "#/definitions/Actividad"
+          },
+          "type": "array"
+        },
+        "edition": {
+          "description": "Edition number of the congreso type, e.g. 35 for the Jornadas Técnicas XXXV",
+          "type": "number"
+        },
+        "poster": {
+          "description": "The global poster; inner activities carry no poster of their own",
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/CongresoType"
+        },
+        "url": {
+          "description": "The congreso website, if it had one",
+          "type": "string"
+        }
+      },
+      "required": ["title", "type", "edition", "activities"],
+      "type": "object"
+    },
+    "CongresoType": {
+      "enum": ["GUL Jamón", "Jornadas Técnicas"],
+      "type": "string"
+    },
+    "Congresos": {
+      "items": {
+        "$ref": "#/definitions/Congreso"
+      },
+      "type": "array"
+    },
+    "Participant": {
+      "additionalProperties": false,
+      "properties": {
+        "link": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["name"],
+      "type": "object"
+    }
+  }
+}

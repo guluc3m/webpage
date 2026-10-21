@@ -10,7 +10,6 @@ export const ACTIVIDAD_TYPES = [
   'Hackathon',
   'Install party',
   'Game jam',
-  'Jornadas Técnicas',
   'Pódcast',
   'Congreso',
   'Feria de Asociaciones',
@@ -27,7 +26,6 @@ export interface Actividad {
   date: string; // yyyy/mm/dd
   type: ActividadType;
   description?: string;
-  jornadas?: number; // jornadas técnicas edition
   poster?: string;
   video?: string;
   link?: string;
@@ -41,7 +39,7 @@ export interface Actividad {
 // En el YAML un participante puede ser un nombre suelto (`- Ana`) o un objeto.
 // El `link` es opcional y solo hace falta escribirlo una vez por persona en
 // todo el fichero: resolveParticipantLinks lo copia al resto por nombre.
-function normalizeParticipant(p: unknown): Participant | null {
+export function normalizeParticipant(p: unknown): Participant | null {
   if (typeof p === 'string') {
     const name = p.trim();
     return name ? { name } : null;
@@ -58,12 +56,21 @@ function normalizeParticipant(p: unknown): Participant | null {
 
 // Un enlace solo hay que escribirlo en una actividad: el primero que aparezca
 // para cada nombre se aplica a las demás apariciones, así no se repite.
-export function resolveParticipantLinks(actividades: Actividad[]): Actividad[] {
+// (Los links viven por fichero, así que congresos.ts cosecha los suyos aparte
+// y los aporta como extraLinks.)
+export function harvestParticipantLinks(actividades: Actividad[]): Map<string, string> {
   const links = new Map<string, string>();
   for (const a of actividades)
     for (const p of a.participants ?? [])
       if (p.link && !links.has(p.name)) links.set(p.name, p.link);
+  return links;
+}
 
+export function resolveParticipantLinks(
+  actividades: Actividad[],
+  extraLinks?: Map<string, string>,
+): Actividad[] {
+  const links = extraLinks ?? harvestParticipantLinks(actividades);
   return actividades.map((a) => ({
     ...a,
     participants: a.participants?.map((p) => (p.link ? p : { ...p, link: links.get(p.name) })),
@@ -72,8 +79,9 @@ export function resolveParticipantLinks(actividades: Actividad[]): Actividad[] {
 
 const dateRe = /^\d{4}\/\d{2}\/\d{2}$/;
 
-// Why an entry is unusable, or null if it is fine.
-function actividadProblem(a: unknown): string | null {
+// Why an entry is unusable, or null if it is fine. Reused by congresos.ts so
+// the inner activities validate with the same rules as plain ones.
+export function actividadProblem(a: unknown): string | null {
   if (!a || typeof a !== 'object' || Array.isArray(a)) return 'no es un objeto';
   const { title, date, type, participants, tags, photos } = a as Record<string, unknown>;
   if (typeof title !== 'string' || !title) return 'falta title';
@@ -88,18 +96,19 @@ function actividadProblem(a: unknown): string | null {
 }
 
 /**
- * Parses actividades.yaml one entry at a time, so a broken entry (bad YAML or
- * a missing field) is reported and dropped without taking the rest with it.
- * An entry starts at every `- ` in column 0; a misindented one ends up glued
- * to the entry above and usually breaks that one too.
+ * Splits a hand-edited YAML list one entry at a time (an entry starts at every
+ * `- ` in column 0; a misindented one ends up glued to the entry above and
+ * usually breaks that one too) and parses each chunk on its own, so a broken
+ * entry (bad YAML or a missing field) is reported and dropped without taking
+ * the rest with it. It stops after splitting+parsing: deciding what to keep
+ * and how to complain is up to the caller (parseActividades, parseCongresos).
  */
-export function parseActividades(raw: string): { actividades: Actividad[]; errors: string[] } {
-  const actividades: Partial<Actividad>[] = [];
-  const errors: string[] = [];
+export function parseYamlChunks(
+  raw: string,
+): Array<{ line: number; entries: unknown[]; error?: string }> {
   const lines = raw.split('\n');
   const starts = lines.flatMap((line, i) => (line.startsWith('- ') ? [i] : []));
-
-  starts.forEach((start, n) => {
+  return starts.flatMap((start, n) => {
     const chunk = lines.slice(start, starts[n + 1] ?? lines.length).join('\n');
     let entries: unknown;
     try {
@@ -108,15 +117,31 @@ export function parseActividades(raw: string): { actividades: Actividad[]; error
       if (!(err instanceof YAMLParseError)) throw err;
       // The parser counts lines from the start of the chunk, not of the file.
       const line = start + (err.linePos?.[0].line ?? 1);
-      errors.push(`línea ${line}: ${err.message.split(' at line ')[0]}`);
-      return;
+      return [{ line, entries: [], error: err.message.split(' at line ')[0] }];
     }
-    for (const a of Array.isArray(entries) ? entries : [entries]) {
+    return [{ line: start + 1, entries: Array.isArray(entries) ? entries : [entries] }];
+  });
+}
+
+/**
+ * Parses actividades.yaml one entry at a time, so a broken entry (bad YAML or
+ * a missing field) is reported and dropped without taking the rest with it.
+ */
+export function parseActividades(raw: string): { actividades: Actividad[]; errors: string[] } {
+  const actividades: Partial<Actividad>[] = [];
+  const errors: string[] = [];
+
+  for (const { line, entries, error } of parseYamlChunks(raw)) {
+    if (error) {
+      errors.push(`línea ${line}: ${error}`);
+      continue;
+    }
+    for (const a of entries) {
       const problem = actividadProblem(a);
-      if (problem) errors.push(`línea ${start + 1}: ${problem}: ${JSON.stringify(a)}`);
+      if (problem) errors.push(`línea ${line}: ${problem}: ${JSON.stringify(a)}`);
       else actividades.push(a as Partial<Actividad>);
     }
-  });
+  }
 
   const normalized = actividades.map((a) => ({
     ...a,

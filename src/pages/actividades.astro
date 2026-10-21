@@ -1,25 +1,35 @@
 ---
 /**
  * /actividades — histórico de talleres y charlas del GUL (guluc3m/webpage#9).
- * Datos en src/data/actividades.yaml; esta página ordena y pinta, y calcula
- * las opciones de los filtros, que viven en gul-ActividadFilters (panel
- * lateral en md+, panel plegable tras el botón "Filtros" en móvil). El
- * filtrado corre en el cliente porque depende de lo que el usuario teclea/
- * elige, no hay nada que precomputar en build.
+ * Datos en src/data/actividades.yaml, más los congresos (Jornadas Técnicas…)
+ * de congresos.yaml, cuyas activities van cada una en su congreso (una
+ * gul-CongresoCard, un poco mayor, envuelve a las ActividadCard de dentro).
+ * Esta página ordena y pinta, y calcula las opciones de los filtros, que
+ * viven en gul-ActividadFilters (panel lateral en md+, panel plegable tras
+ * el botón "Filtros" en móvil). El filtrado corre en el cliente porque
+ * depende de lo que el usuario teclea/elige, no hay nada que precomputar en
+ * build.
  */
 import BaseLayout from '@layouts/BaseLayout.astro';
 import GulHeader from '@components/common/gul-Header.astro';
 import GulFooter from '@components/common/gul-Footer.astro';
 import GulActividadCard from '@components/common/gul-ActividadCard.astro';
+import GulCongresoCard from '@components/common/gul-CongresoCard.astro';
 import GulActividadFilters from '@components/common/gul-ActividadFilters.astro';
 import { navLinks } from '@data/navLinks';
 import { ACTIVIDAD_TYPES, loadActividades } from '@lib/actividades';
+import { CONGRESO_TYPES, loadCongresos, type Congreso } from '@lib/congresos';
 import rawActividades from '@data/actividades.yaml?raw'; // ?raw: a plain string, so invalid YAML syntax doesn't blow up the import itself.
+import rawCongresos from '@data/congresos.yaml?raw';
 
 const actividades = loadActividades(rawActividades);
+const congresos = loadCongresos(rawCongresos, actividades);
 
 // yyyy/mm/dd sorts correctly as a plain string, no Date needed for ordering.
 const sorted = [...actividades].sort((a, b) => b.date.localeCompare(a.date));
+// todo lo filtrable (tags, participants, tipos y los chips): las activities
+// de un congreso pescan exactamente igual que las sueltas.
+const internals = congresos.flatMap((c) => c.activities);
 
 // A "curso" runs September→August, named after its starting year (e.g. "curso 2026" = Sept 2026–Aug 2027).
 const cursoStart = (date: string) => {
@@ -31,26 +41,52 @@ const currentCurso = now.getMonth() + 1 >= 9 ? now.getFullYear() : now.getFullYe
 const oldestCurso =
   sorted.length > 0 ? Math.min(...sorted.map((a) => cursoStart(a.date))) : currentCurso;
 
-// One row per curso (newest first), each holding that curso's activities — empty cursos still get a divider.
+// One row per curso (newest first), each holding that curso's activities and
+// congresos — empty cursos still get a divider. A congreso lives in the curso
+// where it starts (sus activities están dentro de la misma tarjeta), y su
+// fecha de orden es la de la primera.
+const congresoCurso = (c: Congreso) => {
+  const first = c.activities[0];
+  return first ? cursoStart(first.date) : null;
+};
+const rowItems = (curso: number) => [
+  ...sorted
+    .filter((a) => cursoStart(a.date) === curso)
+    .map((a) => ({ kind: 'actividad' as const, date: a.date, actividad: a })),
+  ...congresos
+    .filter((c) => congresoCurso(c) === curso)
+    .map((c) => ({ kind: 'congreso' as const, date: c.activities[0]!.date, congreso: c })),
+];
 const cursoRows = Array.from(
   { length: currentCurso - oldestCurso + 1 },
   (_, i) => currentCurso - i,
-).map((curso) => ({ curso, items: sorted.filter((a) => cursoStart(a.date) === curso) }));
+).map((curso) => ({
+  curso,
+  items: rowItems(curso).sort((a, b) => b.date.localeCompare(a.date)),
+}));
 
 // Tipos de actividad presentes, en el orden fijo de ACTIVIDAD_TYPES (el
 // vocabulario del campo `type`). Los tags son solo temas, ordenados por
-// frecuencia y alfabéticamente. Los participants van alfabéticos.
-const typeCounts = new Set(sorted.map((a) => a.type));
+// frecuencia y alfabéticamente. Los participants van alfabéticos. Todo
+// incluye las activities de los congresos, que se filtran igual.
+const typeCounts = new Set([...sorted, ...internals].map((a) => a.type));
 const types = ACTIVIDAD_TYPES.filter((t) => typeCounts.has(t));
 const tagCounts = new Map<string, number>();
-for (const a of sorted) for (const t of a.tags ?? []) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
+for (const a of [...sorted, ...internals])
+  for (const t of a.tags ?? []) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
 const tags = [...tagCounts.keys()].sort((a, b) => {
   const byCount = (tagCounts.get(b) ?? 0) - (tagCounts.get(a) ?? 0);
   return byCount !== 0 ? byCount : a.localeCompare(b, 'es');
 });
 const participants = [
-  ...new Set(sorted.flatMap((a) => (a.participants ?? []).map((s) => s.name))),
+  ...new Set([...sorted, ...internals].flatMap((a) => (a.participants ?? []).map((s) => s.name))),
 ].sort((a, b) => a.localeCompare(b, 'es'));
+
+// Opciones del filtro de congresos: los tipos con datos (en el orden del
+// vocabulario) y cada edición con su tipo, en el orden del YAML (de más
+// vieja a más nueva); el grupo Congresos las enseña debajo de su tipo.
+const congresoTypes = CONGRESO_TYPES.filter((t) => congresos.some((c) => c.type === t));
+const editions = congresos.map((c) => ({ title: c.title, type: c.type }));
 ---
 
 <BaseLayout title="Actividades · GUL UC3M">
@@ -61,6 +97,8 @@ const participants = [
     <div class="mt-6 md:grid md:grid-cols-[16rem_minmax(0,1fr)] md:gap-10">
       <GulActividadFilters
         types={types}
+        congresoTypes={congresoTypes}
+        editions={editions}
         tags={tags}
         participants={participants}
         cursos={cursoRows.map(({ curso }) => curso)}
@@ -88,23 +126,32 @@ const participants = [
                   Curso {curso}–{curso + 1}
                 </p>
               </li>
-              {items.map((a) => (
-                <li
-                  class="-ml-6.25 pl-6"
-                  data-actividad
-                  data-curso={curso}
-                  data-title={a.title.toLowerCase()}
-                  data-date={a.date.replaceAll('/', '-')}
-                  data-type={a.type.toLowerCase()}
-                  data-tags={(a.tags ?? []).join(',').toLowerCase()}
-                  data-participants={(a.participants ?? [])
-                    .map((s) => s.name)
-                    .join(',')
-                    .toLowerCase()}
-                >
-                  <GulActividadCard actividad={a} />
-                </li>
-              ))}
+              {items.map((item) =>
+                item.kind === 'congreso' ? (
+                  /* Un congreso se esconde entero si ninguna de sus activities
+                     pasa los filtros: el script ve las de dentro y este li es
+                     el que aguanta la tarjeta mayor (gul-ActividadFilters). */
+                  <li class="-ml-6.25 pl-6" data-actividad-group>
+                    <GulCongresoCard congreso={item.congreso} curso={curso} />
+                  </li>
+                ) : (
+                  <li
+                    class="-ml-6.25 pl-6"
+                    data-actividad
+                    data-curso={curso}
+                    data-title={item.actividad.title.toLowerCase()}
+                    data-date={item.actividad.date.replaceAll('/', '-')}
+                    data-type={item.actividad.type.toLowerCase()}
+                    data-tags={(item.actividad.tags ?? []).join(',').toLowerCase()}
+                    data-participants={(item.actividad.participants ?? [])
+                      .map((s) => s.name)
+                      .join(',')
+                      .toLowerCase()}
+                  >
+                    <GulActividadCard actividad={item.actividad} />
+                  </li>
+                ),
+              )}
             </>
           ))}
         </ul>

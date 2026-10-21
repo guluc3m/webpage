@@ -1,11 +1,13 @@
 ---
 /**
- * gul-Badge — small pill label. Same primary/secondary split as gul-Button.
+ * gul-Badge — small pill label. Same primary/secondary split as gul-Button,
+ * más el acento del tipo de un congreso (gul-amber, sin token nuevo: reutiliza
+ * el de callout "aviso"; texto casi negro, que el crema no da contraste).
  */
 import type { HTMLAttributes } from 'astro/types';
 
 interface Props extends HTMLAttributes<'span'> {
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'accent';
 }
 
 const { variant = 'primary', class: className, ...rest } = Astro.props;
@@ -13,6 +15,7 @@ const { variant = 'primary', class: className, ...rest } = Astro.props;
 const variants = {
   primary: 'bg-gul-blue text-gul-ink',
   secondary: 'border border-gul-line text-gul-muted',
+  accent: 'bg-gul-amber text-gul-bg',
 };
 ---
 
