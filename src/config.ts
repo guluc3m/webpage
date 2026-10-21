@@ -8,6 +8,7 @@ export const SOCIALS = [
   { label: 'YouTube', href: 'https://youtube.com/c/guluc3m', icon: 'youtube.svg' },
   { label: 'Twitter', href: 'https://twitter.com/guluc3m', icon: 'twitter.svg' },
   { label: 'Instagram', href: 'https://www.instagram.com/guluc3m/', icon: 'ig.svg' },
+  { label: 'OpenUC3M', href: 'https://openuc3m.com/asociaciones/67', icon: 'openuc3m.svg' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/gul-uc3m/', icon: 'linkedin.svg' },
 ] as const;
 
