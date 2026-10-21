@@ -1,10 +1,12 @@
 ---
 /**
  * gul-ActividadFilters — columna de filtros de /actividades: búsqueda por
- * título, tema o persona, tipo de actividad (abierto por defecto), tags y participantes
- * multi-selección (chips), y fecha por rango de cursos + cuatrimestre. En
- * md+ es una columna lateral sticky; en móvil se pliega tras el botón
- * "Filtros" (CSS puro guiado por aria-expanded). Cada grupo es un <details> colapsado por
+ * título, tema o persona, tipo de actividad (abierto por defecto), tags
+ * (las más usadas, el resto tras "Ver todas") y participantes (buscador +
+ * las más frecuentes) en chips multi-selección, y fecha por rango de cursos
+ * + cuatrimestre. Cada chip dice cuántas actividades daría. En md+ es una
+ * columna lateral sticky; en móvil se pliega tras el botón "Filtros" (CSS
+ * puro guiado por aria-expanded). Cada grupo es un <details> colapsado por
  * defecto (salvo Tipo, que va abierto) con contador de seleccionados y un
  * "Limpiar" que vacía solo ese grupo.
  *
@@ -247,7 +249,18 @@ const semesters = [
       </summary>
       <div>
         <div class="pb-4">
-          <div class="flex flex-wrap gap-1.5" data-chip-group="participants">
+          {/* 100+ personas, la mayoría con una sola actividad: a alguien se le
+              busca por el nombre, así que solo se ven las elegidas y unas
+              pocas sugerencias (las más frecuentes, o las que coinciden). */}
+          <input
+            type="search"
+            placeholder="Buscar persona…"
+            aria-label="Buscar persona"
+            aria-controls="gul-people-chips"
+            class="mb-2 px-2 py-1 text-sm"
+            data-people-search
+          />
+          <div id="gul-people-chips" class="flex flex-wrap gap-1.5" data-chip-group="participants">
             {participants.map((s) => (
               <button
                 type="button"
@@ -261,6 +274,7 @@ const semesters = [
               </button>
             ))}
           </div>
+          <p class="pt-1.5 text-xs text-gul-muted" aria-live="polite" data-people-more hidden></p>
           <div class="pt-2">
             <button type="button" class="gul-mini" data-clear-group="participants">
               Limpiar
@@ -530,6 +544,45 @@ const semesters = [
   const passesGroup = (item: HTMLElement, g: Group) =>
     selected[g].size === 0 || valuesOf[g](item).some((v) => selected[g].has(v));
 
+  const TOP_PEOPLE = 8;
+  const peopleSearch = panel.querySelector<HTMLInputElement>('[data-people-search]')!;
+  const peopleBox = panel.querySelector<HTMLElement>('[data-chip-group="participants"]')!;
+  const peopleMore = panel.querySelector<HTMLElement>('[data-people-more]')!;
+  // Elegidas siempre visibles y primero; detrás, hasta TOP_PEOPLE sugerencias:
+  // sin búsqueda, las que más actividades dan ahora; buscando, las que
+  // coinciden (también las que darían 0, para ver que existen). Se ordena con
+  // `order` y no moviendo nodos, que haría perder el foco al chip pulsado.
+  function syncPeople(counts: Map<string, number>) {
+    const q = fold(peopleSearch.value.trim());
+    const n = (c: HTMLElement) => counts.get(norm(c.dataset.value!)) ?? 0;
+    const on = (c: HTMLElement) => c.getAttribute('aria-pressed') === 'true';
+    const chips = [...peopleBox.querySelectorAll<HTMLButtonElement>('[data-chip]')].sort(
+      (a, b) =>
+        Number(on(b)) - Number(on(a)) ||
+        n(b) - n(a) ||
+        a.dataset.value!.localeCompare(b.dataset.value!, 'es'),
+    );
+    let suggested = 0;
+    let rest = 0;
+    chips.forEach((c, i) => {
+      c.style.order = String(i);
+      const candidate = !on(c) && (q ? fold(c.dataset.value!).includes(q) : n(c) > 0);
+      const show = on(c) || (candidate && suggested < TOP_PEOPLE);
+      if (candidate) {
+        if (show) suggested++;
+        else rest++;
+      }
+      c.hidden = !show;
+    });
+    peopleMore.hidden = rest === 0 && !(q && suggested === 0);
+    peopleMore.textContent =
+      q && suggested === 0
+        ? 'Nadie con ese nombre.'
+        : q
+          ? `y ${rest} más, afina la búsqueda`
+          : `y ${rest} más, búscalas por nombre`;
+  }
+
   function applyFilters() {
     const q = fold(search.value.trim());
     let visible = 0;
@@ -564,6 +617,7 @@ const semesters = [
       chip.querySelector('[data-chip-count]')!.textContent = String(n);
       chip.toggleAttribute('data-empty', n === 0);
     });
+    syncPeople(counts.participants);
 
     // A curso with no activities yet (the current one) always shows; one with activities
     // hides once the filter matches none of them.
@@ -602,6 +656,7 @@ const semesters = [
         setGroup('semesters', new Set());
       } else {
         setGroup(group as Group, new Set());
+        if (group === 'participants') peopleSearch.value = '';
       }
       applyFilters();
       return;
@@ -619,6 +674,7 @@ const semesters = [
 
     if (target.closest('[data-filters-clear]')) {
       search.value = '';
+      peopleSearch.value = '';
       clearCursoRange();
       groups.forEach((g) => setGroup(g, new Set()));
       applyFilters();
@@ -626,6 +682,7 @@ const semesters = [
   });
 
   search.addEventListener('input', applyFilters);
+  peopleSearch.addEventListener('input', applyFilters);
   cursoFrom.addEventListener('input', applyFilters);
   cursoTo.addEventListener('input', applyFilters);
 
