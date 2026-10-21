@@ -45,11 +45,12 @@ Las fortunas viven en [`src/data/fortunas.yaml`](./src/data/fortunas.yaml).
 ```
 
 Reglas generales de formato:
+
 - Usen siempre `quote: |-`
 - Las fortunas simples, e.g. `"me gustan los pies"`, son de una línea; si tienen "setup" también; e.g.
-    `"*luisda hablando del logo de GNOME* me gustan los pies"`, o
-    `"(a # voz en grito en el despacho) ¡Debian la chupa!"`, o
-    `"no os preoupéis, que no me voy a ir a ningún sitio *no se le volvió a ver*"`,
+  `"*luisda hablando del logo de GNOME* me gustan los pies"`, o
+  `"(a # voz en grito en el despacho) ¡Debian la chupa!"`, o
+  `"no os preoupéis, que no me voy a ir a ningún sitio *no se le volvió a ver*"`,
 - Las conversaciones también en multilínea y con `-` y `"`, e.g.:
   ```
   - Profe: "Aquí tienes tu examen"
@@ -61,6 +62,9 @@ Reglas generales de formato:
   - Si es otro random/miembro, nombre/mote, e.g. `"Epi"`
   - Comentarios, etc. al final y en minúscula, e.g. `"Pepe (un grande)"` o `"Eumelia y su perrito"`
 
+El PR ejecuta un check que comprueba que `fortunas.yaml` sigue siendo válido. Si
+sale en rojo, el log dice en qué línea está el error (casi siempre, una sangría
+de más o de menos).
 
 ## Estilo
 
