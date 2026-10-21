@@ -357,23 +357,6 @@
   poster: https://cloud-gul.uc3m.es/actividades/2025/Linux%20Install%20Party/cartel-febrero.jpg
   source: https://github.com/guluc3m/linux-install
 
-- title: GUL JAMón
-  date: 2025/09/22
-  type: Game jam
-  description: >-
-    La GUL Jamón es el evento del GUL UC3M dedicado a los videojuegos. El tema de este año es "Suben las temperaturas"
-  poster: https://pbs.twimg.com/media/G04vx8mWYAA9MIr?format=jpg&name=medium
-  photos:
-    - https://pbs.twimg.com/media/G2c1O0VWgAAf45d?format=jpg&name=medium
-  participants:
-    - Jorge Saghin
-    - Jose Antonio Verde
-    - Luis Daniel Casais
-    - name: Jorge Lázaro
-      link: https://github.com/JorgeyGari
-  link: https://itch.io/jam/gul-jamon-2025
-  tags: [Videojuegos]
-
 - title: Jornadas de Bienvenida 2025
   date: 2025/10/08
   type: Feria de Asociaciones

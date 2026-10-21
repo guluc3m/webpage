@@ -225,7 +225,6 @@
       participants:
         - Andrés Domínguez Jordán de Urríes
 
-
 - title: VI Jornadas Técnicas
   type: Jornadas Técnicas
   edition: 6
@@ -1424,8 +1423,6 @@
       tags:
         - GUL
         - Zoe
-      slides: https://cloud-gul.uc3m.es/actividades/2014/marzo/WebRTC_Luis_Lopez.pdf
-      source: https://cloud-gul.uc3m.es/actividades/2014/marzo/WebRTC_Luis_Lopez.pptx
       link: https://github.com/guluc3m/gul-zoe
       video: https://youtu.be/3ApdZpXHGns
       participants:
@@ -2043,3 +2040,75 @@
       participants:
         - name: Lisardo Prieto
           link: https://github.com/lpgonzalez
+
+- title: GUL JAMón 2025
+  type: GUL Jamón
+  edition: 3
+  url: https://itch.io/jam/gul-jamon-2025
+  poster: https://pbs.twimg.com/media/G04vx8mWYAA9MIr?format=jpg&name=medium
+  activities:
+    - title: Introducción al desarrollo de videojuegos con PyGame
+      date: 2025/09/22
+      description: >-
+        ¿Te gusta programar, pero nunca has hecho un videojuego? ¡No te preocupes, este es el lugar perfecto para empezar! Iremos paso a paso y, al final de la sesión, tendrás tu primer juego listo.
+      type: Charla
+      source: https://github.com/guluc3m/gul-jamon-game-dev-intro
+      tags:
+        - Videojuegos
+        - Pygame
+      participants:
+        - Jose Antonio Verde
+
+    - title: Crea tu propio mando de videojuegos
+      date: 2025/09/23
+      description: >-
+        ¿Qué es un videojuego sin unos buenos controles? ¿Por qué no hacer tu propio mando desde cero para que se adapte perfectamente a tu juego? ¡Con Raspberry Pi, es posible!
+      type: Taller
+      source: https://github.com/guluc3m/gul-jamon-game-dev-intro
+      tags:
+        - Videojuegos
+        - Raspberry Pi
+      participants:
+        - Jose Antonio Verde
+
+    - title: ¡Desarrolla tu juego! - Bienvenida y revelación del tema
+      description: >-
+        Ven a las aulas habilitadas para desarrollar tu videojuego. ¡Anunciaremos la temática!
+      date: 2025/09/25
+      type: Taller
+      photos:
+        - https://pbs.twimg.com/media/G1pMKC3XMAAeJA2?format=jpg&name=large
+      tags:
+        - Videojuegos
+      participants:
+        - Jose Antonio Verde
+        - Jorge Saghin
+        - Jorge Lázaro
+
+    - title: ¡Desarrolla tu juego! - El sprint final
+      description: >-
+        Ven a terminar tu juego, a preguntarnos dudas y a competir con los demás.
+      date: 2025/09/26
+      type: Taller
+      tags:
+        - Videojuegos
+      participants:
+        - Jose Antonio Verde
+        - Jorge Saghin
+        - name: Jorge Lázaro
+          link: https://github.com/JorgeyGari
+
+    - title: GUL JAMón 2025 - Acto de clausura
+      description: >-
+        Anunciaremos en vivo y en directo los juegos premiados en las distintas categorías. ¡Ven a ver los juegos, incluso si no has participado!
+      date: 2025/10/03
+      type: Congreso
+      photos:
+        - https://pbs.twimg.com/media/G2c1O0VWgAAf45d?format=jpg&name=medium
+      tags:
+        - Videojuegos
+      participants:
+        - Jose Antonio Verde
+        - Jorge Saghin
+        - Jorge Lázaro
+        - Luis Daniel Casais
