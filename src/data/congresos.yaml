@@ -1685,6 +1685,37 @@
       participants:
         - Axel Blanco
 
+- title: II Semana de Asociaciones
+  type: Semana de Asociaciones
+  edition: 2
+  poster: https://cloud-gul.uc3m.es/actividades/2015/semana2015.png
+  activities:
+    - title: Ser un Hacker
+      type: Charla
+      description: >-
+        La charla buscará informar sobre distintos campos desde el punto de vista de
+        un hacker experimentado, destacando el activismo hacker, hacking ético,
+        posibilidades, oportunidades y futuro profesional entre otras cosas. También
+        se pretende que dicha charla motive y genere interés hacia la filosofía
+        hacker.
+      date: 2015/10/05
+      slides: https://cloud-gul.uc3m.es/actividades/2015/Ser%20un%20hacker.pptx
+      participants:
+        - Adrián Borja Pimentel
+
+    - title: Linux en 90' para no desesperarte en las prácticas
+      type: Charla
+      description: >-
+        El propósito de la actividad es que los asistentes se familiaricen con el
+        Sistema Operativo Linux, especialmente en su entorno de consola, para que
+        las prácticas de la carrera desarrolladas en este entorno les sean menos
+        costosas. Se trabajarán conjuntos de comandos básicos, conjuntos de comandos
+        avanzados y se darán consejos útiles. Será impartido por estudiantes y
+        ex-estudiantes de la UC3M, algunos con más de 10 años de experiencia en
+        LINUX y que son conocedores de la formación complementaria conveniente.
+      date: 2015/10/07
+      tags: [Linux, Terminal]
+
 - title: XXVII Jornadas Técnicas
   type: Jornadas Técnicas
   edition: 27
