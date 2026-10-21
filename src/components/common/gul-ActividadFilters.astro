@@ -1,7 +1,7 @@
 ---
 /**
  * gul-ActividadFilters — columna de filtros de /actividades: búsqueda por
- * título, tipo de actividad (abierto por defecto), tags y participantes
+ * título, tema o persona, tipo de actividad (abierto por defecto), tags y participantes
  * multi-selección (chips), y fecha por rango de cursos + cuatrimestre. En
  * md+ es una columna lateral sticky; en móvil se pliega tras el botón
  * "Filtros" (CSS puro guiado por aria-expanded). Cada grupo es un <details> colapsado por
@@ -44,7 +44,7 @@ const semesters = [
       alt=""
       class="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 invert"
     />
-    <input type="search" placeholder="Buscar por título…" data-filter-search class="pl-9" />
+    <input type="search" placeholder="Título, tema o persona…" data-filter-search class="pl-9" />
   </div>
 
   <button
@@ -437,6 +437,18 @@ const semesters = [
   // Los items guardan data-tags/participants en minúsculas (ver el HTML);
   // normalizar aquí para que el estado coincida sea cual sea la capitalización.
   const norm = (s: string) => s.toLowerCase();
+  // La búsqueda ignora tildes: "jesus" encuentra a "Jesús".
+  const fold = (s: string) =>
+    s
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '')
+      .toLowerCase();
+  const searchText = new Map(
+    [...items].map((item) => [
+      item,
+      fold([item.dataset.title, item.dataset.tags, item.dataset.participants].join(' ')),
+    ]),
+  );
 
   function setGroup(group: Group, values: Set<string>) {
     selected[group] = values;
@@ -466,14 +478,14 @@ const semesters = [
   }
 
   function applyFilters() {
-    const q = search.value.trim().toLowerCase();
+    const q = fold(search.value.trim());
     let visible = 0;
     const visibleCursos = new Set<string>();
 
     items.forEach((item) => {
       const date = item.dataset.date!;
       const matches =
-        item.dataset.title!.includes(q) &&
+        searchText.get(item)!.includes(q) &&
         (selected.type.size === 0 || selected.type.has(item.dataset.type!)) &&
         (selected.tags.size === 0 ||
           item.dataset.tags!.split(',').some((t) => selected.tags.has(t))) &&
