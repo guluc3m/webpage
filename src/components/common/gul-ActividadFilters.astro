@@ -3,13 +3,14 @@
  * gul-ActividadFilters — columna de filtros de /actividades: búsqueda por
  * título, tema o persona, tipo de actividad (abierto por defecto), congresos
  * por tipo y edición — marcas un tipo y debajo aparecen las ediciones de
- * ese tipo —, tags (las más usadas, el resto tras "Ver todas") y
- * participantes (buscador + las más frecuentes) en chips multi-selección, y
- * fecha por rango de cursos + cuatrimestre. Cada chip dice cuántas
- * actividades daría. En md+ es una columna lateral sticky; en móvil se
+ * ese tipo — o "Actividades Independientes", que deja solo las actividades
+ * sueltas (excluyente con tipos y ediciones), tags (las más usadas, el resto
+ * tras "Ver todas") y participantes (buscador + las más frecuentes) en chips
+ * multi-selección, y fecha por rango de cursos + cuatrimestre. Cada chip dice
+ * cuántas actividades daría. En md+ es una columna lateral sticky; en móvil se
  * pliega tras el botón "Filtros" (CSS puro guiado por aria-expanded). Cada
- * grupo es un <details> colapsado por defecto (salvo Tipo, que va abierto)
- * con contador de seleccionados y un "Limpiar" que vacía solo ese grupo.
+ * grupo es un <details> colapsado por defecto (salvo Tipo, que va abierto) con
+ * contador de seleccionados y un "Limpiar" que vacía solo ese grupo.
  *
  * El script hace el filtrado client-side: consulta los <li data-actividad>
  * (dentro de un congreso van igual), esconde los <li data-actividad-group>
@@ -149,6 +150,21 @@ const semesters = [
                 <span class="gul-chip-count" data-chip-count></span>
               </button>
             ))}
+            {/* No es un tipo de congreso: esconde todo lo que va dentro de uno.
+                Excluyente con los tipos y ediciones (el script los limpia). */}
+            {congresoTypes.length > 0 && (
+              <button
+                type="button"
+                class="gul-chip"
+                data-chip="congresoNone"
+                data-value="ninguno"
+                aria-pressed="false"
+                title="Solo actividades sueltas, fuera de los congresos"
+              >
+                Actividades Independientes
+                <span class="gul-chip-count" data-chip-count></span>
+              </button>
+            )}
           </div>
           {/* Las ediciones de los tipos marcados; sin tipo marcado la fila no
               sale (el script la muestra al marcar). Cada chip lleva su tipo
@@ -517,11 +533,13 @@ const semesters = [
     | 'participants'
     | 'semesters'
     | 'congresoType'
-    | 'congresoEdition';
+    | 'congresoEdition'
+    | 'congresoNone';
   const groups: Group[] = [
     'type',
     'congresoType',
     'congresoEdition',
+    'congresoNone',
     'tags',
     'participants',
     'semesters',
@@ -533,6 +551,20 @@ const semesters = [
     semesters: new Set(),
     congresoType: new Set(),
     congresoEdition: new Set(),
+    congresoNone: new Set(),
+  };
+
+  // "Actividades Independientes" y los tipos/ediciones de congreso se
+  // excluyen: marcar uno limpia los otros (ver el click handler y el "Limpiar"
+  // del grupo).
+  const exclusive: Record<Group, Group[]> = {
+    type: [],
+    tags: [],
+    participants: [],
+    semesters: [],
+    congresoType: ['congresoNone'],
+    congresoEdition: ['congresoNone'],
+    congresoNone: ['congresoType', 'congresoEdition'],
   };
 
   // Rango de cursos. Los tiradores se pueden cruzar: el rango es siempre del
@@ -605,7 +637,9 @@ const semesters = [
         group === 'fecha'
           ? fechaBadge()
           : group === 'congreso'
-            ? selected.congresoType.size + selected.congresoEdition.size
+            ? selected.congresoType.size +
+              selected.congresoEdition.size +
+              selected.congresoNone.size
             : selected[group as Group].size;
       badge.textContent = String(n);
       badge.hidden = n === 0;
@@ -620,8 +654,11 @@ const semesters = [
     // que vaciar; la búsqueda de arriba la limpia el "Limpiar filtros".
     const groupDirty: Record<string, boolean> = {
       type: selected.type.size > 0,
-      // El grupo Congresos lleva tipos y ediciones; los considera juntos.
-      congreso: selected.congresoType.size > 0 || selected.congresoEdition.size > 0,
+      // El grupo Congresos lleva tipos, ediciones y "ninguno"; los considera juntos.
+      congreso:
+        selected.congresoType.size > 0 ||
+        selected.congresoEdition.size > 0 ||
+        selected.congresoNone.size > 0,
       tags: selected.tags.size > 0,
       fecha: rangeActive() || selected.semesters.size > 0,
       participants: selected.participants.size > 0,
@@ -647,6 +684,8 @@ const semesters = [
     // un tipo marcado y de una edición marcada.
     congresoType: (item) => (item.dataset.congresoType ? [item.dataset.congresoType] : []),
     congresoEdition: (item) => (item.dataset.extra ? [item.dataset.extra] : []),
+    // "ninguno" marca justo las sueltas: las que no llevan tipo de congreso.
+    congresoNone: (item) => (item.dataset.congresoType ? [] : ['ninguno']),
     tags: (item) => list(item.dataset.tags!),
     participants: (item) => list(item.dataset.participants!),
     semesters: (item) => [semesterOf(item.dataset.date!)],
@@ -726,7 +765,11 @@ const semesters = [
       const matches = base && failed.length === 0;
       if (base) {
         for (const g of groups) {
-          if (failed.length > 1 || (failed.length === 1 && failed[0] !== g)) continue;
+          // Las opciones de Congresos son excluyentes, así que al contar una se
+          // ignora lo marcado en las otras: al pulsarla se limpian, y el número
+          // tiene que decir qué daría al pulsarla.
+          const blockers = failed.filter((f) => f !== g && !exclusive[g].includes(f));
+          if (blockers.length > 0) continue;
           for (const v of valuesOf[g](item)) counts[g].set(v, (counts[g].get(v) ?? 0) + 1);
         }
       }
@@ -776,8 +819,10 @@ const semesters = [
       const group = chip.dataset.chip as Group;
       const value = norm(chip.dataset.value!);
       const next = new Set(selected[group]);
-      if (next.has(value)) next.delete(value);
-      else next.add(value);
+      const adding = !next.has(value);
+      if (adding) next.add(value);
+      else next.delete(value);
+      if (adding) exclusive[group].forEach((other) => setGroup(other, new Set()));
       setGroup(group, next);
       applyFilters();
       return;
@@ -788,6 +833,8 @@ const semesters = [
     const add = target.closest<HTMLButtonElement>('[data-filter-add]');
     if (add) {
       const group = add.dataset.filterAdd as Group;
+      // Un tipo de una tarjeta también quita "ninguno" (se excluyen).
+      exclusive[group].forEach((other) => setGroup(other, new Set()));
       setGroup(group, new Set(selected[group]).add(norm(add.dataset.value!)));
       applyFilters();
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -799,13 +846,14 @@ const semesters = [
     if (clearGroup) {
       const group = clearGroup.dataset.clearGroup;
       // El grupo Fecha cuenta curso y cuatrimestre juntos; los limpia a la
-      // vez. Congresos igual: tipos y ediciones de un tirón.
+      // vez. Congresos igual: tipos, ediciones y "ninguno" de un tirón.
       if (group === 'fecha') {
         clearCursoRange();
         setGroup('semesters', new Set());
       } else if (group === 'congreso') {
         setGroup('congresoType', new Set());
         setGroup('congresoEdition', new Set());
+        setGroup('congresoNone', new Set());
       } else {
         setGroup(group as Group, new Set());
         if (group === 'participants') peopleSearch.value = '';
