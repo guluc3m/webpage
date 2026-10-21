@@ -49,13 +49,20 @@ const ICONS: Record<string, string> = {
               target="_blank"
               rel="noopener"
               aria-label={s.label}
-              class="opacity-80 hover:opacity-100"
+              class="group relative opacity-80 hover:opacity-100"
             >
               {/* loading="lazy": these SVGs draw themselves in once on load (fill-freeze
                   animate) - eager-loading would finish that draw off-screen before the
                   footer ever scrolls into view, so it'd look static. Lazy loading defers
                   the fetch (and the animation) until it's actually visible. */}
-              <img src={ICONS[s.icon]} alt="" loading="lazy" class="h-8 w-8 invert" />
+              <img src={ICONS[s.icon]} alt={s.label + " icon"} loading="lazy" class="h-8 w-8 invert" />
+              {/* CSS-only hover name tag. */}
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute top-full left-1/2 z-10 mt-1 -translate-x-1/2 border border-gul-line bg-gul-bg px-1.5 py-0.5 font-heading text-[0.625rem] whitespace-nowrap text-gul-ink opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+              >
+                {s.label}
+              </span>
             </a>
           ))}
         </p>
