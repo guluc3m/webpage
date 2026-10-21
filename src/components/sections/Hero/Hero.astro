@@ -178,11 +178,21 @@ const fortuna = formattedFortunas[fortunaIndex];
 
     // "r" re-rolls from anywhere, except while typing (inputs, textareas,
     // contenteditable) or when a modifier makes it someone else's shortcut.
-    // Rate-limited so holding the key down doesn't burn through every fortuna.
+    // One fortuna per press: holding the key would otherwise auto-repeat
+    // through every fortuna, so the key has to be released first. The cooldown
+    // still caps frantic tapping.
     const REROLL_COOLDOWN_MS = 200;
     let lastReroll = 0;
+    let rHeld = false;
+    const isR = (event: KeyboardEvent) => event.key === 'r' || event.key === 'R';
+    document.addEventListener('keyup', (event) => {
+      if (isR(event)) rHeld = false;
+    });
+    // A keyup lost to another window would leave the key "held" for good.
+    window.addEventListener('blur', () => (rHeld = false));
     document.addEventListener('keydown', (event) => {
-      if (event.key !== 'r' && event.key !== 'R') return;
+      if (!isR(event)) return;
+      if (event.repeat || rHeld) return;
       if (event.metaKey || event.ctrlKey || event.altKey) return;
       const target = event.target as HTMLElement | null;
       if (
@@ -193,6 +203,7 @@ const fortuna = formattedFortunas[fortunaIndex];
       ) {
         return;
       }
+      rHeld = true;
       const now = performance.now();
       if (now - lastReroll < REROLL_COOLDOWN_MS) return;
       lastReroll = now;
