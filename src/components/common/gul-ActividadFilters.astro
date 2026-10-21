@@ -18,6 +18,7 @@ import searchIcon from '@icons/ui/search.svg?url';
 interface Props {
   /** Tipos de actividad (`type`), en orden fijo. */
   types: string[];
+  /** Más usadas primero: las TOP_TAGS primeras se ven sin desplegar. */
   tags: string[];
   participants: string[];
   /** Cursos (años de inicio, p.ej. 2025 para 2025/26), más nuevo primero. */
@@ -28,6 +29,10 @@ const { types, tags, participants, cursos } = Astro.props;
 const minCurso = Math.min(...cursos);
 const maxCurso = Math.max(...cursos);
 const cursoLabel = (curso: number) => `${curso}/${String(curso + 1).slice(2)}`;
+
+// Con 80+ etiquetas, la mitad usadas una sola vez, verlas todas de golpe
+// esconde las importantes; el resto queda tras "Ver todas".
+const TOP_TAGS = 12;
 
 // Cuatrimestres dentro de un curso: el 1.º va de sep a ene y el 2.º de feb a
 // ago (febrero es ya segundo cuatrimestre en la UC3M).
@@ -121,23 +126,40 @@ const semesters = [
       </summary>
       <div>
         <div class="pb-4">
-          <div class="flex flex-wrap gap-1.5" data-chip-group="tags">
-            {tags.map((t) => (
+          <div
+            id="gul-tags-chips"
+            class="flex flex-wrap gap-1.5"
+            data-chip-group="tags"
+            data-collapsed
+          >
+            {tags.map((t, i) => (
               <button
                 type="button"
                 class="gul-chip"
                 data-chip="tags"
                 data-value={t}
+                data-overflow={i >= TOP_TAGS ? '' : undefined}
                 aria-pressed="false"
               >
                 {t}
               </button>
             ))}
           </div>
-          <div class="pt-2">
+          <div class="flex justify-between pt-2">
             <button type="button" class="gul-mini" data-clear-group="tags">
               Limpiar
             </button>
+            {tags.length > TOP_TAGS && (
+              <button
+                type="button"
+                class="gul-mini"
+                aria-expanded="false"
+                aria-controls="gul-tags-chips"
+                data-tags-more
+              >
+                Ver todas ({tags.length})
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -308,6 +330,12 @@ const semesters = [
   .gul-chip[aria-pressed='true']::before {
     content: '✓ ';
     color: var(--color-gul-blue);
+  }
+
+  /* Etiquetas recogidas: fuera de las más usadas solo se ven las elegidas,
+     para que una selección no desaparezca al recoger la lista. */
+  [data-collapsed] > [data-overflow]:not([aria-pressed='true']) {
+    display: none;
   }
 
   /* Slider de cursos: dos inputs range apilados con el carril vacío. Solo los
@@ -539,6 +567,16 @@ const semesters = [
         setGroup(group as Group, new Set());
       }
       applyFilters();
+      return;
+    }
+
+    const more = target.closest<HTMLButtonElement>('[data-tags-more]');
+    if (more) {
+      const chips = document.getElementById(more.getAttribute('aria-controls')!)!;
+      const expand = more.getAttribute('aria-expanded') !== 'true';
+      chips.toggleAttribute('data-collapsed', !expand);
+      more.setAttribute('aria-expanded', String(expand));
+      more.textContent = expand ? 'Ver menos' : `Ver todas (${chips.children.length})`;
       return;
     }
 
