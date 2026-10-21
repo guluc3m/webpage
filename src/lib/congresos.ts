@@ -13,7 +13,7 @@ import {
 
 // Tipo de congreso: vocabulario cerrado. Cada congreso declara el suyo y su
 // número de edición de ese tipo.
-export const CONGRESO_TYPES = ['GUL Jamón', 'Jornadas Técnicas'] as const;
+export const CONGRESO_TYPES = ['GUL Jamón', 'Jornadas Técnicas', 'Semana de Asociaciones'] as const;
 export type CongresoType = (typeof CONGRESO_TYPES)[number];
 
 export interface Congreso {

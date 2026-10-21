@@ -10,9 +10,520 @@
 # - activities (charlas y talleres del congreso; mismos campos y reglas que en
 #   actividades.yaml: date yyyy/mm/dd, participants reutilizan links, etc.)
 
+- title: II Jornadas Técnicas
+  type: Jornadas Técnicas
+  edition: 2
+  activities:
+    - title: Linux como alternativa a Windows
+      date: 2002/12/01
+      type: Charla
+      slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/alternativa.pdf.gz
+      tags: [Linux]
+      participants:
+        - Diego Gómez Díaz
+
+    - title: 'IPv6: Introducción y configuración en GNU/Linux'
+      date: 2002/11/28
+      type: Charla
+      slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/IPv6_gul.pdf.gz
+      tags: [IPv6]
+      participants:
+        - Carlos Jesús Bernardos Cano
+
+    - title: Curso de Comandos Básicos
+      date: 2003/11/28  # en la fecha del archivo pone 2003/11/12, pero me voy a inventar el día
+      type: Charla
+      slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/comandos_basicos.pdf.gz
+      source: https://cloud-gul.uc3m.es/actividades/2002/noviembre/comandos_basicos.src.tar.gz
+      tags: [Linux, Terminal]
+      participants:
+        - name: Jesús Espino García
+          link: https://github.com/jespino
+        - Jesús Lanchas Sampablo
+
+    - title: Instalación de Debian GNU/Linux
+      date: 2003/12/11
+      type: Install party
+      slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/instalacion_debian.ps.gz
+      tags: [Linux]
+      participants:
+        - Jesús Espino García
+        - Jesús Lanchas Sampablo
+
+    - title: Curso de Correo Electrónico - Postfix
+      date: 2002/12/01
+      type: Charla
+      tags: [Postfix]
+      participants:
+        - Sergio Hernández Rueda
+        - Juan Jose Rodríguez Buleo
+
+- title: III Jornadas Técnicas
+  type: Jornadas Técnicas
+  edition: 3
+  activities:
+    - title: Curso de Octave
+      date: 2003/04/03
+      type: Charla
+      slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/curso_octave.pdf.gz
+      tags: [Octave]
+      participants:
+        - Pablo Barrera González
+
+    - title: Introducción a AWK
+      date: 2003/04/08
+      type: Charla
+      tags: [AWK]
+      slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_awk.pdf.gz
+      source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_awk_src.tgz
+      participants:
+        - Jesús Espino García
+
+    - title: Curso de Bash
+      date: 2004/03/24
+      type: Charla
+      tags: [Bash]
+      slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_bash.pdf
+      source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_bash.tex
+      participants:
+        - Raúl Caballo Ortega
+
+    - title: Aplicaciones web con Java
+      date: 2003/04/03
+      type: Charla
+      tags: [Java]
+      slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso-java.pdf.gz
+      source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_java_src.tgz
+      participants:
+        - Raúl Caballo Ortega
+        - Álvaro Sánchez-Mariscal
+
+    - title: II Curso de introducción a CVS
+      date: 2003/04/02
+      type: Charla
+      tags: [CVS]
+      slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso-cvs.pdf.gz
+      source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso-cvs_src.tgz
+      participants:
+        - Álvaro Sánchez-Mariscal
+
+    - title: Java y Software Libre
+      date: 2003/04/04
+      type: Charla
+      tags: [Java, Software Libre]
+      slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso-java-swlibre.pdf.gz
+      source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso-java-swlibre_src.tgz
+      participants:
+        - Álvaro Sánchez-Mariscal
+
+    - title: Perl básico
+      date: 2003/03/18
+      type: Charla
+      tags: [Perl]
+      slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_perl.pdf.gz
+      participants:
+        - Raúl Caballo Ortega
+
+    - title: ¿Qué es el Software Libre?
+      date: 2003/03/31
+      type: Charla
+      tags: [Software Libre]
+      slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_sl.pdf.gz
+      source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_sl.pdf.gz
+      participants:
+        - Pablo Barrera González
+        - Sergio Gutiérrez Santos
+
+    - title: Curso avanzado de LaTeX (2a parte)
+      date: 2003/03/31
+      type: Charla
+      slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/LaTeX_avanzado_2.pdf.gz
+      tags: [LaTeX]
+      participants:
+        - Miguel Ángel Hernández Jiménez
+
+    - title: IV Charla sobre LaTeX (parte I)
+      # date: 2003/04/05  # esto es lo que pone en las traspas, pero tiene cero sentido...
+      date: 2003/04/03
+      type: Charla
+      slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latex_I.pdf.gz
+      tags: [LaTeX]
+      participants:
+        - Javier Sánchez-Arévalo Díaz
+
+    - title: IV Charla sobre LaTeX (parte II) - Entornos Matemáticos
+      date: 2003/04/03
+      type: Charla
+      slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latexII-matematico.pdf.gz
+      source: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latexII-codigo-tex.tgz
+      tags: [LaTeX]
+
+    - title: IV Charla sobre LaTeX (parte III) - Índice y Bibliografía
+      date: 2003/04/03
+      type: Charla
+      slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latexII-indice-bibliografia.pdf.gz
+      source: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latexII-codigo-tex.tgz
+      tags: [LaTeX]
+
+    - title: Curso de LaTeX (continuación)
+      date: 2004/03/24
+      type: Charla
+      source: https://cloud-gul.uc3m.es/actividades/2002/noviembre/LaTeX-src.tar.gz
+      tags: [LaTeX]
+      participants:
+        - Sergio Gil Pérez de la Manga
+
+- title: IV Jornadas Técnicas
+  type: Jornadas Técnicas
+  edition: 4
+  activities:
+    - title: PHP + MySQL
+      date: 2003/11/12
+      type: Charla
+      tags: [PHP, MySQL]
+      slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/charla_php.tar.gz
+      description: Capitulo de Estudiantes de ACM de la URJC
+      participants:
+        - Miguel Ángel Hernando Fernández
+
+    - title: Seguridad GNU/Linux
+      date: 2003/11/12
+      type: Charla
+      description: Capitulo de Estudiantes de ACM de la URJC
+      tags: [Ciberseguridad]
+      slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/charla_seguridad.tar.gz
+      participants:
+        - Álvaro Navarro Clemente
+        - Jaime Pérez Crespo
+
+    - title: Curso de LaTeX
+      date: 2003/11/11
+      type: Charla
+      slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/latex_trans.ps.gz
+      tags: [LaTeX]
+      participants:
+        - Ramón Casero Cañas
+
+- title: V Jornadas Técnicas
+  type: Jornadas Técnicas
+  edition: 5
+  activities:
+    - title: Curso de Vim
+      date: 2004/04/01
+      type: Charla
+      tags: [Vim]
+      slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_vim.pdf.gz
+      source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_vim_src.tar.gz
+      participants:
+        - Jesús Espino García
+
+    - title: Programación gráfica con gtk+
+      date: 2004/03/25
+      type: Charla
+      tags: [GIMP]
+      source: https://cloud-gul.uc3m.es/actividades/2003/marzo/gtk_html.tar.gz
+      participants:
+        - Andrés Domínguez Jordán de Urríes
+
+
+- title: VI Jornadas Técnicas
+  type: Jornadas Técnicas
+  edition: 6
+  activities:
+    - title: Introducción a Bacula
+      date: 2005/11/21 # del vídeo sólo pude sacar "lunes 21", y justo coincide que el 2005/11/21 fue lunes... menuda puta potra
+      type: Charla
+      tags: [Bacula]
+      video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Bacula/bacula-video.ogg
+      description: Estructura de un servicio de backup genérico y su aplicación usando Bacula
+      participants:
+        - José Manuel Ferrer
+
+    - title: Comandos Básicos de Unix
+      date: 2005/11/16
+      type: Charla
+      tags: [Linux, Terminal]
+      slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Comandos_Basicos/Comandos_Basicos_Noviemtre_2005.pdf
+      source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Comandos_Basicos/Comandos_Basicos_Noviemtre_2005.tex
+      participants:
+        - Claudio Jiménez Castillo
+
+- title: VII Jornadas Técnicas
+  type: Jornadas Técnicas
+  edition: 7
+  activities:
+    - title: Introducción a Java
+      date: 2005/11/24
+      type: Charla
+      tags: [Java]
+      slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Curso%20Java%20-%20GUL%20-%20UC3M/curso_java.pdf
+      source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Curso%20Java%20-%20GUL%20-%20UC3M/
+      participants:
+        - Fernando Cerezal López
+
+    - title: Curso de Orientación a Objetos
+      date: 2005/11/24
+      type: Charla
+      tags: [Programación]
+      slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Curso%20Orientacion%20Objetos%20-%20GUL%20-%20UC3M/curso_oo.pdf
+      source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Curso%20Orientacion%20Objetos%20-%20GUL%20-%20UC3M/
+      participants:
+        - Fernando Cerezal López
+
+    - title: Curso de GIMP
+      date: 2005/11/22 # lo he sacao del minuto 00:11:02 del vídeo
+      type: Charla
+      tags: [GIMP]
+      video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/gimp/gimp-video.ogg
+      participants:
+        - Luis de Bethencourt
+
+    - title: Montaje e instalación de ordenadores
+      date: 2005/11/16 # 00:50:23 en el vídeo :3
+      type: Charla
+      tags: [Hardware]
+      video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Montaje_PC/montajepc-video.ogg
+      participants:
+        - name: Roberto Muñoz Gómez
+          link: https://github.com/queltosh
+
+    - title: Introducción a Perl
+      date: 2005/11/21 # alrededor de 00:24:25 he leído algo de 'lun 21'
+      type: Charla
+      tags: [Perl]
+      video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Perl/perl-video.ogg
+      participants:
+        - José Manuel Ferrer
+        - J. J. Rodríguez Buleo
+
+    - title: Presentación del GUL
+      date: 2004/11/08
+      type: Charla
+      tags: [GUL]
+      slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Presentacion%20del%20GUL%20-%20GUL%20UC3M/presentacion.beamer.pdf
+      source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Presentacion%20del%20GUL%20-%20GUL%20UC3M/
+
+    - title: Programación en Python
+      date: 2004/11/18
+      type: Charla
+      tags: [Python]
+      slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Programacion%20en%20Python%20-%20GUL%20UC3M/python.beamer.pdf
+      source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Programacion%20en%20Python%20-%20GUL%20UC3M/
+      participants:
+        - Jesús Espino García
+
+    - title: Desarrolo de aplicaciones Python-GTK
+      date: 2005/11/23
+      type: Charla
+      tags: [Python]
+      slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Python%20GTK%20-%20GUL%20UC3M/pygtk.beamer.pdf
+      source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Python%20GTK%20-%20GUL%20UC3M/
+      video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Python%20GTK%20-%20GUL%20UC3M/python-gtk-video.ogg
+      participants:
+        - Jesús Espino García
+
+    - title: ¿Qué es el software libre?
+      date: 2005/11/23
+      type: Charla
+      tags: [Software Libre]
+      slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Que%20es%20el%20Software%20Libre%20-%20GUL%20UC3M/software_libre.beamer.pdf
+      source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Que%20es%20el%20Software%20Libre%20-%20GUL%20UC3M/
+      participants:
+        - Jesús Espino García
+
+    - title: Ruby on Rails, Ajax y Web2.0
+      date: 2005/11/29
+      type: Charla
+      tags: [Ruby on Rails]
+      source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/ruby_on_rails_ajax_web2.0_gul_uc3m/rails.tar.gz
+      video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/ruby_on_rails_ajax_web2.0_gul_uc3m/ruby-video.ogg
+      participants:
+        - Felipe Talavera Armero
+
+    - title: Tarde de Web (parte 1)
+      date: 2005/11/18
+      type: Charla
+      tags: [HTML, Apache, PostgreSQL, PHP]
+      video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Tarde%20de%20Web%20-%20GUL%20UC3M/tardeweb1-video.ogg
+      slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Tarde%20de%20Web%20-%20GUL%20UC3M/iso-latin-1/pdf/index.pdf
+      source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Tarde%20de%20Web%20-%20GUL%20UC3M/iso-latin-1/
+      participants:
+        - David Muñoz Díaz
+
+    - title: Tarde de Web (parte 2)
+      date: 2005/11/18
+      type: Charla
+      tags: [HTML, Apache, PostgreSQL, PHP]
+      video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Tarde%20de%20Web%20-%20GUL%20UC3M/tardeweb-II-video.ogg
+      source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Tarde%20de%20Web%20-%20GUL%20UC3M/iso-latin-1/
+      participants:
+        - David Muñoz Díaz
+
+    - title: Introducción a UML
+      date: 2005/11/19 # me lo he inventao
+      type: Charla
+      tags: [UML]
+      video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/uml/uml-video.ogg
+      participants:
+        - Vicente Palacios
+
+- title: VIII Jornadas Técnicas
+  type: Jornadas Técnicas
+  edition: 8
+  activities:
+    - title: Creación de distribuciones con GenDist
+      date: 2006/04/30 # 00:43:34 Thu Mar 30
+      type: Charla
+      tags: [Linux]
+      video: https://cloud-gul.uc3m.es/actividades/2006/marzo/GenDist/gendist-video.ogg
+      participants:
+        - Jesús Espino García
+
+    - title: 'Programación Funcional: Haskell'
+      date: 2006/04/03
+      type: Charla
+      tags: [Haskell]
+      video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Haskell/Gul-Haskell-03-04-06.mpg
+      participants:
+        - Federico G. Mon Trotti
+        - Jesús Espino García
+
+    - title: JavaScript - El lenguaje de los navegadores
+      date: 2006/03/31
+      type: Charla
+      tags: [JavaScript]
+      source: https://cloud-gul.uc3m.es/actividades/2006/marzo/JavaScript/javascript.tar.gz
+      participants:
+        - Víctor Pimentel Rodríguez
+
+    - title: Introducción a Blender
+      date: 2006/03/22 # 00:02:33 'mie'... asumo que es el 22
+      type: Charla
+      tags: [Blender]
+      video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Blender/blender-video.ogg
+      participants:
+        - Luis de Bethencourt
+
+    - title: Joomla!
+      date: 2006/04/30 # lleva la misma ropa que en la charla de GenDist
+      type: Charla
+      tags: [Joomla]
+      video: https://cloud-gul.uc3m.es/actividades/2006/marzo/joomla/joomla-video.ogg
+      participants:
+        - Jesús Espino García
+
+    - title: LaTeX - La imprenta en casa
+      date: 2006/03/29
+      type: Charla
+      tags: [LaTeX]
+      slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/LaTeX/latex.pdf
+      video: https://cloud-gul.uc3m.es/actividades/2006/marzo/LaTeX/latex-video.ogg
+      source: https://cloud-gul.uc3m.es/actividades/2006/marzo/LaTeX/latex.tex
+      participants:
+        - Sergio Gil Pérez de la Manga
+        - Juan Ramón Martín Blanco
+
+    - title: LaTeX avanzado - Pero avanzado que te cagas
+      date: 2006/03/29
+      type: Charla
+      tags: [LaTeX]
+      slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/LaTeX%202/latex2prn.pdf
+      video: https://cloud-gul.uc3m.es/actividades/2006/marzo/LaTeX%202/latex-avanzado-video.ogg
+      source: https://cloud-gul.uc3m.es/actividades/2006/marzo/LaTeX%202/latex2.tar.bz2
+      participants:
+        - Sergio Gil Pérez de la Manga
+
+    - title: 'LUC3M: El Linux de la Carlos III'
+      date: 2006/03/27
+      type: Charla
+      tags: [Linux]
+      video: https://cloud-gul.uc3m.es/actividades/2006/marzo/LUC3M/Gul-LUC3M-27-03-06.mpg
+      participants:
+        - Jesús Espino García
+
+    - title: Mono - .Net libre
+      date: 2006/04/03
+      type: Charla
+      tags: [.NET]
+      slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/Mono/mono_net_libre.pdf
+      video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Mono/Gul-MonoNetLibre-03-04-06.mpg
+      source: https://cloud-gul.uc3m.es/actividades/2006/marzo/Mono/mono_net_libre.tex
+      participants:
+        - name: Samuel Rodríguez Sevilla
+          link: https://github.com/laparca
+
+    - title: Introducción a OpenGL
+      date: 2006/03/22 # misma ropa que en la de Blender
+      type: Charla
+      tags: [OpenGL]
+      video: https://cloud-gul.uc3m.es/actividades/2006/marzo/OpenGL/opengl-video.ogg
+      participants:
+        - Luis de Bethencourt
+
+    - title: Sistemas RAID en Linux
+      date: 2006/04/06
+      type: Charla
+      tags: [RAID]
+      video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Raid/Gul-RAID-06-04-06.mpg
+      participants:
+        - name: Alejandro Calderón Mateos
+          link: https://researchportal.uc3m.es/display/inv15001
+
+    - title: Montaje de una red doméstica
+      date: 2006/03/28
+      type: Charla
+      tags: [Redes]
+      slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/Red_domestica/red_domestica.pdf
+      source: https://cloud-gul.uc3m.es/actividades/2006/marzo/Red_domestica/red_domestica.tex
+      participants:
+        - Fernando Cerezal López
+
+    - title: Seguridad en Red
+      date: 2006/04/07
+      type: Charla
+      tags: [Ciberseguridad, Redes]
+      slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/Seguridad_en_red/Seguridad%20en%20Red.pdf
+      participants:
+        - Javier Sánchez-Arévalo Díaz
+
+    - title: Seguridad en Linux
+      date: 2006/04/07
+      type: Charla
+      tags: [Ciberseguridad]
+      video: https://cloud-gul.uc3m.es/actividades/2006/marzo/SeguridadEnLinux/Gul-SeguridadEnLinux-07-04-06.mpg
+
+    - title: Sistemas de Ficheros
+      date: 2006/04/06
+      type: Charla
+      tags: [Ficheros]
+      video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Sistemas%20de%20Ficheros/Gul-SistemasDeFicheros-06-04-06.mpg
+      slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/Sistemas%20de%20Ficheros/sistemas_de_ficheros.odp
+      participants:
+        - Jesús Espino García
+
+    - title: 'Subversion: Desarrollo colaborativo'
+      date: 2006/04/04
+      type: Charla
+      tags: [Subversion]
+      slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/Subversion/subversion-2006.pdf
+      video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Subversion/Gul-Subversion-04-04-06.mpg
+      source: https://cloud-gul.uc3m.es/actividades/2006/marzo/Subversion/Subversion%20-%20codigo%202006.tar.gz
+      participants:
+        - Claudio Jiménez Castillo
+
+    - title: Vim
+      date: 2006/04/05
+      type: Charla
+      tags: [Vim]
+      slides: https://cloud-gul.uc3m.es/actividades/2006/marzo/Vim/vim-2006.pdf
+      video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Vim/Gul-Vim-05-04-06.ogv
+      source: https://cloud-gul.uc3m.es/actividades/2006/marzo/Vim/vim-codigo-2006.tar.gz
+      participants:
+        - Claudio Jiménez Castillo
+
 - title: IX Jornadas Técnicas
   type: Jornadas Técnicas
-  edition: 9
+  edition: 9  # porque lo pone en las transpas de la primera charla
   activities:
     - title: Empezando con GNU/Linux
       date: 2007/03/19
@@ -25,7 +536,7 @@
     - title: Clustering de alta disponibilidad
       date: 2007/03/26
       type: Charla
-      tags: []
+      tags: [HPC]
       slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/clustering/clustering.odp
       participants:
         - Héctor Cordobés
@@ -46,6 +557,70 @@
         - Programación
       slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/threads/slides.pdf
       source: https://cloud-gul.uc3m.es/actividades/2007/marzo/threads/slides.odp
+    - title: Curso de Joomla
+      date: 2007/03/27 # 00:08:00... he cogido la fecha más alta
+      type: Charla
+      tags: [Joomla]
+      video: https://cloud-gul.uc3m.es/actividades/2007/marzo/joomla/joomla-video.ogg
+      participants:
+        - Jesús Espino García
+        - Franck Scipion
+
+    - title: LaTeX - Introducción
+      date: 2007/03/22
+      type: Charla
+      tags: [LaTeX]
+      slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/LaTeX/latex-intro.pdf
+      participants:
+        - Sergio Gil Pérez de la Manga
+
+    - title: Participación en el Software Libre
+      date: 2007/03/20
+      type: Charla
+      tags: [Software Libre]
+      slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/participacionSL/curso_Participacion.pdf
+      participants:
+        - Fernando Cerezal López
+
+    - title: ¿Qué es el Software Libre?
+      date: 2007/03/20
+      type: Charla
+      tags: [Software Libre]
+      slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/queEsElSL/curso_SL.pdf
+      participants:
+        - Fernando Cerezal López
+
+    - title: Montaje de una red doméstica
+      date: 2007/03/21
+      type: Charla
+      tags: [Redes]
+      slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/redDomestica/red_domestica.pdf
+      participants:
+        - Fernando Cerezal López
+
+    - title: Ruby on Rails - Desarrollo web que no duele
+      date: 2007/03/29
+      type: Charla
+      tags: [Ruby on Rails]
+      slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/RubyOnRails/ror.pdf
+      participants:
+        - Sergio Gil Pérez de la Manga
+
+    - title: Tarde de Web 2007
+      date: 2007/03/23
+      type: Charla
+      tags: [Web]
+      slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/tarde_de_web/tarde_de_web_2007.pdf
+      source: https://cloud-gul.uc3m.es/actividades/2007/marzo/tarde_de_web/Cabaret.tar.gz
+
+    - title: 'Virtualización: Introducción y toma de contacto'
+      date: 2007/03/25
+      type: Charla
+      tags: [Virtualización]
+      slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/virtualizacion/jt2007.pdf
+      participants:
+        - Alejandro Calderón Mateos
+
 - title: X Jornadas Técnicas
   type: Jornadas Técnicas
   edition: 10
@@ -76,7 +651,7 @@
       source: https://cloud-gul.uc3m.es/actividades/2007/noviembre/Vim/vim-11-2007_fuentes.zip
       participants:
         - Jose María Chumo Mata
-    - title: 'LaTeX: La imprenta en casa'
+    - title: "LaTeX: La imprenta en casa"
       date: 2007/11/14
       type: Charla
       tags:
@@ -84,6 +659,7 @@
       source: https://cloud-gul.uc3m.es/actividades/2007/noviembre/LaTeX/LaTeX_nov_2007.zip
       participants:
         - David Muñoz Díaz
+
 - title: XI Jornadas Técnicas
   type: Jornadas Técnicas
   edition: 11
@@ -92,6 +668,7 @@
       date: 2008/03/04
       type: Charla
       tags:
+        - HPC
         - Linux
       slides: https://cloud-gul.uc3m.es/actividades/2008/marzo/AltaDisponibilidad/AltaDisponibilidad-BalanceoCarga.odp
       participants:
@@ -163,6 +740,7 @@
       participants:
         - Víctor M. Fernández Gómez
   poster: https://cloud-gul.uc3m.es/actividades/2008/marzo/carteles/cartel_v2_3.png
+
 - title: XII Jornadas Técnicas
   type: Jornadas Técnicas
   edition: 12
@@ -239,7 +817,7 @@
       video: https://cloud-gul.uc3m.es/actividades/2009/marzo/Soluciones%20Profesionales%20Correo%20Software%20Libre/Soluciones%20Profesionales%20Correo%20Software%20Libre.ogg
       participants:
         - Javier Turégano Molina
-    - title: 'GNU build system (Autotools): Autoconf, Automake y Libtool'
+    - title: "GNU build system (Autotools): Autoconf, Automake y Libtool"
       date: 2009/03/12
       type: Charla
       tags:
@@ -270,9 +848,10 @@
       source: https://cloud-gul.uc3m.es/actividades/2009/marzo/Mejorando%20el%20rendimiento%20de%20tu%20Linux/
       participants:
         - Jesús Espino García
-- title: XIII Jornadas Técnicas
+
+- title: XIV Jornadas Técnicas
   type: Jornadas Técnicas
-  edition: 13
+  edition: 14
   activities:
     - title: Introducción a Linux
       date: 2009/10/26
@@ -318,9 +897,10 @@
       slides: https://cloud-gul.uc3m.es/actividades/2009/noviembre/servicios_nube/Desplegando_Servicios_en_la_Nube.odp
       participants:
         - Javier Turégano Molina
-- title: XIV Jornadas Técnicas
+
+- title: XV Jornadas Técnicas
   type: Jornadas Técnicas
-  edition: 14
+  edition: 15
   activities:
     - title: Computación voluntaria (BOINC)
       date: 2010/03/01
@@ -414,7 +994,7 @@
       source: https://cloud-gul.uc3m.es/actividades/2010/marzo/memoria_dinamica/Memoria%20Dinamica.odp
       participants:
         - Tania Pérez
-    - title: 'Xplico: concept, features, demo'
+    - title: "Xplico: concept, features, demo"
       date: 2010/03/10
       type: Charla
       tags:
@@ -456,9 +1036,10 @@
       video: https://cloud-gul.uc3m.es/actividades/2010/marzo/ruby/ruby.mpg
       participants:
         - David Muñoz Díaz
-- title: XV Jornadas Técnicas
+
+- title: XVI Jornadas Técnicas
   type: Jornadas Técnicas
-  edition: 15
+  edition: 16
   activities:
     - title: Herramientas libres para hacer prácticas
       date: 2010/11/09
@@ -509,9 +1090,10 @@
       slides: https://cloud-gul.uc3m.es/actividades/2010/noviembre/desarrollando_aplicaciones_para_Android/Desarrollando%20aplicaciones%20para%20Android.pdf
       participants:
         - Tania Pérez
-- title: XVI Jornadas Técnicas
+
+- title: XVII Jornadas Técnicas
   type: Jornadas Técnicas
-  edition: 16
+  edition: 17
   activities:
     - title: ¡Alerta, servidor LAMP comprometido!
       date: 2011/03/14
@@ -603,9 +1185,10 @@
         - Redes
         - Software Libre
       video: https://cloud-gul.uc3m.es/actividades/2011/marzo/guifi.net/guifi.net.ogv
-- title: XVII Jornadas Técnicas
+
+- title: XVIII Jornadas Técnicas
   type: Jornadas Técnicas
-  edition: 17
+  edition: 18
   activities:
     - title: Introducción a LaTeX
       date: 2012/11/07
@@ -643,9 +1226,10 @@
       slides: https://cloud-gul.uc3m.es/actividades/2012/noviembre/TraduccionGnome/Traduccion%20GNOME.odp
       participants:
         - Daniel Mustieles García
-- title: XVIII Jornadas Técnicas
+
+- title: XIX Jornadas Técnicas
   type: Jornadas Técnicas
-  edition: 18
+  edition: 19
   activities:
     - title: El Zoo NoSQL
       date: 2013/04/08
@@ -698,6 +1282,7 @@
       participants:
         - name: Paula González Muñoz
           link: https://twitter.com/pgonmu
+
 - title: XXIII Jornadas Técnicas
   type: Jornadas Técnicas
   edition: 23
@@ -724,7 +1309,7 @@
       participants:
         - name: Antonio Mejias
           link: https://twitter.com/cyfuss_com
-    - title: 'Graph Databases: a little connected tour'
+    - title: "Graph Databases: a little connected tour"
       date: 2013/10/23
       type: Charla
       tags:
@@ -758,7 +1343,7 @@
         - Videojuegos
         - Android
         - OpenGL
-    - title: 'Zoe: la asistente del GUL'
+    - title: "Zoe: la asistente del GUL"
       date: 2013/10/25
       type: Charla
       tags:
@@ -766,6 +1351,8 @@
         - Zoe
       participants:
         - David Muñoz Díaz
+
+# sabemos que estas son las XXIV... las anteriores son un puzzle
 - title: XXIV Jornadas Técnicas
   type: Jornadas Técnicas
   edition: 24
@@ -799,7 +1386,7 @@
         - Android
       participants:
         - Javier Sánchez
-    - title: 'Introducción a los lenguajes funcionales: Scala'
+    - title: "Introducción a los lenguajes funcionales: Scala"
       date: 2014/03/18
       type: Charla
       tags:
@@ -894,6 +1481,30 @@
       participants:
         - Víctor M. Fernández Gómez
   poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
+
+- title: I Semana de Asociaciones
+  type: Semana de Asociaciones
+  edition: 1
+  activities:
+    - title: Linux en 90' para no desesperarse en las prácticas
+      date: 2014/10/14
+      type: Charla
+      tags: [Linux, Terminal]
+      video: https://youtu.be/2qZBUa93MQ8
+      photos:
+        - https://pbs.twimg.com/media/Bz6WTySIgAAIZsq?format=jpg&name=4096x4096
+      participants:
+        - Fernando Cerezal López
+        - Adrián Casado Rivas
+
+    - title: 'Hackers UC3M: no sólo para programadores'
+      date: 2014/10/15
+      type: Charla
+      tags: [GUL]
+      video: https://youtu.be/UrCzTtv-5so
+      participants:
+        - Adrián Casado Rivas
+
 - title: XXV Jornadas Técnicas
   type: Jornadas Técnicas
   edition: 25
@@ -949,7 +1560,7 @@
       participants:
         - name: Adolfo Santiago
           link: https://twitter.com/adolphenom
-    - title: 'Programación funcional: Porno para programadores'
+    - title: "Programación funcional: Porno para programadores"
       date: 2014/11/12
       type: Charla
       tags:
@@ -1008,11 +1619,12 @@
       participants:
         - Rafael Medina García
   poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
+
 - title: XXVI Jornadas Técnicas
   type: Jornadas Técnicas
   edition: 26
   activities:
-    - title: 'Markdown & Pandoc: not another Word'
+    - title: "Markdown & Pandoc: not another Word"
       description: Creación de documentos académicos mediante Markdown.
       date: 2015/05/20
       type: Charla
@@ -1072,6 +1684,7 @@
       video: https://youtu.be/ydfHZMVr-Lg
       participants:
         - Axel Blanco
+
 - title: XXVII Jornadas Técnicas
   type: Jornadas Técnicas
   edition: 27
@@ -1164,6 +1777,7 @@
       participants:
         - Óscar Seguro Alonso
   poster: https://cloud-gul.uc3m.es/actividades/2015/Noviembre/JJTT-Nov15.png
+
 - title: XXVIII Jornadas Técnicas
   type: Jornadas Técnicas
   edition: 28
@@ -1188,7 +1802,7 @@
       participants:
         - name: Daniel Rodríguez López
           link: https://github.com/patataman
-    - title: 'Go: Nil for null people'
+    - title: "Go: Nil for null people"
       description: Charla de introducción a Go, lenguaje de programación desarrollado por Google en 2009.
       date: 2016/04/12
       type: Charla
@@ -1240,7 +1854,7 @@
         - name: Manuel Quindimil López
           link: https://twitter.com/quindimildev
     - title: Con las serpientes Sí se juega (Pygame)
-      description: 'El desarrollo de videojuegos amateur lleva unos cuantos años viviendo su momento más dulce: cada vez tenemos más herramientas gratuitas y los medios para formarnos están más a nuestro alcance que nunca. Sin embargo, los novatos en la materia tendemos a ser ambiciosos y no es raro que alguna vez pensemos en empezar construyendo la casa por el tejado haciendo uso de motores complejos como Unity o Unreal Engine. Para algo los hacen de libre acceso, ¿no?'
+      description: "El desarrollo de videojuegos amateur lleva unos cuantos años viviendo su momento más dulce: cada vez tenemos más herramientas gratuitas y los medios para formarnos están más a nuestro alcance que nunca. Sin embargo, los novatos en la materia tendemos a ser ambiciosos y no es raro que alguna vez pensemos en empezar construyendo la casa por el tejado haciendo uso de motores complejos como Unity o Unreal Engine. Para algo los hacen de libre acceso, ¿no?"
       date: 2016/04/15
       type: Charla
       tags:
@@ -1252,6 +1866,7 @@
         - name: Patricia Fernández
           link: https://twitter.com/skeleborg
   poster: https://cloud-gul.uc3m.es/actividades/2016/Abril/cartel-gul_xxviii-jt.png
+
 - title: XXIX Jornadas Técnicas
   type: Jornadas Técnicas
   edition: 29
@@ -1315,6 +1930,7 @@
       slides: https://cloud-gul.uc3m.es/actividades/2016/Noviembre/oscar_crackea_rom_y_actualiza_android.pdf
       participants:
         - Óscar Seguro Alonso
+
 - title: XXXV Jornadas Técnicas
   type: Jornadas Técnicas
   edition: 35
@@ -1329,7 +1945,7 @@
       video: https://youtu.be/XpQujpVKliA
       participants:
         - Luis Daniel Casais
-    - title: 'Tiotéate: Aspectos a tener en cuenta en el diseño de una solución IoT'
+    - title: "Tiotéate: Aspectos a tener en cuenta en el diseño de una solución IoT"
       type: Charla
       description: Consideraciones a tener en cuenta en el diseño de una solución IoT.
       tags:
@@ -1342,7 +1958,7 @@
           link: https://es.linkedin.com/in/alvarogarciabarcena
     - title: Monta un laboratorio de informática, en "dos patadas"
       type: Charla
-      description: 'Desgrana paso a paso los servicios que se necesitan para montar un laboratorio de informática: servidores, virtualización, servicios (web, cuentas y almacenamiento, autenticación, correo), monitorización y clientes.'
+      description: "Desgrana paso a paso los servicios que se necesitan para montar un laboratorio de informática: servidores, virtualización, servicios (web, cuentas y almacenamiento, autenticación, correo), monitorización y clientes."
       tags:
         - Virtualización
       date: 2023/04/12
@@ -1363,7 +1979,7 @@
       participants:
         - name: Óscar Pérez
           link: https://www.lab.inf.uc3m.es/
-    - title: 'Nix OS: Linux dentro de 10 años'
+    - title: "Nix OS: Linux dentro de 10 años"
       type: Charla
       description: Explora las características únicas de NixOS, la distribución Linux del futuro que revolucioná la gestión de paquetes y la configuración del sistema operativo.
       tags:
@@ -1376,7 +1992,7 @@
       participants:
         - name: Manuel Palenzuela
           link: https://baitinq.ml
-    - title: 'G.I.M.P.: GIMP Is (for) Meme Production'
+    - title: "G.I.M.P.: GIMP Is (for) Meme Production"
       type: Taller
       description: Taller básico de GIMP, un software open-source para la edición de imágenes, aplicándolo a memes.
       tags:

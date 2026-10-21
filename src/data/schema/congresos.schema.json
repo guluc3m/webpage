@@ -108,7 +108,7 @@
       "type": "object"
     },
     "CongresoType": {
-      "enum": ["GUL Jamón", "Jornadas Técnicas"],
+      "enum": ["GUL Jamón", "Jornadas Técnicas", "Semana de Asociaciones"],
       "type": "string"
     },
     "Congresos": {
