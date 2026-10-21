@@ -5,7 +5,8 @@
  * the list's width; the photo is a fixed column and the frame takes the rest.
  * The photo keeps its own aspect ratio, so the two columns rarely match in
  * height — `items-center` lines up their midpoints instead of their tops.
- * Mobile stacks them, photo first.
+ * Mobile stacks them, photo first. The type and tag badges are buttons that
+ * add that filter in gul-ActividadFilters (`data-filter-add`).
  */
 import GulFrame from './gul-Frame.astro';
 import GulBadge from './gul-Badge.astro';
@@ -73,9 +74,32 @@ const datetime = hasNoDay(a.date) ? a.date.slice(0, 7) : a.date.replaceAll('/', 
 
       {(a.type || (a.tags ?? []).length > 0) && (
         <p class="mt-2 flex flex-wrap items-center gap-1.5">
-          <GulBadge variant="primary">{a.type}</GulBadge>
+          <button
+            type="button"
+            class="group cursor-pointer"
+            title={`Filtrar por ${a.type}`}
+            data-filter-add="type"
+            data-value={a.type}
+          >
+            <GulBadge variant="primary" class="transition-opacity group-hover:opacity-85">
+              {a.type}
+            </GulBadge>
+          </button>
           {(a.tags ?? []).map((t) => (
-            <GulBadge variant="secondary">{t}</GulBadge>
+            <button
+              type="button"
+              class="group cursor-pointer"
+              title={`Filtrar por ${t}`}
+              data-filter-add="tags"
+              data-value={t}
+            >
+              <GulBadge
+                variant="secondary"
+                class="transition-colors group-hover:border-gul-ink group-hover:text-gul-ink"
+              >
+                {t}
+              </GulBadge>
+            </button>
           ))}
         </p>
       )}

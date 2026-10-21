@@ -67,7 +67,12 @@ const participants = [
       />
 
       <div class="mt-8 md:mt-0">
-        <p class="text-sm text-gul-muted" data-actividades-count aria-live="polite"></p>
+        {/* scroll-mt: al filtrar desde una tarjeta se sube hasta aquí, y el header fijo lo taparía. */}
+        <p
+          class="scroll-mt-24 text-sm text-gul-muted"
+          data-actividades-count
+          aria-live="polite"
+        ></p>
 
         <ul class="mt-6 space-y-10 border-l border-gul-line pl-6" data-actividades-list>
           {cursoRows.map(({ curso, items }) => (

@@ -647,6 +647,18 @@ const semesters = [
       return;
     }
 
+    // Etiqueta o tipo pulsado en una tarjeta: añade ese filtro (no lo quita si
+    // ya estaba) y sube al principio del listado, que acaba de cambiar entero.
+    const add = target.closest<HTMLButtonElement>('[data-filter-add]');
+    if (add) {
+      const group = add.dataset.filterAdd as Group;
+      setGroup(group, new Set(selected[group]).add(norm(add.dataset.value!)));
+      applyFilters();
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      countLine.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
+      return;
+    }
+
     const clearGroup = target.closest<HTMLButtonElement>('[data-clear-group]');
     if (clearGroup) {
       const group = clearGroup.dataset.clearGroup;
