@@ -34,7 +34,7 @@ const semesters = [
 ];
 ---
 
-<div class="md:sticky md:top-20 md:self-start">
+<div class="md:sticky md:top-20 md:flex md:max-h-[calc(100svh-6rem)] md:flex-col md:self-start">
   <div class="relative">
     <img
       src={searchIcon}
@@ -67,7 +67,7 @@ const semesters = [
 
   <aside
     id="gul-actividad-filters-panel"
-    class="gul-filters-panel mt-3 rounded-md border border-gul-line bg-gul-surface p-4"
+    class="gul-filters-panel mt-3 rounded-md border border-gul-line bg-gul-surface p-4 md:min-h-0 md:overflow-y-auto"
     data-filters-panel
   >
     <details open data-filter-group>
@@ -239,7 +239,9 @@ const semesters = [
 
 <style>
   /* Panel de filtros: plegado en móvil tras el botón "Filtros"; en md+ la
-     columna lateral siempre visible (sticky sobre el header fijo). */
+     columna lateral siempre visible (sticky sobre el header fijo). Una
+     columna sticky más alta que la pantalla deja su final inalcanzable, así
+     que en md+ se limita al alto visible y el panel hace scroll por dentro. */
   .gul-filters-panel {
     display: none;
   }
@@ -249,6 +251,9 @@ const semesters = [
   @media (min-width: 48rem) {
     .gul-filters-panel {
       display: block !important;
+      /* Sin color-scheme en la página, el scrollbar por defecto sale claro. */
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-gul-line) transparent;
     }
   }
   [data-filters-toggle][aria-expanded='true'] [data-filters-chevron] {
