@@ -1,12 +1,14 @@
 ---
 /**
- * gul-Header — the site header: GUL logo + navigation.
+ * gul-Header — the site header: GUL logo + navigation, plus a star next to the
+ * logo for every achievement unlocked (see gul-Achievement).
  *
  * Shared component (`gul-` prefix) — copied into the other GUL repos. It takes
  * the nav links as a prop so nothing about *this* site's sections is baked in.
  */
 import GulNav from './gul-Nav.astro';
 import GulContactDropdown from './gul-ContactDropdown.astro';
+import starIcon from '@icons/header/star.svg?url';
 
 interface Props {
   links: { label: string; href: string }[];
@@ -23,12 +25,77 @@ const { links } = Astro.props;
       logo recupera la primera posición. `mr-auto` en el logo es lo que empuja
       nav y Contacta al borde derecho en ambos casos. */}
   <GulNav links={links} class="order-1 md:order-2" />
-  <a href="/" aria-label="Inicio" class="order-2 mr-auto md:order-1">
-    {/* Dark variant: the site is always dark, and logo-gul.svg's lettering
-        (#1a1a1a) is illegible against the near-black header. */}
-    <img src="/logo-gul-dark.svg" alt="GUL UC3M" class="h-8 w-auto" />
-  </a>
+  <div class="order-2 mr-auto flex items-center gap-3 md:order-1">
+    <a href="/" aria-label="Inicio">
+      {/* Dark variant: the site is always dark, and logo-gul.svg's lettering
+          (#1a1a1a) is illegible against the near-black header. */}
+      <img src="/logo-gul-dark.svg" alt="GUL UC3M" class="h-8 w-auto" />
+    </a>
+    {/* Filled by the script from localStorage, so it starts empty. */}
+    <ul class="flex items-center gap-1" aria-label="Logros" data-gul-stars hidden></ul>
+    <template data-gul-star>
+      <li
+        class="gul-star size-4 bg-gul-amber"
+        role="img"
+        style={`mask: url("${starIcon}") center / contain no-repeat`}
+      ></li>
+    </template>
+  </div>
   <div class="order-3">
     <GulContactDropdown />
   </div>
 </header>
+
+<script>
+  const stars = document.querySelector<HTMLUListElement>('[data-gul-stars]');
+  const template = document.querySelector<HTMLTemplateElement>('[data-gul-star]');
+
+  function addStar(id: string, text: string, isNew: boolean) {
+    if (!stars || !template || stars.querySelector(`[data-id="${CSS.escape(id)}"]`)) return;
+    const star = template.content.firstElementChild!.cloneNode(true) as HTMLLIElement;
+    star.dataset.id = id;
+    star.title = text;
+    star.setAttribute('aria-label', `Logro: ${text}`);
+    star.classList.toggle('is-new', isNew);
+    stars.append(star);
+    stars.hidden = false;
+  }
+
+  // Written by gul-Achievement as { id: text }.
+  try {
+    const unlocked: Record<string, string> = JSON.parse(
+      localStorage.getItem('gul:achievements') ?? '{}',
+    );
+    for (const [id, text] of Object.entries(unlocked)) addStar(id, text, false);
+  } catch {
+    // No storage (private mode, blocked site data): no saved stars.
+  }
+
+  document.addEventListener('gul:achievement:unlocked', (event) => {
+    const { id, text } = (event as CustomEvent<{ id: string; text: string }>).detail;
+    addStar(id, text, true);
+  });
+</script>
+
+<style>
+  /* A star unlocked right now pops in; saved ones are just there. */
+  .gul-star.is-new {
+    animation: gul-star-pop 0.6s ease-out;
+  }
+  @keyframes gul-star-pop {
+    0% {
+      transform: scale(0);
+    }
+    60% {
+      transform: scale(1.4);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gul-star.is-new {
+      animation: none;
+    }
+  }
+</style>

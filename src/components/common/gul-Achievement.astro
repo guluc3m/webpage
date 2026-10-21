@@ -2,14 +2,17 @@
 /**
  * gul-Achievement — generic Steam-style achievement toast.
  * To trigger showing it, dispatch `gul:achievement:show` with this component's
- * id as the event detail.
+ * id as the event detail. Showing it also unlocks it for good: it is saved in
+ * localStorage and gul-Header draws a star for it (`gul:achievement:unlocked`).
  */
 interface Props {
   id: string;
   text: string;
+  /** Only shows the toast, unlocks nothing (e.g. the styleguide's example). */
+  demo?: boolean;
 }
 
-const { id, text } = Astro.props;
+const { id, text, demo = false } = Astro.props;
 ---
 
 <div
@@ -31,7 +34,7 @@ const { id, text } = Astro.props;
   </span>
 </div>
 
-<script define:vars={{ id }}>
+<script define:vars={{ id, text, demo }}>
   const achievement = document.getElementById(id);
 
   const showAchievement = (event) => {
@@ -44,6 +47,19 @@ const { id, text } = Astro.props;
     achievement.classList.remove('is-visible');
     void achievement.offsetWidth;
     achievement.classList.add('is-visible');
+
+    if (demo) return;
+    // Same key and shape ({ id: text }) that gul-Header reads to draw the stars.
+    // Storage can be unavailable (private mode, blocked site data): the star
+    // then lasts only for this page view.
+    try {
+      const unlocked = JSON.parse(localStorage.getItem('gul:achievements') ?? '{}');
+      unlocked[id] = text;
+      localStorage.setItem('gul:achievements', JSON.stringify(unlocked));
+    } catch {
+      /* see above */
+    }
+    document.dispatchEvent(new CustomEvent('gul:achievement:unlocked', { detail: { id, text } }));
   };
 
   document.addEventListener('gul:achievement:show', showAchievement);
