@@ -17,7 +17,12 @@ import GulActividadCard from '@components/common/gul-ActividadCard.astro';
 import GulCongresoCard from '@components/common/gul-CongresoCard.astro';
 import GulActividadFilters from '@components/common/gul-ActividadFilters.astro';
 import { navLinks } from '@data/navLinks';
-import { ACTIVIDAD_TYPES, loadActividades } from '@lib/actividades';
+import {
+  ACTIVIDAD_TYPES,
+  RECURSOS,
+  loadActividades,
+  recursosOf,
+} from '@lib/actividades';
 import { loadCongresos, type Congreso } from '@lib/congresos';
 import rawActividades from '@data/actividades.yaml?raw'; // ?raw: a plain string, so invalid YAML syntax doesn't blow up the import itself.
 import rawCongresos from '@data/congresos.yaml?raw';
@@ -88,6 +93,12 @@ const participants = [
 // vieja a más nueva); el grupo Congresos las enseña debajo de su serie.
 const congresoSeries = [...new Set(congresos.map((c) => c.series))];
 const editions = congresos.map((c) => ({ title: c.title, series: c.series }));
+
+// Opciones del filtro de recursos: solo los que alguna activity lleva de
+// verdad (si ninguna tiene vídeo, el chip sobraría).
+const recursos = RECURSOS.filter((r) =>
+  [...sorted, ...internals].some((a) => recursosOf(a).includes(r.value)),
+);
 ---
 
 <BaseLayout title="Actividades · GUL UC3M">
@@ -101,6 +112,7 @@ const editions = congresos.map((c) => ({ title: c.title, series: c.series }));
         congresoSeries={congresoSeries}
         editions={editions}
         tags={tags}
+        recursos={[...recursos]}
         participants={participants}
         cursos={cursoRows.map(({ curso }) => curso)}
       />
@@ -148,6 +160,7 @@ const editions = congresos.map((c) => ({ title: c.title, series: c.series }));
                       .map((s) => s.name)
                       .join(',')
                       .toLowerCase()}
+                    data-recursos={recursosOf(item.actividad).join(',')}
                   >
                     <GulActividadCard actividad={item.actividad} />
                   </li>

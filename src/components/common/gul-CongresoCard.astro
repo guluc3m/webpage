@@ -19,6 +19,7 @@ import GulFrame from './gul-Frame.astro';
 import GulBadge from './gul-Badge.astro';
 import GulActividadCard from './gul-ActividadCard.astro';
 import { congresoDates, type Congreso } from '@lib/congresos';
+import { recursosOf } from '@lib/actividades';
 
 interface Props {
   congreso: Congreso;
@@ -109,6 +110,7 @@ const ICONS = {
             .map((s) => s.name)
             .join(',')
             .toLowerCase()}
+          data-recursos={recursosOf(a).join(',')}
         >
           <GulActividadCard actividad={a} heading="h3" />
         </li>

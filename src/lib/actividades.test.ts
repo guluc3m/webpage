@@ -5,7 +5,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { parseActividades } from './actividades.ts';
+import { parseActividades, recursosOf } from './actividades.ts';
 
 const entry = (title: string, date = '2020/01/01') =>
   `- title: ${title}\n  date: ${date}\n  type: Charla\n`;
@@ -60,4 +60,12 @@ test('tags are case-insensitive: same tag, different casing, one chip', () => {
   // La primera grafía vista gana; lo demás se le iguala y no se repite.
   assert.deepEqual(actividades[0]!.tags, ['Linux', 'Terminal']);
   assert.deepEqual(actividades[1]!.tags, ['Linux', 'Terminal']);
+});
+
+test('recursosOf lists video, repository and slides, in the order the card links them', () => {
+  assert.deepEqual(recursosOf({}), []);
+  assert.deepEqual(
+    recursosOf({ slides: 'a.pdf', video: 'a.ogg', source: 'a/' }),
+    ['video', 'repositorio', 'transparencias'],
+  );
 });

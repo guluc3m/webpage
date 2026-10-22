@@ -36,6 +36,31 @@ export interface Actividad {
   tags?: string[]; // temas (Git, C, Hardware…); el tipo ya no va aquí
 }
 
+// Recursos filtrables de una actividad: los enlaces que la tarjeta pinta como
+// material (vídeo, repositorio y transparencias). El `link` no cuenta: es un
+// enlace genérico, no un material de la actividad. Estos mismos valores en
+// minúsculas van en el data-recursos de los <li data-actividad>, así que los
+// chips del filtro de Recursos los llevan en data-value tal cual (la página
+// compara en minúsculas; "Vídeo" con tilde no coincidiría).
+export const RECURSOS = [
+  { value: 'video', label: 'Vídeo' },
+  { value: 'repositorio', label: 'Repositorio' },
+  { value: 'transparencias', label: 'Transparencias' },
+] as const;
+export type Recurso = (typeof RECURSOS)[number]['value'];
+
+// Los recursos que una actividad lleva, como valores del filtro, en el orden
+// en que la tarjeta los pinta.
+export function recursosOf(
+  a: Pick<Actividad, 'video' | 'source' | 'slides'>,
+): Recurso[] {
+  const out: Recurso[] = [];
+  if (a.video) out.push('video');
+  if (a.source) out.push('repositorio');
+  if (a.slides) out.push('transparencias');
+  return out;
+}
+
 // En el YAML un participante puede ser un nombre suelto (`- Ana`) o un objeto.
 // El `link` es opcional y solo hace falta escribirlo una vez por persona en
 // todo el fichero: resolveParticipantLinks lo copia al resto por nombre.

@@ -5,12 +5,14 @@
  * por serie y edición — marcas una serie y debajo aparecen las ediciones de
  * esa serie — o "Actividades Independientes", que deja solo las actividades
  * sueltas (excluyente con series y ediciones), tags (las más usadas, el resto
- * tras "Ver todas") y participantes (buscador + las más frecuentes) en chips
- * multi-selección, y fecha por rango de cursos + cuatrimestre. Cada chip dice
- * cuántas actividades daría. En md+ es una columna lateral sticky; en móvil se
- * pliega tras el botón "Filtros" (CSS puro guiado por aria-expanded). Cada
- * grupo es un <details> colapsado por defecto (salvo Tipo, que va abierto) con
- * contador de seleccionados y un "Limpiar" que vacía solo ese grupo.
+ * tras "Ver todas"), recursos (vídeo, repositorio o transparencias:
+ * actividades que llevan ese material) y participantes (buscador + las más
+ * frecuentes) en chips multi-selección, y fecha por rango de cursos +
+ * cuatrimestre. Cada chip dice cuántas actividades daría. En md+ es una
+ * columna lateral sticky; en móvil se pliega tras el botón "Filtros" (CSS
+ * puro guiado por aria-expanded). Cada grupo es un <details> colapsado por
+ * defecto (salvo Tipo, que va abierto) con contador de seleccionados y un
+ * "Limpiar" que vacía solo ese grupo.
  *
  * El script hace el filtrado client-side: consulta los <li data-actividad>
  * (dentro de un congreso van igual), esconde los <li data-actividad-group>
@@ -30,12 +32,14 @@ interface Props {
   editions: { title: string; series: string }[];
   /** Más usadas primero: las TOP_TAGS primeras se ven sin desplegar. */
   tags: string[];
+  /** Recursos presentes en las activities (video, repositorio…), ya ausentes los que nadie lleva. */
+  recursos: { value: string; label: string }[];
   participants: string[];
   /** Cursos (años de inicio, p.ej. 2025 para 2025/26), más nuevo primero. */
   cursos: number[];
 }
 
-const { types, congresoSeries, editions, tags, participants, cursos } = Astro.props;
+const { types, congresoSeries, editions, tags, recursos, participants, cursos } = Astro.props;
 const minCurso = Math.min(...cursos);
 const maxCurso = Math.max(...cursos);
 const cursoLabel = (curso: number) => `${curso}/${String(curso + 1).slice(2)}`;
@@ -248,6 +252,46 @@ const semesters = [
         </div>
       </div>
     </details>
+
+    {recursos.length > 0 && (
+      <details data-filter-group>
+        <summary class="py-3">
+          <span class="flex items-center gap-2">
+            Recursos
+            <span
+              class="rounded-full bg-gul-blue px-2 py-0.5 text-xs font-semibold"
+              data-group-count="recursos"
+              hidden
+            ></span>
+          </span>
+        </summary>
+        <div>
+          <div class="pb-4">
+            {/* Los mismos materiales que la tarjeta de cada actividad enlaza;
+                `link` no es uno: es un enlace genérico, no un material. */}
+            <div class="flex flex-wrap gap-1.5" data-chip-group="recursos">
+              {recursos.map((r) => (
+                <button
+                  type="button"
+                  class="gul-chip"
+                  data-chip="recursos"
+                  data-value={r.value}
+                  aria-pressed="false"
+                >
+                  {r.label}
+                  <span class="gul-chip-count" data-chip-count></span>
+                </button>
+              ))}
+            </div>
+            <div class="flex justify-end pt-2">
+              <button type="button" class="gul-mini" data-clear-group="recursos" disabled>
+                Limpiar
+              </button>
+            </div>
+          </div>
+        </div>
+      </details>
+    )}
 
     <details data-filter-group>
       <summary class="py-3">
@@ -530,6 +574,7 @@ const semesters = [
   type Group =
     | 'type'
     | 'tags'
+    | 'recursos'
     | 'participants'
     | 'semesters'
     | 'congresoSeries'
@@ -541,12 +586,14 @@ const semesters = [
     'congresoEdition',
     'congresoNone',
     'tags',
+    'recursos',
     'participants',
     'semesters',
   ];
   const selected: Record<Group, Set<string>> = {
     type: new Set(),
     tags: new Set(),
+    recursos: new Set(),
     participants: new Set(),
     semesters: new Set(),
     congresoSeries: new Set(),
@@ -560,6 +607,7 @@ const semesters = [
   const exclusive: Record<Group, Group[]> = {
     type: [],
     tags: [],
+    recursos: [],
     participants: [],
     semesters: [],
     congresoSeries: ['congresoNone'],
@@ -660,6 +708,7 @@ const semesters = [
         selected.congresoEdition.size > 0 ||
         selected.congresoNone.size > 0,
       tags: selected.tags.size > 0,
+    recursos: selected.recursos.size > 0,
       fecha: rangeActive() || selected.semesters.size > 0,
       participants: selected.participants.size > 0,
     };
@@ -687,6 +736,9 @@ const semesters = [
     // "ninguno" marca justo las sueltas: las que no llevan serie de congreso.
     congresoNone: (item) => (item.dataset.congresoSeries ? [] : ['ninguno']),
     tags: (item) => list(item.dataset.tags!),
+    // Los materiales de la activity (video, repositorio, transparencias…),
+    // los mismos valores que pone la página en el data-recursos.
+    recursos: (item) => list(item.dataset.recursos!),
     participants: (item) => list(item.dataset.participants!),
     semesters: (item) => [semesterOf(item.dataset.date!)],
   };
