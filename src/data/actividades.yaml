@@ -238,6 +238,68 @@
   participants:
     - Axel Blanco
 
+- title: Mi primer Linux
+  type: Charla
+  date: 2021/10/01
+  description: '"Breve" introducción a Linux'
+  tags: [Linux]
+  poster: https://cloud-gul.uc3m.es/actividades/2021/mi%20primer%20linux/cartel.png
+  slides: https://cloud-gul.uc3m.es/actividades/2021/mi%20primer%20linux/presentacion.pdf
+  video: https://youtu.be/-8oo17P29VU
+  participants:
+    - name: Daniel Rodríguez
+      link: https://github.com/patataman
+
+- title: Introducción a Git
+  type: Charla
+  date: 2021/10/12
+  description: >-
+    En el GUL estamos seguros que la gran mayoría estáis usando Drive o Dropbox para hacer las prácticas de Python, C, o lo que toque. Y, aunque no tenemos pruebas, tampoco tenemos dudas de que os ha dado algún problema a la hora de juntar trabajo y es que ni Drive, ni Dropbox están pensados para ello. Estamos aquí para solucionaros la vida, y presentaros Git, una herramienta pensaba para el control de versiones, no como Drive/Dropbox.
+  tags: [Git]
+  poster: https://cloud-gul.uc3m.es/actividades/2021/taller%20introduccion%20a%20git/cartel_v3.jpg
+  slides: https://cloud-gul.uc3m.es/actividades/2021/taller%20introduccion%20a%20git/presentacion.pdf
+  video: https://youtu.be/jvsneGS00Tw
+  participants:
+    - Daniel Rodríguez
+
+- title: Python para pythipiantes
+  type: Charla
+  date: 2021/10/26
+  description: >-
+    Taller introductorio (aunque bastante extenso) de programación en Python
+  tags: [Python]
+  poster: https://cloud-gul.uc3m.es/actividades/2021/python%20para%20pythipiantes/cartel.png
+  slides: https://cloud-gul.uc3m.es/actividades/2021/python%20para%20pythipiantes/transparencias.pdf
+  video: https://youtu.be/1xA0d7Z4EgU
+  participants:
+    - Luis Daniel Casais
+
+- title: Feria de Asociaciones 2021
+  type: Feria de Asociaciones
+  date: 2021/11/05
+  description: >-
+    Hicimos un programa de radio en directo... ¡Mira el "vídeo"!
+  video: https://cloud-gul.uc3m.es/radio_gul/Ferias%20de%20asociaciones/feria_de_asociaciones_2021.mp3
+  photos:
+    - https://pbs.twimg.com/media/FDbAJd_XEAAmrry?format=jpg&name=medium
+  participants:
+    - Daniel Rodríguez
+    - name: Juan Banga
+      link: https://github.com/Juanbanpar
+    - Luis Daniel Casais
+
+- title: Generación de documentos en LaTeX
+  type: Charla
+  date: 2021/12/03
+  description: >-
+    ¡Taller introductorio, pero con todo lo necesario, para que creeis documentos usando LaTeX!
+  tags: [LaTeX]
+  poster: https://cloud-gul.uc3m.es/actividades/2021/taller%20de%20latex/cartel_latex.png
+  slides: https://cloud-gul.uc3m.es/actividades/2021/taller%20de%20latex/20211203%20-%20Generacion%20de%20documentos%20en%20LaTeX.pdf
+  video: https://youtu.be/cFieGJljKog?si=_nWai_kZAXWqn7YG
+  participants:
+    - Lisardo Prieto
+
 - title: Linux 404
   type: Install party
   tags: [Linux]
