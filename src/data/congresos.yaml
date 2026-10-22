@@ -1961,6 +1961,189 @@
       participants:
         - Óscar Seguro Alonso
 
+- title: XXXII Jornadas Técnicas
+  series: Jornadas Técnicas
+  edition: 32
+  poster: https://cloud-gul.uc3m.es/actividades/2018/XXXII%20Jornadas%20T%C3%A9cnicas/cartel_homer.png
+  activities:
+    # gracias a Dios por la Wayback Machine...
+    # https://web.archive.org/web/20190919174944/https://cursos.gul.es/xxxii-jornadas-tecnicas-del-gul
+
+    - title: Destripando la blockchain
+      date: 2018/04/09
+      type: Charla
+      description: >-
+        En esta charla se explicará el funcionamiento de la blockchain en Bitcoin explicando todos los conceptos básicos para que cualquier estudiante, tanto informático como no informático, pueda entender el mecanismo de la tecnología blockchain.
+      tags:
+        - Blockchain
+      participants:
+        - Alfredo Nunez
+
+    - title: Introducción a Python
+      date: 2018/04/09
+      type: Taller
+      description: >-
+        Python es el cuarto lenguaje de programación más usado en el mundo (Fuente: Tiobe, 2018). Siendo el lenguaje de script preferido entre la comunidad de programadores internacional. Python destaca como lenguaje de programación en áreas como la administración de sistemas, inteligencia artificial y la ciencia en general. También tiene una comunidad amplia en otras áreas como la programación web, videojuegos, ... Hemos seleccionado un buen número de ejemplos python, para demostrar las capacidades del lenguaje en las diferentes áreas de la computación.
+      tags:
+        - Python
+      source: https://github.com/davidam/python-examples
+      participants:
+        - name: David Arrollo
+          link: https://twitter.com/davidam9
+
+    # se cayó wey
+    # - title: La vida se ve de otro color... si la visualizas con R
+    #   date: 2018/04/10
+    #   type: Charla
+    #   description: >-
+    #     El disparado aumento de datasets disponibles y nuestra mejora en su procesado representa muy buenas noticias para ti, te dediques a lo que te dediques. Pero, también independientemente de lo que hagas, ahora debes afrontar la necesidad de aprender a utilizarlos. Tener acceso a una gran cantidad de datos, en principio, no sirve de nada. Lo útil es aprender a extraer de ellos la información correcta. Por eso, en este taller aprenderemos a entender esos datos de la mejor forma posible: visualizándolos. Y además lo haremos de la mejor forma posible: utilizando un lenguaje Open Source creado precisamente para ello. ¿Por qué deberías pasarte a R para trabajar con tus datos, si [TU NO-DATA-ORIENTED LENGUAJE FAVORITO] ya es casi tu lengua materna? ¡Ven y te lo explicamos! No hay requerimientos para venir, pero para aprovechar el taller deberías tener acceso a un portátil con el que seguirnos.
+    #   tags:
+    #     - R
+    #   participants:
+    #     - name: Manu Hortet
+    #       link: https://twitter.com/manuhortet
+    #     - name: Daniela Martín
+    #       link: https://twitter.com/Danisaura
+
+    - title: Introduccióń a Godot 3
+      date: 2018/04/10
+      type: Charla
+      description: >-
+        Si siempre has querido hacer un videojuego pero no te has atrevido a pegarte con OpenGL o no quieres gastar tu dinero, paciencia y libertad con Unity o Unreal, te presentamos la alternativa libre.
+      tags:
+        - Godot
+      participants:
+        - Roberto
+        - Gonzalo
+
+    - title: Extendiendo Kubernetes
+      date: 2018/04/11
+      type: Charla
+      description: >-
+        Esta charla está pensada para explicar cómo se puede extender Kubernetes para tener piezas específicas que cumplan nuestros requisitos. Hablaremos de los problemas a los que hay que enfrentarse y los beneficios que se pueden obtener. Además, explicaremos un proyecto que hemos llevado a cabo, las diferentes iteraciones que hemos hecho para mejorarlo, y lo que hemos aprendido gracias a ello. Por último, comentaremos una librería que hemos creado para que cualquiera pueda construir su propio controlador de una forma rápida y sencilla.
+      link: https://github.com/spotahome/redis-operator
+      tags:
+        - Kubernetes
+      participants:
+        - name: Julio Chana
+          link: https://twitter.com/jchanam
+
+    - title: El Ministerio de los Andares Tontos
+      date: 2018/04/11
+      type: Charla
+      description: >-
+        Porque Python es algo más que una sintaxis bonita. Aprende truquitos y descubre sus cara más oscura para que decidas si te gusta de verdad o no.
+      slides: https://cloud-gul.uc3m.es/actividades/2018/XXXII%20Jornadas%20T%C3%A9cnicas/Ministerio%20de%20los%20Andares%20Tontos.pdf
+      source: https://github.com/Patataman/PythonBasic
+      tags:
+        - Python
+      participants:
+        - Daniel Rodríguez
+
+    - title: Zoe ha muerto, ¡larga vida a Zoe!
+      date: 2018/04/12
+      type: Taller
+      description: >-
+        Aprende cómo funciona la nueva Zoe (en Python) y crea un módulo desde 0!
+      tags:
+        - GUL
+      link: https://github.com/guluc3m/zoe-lib-python
+      participants:
+        - Daniel Rodríguez
+
+    - title: Introducción a la creación de bots
+      date: 2018/04/12
+      type: Charla
+      description: Una introducción preparatoria a la creación de bots para el hackathón del día siguiente
+      tags:
+        - Bots
+      participants:
+        - Fernando Cerezal López
+
+    - title: Hackathon
+      date: 2018/04/13
+      type: Hackathon
+      description: Una competición inclusiva de diseño y creación de bots.
+      link: https://gg.gg/GULHack2018
+      poster: https://cloud-gul.uc3m.es/actividades/2018/XXXII%20Jornadas%20T%C3%A9cnicas/hackDark.png
+      tags:
+        - Bots
+
+    - title: PCMaster... Oh, wait
+      date: 2018/04/13
+      type: Taller
+      description: >-
+        Montamos un ordenador de sobremesa en directo, aprendiendo sobre los componentes en el proceso.
+      tags:
+        - Hardware
+      participants:
+        - Daniel Rodríguez
+
+- title: GUL JAMón 2018
+  series: GUL Jamón
+  edition: 1
+  poster: https://cloud-gul.uc3m.es/actividades/2018/gul_jamon/jamon_cartel.png
+  url: https://github.com/guluc3m/web-jamon/tree/web_2021
+  activities:
+    - title: Formación en Pygame
+      date: 2018/06/04  # hasta el 6
+      type: Taller
+      tags:
+        - Pygame
+
+    - title: Formación en Godot
+      date: 2018/06/04  # hasta el 6
+      type: Taller
+      tags:
+        - Godot
+
+    - title: Game Jam y entrega de premios
+      date: 2018/06/15
+      type: Game jam
+      photos:
+        - https://pbs.twimg.com/media/DfvQScwW4AIOEKq?format=jpg&name=large
+      source: https://cloud-gul.uc3m.es/actividades/2018/gul_jamon/
+
+- title: V Semana de Asociaciones
+  series: Semana de Asociaciones
+  edition: 5
+  activities:
+    - title: Python 101
+      date: 2018/10/02
+      type: Charla
+      poster: https://cloud-gul.uc3m.es/actividades/2018/semana_asociaciones/semana_python.jpg
+      description: >-
+        Una introducción a este lenguaje de scripting vesátil y potente, aplicable a multitud de disciplinas y fácil de aprender.
+      tags:
+        - Python
+
+    - title: Introducción a Linux
+      date: 2018/10/01
+      type: Charla
+      poster: https://cloud-gul.uc3m.es/actividades/2018/semana_asociaciones/semana_linux.jpg
+      description: >-
+        Tanto si lo necesitas para la carrera como si te gustaría aprenderlo por hobby, en esta charla vemos lo básico del ecosistema Linux para que puedas dar tus primeros pasos y seguir aprendiendo por tu cuenta.
+      tags:
+        - Linux
+
+    - title: Cacharreando con Arduinos
+      date: 2018/10/03
+      type: Charla
+      poster: https://cloud-gul.uc3m.es/actividades/2018/semana_asociaciones/semana_arduino.jpg
+      description: >-
+        Una introducción práctica al uso básico de un Arduino para que puedas seguir aprendiendo en casa.
+      tags:
+        - Arduino
+
+    - title: Prepárate para tu carrera profesional en el espacio exterior
+      date: 2018/10/04
+      type: Charla
+      poster: https://cloud-gul.uc3m.es/actividades/2018/semana_asociaciones/semana_rebeldes.jpg
+      description: >-
+        En esta charla-taller vamos a darte pautas de lo que vas a encontrarte cuando empieces a buscar trabajo y vamos a trabajar conjuntamente para que te fijes un objetivo más afín a tus motivaciones personales y de cara a definir o darte pautas para que empieces a fijarte una trayectoria profesional.
+        En colaboración con RebeldesTIC (YoSoyTuMadre).
+      link: https://www.yosoytumadre.com/
+
 - title: XXXIII Jornadas Técnicas
   series: Jornadas Técnicas
   edition: 33
