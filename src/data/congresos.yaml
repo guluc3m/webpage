@@ -1628,8 +1628,9 @@
 
     - title: Crea tu propia distribución basada en Debian con Simple-CDD
       date: 2014/11/13
-      description: Con Simple-CDD puedes crear a tu gusto una distribución basada en Debian de manera fácil y rápida
       type: Charla
+      description: Con Simple-CDD puedes crear a tu gusto una distribución basada en Debian de manera fácil y rápida
+      video: https://www.youtube.com/live/BMiIXXZkciI
       tags:
         - Debian
         - Linux
