@@ -97,7 +97,8 @@
       source: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_java_src.tgz
       participants:
         - Raúl Caballo Ortega
-        - Álvaro Sánchez-Mariscal
+        - name: Álvaro Sánchez-Mariscal
+          link: https://twitter.com/alvaro_sanchez
 
     - title: II Curso de introducción a CVS
       date: 2003/04/02
@@ -1959,6 +1960,178 @@
       slides: https://cloud-gul.uc3m.es/actividades/2016/Noviembre/oscar_crackea_rom_y_actualiza_android.pdf
       participants:
         - Óscar Seguro Alonso
+
+- title: XXXIII Jornadas Técnicas
+  series: Jornadas Técnicas
+  edition: 33
+  poster: https://cloud-gul.uc3m.es/actividades/2019/XXXIII%20Jornadas%20T%C3%A9cnicas/cartel.png
+  activities:
+    - title: ¡Automatízate! El poder de los scripts
+      date: 2019/03/18
+      type: Charla
+      tags: [Bash]
+      participants:
+        - Daniel Rodríguez
+
+    - title: Install Party
+      date: 2019/03/18
+      type: Install party
+      tags: [Linux]
+      slides: https://cloud-gul.uc3m.es/actividades/2019/XXXIII%20Jornadas%20T%C3%A9cnicas/Linux.pdf
+      participants:
+        - name: Alejandro de la Cruz
+          link: https://github.com/orgs/guluc3m/people/PaquitoelChocolatero
+
+    - title: Pulse aquí para optimizar su PC un 101%
+      date: 2019/03/19
+      type: Charla
+      tags: [Linux]
+      participants:
+        - Juan Banga
+
+    - title: Testing, motherf*cker, you speak it?
+      date: 2019/03/19
+      type: Charla
+      tags: [Software]
+      participants:
+        - David Muñoz Díaz
+
+    - title: Vim escape room
+      date: 2019/03/20
+      type: Charla
+      tags: [Vim]
+      participants:
+        - Juan Francisco García
+
+    - title: Cómo ser un Jedi Developer
+      date: 2019/03/20
+      type: Charla
+      tags: [Software]
+      participants:
+        - Rodrigo de Frutos
+
+    - title: What is another word for a python? A mega-byte!
+      date: 2019/03/18
+      type: Charla
+      tags: [Python]
+      slides: https://cloud-gul.uc3m.es/actividades/2019/XXXIII%20Jornadas%20T%C3%A9cnicas/Python.pdf
+      participants:
+        - Alejandro Cruz
+        - Alejandro de la Torre
+
+    - title: Impresoras 3D
+      date: 2019/03/18
+      type: Charla
+      tags: [Impresión 3D]
+      slides: https://cloud-gul.uc3m.es/actividades/2019/XXXIII%20Jornadas%20T%C3%A9cnicas/Impresoras3D.pdf
+      participants:
+        - name: Jorge Frutos
+          link: https://github.com/JorFru
+
+- title: XXXIV Jornadas Técnicas
+  series: Jornadas Técnicas
+  edition: 34
+  poster: https://cloud-gul.uc3m.es/actividades/2019/XXXIV%20Jornadas%20T%C3%A9cnicas/cartel.png
+  activities:
+    - title: Materiales + texturas estándar y procedurales en Blender 2.81
+      date: 2019/10/07
+      type: Charla
+      tags: [Blender]
+      participants:
+        - David Ruiz
+
+    - title: Pulse aquí (de nuevo) para optimizar su Linux
+      date: 2019/10/07
+      type: Charla
+      tags: [Linux]
+      slides: https://cloud-gul.uc3m.es/actividades/2019/XXXIV%20Jornadas%20T%C3%A9cnicas/Pulse_aqu%C3%AD_para_optimizar_su_PC.pdf
+      participants:
+        - Juan Banga
+
+    - title: Programación Funcional
+      date: 2019/10/08
+      type: Charla
+      tags: [Programación]
+      participants:
+        - Eduardo Hilario
+
+    - title: 'Trackers: "Cómo hacer música" para hackers'
+      date: 2019/10/08
+      type: Charla
+      tags: [Audio]
+      participants:
+        - Jorge Marcos
+
+    - title: El punto (micro) G existe, descubre una vida alejado del Big Data
+      date: 2019/10/09
+      type: Charla
+      tags: [Big Data]
+      participants:
+        - Juan Banga
+        - Roberto Uceda
+
+    - title: 'VHDL: Very Hard Description Language'
+      date: 2019/10/09
+      type: Charla
+      tags: [VHDL]
+      participants:
+        - Roberto Uceda
+
+    - title: 'Golang: Por si no tenías suficiente Google en tu vida'
+      date: 2019/10/10
+      type: Charla
+      tags: [Golang]
+      participants:
+        - Jorge Marcos
+
+    - title: 'Taller de Golang: Ponte manos a la obra con una aplicación real'
+      date: 2019/10/10
+      type: Charla
+      tags: [Golang]
+      participants:
+        - Juan García
+
+- title: Charlas de Computación Cuántica
+  series: Computación Cuántica
+  edition: 1
+  poster: https://pbs.twimg.com/media/EG0bzYwXUAAp21O?format=jpg&name=medium
+  activities:
+    - title: Introducción a conceptos físicos
+      tags: [Cuántica]
+      date: 2019/10/22
+      type: Charla
+
+    - title: Introducción a la computación cuántica
+      tags: [Cuántica]
+      date: 2019/10/23
+      type: Charla
+
+    - title: Introducción a Python
+      tags: [Cuántica, Python]
+      date: 2019/10/24
+      type: Charla
+
+    - title: Introducción a Qiskit
+      tags: [Cuántica, Python, Qiskit]
+      date: 2019/10/25
+      type: Charla
+
+    - title: Reto de programación
+      tags: [Cuántica]
+      date: 2019/10/30
+      type: Hackathon
+
+- title: VI Semana de Asociaciones
+  series: Semana de Asociaciones
+  edition: 6
+  activities:
+    - title: Puestecito del GUL
+      type: Feria de Asociaciones
+      date: 2019/10/01
+      tags: [GUL]
+      photos:
+        - https://pbs.twimg.com/media/EFyooS8XYAEmu8U?format=jpg&name=large
+      video: https://twitter.com/guluc3m/status/1179043713827459072/video/1
 
 - title: GUL JAMón - Charleta Edition
   series: GUL Jamón

@@ -280,8 +280,11 @@
   description: >-
     Hicimos un programa de radio en directo... ¡Mira el "vídeo"!
   video: https://cloud-gul.uc3m.es/radio_gul/Ferias%20de%20asociaciones/feria_de_asociaciones_2021.mp3
+  # poster: https://pbs.twimg.com/media/FC34nlBXMAIMNrK?format=jpg&name=large
   photos:
     - https://pbs.twimg.com/media/FDbAJd_XEAAmrry?format=jpg&name=medium
+    - https://pbs.twimg.com/media/FDb_IZvWQAAopPb?format=jpg&name=large
+    - https://pbs.twimg.com/media/FDbYn0VXsAQZHBc?format=jpg&name=medium
   participants:
     - Daniel Rodríguez
     - name: Juan Banga
