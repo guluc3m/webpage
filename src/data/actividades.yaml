@@ -238,6 +238,42 @@
   participants:
     - Axel Blanco
 
+- title: Linux 404
+  type: Install party
+  tags: [Linux]
+  date: 2022/09/29
+  poster: https://cloud-gul.uc3m.es/actividades/2022/Linux%20404/cartel.png
+  slides: https://cloud-gul.uc3m.es/actividades/2022/Linux%20404/transparencias.pdf
+  link: https://github.com/guluc3m/linux-install
+  participants:
+    - Luis Daniel Casais
+
+- title: Introducción a C
+  type: Charla
+  tags: [C]
+  date: 2023/02/24
+  description: >-
+    Un paseo interactivo por el clásico lenguaje de programación impartido por uno de los mejores profesores de la Carlos III. Un hombre, una terminal, y un sueño.
+  poster: https://cloud-gul.uc3m.es/actividades/2022/Introducci%C3%B3n%20a%20C/cartel.png
+  video: https://youtu.be/t4GKwYp4OV4
+  participants:
+    - name: Alejandro Calderón
+      link: https://twitter.com/acaldero_uc3m
+
+- title: GNU/Linux y el FOSS
+  type: Charla
+  tags: [Linux, Software Libre]
+  date: 2023/02/28
+  description: >-
+    Charla introductoria a Linux y el Software Libre para el T3chfest Ed Day 2023,
+    enfocada a estudiantes de secundaria y bachillerato.
+  poster: https://pbs.twimg.com/media/Fiu27kCWAAI-p2I?format=jpg&name=medium
+  slides: https://cloud-gul.uc3m.es/actividades/2022/GNU%20Linux%20y%20el%20FOSS/transparencias.pdf
+  link: https://t3chfest.es/2023/institutos/
+  participants:
+    - Luis Daniel Casais
+    - Jose Antonio Verde
+
 - title: trabajo final2 finalfinal bueno - copia.py
   description: >-
     Un taller de introduccion a Git y GitHub
@@ -257,6 +293,7 @@
   date: 2023/02/17
   poster: https://cloud-gul.uc3m.es/actividades/2023/Linux%20Install%20Party/cartel-feb.png
   slides: https://cloud-gul.uc3m.es/actividades/2023/Linux%20Install%20Party/traspas-feb.pdf
+  link: https://github.com/guluc3m/linux-install
   participants:
     - Luis Daniel Casais
 
@@ -296,7 +333,7 @@
   date: 2024/03/11
   type: Charla
   description: >-
-    Charla introductoria a Linux y el Software Libre para el T3chfest Ed Day,
+    Charla introductoria a Linux y el Software Libre para el T3chfest Ed Day 2024,
     enfocada a estudiantes de secundaria y bachillerato.
   photos:
     - https://pbs.twimg.com/media/GIZDkkSWEAAQRCv?format=jpg&name=large

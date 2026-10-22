@@ -1959,6 +1959,91 @@
       participants:
         - Óscar Seguro Alonso
 
+- title: GUL JAMón - Charleta Edition
+  type: GUL Jamón
+  edition: 2
+  poster: https://cloud-gul.uc3m.es/actividades/2021/gulJamon/cartelv2.png?cache
+  activities:
+    - title: El desarrollo de videojuegos como proceso reivindicativo desde la infancia a la adultez
+      date: 2022/04/19
+      type: Charla
+      tags:
+        - Videojuegos
+      description: >-
+        Cómo cualquiera de nosotros puede crear videojuegos y cómo se pueden utilizar en procesos educativos.
+      video: https://youtu.be/oTN9r-KdgA4
+      participants:
+        - name: Isi Cano
+          link: https://isi-cano.itch.io/
+
+    - title: '0 A.D: Empires Ascendant - A FLOSS game of ancient warfare'
+      date: 2022/04/19
+      type: Charla
+      tags:
+        - Videojuegos
+        - Software Libre
+      description: >-
+        Historia del proyecto, sus áreas y cómo podemos contribuir al mismo.
+      video: https://youtu.be/RqosN47Or14
+      link: https://play0ad.com/
+      participants:
+        - name: Stanislas Dolcini
+          link: https://twitter.com/stanislasdolcin
+
+    - title: Introducción a Godot
+      date: 2022/04/20
+      type: Charla
+      tags:
+        - Videojuegos
+        - Godot
+      description: >-
+        El creador y lead developer de Godot nos habla sobre el motor de videojuegos que cada vez gana más popularidad y responde a nuestras preguntas.
+      video: https://youtu.be/91yYj0ONmR8
+      link: https://godotengine.org/
+      participants:
+        - name: Juan Linietsky
+          link: https://twitter.com/reduzio
+
+    - title: ¡Haciendo cosas con Godot!
+      date: 2022/04/20
+      type: Charla
+      tags:
+        - Videojuegos
+        - Godot
+      description: >-
+        Rafa nos cuenta su trayectoria y porqué Godot es tan maravilloso, no solo con palabras, también con hechos.
+      video: https://youtu.be/Dv1ryRGIG1E
+      link: https://github.com/rafalagoon/presentation.go
+      participants:
+        - name: Rafa Lagoon
+          link: https://twitter.com/RafaLagoon
+
+    - title: 3D audio en DOOM
+      date: 2022/04/21
+      type: Charla
+      tags:
+        - Videojuegos
+        - Audio
+      description: >-
+        Jose Luis nos habla sobre DOOM, sus cosas buenas y no tan buenas, en qué consiste el audio 3D y cómo están haciendo en la UPM para implementarlo dentro del DOOM clásico.
+      video: https://youtu.be/jEgpvtobyZ0
+      participants:
+        - name: Jose Luis Blanco
+          link: https://portalcientifico.upm.es/es/ipublic/researcher/309256
+
+    - title: Por qué hablar de QA no es "sexy"
+      date: 2022/04/21
+      type: Charla
+      tags:
+        - Videojuegos
+        - QA
+      description: >-
+        En qué consiste el QA en los videojuegos, desde qué es y qué no es QA hasta distintos tipos y roles que nos podemos encontrar.
+      video: https://youtu.be/GKuvmc3Pi-o
+      participants:
+        - name: Beatriz Castro
+          link: https://twitter.com/ami_diggory
+
 - title: XXXV Jornadas Técnicas
   type: Jornadas Técnicas
   edition: 35
