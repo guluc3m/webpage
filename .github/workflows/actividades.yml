@@ -12,6 +12,8 @@ on:
       - src/lib/actividades.test.ts
       - src/lib/congresos.test.ts
   push:
+    branches:
+      - master
     paths:
       - src/data/actividades.yaml
       - src/data/congresos.yaml
