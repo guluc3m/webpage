@@ -2047,6 +2047,7 @@
 - title: XXXV Jornadas Técnicas
   type: Jornadas Técnicas
   edition: 35
+  poster: https://cloud-gul.uc3m.es/actividades/2023/XXXV%20Jornadas%20T%C3%A9cnicas/cartel.png
   activities:
     - title: Te has instalado Linux... ahora, ¿qué?
       type: Charla
@@ -2160,7 +2161,7 @@
       description: >-
         Ven a las aulas habilitadas para desarrollar tu videojuego. ¡Anunciaremos la temática!
       date: 2025/09/25
-      type: Taller
+      type: Game jam
       photos:
         - https://pbs.twimg.com/media/G1pMKC3XMAAeJA2?format=jpg&name=large
       tags:
@@ -2174,7 +2175,7 @@
       description: >-
         Ven a terminar tu juego, a preguntarnos dudas y a competir con los demás.
       date: 2025/09/26
-      type: Taller
+      type: Game jam
       tags:
         - Videojuegos
       participants:
@@ -2187,7 +2188,7 @@
       description: >-
         Anunciaremos en vivo y en directo los juegos premiados en las distintas categorías. ¡Ven a ver los juegos, incluso si no has participado!
       date: 2025/10/03
-      type: Congreso
+      type: Game jam
       photos:
         - https://pbs.twimg.com/media/G2c1O0VWgAAf45d?format=jpg&name=medium
       tags:

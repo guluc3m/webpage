@@ -322,6 +322,19 @@
     - name: Alejandro Calderón
       link: https://twitter.com/acaldero_uc3m
 
+- title: Feria de Asociaciones 2023
+  type: Feria de Asociaciones
+  date: 2023/02/22
+  description: >-
+    Hicimos un programa de radio en directo... ¡Mira el "vídeo"!
+  video: https://cloud-gul.uc3m.es/radio_gul/Ferias%20de%20asociaciones/feria_de_asociaciones_2023.mp3
+  poster: https://pbs.twimg.com/media/FpfchBPWAAAhvhD?format=jpg&name=medium
+  participants:
+    - Luis Daniel Casais
+    - Jose Antonio Verde
+    - name: Lucía Moya
+      link: https://twitter.com/ciams16
+
 - title: GNU/Linux y el FOSS
   type: Charla
   tags: [Linux, Software Libre]
@@ -633,3 +646,5 @@
     - https://pbs.twimg.com/media/HTdtWyAXcAAzybm?format=jpg&name=small
   poster: https://pbs.twimg.com/media/HS--mmuXYAAFYzu?format=jpg&name=medium
   tags: [Linux]
+  participants:
+    - Jorge Saghin
