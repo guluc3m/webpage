@@ -46,6 +46,32 @@ test('a congreso without a series is a broken entry', () => {
   assert.match(errors[0], /falta series/);
 });
 
+test('a series is case-insensitive: different casings collapse to the first one', () => {
+  const { congresos, errors } = parseCongresos(
+    '- title: A\n  series: Jornadas Técnicas\n  edition: 1\n' +
+      '- title: B\n  series: jornadas técnicas\n  edition: 2\n' +
+      '- title: C\n  series: JORNADAS TÉCNICAS\n  edition: 3\n',
+  );
+  assert.deepEqual(errors, []);
+  assert.deepEqual(
+    congresos.map((c) => c.series),
+    ['Jornadas Técnicas', 'Jornadas Técnicas', 'Jornadas Técnicas'],
+  );
+});
+
+test('inner tags adopt the casing already seen in actividades.yaml', () => {
+  const known = loadActividades(
+    '- title: Fuera\n  date: 2020/01/02\n  type: Charla\n  tags: [Linux]\n',
+  );
+  const congresos = loadCongresos(
+    '- title: XXXV Jornadas Técnicas\n  series: Jornadas Técnicas\n  edition: 1\n' +
+      '  activities:\n' +
+      '    - title: A\n      date: 2023/04/11\n      type: Charla\n      tags: [LINUX, GUL]\n',
+    known,
+  );
+  assert.deepEqual(congresos[0]!.activities[0]!.tags, ['Linux', 'GUL']);
+});
+
 test('a broken inner activity is dropped without taking the congreso with it', () => {
   const { congresos, errors } = parseCongresos(
     '- title: XXIV Jornadas Técnicas\n' +

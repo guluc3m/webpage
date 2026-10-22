@@ -3,6 +3,8 @@
 // serie. This file only types it and loads it.
 import {
   actividadProblem,
+  canonicalCase,
+  canonicalTags,
   harvestParticipantLinks,
   normalizeParticipant,
   parseYamlChunks,
@@ -13,7 +15,8 @@ import {
 
 // Serie del congreso (p.ej. "Jornadas Técnicas"): texto libre, sin vocabulario
 // cerrado — una serie nueva basta con escribirla. Cada congreso declara el
-// suyo y su número de edición de esa serie.
+// suyo y su número de edición de esa serie. La grafía funciona igual que los
+// tags: case-insensitive, y la primera escrita se queda (canonicalCase).
 export type CongresoSeries = string;
 
 export interface Congreso {
@@ -55,8 +58,18 @@ export function sortActividades(actividades: Actividad[]): Actividad[] {
  * without taking the rest with it (a broken inner activity is dropped from
  * its congreso instead of taking the congreso down too). Activities come out
  * sorted by date (and title), so the page renders them in the given order.
+ * Series (del congreso) y tags (de sus activities) salen en grafía canónica:
+ * case-insensitive; el canon opcional añade lo ya visto fuera del fichero
+ * (los tags de actividades.yaml), para que dos ficheros no decidan grafías
+ * distintas de lo mismo.
  */
-export function parseCongresos(raw: string): { congresos: Congreso[]; errors: string[] } {
+export function parseCongresos(
+  raw: string,
+  canon: { series: Map<string, string>; tags: Map<string, string> } = {
+    series: new Map(),
+    tags: new Map(),
+  },
+): { congresos: Congreso[]; errors: string[] } {
   const congresos: Congreso[] = [];
   const errors: string[] = [];
 
@@ -71,12 +84,14 @@ export function parseCongresos(raw: string): { congresos: Congreso[]; errors: st
         errors.push(`línea ${line}: ${problem}: ${JSON.stringify(raw)}`);
         continue;
       }
-      const { activities, ...congreso } = raw as {
+      const { activities, ...rest } = raw as {
         activities?: unknown[];
         title: string;
         series: string;
         edition: number;
       };
+      // Serie y tags comparten el mismo canon case-insensitive.
+      const congreso = { ...rest, series: canonicalCase(canon.series, rest.series) };
       const actividades: Actividad[] = [];
       for (const a of (activities ?? []) as unknown[]) {
         const innerProblem = actividadProblem(a);
@@ -93,6 +108,9 @@ export function parseCongresos(raw: string): { congresos: Congreso[]; errors: st
             participants: (a as Partial<Actividad>).participants
               ?.map(normalizeParticipant)
               .filter((p): p is Participant => p !== null),
+            ...((a as Partial<Actividad>).tags
+              ? { tags: canonicalTags((a as Partial<Actividad>).tags, canon.tags) }
+              : {}),
           } as Actividad);
         }
       }
@@ -115,7 +133,11 @@ export function parseCongresos(raw: string): { congresos: Congreso[]; errors: st
 // Un link aparecido en actividades.yaml también resuelve aquí, así no se
 // repiten entre los dos ficheros.
 export function loadCongresos(raw: string, knownActividades: Actividad[] = []): Congreso[] {
-  const { congresos, errors } = parseCongresos(raw);
+  // El canon de tags parte de lo ya visto en actividades.yaml (su loader
+  // canonicaliza), para que congresos.yaml adopte sus grafías, no las alargue.
+  const canon = { series: new Map<string, string>(), tags: new Map<string, string>() };
+  for (const a of knownActividades) canonicalTags(a.tags, canon.tags);
+  const { congresos, errors } = parseCongresos(raw, canon);
   for (const e of errors) console.warn(`[congresos] entrada rota, no sale: ${e}`);
   const links = harvestParticipantLinks(knownActividades);
   return congresos.map((c) => ({

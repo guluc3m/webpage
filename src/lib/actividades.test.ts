@@ -50,3 +50,14 @@ test('photos must be a list, a lone URL is a broken entry', () => {
   const { errors } = parseActividades(entry('A') + '  photos: https://example.org/a.jpg\n');
   assert.match(errors[0], /photos no es una lista/);
 });
+
+test('tags are case-insensitive: same tag, different casing, one chip', () => {
+  const raw =
+    entry('A') +
+    '  tags: [Linux, Terminal]\n' +
+    '- title: B\n  date: 2020/01/02\n  type: Charla\n  tags: [LINUX, terminal, Linux]\n';
+  const { actividades } = parseActividades(raw);
+  // La primera grafía vista gana; lo demás se le iguala y no se repite.
+  assert.deepEqual(actividades[0]!.tags, ['Linux', 'Terminal']);
+  assert.deepEqual(actividades[1]!.tags, ['Linux', 'Terminal']);
+});

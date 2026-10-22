@@ -123,6 +123,33 @@ export function parseYamlChunks(
   });
 }
 
+// Igualar grafías case-insensitivamente: 'Linux', 'linux' y 'LINUX' son lo
+// mismo (la página ya compara en minúsculas; esto evita chips duplicados con
+// distinta mayúscula). El mapa acumula, por clave en minúsculas, la primera
+// grafía vista: esa es la canónica y las demás se le igualan.
+export function canonicalCase(seen: Map<string, string>, s: string): string {
+  const key = s.toLowerCase();
+  const casing = seen.get(key);
+  if (casing !== undefined) return casing;
+  seen.set(key, s);
+  return s;
+}
+
+// Los tags de una actividad, en grafía canónica y sin repetir el mismo tag
+// (aunque cambien las mayúsculas). YAML suelta números: se llevan a texto.
+export function canonicalTags(
+  tags: unknown[] | undefined,
+  seen: Map<string, string>,
+): string[] | undefined {
+  if (!tags) return tags;
+  const out: string[] = [];
+  for (const t of tags) {
+    const tag = canonicalCase(seen, String(t));
+    if (!out.includes(tag)) out.push(tag);
+  }
+  return out;
+}
+
 /**
  * Parses actividades.yaml one entry at a time, so a broken entry (bad YAML or
  * a missing field) is reported and dropped without taking the rest with it.
@@ -130,6 +157,7 @@ export function parseYamlChunks(
 export function parseActividades(raw: string): { actividades: Actividad[]; errors: string[] } {
   const actividades: Partial<Actividad>[] = [];
   const errors: string[] = [];
+  const seenTags = new Map<string, string>();
 
   for (const { line, entries, error } of parseYamlChunks(raw)) {
     if (error) {
@@ -148,6 +176,7 @@ export function parseActividades(raw: string): { actividades: Actividad[]; error
     participants: a.participants
       ?.map(normalizeParticipant)
       .filter((p): p is Participant => p !== null),
+    ...(a.tags ? { tags: canonicalTags(a.tags, seenTags) } : {}),
   })) as Actividad[];
   return { actividades: resolveParticipantLinks(normalized), errors };
 }
