@@ -23,7 +23,7 @@
       participants:
         - Diego Gómez Díaz
 
-    - title: 'IPv6: Introducción y configuración en GNU/Linux'
+    - title: "IPv6: Introducción y configuración en GNU/Linux"
       date: 2002/11/28
       type: Charla
       slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/IPv6_gul.pdf.gz
@@ -380,10 +380,10 @@
       participants:
         - Jesús Espino García
 
-    - title: 'Programación Funcional: Haskell'
+    - title: "Programación Funcional: Haskell"
       date: 2006/04/03
       type: Charla
-      tags: [Haskell]
+      tags: [Haskell, Programación Funcional]
       video: https://cloud-gul.uc3m.es/actividades/2006/marzo/Haskell/Gul-Haskell-03-04-06.mpg
       participants:
         - Federico G. Mon Trotti
@@ -434,7 +434,7 @@
       participants:
         - Sergio Gil Pérez de la Manga
 
-    - title: 'LUC3M: El Linux de la Carlos III'
+    - title: "LUC3M: El Linux de la Carlos III"
       date: 2006/03/27
       type: Charla
       tags: [Linux]
@@ -502,7 +502,7 @@
       participants:
         - Jesús Espino García
 
-    - title: 'Subversion: Desarrollo colaborativo'
+    - title: "Subversion: Desarrollo colaborativo"
       date: 2006/04/04
       type: Charla
       tags: [Subversion]
@@ -614,7 +614,7 @@
       slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/tarde_de_web/tarde_de_web_2007.pdf
       source: https://cloud-gul.uc3m.es/actividades/2007/marzo/tarde_de_web/Cabaret.tar.gz
 
-    - title: 'Virtualización: Introducción y toma de contacto'
+    - title: "Virtualización: Introducción y toma de contacto"
       date: 2007/03/25
       type: Charla
       tags: [Virtualización]
@@ -652,7 +652,7 @@
       source: https://cloud-gul.uc3m.es/actividades/2007/noviembre/Vim/vim-11-2007_fuentes.zip
       participants:
         - Jose María Chumo Mata
-    - title: 'LaTeX: La imprenta en casa'
+    - title: "LaTeX: La imprenta en casa"
       date: 2007/11/14
       type: Charla
       tags:
@@ -818,7 +818,7 @@
       video: https://cloud-gul.uc3m.es/actividades/2009/marzo/Soluciones%20Profesionales%20Correo%20Software%20Libre/Soluciones%20Profesionales%20Correo%20Software%20Libre.ogg
       participants:
         - Javier Turégano Molina
-    - title: 'GNU build system (Autotools): Autoconf, Automake y Libtool'
+    - title: "GNU build system (Autotools): Autoconf, Automake y Libtool"
       date: 2009/03/12
       type: Charla
       tags:
@@ -995,7 +995,7 @@
       source: https://cloud-gul.uc3m.es/actividades/2010/marzo/memoria_dinamica/Memoria%20Dinamica.odp
       participants:
         - Tania Pérez
-    - title: 'Xplico: concept, features, demo'
+    - title: "Xplico: concept, features, demo"
       date: 2010/03/10
       type: Charla
       tags:
@@ -1310,7 +1310,7 @@
       participants:
         - name: Antonio Mejias
           link: https://twitter.com/cyfuss_com
-    - title: 'Graph Databases: a little connected tour'
+    - title: "Graph Databases: a little connected tour"
       date: 2013/10/23
       type: Charla
       tags:
@@ -1344,7 +1344,7 @@
         - Videojuegos
         - Android
         - OpenGL
-    - title: 'Zoe: la asistente del GUL'
+    - title: "Zoe: la asistente del GUL"
       date: 2013/10/25
       type: Charla
       tags:
@@ -1365,6 +1365,7 @@
         - C
       participants:
         - David Muñoz Díaz
+
     - title: Introducción a Linux
       date: 2014/03/17
       type: Charla
@@ -1372,12 +1373,14 @@
         - Linux
       participants:
         - Miguel Vaello
+
     - title: Presentación GUL-UC3M
       date: 2014/03/17
       type: Charla
       tags:
         - GUL
       slides: https://cloud-gul.uc3m.es/actividades/2014/marzo/GUL_UC3M.pdf
+
     - title: Android
       date: 2014/03/18
       type: Charla
@@ -1387,13 +1390,15 @@
         - Android
       participants:
         - Javier Sánchez
-    - title: 'Introducción a los lenguajes funcionales: Scala'
+
+    - title: "Introducción a los lenguajes funcionales: Scala"
       date: 2014/03/18
       type: Charla
       tags:
         - Scala
       participants:
         - David Muñoz Díaz
+
     - title: Promesas en JavaScript
       date: 2014/03/18
       type: Charla
@@ -1409,6 +1414,7 @@
         - Bitcoin
       participants:
         - Eva Morano
+
     - title: Seguridad Informática
       date: 2014/03/19
       type: Charla
@@ -1419,6 +1425,7 @@
       participants:
         - name: Yago Pérez Sáiz
           link: https://twitter.com/yag_91
+
     - title: Zoe
       date: 2014/03/19
       type: Charla
@@ -1429,6 +1436,7 @@
       video: https://youtu.be/3ApdZpXHGns
       participants:
         - David Muñoz Díaz
+
     - title: Diseño Web
       date: 2014/03/20
       type: Charla
@@ -1436,6 +1444,7 @@
         - C
       participants:
         - Alejandro Baldominos
+
     - title: Introduction to WebRTC
       date: 2014/03/20
       type: Charla
@@ -1447,6 +1456,7 @@
       participants:
         - name: Luis López
           link: https://twitter.com/kurentoms
+
     - title: Cómo funciona un ordenador y cómo montar el tuyo desde cero
       date: 2014/03/21
       type: Charla
@@ -1457,6 +1467,7 @@
       participants:
         - Fernando Cerezal López
         - Adrián Casado Rivas
+
     - title: Introducción a Arduino
       date: 2014/03/21
       type: Charla
@@ -1469,6 +1480,7 @@
       participants:
         - name: Fernando Cerezal López
           link: https://twitter.com/fcerezal
+
     - title: Licencias al desnudo
       date: 2014/04/18
       type: Charla
@@ -1485,6 +1497,12 @@
   series: Semana de Asociaciones
   edition: 1
   activities:
+    - title: Presentación GUL
+      date: 2014/10/13
+      type: Charla
+      tags:
+        - GUL
+
     - title: Linux en 90' para no desesperarse en las prácticas
       date: 2014/10/14
       type: Charla
@@ -1496,7 +1514,7 @@
         - Fernando Cerezal López
         - Adrián Casado Rivas
 
-    - title: 'Hackers UC3M: no sólo para programadores'
+    - title: "Hackers UC3M: no sólo para programadores"
       date: 2014/10/15
       type: Charla
       tags: [GUL]
@@ -1504,13 +1522,21 @@
       participants:
         - Adrián Casado Rivas
 
+    - title: Feria de Asociaciones 2014
+      type: Feria de Asociaciones
+      date: 2014/10/17
+      photos:
+        - https://pbs.twimg.com/media/B0JXospIUAAhG8m?format=jpg&name=4096x4096
+
 - title: XXV Jornadas Técnicas
   series: Jornadas Técnicas
   edition: 25
+  poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
   activities:
     - title: Depuración con GDB
       date: 2014/11/10
       type: Charla
+      description: Introducción a la búsqueda de errores usando el depurador GDB
       tags:
         - Programación
         - GDB
@@ -1518,25 +1544,39 @@
       participants:
         - name: Samuel Rodríguez Sevilla
           link: https://twitter.com/laparca
+
     - title: Servidores de Alto Rendimiento en GNU/Linux
       date: 2014/11/10
       type: Charla
+      description: Servidores Web de Alto Rendimiento en GNU/LINUX
       tags:
-        - Self-hosting
+        - HPC
         - Linux
       video: https://www.youtube.com/live/-ymalcq5uvI
       participants:
         - name: Ivan Casco Valero
           link: https://twitter.com/ivicv
+
     - title: Administración de un servidor con WhatsApp
-      description: Automatización de tareas. Envia comandos desde whatshapp y haz que sean comprensibles por tu Linux.
+      description: Automatización de tareas. Envia comandos desde WhatsApp y haz que sean comprensibles por tu Linux.
       date: 2014/11/11
       type: Charla
       tags:
+        - WhatsApp
         - Self-hosting
       video: https://www.youtube.com/live/mA5V5Gf6D-E
       participants:
         - Alberto Fernández
+
+    - title: Inteligencia Artificial aplicada a videojuegos de estrategia en tiempo real
+      type: Charla
+      date: 2014/11/11
+      description: Una visita guiada rápida al mundo de la inteligencia artificial aplicada a juegos de estrategia en tiempo real (Age of Empires, Starcraft II, Risk...). Consistirá en una introducción a las técnicas aplicadas para esta problemática con un recorrido por los principales desafíos a los que ha enfrentado en los últimos años y problemas que surgen para el futuro. ( técnicas que pasan por aprendizaje por refuerzo, algoritmos evolutivos, data mining aplicado a aprendizaje automático, uso de automatas finitos (FSM) , CBR models, semi modelos ocultos de markov (HSMM), entre otros muchos ). La charla concluirá con un ejemplo práctico de agente inteligente en el juego de estrategia RISK. Se analizará el agente y su proceso de diseño, y se probará la eficacia en directo.
+      tags:
+        - Videojuegos
+      participants:
+        - Adrián Domínguez Martín
+
     - title: Can I haz ur pythons?
       description: Charla de nivel medio de python, con ejemplos prácticos con algún ORM entre medias, framework web y cosas asíncronas.
       date: 2014/11/12
@@ -1549,6 +1589,7 @@
           link: https://twitter.com/rmed_dev
         - name: Francisco Javier Honduvilla Coto
           link: https://twitter.com/javierhonduco
+
     - title: Licencias Open Source & Free Software... ¿Por qué?
       description: Las principales licencias de "Free Software" u "Open Source".
       date: 2014/11/12
@@ -1559,16 +1600,19 @@
       participants:
         - name: Adolfo Santiago
           link: https://twitter.com/adolphenom
-    - title: 'Programación funcional: Porno para programadores'
+
+    - title: "Programación funcional: Porno para programadores"
       date: 2014/11/12
+      description: Empieza a programar en estilo funcional desde ya (y sin cambiar de lenguaje)
       type: Charla
       tags:
-        - Programación
+        - Programación Funcional
         - Haskell
       video: https://www.youtube.com/live/yKE1uMoTn54
       participants:
         - name: David Muñoz Díaz
           link: https://twitter.com/voiser
+
     - title: Aplicación web. Cómo se ha hecho GULTalks
       description: ¿Necesitas hacer una aplicación web y no sabes por donde empezar?
       date: 2014/11/13
@@ -1576,19 +1620,31 @@
       tags:
         - Software
         - GUL
+      link: https://github.com/guluc3m/gul-gultalks
       video: https://www.youtube.com/live/K83aQyv-d6k
       participants:
         - name: Miguel Vaello
           link: https://github.com/mvaello
+
+    - title: Crea tu propia distribución basada en Debian con Simple-CDD
+      date: 2014/11/13
+      description: Con Simple-CDD puedes crear a tu gusto una distribución basada en Debian de manera fácil y rápida
+      type: Charla
+      tags:
+        - Debian
+        - Linux
+
     - title: Contratos de Desarrollo Software
       date: 2014/11/13
       type: Charla
+      description: Aprender los aspectos básicos en la contratación de servicios de desarrollo de software
       tags:
         - Software
       video: https://www.youtube.com/live/ffLcFjNU3P4
       participants:
         - name: Víctor Méndez
           link: http://twitter.com/_vmendez
+
     - title: Crea tu propia distribución basa da en debian con Simple -CDD
       date: 2014/11/13
       type: Charla
@@ -1597,6 +1653,7 @@
         - Debian
       participants:
         - Miguel Vaello
+
     - title: Hackea tu educación en la universidad
       description: Si lo que aprendes en la uni se te queda corto, te cuento las claves para hackear tu educación en este periodo.
       date: 2014/11/14
@@ -1608,34 +1665,54 @@
       participants:
         - name: Israel Gutiérrez
           link: https://twitter.com/gootyfer
+
     - title: Zoe en casa
       date: 2014/11/14
       type: Charla
+      description: Cómo instalar Zoe en casa y empezar a jugar con ella
       tags:
         - GUL
         - Zoe
       video: https://www.youtube.com/live/9gLKd3oJyiA
       participants:
         - Rafael Medina García
-  poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
 
 - title: XXVI Jornadas Técnicas
   series: Jornadas Técnicas
   edition: 26
+  poster: https://pbs.twimg.com/media/CCzOWYCUgAA1Wvx?format=jpg&name=medium
   activities:
-    - title: 'Markdown & Pandoc: not another Word'
-      description: Creación de documentos académicos mediante Markdown.
+    # https://web.archive.org/web/20160422033221/http://cursos.gul.es/xxvi-jornadas-tecnicas-del-gul/
+
+    - title: ¿Conoces a mi amigo Debian?
+      date: 2015/05/20
+      type: Charla
+      description: >-
+        Mucha gente es reacia al uso de un sistema operativo, no particularmente Linux, si no diferente a Windows. Y la única razón de esto muchas veces es que Windows es algo conocido, familiar, donde nos sentimos cómodos, y usar otro sistema genera inseguridad porque no sabemos donde están las cosas y lo que resultaba algo intuitivo ya no lo es. Con esta charla/Taller pretendo presentaros un SO Linux, Debian concretamente, recién instalado, explicando también como instalarlo junto a un Windows, e ir conociéndolo desde el principio para perder ese pánico inicial y descubrir muchas de las cosas que este buen compañero de aventuras es capaz de ofrecernos.
+      tags:
+        - Linux
+        - Debian
+      participants:
+        - name: Adrián Borja Pimentel
+          link: https://twitter.com/SeindElBardo
+
+    - title: "Markdown & Pandoc: not another Word"
+      description: >-
+        Memorias, trabajos, escritos académicos en general... todos hemos tenido que escribirlos alguna vez y hemos sufrido las consecuencias de usar Word, Writer u otro tipo de editor del mismo estilo: márgenes, tablas, alineación, alineación de tablas, márgenes, problemas de formato, gráficos, más márgenes... En esta pequeña charla presentaremos una posible alternativa a estas herramientas "tradicionales". Usando Markdown para escribir el contenido, Pandoc para poder transformar ese contenido a una gran variedad de formatos y una pizca de LaTex si nos gusta darle un poco de emoción a las cosas, obtendremos una forma fácil y rápida (e incluso divertida) de escribir documentos. Además hablaremos de Markdown Slides, una utilidad con la que podréis crear presentaciones de diapositivas en diferentes formatos y con aspecto más que profesional. ¡Y todo ello usando Markdown! ¿Es que se puede pedir más?
       date: 2015/05/20
       type: Charla
       tags:
         - Pandoc
       video: https://youtu.be/PLWgBZGFMeA
+      source: https://github.com/asanzdiego/markdownslides
       participants:
         - Rafael Medina García
         - name: Adolfo Sanz de Diego
           link: https://twitter.com/asanzdiego
+
     - title: The Graphs of Wrath
-      description: Introducción a los grafos sociales siguiendo ejemplos prácticos.
+      description: >-
+        En esta charla explicaré conceptos de grafos sociales a un nivel introductorio y no excesivamente técnico. Explicaré cómo conceptos de la teoría de grafos se aplican a grafos sociales para extraer valor sociológico de una estructura fundamentalmente matemática / computacional; y podrás entender a qué se debe la típica afirmación de que "el mundo es un pañuelo". Haré una demo con algunos grafos reales extraídos de Facebook para que los asistentes puedan ver cómo claramente se identifican las comunidades de usuarios dentro la red social. Además, emplearemos la herramienta opensource Gephi para realizar todas estas operaciones.
       date: 2015/05/21
       type: Charla
       tags:
@@ -1643,19 +1720,48 @@
       video: https://youtu.be/lvtVStnxiws
       participants:
         - name: Alejandro Baldominos
-          link: https://twitter.com/baldo_uc3m
+          link: https://bal.do/
+
+    - title: Programación Literaria
+      date: 2015/05/21
+      type: Charla
+      description: >-
+        La programación literaria es un modelo extraordinariamente eficaz. En palabras de Donald Knuth: "sirve para hacer los programas por fin bien" y tiene innumerables aplicaciones. Su importancia, sin embargo, ha resultado más o menos desapercibida a pesar de que, quien la practica, urge a otros a considerarla por el impacto positivo en su trabajo. En la presentación se mostrará el principio de la programación literaria, así como algunas herramientas y, por fin, se discutirán dos casos reales para la generación de documentos... de un modo muy especial, ¡usando programación literaria!
+      tags:
+        - Software
+      photos:
+        - https://pbs.twimg.com/media/CDH4WoYWYAEsMNu?format=jpg&name=medium
+      participants:
+        - name: Carlos Linares
+          link: https://twitter.com/Phovox
+
+    - title: Sé cool, usa programación funcional
+      date: 2015/05/21
+      type: Charla
+      description: >-
+        ¿Estás cansado de no ser lo suficientemente cool? ¿Hacer concurrencia es un infierno? ¿Te faltan paréntesis en tu vida? ¿Siempre se te olvidan casos que probar en tus test? ¿No recuerdas cuándo fue la última vez que usaste un patrón de diseño? Si tienes estas inquietudes o simplemente curiosidad te recomiendo que vengas a esta charla. Empezaré explicando conceptos sencillos de programación funcional (como la inmutabilidad), hasta conceptos más avanzados como las monadas. Usaré para los ejemplos Scala, pero mostraremos ejemplos de Programación funcional en otros lenguajes. El objetivo de este taller, es mostrarte lo fácil e interesante que es aplicar aspectos de programación funcional a tu código para mejorar tu código. Y volver a ser el mas cool de la empresa.
+      tags:
+        - Programación Funcional
+        - Scala
+      participants:
+        - Ignacio Navarro
+
     - title: JavaScript, JS everywhere!
-      description: Lo más hipster del front-end y del back-end con JS.
+      description: >-
+        Lo más hipster del front-end y del back-end con JS. Preparad vuestras gafas de pasta, vuestra camisa de leñador y ese MacBook (con Linux instalado) que tanto os gusta lucir, esto va a ser divertido. En esta charla se introducirán las librerías y frameworks más actuales para construir aplicaciones web. AngularJS está pegando fuerte, no es para menos, hacer aplicaciones totalmente reactivas es bastante sencillo gracias a este framework. También tenemos #Polymer, #Ember.js y #Backbone.js así que también hablaremos de ellos. En el servidor, alabamos a #NodeJS y su MAGIA. Disponemos de los frameworks #Express y #Koa entre otros. Resulta que los #WebSockets son nuestros nuevos amigos para enviar y recibir datos entre el cliente y el servidor en tiempo real. #Socket.io está para echarnos una mano. Parece que son muchos nombres, pero no os asustéis, sólo se dará una visión superficial. Se resolverán preguntas del tipo: ¿Por cuál empiezo?, ¿Me olvido ya de otros lenguajes para la web?, ¿Podemos jugar al Pókemon desde el navegador entre varios?
       date: 2015/05/23
       type: Charla
       tags:
         - JavaScript
       video: https://youtu.be/n-AOqHFxuv8
+      link: http://yago.me/gul2015
       participants:
         - name: Yago Pérez
           link: https://twitter.com/yag_91
+
     - title: Programando en Android Wear
-      description: Rápida revisión de las familias de wearables y nos centraremos en la programación de aplicaciones con Android Wear.
+      description: >-
+        Rápida revisión de las familias de wearables y nos centraremos en la programación de aplicaciones con Android Wear. Veremos el estado actual de las diferentes familias de wearables, y haremos una aplicación en Android Wear. Hablaremos de las condiciones especiales en las que se usan las aplicaciones en wearables y cómo hacer apps adaptadas a su pantalla limitada por el tamaño, basar la entrada de datos en comandos por voz, explicaremos las formas de comunicarnos con el móvil dentro de la app para tener conectividad y balancear la carga de procesos entre el móvil y el reloj. Explicaremos también cómo dar funcionalidades de wearable fácilmente una app de móvil mediante las notificaciones y todo ello mediante ejemplos que haremos directamente en Android Studio.
       date: 2015/05/23
       type: Charla
       tags:
@@ -1664,8 +1770,10 @@
       participants:
         - name: Daniel Rojo
           link: https://twitter.com/akey
+
     - title: OpenSource, Innovación y empresa
-      description: Charla sobre innovación tecnológica, código abierto y empresa.
+      description: >-
+        Charla acerca de la innovación y de los caminos para poder competir como pequeña empresa, contra las grandes empresas utilizando herramientas como el código abierto. No es una charla técnica, sino una aproximación al proceso de emprender visto desde la innovación tecnológica. Como los procesos creativos basados en código abierto, o en ecosistemas colaborativos, pueden desembocar en proyectos empresariales con éxito.
       date: 2015/05/24
       type: Charla
       tags:
@@ -1674,8 +1782,10 @@
       participants:
         - name: Sancho Lerena
           link: https://twitter.com/slerena
+
     - title: Tu primera máquina virtual
-      description: Introducción a la gestión y administración de máquinas virtuales.
+      description: >-
+        Pequeña introducción a la gestión de máquinas virtuales, ya sea en el ámbito personal o en el de servidores: creación, inicio, gestión de recursos, etc. Así como algunos ejemplos de tecnología disponibles para ello.
       date: 2015/05/24
       type: Charla
       tags:
@@ -1683,6 +1793,16 @@
       video: https://youtu.be/ydfHZMVr-Lg
       participants:
         - Axel Blanco
+
+    - title: Monta tu propio ordenador
+      type: Taller
+      date: 2015/05/24
+      description: >-
+        ¿Te gustaría saber qué lleva la caja de tu ordenador por dentro? ¿Alguna vez te has planteado que te gustaría montarte un ordenador por piezas pero no tenías muy claro cómo? La charla iría orientada a todos aquellos que alguna vez se han planteado alguna de estas dos cuestiones. Empezaríamos describiendo cuáles son los componentes que (valga la redundancia) componen un ordenador y cuál es la función de cada uno de ellos para a continuación ir viendo cuáles son los criterios para elegir unos componentes u otros a la hora de querer montar un ordenador por piezas. Por último, se montaría rápidamente un ordenador en la propia charla a modo de pequeña demostración.
+      tags:
+        - Hardware
+      participants:
+        - Óscar Seguro Alonso
 
 - title: II Semana de Asociaciones
   series: Semana de Asociaciones
@@ -1715,6 +1835,12 @@
       date: 2015/10/07
       tags: [Linux, Terminal]
 
+    - title: Feria de Asociaciones 2015
+      type: Feria de Asociaciones
+      date: 2015/10/04
+      photos:
+        - https://pbs.twimg.com/media/COE0zxRW8AAPDK5?format=jpg&name=medium
+
 - title: XXVII Jornadas Técnicas
   series: Jornadas Técnicas
   edition: 27
@@ -1728,6 +1854,7 @@
       video: https://youtu.be/Yf452FUgdyA
       participants:
         - Adolfo Santiago
+
     - title: "Schrödinger's Flask: ¿vive la serpiente?"
       description: Aplicaciones web indoloras con Python + Flask
       date: 2015/11/23
@@ -1735,8 +1862,11 @@
       tags:
         - Python
       video: https://youtu.be/3y1FknmP9YQ
+      photos:
+        - https://pbs.twimg.com/media/CUgnBVVWsAE01YM?format=jpg&name=medium
       participants:
         - Rafael Medina García
+
     - title: Crea tu propio motor de videojuegos con HTML5 y Javascript
       description: Videojuegos, muchas risas y programación sin morir en el intento.
       date: 2015/11/24
@@ -1819,9 +1949,12 @@
       tags:
         - Git
       video: https://youtu.be/zqe1gRCWs3o
+      photos:
+        - https://pbs.twimg.com/media/CfxKevHWwAAGckY?format=jpg&name=large
       participants:
         - name: Axel Blanco
           link: https://twitter.com/drimmark
+
     - title: Pretend that you're Hercule Poirot
       description: Charla/Taller sobre LaTeX, qué es, porqué mola tanto, cómo funciona y ejemplos varios de cosas que se pueden hacer. Desde documentos de texto, pasando por gráficas, diapositivas... Y con el dinero que te ahorras de las licencias de Word te compras barcos.
       date: 2016/04/11
@@ -1832,7 +1965,7 @@
       participants:
         - name: Daniel Rodríguez López
           link: https://github.com/patataman
-    - title: 'Go: Nil for null people'
+    - title: "Go: Nil for null people"
       description: Charla de introducción a Go, lenguaje de programación desarrollado por Google en 2009.
       date: 2016/04/12
       type: Charla
@@ -1884,7 +2017,7 @@
         - name: Manuel Quindimil López
           link: https://twitter.com/quindimildev
     - title: Con las serpientes Sí se juega (Pygame)
-      description: 'El desarrollo de videojuegos amateur lleva unos cuantos años viviendo su momento más dulce: cada vez tenemos más herramientas gratuitas y los medios para formarnos están más a nuestro alcance que nunca. Sin embargo, los novatos en la materia tendemos a ser ambiciosos y no es raro que alguna vez pensemos en empezar construyendo la casa por el tejado haciendo uso de motores complejos como Unity o Unreal Engine. Para algo los hacen de libre acceso, ¿no?'
+      description: "El desarrollo de videojuegos amateur lleva unos cuantos años viviendo su momento más dulce: cada vez tenemos más herramientas gratuitas y los medios para formarnos están más a nuestro alcance que nunca. Sin embargo, los novatos en la materia tendemos a ser ambiciosos y no es raro que alguna vez pensemos en empezar construyendo la casa por el tejado haciendo uso de motores complejos como Unity o Unreal Engine. Para algo los hacen de libre acceso, ¿no?"
       date: 2016/04/15
       type: Charla
       tags:
@@ -1960,6 +2093,114 @@
       slides: https://cloud-gul.uc3m.es/actividades/2016/Noviembre/oscar_crackea_rom_y_actualiza_android.pdf
       participants:
         - Óscar Seguro Alonso
+
+- title: III Semana de Asociaciones
+  series: Semana de Asociaciones
+  edition: 3
+  poster: https://pbs.twimg.com/media/CtyILzaWIAAHCgk?format=jpg&name=large
+  activities:
+    - title: De cero a mantener la calma en LINUX
+      description: >-
+        El propósito de la actividad es que los asistentes se familiaricen con el
+        Sistema Operativo Linux, especialmente en su entorno de consola, para que
+        las prácticas de la carrera desarrolladas en este entorno les sean menos
+        costosas. Se trabajarán conjuntos de comandos básicos, conjuntos de comandos
+        avanzados y se darán consejos útiles. Será impartido por estudiantes y
+        ex-estudiantes de la UC3M, algunos con más de 10 años de experiencia en
+        LINUX y que son conocedores de la formación complementaria conveniente.
+      date: 2016/10/03 # me invento el día
+      type: Charla
+      tags: [Linux, Terminal]
+
+    - title: Una radio a tu alcance
+      description: >-
+        La actividad consiste en la realización de un programa de radio en directo
+        por parte de Dj Tango, locutor, productor y dj con 16 años de experiencia.
+        Durante el desarrollo del programa, Tango aportará su visión del medio
+        radiofónico desde su experiencia. Se profundizará en conceptos clave y al
+        finalizar el programa, se organizará un coloquio con los asistentes. Tango
+        ha trabajado en LOCA FM, siendo uno de los facilitadores de su expansión
+        nacional y ha fundado laisla.fm, una radio únicamente online financiada
+        mediante crowfunding. Su programa La Isla ha sido galardonando cuatro veces
+        como mejor programa de radio en directo en los premios nacionales de música
+        electrónica VMA.
+        de los participantes.
+      type: Taller
+      tags: [Radio]
+      date: 2016/10/06 # me invento el día
+      participants:
+        - name: Sixto Fernández
+          link: https://twitter.com/djtangosix
+
+    - title: WhatsApp o Telegram, o como te condicionan las TIC
+      type: Taller
+      tags:
+        - Software Libre
+      description: >-
+        Al estilo de las charlas TEDx, en esta actividad se realizarán tres charlas
+        relámpago que pretenden mover la conciencia de los asistentes y hacer
+        reflexionar sobre tres temas de marcada actualidad tecnológica y sus
+        repercusiones en nuestro modo de vida.
+      date: 2016/10/04 # me invento el día
+
+    - title: Feria de Asociaciones
+      type: Feria de Asociaciones
+      date: 2016/10/07
+      poster: https://pbs.twimg.com/media/CuG2cpcW8AM0KB2?format=jpg&name=4096x4096
+      photos:
+        - https://pbs.twimg.com/media/CuKL1KmUsAAdfzb?format=jpg&name=4096x4096
+        - https://pbs.twimg.com/media/CuKNksZVMAAz0Ii?format=jpg&name=4096x4096
+        - https://pbs.twimg.com/media/CuKNkrlVIAAaGBj?format=jpg&name=4096x4096
+
+- title: IV Semana de Asociaciones
+  series: Semana de Asociaciones
+  edition: 2
+  activities:
+    - title: Feria de Asociaciones 2017
+      type: Feria de Asociaciones
+      date: 2017/10/06
+      photos:
+        - https://pbs.twimg.com/media/DLcaeUPX4AADX1U?format=jpg&name=large
+        - https://pbs.twimg.com/media/DLcafDAX4AAtgij?format=jpg&name=large
+        - https://pbs.twimg.com/media/DLduh8TW4AAUmzv?format=jpg&name=large
+
+- title: El Evento 2016
+  series: El Evento
+  edition: 1
+  url: https://asrob.uc3m.es/evento2016/
+  poster: https://pbs.twimg.com/media/Cvdpxe1WYAA4vR6?format=jpg&name=4096x4096
+  activities:
+    - title: "Empujar y tirar: Git para manejar tu código"
+      date: 2016/10/24
+      type: Charla
+      tags:
+        - Git
+      description: >-
+        Git es una herramienta libre para el control de versiones del código. El hecho es que es mucho más potente que eso. En esta charla veremos los fundamentos de git, como hacerlo funcionar en nuestra máquina con nuestro código, algunas buenas prácticas y trabajaremos con servidores remotos.
+      participants:
+        - Axel Blanco
+
+    - title: De 0 a predecir el futuro en Python
+      date: 2016/10/24
+      type: Charla
+      description: >-
+        En esta charla/taller se verá la sintaxis básica de Python, variables, sentencias de control, métodos… Todo lo necesario para empezar a trastear con él, aplicado a un ejemplo práctico de redes de neuronas muy fácil, sencillo y para toda la familia.
+      tags:
+        - Python
+      participants:
+        - Daniel Rodríguez
+
+# XXX jt
+# https://x.com/guluc3m/status/847496779708973057?s=20
+# https://x.com/guluc3m/status/847186915489173506?s=20
+# https://x.com/guluc3m/status/847133954947862528?s=20
+# https://x.com/guluc3m/status/843079858947342336?s=20
+
+# https://x.com/guluc3m/status/924890462678331393?s=20
+# - title: XXXI Jornadas Técnicas
+#   series: Jornadas Técnicas
+#   edition: 31
+#   poster:
 
 - title: XXXII Jornadas Técnicas
   series: Jornadas Técnicas
@@ -2068,6 +2309,11 @@
       poster: https://cloud-gul.uc3m.es/actividades/2018/XXXII%20Jornadas%20T%C3%A9cnicas/hackDark.png
       tags:
         - Bots
+      photos:
+        - https://pbs.twimg.com/media/DarsI_KX0AACs8y?format=jpg&name=large
+        - https://pbs.twimg.com/media/DarsKNVWAAIV_1F?format=jpg&name=large
+        - https://pbs.twimg.com/media/DarsaB6W0AAiyHd?format=jpg&name=large
+        - https://pbs.twimg.com/media/DarsmBEWkAEhI9r?format=jpg&name=large
 
     - title: PCMaster... Oh, wait
       date: 2018/04/13
@@ -2086,13 +2332,13 @@
   url: https://github.com/guluc3m/web-jamon/tree/web_2021
   activities:
     - title: Formación en Pygame
-      date: 2018/06/04  # hasta el 6
+      date: 2018/06/04 # hasta el 6
       type: Taller
       tags:
         - Pygame
 
     - title: Formación en Godot
-      date: 2018/06/04  # hasta el 6
+      date: 2018/06/04 # hasta el 6
       type: Taller
       tags:
         - Godot
@@ -2144,21 +2390,43 @@
         En colaboración con RebeldesTIC (YoSoyTuMadre).
       link: https://www.yosoytumadre.com/
 
+    - title: Feria de Asociaciones 2018
+      type: Feria de Asociaciones
+      date: 2018/09/26
+      photos:
+        - https://pbs.twimg.com/media/DoBpSPuX0AAZVxC?format=jpg&name=large
+        - https://pbs.twimg.com/media/DoFpFR7U8AENVgg?format=jpg&name=medium
+        - https://pbs.twimg.com/media/DoC7u4FXkAAQQGs?format=jpg&name=large
+
 - title: XXXIII Jornadas Técnicas
   series: Jornadas Técnicas
   edition: 33
   poster: https://cloud-gul.uc3m.es/actividades/2019/XXXIII%20Jornadas%20T%C3%A9cnicas/cartel.png
   activities:
+    # https://web.archive.org/web/20190919175112/https://cursos.gul.es/xxxiii-jornadas-tecnicas-del-gul/automatizate-el-poder-de-los-scripts
+
     - title: ¡Automatízate! El poder de los scripts
       date: 2019/03/18
       type: Charla
-      tags: [Bash]
+      description: >-
+        No sabes qué es bash? Crees que los scripts son viruses? Descubre las ventajas de que resuelvan hagan otros tus problemas! Esta charla puede contener trazas de: Bash, Python, comandos de linux como grep o cat, awk, crontab, frutos secos
+      photos:
+        - https://pbs.twimg.com/media/DzrndAQW0AA-OjC?format=jpg&name=large
+        - https://pbs.twimg.com/media/Dzr6miOXgAA2V6i?format=jpg&name=large
+      tags:
+        - Bash
+        - Python
+        - Awk
+        - Terminal
+        - Linux
       participants:
         - Daniel Rodríguez
 
     - title: Install Party
       date: 2019/03/18
       type: Install party
+      description: >-
+        ¿Has oído hablar de Linux pero nunca te has atrevido a probarlo? Ven y descubre las maravillas de esta familia de sistemas operativos.
       tags: [Linux]
       slides: https://cloud-gul.uc3m.es/actividades/2019/XXXIII%20Jornadas%20T%C3%A9cnicas/Linux.pdf
       participants:
@@ -2169,6 +2437,8 @@
       date: 2019/03/19
       type: Charla
       tags: [Linux]
+      source: https://gitlab.com/Juanbanpar/optimize-linux-for-real-worl-usage
+      slides: https://cloud-gul.uc3m.es/actividades/2019/XXXIII%20Jornadas%20T%C3%A9cnicas/Pulse_aquí_para_optimizar_su_PC.pdf
       participants:
         - Juan Banga
 
@@ -2176,13 +2446,17 @@
       date: 2019/03/19
       type: Charla
       tags: [Software]
+      description: >-
+        Hay muchísimo miedo alrededor del testing. Por un lado no se aprende muy bien en la Universidad. Por otro, las empresas se organizan fatal y los tests incordian más que ayudan. La gente aprende que los tests son sinónimo de sufrimiento, y los evita a toda costa. Sin embargo, aprender a hacer tests te convierte en mejor programador. Mejor código y bajo control. Nada de churros incomprensibles. Nada de hackers creídos. Nada de "en mi máquina funciona, lo estarás haciendo mal".
       participants:
         - David Muñoz Díaz
 
     - title: Vim escape room
       date: 2019/03/20
-      type: Charla
+      type: Taller
       tags: [Vim]
+      description: >-
+        Vim es un editor de texto desde terminal realmente potente, su aprendizaje es clave para mejorar tu eficiencia y tu productividad en entornos Linux. A través de un taller práctico, partiremos desde cero, hasta la utilización de algunos plugins que hacen de Vim un editor realmente completo.
       participants:
         - Juan Francisco García
 
@@ -2190,13 +2464,18 @@
       date: 2019/03/20
       type: Charla
       tags: [Software]
+      description: >-
+        Hoy en día, con un poco de paciencia y tiempo libre, cualquier persona puede aprender (mejor o peor) a programar, pero, ¿qué es lo que realmente diferencia a un buen desarrollador del resto? En esta charla daré mi opinión y compartiré consejos y cosas que he aprendido desde que dejé la universidad con un punto de vistá pragmático con el objetivo de que todos los asistentens puedan explotar todo su potencial y eviten el lado oscuro de la programación. Esta charla está pensada para ser una versión renovada de la que di en t3chfest 2016.
       participants:
-        - Rodrigo de Frutos
+        - name: Rodrigo de Frutos
+          link: https://twitter.com/darkrodry
 
     - title: What is another word for a python? A mega-byte!
       date: 2019/03/18
-      type: Charla
+      type: Taller
       tags: [Python]
+      description: >-
+        En este taller aprenderás la sintaxis básica y tomarás tus primeros pasos junto a este maravilloso lenguaje.
       slides: https://cloud-gul.uc3m.es/actividades/2019/XXXIII%20Jornadas%20T%C3%A9cnicas/Python.pdf
       participants:
         - Alejandro Cruz
@@ -2234,7 +2513,7 @@
     - title: Programación Funcional
       date: 2019/10/08
       type: Charla
-      tags: [Programación]
+      tags: [Programación Funcional]
       participants:
         - Eduardo Hilario
 
@@ -2253,21 +2532,21 @@
         - Juan Banga
         - Roberto Uceda
 
-    - title: 'VHDL: Very Hard Description Language'
+    - title: "VHDL: Very Hard Description Language"
       date: 2019/10/09
       type: Charla
       tags: [VHDL]
       participants:
         - Roberto Uceda
 
-    - title: 'Golang: Por si no tenías suficiente Google en tu vida'
+    - title: "Golang: Por si no tenías suficiente Google en tu vida"
       date: 2019/10/10
       type: Charla
       tags: [Golang]
       participants:
         - Jorge Marcos
 
-    - title: 'Taller de Golang: Ponte manos a la obra con una aplicación real'
+    - title: "Taller de Golang: Ponte manos a la obra con una aplicación real"
       date: 2019/10/10
       type: Charla
       tags: [Golang]
@@ -2288,6 +2567,8 @@
       tags: [Cuántica]
       date: 2019/10/23
       type: Charla
+      photos:
+        - https://pbs.twimg.com/media/EHkMtdhW4AAwbwe?format=jpg&name=large
 
     - title: Introducción a Python
       tags: [Cuántica, Python]
@@ -2308,7 +2589,7 @@
   series: Semana de Asociaciones
   edition: 6
   activities:
-    - title: Puestecito del GUL
+    - title: Feria de Asociaciones 2019
       type: Feria de Asociaciones
       date: 2019/10/01
       tags: [GUL]
@@ -2320,6 +2601,7 @@
   series: GUL Jamón
   edition: 2
   poster: https://cloud-gul.uc3m.es/actividades/2021/gulJamon/cartelv2.png?cache
+  url: https://github.com/guluc3m/web-jamon/tree/web_2022
   activities:
     - title: El desarrollo de videojuegos como proceso reivindicativo desde la infancia a la adultez
       date: 2022/04/19
@@ -2333,7 +2615,7 @@
         - name: Isi Cano
           link: https://isi-cano.itch.io/
 
-    - title: '0 A.D: Empires Ascendant - A FLOSS game of ancient warfare'
+    - title: "0 A.D: Empires Ascendant - A FLOSS game of ancient warfare"
       date: 2022/04/19
       type: Charla
       tags:
@@ -2416,7 +2698,7 @@
       video: https://youtu.be/XpQujpVKliA
       participants:
         - Luis Daniel Casais
-    - title: 'Tiotéate: Aspectos a tener en cuenta en el diseño de una solución IoT'
+    - title: "Tiotéate: Aspectos a tener en cuenta en el diseño de una solución IoT"
       type: Charla
       description: Consideraciones a tener en cuenta en el diseño de una solución IoT.
       tags:
@@ -2429,7 +2711,7 @@
           link: https://es.linkedin.com/in/alvarogarciabarcena
     - title: Monta un laboratorio de informática, en "dos patadas"
       type: Charla
-      description: 'Desgrana paso a paso los servicios que se necesitan para montar un laboratorio de informática: servidores, virtualización, servicios (web, cuentas y almacenamiento, autenticación, correo), monitorización y clientes.'
+      description: "Desgrana paso a paso los servicios que se necesitan para montar un laboratorio de informática: servidores, virtualización, servicios (web, cuentas y almacenamiento, autenticación, correo), monitorización y clientes."
       tags:
         - Virtualización
       date: 2023/04/12
@@ -2450,7 +2732,7 @@
       participants:
         - name: Óscar Pérez
           link: https://www.lab.inf.uc3m.es/
-    - title: 'Nix OS: Linux dentro de 10 años'
+    - title: "Nix OS: Linux dentro de 10 años"
       type: Charla
       description: Explora las características únicas de NixOS, la distribución Linux del futuro que revolucioná la gestión de paquetes y la configuración del sistema operativo.
       tags:
@@ -2463,7 +2745,7 @@
       participants:
         - name: Manuel Palenzuela
           link: https://baitinq.ml
-    - title: 'G.I.M.P.: GIMP Is (for) Meme Production'
+    - title: "G.I.M.P.: GIMP Is (for) Meme Production"
       type: Taller
       description: Taller básico de GIMP, un software open-source para la edición de imágenes, aplicándolo a memes.
       tags:

@@ -11,6 +11,7 @@ export const ACTIVIDAD_TYPES = [
   'Install party',
   'Game jam',
   'Pódcast',
+  'Radio',
   'Congreso',
   'Feria de Asociaciones',
 ] as const;

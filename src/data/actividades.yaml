@@ -2,7 +2,7 @@
 # Lista de actividades del GUL. Edita esta lista para añadir/quitar eventos. Los campos son:
 # - title
 # - date (yyyy/mm/dd)
-# - type (uno de: Charla, Taller, Hackathon, Install party, Game jam, Pódcast, Jornadas Técnicas, Congreso, Feria de Asociaciones)
+# - type (uno de: Charla, Taller, Hackathon, Install party, Game jam, Pódcast, Radio, Congreso, Feria de Asociaciones)
 # - poster?
 # - link?
 # - source?
@@ -182,6 +182,13 @@
     - Adrián Borja Pimentel
     - Adrián Casado Rivas
 
+- title: Linux Install Party
+  type: Install party
+  tags: [Linux]
+  date: 2015/04/17
+  photos:
+    - https://pbs.twimg.com/media/CCzxwrXUkAA7itj?format=jpg&name=medium
+
 - title: Talleres de Arduino
   type: Taller
   tags: [Arduino]
@@ -189,54 +196,36 @@
   participants:
     - Adrián Borja Pimentel
 
-- title: De cero a mantener la calma en LINUX
-  description: >-
-    El propósito de la actividad es que los asistentes se familiaricen con el
-    Sistema Operativo Linux, especialmente en su entorno de consola, para que
-    las prácticas de la carrera desarrolladas en este entorno les sean menos
-    costosas. Se trabajarán conjuntos de comandos básicos, conjuntos de comandos
-    avanzados y se darán consejos útiles. Será impartido por estudiantes y
-    ex-estudiantes de la UC3M, algunos con más de 10 años de experiencia en
-    LINUX y que son conocedores de la formación complementaria conveniente.
-  date: 2016/10/03 # me invento el día
-  type: Charla
-  tags: [Linux, Terminal]
-
-- title: Una radio a tu alcance
-  description: >-
-    La actividad consiste en la realización de un programa de radio en directo
-    por parte de Dj Tango, locutor, productor y dj con 16 años de experiencia.
-    Durante el desarrollo del programa, Tango aportará su visión del medio
-    radiofónico desde su experiencia. Se profundizará en conceptos clave y al
-    finalizar el programa, se organizará un coloquio con los asistentes. Tango
-    ha trabajado en LOCA FM, siendo uno de los facilitadores de su expansión
-    nacional y ha fundado laisla.fm, una radio únicamente online financiada
-    mediante crowfunding. Su programa La Isla ha sido galardonando cuatro veces
-    como mejor programa de radio en directo en los premios nacionales de música
-    electrónica VMA.
-    de los participantes.
-  type: Taller
-  tags: [Radio]
-  date: 2016/10/06 # me invento el día
-  participants:
-    - name: Sixto Fernández
-      link: https://twitter.com/djtangosix
-
-- title: WhatsApp o Telegram, o como te condicionan las TIC
-  type: Taller
-  description: >-
-    Al estilo de las charlas TEDx, en esta actividad se realizarán tres charlas
-    relámpago que pretenden mover la conciencia de los asistentes y hacer
-    reflexionar sobre tres temas de marcada actualidad tecnológica y sus
-    repercusiones en nuestro modo de vida.
-  date: 2016/10/04 # me invento el día
-
 - title: Taller de IoT
   type: Taller
   tags: [IoT]
-  date: 2016/10/21 # también el 28
+  date: 2016/10/21 # también el 28 y el 04
+  poster: https://pbs.twimg.com/media/CubUaaUWYAAcUbH?format=jpg&name=4096x4096
   participants:
     - Axel Blanco
+
+- title: Linux Install Party
+  type: Install party
+  tags: [Linux]
+  date: 2016/10/14
+  poster: https://pbs.twimg.com/media/CuqzBEXXEAARls6?format=jpg&name=4096x4096
+
+- title: Linux Install Party
+  type: Install party
+  tags: [Linux]
+  date: 2018/02/23
+
+- title: Radiotón UC3M
+  type: Radio
+  date: 2019/02/13
+  poster: https://pbs.twimg.com/media/Dy5R13sW0AEIU_6?format=jpg&name=large
+  photos:
+    - https://pbs.twimg.com/media/DzTSbzqWsAo2rwf?format=jpg&name=large
+    - https://pbs.twimg.com/media/DzTS1roWoAcUyW7?format=jpg&name=4096x4096
+  video: https://go.ivoox.com/rf/32588408
+  participants:
+    - Juan Banga
+    # no conozco al resto...
 
 - title: Mi primer Linux
   type: Charla
@@ -339,13 +328,14 @@
       link: https://twitter.com/ciams16
 
 - title: GNU/Linux y el FOSS
-  type: Charla
+  type: Taller
   tags: [Linux, Software Libre]
   date: 2023/02/28
   description: >-
-    Charla introductoria a Linux y el Software Libre para el T3chfest Ed Day 2023,
-    enfocada a estudiantes de secundaria y bachillerato.
-  poster: https://pbs.twimg.com/media/Fiu27kCWAAI-p2I?format=jpg&name=medium
+    Taller introductorio a Linux y el Software Libre para el T3chfest Ed Day 2023, enfocada a estudiantes de secundaria y bachillerato.
+  # poster: https://pbs.twimg.com/media/Fiu27kCWAAI-p2I?format=jpg&name=medium
+  photos:
+    - https://cloud-gul.uc3m.es/actividades/2022/GNU%20Linux%20y%20el%20FOSS/t3chfest-ed-day-2023.jpg
   slides: https://cloud-gul.uc3m.es/actividades/2022/GNU%20Linux%20y%20el%20FOSS/transparencias.pdf
   link: https://t3chfest.es/2023/institutos/
   participants:
@@ -409,9 +399,9 @@
 
 - title: GNU/Linux y el FOSS
   date: 2024/03/11
-  type: Charla
+  type: Taller
   description: >-
-    Charla introductoria a Linux y el Software Libre para el T3chfest Ed Day 2024,
+    Taller introductorio a Linux y el Software Libre para el T3chfest Ed Day 2024,
     enfocada a estudiantes de secundaria y bachillerato.
   photos:
     - https://pbs.twimg.com/media/GIZDkkSWEAAQRCv?format=jpg&name=large
@@ -639,12 +629,7 @@
   date: 2026/09/30
   type: Install party
   description: >-
-    Microsoft sueltame del brazo por favor, no quiero que me metas publicidad
-    como mi fondo de pantalla dentro de Windows. En vez, me voy a ir con los chicos
-    del GUL este 30 de septiembre, en el 2.3.C01, y voy a estar con ellos de
-    14:00 a 15:30 instalándome Linux en mi portátil, y ayudando a la gente que venga a
-    que haga lo mismo ¡Seguro que más gente se anima a pasarse a un sistema operativo
-    libre, seguro y completamente gratuito!
+    Microsoft sueltame del brazo por favor, no quiero que me metas publicidad como mi fondo de pantalla dentro de Windows. En vez, me voy a ir con los chicos del GUL, y voy a estar con ellos instalándome Linux en mi portátil, y ayudando a la gente que venga a que haga lo mismo ¡Seguro que más gente se anima a pasarse a un sistema operativo libre, seguro y completamente gratuito!
   photos:
     - https://pbs.twimg.com/media/HTdtWyAXcAAzybm?format=jpg&name=small
   poster: https://pbs.twimg.com/media/HS--mmuXYAAFYzu?format=jpg&name=medium
