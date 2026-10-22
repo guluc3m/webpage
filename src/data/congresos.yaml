@@ -1,17 +1,18 @@
 # yaml-language-server: $schema=schema/congresos.schema.json
-# Congresos del GUL: agrupaciones de actividades, de un tipo y con número de
-# edición (p.ej. las Jornadas Técnicas XXXV). Edita esta lista para añadir o
-# quitar congresos. Los campos son:
+# Congresos del GUL: agrupaciones de actividades, de una serie y con número
+# de edición (p.ej. las Jornadas Técnicas XXXV). Edita esta lista para añadir
+# o quitar congresos. Los campos son:
 # - title (p.ej. "XXIV Jornadas Técnicas")
-# - type (uno de: Jornadas Técnicas, GUL Jamón)
-# - edition (número de la edición del tipo)
+# - series (la serie del congreso, texto libre: p.ej. "Jornadas Técnicas"; una
+#   serie nueva basta con escribirla, no hay lista fija)
+# - edition (número de la edición de la serie)
 # - poster? (el cartel del congreso; las activities no llevan el suyo)
 # - url? (web del congreso, si la hay)
 # - activities (charlas y talleres del congreso; mismos campos y reglas que en
 #   actividades.yaml: date yyyy/mm/dd, participants reutilizan links, etc.)
 
 - title: II Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 2
   activities:
     - title: Linux como alternativa a Windows
@@ -31,7 +32,7 @@
         - Carlos Jesús Bernardos Cano
 
     - title: Curso de Comandos Básicos
-      date: 2003/11/28  # en la fecha del archivo pone 2003/11/12, pero me voy a inventar el día
+      date: 2003/11/28 # en la fecha del archivo pone 2003/11/12, pero me voy a inventar el día
       type: Charla
       slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/comandos_basicos.pdf.gz
       source: https://cloud-gul.uc3m.es/actividades/2002/noviembre/comandos_basicos.src.tar.gz
@@ -59,7 +60,7 @@
         - Juan Jose Rodríguez Buleo
 
 - title: III Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 3
   activities:
     - title: Curso de Octave
@@ -174,7 +175,7 @@
         - Sergio Gil Pérez de la Manga
 
 - title: IV Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 4
   activities:
     - title: PHP + MySQL
@@ -205,7 +206,7 @@
         - Ramón Casero Cañas
 
 - title: V Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 5
   activities:
     - title: Curso de Vim
@@ -226,7 +227,7 @@
         - Andrés Domínguez Jordán de Urríes
 
 - title: VI Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 6
   activities:
     - title: Introducción a Bacula
@@ -248,7 +249,7 @@
         - Claudio Jiménez Castillo
 
 - title: VII Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 7
   activities:
     - title: Introducción a Java
@@ -367,7 +368,7 @@
         - Vicente Palacios
 
 - title: VIII Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 8
   activities:
     - title: Creación de distribuciones con GenDist
@@ -521,8 +522,8 @@
         - Claudio Jiménez Castillo
 
 - title: IX Jornadas Técnicas
-  type: Jornadas Técnicas
-  edition: 9  # porque lo pone en las transpas de la primera charla
+  series: Jornadas Técnicas
+  edition: 9 # porque lo pone en las transpas de la primera charla
   activities:
     - title: Empezando con GNU/Linux
       date: 2007/03/19
@@ -621,7 +622,7 @@
         - Alejandro Calderón Mateos
 
 - title: X Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 10
   activities:
     - title: Linux desde terminal
@@ -650,7 +651,7 @@
       source: https://cloud-gul.uc3m.es/actividades/2007/noviembre/Vim/vim-11-2007_fuentes.zip
       participants:
         - Jose María Chumo Mata
-    - title: "LaTeX: La imprenta en casa"
+    - title: 'LaTeX: La imprenta en casa'
       date: 2007/11/14
       type: Charla
       tags:
@@ -660,7 +661,7 @@
         - David Muñoz Díaz
 
 - title: XI Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 11
   activities:
     - title: Alta Disponibilidad y Balanceo de Carga en Linux
@@ -741,7 +742,7 @@
   poster: https://cloud-gul.uc3m.es/actividades/2008/marzo/carteles/cartel_v2_3.png
 
 - title: XII Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 12
   activities:
     - title: Introducción a OpenLDAP
@@ -816,7 +817,7 @@
       video: https://cloud-gul.uc3m.es/actividades/2009/marzo/Soluciones%20Profesionales%20Correo%20Software%20Libre/Soluciones%20Profesionales%20Correo%20Software%20Libre.ogg
       participants:
         - Javier Turégano Molina
-    - title: "GNU build system (Autotools): Autoconf, Automake y Libtool"
+    - title: 'GNU build system (Autotools): Autoconf, Automake y Libtool'
       date: 2009/03/12
       type: Charla
       tags:
@@ -849,7 +850,7 @@
         - Jesús Espino García
 
 - title: XIV Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 14
   activities:
     - title: Introducción a Linux
@@ -898,7 +899,7 @@
         - Javier Turégano Molina
 
 - title: XV Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 15
   activities:
     - title: Computación voluntaria (BOINC)
@@ -993,7 +994,7 @@
       source: https://cloud-gul.uc3m.es/actividades/2010/marzo/memoria_dinamica/Memoria%20Dinamica.odp
       participants:
         - Tania Pérez
-    - title: "Xplico: concept, features, demo"
+    - title: 'Xplico: concept, features, demo'
       date: 2010/03/10
       type: Charla
       tags:
@@ -1037,7 +1038,7 @@
         - David Muñoz Díaz
 
 - title: XVI Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 16
   activities:
     - title: Herramientas libres para hacer prácticas
@@ -1091,7 +1092,7 @@
         - Tania Pérez
 
 - title: XVII Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 17
   activities:
     - title: ¡Alerta, servidor LAMP comprometido!
@@ -1186,7 +1187,7 @@
       video: https://cloud-gul.uc3m.es/actividades/2011/marzo/guifi.net/guifi.net.ogv
 
 - title: XVIII Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 18
   activities:
     - title: Introducción a LaTeX
@@ -1227,7 +1228,7 @@
         - Daniel Mustieles García
 
 - title: XIX Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 19
   activities:
     - title: El Zoo NoSQL
@@ -1283,7 +1284,7 @@
           link: https://twitter.com/pgonmu
 
 - title: XXIII Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 23
   activities:
     - title: ¿Qué es el software Libre?
@@ -1308,7 +1309,7 @@
       participants:
         - name: Antonio Mejias
           link: https://twitter.com/cyfuss_com
-    - title: "Graph Databases: a little connected tour"
+    - title: 'Graph Databases: a little connected tour'
       date: 2013/10/23
       type: Charla
       tags:
@@ -1342,7 +1343,7 @@
         - Videojuegos
         - Android
         - OpenGL
-    - title: "Zoe: la asistente del GUL"
+    - title: 'Zoe: la asistente del GUL'
       date: 2013/10/25
       type: Charla
       tags:
@@ -1353,7 +1354,7 @@
 
 # sabemos que estas son las XXIV... las anteriores son un puzzle
 - title: XXIV Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 24
   activities:
     - title: Curso de C
@@ -1385,7 +1386,7 @@
         - Android
       participants:
         - Javier Sánchez
-    - title: "Introducción a los lenguajes funcionales: Scala"
+    - title: 'Introducción a los lenguajes funcionales: Scala'
       date: 2014/03/18
       type: Charla
       tags:
@@ -1480,7 +1481,7 @@
   poster: https://cloud-gul.uc3m.es/actividades/2014/marzo/jt-2014.jpeg
 
 - title: I Semana de Asociaciones
-  type: Semana de Asociaciones
+  series: Semana de Asociaciones
   edition: 1
   activities:
     - title: Linux en 90' para no desesperarse en las prácticas
@@ -1503,7 +1504,7 @@
         - Adrián Casado Rivas
 
 - title: XXV Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 25
   activities:
     - title: Depuración con GDB
@@ -1557,7 +1558,7 @@
       participants:
         - name: Adolfo Santiago
           link: https://twitter.com/adolphenom
-    - title: "Programación funcional: Porno para programadores"
+    - title: 'Programación funcional: Porno para programadores'
       date: 2014/11/12
       type: Charla
       tags:
@@ -1618,10 +1619,10 @@
   poster: https://cloud-gul.uc3m.es/actividades/2014/jt-xxv.png
 
 - title: XXVI Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 26
   activities:
-    - title: "Markdown & Pandoc: not another Word"
+    - title: 'Markdown & Pandoc: not another Word'
       description: Creación de documentos académicos mediante Markdown.
       date: 2015/05/20
       type: Charla
@@ -1683,7 +1684,7 @@
         - Axel Blanco
 
 - title: II Semana de Asociaciones
-  type: Semana de Asociaciones
+  series: Semana de Asociaciones
   edition: 2
   poster: https://cloud-gul.uc3m.es/actividades/2015/semana2015.png
   activities:
@@ -1714,7 +1715,7 @@
       tags: [Linux, Terminal]
 
 - title: XXVII Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 27
   activities:
     - title: ¡Como si no llevaras nada, oye!
@@ -1807,7 +1808,7 @@
   poster: https://cloud-gul.uc3m.es/actividades/2015/Noviembre/JJTT-Nov15.png
 
 - title: XXVIII Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 28
   activities:
     - title: Git al Rescate
@@ -1830,7 +1831,7 @@
       participants:
         - name: Daniel Rodríguez López
           link: https://github.com/patataman
-    - title: "Go: Nil for null people"
+    - title: 'Go: Nil for null people'
       description: Charla de introducción a Go, lenguaje de programación desarrollado por Google en 2009.
       date: 2016/04/12
       type: Charla
@@ -1882,7 +1883,7 @@
         - name: Manuel Quindimil López
           link: https://twitter.com/quindimildev
     - title: Con las serpientes Sí se juega (Pygame)
-      description: "El desarrollo de videojuegos amateur lleva unos cuantos años viviendo su momento más dulce: cada vez tenemos más herramientas gratuitas y los medios para formarnos están más a nuestro alcance que nunca. Sin embargo, los novatos en la materia tendemos a ser ambiciosos y no es raro que alguna vez pensemos en empezar construyendo la casa por el tejado haciendo uso de motores complejos como Unity o Unreal Engine. Para algo los hacen de libre acceso, ¿no?"
+      description: 'El desarrollo de videojuegos amateur lleva unos cuantos años viviendo su momento más dulce: cada vez tenemos más herramientas gratuitas y los medios para formarnos están más a nuestro alcance que nunca. Sin embargo, los novatos en la materia tendemos a ser ambiciosos y no es raro que alguna vez pensemos en empezar construyendo la casa por el tejado haciendo uso de motores complejos como Unity o Unreal Engine. Para algo los hacen de libre acceso, ¿no?'
       date: 2016/04/15
       type: Charla
       tags:
@@ -1896,7 +1897,7 @@
   poster: https://cloud-gul.uc3m.es/actividades/2016/Abril/cartel-gul_xxviii-jt.png
 
 - title: XXIX Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 29
   activities:
     - title: SCRUM! De la teoría a la práctica
@@ -1960,7 +1961,7 @@
         - Óscar Seguro Alonso
 
 - title: GUL JAMón - Charleta Edition
-  type: GUL Jamón
+  series: GUL Jamón
   edition: 2
   poster: https://cloud-gul.uc3m.es/actividades/2021/gulJamon/cartelv2.png?cache
   activities:
@@ -2045,7 +2046,7 @@
           link: https://twitter.com/ami_diggory
 
 - title: XXXV Jornadas Técnicas
-  type: Jornadas Técnicas
+  series: Jornadas Técnicas
   edition: 35
   poster: https://cloud-gul.uc3m.es/actividades/2023/XXXV%20Jornadas%20T%C3%A9cnicas/cartel.png
   activities:
@@ -2059,7 +2060,7 @@
       video: https://youtu.be/XpQujpVKliA
       participants:
         - Luis Daniel Casais
-    - title: "Tiotéate: Aspectos a tener en cuenta en el diseño de una solución IoT"
+    - title: 'Tiotéate: Aspectos a tener en cuenta en el diseño de una solución IoT'
       type: Charla
       description: Consideraciones a tener en cuenta en el diseño de una solución IoT.
       tags:
@@ -2072,7 +2073,7 @@
           link: https://es.linkedin.com/in/alvarogarciabarcena
     - title: Monta un laboratorio de informática, en "dos patadas"
       type: Charla
-      description: "Desgrana paso a paso los servicios que se necesitan para montar un laboratorio de informática: servidores, virtualización, servicios (web, cuentas y almacenamiento, autenticación, correo), monitorización y clientes."
+      description: 'Desgrana paso a paso los servicios que se necesitan para montar un laboratorio de informática: servidores, virtualización, servicios (web, cuentas y almacenamiento, autenticación, correo), monitorización y clientes.'
       tags:
         - Virtualización
       date: 2023/04/12
@@ -2093,7 +2094,7 @@
       participants:
         - name: Óscar Pérez
           link: https://www.lab.inf.uc3m.es/
-    - title: "Nix OS: Linux dentro de 10 años"
+    - title: 'Nix OS: Linux dentro de 10 años'
       type: Charla
       description: Explora las características únicas de NixOS, la distribución Linux del futuro que revolucioná la gestión de paquetes y la configuración del sistema operativo.
       tags:
@@ -2106,7 +2107,7 @@
       participants:
         - name: Manuel Palenzuela
           link: https://baitinq.ml
-    - title: "G.I.M.P.: GIMP Is (for) Meme Production"
+    - title: 'G.I.M.P.: GIMP Is (for) Meme Production'
       type: Taller
       description: Taller básico de GIMP, un software open-source para la edición de imágenes, aplicándolo a memes.
       tags:
@@ -2128,7 +2129,7 @@
           link: https://github.com/lpgonzalez
 
 - title: GUL JAMón 2025
-  type: GUL Jamón
+  series: GUL Jamón
   edition: 3
   url: https://itch.io/jam/gul-jamon-2025
   poster: https://pbs.twimg.com/media/G04vx8mWYAA9MIr?format=jpg&name=medium

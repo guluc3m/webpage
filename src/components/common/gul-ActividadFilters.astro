@@ -2,9 +2,9 @@
 /**
  * gul-ActividadFilters — columna de filtros de /actividades: búsqueda por
  * título, tema o persona, tipo de actividad (abierto por defecto), congresos
- * por tipo y edición — marcas un tipo y debajo aparecen las ediciones de
- * ese tipo — o "Actividades Independientes", que deja solo las actividades
- * sueltas (excluyente con tipos y ediciones), tags (las más usadas, el resto
+ * por serie y edición — marcas una serie y debajo aparecen las ediciones de
+ * esa serie — o "Actividades Independientes", que deja solo las actividades
+ * sueltas (excluyente con series y ediciones), tags (las más usadas, el resto
  * tras "Ver todas") y participantes (buscador + las más frecuentes) en chips
  * multi-selección, y fecha por rango de cursos + cuatrimestre. Cada chip dice
  * cuántas actividades daría. En md+ es una columna lateral sticky; en móvil se
@@ -24,10 +24,10 @@ import searchIcon from '@icons/ui/search.svg?url';
 interface Props {
   /** Tipos de actividad (`type`), en orden fijo. */
   types: string[];
-  /** Tipos de congreso presentes (CONGRESO_TYPES, en el orden del vocabulario). */
-  congresoTypes: string[];
-  /** Ediciones de congresos (title + type), en el orden del YAML (más vieja primero). */
-  editions: { title: string; type: string }[];
+  /** Series de congreso presentes (texto libre), en su orden de primera aparición en el YAML. */
+  congresoSeries: string[];
+  /** Ediciones de congresos (title + series), en el orden del YAML (más vieja primero). */
+  editions: { title: string; series: string }[];
   /** Más usadas primero: las TOP_TAGS primeras se ven sin desplegar. */
   tags: string[];
   participants: string[];
@@ -35,7 +35,7 @@ interface Props {
   cursos: number[];
 }
 
-const { types, congresoTypes, editions, tags, participants, cursos } = Astro.props;
+const { types, congresoSeries, editions, tags, participants, cursos } = Astro.props;
 const minCurso = Math.min(...cursos);
 const maxCurso = Math.max(...cursos);
 const cursoLabel = (curso: number) => `${curso}/${String(curso + 1).slice(2)}`;
@@ -137,12 +137,12 @@ const semesters = [
       </summary>
       <div>
         <div class="pb-4">
-          <div class="flex flex-wrap gap-1.5" data-chip-group="congresoType">
-            {congresoTypes.map((t) => (
+          <div class="flex flex-wrap gap-1.5" data-chip-group="congresoSeries">
+            {congresoSeries.map((t) => (
               <button
                 type="button"
                 class="gul-chip"
-                data-chip="congresoType"
+                data-chip="congresoSeries"
                 data-value={t}
                 aria-pressed="false"
               >
@@ -150,9 +150,9 @@ const semesters = [
                 <span class="gul-chip-count" data-chip-count></span>
               </button>
             ))}
-            {/* No es un tipo de congreso: esconde todo lo que va dentro de uno.
+            {/* No es una serie de congreso: esconde todo lo que va dentro de uno.
                 Excluyente con los tipos y ediciones (el script los limpia). */}
-            {congresoTypes.length > 0 && (
+            {congresoSeries.length > 0 && (
               <button
                 type="button"
                 class="gul-chip"
@@ -167,8 +167,8 @@ const semesters = [
             )}
           </div>
           {/* Las ediciones de los tipos marcados; sin tipo marcado la fila no
-              sale (el script la muestra al marcar). Cada chip lleva su tipo
-              (data-congreso-type) para que el script sepa de quién es. */}
+              sale (el script la muestra al marcar). Cada chip lleva su serie
+              (data-congreso-series) para que el script sepa de quién es. */}
           <div id="gul-congreso-editions" class="mt-3" data-congreso-editions hidden>
             <p class="pb-1.5 text-xs tracking-wider text-gul-muted uppercase">Ediciones</p>
             <div class="flex flex-wrap gap-1.5" data-chip-group="congresoEdition">
@@ -178,7 +178,7 @@ const semesters = [
                   class="gul-chip"
                   data-chip="congresoEdition"
                   data-value={e.title}
-                  data-congreso-type={e.type.toLowerCase()}
+                  data-congreso-series={e.series.toLowerCase()}
                   aria-pressed="false"
                 >
                   {e.title}
@@ -532,12 +532,12 @@ const semesters = [
     | 'tags'
     | 'participants'
     | 'semesters'
-    | 'congresoType'
+    | 'congresoSeries'
     | 'congresoEdition'
     | 'congresoNone';
   const groups: Group[] = [
     'type',
-    'congresoType',
+    'congresoSeries',
     'congresoEdition',
     'congresoNone',
     'tags',
@@ -549,7 +549,7 @@ const semesters = [
     tags: new Set(),
     participants: new Set(),
     semesters: new Set(),
-    congresoType: new Set(),
+    congresoSeries: new Set(),
     congresoEdition: new Set(),
     congresoNone: new Set(),
   };
@@ -562,9 +562,9 @@ const semesters = [
     tags: [],
     participants: [],
     semesters: [],
-    congresoType: ['congresoNone'],
+    congresoSeries: ['congresoNone'],
     congresoEdition: ['congresoNone'],
-    congresoNone: ['congresoType', 'congresoEdition'],
+    congresoNone: ['congresoSeries', 'congresoEdition'],
   };
 
   // Rango de cursos. Los tiradores se pueden cruzar: el rango es siempre del
@@ -637,7 +637,7 @@ const semesters = [
         group === 'fecha'
           ? fechaBadge()
           : group === 'congreso'
-            ? selected.congresoType.size +
+            ? selected.congresoSeries.size +
               selected.congresoEdition.size +
               selected.congresoNone.size
             : selected[group as Group].size;
@@ -654,9 +654,9 @@ const semesters = [
     // que vaciar; la búsqueda de arriba la limpia el "Limpiar filtros".
     const groupDirty: Record<string, boolean> = {
       type: selected.type.size > 0,
-      // El grupo Congresos lleva tipos, ediciones y "ninguno"; los considera juntos.
+      // El grupo Congresos lleva series, ediciones y "ninguno"; los considera juntos.
       congreso:
-        selected.congresoType.size > 0 ||
+        selected.congresoSeries.size > 0 ||
         selected.congresoEdition.size > 0 ||
         selected.congresoNone.size > 0,
       tags: selected.tags.size > 0,
@@ -682,10 +682,10 @@ const semesters = [
     // uno (data-extra es el título, ya en minúsculas). Con cualquiera de los
     // dos marcado, las sueltas no pasan nunca; marcados los dos, exige ser de
     // un tipo marcado y de una edición marcada.
-    congresoType: (item) => (item.dataset.congresoType ? [item.dataset.congresoType] : []),
+    congresoSeries: (item) => (item.dataset.congresoSeries ? [item.dataset.congresoSeries] : []),
     congresoEdition: (item) => (item.dataset.extra ? [item.dataset.extra] : []),
-    // "ninguno" marca justo las sueltas: las que no llevan tipo de congreso.
-    congresoNone: (item) => (item.dataset.congresoType ? [] : ['ninguno']),
+    // "ninguno" marca justo las sueltas: las que no llevan serie de congreso.
+    congresoNone: (item) => (item.dataset.congresoSeries ? [] : ['ninguno']),
     tags: (item) => list(item.dataset.tags!),
     participants: (item) => list(item.dataset.participants!),
     semesters: (item) => [semesterOf(item.dataset.date!)],
@@ -734,15 +734,15 @@ const semesters = [
   }
 
   // Fila de ediciones: solo se ve con algún tipo marcado, y enseña las
-  // ediciones de esos tipos (lo dice su data-congreso-type); una edición ya
+  // ediciones de esas series (lo dice su data-congreso-series); una edición ya
   // marcada sigue a la vista aunque su tipo no lo esté, para poder quitarla.
   function syncCongreso() {
-    const types = selected.congresoType;
+    const types = selected.congresoSeries;
     const box = panel.querySelector<HTMLElement>('[data-congreso-editions]')!;
     box.hidden = types.size === 0;
     box.querySelectorAll<HTMLButtonElement>('[data-chip]').forEach((chip) => {
       chip.hidden =
-        !types.has(norm(chip.dataset.congresoType!)) &&
+        !types.has(norm(chip.dataset.congresoSeries!)) &&
         !selected.congresoEdition.has(norm(chip.dataset.value!));
     });
   }
@@ -846,12 +846,12 @@ const semesters = [
     if (clearGroup) {
       const group = clearGroup.dataset.clearGroup;
       // El grupo Fecha cuenta curso y cuatrimestre juntos; los limpia a la
-      // vez. Congresos igual: tipos, ediciones y "ninguno" de un tirón.
+      // vez. Congresos igual: series, ediciones y "ninguno" de un tirón.
       if (group === 'fecha') {
         clearCursoRange();
         setGroup('semesters', new Set());
       } else if (group === 'congreso') {
-        setGroup('congresoType', new Set());
+        setGroup('congresoSeries', new Set());
         setGroup('congresoEdition', new Set());
         setGroup('congresoNone', new Set());
       } else {

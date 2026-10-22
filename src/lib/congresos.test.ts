@@ -25,25 +25,31 @@ test('the real congresos.yaml has no broken entries', () => {
   // lo que el YAML declara no puede repetir edición dentro de cada tipo.
   const editions = new Set();
   for (const c of congresos) {
-    const key = `${c.type} ${c.edition}`;
+    const key = `${c.series} ${c.edition}`;
     assert.ok(!editions.has(key), `edition repeated: ${key}`);
     editions.add(key);
     assert.ok(c.activities.length > 0, `${c.title} came out empty`);
   }
 });
 
-test('an unknown congreso type is a broken entry', () => {
+test('a new series needs no vocabulary: any series is accepted', () => {
   const { congresos, errors } = parseCongresos(
-    '- title: A\n  type: Jornadas Tejas\n  edition: 1\n',
+    '- title: A\n  series: Jornadas Tejas\n  edition: 1\n',
   );
+  assert.deepEqual(errors, []);
+  assert.equal(congresos[0]!.series, 'Jornadas Tejas');
+});
+
+test('a congreso without a series is a broken entry', () => {
+  const { congresos, errors } = parseCongresos('- title: A\n  edition: 1\n');
   assert.deepEqual(congresos, []);
-  assert.match(errors[0], /type desconocido: "Jornadas Tejas"/);
+  assert.match(errors[0], /falta series/);
 });
 
 test('a broken inner activity is dropped without taking the congreso with it', () => {
   const { congresos, errors } = parseCongresos(
     '- title: XXIV Jornadas Técnicas\n' +
-      '  type: Jornadas Técnicas\n' +
+      '  series: Jornadas Técnicas\n' +
       '  edition: 24\n' +
       '  activities:\n' +
       '    - title: Buena\n' +
@@ -63,7 +69,7 @@ test('a broken inner activity is dropped without taking the congreso with it', (
 test('a participant link written once resolves for the whole congreso', () => {
   const { congresos } = parseCongresos(
     '- title: XXV Jornadas Técnicas\n' +
-      '  type: Jornadas Técnicas\n' +
+      '  series: Jornadas Técnicas\n' +
       '  edition: 25\n' +
       '  activities:\n' +
       '    - title: A\n' +
@@ -90,7 +96,7 @@ test('links from actividades.yaml also apply inside congresos', () => {
       '    - name: Uno\n      link: https://ejemplo.org/\n',
   );
   const congresos = loadCongresos(
-    '- title: IX Jornadas Técnicas\n  type: Jornadas Técnicas\n  edition: 9\n' +
+    '- title: IX Jornadas Técnicas\n  series: Jornadas Técnicas\n  edition: 9\n' +
       '  activities:\n' +
       '    - title: A\n      date: 2007/03/19\n      type: Charla\n' +
       '      participants:\n        - Uno\n',

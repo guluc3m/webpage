@@ -1,6 +1,6 @@
 // Same agreement as actividades.ts, but for congresos.yaml: congresos (las
-// Jornadas Técnicas y demás) que agrupan Actividads, uno por edición del tipo.
-// This file only types it and loads it.
+// Jornadas Técnicas y demás) que agrupan Actividads, uno por edición de su
+// serie. This file only types it and loads it.
 import {
   actividadProblem,
   harvestParticipantLinks,
@@ -11,15 +11,15 @@ import {
   type Participant,
 } from './actividades.ts';
 
-// Tipo de congreso: vocabulario cerrado. Cada congreso declara el suyo y su
-// número de edición de ese tipo.
-export const CONGRESO_TYPES = ['GUL Jamón', 'Jornadas Técnicas', 'Semana de Asociaciones'] as const;
-export type CongresoType = (typeof CONGRESO_TYPES)[number];
+// Serie del congreso (p.ej. "Jornadas Técnicas"): texto libre, sin vocabulario
+// cerrado — una serie nueva basta con escribirla. Cada congreso declara el
+// suyo y su número de edición de esa serie.
+export type CongresoSeries = string;
 
 export interface Congreso {
   title: string;
-  type: CongresoType;
-  edition: number; // for the type
+  series: CongresoSeries;
+  edition: number; // for the series
   poster?: string;
   url?: string;
   activities: Actividad[];
@@ -28,10 +28,9 @@ export interface Congreso {
 // Why a congreso is unusable, or null if it is fine.
 function congresoProblem(c: unknown): string | null {
   if (!c || typeof c !== 'object' || Array.isArray(c)) return 'no es un objeto';
-  const { title, type, edition, poster, url, activities, ...rest } = c as Record<string, unknown>;
+  const { title, series, edition, poster, url, activities, ...rest } = c as Record<string, unknown>;
   if (typeof title !== 'string' || !title) return 'falta title';
-  if (!(CONGRESO_TYPES as readonly string[]).includes(type as string))
-    return `type desconocido: ${JSON.stringify(type)}`;
+  if (typeof series !== 'string' || !series) return 'falta series';
   if (typeof edition !== 'number') return 'falta edition';
   if (activities !== undefined && !Array.isArray(activities)) return 'activities no es una lista';
   if (poster !== undefined && typeof poster !== 'string') return 'poster no es un texto';
@@ -75,7 +74,7 @@ export function parseCongresos(raw: string): { congresos: Congreso[]; errors: st
       const { activities, ...congreso } = raw as {
         activities?: unknown[];
         title: string;
-        type: string;
+        series: string;
         edition: number;
       };
       const actividades: Actividad[] = [];

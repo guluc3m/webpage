@@ -86,7 +86,7 @@
           "type": "array"
         },
         "edition": {
-          "description": "Edition number of the congreso type, e.g. 35 for the Jornadas Técnicas XXXV",
+          "description": "Edition number of the congreso series, e.g. 35 for the Jornadas Técnicas XXXV",
           "type": "number"
         },
         "poster": {
@@ -96,19 +96,19 @@
         "title": {
           "type": "string"
         },
-        "type": {
-          "$ref": "#/definitions/CongresoType"
+        "series": {
+          "$ref": "#/definitions/CongresoSeries"
         },
         "url": {
           "description": "The congreso website, if it had one",
           "type": "string"
         }
       },
-      "required": ["title", "type", "edition", "activities"],
+      "required": ["title", "series", "edition", "activities"],
       "type": "object"
     },
-    "CongresoType": {
-      "enum": ["GUL Jamón", "Jornadas Técnicas", "Semana de Asociaciones"],
+    "CongresoSeries": {
+      "description": "Series of the congreso, e.g. Jornadas Técnicas; free-form, a new series is just written, no fixed vocabulary",
       "type": "string"
     },
     "Congresos": {

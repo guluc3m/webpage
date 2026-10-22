@@ -18,7 +18,7 @@ import GulCongresoCard from '@components/common/gul-CongresoCard.astro';
 import GulActividadFilters from '@components/common/gul-ActividadFilters.astro';
 import { navLinks } from '@data/navLinks';
 import { ACTIVIDAD_TYPES, loadActividades } from '@lib/actividades';
-import { CONGRESO_TYPES, loadCongresos, type Congreso } from '@lib/congresos';
+import { loadCongresos, type Congreso } from '@lib/congresos';
 import rawActividades from '@data/actividades.yaml?raw'; // ?raw: a plain string, so invalid YAML syntax doesn't blow up the import itself.
 import rawCongresos from '@data/congresos.yaml?raw';
 
@@ -82,11 +82,12 @@ const participants = [
   ...new Set([...sorted, ...internals].flatMap((a) => (a.participants ?? []).map((s) => s.name))),
 ].sort((a, b) => a.localeCompare(b, 'es'));
 
-// Opciones del filtro de congresos: los tipos con datos (en el orden del
-// vocabulario) y cada edición con su tipo, en el orden del YAML (de más
-// vieja a más nueva); el grupo Congresos las enseña debajo de su tipo.
-const congresoTypes = CONGRESO_TYPES.filter((t) => congresos.some((c) => c.type === t));
-const editions = congresos.map((c) => ({ title: c.title, type: c.type }));
+// Opciones del filtro de congresos: las series con datos, en su orden de
+// primera aparición en el YAML (la serie es texto libre, no hay vocabulario fijo
+// que ordene), y cada edición con su serie, en el orden del YAML (de más
+// vieja a más nueva); el grupo Congresos las enseña debajo de su serie.
+const congresoSeries = [...new Set(congresos.map((c) => c.series))];
+const editions = congresos.map((c) => ({ title: c.title, series: c.series }));
 ---
 
 <BaseLayout title="Actividades · GUL UC3M">
@@ -97,7 +98,7 @@ const editions = congresos.map((c) => ({ title: c.title, type: c.type }));
     <div class="mt-6 md:grid md:grid-cols-[16rem_minmax(0,1fr)] md:gap-10">
       <GulActividadFilters
         types={types}
-        congresoTypes={congresoTypes}
+        congresoSeries={congresoSeries}
         editions={editions}
         tags={tags}
         participants={participants}

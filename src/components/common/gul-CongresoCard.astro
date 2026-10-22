@@ -3,14 +3,14 @@
  * gul-CongresoCard — el grupo de las Jornadas Técnicas (y demás congresos) en
  * /actividades: una tarjeta mayor que envuelve a las más pequeñas
  * (gul-ActividadCard) de sus Actividads, más la cabecera (fechas deducidas de
- * las de las activities, título, tipo y web). En móvil todo va en columna:
+ * las de las activities, título, serie y web). En móvil todo va en columna:
  * título, cartel — global, las activities no llevan el suyo — y después la
  * lista. En md+ el cartel flota a la derecha desde arriba: las cards (BFC
  * todas por el overflow-hidden del marco, ver gul-Frame) se estrechan a su
  * lado las que quepan — la primera, la segunda… según el alto del cartel — y
  * el resto baja a todo el ancho. El marco va sin PixelDissolve (la variante
  * "plain" de gul-Frame) para que el grupo grande no compita en textura con
- * las cards que lleva dentro, y su badge de tipo va en el acento ámbar
+ * las cards que lleva dentro, y su badge de serie va en el acento ámbar
  * (gul-amber, el mismo token del callout de aviso) para distinguirlo de una
  * actividad suelta. Pulsar el cartel lo abre en gul-Lightbox.
  */
@@ -29,8 +29,8 @@ interface Props {
 const { congreso: c, curso } = Astro.props;
 const dates = congresoDates(c.activities);
 const poster = c.poster ? [{ src: c.poster, alt: `Cartel de ${c.title}` }] : [];
-// Has to be a valid, page-unique id; type + edition is unique in the YAML.
-const lightboxId = `congreso-${c.type}-${c.edition}`.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+// Has to be a valid, page-unique id; series + edition is unique in the YAML.
+const lightboxId = `congreso-${c.series}-${c.edition}`.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
 // Hand-drawn outline icon, same as gul-ActividadCard's link one.
 const ICONS = {
@@ -74,7 +74,7 @@ const ICONS = {
       <h2 class="mt-1">{c.title}</h2>
 
       <p class="mt-2 flex flex-wrap items-center gap-1.5">
-        <GulBadge variant="accent">{c.type}</GulBadge>
+        <GulBadge variant="accent">{c.series}</GulBadge>
         {c.url && (
           <a
             href={c.url}
@@ -101,7 +101,7 @@ const ICONS = {
           data-curso={curso}
           data-title={a.title.toLowerCase()}
           data-extra={c.title.toLowerCase()}
-          data-congreso-type={c.type.toLowerCase()}
+          data-congreso-series={c.series.toLowerCase()}
           data-date={a.date.replaceAll('/', '-')}
           data-type={a.type.toLowerCase()}
           data-tags={(a.tags ?? []).join(',').toLowerCase()}
