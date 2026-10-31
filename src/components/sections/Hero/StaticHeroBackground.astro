@@ -11,7 +11,7 @@
  * (src/pages/hero-fallback.svg.ts). It is a background image and not inline
  * markup so it costs nothing: browsers don't request backgrounds of
  * `display: none` elements, and this one is hidden both with JS (html.js) and
- * on phones, where Tux would sit on top of the text.
+ * wherever Tux would sit on top of the text (see the media query below).
  */
 ---
 
@@ -50,10 +50,10 @@
     display: none;
   }
 
-  /* Same condition as NO_TUX in GameOfLife.astro: Tux is desktop and tablet
-     only, so the text keeps its contrast in any phone orientation. If it
-     changes here, change it there too. */
-  @media (max-width: 29.999rem), (max-aspect-ratio: 3 / 4) {
+  /* Same condition as NO_TUX in GameOfLife.astro: Tux only where it fits to
+     the right of the text (wide and landscape enough). If it changes here,
+     change it there too. */
+  @media (max-width: 71.874rem), (max-aspect-ratio: 4 / 3) {
     .hero-tux-fallback {
       display: none;
     }

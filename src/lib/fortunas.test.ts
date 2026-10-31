@@ -4,7 +4,8 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { formatFortuna } from './fortunas.ts';
+import { readFileSync } from 'node:fs';
+import { FALLBACK_FORTUNA, formatFortuna, loadFortunas, parseFortunas } from './fortunas.ts';
 
 test('wraps a plain quote, removes one trailing period, and preserves the author', () => {
   assert.deepEqual(formatFortuna({ quote: 'Hola mundo.', author: 'Nadie' }), {
@@ -54,4 +55,24 @@ test('multi-line quotes are left untouched', () => {
 
 test('preserves an empty author', () => {
   assert.equal(formatFortuna({ quote: 'Sin autor.', author: '' }).author, '');
+});
+
+// Same mistake as a real PR: the second entry is indented one level too deep.
+const misindented = '- quote: a\n  author: b\n\n  - quote: c\n  author: d\n';
+
+test('the real fortunas.yaml parses and every entry has quote and author', () => {
+  const raw = readFileSync(new URL('../data/fortunas.yaml', import.meta.url), 'utf8');
+  assert.ok(parseFortunas(raw).length > 0);
+});
+
+test('a misindented entry is an error', () => {
+  assert.throws(() => parseFortunas(misindented));
+});
+
+test('an entry without author is an error', () => {
+  assert.throws(() => parseFortunas('- quote: a\n'), /nº 1/);
+});
+
+test('the build falls back instead of crashing', () => {
+  assert.deepEqual(loadFortunas(misindented), [FALLBACK_FORTUNA]);
 });

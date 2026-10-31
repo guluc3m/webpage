@@ -123,6 +123,12 @@ const {
     activeDecryptions.set(el, state);
 
     function frame(now: number) {
+      // A newer decryption of this element replaced us (e.g. the hero re-rolls
+      // a fortuna mid-animation). Stop silently: a stale loop must neither
+      // keep animating detached spans nor dispatch `gul:decrypt:complete` for
+      // text that is no longer on screen. Otherwise its completion would
+      // resume the *new* author's paused decryption too early.
+      if (activeDecryptions.get(el) !== state) return;
       const elapsed = now - t0;
       const swapGlyphs = elapsed - lastSwap >= speed;
       let pending = false;

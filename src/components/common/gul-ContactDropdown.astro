@@ -17,9 +17,12 @@ interface Props {
 const { id = 'gul-contact-menu' } = Astro.props;
 const twitter = SOCIALS.find((social) => social.icon === 'twitter.svg')!;
 const instagram = SOCIALS.find((social) => social.icon === 'ig.svg')!;
+
+const rowClass =
+  'flex items-center gap-3 rounded-md p-2 text-gul-muted transition-colors hover:bg-gul-ink/10 hover:text-gul-ink focus-visible:bg-gul-ink/10 focus-visible:text-gul-ink';
 ---
 
-<div class="relative" data-gul-contact>
+<div class="group/contact relative" data-gul-contact data-state="closed">
   <GulButton
     label="Contacta"
     href="#contact"
@@ -28,42 +31,37 @@ const instagram = SOCIALS.find((social) => social.icon === 'ig.svg')!;
     data-gul-contact-trigger
   />
 
+  {/* Unrolls like the nav labels: the grid row goes 0fr -> 1fr, so the panel
+      is uncovered in place instead of sliding. Closed it is `invisible`, not
+      just 0px tall, so it takes no focus or clicks. The gap above is padding,
+      not margin, so the pointer crossing it is still inside the menu. */}
   <div
     id={id}
     data-gul-contact-menu
-    hidden
-    class="absolute top-full right-0 z-20 w-max origin-top-right rounded-md border border-gul-line bg-gul-surface/95 p-2 pt-3 text-sm backdrop-blur-md"
+    class="invisible absolute top-full right-0 z-20 grid w-max grid-rows-[0fr] pt-2 opacity-0 transition-all duration-300 ease-out group-data-[state=open]/contact:visible group-data-[state=open]/contact:grid-rows-[1fr] group-data-[state=open]/contact:opacity-100 motion-reduce:transition-none"
   >
-    <div class="flex items-center gap-3 rounded-md p-2 text-gul-muted">
-      <img src={emailIcon} alt="" class="size-4 shrink-0 invert" />
-      <a href="#" data-gul-email class="grow hover:text-gul-ink">
-        <span data-gul-email-text>{obfuscateEmail(CONTACT.email)}</span>
-      </a>
+    <div class="min-h-0 overflow-hidden">
+      <div class="rounded-md border border-gul-line bg-gul-surface/95 p-2 pt-3 text-sm backdrop-blur-md">
+        <a href="#" data-gul-email class={rowClass}>
+          <img src={emailIcon} alt="" class="size-4 shrink-0 invert" />
+          <span data-gul-email-text>{obfuscateEmail(CONTACT.email)}</span>
+        </a>
+
+        <a href={twitter.href} target="_blank" rel="noopener" class={rowClass}>
+          <img src={twitterIcon} alt="" class="size-4 invert" />
+          <span>
+            @guluc3m <span class="sr-only">en Twitter</span>
+          </span>
+        </a>
+
+        <a href={instagram.href} target="_blank" rel="noopener" class={rowClass}>
+          <img src={instagramIcon} alt="" class="size-4 invert" />
+          <span>
+            @guluc3m <span class="sr-only">en Instagram</span>
+          </span>
+        </a>
+      </div>
     </div>
-
-    <a
-      href={twitter.href}
-      target="_blank"
-      rel="noopener"
-      class="flex items-center gap-3 rounded-md p-2 text-gul-muted transition-colors hover:bg-gul-ink/10 hover:text-gul-ink focus-visible:bg-gul-ink/10 focus-visible:text-gul-ink"
-    >
-      <img src={twitterIcon} alt="" class="size-4 invert" />
-      <span>
-        @guluc3m <span class="sr-only">en Twitter</span>
-      </span>
-    </a>
-
-    <a
-      href={instagram.href}
-      target="_blank"
-      rel="noopener"
-      class="flex items-center gap-3 rounded-md p-2 text-gul-muted transition-colors hover:bg-gul-ink/10 hover:text-gul-ink focus-visible:bg-gul-ink/10 focus-visible:text-gul-ink"
-    >
-      <img src={instagramIcon} alt="" class="size-4 invert" />
-      <span>
-        @guluc3m <span class="sr-only">en Instagram</span>
-      </span>
-    </a>
   </div>
 </div>
 
@@ -82,7 +80,6 @@ const instagram = SOCIALS.find((social) => social.icon === 'ig.svg')!;
     const setOpen = (open: boolean) => {
       trigger.setAttribute('aria-expanded', String(open));
       contact.dataset.state = open ? 'open' : 'closed';
-      menu.hidden = !open;
     };
 
     const hoverCapable = () => window.matchMedia('(hover: hover)').matches;
@@ -96,7 +93,7 @@ const instagram = SOCIALS.find((social) => social.icon === 'ig.svg')!;
     });
 
     trigger.addEventListener('click', () => {
-      setOpen(menu.hidden === true);
+      setOpen(contact.dataset.state !== 'open');
     });
 
     contact.addEventListener('keydown', (event) => {

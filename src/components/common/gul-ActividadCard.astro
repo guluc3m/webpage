@@ -64,135 +64,140 @@ const formatDate = (date: string) =>
 const datetime = hasNoDay(a.date) ? a.date.slice(0, 7) : a.date.replaceAll('/', '-');
 ---
 
-<div class="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
-  {images.length > 0 && (
-    <>
-      <button
-        type="button"
-        data-gul-lightbox-open={lightboxId}
-        title={images.length > 1 ? `Ver las ${images.length} imágenes` : 'Ver imagen'}
-        class="relative order-first block h-56 w-full cursor-pointer overflow-hidden rounded-md border border-gul-line transition-colors hover:border-gul-ink/40 md:order-last md:h-auto md:w-70 md:shrink-0"
+{/* Container query y no breakpoint de viewport: en md+ la columna de filtros
+    se come 16rem, así que la tarjeta sólo pone la imagen al lado cuando ella
+    misma tiene ancho (42rem) para texto + imagen. */}
+<div class="@container">
+  <div class="flex flex-col gap-4 @2xl:flex-row @2xl:items-center @2xl:gap-6">
+    {images.length > 0 && (
+      <>
+        <button
+          type="button"
+          data-gul-lightbox-open={lightboxId}
+          title={images.length > 1 ? `Ver las ${images.length} imágenes` : 'Ver imagen'}
+          class="relative order-first block h-56 w-full cursor-pointer overflow-hidden rounded-md border border-gul-line transition-colors hover:border-gul-ink/40 @2xl:order-last @2xl:h-auto @2xl:w-70 @2xl:shrink-0"
+        >
+          <img
+            src={images[0]!.src}
+            alt={images[0]!.alt}
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-cover"
+          />
+          {/* Same cue as Instagram's multi-photo posts: there's more behind the click. */}
+          {images.length > 1 && (
+            <span class="absolute top-2 right-2 inline-flex items-center gap-1 rounded-md bg-gul-bg/80 px-2 py-1 text-xs font-medium text-gul-ink">
+              <svg
+                viewBox="0 0 24 24"
+                class="size-4 shrink-0 stroke-current stroke-[1.5]"
+                fill="none"
+                set:html={ICONS.stack}
+              />
+              {images.length}
+            </span>
+          )}
+        </button>
+        <GulLightbox id={lightboxId} images={images} />
+      </>
+    )}
+    <div class="min-w-0 flex-1">
+      <GulFrame
+        surface
+        border="border-gul-line transition-colors hover:border-gul-ink/40"
+        class="p-4 @md:p-8"
+        variant="full"
       >
-        <img
-          src={images[0]!.src}
-          alt={images[0]!.alt}
-          loading="lazy"
-          decoding="async"
-          class="h-full w-full object-cover"
-        />
-        {/* Same cue as Instagram's multi-photo posts: there's more behind the click. */}
-        {images.length > 1 && (
-          <span class="absolute top-2 right-2 inline-flex items-center gap-1 rounded-md bg-gul-bg/80 px-2 py-1 text-xs font-medium text-gul-ink">
-            <svg
-              viewBox="0 0 24 24"
-              class="size-4 shrink-0 stroke-current stroke-[1.5]"
-              fill="none"
-              set:html={ICONS.stack}
-            />
-            {images.length}
-          </span>
-        )}
-      </button>
-      <GulLightbox id={lightboxId} images={images} />
-    </>
-  )}
-  <div class="min-w-0 flex-1">
-    <GulFrame
-      surface
-      border="border-gul-line transition-colors hover:border-gul-ink/40"
-      class="p-4 md:p-8"
-      variant="full"
-    >
-      <time class="text-xs text-gul-muted" datetime={datetime}>
-        {formatDate(a.date)}
-      </time>
-      <Title class="mt-1">{a.title}</Title>
+        <time class="text-xs text-gul-muted" datetime={datetime}>
+          {formatDate(a.date)}
+        </time>
+        <Title class="mt-1">{a.title}</Title>
 
-      {(a.type || (a.tags ?? []).length > 0) && (
-        <p class="mt-2 flex flex-wrap items-center gap-1.5">
-          <button
-            type="button"
-            class="group cursor-pointer"
-            title={`Filtrar por ${a.type}`}
-            data-filter-add="type"
-            data-value={a.type}
-          >
-            <GulBadge variant="primary" class="transition-opacity group-hover:opacity-85">
-              {a.type}
-            </GulBadge>
-          </button>
-          {(a.tags ?? []).map((t) => (
+        {(a.type || (a.tags ?? []).length > 0) && (
+          <p class="mt-2 flex flex-wrap items-center gap-1.5">
             <button
               type="button"
               class="group cursor-pointer"
-              title={`Filtrar por ${t}`}
-              data-filter-add="tags"
-              data-value={t}
+              title={`Filtrar por ${a.type}`}
+              data-filter-add="type"
+              data-value={a.type}
             >
-              <GulBadge
-                variant="secondary"
-                class="transition-colors group-hover:border-gul-ink group-hover:text-gul-ink"
-              >
-                {t}
+              <GulBadge variant="primary" class="transition-opacity group-hover:opacity-85">
+                {a.type}
               </GulBadge>
             </button>
-          ))}
-        </p>
-      )}
+            {(a.tags ?? []).map((t) => (
+              <button
+                type="button"
+                class="group cursor-pointer"
+                title={`Filtrar por ${t}`}
+                data-filter-add="tags"
+                data-value={t}
+              >
+                <GulBadge
+                  variant="secondary"
+                  class="transition-colors group-hover:border-gul-ink group-hover:text-gul-ink"
+                >
+                  {t}
+                </GulBadge>
+              </button>
+            ))}
+          </p>
+        )}
 
-      {a.participants && a.participants.length > 0 && (
-        <p class="mt-2 text-sm text-gul-muted">
-          {a.participants.map((s, i) => (
-            <>
-              {i > 0 && ', '}
-              {s.link ? (
+        {a.participants && a.participants.length > 0 && (
+          <p class="mt-2 text-sm text-gul-muted">
+            {a.participants.map((s, i) => (
+              <>
+                {i > 0 && ', '}
+                {s.link ? (
+                  <a
+                    href={s.link}
+                    target="_blank"
+                    rel="noopener"
+                    class="text-gul-ink underline decoration-gul-line underline-offset-4 hover:decoration-gul-ink"
+                  >
+                    {s.name}
+                  </a>
+                ) : (
+                  s.name
+                )}
+              </>
+            ))}
+          </p>
+        )}
+
+        {a.description && (
+          <p class="mt-1 text-sm text-gul-muted" set:html={renderInlineMarkdown(a.description)} />
+        )}
+
+        {(a.video || a.source || a.slides || a.link) && (
+          <p class="mt-3 flex flex-wrap items-center gap-2 text-sm">
+            {[
+              { href: a.video, label: 'Vídeo', icon: ICONS.video },
+              { href: a.source, label: 'Repositorio', icon: ICONS.repo },
+              { href: a.slides, label: 'Transparencias', icon: ICONS.slides },
+              { href: a.link, label: 'Link', icon: ICONS.link },
+            ]
+              .filter((link) => link.href)
+              .map((link) => (
                 <a
-                  href={s.link}
+                  href={link.href}
                   target="_blank"
                   rel="noopener"
-                  class="text-gul-ink underline decoration-gul-line underline-offset-4 hover:decoration-gul-ink"
+                  class="inline-flex items-center gap-2 rounded-full bg-gul-line px-3.5 py-1.5 font-medium text-gul-ink transition-opacity hover:opacity-85"
                 >
-                  {s.name}
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="size-4 shrink-0 stroke-current stroke-[1.5]"
+                    fill="none"
+                    set:html={link.icon}
+                  />
+                  {link.label}
                 </a>
-              ) : (
-                s.name
-              )}
-            </>
-          ))}
-        </p>
-      )}
-
-      {a.description && (
-        <p class="mt-1 text-sm text-gul-muted" set:html={renderInlineMarkdown(a.description)} />
-      )}
-
-      {(a.video || a.source || a.slides || a.link) && (
-        <p class="mt-3 flex flex-wrap items-center gap-2 text-sm">
-          {[
-            { href: a.video, label: 'Vídeo', icon: ICONS.video },
-            { href: a.source, label: 'Repositorio', icon: ICONS.repo },
-            { href: a.slides, label: 'Transparencias', icon: ICONS.slides },
-            { href: a.link, label: 'Link', icon: ICONS.link },
-          ]
-            .filter((link) => link.href)
-            .map((link) => (
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener"
-                class="inline-flex items-center gap-2 rounded-full bg-gul-line px-3.5 py-1.5 font-medium text-gul-ink transition-opacity hover:opacity-85"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  class="size-4 shrink-0 stroke-current stroke-[1.5]"
-                  fill="none"
-                  set:html={link.icon}
-                />
-                {link.label}
-              </a>
-            ))}
-        </p>
-      )}
-    </GulFrame>
+              ))}
+          </p>
+        )}
+      </GulFrame>
+    </div>
   </div>
 </div>

@@ -4,7 +4,7 @@
 # - Las fortunas simples, e.g. "me gustan los pies", son de una línea; si tienen
 #   "setup" también; e.g.
 #     "*luisda hablando del logo de GNOME* me gustan los pies", o
-#     "(a # voz en grito en el despacho) ¡Debian la chupa!)", o
+#     "(a # voz en grito en el despacho) ¡Debian la chupa!", o
 #     "no os preoupéis, que no me voy a ir a ningún sitio *no se le volvió a ver*",
 # - Las conversaciones también en multilínea y con `-` y `"`, e.g.:
 #   - Profe: "Aquí tienes tu examen"
@@ -1344,4 +1344,32 @@
     Tengo calle, soy de Fuenlabrada.
   author: Javier Garcia Blas (HPC)
 
+- quote: |-
+    Y señoras y señores, ... te la sacas...... La columna por favor
+  author: Carlos Linares (Heurística y Optimización)
 
+- quote: |-
+    ... y `context` es un agujero negro donde van los sueños a morir
+  author: Luisda (le pagan por hablar de Typst)
+
+- quote: |-
+    Hay días tontos y profesores de Desarrollo del Software todos los días
+  author: Albert (le abrió expediente el profesor de Desarrollo del Software)
+
+- quote: |-
+    Plato gratinado grande de ternera con extra de picante
+  author: Albert
+
+- quote: |-
+    Un patito feo, ¡me lo voy a cargar!
+  author: Carlos Linares (Heurística y Optimización)
+
+- quote: |-
+    Como en una fiesta el que mejor se lo pasa es el que se mete de to\', y en la uni
+    el que se mete en to'
+  author: Hector Molina
+
+- quote: |-
+    - Jorge: "Pero que es un MLP? (Multi Layer Perceptron)"
+    - Hector: "My Little Pony"
+  author: Dos filosofos buscando en google

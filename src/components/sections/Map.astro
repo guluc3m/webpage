@@ -12,7 +12,8 @@
  * bottom. Import it late and the whole thing stays off the first paint.
  *
  * Coordinates carried over from the 2021 site. Tiles run through a grayscale
- * filter (below) to keep the map inside the site's monochrome palette.
+ * filter (below) to keep the map inside the site's monochrome palette. The pin
+ * itself is the GUL cat head (gul-icon-white.svg) in a dark circular badge.
  */
 ---
 
@@ -50,7 +51,21 @@
         attribution: '&copy; OpenStreetMap',
         maxZoom: 19,
       }).addTo(map);
-      L.marker(OFFICE).addTo(map);
+      // divIcon en vez de las imágenes por defecto de Leaflet: así el marcador
+      // es el gato del logo (gul-icon-white.svg) y no dependemos de que
+      // Leaflet adivine dónde están sus PNGs, que con el CSS empaquetado fallaba.
+      // El tooltip va en un span propio: el ::after del badge ya es el pico del pin.
+      const pin = L.marker(OFFICE, {
+        icon: L.divIcon({
+          className: 'gul-map-pin',
+          html: '<span class="block" data-tooltip="Sede del GUL UC3M"><span class="gul-map-pin__badge"><img src="/gul-icon-white.svg" alt="" /></span></span>',
+          iconSize: [40, 48],
+          iconAnchor: [20, 48],
+        }),
+      }).addTo(map);
+      // Sin `title` (el tooltip es data-tooltip), así que el nombre accesible
+      // del marcador, que Leaflet hace enfocable, se pone a mano.
+      pin.getElement()?.setAttribute('aria-label', 'Sede del GUL UC3M');
     });
     observer.observe(el);
   }
@@ -66,5 +81,45 @@
   :global(.leaflet-popup-tip),
   :global(.leaflet-tooltip) {
     box-shadow: none;
+  }
+
+  /* El marcador (L.divIcon) también se inyecta en runtime. Badge oscuro para
+     que el gato blanco se lea sobre las teselas claras del mapa. */
+  :global(.gul-map-pin) {
+    border: 0;
+    background: none;
+    filter: drop-shadow(0 2px 3px rgb(0 0 0 / 0.4));
+  }
+
+  :global(.gul-map-pin__badge) {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-gul-line);
+    border-radius: 9999px;
+    background-color: var(--color-gul-bg);
+  }
+
+  /* Pico del pin, apuntando a la coordenada exacta (el anchor cae en su punta). */
+  :global(.gul-map-pin__badge::after) {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    translate: -50% 0;
+    border: 7px solid transparent;
+    border-top: 8px solid var(--color-gul-bg);
+  }
+
+  /* El foco lo recibe el marcador entero, y el tooltip está en un span de dentro. */
+  :global(.gul-map-pin:focus-visible [data-tooltip]::after) {
+    opacity: 1;
+  }
+
+  :global(.gul-map-pin__badge img) {
+    width: 30px;
+    height: 30px;
   }
 </style>

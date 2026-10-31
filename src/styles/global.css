@@ -394,4 +394,47 @@
   dialog::backdrop {
     background-color: color-mix(in oklab, var(--color-gul-bg) 70%, transparent);
   }
+
+  /* Tooltip — `data-tooltip="…"` on any element shows that text under it on
+     hover or keyboard focus, instead of the browser's native `title`. Pure
+     CSS, so it also works on elements created by scripts (header stars, the
+     map pin). It draws with ::after: don't put it on an element that already
+     uses its ::after, or that clips it (`mask`, `overflow: hidden`, e.g.
+     gul-Button) — put it on a wrapper instead; it also shows while something
+     inside the wrapper has keyboard focus. */
+  :where([data-tooltip]) {
+    position: relative; /* :where — an element positioned on purpose keeps it */
+  }
+  [data-tooltip]::after {
+    content: attr(data-tooltip);
+    /* "/ ''": decorative for screen readers, which already get the element's
+       own name. Browsers without the syntax keep the line above. */
+    content: attr(data-tooltip) / '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    z-index: 10;
+    margin-top: 0.25rem;
+    translate: -50% 0;
+    border: 1px solid var(--color-gul-line);
+    background-color: var(--color-gul-bg);
+    padding: 0.125rem 0.375rem;
+    font-family: var(--font-heading);
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    color: var(--color-gul-ink);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms;
+  }
+  [data-tooltip]:hover::after,
+  [data-tooltip]:focus-visible::after,
+  [data-tooltip]:has(:focus-visible)::after {
+    opacity: 1;
+  }
 }

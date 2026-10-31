@@ -57,6 +57,12 @@ const iconFiles = import.meta.glob<string>('../../icons/header/*.svg', {
 // URI, y esos llevan paréntesis que cortarían el token sin comillas.
 const iconFile = (name?: string) => iconFiles[`../../icons/header/${name}.svg`];
 
+// Variante activa opcional: `<nombre>-active.svg` junto al icono. Sustituye al
+// normal sólo con hover/foco.
+const activeHideClass = 'group-hover:hidden group-focus-visible:hidden';
+const activeShowClass = 'hidden group-hover:block group-focus-visible:block';
+const isCurrent = (href: string) => !isExternal(href) && Astro.url.pathname.startsWith(href);
+
 // Estado compacto: sólo el icono. El fondo lo pinta el propio enlace (y no una
 // píldora deslizante aparte) porque su ancho cambia al revelarse el texto.
 const itemClass =
@@ -110,13 +116,25 @@ const labelTextClass =
         <a
           href={link.href}
           class={itemClass}
+          aria-current={isCurrent(link.href) ? 'page' : undefined}
           {...(isExternal(link.href) ? { target: '_blank', rel: 'noopener' } : {})}
         >
           {iconFile(link.icon) ? (
-            <span
-              class="size-7.5 shrink-0 bg-current"
-              style={`mask: url("${iconFile(link.icon)}") center / contain no-repeat`}
-            />
+            <>
+              <span
+                class:list={[
+                  'size-7.5 shrink-0 bg-current',
+                  iconFile(`${link.icon}-active`) && activeHideClass,
+                ]}
+                style={`mask: url("${iconFile(link.icon)}") center / contain no-repeat`}
+              />
+              {iconFile(`${link.icon}-active`) && (
+                <span
+                  class:list={['size-7.5 shrink-0 bg-current', activeShowClass]}
+                  style={`mask: url("${iconFile(`${link.icon}-active`)}") center / contain no-repeat`}
+                />
+              )}
+            </>
           ) : (
             <svg
               viewBox="0 0 24 24"

@@ -624,6 +624,21 @@ const faqItems = [
     </section>
 
     <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Tooltip</h2>
+      <p class="text-sm text-gul-muted">
+        Todo texto que sale al pasar el ratón usa <code>data-tooltip="…"</code> (regla en
+        <code>global.css</code>), nunca el <code>title</code> nativo. Sale también con el foco del
+        teclado.
+      </p>
+      <GulFrame class="flex items-center gap-6 p-6">
+        {/* En un envoltorio: el overflow-hidden de gul-Button lo recortaría. */}
+        <span class="inline-block" data-tooltip="Así es el tooltip">
+          <GulButton variant="secondary" label="Pasa el ratón" />
+        </span>
+      </GulFrame>
+    </section>
+
+    <section class="space-y-4">
       <h2 class="text-3xl font-bold text-gul-ink">Logro</h2>
       <p class="text-sm text-gul-muted">
         Toast de logro reutilizable: pasa el texto del logro mediante la prop <code>text</code>.
@@ -632,7 +647,11 @@ const faqItems = [
         <span class="text-sm text-gul-muted">Ejemplo de notificación</span>
         <GulButton id="styleguide-achievement-trigger" variant="secondary" label="Mostrar logro" />
       </GulFrame>
-      <GulAchievement id="styleguide-achievement" text="Has completado el ejemplo del styleguide" />
+      <GulAchievement
+        id="styleguide-achievement"
+        text="Has completado el ejemplo del styleguide"
+        demo
+      />
     </section>
   </main>
   <GulFooter />

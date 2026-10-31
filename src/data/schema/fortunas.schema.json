@@ -14,10 +14,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "quote",
-        "author"
-      ],
+      "required": ["quote", "author"],
       "type": "object"
     },
     "Fortunas": {
@@ -28,4 +25,3 @@
     }
   }
 }
-

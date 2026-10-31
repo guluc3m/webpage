@@ -70,11 +70,12 @@ const tuxBitmap = await computeTuxBitmap(Buffer.from(tuxSvg), 100, 80); // 100 =
   // chance (growing each generation) of showing as Tux instead of its plain cell — a
   // flicker that settles into the full silhouette. Skipped entirely under reduced motion.
   const TUX_REVEAL_STEPS = 8;
-  // Misma condición que la variante "mobile" de StaticHeroBackground, que ya
-  // se dibuja sin Tux: a 480px el ancho del Tux sale a ~69 columnas sobre una
-  // rejilla de 48, así que quedaría recortado y encima del texto. El Game of
-  // Life sigue corriendo debajo; lo único que se salta es el overlay.
-  const NO_TUX = '(max-width: 29.999rem), (max-aspect-ratio: 3 / 4)';
+  // Misma condición que .hero-tux-fallback en StaticHeroBackground. Tux escala
+  // con el alto del hero y el texto con el ancho, así que el ancho solo no
+  // basta: una pantalla estrecha o alta lo mete encima del texto. 1150px se
+  // midió a ojo con la fortuna más larga. El Game of Life sigue corriendo
+  // debajo; lo único que se salta es el overlay.
+  const NO_TUX = '(max-width: 71.874rem), (max-aspect-ratio: 4 / 3)';
 
   const canvas = document.querySelector<HTMLCanvasElement>('[data-game-of-life]');
   const ctx = canvas?.getContext('2d');
