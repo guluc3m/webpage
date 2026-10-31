@@ -1,0 +1,47 @@
+# Checks every entry of actividades.yaml and congresos.yaml, so a broken one
+# shows up as a red check on the PR instead of silently missing from the site.
+name: Actividades
+
+on:
+  pull_request:
+    paths:
+      - src/data/actividades.yaml
+      - src/data/congresos.yaml
+      - src/lib/actividades.ts
+      - src/lib/congresos.ts
+      - src/lib/actividades.test.ts
+      - src/lib/congresos.test.ts
+  push:
+    branches:
+      - master
+    paths:
+      - src/data/actividades.yaml
+      - src/data/congresos.yaml
+      - src/lib/actividades.ts
+      - src/lib/congresos.ts
+      - src/lib/actividades.test.ts
+      - src/lib/congresos.test.ts
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Only these files, not `pnpm test`: the actividades check must not go
+      # red because of an unrelated test.
+      - name: Test actividades and congresos
+        run: node --test src/lib/actividades.test.ts src/lib/congresos.test.ts

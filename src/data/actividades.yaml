@@ -2,76 +2,491 @@
 # Lista de actividades del GUL. Edita esta lista para añadir/quitar eventos. Los campos son:
 # - title
 # - date (yyyy/mm/dd)
-# - type (uno de: Charla, Taller, Hackathon, Install party, Game jam, Pódcast, Jornadas Técnicas)
+# - type (uno de: Charla, Taller, Hackathon, Install party, Game jam, Pódcast, Radio, Congreso, Feria de Asociaciones)
 # - poster?
 # - link?
 # - source?
 # - slides?
-# - photo?
+# - photos? (lista de fotos del evento; con cartel, se ven al pulsarlo)
 # - tags? (lista)
 # - participants? (`{name, link}` o, si nombre ya existe, nombre directo y se reutiliza el link)
+#
+# Las Jornadas Técnicas (y en general los congresos) ya no se listan aquí:
+# son agrupaciones de actividades y viven en congresos.yaml.
 
-- title: Teclados
-  date: 2026/05/01
-  type: Taller
-  description: Nos juntamos unos cuantos para hacer unos teclados to' wapos
-  photo: https://pbs.twimg.com/media/HHs3K92WAAAJ9_J?format=jpg&name=small
-  tags: [Hardware]
-  source: https://github.com/davidphilipbarr/Sweep
+- title: III Congreso Hispalinux
+  date: 2000/11/10
+  type: Congreso
 
-- title: Introducción al Autohospedaje de Servicios y Webs
-  date: 2026/05/07
+- title: Instalación y configuración de un servidor web
+  date: 2002/11/28
   type: Charla
-  poster: https://pbs.twimg.com/media/HHn4rxuXMAM8RJ5?format=jpg&name=small
-  description: >-
-    ¿Que haces usando tu portatil del 2006 como pisapapeles? Métele Debian, y
-    te enseñamos como exponer tus páginas y proyectos. ¡No te pierdas esta oportunidad para crear
-    tu propia B2B SaaS, con 5 clientes anuales!
+  tags: [Apache, self-hosting]
+  slides: https://cloud-gul.uc3m.es/actividades/2003/marzo/curso_apache.tgz
   participants:
-    - name: Jorge Saghin
-      link: https://github.com/z4na14
-  tags: [Proxmox]
-  video: https://www.youtube.com/watch?v=xB3y_q-H6fE
-  slides: https://ftp.z4na14.dev/semana_postgrado_self-hosting.pdf
+    - Héctor Cordobés de la Calle
 
-- title: 'Taller presencial: Introduccion a C'
-  date: 2026/02/18
-  type: Taller
-  description: >-
-    ¿Qué es un Makefile?, ¿Por qué los punteros son tan complicados?, ¿¿Desde
-    cuándo puedo usar funciones como argumentos?? Tranquilo, nosotros también
-    hemos pasado por esa etapa, y te vamos a ayudar a que sufras lo menos
-    posible... No te preocupes, vas a salir de aquí con más dudas sobre punteros que cuando
-    entraste, pero esa es la parte divertida del lenguaje.
+- title: Construcción de paquetes Debian
+  date: 2005/07/11
+  type: Charla
+  tags: [Linux, Debian]
+  slides: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Construccion%20de%20paquetes%20debian/paquetes.beamer.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Construccion%20de%20paquetes%20debian/Paquetes_Debian-video.ogg
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Construccion%20de%20paquetes%20debian/
   participants:
-    - Jorge Saghin
-  tags: [C]
-  poster: https://pbs.twimg.com/media/HAjzAeHXEAAqVCa?format=jpg&name=4096x4096
+    - Jesús Espino García
+
+- title: Esbuilds y desarrollo en Gentoo
+  date: 2005/12/11
+  type: Charla
+  tags: [Linux, Gentoo]
+  video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/ebuilds/ebuilds-video.ogg
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/ebuilds/ebuilds-dev-gentoo-html.tar.bz2
+  participants:
+    - name: Fernando J. Pereda
+      link: https://blogs.gentoo.org/ferdy/
+
+- title: Power shell scripting
+  date: 2005/12/09 # sacado de la fecha de modificación del archivo
+  type: Charla
+  tags: [Bash]
+  video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Power_Shell_Scripting%20-%20GUL%20UC3M/PowerShellScripting.ogg
+  source: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Power_Shell_Scripting%20-%20GUL%20UC3M/bash-html.tar.bz2
+  participants:
+    - Fernando J. Pereda
+
+- title: Introducción a AWK
+  date: 2006/04/05
+  type: Charla
+  tags: [AWK]
+  source: https://cloud-gul.uc3m.es/actividades/2006/marzo/AWK/awk-source.tar.gz
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/AWK/Gul-AWK-05-04-06.ogv
+  participants:
+    - Jesús Espino García
+
+- title: eBox
+  date: 2006/04/04
+  type: Charla
+  tags: []
+  video: https://cloud-gul.uc3m.es/actividades/2006/marzo/eBox/Gul-eBox-04-04-06.mpg
+
+- title: Introducción a GNU/Linux (Leganés)
+  date: 2006/10/02 # me he inventao el día
+  type: Charla
+  tags: [Linux, GUL]
+  slides: https://cloud-gul.uc3m.es/actividades/2006/noviembre/introduccion/introduccion-leganes.pdf
+  participants:
+    - Fernando Cerezal
+    - Claudio Jiménez
+    - Roberto Muñoz Gómez
+
+- title: Introducción a GNU/Linux (Getafe)
+  date: 2006/10/03 # me he inventao el día
+  type: Charla
+  tags: [Linux, GUL]
+  slides: https://cloud-gul.uc3m.es/actividades/2006/noviembre/introduccion/introduccion-getafe.pdf
+  participants:
+    - Fernando Cerezal
+    - Claudio Jiménez
+    - Roberto Muñoz Gómez
+
+- title: Ajax en Java EE
+  date: 2007/06/19 # sacado de la fecha de creación del PDF
+  type: Charla
+  tags: [Java]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/AjaxEnJava/Ajax.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2007/marzo/AjaxEnJava/ajaxenJava-video.ogg
+  participants:
+    - Álvaro Sanchez-Mariscal
+
+- title: Introducción a Gentoo Linux
+  date: 2007/04/10
+  type: Charla
+  tags: [Linux, Gentoo]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/gentoo/charla-gentoo.pdf
+  participants:
+    - Jaime Martín Jiménez
+
+- title: Desarrollo de aplicaciones Java EE con Structs 2, Spring y EJB 3.0
+  date: 2007/06/19 # sacado de la fecha de creación del PDF
+  type: Charla
+  tags: [Java]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/JavaEE-Struts2-Spring-EJB3/JavaEE-Struts2-Spring-EJB3.pdf
+  video: https://cloud-gul.uc3m.es/actividades/2007/marzo/JavaEE-Struts2-Spring-EJB3/struts-video.ogg
+  participants:
+    - Daniel Ortega
+
+- title: Novedades en Java 5 y 6
+  date: 2007/06/19 # sacado de la fecha de creación del PDF
+  type: Charla
+  tags: [Java]
+  slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/novedadesJavaSE5y6/
+  participants:
+    - Juan Alaminos
+
+- title: Administrando JBoss
+  date: 2010/02/01
+  type: Charla
+  tags: [JBoss]
+  slides: https://cloud-gul.uc3m.es/actividades/2010/marzo/jboss/administrando-jboss.odp
+  video: https://cloud-gul.uc3m.es/actividades/2010/marzo/jboss/jboss.mpg
+  participants:
+    - Javier Turégano Molina
+
+- title: Fiesta de instalación de software libre
+  date: 2012/01/28
+  type: Install party
+  tags: [Software Libre, Linux]
+  description: >-
+    La [cooperativa de enseñanza José Ramón Otero](http://www.jrotero.org) está
+    organizando unas jornadas sobre software libre. En ella los alumnos de FP
+    mostrarán sus proyectos realizados con software libre: música, vídeo,
+    retoque fotográfico, etc. También habrá sala de juegos para los más pequeños
+    y charlas (técnicas y no-tan-técnicas) para los padres y los alumnos. Varias
+    asociaciones y empresas nos hemos apuntado a la fiesta. Aunque estamos en
+    plena organización, hemos confirmado estas charlas: Jesús hablará de
+    Mercurial, un software que permite gestionar diferentes versiones y ramas de
+    trabajo de documentos de texto, código fuente, etc. Roberto comentará las
+    alternativas libres a los programas privativos más comunes. David dará una
+    charla titulada _Mitos, realidades y miedos de Internet_.
+  link: https://apuntatealafiesta.com
+
+- title: Grupo de Usuarios Linux UC3M
+  description: 'Actividad realizada en la #ISemanaAsociaciones de la UC3M'
+  date: 2014/10/13
+  type: Charla
+  tags: [GUL]
+  video: https://youtu.be/pt9XD8phIRg
+  participants:
+    - name: Adrián Casado Rivas
+      link: https://twitter.com/strikercr
+
+- title: Feria de Asociaciones 2014
+  date: 2014/10/17
+  type: Feria de Asociaciones
+  tags: [GUL]
+  photos:
+    - https://pbs.twimg.com/media/B0JXospIUAAhG8m?format=jpg&name=4096x4096
+
+- title: Una radio a tu alcance
+  description: >-
+    Se realizaron dos programas de radio en directo en LA ISLA.FM, con la ayuda
+    de los participantes.
+  type: Taller
+  tags: [Radio]
+  date: 2015/03/12
+  participants:
+    - name: Sixto Fernández
+      link: https://twitter.com/djtangosix
+    - Rubén de la Peña
+    - Adrián Borja Pimentel
+    - Adrián Casado Rivas
 
 - title: Linux Install Party
-  date: 2026/02/12
   type: Install party
-  description: >-
-    ¿Cómo que necesitas cuenta para usar MS Paint en Windows 11? Te enseñamos
-    nosotros a usar Gimp, y de paso te instalamos Linux. Pssst, también tenemos Excalidraw
-    por si no te gusta Gimp, tú solo ven.
-  poster: https://pbs.twimg.com/media/G_sIN7tXIAES7GA?format=jpg&name=4096x4096
+  tags: [Linux]
+  date: 2015/04/17
+  photos:
+    - https://pbs.twimg.com/media/CCzxwrXUkAA7itj?format=jpg&name=medium
 
-- title: Pódcast de Asociaciones UC3M
-  date: 2025/12/19
-  type: Pódcast
+- title: Talleres de Arduino
+  type: Taller
+  tags: [Arduino]
+  date: 2015/05/12 # me invento el día, por las facturas debería ser al menos en mayo
+  participants:
+    - Adrián Borja Pimentel
+
+- title: Taller de IoT
+  type: Taller
+  tags: [IoT]
+  date: 2016/10/21 # también el 28 y el 04
+  poster: https://pbs.twimg.com/media/CubUaaUWYAAcUbH?format=jpg&name=4096x4096
+  participants:
+    - Axel Blanco
+
+- title: Linux Install Party
+  type: Install party
+  tags: [Linux]
+  date: 2016/10/14
+  poster: https://pbs.twimg.com/media/CuqzBEXXEAARls6?format=jpg&name=4096x4096
+
+- title: Linux Install Party
+  type: Install party
+  tags: [Linux]
+  date: 2018/02/23
+
+- title: Radiotón UC3M
+  type: Radio
+  date: 2019/02/13
+  poster: https://pbs.twimg.com/media/Dy5R13sW0AEIU_6?format=jpg&name=large
+  photos:
+    - https://pbs.twimg.com/media/DzTSbzqWsAo2rwf?format=jpg&name=large
+    - https://pbs.twimg.com/media/DzTS1roWoAcUyW7?format=jpg&name=4096x4096
+  video: https://go.ivoox.com/rf/32588408
+  participants:
+    - Juan Banga
+    # no conozco al resto...
+
+- title: Mi primer Linux
+  type: Charla
+  date: 2021/10/01
+  description: '"Breve" introducción a Linux'
+  tags: [Linux]
+  poster: https://cloud-gul.uc3m.es/actividades/2021/mi%20primer%20linux/cartel.png
+  slides: https://cloud-gul.uc3m.es/actividades/2021/mi%20primer%20linux/presentacion.pdf
+  video: https://youtu.be/-8oo17P29VU
+  participants:
+    - name: Daniel Rodríguez
+      link: https://github.com/patataman
+
+- title: Introducción a Git
+  type: Charla
+  date: 2021/10/12
   description: >-
-    Una conversación sobre cómo la asociación fomenta un espacio colaborativo donde cualquier persona puede aprender, compartir y disfrutar de la informática y del ecosistema Linux.
+    En el GUL estamos seguros que la gran mayoría estáis usando Drive o Dropbox para hacer las prácticas de Python, C, o lo que toque. Y, aunque no tenemos pruebas, tampoco tenemos dudas de que os ha dado algún problema a la hora de juntar trabajo y es que ni Drive, ni Dropbox están pensados para ello. Estamos aquí para solucionaros la vida, y presentaros Git, una herramienta pensaba para el control de versiones, no como Drive/Dropbox.
+  tags: [Git]
+  poster: https://cloud-gul.uc3m.es/actividades/2021/taller%20introduccion%20a%20git/cartel_v3.jpg
+  slides: https://cloud-gul.uc3m.es/actividades/2021/taller%20introduccion%20a%20git/presentacion.pdf
+  video: https://youtu.be/jvsneGS00Tw
+  participants:
+    - Daniel Rodríguez
+
+- title: Python para pythipiantes
+  type: Charla
+  date: 2021/10/26
+  description: >-
+    Taller introductorio (aunque bastante extenso) de programación en Python
+  tags: [Python]
+  poster: https://cloud-gul.uc3m.es/actividades/2021/python%20para%20pythipiantes/cartel.png
+  slides: https://cloud-gul.uc3m.es/actividades/2021/python%20para%20pythipiantes/transparencias.pdf
+  video: https://youtu.be/1xA0d7Z4EgU
+  participants:
+    - Luis Daniel Casais
+
+- title: Feria de Asociaciones 2021
+  type: Feria de Asociaciones
+  date: 2021/11/05
+  description: >-
+    Hicimos un programa de radio en directo... ¡Mira el "vídeo"!
+  video: https://cloud-gul.uc3m.es/radio_gul/Ferias%20de%20asociaciones/feria_de_asociaciones_2021.mp3
+  # poster: https://pbs.twimg.com/media/FC34nlBXMAIMNrK?format=jpg&name=large
+  photos:
+    - https://pbs.twimg.com/media/FDbAJd_XEAAmrry?format=jpg&name=medium
+    - https://pbs.twimg.com/media/FDb_IZvWQAAopPb?format=jpg&name=large
+    - https://pbs.twimg.com/media/FDbYn0VXsAQZHBc?format=jpg&name=medium
+  participants:
+    - Daniel Rodríguez
+    - name: Juan Banga
+      link: https://github.com/Juanbanpar
+    - Luis Daniel Casais
+
+- title: Generación de documentos en LaTeX
+  type: Charla
+  date: 2021/12/03
+  description: >-
+    ¡Taller introductorio, pero con todo lo necesario, para que creeis documentos usando LaTeX!
+  tags: [LaTeX]
+  poster: https://cloud-gul.uc3m.es/actividades/2021/taller%20de%20latex/cartel_latex.png
+  slides: https://cloud-gul.uc3m.es/actividades/2021/taller%20de%20latex/20211203%20-%20Generacion%20de%20documentos%20en%20LaTeX.pdf
+  video: https://youtu.be/cFieGJljKog?si=_nWai_kZAXWqn7YG
+  participants:
+    - Lisardo Prieto
+
+- title: Linux 404
+  type: Install party
+  tags: [Linux]
+  date: 2022/09/29
+  poster: https://cloud-gul.uc3m.es/actividades/2022/Linux%20404/cartel.png
+  slides: https://cloud-gul.uc3m.es/actividades/2022/Linux%20404/transparencias.pdf
+  link: https://github.com/guluc3m/linux-install
+  participants:
+    - Luis Daniel Casais
+
+- title: Introducción a C
+  type: Charla
+  tags: [C]
+  date: 2023/02/24
+  description: >-
+    Un paseo interactivo por el clásico lenguaje de programación impartido por uno de los mejores profesores de la Carlos III. Un hombre, una terminal, y un sueño.
+  poster: https://cloud-gul.uc3m.es/actividades/2022/Introducci%C3%B3n%20a%20C/cartel.png
+  video: https://youtu.be/t4GKwYp4OV4
+  participants:
+    - name: Alejandro Calderón
+      link: https://twitter.com/acaldero_uc3m
+
+- title: Feria de Asociaciones 2023
+  type: Feria de Asociaciones
+  date: 2023/02/22
+  description: >-
+    Hicimos un programa de radio en directo... ¡Mira el "vídeo"!
+  video: https://cloud-gul.uc3m.es/radio_gul/Ferias%20de%20asociaciones/feria_de_asociaciones_2023.mp3
+  poster: https://pbs.twimg.com/media/FpfchBPWAAAhvhD?format=jpg&name=medium
+  participants:
+    - Luis Daniel Casais
+    - Jose Antonio Verde
+    - name: Lucía Moya
+      link: https://twitter.com/ciams16
+
+- title: GNU/Linux y el FOSS
+  type: Taller
+  tags: [Linux, Software Libre]
+  date: 2023/02/28
+  description: >-
+    Taller introductorio a Linux y el Software Libre para el T3chfest Ed Day 2023, enfocada a estudiantes de secundaria y bachillerato.
+  # poster: https://pbs.twimg.com/media/Fiu27kCWAAI-p2I?format=jpg&name=medium
+  photos:
+    - https://cloud-gul.uc3m.es/actividades/2022/GNU%20Linux%20y%20el%20FOSS/t3chfest-ed-day-2023.jpg
+  slides: https://cloud-gul.uc3m.es/actividades/2022/GNU%20Linux%20y%20el%20FOSS/transparencias.pdf
+  link: https://t3chfest.es/2023/institutos/
+  participants:
+    - Luis Daniel Casais
+    - Jose Antonio Verde
+
+- title: trabajo final2 finalfinal bueno - copia.py
+  description: >-
+    Un taller de introduccion a Git y GitHub
+  type: Charla
+  tags: [Git]
+  date: 2023/10/30
+  poster: https://cloud-gul.uc3m.es/actividades/2023/Introducci%C3%B3n%20a%20Git/cartel.png
+  slides: https://cloud-gul.uc3m.es/actividades/2023/Introducci%C3%B3n%20a%20Git/Taller_de_Git.pdf
+  source: https://github.com/guluc3m/tutorial_git
+  participants:
+    - Jorge Lázaro
+    - Luis Daniel Casais
+
+- title: Linux404^2
+  type: Install party
+  tags: [Linux]
+  date: 2023/02/17
+  poster: https://cloud-gul.uc3m.es/actividades/2023/Linux%20Install%20Party/cartel-feb.png
+  slides: https://cloud-gul.uc3m.es/actividades/2023/Linux%20Install%20Party/traspas-feb.pdf
+  link: https://github.com/guluc3m/linux-install
+  participants:
+    - Luis Daniel Casais
+
+- title: Linux404
+  type: Install party
+  tags: [Linux]
+  date: 2023/10/05
+  poster: https://cloud-gul.uc3m.es/actividades/2023/Linux%20Install%20Party/cartel-oct.png
+  slides: https://cloud-gul.uc3m.es/actividades/2023/Linux%20Install%20Party/traspas-oct.pdf
+  source: https://github.com/joseaverde/linux-install-party
+  participants:
+    - Jose Antonio Verde
+
+- title: Introducción a C++ Moderno
+  date: 2024/09/19
+  type: Charla
+  poster: https://cloud-gul.uc3m.es/actividades/2024/Introducci%C3%B3n%20a%20C%2B%2B%20moderno/cartel.png
+  description: >-
+    Para los que tienen Arquitortura de Computadores, o simplemente quieren
+    aprender cómo se debe programar en C++, de forma segura y aprovechando todas
+    las cosas nuevas.
+  participants:
+    - name: Jose Antonio Verde
+      link: https://github.com/joseaverde
+    - Luis Daniel Casais
+  tags: [C++]
+  slides: https://cloud-gul.uc3m.es/actividades/2024/Introducci%C3%B3n%20a%20C%2B%2B%20moderno/transparencias.pdf
+  source: https://github.com/joseaverde/modern-cpp
+
+- title: Linux Install Party
+  date: 2024/09/17
+  type: Install party
+  tags: [Linux]
+  poster: https://cloud-gul.uc3m.es/actividades/2024/Linux%20Install%20Party/cartel.png
+
+- title: GNU/Linux y el FOSS
+  date: 2024/03/11
+  type: Taller
+  description: >-
+    Taller introductorio a Linux y el Software Libre para el T3chfest Ed Day 2024,
+    enfocada a estudiantes de secundaria y bachillerato.
+  photos:
+    - https://pbs.twimg.com/media/GIZDkkSWEAAQRCv?format=jpg&name=large
+  participants:
+    - Jose Antonio Verde
+    - Luis Daniel Casais
+  slides: https://cloud-gul.uc3m.es/actividades/2024/Linux%20y%20el%20OSS/transparencias.pdf
+  source: https://github.com/guluc3m/foss-example
+  link: https://t3chfest.es/2024/institutos/
+  tags: [Linux, Software Libre]
+
+- title: Memorias de prácticas en LaTeX
+  type: Charla
+  date: 2024/09/30
+  description: >-
+    Para cualquiera que quiera hacer unas memorias de prácticas de una forma
+    bonita y poco dolorosa, enseñaremos a usar nuestra plantilla de memorias en
+    LaTeX, y haremos una introducción a la herramienta.
+  participants:
+    - Luis Daniel Casais
+  poster: https://cloud-gul.uc3m.es/actividades/2024/Memorias%20de%20pr%C3%A1cticas%20en%20LaTeX/cartel.png
+  source: https://github.com/guluc3m/report-template-latex
+  tags: [LaTeX]
+
+- title: Memorias de TFG en LaTeX
+  date: 2025/02/06
+  type: Charla
+  poster: https://cloud-gul.uc3m.es/actividades/2025/Memorias%20de%20TFG%20en%20LaTeX/cartel.png
+  description: >-
+    ¿Te toca empezar la memoria del TFG y estás pensando en hacerlo en Word 🤢?
+    Qué pasa, ¿te da miedo usar una herramienta de verdad?
+  participants:
+    - Luis Daniel Casais
+  slides: https://cloud-gul.uc3m.es/actividades/2025/Memorias%20de%20TFG%20en%20LaTeX/transparencias.pdf
+  source: https://github.com/rajayonin/latex-thesis
+  video: https://youtu.be/a197TAd7Wsw
+  tags: [LaTeX]
+
+- title: Ampliación de C para "normies"
+  date: 2025/02/07
+  type: Charla
+  description: >-
+    ¿Qué es un puntero? ¿Y un Makefile? ¿Que narices le ha metido el profe a ese Struct? ¿¿Desde cuando puedo usar funciones como argumentos en C??
+  poster: https://pbs.twimg.com/media/Gj5ctk6WkAAShkb?format=jpg&name=medium
   participants:
     - Jorge Saghin
-    - name: Luis Daniel Casais
-      link: https://github.com/rajayonin
-  photo: https://www.uc3m.es/asociaciones-estudiantes/media/asociaciones-estudiantes/img/grande/original/en-ig_gul-uc3m_2866.../gul-uc3m-web.jpg
-  video: https://www.youtube.com/watch?v=UaF5FAdkjU4
+  video: https://www.youtube.com/watch?v=Apaqtno3ACE
+  slides: https://cloud-gul.uc3m.es/actividades/2025/C%20para%20%22normies%22/transparencias.pdf
+  source: https://github.com/z4na14/c-taller-intro
+  tags: [C]
+
+- title: Linux Install Party
+  date: 2025/02/13
+  type: Install party
+  tags: [Linux]
+  description: >-
+    Nuestra tradicional Install Party de Linux.
+  poster: https://cloud-gul.uc3m.es/actividades/2025/Linux%20Install%20Party/cartel-febrero.jpg
+  source: https://github.com/guluc3m/linux-install
+
+- title: Jornadas de Bienvenida 2025
+  date: 2025/10/08
+  type: Feria de Asociaciones
+  description: >-
+    Nos acercamos con el resto de asociaciones a las tradicionales Jornadas de
+    Bienvenida. En esta ocasión nos traímos el recién estrenado
+    [Hollow Knight: Silksong](https://hollowknightsilksong.com/) para demostrar
+    que se puede jugar perfectamente en Linux.
+  photos:
+    - https://pbs.twimg.com/media/G0U9wREWMAErF4O?format=jpg&name=large
+
+- title: Linux Install Party
+  date: 2025/10/07
+  type: Install party
+  tags: [Linux]
+  description: >-
+    ¿Qué haces aun usando Windows 10? Microsoft está a punto de volver tu
+    ordenador en un pisapapeles, ¿y no piensas hacer nada? Celebremos juntos
+    la muerte de Windows 10.
+  poster: https://cloud-gul.uc3m.es/actividades/2025/Linux%20Install%20Party/cartel-octubre.png
+  source: https://github.com/guluc3m/linux-install
 
 - title: Intro Git & Github
   date: 2025/11/12
-  type: Taller
+  type: Charla
   description: >-
     ¿Eres de los que al hacer un trabajo comparte el código por mail o por
     drive? ¿Has oído hablar de Github pero nunca has tenido claro qué es y
@@ -86,10 +501,15 @@
       link: https://github.com/fedes1to
     - name: Guillermo González
       link: https://github.com/giyermo
+    - Hugo Centeno Sanz
   video: https://www.youtube.com/watch?v=oDJsZ8ywq0o
+  link: https://cloud-gul.uc3m.es/actividades/2025/Taller%20de%20git%20(GUL%20x%20AISC)/transparencias.pdf
+  photos:
+    - https://res.cloudinary.com/dpchpoort/image/upload/aisc_madrid/events/event19/gallery/img_691e19a418df99.91840928.webp
+  slides: https://cloud-gul.uc3m.es/actividades/2025/Taller%20de%20git%20(GUL%20x%20AISC)/transparencias.pdf
   tags: [Git]
 
-- title: Escribe memorias de p*** madre con Typst
+- title: 'Memorias de p**** madre: Introducción a Typst'
   date: 2025/11/19
   type: Charla
   description: >-
@@ -97,11 +517,27 @@
     imagen 🤢? Desde GUL te invitamos a que vengas y aprendas Typst, una
     herramienta que te permitirá escribir documentos de manera más rápida,
     cómoda y simplemente mejor.
-  poster: https://pbs.twimg.com/media/G5Z06RVWEAA9ThR?format=jpg&name=large
+  poster: https://cloud-gul.uc3m.es/actividades/2025/Memorias%20de%20p***%20madre%20en%20typst/cartel.png
   participants:
     - Luis Daniel Casais
   video: https://www.youtube.com/watch?v=Apaqtno3ACE
+  source: https://github.com/rajayonin/typst-intro
+  slides: https://cloud-gul.uc3m.es/actividades/2025/Memorias%20de%20p%2A%2A%2A%20madre%20en%20typst/transparencias.pdf
   tags: [Typst]
+
+- title: Pódcast de Asociaciones UC3M
+  date: 2025/12/19
+  type: Pódcast
+  description: >-
+    Una conversación sobre cómo la asociación fomenta un espacio colaborativo donde cualquier persona puede aprender, compartir y disfrutar de la informática y del ecosistema Linux.
+  participants:
+    - name: Jorge Saghin
+      link: https://github.com/z4na14
+    - name: Luis Daniel Casais
+      link: https://github.com/rajayonin
+  photos:
+    - https://www.uc3m.es/asociaciones-estudiantes/media/asociaciones-estudiantes/img/grande/original/en-ig_gul-uc3m_2866.../gul-uc3m-web.jpg
+  video: https://www.youtube.com/watch?v=UaF5FAdkjU4
 
 - title: Minicurso express de Git ✨ Avanzado ✨
   date: 2026/01/13
@@ -115,41 +551,66 @@
   tags: [Git]
 
 - title: Linux Install Party
-  date: 2025/10/07
+  date: 2026/02/12
   type: Install party
   description: >-
-    ¿Qué haces aun usando Windows 10? Microsoft está a punto de volver tu
-    ordenador en un pisapapeles, ¿y no piensas hacer nada? Celebremos juntos
-    la muerte de Windows 10.
-  poster: https://pbs.twimg.com/media/G14xx8yWIAAUqtS?format=jpg&name=4096x4096
-  video: https://www.youtube.com/watch?v=Apaqtno3ACE
-  source: https://github.com/guluc3m/linux-install
+    ¿Cómo que necesitas cuenta para usar MS Paint en Windows 11? Te enseñamos
+    nosotros a usar Gimp, y de paso te instalamos Linux. Pssst, también tenemos Excalidraw
+    por si no te gusta Gimp, tú solo ven.
+  poster: https://pbs.twimg.com/media/G_sIN7tXIAES7GA?format=jpg&name=4096x4096
+  tags: [Linux]
 
-- title: Ampliación de C para "normies"
-  date: 2025/02/07
-  type: Taller
+- title: Introduccion a C
+  date: 2026/02/18
+  type: Charla
   description: >-
-    ¿Qué haces aun usando Windows 10? Microsoft está a punto de volver tu
-    ordenador en un pisapapeles, ¿y no piensas hacer nada? Celebremos juntos
-    la muerte de Windows 10 este 7 de octubre en el aula 2.3.C03
-  poster: https://pbs.twimg.com/media/Gj5ctk6WkAAShkb?format=jpg&name=medium
-  video: https://www.youtube.com/watch?v=Apaqtno3ACE
-  slides: https://github.com/z4na14/c-taller-intro
+    ¿Qué es un Makefile?, ¿Por qué los punteros son tan complicados?, ¿¿Desde
+    cuándo puedo usar funciones como argumentos?? Tranquilo, nosotros también
+    hemos pasado por esa etapa, y te vamos a ayudar a que sufras lo menos
+    posible... No te preocupes, vas a salir de aquí con más dudas sobre punteros
+    que cuando entraste, pero esa es la parte divertida del lenguaje.
+  poster: https://pbs.twimg.com/media/HAjzAeHXEAAqVCa?format=jpg&name=4096x4096
+  slides: https://cloud-gul.uc3m.es/actividades/2026/Introducci%C3%B3n%20a%20C/trasparencias.pdf
+  source: https://github.com/z4na14/c-taller-intro
+  participants:
+    - Jorge Saghin
   tags: [C]
 
-- title: GUL JAMon
-  date: 2025/09/22
-  type: Game jam
+- title: Teclados
+  date: 2026/05/01
+  type: Taller
+  description: Nos juntamos unos cuantos para hacer unos teclados to' wapos.
+  photos:
+    - https://pbs.twimg.com/media/HHs3K92WAAAJ9_J?format=jpg&name=small
+  tags: [Hardware]
+  source: https://github.com/davidphilipbarr/Sweep
+
+- title: Introducción al Autohospedaje de Servicios y Webs
+  date: 2026/05/07
+  type: Charla
+  poster: https://pbs.twimg.com/media/HHn4rxuXMAM8RJ5?format=jpg&name=small
   description: >-
-    La GUL Jamón es el evento del GUL UC3M dedicado a los videojuegos. Tuvo
-    su origen en 2018 como una gamejam.
-  poster: https://pbs.twimg.com/media/G04vx8mWYAA9MIr?format=jpg&name=medium
+    ¿Que haces usando tu portatil del 2006 como pisapapeles? Métele Debian, y
+    te enseñamos como exponer tus páginas y proyectos. ¡No te pierdas esta
+    oportunidad para crear tu propia B2B SaaS, con 5 clientes anuales!
+  participants:
+    - name: Jorge Saghin
+      link: https://github.com/z4na14
+  tags: [Proxmox, self-hosting]
+  video: https://www.youtube.com/watch?v=xB3y_q-H6fE
+  link: https://z4na14.dev/blog/self-hosted-1/
+  slides: https://cloud-gul.uc3m.es/actividades/2026/Introducci%C3%B3n%20al%20autohospedaje%20de%20servicios%20y%20webs/semana_postgrado_self-hosting.pdf
 
 - title: HackSpain 2026
   date: 2026/09/20
   type: Hackathon
   description: >-
-    Corría el otoño de 2026 cuando los chicos super sexis del GUL, hartos de ver a los larp-masters y sus secuaces token-maxers saqueando las GPUs a cambio de prompts kilométricos, decidieron plantar cara. Durante un largo y doloroso fin de semana se enfrentaron a la secta de los malvados 'AI-experts' de LinkedIn, que había impuesto el maleficio del token maxing sobre la Universidad Politécnica de Madrid.
+    Corría el otoño de 2026 cuando los chicos super sexis del GUL, hartos de ver
+    a los larp-masters y sus secuaces _token-maxers_ saqueando las GPUs a cambio
+    de prompts kilométricos, decidieron plantar cara. Durante un largo y
+    doloroso fin de semana se enfrentaron a la secta de los malvados
+    'AI-experts' de LinkedIn, que había impuesto el maleficio del _token-maxing_
+    sobre la Universidad Politécnica de Madrid.
   # Esto no es serio, pero seguramente les haga gracia y lo dejen
   participants:
     - Albert Giurgiu
@@ -160,5 +621,33 @@
     - name: Héctor Molina
       link: https://github.com/Toriomg
   link: https://hackspain.com/
-  photo: /actividades/hackspain.png
+  photos:
+    - /actividades/hackspain.png
   source: https://github.com/guluc3m/hackspain26
+
+- title: Linux Install Party
+  date: 2026/09/30
+  type: Install party
+  description: >-
+    Microsoft sueltame del brazo por favor, no quiero que me metas publicidad como mi fondo de pantalla dentro de Windows. En vez, me voy a ir con los chicos del GUL, y voy a estar con ellos instalándome Linux en mi portátil, y ayudando a la gente que venga a que haga lo mismo ¡Seguro que más gente se anima a pasarse a un sistema operativo libre, seguro y completamente gratuito!
+  photos:
+    - https://pbs.twimg.com/media/HTdtWyAXcAAzybm?format=jpg&name=small
+  poster: https://pbs.twimg.com/media/HS--mmuXYAAFYzu?format=jpg&name=medium
+  tags: [Linux]
+  participants:
+    - Jorge Saghin
+
+- title: Introducción a Git y Github | AISC x GUL UC3M
+  description: >-
+    ¿Eres de los que al hacer un trabajo comparte el código por mail o Drive? ¿Has oído hablar de Github pero nunca has tenido claro qué es y por qué te podría ser útil? Cambia esto y aprende a trabajar con control de versiones como un profesional.
+    En este taller en colaboración con AISC Madrid aprenderemos qué es Git y por qué se usa. Conceptos clave como commit, branch, merge y pull request y cómo trabajar de manera colaborativa en proyectos a través de GitHub.
+    Terminaremos con un ejercicio de simulación de trabajo en equipo, donde pondrás en práctica todo lo aprendido: crearás un repositorio, gestionarás ramas, resolverás conflictos y subirás tus aportes al repositorio remoto, conocimientos necesarios para trabajar en cualquier empresa el día de mañana.
+  type: Charla
+  tags: [Git]
+  date: 2026/11/05
+  poster: /actividades/charlaGit26.jpg
+  #slides: https://cloud-gul.uc3m.es/actividades/2023/Introducci%C3%B3n%20a%20Git/Taller_de_Git.pdf
+  #source: https://github.com/guluc3m/tutorial_git
+  participants:
+    - Héctor Molina
+    - Jorge Saghin

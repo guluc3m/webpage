@@ -1,0 +1,120 @@
+---
+/**
+ * gul-CongresoCard — el grupo de las Jornadas Técnicas (y demás congresos) en
+ * /actividades: una tarjeta mayor que envuelve a las más pequeñas
+ * (gul-ActividadCard) de sus Actividads, más la cabecera (fechas deducidas de
+ * las de las activities, título, serie y web). En móvil todo va en columna:
+ * título, cartel — global, las activities no llevan el suyo — y después la
+ * lista. En md+ el cartel flota a la derecha desde arriba: las cards (BFC
+ * todas por el overflow-hidden del marco, ver gul-Frame) se estrechan a su
+ * lado las que quepan — la primera, la segunda… según el alto del cartel — y
+ * el resto baja a todo el ancho. El marco va sin PixelDissolve (la variante
+ * "plain" de gul-Frame) para que el grupo grande no compita en textura con
+ * las cards que lleva dentro, y su badge de serie va en el acento ámbar
+ * (gul-amber, el mismo token del callout de aviso) para distinguirlo de una
+ * actividad suelta. Pulsar el cartel lo abre en gul-Lightbox.
+ */
+import GulLightbox from './gul-Lightbox.astro';
+import GulFrame from './gul-Frame.astro';
+import GulBadge from './gul-Badge.astro';
+import GulActividadCard from './gul-ActividadCard.astro';
+import { congresoDates, type Congreso } from '@lib/congresos';
+import { recursosOf } from '@lib/actividades';
+
+interface Props {
+  congreso: Congreso;
+  /** Curso (año de inicio) de la entrada de la cronología que lo contiene. */
+  curso: number;
+}
+
+const { congreso: c, curso } = Astro.props;
+const dates = congresoDates(c.activities);
+const poster = c.poster ? [{ src: c.poster, alt: `Cartel de ${c.title}` }] : [];
+// Has to be a valid, page-unique id; series + edition is unique in the YAML.
+const lightboxId = `congreso-${c.series}-${c.edition}`.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+// Hand-drawn outline icon, same as gul-ActividadCard's link one.
+const ICONS = {
+  link: '<path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.2 1.2"/><path d="M14 11a5 5 0 0 0-7.1-.1l-2 2a5 5 0 0 0 7.1 7.1l1.2-1.2"/>',
+} as const;
+---
+
+<GulFrame surface border="border-gul-ink/30" class="p-4 md:p-8" variant="plain">
+  {/* En móvil (flex col) el DOM no manda: cabecera → cartel → lista vía
+      order. En md+ es block y el cartel (primero en el DOM) flota a la
+      derecha desde arriba; lo que le sigue le rodea: las cards se estrechan
+      mientras el cartel dura, y la cabecera entera — raya separadora
+      incluida — queda estrechada a su lado (ver el comentario de abajo). */}
+  <div class="flex flex-col md:block">
+    {poster.length > 0 && (
+      <>
+        <button
+          type="button"
+          data-gul-lightbox-open={lightboxId}
+          title="Ver imagen"
+          class="relative order-2 mt-3 block w-56 cursor-pointer overflow-hidden rounded-md border border-gul-line transition-colors hover:border-gul-ink/40 md:float-right md:mt-0 md:mb-4 md:ml-6 md:w-70"
+        >
+          <img
+            src={poster[0]!.src}
+            alt={poster[0]!.alt}
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-cover"
+          />
+        </button>
+        <GulLightbox id={lightboxId} images={poster} />
+      </>
+    )}
+    {/* La línea separadora va en la cabecera (border-bottom), no en la
+        lista: como BFC junto al cartel flotante (flow-root en md+) se
+        estrecha y la raya para justo en su borde izquierdo; sobre el ul
+        (bloque a lo ancho) pasaría por debajo del cartel y asomaría por el
+        hueco del ml-6. */}
+    <div class="order-1 border-b border-gul-line pb-6 md:flow-root">
+      <time class="text-xs text-gul-muted">{dates}</time>
+      <h2 class="mt-1">{c.title}</h2>
+
+      <p class="mt-2 flex flex-wrap items-center gap-1.5">
+        <GulBadge variant="accent">{c.series}</GulBadge>
+        {c.url && (
+          <a
+            href={c.url}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 rounded-full bg-gul-line px-3.5 py-1.5 text-sm font-medium text-gul-ink transition-opacity hover:opacity-85"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="size-4 shrink-0 stroke-current stroke-[1.5]"
+              fill="none"
+              set:html={ICONS.link}
+            />
+            Web
+          </a>
+        )}
+      </p>
+    </div>
+
+    <ul class="order-3 mt-6 space-y-4 md:space-y-6">
+      {c.activities.map((a) => (
+        <li
+          data-actividad
+          data-curso={curso}
+          data-title={a.title.toLowerCase()}
+          data-extra={c.title.toLowerCase()}
+          data-congreso-series={c.series.toLowerCase()}
+          data-date={a.date.replaceAll('/', '-')}
+          data-type={a.type.toLowerCase()}
+          data-tags={(a.tags ?? []).join(',').toLowerCase()}
+          data-participants={(a.participants ?? [])
+            .map((s) => s.name)
+            .join(',')
+            .toLowerCase()}
+          data-recursos={recursosOf(a).join(',')}
+        >
+          <GulActividadCard actividad={a} heading="h3" />
+        </li>
+      ))}
+    </ul>
+  </div>
+</GulFrame>

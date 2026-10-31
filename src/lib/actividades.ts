@@ -1,7 +1,6 @@
 // Shape agreed in guluc3m/webpage#9. Data lives in actividades.yaml (edit
 // entries there); this file only types it.
-import { parse } from 'yaml';
-import rawActividades from '@data/actividades.yaml?raw'; // ?raw: a plain string, so invalid YAML syntax doesn't blow up the import itself.
+import { parse, YAMLParseError } from 'yaml';
 
 // Tipo de actividad: vocabulario cerrado. Cada entrada declara exactamente uno
 // (antes se deducía de tags "fijados" a mano; ahora es un campo explícito).
@@ -12,6 +11,9 @@ export const ACTIVIDAD_TYPES = [
   'Install party',
   'Game jam',
   'Pódcast',
+  'Radio',
+  'Congreso',
+  'Feria de Asociaciones',
 ] as const;
 export type ActividadType = (typeof ACTIVIDAD_TYPES)[number];
 
@@ -25,21 +27,45 @@ export interface Actividad {
   date: string; // yyyy/mm/dd
   type: ActividadType;
   description?: string;
-  jornadas?: number; // jornadas técnicas edition
   poster?: string;
   video?: string;
   link?: string;
   source?: string;
   slides?: string;
-  photo?: string; // usually one OR the other of cartel/photo, not both
+  photos?: string[]; // del evento; si hay poster, el poster sigue siendo la portada
   participants?: Participant[];
   tags?: string[]; // temas (Git, C, Hardware…); el tipo ya no va aquí
+}
+
+// Recursos filtrables de una actividad: los enlaces que la tarjeta pinta como
+// material (vídeo, repositorio y transparencias). El `link` no cuenta: es un
+// enlace genérico, no un material de la actividad. Estos mismos valores en
+// minúsculas van en el data-recursos de los <li data-actividad>, así que los
+// chips del filtro de Recursos los llevan en data-value tal cual (la página
+// compara en minúsculas; "Vídeo" con tilde no coincidiría).
+export const RECURSOS = [
+  { value: 'video', label: 'Vídeo' },
+  { value: 'repositorio', label: 'Repositorio' },
+  { value: 'transparencias', label: 'Transparencias' },
+] as const;
+export type Recurso = (typeof RECURSOS)[number]['value'];
+
+// Los recursos que una actividad lleva, como valores del filtro, en el orden
+// en que la tarjeta los pinta.
+export function recursosOf(
+  a: Pick<Actividad, 'video' | 'source' | 'slides'>,
+): Recurso[] {
+  const out: Recurso[] = [];
+  if (a.video) out.push('video');
+  if (a.source) out.push('repositorio');
+  if (a.slides) out.push('transparencias');
+  return out;
 }
 
 // En el YAML un participante puede ser un nombre suelto (`- Ana`) o un objeto.
 // El `link` es opcional y solo hace falta escribirlo una vez por persona en
 // todo el fichero: resolveParticipantLinks lo copia al resto por nombre.
-function normalizeParticipant(p: unknown): Participant | null {
+export function normalizeParticipant(p: unknown): Participant | null {
   if (typeof p === 'string') {
     const name = p.trim();
     return name ? { name } : null;
@@ -56,12 +82,21 @@ function normalizeParticipant(p: unknown): Participant | null {
 
 // Un enlace solo hay que escribirlo en una actividad: el primero que aparezca
 // para cada nombre se aplica a las demás apariciones, así no se repite.
-export function resolveParticipantLinks(actividades: Actividad[]): Actividad[] {
+// (Los links viven por fichero, así que congresos.ts cosecha los suyos aparte
+// y los aporta como extraLinks.)
+export function harvestParticipantLinks(actividades: Actividad[]): Map<string, string> {
   const links = new Map<string, string>();
   for (const a of actividades)
     for (const p of a.participants ?? [])
       if (p.link && !links.has(p.name)) links.set(p.name, p.link);
+  return links;
+}
 
+export function resolveParticipantLinks(
+  actividades: Actividad[],
+  extraLinks?: Map<string, string>,
+): Actividad[] {
+  const links = extraLinks ?? harvestParticipantLinks(actividades);
   return actividades.map((a) => ({
     ...a,
     participants: a.participants?.map((p) => (p.link ? p : { ...p, link: links.get(p.name) })),
@@ -70,35 +105,112 @@ export function resolveParticipantLinks(actividades: Actividad[]): Actividad[] {
 
 const dateRe = /^\d{4}\/\d{2}\/\d{2}$/;
 
-// A malformed entry (bad hand-edit) must not take the whole static build down —
-// drop it and warn instead of letting a missing field throw mid-render.
-export function isValidActividad(a: Partial<Actividad>): a is Actividad {
-  const ok =
-    !!a.title &&
-    !!a.date &&
-    dateRe.test(a.date) &&
-    (ACTIVIDAD_TYPES as readonly string[]).includes(a.type ?? '') &&
-    (a.participants === undefined || Array.isArray(a.participants)) &&
-    (a.tags === undefined || Array.isArray(a.tags));
-  if (!ok) console.warn(`[actividades] entrada incompleta, se omite: ${JSON.stringify(a)}`);
-  return ok;
+// Why an entry is unusable, or null if it is fine. Reused by congresos.ts so
+// the inner activities validate with the same rules as plain ones.
+export function actividadProblem(a: unknown): string | null {
+  if (!a || typeof a !== 'object' || Array.isArray(a)) return 'no es un objeto';
+  const { title, date, type, participants, tags, photos } = a as Record<string, unknown>;
+  if (typeof title !== 'string' || !title) return 'falta title';
+  if (typeof date !== 'string' || !dateRe.test(date)) return 'date no es yyyy/mm/dd';
+  if (!(ACTIVIDAD_TYPES as readonly string[]).includes(type as string))
+    return `type desconocido: ${JSON.stringify(type)}`;
+  if (participants !== undefined && !Array.isArray(participants))
+    return 'participants no es una lista';
+  if (tags !== undefined && !Array.isArray(tags)) return 'tags no es una lista';
+  if (photos !== undefined && !Array.isArray(photos)) return 'photos no es una lista';
+  return null;
 }
 
-// Parse by hand (rather than a static YAML import) so a broken hand-edit — invalid YAML
-// syntax, not just a missing field — degrades to an empty list instead of taking the whole
-// build down with the parser's own error page.
-export function loadActividades(): Actividad[] {
-  try {
-    const valid = (parse(rawActividades) as Partial<Actividad>[]).filter(isValidActividad);
-    const normalized = valid.map((a) => ({
-      ...a,
-      participants: a.participants
-        ?.map(normalizeParticipant)
-        .filter((p): p is Participant => p !== null),
-    }));
-    return resolveParticipantLinks(normalized);
-  } catch (err) {
-    console.warn(`[actividades] actividades.yaml inválido, se muestra vacío: ${err}`);
-    return [];
+/**
+ * Splits a hand-edited YAML list one entry at a time (an entry starts at every
+ * `- ` in column 0; a misindented one ends up glued to the entry above and
+ * usually breaks that one too) and parses each chunk on its own, so a broken
+ * entry (bad YAML or a missing field) is reported and dropped without taking
+ * the rest with it. It stops after splitting+parsing: deciding what to keep
+ * and how to complain is up to the caller (parseActividades, parseCongresos).
+ */
+export function parseYamlChunks(
+  raw: string,
+): Array<{ line: number; entries: unknown[]; error?: string }> {
+  const lines = raw.split('\n');
+  const starts = lines.flatMap((line, i) => (line.startsWith('- ') ? [i] : []));
+  return starts.flatMap((start, n) => {
+    const chunk = lines.slice(start, starts[n + 1] ?? lines.length).join('\n');
+    let entries: unknown;
+    try {
+      entries = parse(chunk);
+    } catch (err) {
+      if (!(err instanceof YAMLParseError)) throw err;
+      // The parser counts lines from the start of the chunk, not of the file.
+      const line = start + (err.linePos?.[0].line ?? 1);
+      return [{ line, entries: [], error: err.message.split(' at line ')[0] }];
+    }
+    return [{ line: start + 1, entries: Array.isArray(entries) ? entries : [entries] }];
+  });
+}
+
+// Igualar grafías case-insensitivamente: 'Linux', 'linux' y 'LINUX' son lo
+// mismo (la página ya compara en minúsculas; esto evita chips duplicados con
+// distinta mayúscula). El mapa acumula, por clave en minúsculas, la primera
+// grafía vista: esa es la canónica y las demás se le igualan.
+export function canonicalCase(seen: Map<string, string>, s: string): string {
+  const key = s.toLowerCase();
+  const casing = seen.get(key);
+  if (casing !== undefined) return casing;
+  seen.set(key, s);
+  return s;
+}
+
+// Los tags de una actividad, en grafía canónica y sin repetir el mismo tag
+// (aunque cambien las mayúsculas). YAML suelta números: se llevan a texto.
+export function canonicalTags(
+  tags: unknown[] | undefined,
+  seen: Map<string, string>,
+): string[] | undefined {
+  if (!tags) return tags;
+  const out: string[] = [];
+  for (const t of tags) {
+    const tag = canonicalCase(seen, String(t));
+    if (!out.includes(tag)) out.push(tag);
   }
+  return out;
+}
+
+/**
+ * Parses actividades.yaml one entry at a time, so a broken entry (bad YAML or
+ * a missing field) is reported and dropped without taking the rest with it.
+ */
+export function parseActividades(raw: string): { actividades: Actividad[]; errors: string[] } {
+  const actividades: Partial<Actividad>[] = [];
+  const errors: string[] = [];
+  const seenTags = new Map<string, string>();
+
+  for (const { line, entries, error } of parseYamlChunks(raw)) {
+    if (error) {
+      errors.push(`línea ${line}: ${error}`);
+      continue;
+    }
+    for (const a of entries) {
+      const problem = actividadProblem(a);
+      if (problem) errors.push(`línea ${line}: ${problem}: ${JSON.stringify(a)}`);
+      else actividades.push(a as Partial<Actividad>);
+    }
+  }
+
+  const normalized = actividades.map((a) => ({
+    ...a,
+    participants: a.participants
+      ?.map(normalizeParticipant)
+      .filter((p): p is Participant => p !== null),
+    ...(a.tags ? { tags: canonicalTags(a.tags, seenTags) } : {}),
+  })) as Actividad[];
+  return { actividades: resolveParticipantLinks(normalized), errors };
+}
+
+// Build-time loader: a bad hand-edit must not take the static build down, so
+// broken entries are left out with a warning. CI fails on them instead.
+export function loadActividades(raw: string): Actividad[] {
+  const { actividades, errors } = parseActividades(raw);
+  for (const e of errors) console.warn(`[actividades] entrada rota, no sale: ${e}`);
+  return actividades;
 }

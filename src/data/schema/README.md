@@ -1,6 +1,6 @@
 # JSON schema para datos
 
-Usamos [JSON Schema](https://json-schema.org/specification) para añadir autocompletado y validación a los YAML de fortunas y actividades.
+Usamos [JSON Schema](https://json-schema.org/specification) para añadir autocompletado y validación a los YAML de fortunas, actividades y congresos.
 
 Ésto se aplica a nivel IDE, se recomiendan instalar las siguientes extensiones:
 

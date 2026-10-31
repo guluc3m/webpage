@@ -1,16 +1,27 @@
 ---
 /**
  * gul-ActividadFilters — columna de filtros de /actividades: búsqueda por
- * título, tipo de actividad (abierto por defecto), tags y participantes
- * multi-selección (chips), y fecha por curso + cuatrimestre. En md+ es una
- * columna lateral sticky; en móvil se pliega tras el botón "Filtros" (CSS
- * puro guiado por aria-expanded). Cada grupo es un <details> colapsado por
- * defecto (salvo Tipo, que va abierto) con contador de seleccionados y un
- * "Limpiar" que vacía solo ese grupo.
+ * título, tema o persona, etiquetas (arriba del todo y abierto por defecto:
+ * buscador propio + las más usadas, el resto tras "Ver todas"), tipo de
+ * actividad y congresos en un solo grupo — los tipos de actividad, debajo las
+ * series de congreso (y "Actividades Independientes", que deja solo las
+ * actividades sueltas, excluyente con series y ediciones) y, solo con alguna
+ * serie marcada, un desplegable de ediciones (solo de las series marcadas)
+ * con "Todas" por defecto —, recursos (vídeo,
+ * repositorio o transparencias: actividades que llevan ese material) y
+ * participantes (buscador + las más frecuentes) en chips multi-selección, y
+ * fecha por rango de cursos + cuatrimestre. Cada chip dice cuántas
+ * actividades daría. En md+ es una columna lateral sticky; en móvil se
+ * pliega tras el botón "Filtros" (CSS puro guiado por aria-expanded). Cada
+ * grupo es un <details> colapsado por defecto (salvo Etiquetas, que va
+ * abierto) con contador de seleccionados y un "Limpiar" que vacía solo ese
+ * grupo.
  *
  * El script hace el filtrado client-side: consulta los <li data-actividad>
- * y el contador/vacío del listado, que viven en la página (un solo uso,
- * junto a este componente). Las opciones llegan ya calculadas como props.
+ * (dentro de un congreso van igual), esconde los <li data-actividad-group>
+ * que hayan quedado sin ninguna de las suyas, y el contador/vacío del
+ * listado, que viven en la página (un solo uso, junto a este componente).
+ * Las opciones llegan ya calculadas como props.
  */
 import filterIcon from '@icons/ui/filter.svg?url';
 import searchIcon from '@icons/ui/search.svg?url';
@@ -18,13 +29,35 @@ import searchIcon from '@icons/ui/search.svg?url';
 interface Props {
   /** Tipos de actividad (`type`), en orden fijo. */
   types: string[];
+  /** Series de congreso presentes (texto libre), en su orden de primera aparición en el YAML. */
+  congresoSeries: string[];
+  /** Ediciones de congresos (title + series), en el orden del YAML (más vieja primero). */
+  editions: { title: string; series: string }[];
+  /** Más usadas primero: las TOP_TAGS primeras se ven sin desplegar. */
   tags: string[];
+  /** Recursos presentes en las activities (video, repositorio…), ya ausentes los que nadie lleva. */
+  recursos: { value: string; label: string }[];
   participants: string[];
   /** Cursos (años de inicio, p.ej. 2025 para 2025/26), más nuevo primero. */
   cursos: number[];
 }
 
-const { types, tags, participants, cursos } = Astro.props;
+const { types, congresoSeries, editions, tags, recursos, participants, cursos } = Astro.props;
+const minCurso = Math.min(...cursos);
+const maxCurso = Math.max(...cursos);
+const cursoLabel = (curso: number) => `${curso}/${String(curso + 1).slice(2)}`;
+
+// Con 80+ etiquetas, la mitad usadas una sola vez, verlas todas de golpe
+// esconde las importantes; el resto queda tras "Ver todas".
+const TOP_TAGS = 12;
+
+// El menú de ediciones (custom, sin <select>) se pinta por serie: cabecera +
+// sus ediciones debajo; el script enseña/oculta el grupo al marcar series.
+const editionGroups = congresoSeries.map((series) => ({
+  series: series.toLowerCase(),
+  seriesLabel: series,
+  items: editions.filter((e) => e.series === series),
+}));
 
 // Cuatrimestres dentro de un curso: el 1.º va de sep a ene y el 2.º de feb a
 // ago (febrero es ya segundo cuatrimestre en la UC3M).
@@ -34,14 +67,14 @@ const semesters = [
 ];
 ---
 
-<div class="md:sticky md:top-20 md:self-start">
+<div class="md:sticky md:top-20 md:flex md:max-h-[calc(100svh-6rem)] md:flex-col md:self-start">
   <div class="relative">
     <img
       src={searchIcon}
       alt=""
       class="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 invert"
     />
-    <input type="search" placeholder="Buscar por título…" data-filter-search class="pl-9" />
+    <input type="search" placeholder="Título, tema o persona…" data-filter-search class="pl-9" />
   </div>
 
   <button
@@ -67,45 +100,10 @@ const semesters = [
 
   <aside
     id="gul-actividad-filters-panel"
-    class="gul-filters-panel mt-3 rounded-md border border-gul-line bg-gul-surface p-4"
+    class="gul-filters-panel mt-3 rounded-md border border-gul-line bg-gul-surface p-4 md:min-h-0 md:overflow-y-auto"
     data-filters-panel
   >
     <details open data-filter-group>
-      <summary class="py-3">
-        <span class="flex items-center gap-2">
-          Tipo
-          <span
-            class="rounded-full bg-gul-blue px-2 py-0.5 text-xs font-semibold"
-            data-group-count="type"
-            hidden
-          ></span>
-        </span>
-      </summary>
-      <div>
-        <div class="pb-4">
-          <div class="flex flex-wrap gap-1.5" data-chip-group="type">
-            {types.map((t) => (
-              <button
-                type="button"
-                class="gul-chip"
-                data-chip="type"
-                data-value={t}
-                aria-pressed="false"
-              >
-                {t}
-              </button>
-            ))}
-          </div>
-          <div class="pt-2">
-            <button type="button" class="gul-mini" data-clear-group="type">
-              Limpiar
-            </button>
-          </div>
-        </div>
-      </div>
-    </details>
-
-    <details data-filter-group>
       <summary class="py-3">
         <span class="flex items-center gap-2">
           Etiquetas
@@ -118,27 +116,250 @@ const semesters = [
       </summary>
       <div>
         <div class="pb-4">
-          <div class="flex flex-wrap gap-1.5" data-chip-group="tags">
-            {tags.map((t) => (
+          {/* 80+ etiquetas, la mitad usadas una sola vez: con la búsqueda se ven
+              las elegidas y las que coinciden (tildes plegadas), sin pasar por
+              "Ver todas". */}
+          <input
+            type="search"
+            placeholder="Buscar etiqueta…"
+            aria-label="Buscar etiqueta"
+            aria-controls="gul-tags-chips"
+            class="mb-2 px-2 py-1 text-sm"
+            data-tags-search
+          />
+          <div
+            id="gul-tags-chips"
+            class="flex flex-wrap gap-1.5"
+            data-chip-group="tags"
+            data-collapsed
+          >
+            {tags.map((t, i) => (
               <button
                 type="button"
                 class="gul-chip"
                 data-chip="tags"
                 data-value={t}
+                data-overflow={i >= TOP_TAGS ? '' : undefined}
                 aria-pressed="false"
               >
                 {t}
+                <span class="gul-chip-count" data-chip-count></span>
               </button>
             ))}
           </div>
-          <div class="pt-2">
-            <button type="button" class="gul-mini" data-clear-group="tags">
+          <p class="pt-1.5 text-xs text-gul-muted" aria-live="polite" data-tags-hint hidden></p>
+          <div class="flex justify-between pt-2">
+            {tags.length > TOP_TAGS && (
+              <button
+                type="button"
+                class="gul-mini"
+                aria-expanded="false"
+                aria-controls="gul-tags-chips"
+                data-tags-more
+              >
+                Ver todas ({tags.length})
+              </button>
+            )}
+            <button type="button" class="gul-mini ml-auto" data-clear-group="tags" disabled>
               Limpiar
             </button>
           </div>
         </div>
       </div>
     </details>
+
+    <details data-filter-group>
+      <summary class="py-3">
+        <span class="flex items-center gap-2">
+          Tipo
+          <span
+            class="rounded-full bg-gul-blue px-2 py-0.5 text-xs font-semibold"
+            data-group-count="tipo"
+            hidden
+          ></span>
+        </span>
+      </summary>
+      <div>
+        <div class="pb-4">
+          <p class="pb-1.5 text-xs tracking-wider text-gul-muted uppercase">Tipo de actividad</p>
+          <div class="flex flex-wrap gap-1.5" data-chip-group="type">
+            {types.map((t) => (
+              <button
+                type="button"
+                class="gul-chip"
+                data-chip="type"
+                data-value={t}
+                aria-pressed="false"
+              >
+                {t}
+                <span class="gul-chip-count" data-chip-count></span>
+              </button>
+            ))}
+          </div>
+          <p class="mt-3 pb-1.5 text-xs tracking-wider text-gul-muted uppercase">Congresos</p>
+          <div class="flex flex-wrap gap-1.5" data-chip-group="congresoSeries">
+            {congresoSeries.map((t) => (
+              <button
+                type="button"
+                class="gul-chip"
+                data-chip="congresoSeries"
+                data-value={t}
+                aria-pressed="false"
+              >
+                {t}
+                <span class="gul-chip-count" data-chip-count></span>
+              </button>
+            ))}
+            {/* No es una serie de congreso: esconde todo lo que va dentro de uno.
+                Excluyente con los tipos y ediciones (el script los limpia). */}
+            {congresoSeries.length > 0 && (
+              <button
+                type="button"
+                class="gul-chip"
+                data-chip="congresoNone"
+                data-value="ninguno"
+                aria-pressed="false"
+                title="Solo actividades sueltas, fuera de los congresos"
+              >
+                Actividades Independientes
+                <span class="gul-chip-count" data-chip-count></span>
+              </button>
+            )}
+          </div>
+          {/* Las ediciones en un desplegable propio (nada de <select> nativo):
+              botón + listbox flotante, "Todas" por defecto (sin filtro).
+              Solo se ve con alguna serie marcada — o con una edición ya
+              marcada, que pudo venir del propio menú —, y solo aparecen las
+              ediciones de esas series, agrupadas por serie. El value en
+              minúsculas, como el data-extra de los items, para que el script
+              compare igual que lo hacía con los chips. */}
+          <div class="mt-3" data-congreso-editions hidden>
+            <p class="pb-1.5 text-xs tracking-wider text-gul-muted uppercase">Ediciones</p>
+            <div class="relative" data-edition-menu>
+              <button
+                type="button"
+                class="gul-edition-trigger"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="gul-edition-list"
+                data-edition-trigger
+              >
+                <span class="truncate" data-edition-current>
+                  Todas
+                </span>
+                <span class="gul-edition-caret" aria-hidden="true">
+                  ▾
+                </span>
+              </button>
+              <ul
+                id="gul-edition-list"
+                class="gul-edition-menu"
+                role="listbox"
+                aria-label="Ediciones de congreso"
+                hidden
+                data-edition-list
+              >
+                <li
+                  class="gul-edition-option gul-edition-all"
+                  role="option"
+                  tabindex="-1"
+                  aria-selected="true"
+                  data-edition-option
+                  data-value=""
+                  data-edition-label="Todas"
+                >
+                  Todas
+                </li>
+                {editionGroups.map(({ series, seriesLabel, items }) => (
+                  <Fragment>
+                    <li
+                      class="gul-edition-heading"
+                      role="presentation"
+                      data-edition-series={series}
+                    >
+                      {seriesLabel}
+                    </li>
+                    {items.map((e) => (
+                      <li
+                        class="gul-edition-option"
+                        role="option"
+                        tabindex="-1"
+                        aria-selected="false"
+                        data-edition-option
+                        data-value={e.title.toLowerCase()}
+                        data-edition-label={e.title}
+                        data-edition-series={e.series.toLowerCase()}
+                      >
+                        <span class="truncate">{e.title}</span>
+                        <span class="gul-edition-count" data-edition-count></span>
+                      </li>
+                    ))}
+                  </Fragment>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div class="flex justify-end pt-2">
+            <button type="button" class="gul-mini" data-clear-group="tipo" disabled>
+              Limpiar
+            </button>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    {recursos.length > 0 && (
+      <details data-filter-group>
+        <summary class="py-3">
+          <span class="flex items-center gap-2">
+            Recursos
+            <span
+              class="rounded-full bg-gul-blue px-2 py-0.5 text-xs font-semibold"
+              data-group-count="recursos"
+              hidden
+            ></span>
+          </span>
+        </summary>
+        <div>
+          <div class="pb-4">
+            {/* Los mismos materiales que la tarjeta de cada actividad enlaza;
+                `link` no es uno: es un enlace genérico, no un material. */}
+            <div class="flex flex-wrap gap-1.5" data-chip-group="recursos">
+              {recursos.map((r) => (
+                <button
+                  type="button"
+                  class="gul-chip"
+                  data-chip="recursos"
+                  data-value={r.value}
+                  aria-pressed="false"
+                >
+                  {r.label}
+                  <span class="gul-chip-count" data-chip-count></span>
+                </button>
+              ))}
+              {/* No es un material: son las actividades que no llevan ninguno.
+                  Excluyente con los materiales de verdad (el script los limpia). */}
+              <button
+                type="button"
+                class="gul-chip"
+                data-chip="recursos"
+                data-value="ninguno"
+                aria-pressed="false"
+                title="Solo actividades sin vídeo, repositorio ni transparencias"
+              >
+                Sin recursos
+                <span class="gul-chip-count" data-chip-count></span>
+              </button>
+            </div>
+            <div class="flex justify-end pt-2">
+              <button type="button" class="gul-mini" data-clear-group="recursos" disabled>
+                Limpiar
+              </button>
+            </div>
+          </div>
+        </div>
+      </details>
+    )}
 
     <details data-filter-group>
       <summary class="py-3">
@@ -154,19 +375,29 @@ const semesters = [
       <div>
         <div class="pb-4">
           <div class="space-y-3">
-            <div>
-              <p class="pb-1.5 text-xs tracking-wider text-gul-muted uppercase">Curso</p>
-              <div class="flex flex-wrap gap-1.5" data-chip-group="cursos">
-                {cursos.map((curso) => (
-                  <button
-                    type="button"
-                    class="gul-chip"
-                    data-chip="cursos"
-                    data-value={String(curso)}
-                    aria-pressed="false"
-                  >
-                    {curso}/{String(curso + 1).slice(2)}
-                  </button>
+            {/* Un chip por curso ya no cabe (son 25+). Dos <input type="range">
+                superpuestos hacen de slider con dos tiradores: nativo, y se
+                maneja también con las flechas del teclado. */}
+            <div data-curso-range-box style={`--a: 0; --b: 1`}>
+              <p class="flex justify-between pb-1.5 text-xs tracking-wider text-gul-muted uppercase">
+                <span>Curso</span>
+                <span class="tracking-normal text-gul-ink normal-case" data-curso-range-label>
+                  {cursoLabel(minCurso)} – {cursoLabel(maxCurso)}
+                </span>
+              </p>
+              <div class="gul-range relative h-5">
+                <div class="absolute inset-x-0 top-1/2 h-1 -translate-y-1/2 rounded-full bg-gul-line" />
+                <div class="gul-range-fill absolute top-1/2 h-1 -translate-y-1/2 rounded-full bg-gul-blue" />
+                {(['from', 'to'] as const).map((bound) => (
+                  <input
+                    type="range"
+                    min={minCurso}
+                    max={maxCurso}
+                    step="1"
+                    value={bound === 'from' ? minCurso : maxCurso}
+                    aria-label={bound === 'from' ? 'Desde el curso' : 'Hasta el curso'}
+                    data-curso-range={bound}
+                  />
                 ))}
               </div>
             </div>
@@ -182,13 +413,14 @@ const semesters = [
                     aria-pressed="false"
                   >
                     {s.label}
+                    <span class="gul-chip-count" data-chip-count></span>
                   </button>
                 ))}
               </div>
             </div>
           </div>
-          <div class="pt-2">
-            <button type="button" class="gul-mini" data-clear-group="fecha">
+          <div class="flex justify-end pt-2">
+            <button type="button" class="gul-mini" data-clear-group="fecha" disabled>
               Limpiar
             </button>
           </div>
@@ -209,7 +441,18 @@ const semesters = [
       </summary>
       <div>
         <div class="pb-4">
-          <div class="flex flex-wrap gap-1.5" data-chip-group="participants">
+          {/* 100+ personas, la mayoría con una sola actividad: a alguien se le
+              busca por el nombre, así que solo se ven las elegidas y unas
+              pocas sugerencias (las más frecuentes, o las que coinciden). */}
+          <input
+            type="search"
+            placeholder="Buscar persona…"
+            aria-label="Buscar persona"
+            aria-controls="gul-people-chips"
+            class="mb-2 px-2 py-1 text-sm"
+            data-people-search
+          />
+          <div id="gul-people-chips" class="flex flex-wrap gap-1.5" data-chip-group="participants">
             {participants.map((s) => (
               <button
                 type="button"
@@ -219,11 +462,13 @@ const semesters = [
                 aria-pressed="false"
               >
                 {s}
+                <span class="gul-chip-count" data-chip-count></span>
               </button>
             ))}
           </div>
-          <div class="pt-2">
-            <button type="button" class="gul-mini" data-clear-group="participants">
+          <p class="pt-1.5 text-xs text-gul-muted" aria-live="polite" data-people-more hidden></p>
+          <div class="flex justify-end pt-2">
+            <button type="button" class="gul-mini" data-clear-group="participants" disabled>
               Limpiar
             </button>
           </div>
@@ -231,15 +476,19 @@ const semesters = [
       </div>
     </details>
 
-    <button type="button" class="gul-mini mt-3" data-filters-clear disabled>
-      Limpiar filtros
-    </button>
+    <div class="mt-3 flex justify-end">
+      <button type="button" class="gul-mini" data-filters-clear disabled>
+        Limpiar filtros
+      </button>
+    </div>
   </aside>
 </div>
 
 <style>
   /* Panel de filtros: plegado en móvil tras el botón "Filtros"; en md+ la
-     columna lateral siempre visible (sticky sobre el header fijo). */
+     columna lateral siempre visible (sticky sobre el header fijo). Una
+     columna sticky más alta que la pantalla deja su final inalcanzable, así
+     que en md+ se limita al alto visible y el panel hace scroll por dentro. */
   .gul-filters-panel {
     display: none;
   }
@@ -249,6 +498,9 @@ const semesters = [
   @media (min-width: 48rem) {
     .gul-filters-panel {
       display: block !important;
+      /* Sin color-scheme en la página, el scrollbar por defecto sale claro. */
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-gul-line) transparent;
     }
   }
   [data-filters-toggle][aria-expanded='true'] [data-filters-chevron] {
@@ -287,9 +539,189 @@ const semesters = [
     background-color: color-mix(in oklab, var(--color-gul-blue) 20%, transparent);
     color: var(--color-gul-ink);
   }
+  .gul-chip-count {
+    margin-left: 0.375rem;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.6;
+  }
+  /* Elegirla dejaría la lista vacía: se atenúa pero sigue pulsable. */
+  .gul-chip[data-empty]:not([aria-pressed='true']) {
+    opacity: 0.4;
+  }
   .gul-chip[aria-pressed='true']::before {
     content: '✓ ';
     color: var(--color-gul-blue);
+  }
+
+  /* Menú de ediciones (nada de <select> nativo). El botón imita a los chips
+     y el menú comparte forma con el buscador: el mismo --radius-md cuadrado,
+     borde de línea y fondo de campo, y el foco con el borde tinta. */
+  .gul-edition-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 100%;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-gul-line);
+    background-color: var(--color-gul-bg);
+    padding-inline: 0.625rem;
+    padding-block: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--color-gul-muted);
+    cursor: pointer;
+    transition:
+      color 0.1s ease,
+      border-color 0.1s ease,
+      background-color 0.1s ease;
+  }
+  .gul-edition-trigger:hover,
+  .gul-edition-trigger[aria-expanded='true'] {
+    border-color: var(--color-gul-ink);
+    color: var(--color-gul-ink);
+  }
+  .gul-edition-trigger:focus-visible {
+    outline: 2px solid var(--color-gul-blue);
+    outline-offset: 1px;
+  }
+  .gul-edition-trigger[aria-expanded='true'] .gul-edition-caret {
+    transform: rotate(180deg);
+  }
+  .gul-edition-caret {
+    transition: transform 0.1s ease;
+  }
+
+  /* El menú flota anclado al botón; por dentro hace scroll (el panel ya
+     limita su alto en md+, un menú de 35+ ediciones no cabe entero). */
+  .gul-edition-menu {
+    position: absolute;
+    z-index: 10;
+    top: calc(100% + 0.25rem);
+    left: 0;
+    width: 14rem;
+    max-width: calc(100vw - 2rem);
+    max-height: 16rem;
+    overflow-y: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-gul-line);
+    background-color: var(--color-gul-bg);
+    box-shadow: 0 0.5rem 1.5rem color-mix(in oklab, var(--color-gul-ink) 25%, transparent);
+    padding-block: 0.375rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gul-line) transparent;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .gul-edition-menu {
+      animation: gul-edition-menu-in 0.12s ease;
+      transform-origin: top left;
+    }
+    @keyframes gul-edition-menu-in {
+      from {
+        opacity: 0;
+        transform: translateY(-0.25rem) scale(0.98);
+      }
+    }
+  }
+
+  .gul-edition-heading {
+    padding-inline: 0.875rem;
+    padding-block: 0.5rem 0.25rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-gul-muted);
+  }
+
+  .gul-edition-option {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding-inline: 0.875rem;
+    padding-block: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-gul-muted);
+    cursor: pointer;
+  }
+  .gul-edition-option:hover,
+  .gul-edition-option:focus-visible {
+    background-color: color-mix(in oklab, var(--color-gul-blue) 12%, transparent);
+    color: var(--color-gul-ink);
+  }
+  .gul-edition-option:focus-visible {
+    outline: 2px solid var(--color-gul-blue);
+    outline-offset: -2px;
+  }
+  .gul-edition-option[aria-selected='true'] {
+    color: var(--color-gul-ink);
+  }
+  .gul-edition-option[aria-selected='true']::before {
+    content: '✓';
+    color: var(--color-gul-blue);
+  }
+  /* "Todas" separada del resto por la línea que la distingue del grupo. */
+  .gul-edition-all {
+    border-bottom: 1px solid color-mix(in oklab, var(--color-gul-line) 60%, transparent);
+  }
+  .gul-edition-count {
+    margin-left: auto;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.6;
+  }
+
+  /* Etiquetas recogidas: fuera de las más usadas solo se ven las elegidas,
+     para que una selección no desaparezca al recoger la lista. */
+  [data-collapsed] > [data-overflow]:not([aria-pressed='true']) {
+    display: none;
+  }
+
+  /* Slider de cursos: dos inputs range apilados con el carril vacío. Solo los
+     tiradores reciben el ratón, así cada uno se arrastra aunque el otro input
+     esté encima. --a/--b (0–1) son los extremos que pone el script; el relleno
+     descuenta medio tirador a cada lado para empezar y acabar en su centro. */
+  .gul-range {
+    --thumb: 1rem;
+  }
+  .gul-range input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    appearance: none;
+    pointer-events: none;
+  }
+  .gul-range input::-webkit-slider-thumb {
+    appearance: none;
+    width: var(--thumb);
+    height: var(--thumb);
+    border-radius: 9999px;
+    border: 2px solid var(--color-gul-surface);
+    background: var(--color-gul-ink);
+    cursor: grab;
+    pointer-events: auto;
+  }
+  .gul-range input::-moz-range-thumb {
+    width: var(--thumb);
+    height: var(--thumb);
+    border-radius: 9999px;
+    border: 2px solid var(--color-gul-surface);
+    background: var(--color-gul-ink);
+    cursor: grab;
+    pointer-events: auto;
+  }
+  .gul-range input::-moz-range-track {
+    background: transparent;
+  }
+  .gul-range input:focus-visible::-webkit-slider-thumb {
+    outline: 2px solid var(--color-gul-blue);
+  }
+  .gul-range input:focus-visible::-moz-range-thumb {
+    outline: 2px solid var(--color-gul-blue);
+  }
+  .gul-range-fill {
+    left: calc(var(--thumb) / 2 + (100% - var(--thumb)) * var(--a));
+    right: calc(var(--thumb) / 2 + (100% - var(--thumb)) * (1 - var(--b)));
   }
 
   /* Botoncito de texto (limpiar). */
@@ -316,22 +748,84 @@ const semesters = [
   // El listado (items, marcadores de curso, contador y estado vacío) pinta en
   // la página; este componente solo lo filtra.
   const items = document.querySelectorAll<HTMLLIElement>('[data-actividad]');
+  const congresos = document.querySelectorAll<HTMLLIElement>('[data-actividad-group]');
   const cursoMarkers = document.querySelectorAll<HTMLLIElement>('[data-curso-marker]');
   const empty = document.querySelector<HTMLElement>('[data-actividades-empty]')!;
   const countLine = document.querySelector<HTMLElement>('[data-actividades-count]')!;
 
-  type Group = 'type' | 'tags' | 'participants' | 'cursos' | 'semesters';
-  const groups: Group[] = ['type', 'tags', 'participants', 'cursos', 'semesters'];
+  type Group =
+    | 'type'
+    | 'tags'
+    | 'recursos'
+    | 'participants'
+    | 'semesters'
+    | 'congresoSeries'
+    | 'congresoEdition'
+    | 'congresoNone';
+  const groups: Group[] = [
+    'type',
+    'congresoSeries',
+    'congresoEdition',
+    'congresoNone',
+    'tags',
+    'recursos',
+    'participants',
+    'semesters',
+  ];
   const selected: Record<Group, Set<string>> = {
     type: new Set(),
     tags: new Set(),
+    recursos: new Set(),
     participants: new Set(),
-    cursos: new Set(),
     semesters: new Set(),
+    congresoSeries: new Set(),
+    congresoEdition: new Set(),
+    congresoNone: new Set(),
   };
 
-  // El badge del grupo Fecha cuenta curso + cuatrimestre juntos.
-  const fechaBadge = () => selected.cursos.size + selected.semesters.size;
+  // "Actividades Independientes" y los tipos/ediciones de congreso se
+  // excluyen: marcar uno limpia los otros (ver el click handler y el "Limpiar"
+  // del grupo).
+  const exclusive: Record<Group, Group[]> = {
+    type: [],
+    tags: [],
+    recursos: [],
+    participants: [],
+    semesters: [],
+    congresoSeries: ['congresoNone'],
+    congresoEdition: ['congresoNone'],
+    congresoNone: ['congresoSeries', 'congresoEdition'],
+  };
+
+  // Rango de cursos. Los tiradores se pueden cruzar: el rango es siempre del
+  // menor al mayor, así que da igual cuál se arrastre.
+  const rangeBox = panel.querySelector<HTMLElement>('[data-curso-range-box]')!;
+  const rangeLabel = panel.querySelector<HTMLElement>('[data-curso-range-label]')!;
+  const cursoFrom = panel.querySelector<HTMLInputElement>('[data-curso-range="from"]')!;
+  const cursoTo = panel.querySelector<HTMLInputElement>('[data-curso-range="to"]')!;
+  const minCurso = Number(cursoFrom.min);
+  const maxCurso = Number(cursoFrom.max);
+  const cursoLow = () => Math.min(cursoFrom.valueAsNumber, cursoTo.valueAsNumber);
+  const cursoHigh = () => Math.max(cursoFrom.valueAsNumber, cursoTo.valueAsNumber);
+  const rangeActive = () => cursoLow() > minCurso || cursoHigh() < maxCurso;
+  const inCursoRange = (curso: number) => curso >= cursoLow() && curso <= cursoHigh();
+  const cursoLabel = (curso: number) => `${curso}/${String(curso + 1).slice(2)}`;
+  function clearCursoRange() {
+    cursoFrom.value = String(minCurso);
+    cursoTo.value = String(maxCurso);
+  }
+  function syncCursoRange() {
+    const span = maxCurso - minCurso || 1;
+    rangeBox.style.setProperty('--a', String((cursoLow() - minCurso) / span));
+    rangeBox.style.setProperty('--b', String((cursoHigh() - minCurso) / span));
+    rangeLabel.textContent =
+      cursoLow() === cursoHigh()
+        ? cursoLabel(cursoLow())
+        : `${cursoLabel(cursoLow())} – ${cursoLabel(cursoHigh())}`;
+  }
+
+  // El badge del grupo Fecha cuenta el rango (como uno) + los cuatrimestres.
+  const fechaBadge = () => Number(rangeActive()) + selected.semesters.size;
 
   // Cuatrimestre desde la fecha yyyy-mm-dd del item: sep–ene → c1, feb–ago → c2.
   const semesterOf = (date: string) => {
@@ -342,26 +836,117 @@ const semesters = [
   // Los items guardan data-tags/participants en minúsculas (ver el HTML);
   // normalizar aquí para que el estado coincida sea cual sea la capitalización.
   const norm = (s: string) => s.toLowerCase();
+  // La búsqueda ignora tildes: "jesus" encuentra a "Jesús".
+  const fold = (s: string) =>
+    s
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '')
+      .toLowerCase();
+  const searchText = new Map(
+    [...items].map((item) => [
+      item,
+      fold(
+        [item.dataset.title, item.dataset.extra, item.dataset.tags, item.dataset.participants].join(
+          ' ',
+        ),
+      ),
+    ]),
+  );
+
+  // Menú de ediciones (custom, sin <select>): botón ancla + listbox flotante.
+  // setGroup lo deja al día porque los datos también cambian desde el
+  // "Limpiar" y las tarjetas, que no pasan por el propio menú.
+  const editionMenu = panel.querySelector<HTMLElement>('[data-edition-menu]')!;
+  const editionTrigger = panel.querySelector<HTMLButtonElement>('[data-edition-trigger]')!;
+  const editionList = panel.querySelector<HTMLUListElement>('[data-edition-list]')!;
+  const editionCurrent = panel.querySelector<HTMLElement>('[data-edition-current]')!;
+  const editionOptions = () => [
+    ...editionList.querySelectorAll<HTMLElement>('[data-edition-option]'),
+  ];
+
+  function openEditions() {
+    editionList.hidden = false;
+    editionTrigger.setAttribute('aria-expanded', 'true');
+    // Foco en la elegida (o la primera visible); en una columna con scroll
+    // propio, que el menú asome entero sin mover el panel.
+    const chosen =
+      editionOptions().find((o) => o.getAttribute('aria-selected') === 'true' && !o.hidden) ??
+      editionOptions().find((o) => !o.hidden)!;
+    chosen.focus();
+    editionList.scrollIntoView({ block: 'nearest' });
+  }
+  function closeEditions(focusTrigger = true) {
+    if (editionList.hidden) return;
+    editionList.hidden = true;
+    editionTrigger.setAttribute('aria-expanded', 'false');
+    if (focusTrigger) editionTrigger.focus();
+  }
 
   function setGroup(group: Group, values: Set<string>) {
     selected[group] = values;
     panel.querySelectorAll<HTMLButtonElement>(`[data-chip="${group}"]`).forEach((chip) => {
       chip.setAttribute('aria-pressed', String(values.has(norm(chip.dataset.value!))));
     });
+    if (group === 'congresoEdition') {
+      // El menú no conoce de ediciones múltiples (una nueva sustituye a la
+      // que hubiera): setGroup solo llega aquí con ninguna o una.
+      const [only] = values;
+      editionOptions().forEach((o) => {
+        const value = o.dataset.value!;
+        o.setAttribute(
+          'aria-selected',
+          String(value === '' ? values.size === 0 : values.has(value)),
+        );
+      });
+      const picked = only
+        ? editionList.querySelector<HTMLInputElement>(
+            `[data-edition-option][data-value="${CSS.escape(only)}"]`,
+          )
+        : null;
+      editionCurrent.textContent = picked?.dataset.editionLabel ?? 'Todas';
+    }
   }
 
   function syncControls() {
     panel.querySelectorAll<HTMLElement>('[data-group-count]').forEach((badge) => {
       const group = badge.dataset.groupCount!;
-      const n = group === 'fecha' ? fechaBadge() : selected[group as Group].size;
+      const n =
+        group === 'fecha'
+          ? fechaBadge()
+          : group === 'tipo'
+            ? selected.type.size +
+              selected.congresoSeries.size +
+              selected.congresoEdition.size +
+              selected.congresoNone.size
+            : selected[group as Group].size;
       badge.textContent = String(n);
       badge.hidden = n === 0;
     });
 
-    const total = groups.reduce((n, g) => n + selected[g].size, 0);
+    syncCursoRange();
+    const total = groups.reduce((n, g) => n + selected[g].size, 0) + Number(rangeActive());
     const toggleBadge = document.querySelector<HTMLElement>('[data-filters-badge]')!;
     toggleBadge.textContent = String(total);
     toggleBadge.hidden = total === 0;
+    // El "Limpiar" de cada grupo solo se activa cuando ese grupo tiene algo
+    // que vaciar; la búsqueda de arriba la limpia el "Limpiar filtros".
+    const groupDirty: Record<string, boolean> = {
+      // El grupo Tipo lleva tipos de actividad, series, ediciones y "ninguno";
+      // los considera juntos.
+      tipo:
+        selected.type.size > 0 ||
+        selected.congresoSeries.size > 0 ||
+        selected.congresoEdition.size > 0 ||
+        selected.congresoNone.size > 0,
+      tags: selected.tags.size > 0,
+      recursos: selected.recursos.size > 0,
+      fecha: rangeActive() || selected.semesters.size > 0,
+      participants: selected.participants.size > 0,
+    };
+    panel
+      .querySelectorAll<HTMLButtonElement>('[data-clear-group]')
+      .forEach((b) => (b.disabled = !groupDirty[b.dataset.clearGroup!]));
+
     // Algo que limpiar hay con chips activos o con búsqueda escrita.
     const canClear = total > 0 || search.value.trim() !== '';
     document
@@ -369,27 +954,190 @@ const semesters = [
       .forEach((b) => (b.disabled = !canClear));
   }
 
+  // Valores de un item en cada grupo (la página los guarda en minúsculas).
+  const list = (s: string) => (s ? s.split(',') : []);
+  const valuesOf: Record<Group, (item: HTMLElement) => string[]> = {
+    type: (item) => [item.dataset.type!],
+    // Tipo y edición de congreso: solo lo llevan las activities de dentro de
+    // uno (data-extra es el título, ya en minúsculas). Con cualquiera de los
+    // dos marcado, las sueltas no pasan nunca; marcados los dos, exige ser de
+    // un tipo marcado y de una edición marcada.
+    congresoSeries: (item) => (item.dataset.congresoSeries ? [item.dataset.congresoSeries] : []),
+    congresoEdition: (item) => (item.dataset.extra ? [item.dataset.extra] : []),
+    // "ninguno" marca justo las sueltas: las que no llevan serie de congreso.
+    congresoNone: (item) => (item.dataset.congresoSeries ? [] : ['ninguno']),
+    tags: (item) => list(item.dataset.tags!),
+    // Los materiales de la activity (video, repositorio, transparencias…),
+    // los mismos valores que pone la página en el data-recursos. Quien no
+    // lleva ninguno cuenta para "sin recursos" ('ninguno').
+    recursos: (item) => {
+      const rs = list(item.dataset.recursos!);
+      return rs.length > 0 ? rs : ['ninguno'];
+    },
+    participants: (item) => list(item.dataset.participants!),
+    semesters: (item) => [semesterOf(item.dataset.date!)],
+  };
+  // Dentro de un grupo las opciones suman (OR); un grupo vacío no filtra.
+  const passesGroup = (item: HTMLElement, g: Group) =>
+    selected[g].size === 0 || valuesOf[g](item).some((v) => selected[g].has(v));
+
+  const TOP_PEOPLE = 8;
+  const peopleSearch = panel.querySelector<HTMLInputElement>('[data-people-search]')!;
+  const peopleBox = panel.querySelector<HTMLElement>('[data-chip-group="participants"]')!;
+  const peopleMore = panel.querySelector<HTMLElement>('[data-people-more]')!;
+  // Elegidas siempre visibles y primero; detrás, hasta TOP_PEOPLE sugerencias:
+  // sin búsqueda, las que más actividades dan ahora; buscando, las que
+  // coinciden (también las que darían 0, para ver que existen). Se ordena con
+  // `order` y no moviendo nodos, que haría perder el foco al chip pulsado.
+  function syncPeople(counts: Map<string, number>) {
+    const q = fold(peopleSearch.value.trim());
+    const n = (c: HTMLElement) => counts.get(norm(c.dataset.value!)) ?? 0;
+    const on = (c: HTMLElement) => c.getAttribute('aria-pressed') === 'true';
+    const chips = [...peopleBox.querySelectorAll<HTMLButtonElement>('[data-chip]')].sort(
+      (a, b) =>
+        Number(on(b)) - Number(on(a)) ||
+        n(b) - n(a) ||
+        a.dataset.value!.localeCompare(b.dataset.value!, 'es'),
+    );
+    let suggested = 0;
+    let rest = 0;
+    chips.forEach((c, i) => {
+      c.style.order = String(i);
+      const candidate = !on(c) && (q ? fold(c.dataset.value!).includes(q) : n(c) > 0);
+      const show = on(c) || (candidate && suggested < TOP_PEOPLE);
+      if (candidate) {
+        if (show) suggested++;
+        else rest++;
+      }
+      c.hidden = !show;
+    });
+    peopleMore.hidden = rest === 0 && !(q && suggested === 0);
+    peopleMore.textContent =
+      q && suggested === 0
+        ? 'Nadie con ese nombre.'
+        : q
+          ? `y ${rest} más, afina la búsqueda`
+          : `y ${rest} más, búscalas por nombre`;
+  }
+
+  // El menú de ediciones solo se ve con alguna serie marcada (o con una
+  // edición ya marcada, que pudo venirse del propio menú sin serie): sin
+  // congresos no hay nada que elegir dentro. Y dentro, solo las ediciones de
+  // las series marcadas — una serie ya elegida aguanta a la vista la edición
+  // marcada de otra, para poder quitarla sin volver a marcarla.
+  function syncCongreso() {
+    const box = panel.querySelector<HTMLElement>('[data-congreso-editions]')!;
+    box.hidden = selected.congresoSeries.size === 0 && selected.congresoEdition.size === 0;
+    const alive = new Set(selected.congresoSeries);
+    selected.congresoEdition.forEach((v) => {
+      const opt = editionList.querySelector<HTMLElement>(
+        `[data-edition-option][data-value="${CSS.escape(v)}"]`,
+      );
+      if (opt) alive.add(opt.dataset.editionSeries!);
+    });
+    editionList.querySelectorAll<HTMLElement>('[data-edition-series]').forEach((el) => {
+      el.hidden = !alive.has(el.dataset.editionSeries!);
+    });
+  }
+
+  // El buscador de etiquetas, como el de participantes: enseña siempre las
+  // elegidas y detrás las que coinciden (tildes plegadas), todas a la vez.
+  // Con búsqueda se quita el data-collapsed ("Ver todas" manda otra vez al
+  // borrarla) y el botón de contar no pinta nada; sin ella, cada chip vuelve
+  // a lo suyo.
+  const tagsSearch = panel.querySelector<HTMLInputElement>('[data-tags-search]')!;
+  const tagsBox = panel.querySelector<HTMLElement>('[data-chip-group="tags"]')!;
+  const tagsMore = panel.querySelector<HTMLButtonElement>('[data-tags-more]');
+  const tagsHint = panel.querySelector<HTMLElement>('[data-tags-hint]')!;
+
+  function syncTags() {
+    const q = fold(tagsSearch.value.trim());
+    const chips = [...tagsBox.querySelectorAll<HTMLButtonElement>('[data-chip]')];
+    if (q === '') {
+      tagsBox.toggleAttribute('data-collapsed', tagsMore?.getAttribute('aria-expanded') !== 'true');
+      chips.forEach((c) => {
+        c.hidden = false;
+        c.style.removeProperty('order');
+      });
+      tagsHint.hidden = true;
+      if (tagsMore) tagsMore.hidden = false;
+    } else {
+      const on = (c: HTMLButtonElement) => c.getAttribute('aria-pressed') === 'true';
+      tagsBox.removeAttribute('data-collapsed');
+      // Orden con `order` y no moviendo nodos, que haría perder el foco al
+      // chip pulsado.
+      chips
+        .sort(
+          (a, b) =>
+            Number(on(b)) - Number(on(a)) || a.dataset.value!.localeCompare(b.dataset.value!, 'es'),
+        )
+        .forEach((c, i) => {
+          c.style.order = String(i);
+          c.hidden = !on(c) && !fold(c.dataset.value!).includes(q);
+        });
+      if (tagsMore) tagsMore.hidden = true;
+      const seen = chips.some((c) => !c.hidden);
+      tagsHint.hidden = seen;
+      tagsHint.textContent = 'Ninguna etiqueta así.';
+    }
+  }
+
   function applyFilters() {
-    const q = search.value.trim().toLowerCase();
+    const q = fold(search.value.trim());
     let visible = 0;
     const visibleCursos = new Set<string>();
+    // Lo que muestra cada chip: cuántas actividades saldrían eligiéndolo, o
+    // sea, las que tienen ese valor y pasan todos los filtros salvo los de su
+    // propio grupo.
+    const counts = Object.fromEntries(groups.map((g) => [g, new Map<string, number>()])) as Record<
+      Group,
+      Map<string, number>
+    >;
 
     items.forEach((item) => {
-      const date = item.dataset.date!;
-      const matches =
-        item.dataset.title!.includes(q) &&
-        (selected.type.size === 0 || selected.type.has(item.dataset.type!)) &&
-        (selected.tags.size === 0 ||
-          item.dataset.tags!.split(',').some((t) => selected.tags.has(t))) &&
-        (selected.participants.size === 0 ||
-          item.dataset.participants!.split(',').some((p) => selected.participants.has(p))) &&
-        (selected.cursos.size === 0 || selected.cursos.has(item.dataset.curso!)) &&
-        (selected.semesters.size === 0 || selected.semesters.has(semesterOf(date)));
+      const base = searchText.get(item)!.includes(q) && inCursoRange(Number(item.dataset.curso));
+      const failed = base ? groups.filter((g) => !passesGroup(item, g)) : groups;
+      const matches = base && failed.length === 0;
+      if (base) {
+        for (const g of groups) {
+          // Las opciones de Congresos son excluyentes, así que al contar una se
+          // ignora lo marcado en las otras: al pulsarla se limpian, y el número
+          // tiene que decir qué daría al pulsarla.
+          const blockers = failed.filter((f) => f !== g && !exclusive[g].includes(f));
+          if (blockers.length > 0) continue;
+          for (const v of valuesOf[g](item)) counts[g].set(v, (counts[g].get(v) ?? 0) + 1);
+        }
+      }
       item.hidden = !matches;
       if (matches) {
         visible++;
         visibleCursos.add(item.dataset.curso!);
       }
+    });
+
+    panel.querySelectorAll<HTMLButtonElement>('[data-chip]').forEach((chip) => {
+      const n = counts[chip.dataset.chip as Group].get(norm(chip.dataset.value!)) ?? 0;
+      chip.querySelector('[data-chip-count]')!.textContent = String(n);
+      chip.toggleAttribute('data-empty', n === 0);
+    });
+    syncPeople(counts.participants);
+    syncTags();
+    syncCongreso();
+    // Cada opción del menú (menos "Todas", que no es una edición) dice
+    // cuántas actividades daría, como los chips.
+    panel.querySelectorAll<HTMLSpanElement>('[data-edition-count]').forEach((el) => {
+      const opt = el.closest<HTMLElement>('[data-edition-option]')!;
+      el.textContent = String(counts.congresoEdition.get(opt.dataset.value!) ?? 0);
+    });
+
+    // Cada congreso aguanta su tarjeta por sí solo: si no queda ninguna de
+    // sus activities visible, se esconde entero (la cabecera con cartel
+    // incluida). Un congreso vacío de base no se pinta, así que sin filtro
+    // siempre tiene todas visibles.
+    congresos.forEach((congreso) => {
+      congreso.hidden = ![...congreso.querySelectorAll<HTMLElement>('[data-actividad]')].some(
+        (i) => !i.hidden,
+      );
     });
 
     // A curso with no activities yet (the current one) always shows; one with activities
@@ -408,40 +1156,161 @@ const semesters = [
   // fuera del panel, y así un solo listener cubre todos los controles.
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
+    // Opción del menú de ediciones: "Todas" (value '') deja el filtro sin
+    // ediciones; marcar una quita "Actividades Independientes" (se excluyen,
+    // como hacía el chip de la edición).
+    const editionOption = target.closest<HTMLElement>('[data-edition-option]');
+    if (editionOption) {
+      const value = editionOption.dataset.value!;
+      if (value) setGroup('congresoNone', new Set());
+      setGroup('congresoEdition', value ? new Set([value]) : new Set());
+      closeEditions();
+      applyFilters();
+      return;
+    }
+
     const chip = target.closest<HTMLButtonElement>('[data-chip]');
     if (chip) {
       const group = chip.dataset.chip as Group;
       const value = norm(chip.dataset.value!);
       const next = new Set(selected[group]);
-      if (next.has(value)) next.delete(value);
-      else next.add(value);
+      const adding = !next.has(value);
+      if (group === 'recursos' && adding) {
+        // "Sin recursos" es excluyente con los materiales de verdad, como
+        // "Actividades Independientes" con las series: marcar uno limpia el
+        // otro (van juntos en la misma lista, no en grupos aparte).
+        if (value === 'ninguno') {
+          setGroup('recursos', new Set(['ninguno']));
+          applyFilters();
+          return;
+        }
+        next.delete('ninguno');
+      }
+      if (adding) next.add(value);
+      else next.delete(value);
+      if (adding) exclusive[group].forEach((other) => setGroup(other, new Set()));
+      // Al desmarcar una serie, si la edición elegida era suya vuelve a
+      // "Todas": el menú solo enseña las ediciones de las series marcadas.
+      if (group === 'congresoSeries' && !adding && selected.congresoEdition.size === 1) {
+        const [picked] = selected.congresoEdition;
+        const opt = editionList.querySelector<HTMLInputElement>(
+          `[data-edition-option][data-value="${CSS.escape(picked!)}"]`,
+        );
+        if (opt?.dataset.editionSeries === value) setGroup('congresoEdition', new Set());
+      }
       setGroup(group, next);
       applyFilters();
+      return;
+    }
+
+    // Etiqueta o tipo pulsado en una tarjeta: añade ese filtro (no lo quita si
+    // ya estaba) y sube al principio del listado, que acaba de cambiar entero.
+    const add = target.closest<HTMLButtonElement>('[data-filter-add]');
+    if (add) {
+      const group = add.dataset.filterAdd as Group;
+      // Un tipo de una tarjeta también quita "ninguno" (se excluyen).
+      exclusive[group].forEach((other) => setGroup(other, new Set()));
+      // El desplegable no sabe de ediciones múltiples: una edición nueva
+      // sustituye a la que hubiera; el resto de grupos suma.
+      setGroup(
+        group,
+        group === 'congresoEdition'
+          ? new Set([norm(add.dataset.value!)])
+          : new Set(selected[group]).add(norm(add.dataset.value!)),
+      );
+      applyFilters();
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      countLine.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
       return;
     }
 
     const clearGroup = target.closest<HTMLButtonElement>('[data-clear-group]');
     if (clearGroup) {
       const group = clearGroup.dataset.clearGroup;
-      // El grupo Fecha cuenta curso y cuatrimestre juntos; los limpia a la vez.
+      // El grupo Fecha cuenta curso y cuatrimestre juntos; los limpia a la
+      // vez. Tipo igual: tipos, series, ediciones y "ninguno" de un tirón (el
+      // desplegable lo deja setGroup, que lo repone a "Todas").
       if (group === 'fecha') {
-        setGroup('cursos', new Set());
+        clearCursoRange();
         setGroup('semesters', new Set());
+      } else if (group === 'tipo') {
+        setGroup('type', new Set());
+        setGroup('congresoSeries', new Set());
+        setGroup('congresoEdition', new Set());
+        setGroup('congresoNone', new Set());
+        closeEditions(false);
       } else {
         setGroup(group as Group, new Set());
+        if (group === 'participants') peopleSearch.value = '';
+        if (group === 'tags') tagsSearch.value = '';
       }
       applyFilters();
       return;
     }
 
+    const more = target.closest<HTMLButtonElement>('[data-tags-more]');
+    if (more) {
+      const chips = document.getElementById(more.getAttribute('aria-controls')!)!;
+      const expand = more.getAttribute('aria-expanded') !== 'true';
+      chips.toggleAttribute('data-collapsed', !expand);
+      more.setAttribute('aria-expanded', String(expand));
+      more.textContent = expand ? 'Ver menos' : `Ver todas (${chips.children.length})`;
+      return;
+    }
+
     if (target.closest('[data-filters-clear]')) {
       search.value = '';
+      peopleSearch.value = '';
+      tagsSearch.value = '';
+      clearCursoRange();
       groups.forEach((g) => setGroup(g, new Set()));
+      closeEditions(false);
       applyFilters();
     }
   });
 
+  // Menú de ediciones: abrir/cerrar con el botón, cerrar con Escape, fuero
+  // fuera (click o Tab) y con las flechas mover el foco entre opciones.
+  editionTrigger.addEventListener('click', () => {
+    if (editionList.hidden) openEditions();
+    else closeEditions(false);
+  });
+  editionList.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeEditions();
+    } else if (e.key === 'Enter' || e.key === ' ') {
+      // Ali en li: que no también haga scroll/submit lo que sea; click
+      // reutiliza la delegación global.
+      const opt = (e.target as HTMLElement).closest<HTMLElement>('[data-edition-option]');
+      if (opt) {
+        e.preventDefault();
+        opt.click();
+      }
+    } else if (e.key === 'Tab') {
+      closeEditions(false);
+    } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      const visible = editionOptions().filter((o) => !o.hidden);
+      if (visible.length === 0) return;
+      const i = visible.indexOf(document.activeElement as HTMLElement);
+      const next =
+        i === -1
+          ? e.key === 'ArrowDown'
+            ? 0
+            : visible.length - 1
+          : (i + (e.key === 'ArrowDown' ? 1 : -1) + visible.length) % visible.length;
+      visible[next]!.focus();
+    }
+  });
+  document.addEventListener('click', (e) => {
+    if (!editionList.hidden && !editionMenu.contains(e.target as Node)) closeEditions(false);
+  });
+
   search.addEventListener('input', applyFilters);
+  peopleSearch.addEventListener('input', applyFilters);
+  tagsSearch.addEventListener('input', applyFilters);
+  cursoFrom.addEventListener('input', applyFilters);
+  cursoTo.addEventListener('input', applyFilters);
 
   toggle.addEventListener('click', () => {
     toggle.setAttribute('aria-expanded', String(toggle.getAttribute('aria-expanded') !== 'true'));

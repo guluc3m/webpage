@@ -13,10 +13,6 @@
           "description": "Supports basic markdown",
           "type": "string"
         },
-        "jornadas": {
-          "description": "Jornadas Técnicas edition the activity belongs to",
-          "type": "number"
-        },
         "link": {
           "description": "Generic link to add",
           "type": "string"
@@ -34,8 +30,12 @@
           },
           "type": "array"
         },
-        "photo": {
-          "type": "string"
+        "photos": {
+          "description": "Photos of the event; the poster, if any, stays the cover",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "poster": {
           "type": "string"
@@ -72,8 +72,10 @@
         "Hackathon",
         "Install party",
         "Game jam",
-        "Jornadas Técnicas",
-        "Pódcast"
+        "Pódcast",
+        "Radio",
+        "Congreso",
+        "Feria de Asociaciones"
       ],
       "type": "string"
     },

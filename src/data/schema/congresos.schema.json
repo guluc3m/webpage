@@ -1,0 +1,48 @@
+{
+  "$ref": "#/definitions/Congresos",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Congreso": {
+      "additionalProperties": false,
+      "properties": {
+        "activities": {
+          "description": "The grouped activities; dates order them on the page",
+          "items": {
+            "$ref": "actividades.schema.json#/definitions/Actividad"
+          },
+          "type": "array"
+        },
+        "edition": {
+          "description": "Edition number of the congreso series, e.g. 35 for the Jornadas Técnicas XXXV",
+          "type": "number"
+        },
+        "poster": {
+          "description": "The global poster; inner activities carry no poster of their own",
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "series": {
+          "$ref": "#/definitions/CongresoSeries"
+        },
+        "url": {
+          "description": "The congreso website, if it had one",
+          "type": "string"
+        }
+      },
+      "required": ["title", "series", "edition", "activities"],
+      "type": "object"
+    },
+    "CongresoSeries": {
+      "description": "Series of the congreso, e.g. Jornadas Técnicas; free-form, a new series is just written, no fixed vocabulary",
+      "type": "string"
+    },
+    "Congresos": {
+      "items": {
+        "$ref": "#/definitions/Congreso"
+      },
+      "type": "array"
+    }
+  }
+}
