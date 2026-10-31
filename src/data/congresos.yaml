@@ -23,7 +23,7 @@
       participants:
         - Diego Gómez Díaz
 
-    - title: "IPv6: Introducción y configuración en GNU/Linux"
+    - title: 'IPv6: Introducción y configuración en GNU/Linux'
       date: 2002/11/28
       type: Charla
       slides: https://cloud-gul.uc3m.es/actividades/2002/noviembre/IPv6_gul.pdf.gz
@@ -380,7 +380,7 @@
       participants:
         - Jesús Espino García
 
-    - title: "Programación Funcional: Haskell"
+    - title: 'Programación Funcional: Haskell'
       date: 2006/04/03
       type: Charla
       tags: [Haskell, Programación Funcional]
@@ -434,7 +434,7 @@
       participants:
         - Sergio Gil Pérez de la Manga
 
-    - title: "LUC3M: El Linux de la Carlos III"
+    - title: 'LUC3M: El Linux de la Carlos III'
       date: 2006/03/27
       type: Charla
       tags: [Linux]
@@ -502,7 +502,7 @@
       participants:
         - Jesús Espino García
 
-    - title: "Subversion: Desarrollo colaborativo"
+    - title: 'Subversion: Desarrollo colaborativo'
       date: 2006/04/04
       type: Charla
       tags: [Subversion]
@@ -614,7 +614,7 @@
       slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/tarde_de_web/tarde_de_web_2007.pdf
       source: https://cloud-gul.uc3m.es/actividades/2007/marzo/tarde_de_web/Cabaret.tar.gz
 
-    - title: "Virtualización: Introducción y toma de contacto"
+    - title: 'Virtualización: Introducción y toma de contacto'
       date: 2007/03/25
       type: Charla
       tags: [Virtualización]
@@ -652,7 +652,7 @@
       source: https://cloud-gul.uc3m.es/actividades/2007/noviembre/Vim/vim-11-2007_fuentes.zip
       participants:
         - Jose María Chumo Mata
-    - title: "LaTeX: La imprenta en casa"
+    - title: 'LaTeX: La imprenta en casa'
       date: 2007/11/14
       type: Charla
       tags:
@@ -818,7 +818,7 @@
       video: https://cloud-gul.uc3m.es/actividades/2009/marzo/Soluciones%20Profesionales%20Correo%20Software%20Libre/Soluciones%20Profesionales%20Correo%20Software%20Libre.ogg
       participants:
         - Javier Turégano Molina
-    - title: "GNU build system (Autotools): Autoconf, Automake y Libtool"
+    - title: 'GNU build system (Autotools): Autoconf, Automake y Libtool'
       date: 2009/03/12
       type: Charla
       tags:
@@ -995,7 +995,7 @@
       source: https://cloud-gul.uc3m.es/actividades/2010/marzo/memoria_dinamica/Memoria%20Dinamica.odp
       participants:
         - Tania Pérez
-    - title: "Xplico: concept, features, demo"
+    - title: 'Xplico: concept, features, demo'
       date: 2010/03/10
       type: Charla
       tags:
@@ -1310,7 +1310,7 @@
       participants:
         - name: Antonio Mejias
           link: https://twitter.com/cyfuss_com
-    - title: "Graph Databases: a little connected tour"
+    - title: 'Graph Databases: a little connected tour'
       date: 2013/10/23
       type: Charla
       tags:
@@ -1344,7 +1344,7 @@
         - Videojuegos
         - Android
         - OpenGL
-    - title: "Zoe: la asistente del GUL"
+    - title: 'Zoe: la asistente del GUL'
       date: 2013/10/25
       type: Charla
       tags:
@@ -1391,7 +1391,7 @@
       participants:
         - Javier Sánchez
 
-    - title: "Introducción a los lenguajes funcionales: Scala"
+    - title: 'Introducción a los lenguajes funcionales: Scala'
       date: 2014/03/18
       type: Charla
       tags:
@@ -1514,7 +1514,7 @@
         - Fernando Cerezal López
         - Adrián Casado Rivas
 
-    - title: "Hackers UC3M: no sólo para programadores"
+    - title: 'Hackers UC3M: no sólo para programadores'
       date: 2014/10/15
       type: Charla
       tags: [GUL]
@@ -1601,7 +1601,7 @@
         - name: Adolfo Santiago
           link: https://twitter.com/adolphenom
 
-    - title: "Programación funcional: Porno para programadores"
+    - title: 'Programación funcional: Porno para programadores'
       date: 2014/11/12
       description: Empieza a programar en estilo funcional desde ya (y sin cambiar de lenguaje)
       type: Charla
@@ -1697,7 +1697,7 @@
         - name: Adrián Borja Pimentel
           link: https://twitter.com/SeindElBardo
 
-    - title: "Markdown & Pandoc: not another Word"
+    - title: 'Markdown & Pandoc: not another Word'
       description: >-
         Memorias, trabajos, escritos académicos en general... todos hemos tenido que escribirlos alguna vez y hemos sufrido las consecuencias de usar Word, Writer u otro tipo de editor del mismo estilo: márgenes, tablas, alineación, alineación de tablas, márgenes, problemas de formato, gráficos, más márgenes... En esta pequeña charla presentaremos una posible alternativa a estas herramientas "tradicionales". Usando Markdown para escribir el contenido, Pandoc para poder transformar ese contenido a una gran variedad de formatos y una pizca de LaTex si nos gusta darle un poco de emoción a las cosas, obtendremos una forma fácil y rápida (e incluso divertida) de escribir documentos. Además hablaremos de Markdown Slides, una utilidad con la que podréis crear presentaciones de diapositivas en diferentes formatos y con aspecto más que profesional. ¡Y todo ello usando Markdown! ¿Es que se puede pedir más?
       date: 2015/05/20
@@ -1966,7 +1966,7 @@
       participants:
         - name: Daniel Rodríguez López
           link: https://github.com/patataman
-    - title: "Go: Nil for null people"
+    - title: 'Go: Nil for null people'
       description: Charla de introducción a Go, lenguaje de programación desarrollado por Google en 2009.
       date: 2016/04/12
       type: Charla
@@ -2018,7 +2018,7 @@
         - name: Manuel Quindimil López
           link: https://twitter.com/quindimildev
     - title: Con las serpientes Sí se juega (Pygame)
-      description: "El desarrollo de videojuegos amateur lleva unos cuantos años viviendo su momento más dulce: cada vez tenemos más herramientas gratuitas y los medios para formarnos están más a nuestro alcance que nunca. Sin embargo, los novatos en la materia tendemos a ser ambiciosos y no es raro que alguna vez pensemos en empezar construyendo la casa por el tejado haciendo uso de motores complejos como Unity o Unreal Engine. Para algo los hacen de libre acceso, ¿no?"
+      description: 'El desarrollo de videojuegos amateur lleva unos cuantos años viviendo su momento más dulce: cada vez tenemos más herramientas gratuitas y los medios para formarnos están más a nuestro alcance que nunca. Sin embargo, los novatos en la materia tendemos a ser ambiciosos y no es raro que alguna vez pensemos en empezar construyendo la casa por el tejado haciendo uso de motores complejos como Unity o Unreal Engine. Para algo los hacen de libre acceso, ¿no?'
       date: 2016/04/15
       type: Charla
       tags:
@@ -2155,7 +2155,7 @@
 
 - title: IV Semana de Asociaciones
   series: Semana de Asociaciones
-  edition: 2
+  edition: 4
   activities:
     - title: Feria de Asociaciones 2017
       type: Feria de Asociaciones
@@ -2171,7 +2171,7 @@
   url: https://asrob.uc3m.es/evento2016/
   poster: https://pbs.twimg.com/media/Cvdpxe1WYAA4vR6?format=jpg&name=4096x4096
   activities:
-    - title: "Empujar y tirar: Git para manejar tu código"
+    - title: 'Empujar y tirar: Git para manejar tu código'
       date: 2016/10/24
       type: Charla
       tags:
@@ -2533,21 +2533,21 @@
         - Juan Banga
         - Roberto Uceda
 
-    - title: "VHDL: Very Hard Description Language"
+    - title: 'VHDL: Very Hard Description Language'
       date: 2019/10/09
       type: Charla
       tags: [VHDL]
       participants:
         - Roberto Uceda
 
-    - title: "Golang: Por si no tenías suficiente Google en tu vida"
+    - title: 'Golang: Por si no tenías suficiente Google en tu vida'
       date: 2019/10/10
       type: Charla
       tags: [Golang]
       participants:
         - Jorge Marcos
 
-    - title: "Taller de Golang: Ponte manos a la obra con una aplicación real"
+    - title: 'Taller de Golang: Ponte manos a la obra con una aplicación real'
       date: 2019/10/10
       type: Charla
       tags: [Golang]
@@ -2616,7 +2616,7 @@
         - name: Isi Cano
           link: https://isi-cano.itch.io/
 
-    - title: "0 A.D: Empires Ascendant - A FLOSS game of ancient warfare"
+    - title: '0 A.D: Empires Ascendant - A FLOSS game of ancient warfare'
       date: 2022/04/19
       type: Charla
       tags:
@@ -2699,7 +2699,7 @@
       video: https://youtu.be/XpQujpVKliA
       participants:
         - Luis Daniel Casais
-    - title: "Tiotéate: Aspectos a tener en cuenta en el diseño de una solución IoT"
+    - title: 'Tiotéate: Aspectos a tener en cuenta en el diseño de una solución IoT'
       type: Charla
       description: Consideraciones a tener en cuenta en el diseño de una solución IoT.
       tags:
@@ -2712,7 +2712,7 @@
           link: https://es.linkedin.com/in/alvarogarciabarcena
     - title: Monta un laboratorio de informática, en "dos patadas"
       type: Charla
-      description: "Desgrana paso a paso los servicios que se necesitan para montar un laboratorio de informática: servidores, virtualización, servicios (web, cuentas y almacenamiento, autenticación, correo), monitorización y clientes."
+      description: 'Desgrana paso a paso los servicios que se necesitan para montar un laboratorio de informática: servidores, virtualización, servicios (web, cuentas y almacenamiento, autenticación, correo), monitorización y clientes.'
       tags:
         - Virtualización
       date: 2023/04/12
@@ -2733,7 +2733,7 @@
       participants:
         - name: Óscar Pérez
           link: https://www.lab.inf.uc3m.es/
-    - title: "Nix OS: Linux dentro de 10 años"
+    - title: 'Nix OS: Linux dentro de 10 años'
       type: Charla
       description: Explora las características únicas de NixOS, la distribución Linux del futuro que revolucioná la gestión de paquetes y la configuración del sistema operativo.
       tags:
@@ -2746,7 +2746,7 @@
       participants:
         - name: Manuel Palenzuela
           link: https://baitinq.ml
-    - title: "G.I.M.P.: GIMP Is (for) Meme Production"
+    - title: 'G.I.M.P.: GIMP Is (for) Meme Production'
       type: Taller
       description: Taller básico de GIMP, un software open-source para la edición de imágenes, aplicándolo a memes.
       tags:
