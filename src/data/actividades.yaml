@@ -47,7 +47,7 @@
       link: https://blogs.gentoo.org/ferdy/
 
 - title: Power shell scripting
-  date: 2005/12/09  # sacado de la fecha de modificación del archivo
+  date: 2005/12/09 # sacado de la fecha de modificación del archivo
   type: Charla
   tags: [Bash]
   video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Power_Shell_Scripting%20-%20GUL%20UC3M/PowerShellScripting.ogg
@@ -635,4 +635,19 @@
   poster: https://pbs.twimg.com/media/HS--mmuXYAAFYzu?format=jpg&name=medium
   tags: [Linux]
   participants:
+    - Jorge Saghin
+
+- title: Introducción a Git y Github | AISC x GUL UC3M
+  description: >-
+    ¿Eres de los que al hacer un trabajo comparte el código por mail o Drive? ¿Has oído hablar de Github pero nunca has tenido claro qué es y por qué te podría ser útil? Cambia esto y aprende a trabajar con control de versiones como un profesional.
+    En este taller en colaboración con AISC Madrid aprenderemos qué es Git y por qué se usa. Conceptos clave como commit, branch, merge y pull request y cómo trabajar de manera colaborativa en proyectos a través de GitHub.
+    Terminaremos con un ejercicio de simulación de trabajo en equipo, donde pondrás en práctica todo lo aprendido: crearás un repositorio, gestionarás ramas, resolverás conflictos y subirás tus aportes al repositorio remoto, conocimientos necesarios para trabajar en cualquier empresa el día de mañana.
+  type: Charla
+  tags: [Git]
+  date: 2026/11/05
+  poster: /actividades/charlaGit26.jpg
+  #slides: https://cloud-gul.uc3m.es/actividades/2023/Introducci%C3%B3n%20a%20Git/Taller_de_Git.pdf
+  #source: https://github.com/guluc3m/tutorial_git
+  participants:
+    - Héctor Molina
     - Jorge Saghin
