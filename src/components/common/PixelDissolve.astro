@@ -180,10 +180,23 @@ const {
   // render many instances on the same page, so find every canvas instead of
   // assuming there's only one. ResizeObserver (not a window 'resize'
   // listener) also catches a card changing height on its own — e.g. web font
-  // swap or a container query — not just the viewport resizing.
-  document.querySelectorAll<HTMLCanvasElement>('[data-pixel-dissolve]').forEach((canvas) => {
-    const config = readConfig(canvas);
-    const ro = new ResizeObserver(() => draw(canvas, config));
-    ro.observe(canvas);
-  });
+  // swap or a container query — not just the viewport resizing. Drawing waits
+  // until a canvas nears the viewport: /actividades has 300+ of them, and
+  // painting them all up front blocks the main thread on load. The margin
+  // hides the pop-in; observe() fires once immediately, which is the first draw.
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        io.unobserve(entry.target);
+        const canvas = entry.target as HTMLCanvasElement;
+        const config = readConfig(canvas);
+        new ResizeObserver(() => draw(canvas, config)).observe(canvas);
+      }
+    },
+    { rootMargin: '300px' },
+  );
+  document
+    .querySelectorAll<HTMLCanvasElement>('[data-pixel-dissolve]')
+    .forEach((canvas) => io.observe(canvas));
 </script>
