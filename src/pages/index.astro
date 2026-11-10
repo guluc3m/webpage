@@ -10,6 +10,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import GulHeader from '@components/common/gul-Header.astro';
 import GulFooter from '@components/common/gul-Footer.astro';
 import Hero from '@components/sections/Hero/Hero.astro';
+import EventoBanner from '@components/sections/EventoBanner.astro';
 import WhatIsGul from '@components/sections/WhatIsGul.astro';
 import Faq from '@components/sections/Faq.astro';
 import Projects from '@components/sections/Projects.astro';
@@ -21,6 +22,7 @@ import { navLinks } from '@data/navLinks';
   <GulHeader links={navLinks} />
   <main>
     <Hero />
+    <EventoBanner />
     <WhatIsGul />
     <Projects />
     <WhereWeAre />

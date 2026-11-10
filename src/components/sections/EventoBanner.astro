@@ -1,0 +1,279 @@
+---
+/**
+ * EventoBanner — banner del próximo evento, justo debajo del hero.
+ *
+ * CÓMO USARLO (todo es código estático: cambiar el evento = un commit):
+ *   1. Añade un evento a la lista `EVENTOS` de abajo (copia uno y cambia los campos).
+ *   2. Para un evento nuevo, la foto va en src/assets/ y se importa arriba, como en
+ *      WhatIsGul.
+ *
+ * No hace falta borrar nada cuando el evento acaba: el banner desaparece solo en cuanto
+ * pasa `fin` (o `inicio`, si no hay `fin`), y si hay varios eventos enseña el que antes
+ * empieza. Se comprueba dos veces porque la web es estática y el build no se repite solo:
+ * al construirla (el HTML ya sale sin banner) y en el navegador (por si se cargó una
+ * versión construida antes de que acabara el evento). Mientras haya alguno vigente no
+ * hay nada más que tocar; la lógica vive en src/lib/evento.ts.
+ */
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { formatearFecha, proximoEvento } from '@lib/evento.ts';
+// Foto de ejemplo; sustitúyela por la del evento.
+import foto from '@assets/real/charla.jpg';
+
+interface Evento {
+  /** Título grande del banner. */
+  nombre: string;
+  /** Una o dos frases. Opcional. */
+  descripcion?: string;
+  /** Comienzo, ISO 8601 con desfase: '2026-12-05T10:00:00+01:00' (+01:00 invierno, +02:00 verano). */
+  inicio: string;
+  /** Final, mismo formato. Hasta ese momento el banner se muestra; después desaparece. */
+  fin?: string;
+  /** Sitio en texto, p. ej. 'Aula 2.1.A04, Edificio Sabatini'. */
+  lugar: string;
+  /** Enlace del lugar (mapa, web…). Opcional: si falta, el lugar es solo texto. */
+  lugarUrl?: string;
+  /** Botón principal: ir a inscribirse. Si falta, no sale el botón. */
+  registro?: { texto: string; url: string };
+  /** Botón secundario: la página del evento. Si falta, no sale el botón. */
+  masInfo?: { texto: string; url: string };
+  /** Foto. Si falta, el banner sale sin imagen. */
+  imagen?: { src: ImageMetadata; alt: string };
+  /** Etiqueta sobre el título. Por defecto, "Próximo evento". */
+  etiqueta?: string;
+  /**
+   * Colores. Cualquier color CSS (hex, rgb(), `var(--color-gul-blue)`…); lo que no
+   * pongas usa la paleta de la web. Es lo que cambia el aspecto de cada evento.
+   */
+  colores?: {
+    fondo?: string; // fondo del banner
+    texto?: string; // título y datos
+    apagado?: string; // descripción y etiquetas pequeñas
+    borde?: string; // contorno y separadores
+    acento?: string; // etiqueta, "##" del título y botón principal
+    textoAcento?: string; // texto del botón principal (sobre `acento`)
+  };
+}
+
+// ---------------------------------------------------------------------------
+// EVENTOS — EDITA AQUÍ. Los de ejemplo de abajo son inventados: cámbialos antes de
+// publicar. Orden libre; los que ya han pasado se ignoran solos, no hace falta quitarlos.
+// ---------------------------------------------------------------------------
+const EVENTOS: Evento[] = [
+  {
+    nombre: 'TCTF',
+    descripcion:
+      'Competición de CTF del GUL: retos de seguridad, premios y pizza. Viene en equipo o te ayudamos a montar uno.',
+    inicio: '2026-12-05T10:00:00+01:00',
+    fin: '2026-12-05T20:00:00+01:00',
+    lugar: 'Edificio Sabatini, Leganés',
+    registro: { texto: 'Inscríbete', url: 'https://gul.uc3m.es/' },
+    masInfo: { texto: 'Saber más', url: 'https://gul.uc3m.es/' },
+    imagen: { src: foto, alt: 'Charla del GUL atestada de gente' },
+    // colores: { acento: '#d29922', textoAcento: '#0a0a09' }, // ← ejemplo: acento ámbar
+  },
+];
+
+// Hora de construcción: el comportamiento si el build es posterior al evento está en el test.
+const evento = proximoEvento(EVENTOS);
+
+const { dia, hora } = evento ? formatearFecha(evento) : { dia: '', hora: '' };
+// Los valores por defecto son los tokens de la web, así que el banner sin `colores` es del mismo
+// estilo que el resto. Se pasan como variables CSS (--evento-*) que usa el <style> de abajo.
+const c = evento?.colores ?? {};
+const variables = {
+  '--evento-fondo': c.fondo ?? 'var(--color-gul-surface)',
+  '--evento-texto': c.texto ?? 'var(--color-gul-ink)',
+  '--evento-apagado': c.apagado ?? 'var(--color-gul-muted)',
+  '--evento-borde': c.borde ?? 'var(--color-gul-line)',
+  '--evento-acento': c.acento ?? 'var(--color-gul-blue)',
+  '--evento-texto-acento': c.textoAcento ?? 'var(--color-gul-ink)',
+};
+
+// Los enlaces externos se abren en pestaña nueva; los internos (#ancla, /ruta) no.
+const destino = (url: string) =>
+  url.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
+---
+
+{evento && (
+  <section
+    id="evento"
+    aria-labelledby="evento-titulo"
+    class="gul-gutter mx-auto max-w-gul-content py-8"
+    data-evento
+    data-inicio={evento.inicio}
+    data-fin={evento.fin}
+    style={variables}
+  >
+    <div
+      class:list={[
+        // flex-col (no un bloque normal) para que `order-first` de la foto surta efecto en móvil.
+        'evento flex flex-col overflow-hidden rounded-md border md:grid',
+        evento.imagen && 'md:grid-cols-[minmax(0,5fr)_minmax(0,4fr)]',
+      ]}
+    >
+      <div class="flex flex-col gap-5 p-6 md:p-8">
+        <p class="evento__etiqueta flex gap-2 font-mono text-sm font-medium tracking-[0.2em] uppercase">
+          <span aria-hidden="true">&gt;</span>
+          {evento.etiqueta ?? 'Próximo evento'}
+        </p>
+
+        <div>
+          <h2 id="evento-titulo">{evento.nombre}</h2>
+          {evento.descripcion && <p class="evento__apagado mt-3">{evento.descripcion}</p>}
+        </div>
+
+        <dl class="evento__datos grid gap-x-4 gap-y-2 font-mono text-sm">
+          <dt>fecha</dt>
+          <dd>
+            <time datetime={evento.inicio}>
+              {dia}, <span class="whitespace-nowrap">{hora}</span>
+            </time>
+          </dd>
+          <dt>lugar</dt>
+          <dd>
+            {evento.lugarUrl ? (
+              <a href={evento.lugarUrl} {...destino(evento.lugarUrl)}>
+                {evento.lugar}
+              </a>
+            ) : (
+              evento.lugar
+            )}
+          </dd>
+        </dl>
+
+        {(evento.registro || evento.masInfo) && (
+          <div class="flex flex-wrap gap-3">
+            {evento.registro && (
+              <a
+                href={evento.registro.url}
+                class="evento__boton evento__boton--principal"
+                {...destino(evento.registro.url)}
+              >
+                <span aria-hidden="true">&gt;</span>
+                {evento.registro.texto}
+              </a>
+            )}
+            {evento.masInfo && (
+              <a
+                href={evento.masInfo.url}
+                class="evento__boton evento__boton--secundario"
+                {...destino(evento.masInfo.url)}
+              >
+                <span aria-hidden="true">$</span>
+                {evento.masInfo.texto}
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+
+      {evento.imagen && (
+        // En móvil la foto va arriba (order-first) y con proporción fija; en escritorio
+        // ocupa la columna derecha entera.
+        <div class="order-first aspect-video md:order-none md:aspect-auto">
+          <Image
+            src={evento.imagen.src}
+            alt={evento.imagen.alt}
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 48rem) 40vw, 100vw"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+<style>
+  /* Todos los colores salen de las variables --evento-* que pone el <section> arriba. */
+  .evento {
+    background-color: var(--evento-fondo);
+    border-color: var(--evento-borde);
+    color: var(--evento-texto);
+  }
+  .evento h2 {
+    color: var(--evento-texto);
+  }
+  /* El "## " con que global.css estrena los h2, aquí con el acento del evento. */
+  .evento h2::before {
+    color: var(--evento-acento);
+  }
+  .evento__etiqueta {
+    color: var(--evento-acento);
+  }
+  .evento__apagado,
+  .evento__datos dt {
+    color: var(--evento-apagado);
+  }
+  .evento__datos {
+    grid-template-columns: auto 1fr;
+  }
+  .evento__datos dd a {
+    text-decoration: underline;
+    text-decoration-color: var(--evento-borde);
+    text-underline-offset: 4px;
+  }
+  .evento__datos dd a:hover {
+    text-decoration-color: var(--evento-texto);
+  }
+
+  .evento__boton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    border-radius: var(--radius-md);
+    padding: 0.5rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition:
+      background-color 100ms,
+      color 100ms,
+      border-color 100ms;
+  }
+  .evento__boton--principal {
+    background-color: var(--evento-acento);
+    border: 1px solid var(--evento-acento);
+    color: var(--evento-texto-acento);
+  }
+  .evento__boton--secundario {
+    border: 1px solid var(--evento-borde);
+    color: var(--evento-texto);
+  }
+  .evento__boton--secundario span {
+    color: var(--evento-acento);
+  }
+  /* Hover/foco: la misma inversión "línea seleccionada de terminal" que gul-Button. */
+  .evento__boton--principal:hover,
+  .evento__boton--principal:focus-visible {
+    background-color: var(--evento-texto);
+    border-color: var(--evento-texto);
+    color: var(--evento-acento);
+  }
+  .evento__boton--secundario:hover,
+  .evento__boton--secundario:focus-visible {
+    background-color: var(--evento-texto);
+    border-color: var(--evento-texto);
+    color: var(--evento-fondo);
+  }
+  .evento__boton--secundario:hover span,
+  .evento__boton--secundario:focus-visible span {
+    color: inherit;
+  }
+  .evento__boton:focus-visible {
+    outline: 2px solid var(--evento-acento);
+    outline-offset: 2px;
+  }
+</style>
+
+<script>
+  // Segunda comprobación, en el navegador: el HTML se construyó antes y puede llegar
+  // cuando el evento ya ha acabado. Es el mismo criterio que en el build (src/lib/evento.ts).
+  import { eventoVigente } from '@lib/evento.ts';
+
+  document.querySelectorAll<HTMLElement>('[data-evento]').forEach((banner) => {
+    const { inicio, fin } = banner.dataset;
+    if (inicio && !eventoVigente({ inicio, fin })) banner.remove();
+  });
+</script>
