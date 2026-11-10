@@ -1,24 +1,32 @@
 ---
 /**
- * EventoBanner — banner del próximo evento, justo debajo del hero.
+ * EventoBanner — franja del próximo evento, a todo el ancho y justo debajo del hero.
  *
  * CÓMO USARLO (todo es código estático: cambiar el evento = un commit):
- *   1. Añade un evento a la lista `EVENTOS` de abajo (copia uno y cambia los campos).
- *   2. Para un evento nuevo, la foto va en src/assets/ y se importa arriba, como en
- *      WhatIsGul.
+ *   1. Pon el cartel (o una foto) en src/assets/eventos/ e impórtalo abajo.
+ *   2. Añade un evento a la lista `EVENTOS` (copia uno y cambia los campos).
  *
- * No hace falta borrar nada cuando el evento acaba: el banner desaparece solo en cuanto
+ * LOS COLORES SALEN DEL CARTEL: al construir la web se lee la imagen y se saca de ella el
+ * fondo, el texto y el acento (src/lib/color.ts), ajustados para que siempre se lea (contraste
+ * AA). No hay que elegir colores; si alguno no convence, se fija a mano en `colores`.
+ *
+ * Tampoco hace falta borrar nada cuando el evento acaba: el banner desaparece solo en cuanto
  * pasa `fin` (o `inicio`, si no hay `fin`), y si hay varios eventos enseña el que antes
- * empieza. Se comprueba dos veces porque la web es estática y el build no se repite solo:
- * al construirla (el HTML ya sale sin banner) y en el navegador (por si se cargó una
- * versión construida antes de que acabara el evento). Mientras haya alguno vigente no
- * hay nada más que tocar; la lógica vive en src/lib/evento.ts.
+ * empieza. Se comprueba dos veces porque la web es estática y el build no se repite solo: al
+ * construirla (el HTML ya sale sin banner) y en el navegador (por si llega una versión
+ * construida antes de que acabara el evento). La lógica vive en src/lib/evento.ts.
+ *
+ * El dithering (PixelDissolve) es el mismo de gul-Frame y gul-Button, teñido con el acento.
  */
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import PixelDissolve from '@components/common/PixelDissolve.astro';
+import GulTerminal from '@components/common/gul-Terminal.astro';
 import { formatearFecha, proximoEvento } from '@lib/evento.ts';
-// Foto de ejemplo; sustitúyela por la del evento.
-import foto from '@assets/real/charla.jpg';
+import { paletaDeImagen } from '@lib/paletaImagen.ts';
+import { ALPHA_DITHERING, hexARgb, revisarContraste, rgbATriplete } from '@lib/color.ts';
+// Cartel de ejemplo; sustitúyelo por el del evento.
+import cartel from '@assets/eventos/cartel-ejemplo.jpg';
 
 interface Evento {
   /** Título grande del banner. */
@@ -37,21 +45,33 @@ interface Evento {
   registro?: { texto: string; url: string };
   /** Botón secundario: la página del evento. Si falta, no sale el botón. */
   masInfo?: { texto: string; url: string };
-  /** Foto. Si falta, el banner sale sin imagen. */
+  /**
+   * Cartel o foto, y de ahí salen los colores. `alt`: qué se ve, con los datos clave si es
+   * un cartel (quien no lo ve no puede leerlos). Si falta, el banner sale sin imagen y con
+   * la paleta de la web.
+   */
   imagen?: { src: ImageMetadata; alt: string };
   /** Etiqueta sobre el título. Por defecto, "Próximo evento". */
   etiqueta?: string;
   /**
-   * Colores. Cualquier color CSS (hex, rgb(), `var(--color-gul-blue)`…); lo que no
-   * pongas usa la paleta de la web. Es lo que cambia el aspecto de cada evento.
+   * El "comandito" de terminal bajo el título (como el `whoami` de ¿Qué es el GUL?). Por
+   * defecto `atq`, que lista lo programado para más adelante: vale para cualquier evento.
+   * Es decoración: se esconde a los lectores de pantalla y no lleva información.
+   */
+  comando?: string;
+  /**
+   * Colores a mano, solo para lo que NO quieras que salga del cartel. Cualquier color CSS
+   * (hex, rgb(), `var(--color-gul-blue)`…).
    */
   colores?: {
-    fondo?: string; // fondo del banner
+    fondo?: string; // fondo de la franja
     texto?: string; // título y datos
     apagado?: string; // descripción y etiquetas pequeñas
-    borde?: string; // contorno y separadores
-    acento?: string; // etiqueta, "##" del título y botón principal
+    borde?: string; // contornos y separadores
+    acento?: string; // botón principal, "##" del título y dithering
     textoAcento?: string; // texto del botón principal (sobre `acento`)
+    /** "r, g, b" del dithering. Si falta, sale del `acento` (solo si este es un #hex). */
+    dithering?: string;
   };
 }
 
@@ -69,51 +89,98 @@ const EVENTOS: Evento[] = [
     lugar: 'Edificio Sabatini, Leganés',
     registro: { texto: 'Inscríbete', url: 'https://gul.uc3m.es/' },
     masInfo: { texto: 'Saber más', url: 'https://gul.uc3m.es/' },
-    imagen: { src: foto, alt: 'Charla del GUL atestada de gente' },
-    // colores: { acento: '#d29922', textoAcento: '#0a0a09' }, // ← ejemplo: acento ámbar
+    imagen: { src: cartel, alt: 'Cartel del evento (ejemplo): taller de Git y GitHub del GUL' },
+    comando: 'atq',
+    // colores: { acento: '#ffb703' }, // ← ejemplo: fijar solo el acento (si no se lee, el build avisa)
   },
 ];
 
-// Hora de construcción: el comportamiento si el build es posterior al evento está en el test.
+// Se evalúa al construir la web. Si el build es posterior al evento, `evento` es undefined y el
+// HTML sale sin banner.
 const evento = proximoEvento(EVENTOS);
 
 const { dia, hora } = evento ? formatearFecha(evento) : { dia: '', hora: '' };
-// Los valores por defecto son los tokens de la web, así que el banner sin `colores` es del mismo
-// estilo que el resto. Se pasan como variables CSS (--evento-*) que usa el <style> de abajo.
+
+// Lo que no se fija a mano sale del cartel; sin cartel, de la paleta de la web.
+// `fsPath` (ruta en disco del fichero importado) la pone Astro en el import pero no la declara en
+// el tipo ImageMetadata, de ahí el cast. Si algún día faltara, el banner usa la paleta de la web
+// en lugar de romper el build.
+const rutaCartel = (evento?.imagen?.src as (ImageMetadata & { fsPath?: string }) | undefined)
+  ?.fsPath;
+const delCartel = rutaCartel ? await paletaDeImagen(rutaCartel) : undefined;
 const c = evento?.colores ?? {};
+const colores = {
+  fondo: c.fondo ?? delCartel?.fondo ?? 'var(--color-gul-surface)',
+  texto: c.texto ?? delCartel?.texto ?? 'var(--color-gul-ink)',
+  apagado: c.apagado ?? delCartel?.apagado ?? 'var(--color-gul-muted)',
+  borde: c.borde ?? delCartel?.borde ?? 'var(--color-gul-line)',
+  acento: c.acento ?? delCartel?.acento ?? 'var(--color-gul-blue)',
+  // Blanco y no el crema de la web: sobre el azul de la web, el crema da ~4,1:1 y el blanco ~5:1.
+  textoAcento: c.textoAcento ?? delCartel?.textoAcento ?? '#ffffff',
+};
+// PixelDissolve pinta en canvas y necesita "r, g, b", no un color CSS. Sin triplete usa su azul.
+const dithering =
+  c.dithering ??
+  (/^#[0-9a-f]{6}$/i.test(colores.acento) ? rgbATriplete(hexARgb(colores.acento)) : undefined);
+
+// La legibilidad no se deja a la suerte: con los colores del cartel está garantizada (color.ts),
+// pero unos `colores` fijados a mano pueden romperla. Si es así el build FALLA con el par exacto,
+// en vez de publicar un banner ilegible. Solo juzga colores en #hex; los `var(...)` no.
+if (evento) {
+  const fallos = revisarContraste({ ...colores, dithering });
+  if (fallos.length > 0) {
+    throw new Error(
+      `EventoBanner («${evento.nombre}»): colores sin contraste suficiente (WCAG AA): ` +
+        fallos.map((f) => `${f.par} ${f.contraste}:1 (mínimo ${f.minimo}:1)`).join('; ') +
+        '. Cambia los `colores` de ese evento o quítalos para usar los del cartel.',
+    );
+  }
+}
+
+// Variables CSS (--evento-*) que usa el <style> de abajo. Además se re-tematiza gul-Terminal, que
+// pinta su prompt con --color-gul-blue y su salida con --color-gul-muted, fijos: el azul de la web
+// sobre un fondo azul de cartel sería invisible. Se le da `apagado`, que sí está garantizado.
 const variables = {
-  '--evento-fondo': c.fondo ?? 'var(--color-gul-surface)',
-  '--evento-texto': c.texto ?? 'var(--color-gul-ink)',
-  '--evento-apagado': c.apagado ?? 'var(--color-gul-muted)',
-  '--evento-borde': c.borde ?? 'var(--color-gul-line)',
-  '--evento-acento': c.acento ?? 'var(--color-gul-blue)',
-  // Blanco y no el crema de la web: sobre el azul, el crema da ~4,1:1 y el blanco ~5:1 (AA).
-  '--evento-texto-acento': c.textoAcento ?? '#ffffff',
+  ...Object.fromEntries(
+    Object.entries(colores).map(([nombre, valor]) => [
+      `--evento-${nombre.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase())}`,
+      valor,
+    ]),
+  ),
+  '--color-gul-blue': colores.apagado,
+  '--color-gul-muted': colores.apagado,
 };
 
-// Los enlaces externos se abren en pestaña nueva; los internos (#ancla, /ruta) no.
-const destino = (url: string) =>
-  url.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
+// Los enlaces externos se abren en pestaña nueva (y se avisa a los lectores de pantalla); los
+// internos (#ancla, /ruta) no.
+const externo = (url: string) => url.startsWith('http');
+const destino = (url: string) => (externo(url) ? { target: '_blank', rel: 'noopener' } : {});
 ---
 
 {evento && (
   <section
     id="evento"
     aria-labelledby="evento-titulo"
-    class="gul-gutter mx-auto max-w-gul-content py-8"
+    class="evento relative w-full overflow-hidden border-y"
     data-evento
     data-inicio={evento.inicio}
     data-fin={evento.fin}
     style={variables}
   >
+    {/* Más tenue y más pegado a la derecha que en gul-Card (alpha .3, falloff 1.6): aquí el
+        dithering pasa por detrás de párrafos enteros y no debe ensuciar su lectura. El alfa es
+        ALPHA_DITHERING, el mismo con el que color.ts garantiza el contraste del texto encima. */}
+    <PixelDissolve variant="full" color={dithering} alpha={ALPHA_DITHERING} falloff={2.6} />
+
     <div
       class:list={[
-        // flex-col (no un bloque normal) para que `order-first` de la foto surta efecto en móvil.
-        'evento flex flex-col overflow-hidden rounded-md border md:grid',
-        evento.imagen && 'md:grid-cols-[minmax(0,5fr)_minmax(0,4fr)]',
+        // minmax(0,…) y no el `auto` por defecto: con un mínimo implícito la rejilla crece más que el
+        // viewport en cuanto el texto es grande o hay una palabra larga (WCAG 1.4.4 y 1.4.10).
+        'gul-gutter relative z-10 mx-auto grid max-w-gul-content grid-cols-[minmax(0,1fr)] items-center gap-8 py-10',
+        evento.imagen && 'md:grid-cols-[minmax(0,1fr)_min(18rem,40%)] md:gap-12',
       ]}
     >
-      <div class="flex flex-col gap-5 p-6 md:p-8">
+      <div class="flex flex-col gap-5 [overflow-wrap:anywhere]">
         <p class="evento__etiqueta flex gap-2 font-mono text-sm font-medium tracking-[0.2em] uppercase">
           <span aria-hidden="true">&gt;</span>
           {evento.etiqueta ?? 'Próximo evento'}
@@ -121,7 +188,13 @@ const destino = (url: string) =>
 
         <div>
           <h2 id="evento-titulo">{evento.nombre}</h2>
-          {evento.descripcion && <p class="evento__apagado mt-3">{evento.descripcion}</p>}
+          {/* Decoración: un lector de pantalla leería "gul@uc3m $> atq", que no dice nada. */}
+          <div aria-hidden="true">
+            <GulTerminal lines={[{ command: evento.comando ?? 'atq' }]} />
+          </div>
+          {evento.descripcion && (
+            <p class="evento__apagado mt-4 max-w-prose">{evento.descripcion}</p>
+          )}
         </div>
 
         <dl class="evento__datos grid gap-x-4 gap-y-2 font-mono text-sm">
@@ -153,6 +226,10 @@ const destino = (url: string) =>
               >
                 <span aria-hidden="true">&gt;</span>
                 {evento.registro.texto}
+                <span class="sr-only">
+                  {` ${evento.nombre}`}
+                  {externo(evento.registro.url) && ' (se abre en una pestaña nueva)'}
+                </span>
               </a>
             )}
             {evento.masInfo && (
@@ -161,8 +238,16 @@ const destino = (url: string) =>
                 class="evento__boton evento__boton--secundario"
                 {...destino(evento.masInfo.url)}
               >
-                <span aria-hidden="true">$</span>
-                {evento.masInfo.texto}
+                {/* Mismo alfa que el fondo: así el peor caso garantizado sigue valiendo bajo el texto. */}
+                <PixelDissolve variant="corner" color={dithering} alpha={ALPHA_DITHERING} />
+                <span class="relative z-10 inline-flex items-center gap-1">
+                  <span aria-hidden="true">$</span>
+                  {evento.masInfo.texto}
+                  <span class="sr-only">
+                    {` sobre ${evento.nombre}`}
+                    {externo(evento.masInfo.url) && ' (se abre en una pestaña nueva)'}
+                  </span>
+                </span>
               </a>
             )}
           </div>
@@ -170,16 +255,19 @@ const destino = (url: string) =>
       </div>
 
       {evento.imagen && (
-        // En móvil la foto va arriba (order-first) y con proporción fija; en escritorio
-        // ocupa la columna derecha entera.
-        <div class="order-first aspect-video md:order-none md:aspect-auto">
-          <Image
-            src={evento.imagen.src}
-            alt={evento.imagen.alt}
-            widths={[480, 800, 1200]}
-            sizes="(min-width: 48rem) 40vw, 100vw"
-            class="h-full w-full object-cover"
-          />
+        // Marco del cartel: mismo patrón que gul-Frame (borde, recorte redondeado y esquina de
+        // dithering) pero con los colores del evento. En móvil va arriba; en escritorio, a la derecha.
+        <div class="evento__marco relative order-first w-full max-w-sm justify-self-center overflow-hidden rounded-md border md:order-none md:max-w-none">
+          <PixelDissolve variant="corner" color={dithering} />
+          <div class="relative z-10 p-2">
+            <Image
+              src={evento.imagen.src}
+              alt={evento.imagen.alt}
+              widths={[288, 576, 768]}
+              sizes="(min-width: 48rem) 18rem, 24rem"
+              class="rounded-inner-2 aspect-square w-full object-cover"
+            />
+          </div>
         </div>
       )}
     </div>
@@ -200,13 +288,12 @@ const destino = (url: string) =>
   .evento h2::before {
     color: var(--evento-acento);
   }
-  /* El texto va en color apagado y solo el ">" (decorativo) lleva el acento: el azul de la
-     web sobre el fondo oscuro da ~3,6:1 y no llega al 4,5:1 que pide AA en texto pequeño. */
+  /* Todo el texto pequeño (etiqueta, descripción, glifos ">" y "$") va en `texto` o `apagado`, que
+     están garantizados a 4,5:1. El acento NO se usa en texto pequeño: un color cualquiera de un
+     cartel no tiene por qué llegar a 4,5:1 sobre el fondo con dithering. Se ve en el "##", el
+     botón principal, el foco y el propio dithering. */
   .evento__etiqueta {
     color: var(--evento-apagado);
-  }
-  .evento__etiqueta span {
-    color: var(--evento-acento);
   }
   .evento__apagado,
   .evento__datos dt {
@@ -223,13 +310,22 @@ const destino = (url: string) =>
   .evento__datos dd a:hover {
     text-decoration-color: var(--evento-texto);
   }
+  .evento__marco {
+    background-color: var(--evento-fondo);
+    border-color: var(--evento-borde);
+  }
 
   .evento__boton {
+    position: relative;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
     border-radius: var(--radius-md);
     padding: 0.5rem 0.75rem;
+    /* 44 px de alto: objetivo táctil cómodo (WCAG 2.5.8 pide 24 como mínimo). min-height y no
+       height, para que crezca si el usuario agranda la letra. */
+    min-height: 2.75rem;
     font-family: var(--font-mono);
     font-size: 0.875rem;
     font-weight: 600;
@@ -243,12 +339,11 @@ const destino = (url: string) =>
     border: 1px solid var(--evento-acento);
     color: var(--evento-texto-acento);
   }
+  /* Borde en `apagado` y no en `borde`: este último es un separador sutil (~1,7:1) y aquí el
+     contorno es lo que dice que es un botón. */
   .evento__boton--secundario {
-    border: 1px solid var(--evento-borde);
+    border: 1px solid var(--evento-apagado);
     color: var(--evento-texto);
-  }
-  .evento__boton--secundario span {
-    color: var(--evento-acento);
   }
   /* Hover/foco: inversión "línea seleccionada de terminal", como gul-Button. El texto pasa
      a `fondo` (no a `acento`) para que el contraste siga alto sobre el color claro. */
@@ -264,13 +359,21 @@ const destino = (url: string) =>
     border-color: var(--evento-texto);
     color: var(--evento-fondo);
   }
-  .evento__boton--secundario:hover span,
-  .evento__boton--secundario:focus-visible span {
-    color: inherit;
+  /* Con el fondo del botón invertido, el contraste garantizado (texto sobre fondo+dithering) ya
+     no aplica: se quita el dithering mientras dura el hover. :global porque el canvas es de
+     PixelDissolve y el CSS de este componente solo alcanza a sus propios elementos. */
+  .evento__boton--secundario:hover :global(canvas),
+  .evento__boton--secundario:focus-visible :global(canvas) {
+    visibility: hidden;
   }
   .evento__boton:focus-visible {
     outline: 2px solid var(--evento-acento);
     outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .evento__boton {
+      transition: none;
+    }
   }
 </style>
 
