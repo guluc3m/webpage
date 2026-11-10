@@ -170,7 +170,13 @@ const destino = (url: string) => (externo(url) ? { target: '_blank', rel: 'noope
     {/* Más tenue y más pegado a la derecha que en gul-Card (alpha .3, falloff 1.6): aquí el
         dithering pasa por detrás de párrafos enteros y no debe ensuciar su lectura. El alfa es
         ALPHA_DITHERING, el mismo con el que color.ts garantiza el contraste del texto encima. */}
-    <PixelDissolve variant="full" color={dithering} alpha={ALPHA_DITHERING} falloff={2.6} />
+    <PixelDissolve
+      variant="full"
+      color={dithering}
+      alpha={ALPHA_DITHERING}
+      falloff={1.9}
+      maxDensity={0.8}
+    />
 
     <div
       class:list={[

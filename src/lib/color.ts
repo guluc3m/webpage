@@ -220,7 +220,7 @@ function acentoDe(todos: Cubo[], fondo: RGB): RGB | undefined {
  * suelta en el componente, porque la paleta depende de ella: el texto tiene que leerse también
  * sobre una celda pintada, que es el peor fondo posible (una sola capa, nunca dos).
  */
-export const ALPHA_DITHERING = 0.2;
+export const ALPHA_DITHERING = 0.26;
 
 /** El fondo tal como se ve bajo una celda de dithering: el fondo con una capa de `acento` encima. */
 export function fondoConDithering(fondo: RGB, acento: RGB): RGB {

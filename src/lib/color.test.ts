@@ -83,10 +83,10 @@ test('paleta: un cartel casi blanco usa texto oscuro en vez de ennegrecer el fon
 test('revisarContraste: detecta colores ilegibles, también bajo el dithering', () => {
   const base = {
     // La paleta que sale hoy del cartel de ejemplo (azul con letras amarillas).
-    fondo: '#105798',
+    fondo: '#0e4981',
     texto: '#eff7fd',
     apagado: '#eff7fd',
-    borde: '#417aae',
+    borde: '#406f9c',
     acento: '#f8fc18',
     textoAcento: '#0a0a09',
   };
