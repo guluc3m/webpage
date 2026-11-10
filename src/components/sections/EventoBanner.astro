@@ -87,7 +87,8 @@ const variables = {
   '--evento-apagado': c.apagado ?? 'var(--color-gul-muted)',
   '--evento-borde': c.borde ?? 'var(--color-gul-line)',
   '--evento-acento': c.acento ?? 'var(--color-gul-blue)',
-  '--evento-texto-acento': c.textoAcento ?? 'var(--color-gul-ink)',
+  // Blanco y no el crema de la web: sobre el azul, el crema da ~4,1:1 y el blanco ~5:1 (AA).
+  '--evento-texto-acento': c.textoAcento ?? '#ffffff',
 };
 
 // Los enlaces externos se abren en pestaña nueva; los internos (#ancla, /ruta) no.
@@ -199,7 +200,12 @@ const destino = (url: string) =>
   .evento h2::before {
     color: var(--evento-acento);
   }
+  /* El texto va en color apagado y solo el ">" (decorativo) lleva el acento: el azul de la
+     web sobre el fondo oscuro da ~3,6:1 y no llega al 4,5:1 que pide AA en texto pequeño. */
   .evento__etiqueta {
+    color: var(--evento-apagado);
+  }
+  .evento__etiqueta span {
     color: var(--evento-acento);
   }
   .evento__apagado,
@@ -244,12 +250,13 @@ const destino = (url: string) =>
   .evento__boton--secundario span {
     color: var(--evento-acento);
   }
-  /* Hover/foco: la misma inversión "línea seleccionada de terminal" que gul-Button. */
+  /* Hover/foco: inversión "línea seleccionada de terminal", como gul-Button. El texto pasa
+     a `fondo` (no a `acento`) para que el contraste siga alto sobre el color claro. */
   .evento__boton--principal:hover,
   .evento__boton--principal:focus-visible {
     background-color: var(--evento-texto);
     border-color: var(--evento-texto);
-    color: var(--evento-acento);
+    color: var(--evento-fondo);
   }
   .evento__boton--secundario:hover,
   .evento__boton--secundario:focus-visible {
