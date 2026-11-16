@@ -14,6 +14,55 @@ export interface FechasEvento {
   fin?: string;
 }
 
+/** Desfase de Madrid (`+01:00`/`+02:00`) en el instante dado. */
+function desfase(instante: Date): string {
+  const parte = new Intl.DateTimeFormat('en', {
+    timeZone: ZONA_HORARIA,
+    timeZoneName: 'longOffset',
+  })
+    .formatToParts(instante)
+    .find((p) => p.type === 'timeZoneName');
+  return parte?.value.replace('GMT', '') || 'Z';
+}
+
+/** `yyyy-mm-dd` + `HH:MM` en hora peninsular → ISO 8601 con desfase. */
+function isoMadrid(dia: string, hora: string): string {
+  const [y, mes, d] = dia.split('-').map(Number);
+  const [h, min] = hora.split(':').map(Number);
+  // Se mira el desfase en esa hora tomada como UTC: solo falla en la hora exacta de los cambios
+  // de horario (madrugada), donde no hay actividades.
+  return `${dia}T${hora}:00${desfase(new Date(Date.UTC(y!, mes! - 1, d!, h, min)))}`;
+}
+
+/**
+ * Fechas de una actividad de actividades.yaml. Sin `time` dura el día entero; con `time` pero sin
+ * `endTime`, caduca al empezar. `undefined` si no tiene día concreto (`2026/11/00`).
+ */
+export function fechasDe(a: {
+  date: string;
+  time?: string;
+  endTime?: string;
+}): FechasEvento | undefined {
+  const dia = a.date.replaceAll('/', '-');
+  if (dia.endsWith('-00')) return undefined;
+  if (!a.time) {
+    const [y, mes, d] = dia.split('-').map(Number);
+    const siguiente = new Date(Date.UTC(y!, mes! - 1, d! + 1)).toISOString().slice(0, 10);
+    return { inicio: isoMadrid(dia, '00:00'), fin: isoMadrid(siguiente, '00:00') };
+  }
+  return { inicio: isoMadrid(dia, a.time), fin: a.endTime && isoMadrid(dia, a.endTime) };
+}
+
+/** Añade `inicio`/`fin` a cada actividad que tiene día concreto; el resto se descarta. */
+export function conFechas<T extends { date: string; time?: string; endTime?: string }>(
+  actividades: readonly T[],
+): Array<T & FechasEvento> {
+  return actividades.flatMap((a) => {
+    const fechas = fechasDe(a);
+    return fechas ? [{ ...a, ...fechas }] : [];
+  });
+}
+
 /** Instante (ms) a partir del cual el evento ya no se anuncia; NaN si la fecha no se entiende. */
 function corte({ inicio, fin }: FechasEvento): number {
   return Date.parse(fin ?? inicio);

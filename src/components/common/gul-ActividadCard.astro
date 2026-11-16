@@ -14,6 +14,7 @@ import GulFrame from './gul-Frame.astro';
 import GulBadge from './gul-Badge.astro';
 import type { Actividad } from '@/lib/actividades';
 import { renderInlineMarkdown } from '@lib/markdown';
+import { eventoVigente, fechasDe, formatearFecha } from '@lib/evento';
 
 interface Props {
   actividad: Actividad;
@@ -60,6 +61,11 @@ const formatDate = (date: string) =>
         month: 'short',
         year: 'numeric',
       });
+
+// Próxima = aún no ha acabado (evento.ts). Solo entonces se enseñan el horario y el lugar; el
+// <p> lleva data-evento para que el navegador lo retire si el HTML llega pasado el evento.
+const fechas = fechasDe(a);
+const proxima = fechas && eventoVigente(fechas) ? fechas : undefined;
 
 const datetime = hasNoDay(a.date) ? a.date.slice(0, 7) : a.date.replaceAll('/', '-');
 ---
@@ -111,6 +117,19 @@ const datetime = hasNoDay(a.date) ? a.date.slice(0, 7) : a.date.replaceAll('/', 
           {formatDate(a.date)}
         </time>
         <Title class="mt-1">{a.title}</Title>
+
+        {proxima && (
+          <p
+            class="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-gul-muted"
+            data-evento
+            data-inicio={proxima.inicio}
+            data-fin={proxima.fin}
+          >
+            <GulBadge variant="accent">Próximamente</GulBadge>
+            {a.time && <span>{formatearFecha(proxima).hora}</span>}
+            {a.place && <span>· {a.place}</span>}
+          </p>
+        )}
 
         {(a.type || (a.tags ?? []).length > 0) && (
           <p class="mt-2 flex flex-wrap items-center gap-1.5">
@@ -201,3 +220,7 @@ const datetime = hasNoDay(a.date) ? a.date.slice(0, 7) : a.date.replaceAll('/', 
     </div>
   </div>
 </div>
+
+<script>
+  import '@lib/caducaEventos.ts';
+</script>
