@@ -34,6 +34,7 @@ import GulCodeBlock from '@components/common/gul-CodeBlock.astro';
 import GulTerminal from '@components/common/gul-Terminal.astro';
 import GulCommitsGrid from '@components/common/gul-CommitsGrid.astro';
 import GulAchievement from '@components/common/gul-Achievement.astro';
+import GulVaca from '@components/common/gul-Vaca.astro';
 import PixelDissolve from '@components/common/PixelDissolve.astro';
 
 // Import desde src/assets: gul-Gallery espera ImageMetadata, no una ruta.
@@ -650,6 +651,24 @@ const faqItems = [
       <GulAchievement
         id="styleguide-achievement"
         text="Has completado el ejemplo del styleguide"
+        demo
+      />
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gul-ink">Vaca</h2>
+      <p class="text-sm text-gul-muted">
+        Easter egg: una vaca que, al pulsarla, trae otra al lado y dispara un logro. En
+        <code>/actividades</code> aparece dentro de una tarjeta al azar.
+      </p>
+      <GulFrame class="flex items-center justify-between gap-4 p-6">
+        <span class="text-sm text-gul-muted">Tienes una vaca</span>
+        <GulVaca achievement="styleguide-vaca" />
+      </GulFrame>
+      <GulAchievement
+        id="styleguide-vaca"
+        text="Imagina que tienes dos vacas"
+        tooltip="Has imaginado que tienes dos vacas"
         demo
       />
     </section>

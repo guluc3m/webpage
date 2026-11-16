@@ -1,0 +1,80 @@
+---
+/**
+ * gul-Vaca — easter egg: one pixel cow; clicking it adds a second one beside it
+ * ("tienes dos vacas") and fires the achievement `achievement` (see gul-Achievement,
+ * which must be on the same page). Place it anywhere; `floating` is for the page
+ * script that tucks it into the corner of a card.
+ */
+import vaca from '@assets/vaca-pixel-32.svg';
+
+interface Props {
+  /** Id of the gul-Achievement to show when the second cow appears. */
+  achievement: string;
+}
+
+const { achievement } = Astro.props;
+---
+
+<span class="gul-vaca" data-vaca data-achievement-id={achievement}>
+  <button type="button" class="gul-vaca__btn" aria-label="Una vaca">
+    <img src={vaca.src} alt="" width="40" height="40" />
+  </button>
+</span>
+
+<script>
+  // Delegated: one listener serves every cow on the page.
+  document.addEventListener('click', (event) => {
+    const btn = (event.target as Element).closest<HTMLButtonElement>('.gul-vaca__btn');
+    const wrap = btn?.closest<HTMLElement>('[data-vaca]');
+    if (!btn || !wrap || wrap.dataset.done) return;
+    wrap.dataset.done = 'true';
+
+    const second = btn.cloneNode(true) as HTMLButtonElement;
+    second.classList.add('is-new');
+    second.setAttribute('aria-label', 'Dos vacas');
+    btn.after(second);
+    document.dispatchEvent(
+      new CustomEvent('gul:achievement:show', { detail: wrap.dataset.achievementId }),
+    );
+  });
+</script>
+
+<style>
+  .gul-vaca {
+    display: inline-flex;
+    gap: 0.25rem;
+  }
+  /* Only set by the page script: pins the cows to the card's bottom-right corner. */
+  .gul-vaca.floating {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.5rem;
+  }
+  .gul-vaca__btn {
+    cursor: pointer;
+  }
+  .gul-vaca[data-done] .gul-vaca__btn {
+    cursor: default;
+  }
+  .gul-vaca__btn img {
+    image-rendering: pixelated;
+  }
+  .gul-vaca__btn.is-new {
+    animation: gul-vaca-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes gul-vaca-in {
+    from {
+      opacity: 0;
+      transform: translateX(-1.5rem) scale(0.4);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gul-vaca__btn.is-new {
+      animation: none;
+    }
+  }
+</style>
