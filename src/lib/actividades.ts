@@ -8,6 +8,7 @@ export const ACTIVIDAD_TYPES = [
   'Charla',
   'Taller',
   'Hackathon',
+  'CTF',
   'Install party',
   'Game jam',
   'Pódcast',
@@ -25,6 +26,9 @@ export interface Participant {
 export interface Actividad {
   title: string;
   date: string; // yyyy/mm/dd
+  time?: string; // HH:MM (hora peninsular); con `endTime`, el horario de una actividad próxima
+  endTime?: string; // HH:MM, mismo día que `date`
+  place?: string; // solo se enseña mientras la actividad es próxima
   type: ActividadType;
   description?: string;
   poster?: string;
@@ -52,9 +56,7 @@ export type Recurso = (typeof RECURSOS)[number]['value'];
 
 // Los recursos que una actividad lleva, como valores del filtro, en el orden
 // en que la tarjeta los pinta.
-export function recursosOf(
-  a: Pick<Actividad, 'video' | 'source' | 'slides'>,
-): Recurso[] {
+export function recursosOf(a: Pick<Actividad, 'video' | 'source' | 'slides'>): Recurso[] {
   const out: Recurso[] = [];
   if (a.video) out.push('video');
   if (a.source) out.push('repositorio');
@@ -104,14 +106,24 @@ export function resolveParticipantLinks(
 }
 
 const dateRe = /^\d{4}\/\d{2}\/\d{2}$/;
+const timeRe = /^([01]\d|2[0-3]):[0-5]\d$/;
 
 // Why an entry is unusable, or null if it is fine. Reused by congresos.ts so
 // the inner activities validate with the same rules as plain ones.
 export function actividadProblem(a: unknown): string | null {
   if (!a || typeof a !== 'object' || Array.isArray(a)) return 'no es un objeto';
-  const { title, date, type, participants, tags, photos } = a as Record<string, unknown>;
+  const { title, date, time, endTime, place, type, participants, tags, photos } = a as Record<
+    string,
+    unknown
+  >;
   if (typeof title !== 'string' || !title) return 'falta title';
   if (typeof date !== 'string' || !dateRe.test(date)) return 'date no es yyyy/mm/dd';
+  if (time !== undefined && !(typeof time === 'string' && timeRe.test(time)))
+    return 'time no es HH:MM';
+  if (endTime !== undefined && !(typeof endTime === 'string' && timeRe.test(endTime)))
+    return 'endTime no es HH:MM';
+  if (endTime !== undefined && time === undefined) return 'endTime sin time';
+  if (place !== undefined && typeof place !== 'string') return 'place no es texto';
   if (!(ACTIVIDAD_TYPES as readonly string[]).includes(type as string))
     return `type desconocido: ${JSON.stringify(type)}`;
   if (participants !== undefined && !Array.isArray(participants))

@@ -46,6 +46,14 @@ test('an unknown type is a broken entry', () => {
   assert.match(errors[0], /type desconocido: "Fiesta"/);
 });
 
+test('time and endTime must be HH:MM, and endTime needs time', () => {
+  const err = (extra: string) => parseActividades(entry('A') + extra).errors[0];
+  assert.match(err('  time: 25:00\n'), /time no es HH:MM/);
+  assert.match(err('  time: 10:00\n  endTime: pronto\n'), /endTime no es HH:MM/);
+  assert.match(err('  endTime: 12:00\n'), /endTime sin time/);
+  assert.equal(parseActividades(entry('A') + '  time: 10:00\n  endTime: 12:00\n').errors.length, 0);
+});
+
 test('photos must be a list, a lone URL is a broken entry', () => {
   const { errors } = parseActividades(entry('A') + '  photos: https://example.org/a.jpg\n');
   assert.match(errors[0], /photos no es una lista/);
@@ -64,8 +72,9 @@ test('tags are case-insensitive: same tag, different casing, one chip', () => {
 
 test('recursosOf lists video, repository and slides, in the order the card links them', () => {
   assert.deepEqual(recursosOf({}), []);
-  assert.deepEqual(
-    recursosOf({ slides: 'a.pdf', video: 'a.ogg', source: 'a/' }),
-    ['video', 'repositorio', 'transparencias'],
-  );
+  assert.deepEqual(recursosOf({ slides: 'a.pdf', video: 'a.ogg', source: 'a/' }), [
+    'video',
+    'repositorio',
+    'transparencias',
+  ]);
 });

@@ -148,7 +148,7 @@ test('paletaDeImagen: PNG transparente se pinta sobre negro, no se rompe', async
 });
 
 test('paletaDeImagen: todas las imágenes reales del repo dan una paleta legible', async () => {
-  const carpetas = ['../assets/real', '../assets/eventos', '../../public/actividades'];
+  const carpetas = ['../assets/real', '../../public/actividades'];
   let vistas = 0;
   for (const carpeta of carpetas) {
     const dir = new URL(carpeta + '/', import.meta.url).pathname;

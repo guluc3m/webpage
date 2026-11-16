@@ -9,6 +9,20 @@
           "description": "yyyy/mm/dd",
           "type": "string"
         },
+        "endTime": {
+          "description": "HH:MM, same day as `date`; needs `time`",
+          "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+          "type": "string"
+        },
+        "place": {
+          "description": "Only shown while the activity is upcoming",
+          "type": "string"
+        },
+        "time": {
+          "description": "HH:MM (Madrid time)",
+          "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+          "type": "string"
+        },
         "description": {
           "description": "Supports basic markdown",
           "type": "string"
@@ -70,6 +84,7 @@
         "Charla",
         "Taller",
         "Hackathon",
+        "CTF",
         "Install party",
         "Game jam",
         "Pódcast",

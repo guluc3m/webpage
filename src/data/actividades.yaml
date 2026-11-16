@@ -2,9 +2,11 @@
 # Lista de actividades del GUL. Edita esta lista para añadir/quitar eventos. Los campos son:
 # - title
 # - date (yyyy/mm/dd)
-# - type (uno de: Charla, Taller, Hackathon, Install party, Game jam, Pódcast, Radio, Congreso, Feria de Asociaciones)
+# - time? (HH:MM, hora peninsular) y endTime? (HH:MM): horario, para el banner de la próxima
+# - place? (solo se enseña mientras la actividad es próxima)
+# - type (uno de: Charla, Taller, Hackathon, CTF, Install party, Game jam, Pódcast, Radio, Congreso, Feria de Asociaciones)
 # - poster?
-# - link?
+# - link? (en una actividad próxima, es el botón «Saber más» del banner)
 # - source?
 # - slides?
 # - photos? (lista de fotos del evento; con cartel, se ven al pulsarlo)
@@ -651,3 +653,15 @@
   participants:
     - Héctor Molina
     - Jorge Saghin
+
+- title: Gincana criptográfica (CTF) | Semana de la Ciencia x Biblioteca EPS
+  description: >-
+    CTF en colaboración con la biblioteca de la EPS, dentro de la Semana de la Ciencia: la plataforma con los retos abre el 23 de noviembre. La presentación es ese día de 10:00 a 12:00, con una zona de la biblioteca reservada para los participantes. **Hay que apuntarse** en la web de la Semana de la Ciencia.
+  type: CTF
+  tags: [Criptografía]
+  date: 2026/11/23
+  time: 10:00
+  endTime: 12:00
+  place: Biblioteca de la EPS, Campus de Leganés
+  link: https://www.semanacienciamadrid.org/actividad/gincana-criptografica-aprender-criptografia-divirtiendote
+  poster: /actividades/gincana-criptografica26.png

@@ -3,7 +3,7 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { eventoVigente, formatearFecha, proximoEvento } from './evento.ts';
+import { eventoVigente, fechasDe, formatearFecha, proximoEvento } from './evento.ts';
 
 const inicio = '2026-12-05T10:00:00+01:00';
 const fin = '2026-12-05T20:00:00+01:00';
@@ -68,4 +68,22 @@ test('formatearFecha: varios días se escribe como rango', () => {
   });
   assert.match(dia, /5 de diciembre\D+6 de diciembre/);
   assert.equal(hora, '10:00');
+});
+
+test('fechasDe: pone el desfase de Madrid (invierno +01:00, verano +02:00)', () => {
+  assert.deepEqual(fechasDe({ date: '2026/11/23', time: '10:00', endTime: '12:00' }), {
+    inicio: '2026-11-23T10:00:00+01:00',
+    fin: '2026-11-23T12:00:00+01:00',
+  });
+  assert.equal(
+    fechasDe({ date: '2026/07/01', time: '10:00' })?.inicio,
+    '2026-07-01T10:00:00+02:00',
+  );
+});
+
+test('fechasDe: sin hora dura el día entero, y sin día concreto no hay fechas', () => {
+  const f = fechasDe({ date: '2026/12/31' })!;
+  assert.equal(eventoVigente(f, new Date('2026-12-31T23:59:00+01:00')), true);
+  assert.equal(eventoVigente(f, new Date('2027-01-01T00:00:00+01:00')), false);
+  assert.equal(fechasDe({ date: '2026/11/00' }), undefined);
 });
