@@ -656,12 +656,10 @@
 
 - title: Gincana criptográfica (CTF) | Semana de la Ciencia x Biblioteca EPS
   description: >-
-    CTF en colaboración con la biblioteca de la EPS, dentro de la Semana de la Ciencia: la plataforma con los retos abre el 23 de noviembre. La presentación es ese día de 10:00 a 12:00, con una zona de la biblioteca reservada para los participantes. **Hay que apuntarse** en la web de la Semana de la Ciencia.
+    CTF en colaboración con la biblioteca de la EPS, dentro de la Semana de la Ciencia. La plataforma con los retos abre el 23 de noviembre y se juega durante todo el día; de 10:00 a 12:00 hacemos la presentación, con una zona de la biblioteca reservada para participantes. **Apúntate en la web de la Semana de la Ciencia.**
   type: CTF
   tags: [Criptografía]
   date: 2026/11/23
-  time: 10:00
-  endTime: 12:00
   place: Biblioteca de la EPS, Campus de Leganés
   link: https://www.semanacienciamadrid.org/actividad/gincana-criptografica-aprender-criptografia-divirtiendote
   poster: /actividades/gincana-criptografica26.png
