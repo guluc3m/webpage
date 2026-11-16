@@ -16,13 +16,10 @@ import GulFooter from '@components/common/gul-Footer.astro';
 import GulActividadCard from '@components/common/gul-ActividadCard.astro';
 import GulCongresoCard from '@components/common/gul-CongresoCard.astro';
 import GulActividadFilters from '@components/common/gul-ActividadFilters.astro';
+import GulAchievement from '@components/common/gul-Achievement.astro';
+import GulVaca from '@components/common/gul-Vaca.astro';
 import { navLinks } from '@data/navLinks';
-import {
-  ACTIVIDAD_TYPES,
-  RECURSOS,
-  loadActividades,
-  recursosOf,
-} from '@lib/actividades';
+import { ACTIVIDAD_TYPES, RECURSOS, loadActividades, recursosOf } from '@lib/actividades';
 import { loadCongresos, type Congreso } from '@lib/congresos';
 import rawActividades from '@data/actividades.yaml?raw'; // ?raw: a plain string, so invalid YAML syntax doesn't blow up the import itself.
 import rawCongresos from '@data/congresos.yaml?raw';
@@ -185,4 +182,23 @@ const recursos = RECURSOS.filter((r) =>
     </div>
   </main>
   <GulFooter />
+  <GulVaca achievement="dos-vacas" />
+  <GulAchievement
+    id="dos-vacas"
+    text="Imagina que tienes dos vacas"
+    tooltip="Has imaginado que tienes dos vacas"
+  />
 </BaseLayout>
+
+<script>
+  // The cow starts out of the flow and is tucked into a random card on load.
+  const vaca = document.querySelector<HTMLElement>('[data-vaca]');
+  const cards = document.querySelectorAll('[data-actividad]');
+  // The frame's padded inner div (the one holding the <time>) is the positioning context.
+  const host =
+    cards[Math.floor(Math.random() * cards.length)]?.querySelector('time')?.parentElement;
+  if (vaca && host) {
+    vaca.classList.add('floating');
+    host.append(vaca);
+  }
+</script>
