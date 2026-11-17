@@ -19,13 +19,12 @@ import GulActividadFilters from '@components/common/gul-ActividadFilters.astro';
 import GulAchievement from '@components/common/gul-Achievement.astro';
 import GulVaca from '@components/common/gul-Vaca.astro';
 import { navLinks } from '@data/navLinks';
-import { ACTIVIDAD_TYPES, RECURSOS, loadActividades, recursosOf } from '@lib/actividades';
-import { loadCongresos, type Congreso } from '@lib/congresos';
+import { ACTIVIDAD_TYPES, RECURSOS, recursosOf } from '@lib/actividades';
+import { loadActividadesYCongresos, type Congreso } from '@lib/congresos';
 import rawActividades from '@data/actividades.yaml?raw'; // ?raw: a plain string, so invalid YAML syntax doesn't blow up the import itself.
 import rawCongresos from '@data/congresos.yaml?raw';
 
-const actividades = loadActividades(rawActividades);
-const congresos = loadCongresos(rawCongresos, actividades);
+const { actividades, congresos } = loadActividadesYCongresos(rawActividades, rawCongresos);
 
 // yyyy/mm/dd sorts correctly as a plain string, no Date needed for ordering.
 const sorted = [...actividades].sort((a, b) => b.date.localeCompare(a.date));

@@ -5,7 +5,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { congresoDates, loadCongresos, parseCongresos } from './congresos.ts';
+import { congresoDates, loadActividadesYCongresos, loadCongresos, parseCongresos } from './congresos.ts';
 import { loadActividades, type Actividad } from './actividades.ts';
 
 // What the parser would return for a one-activity congreso.
@@ -129,6 +129,31 @@ test('links from actividades.yaml also apply inside congresos', () => {
     known,
   );
   assert.equal(congresos[0]!.activities[0]!.participants?.[0]!.link, 'https://ejemplo.org/');
+});
+
+test('links from congresos.yaml also apply to plain actividades', () => {
+  const { actividades, congresos } = loadActividadesYCongresos(
+    '- title: Fuera\n  date: 2020/01/02\n  type: Charla\n  participants:\n    - Uno\n',
+    '- title: IX Jornadas Técnicas\n  series: Jornadas Técnicas\n  edition: 9\n' +
+      '  activities:\n' +
+      '    - title: A\n      date: 2007/03/19\n      type: Charla\n' +
+      '      participants:\n        - name: Uno\n          link: https://ejemplo.org/\n',
+  );
+  assert.equal(actividades[0]!.participants?.[0]!.link, 'https://ejemplo.org/');
+  assert.equal(congresos[0]!.activities[0]!.participants?.[0]!.link, 'https://ejemplo.org/');
+});
+
+test('a link written in both files: each side keeps its own', () => {
+  const { actividades, congresos } = loadActividadesYCongresos(
+    '- title: Fuera\n  date: 2020/01/02\n  type: Charla\n  participants:\n' +
+      '    - name: Uno\n      link: https://suyo.org/\n',
+    '- title: IX Jornadas Técnicas\n  series: Jornadas Técnicas\n  edition: 9\n' +
+      '  activities:\n' +
+      '    - title: A\n      date: 2007/03/19\n      type: Charla\n' +
+      '      participants:\n        - name: Uno\n          link: https://del-congreso.org/\n',
+  );
+  assert.equal(actividades[0]!.participants?.[0]!.link, 'https://suyo.org/');
+  assert.equal(congresos[0]!.activities[0]!.participants?.[0]!.link, 'https://del-congreso.org/');
 });
 
 test('congresoDates covers same month, same year and cross-year', () => {

@@ -84,8 +84,9 @@ export function normalizeParticipant(p: unknown): Participant | null {
 
 // Un enlace solo hay que escribirlo en una actividad: el primero que aparezca
 // para cada nombre se aplica a las demás apariciones, así no se repite.
-// (Los links viven por fichero, así que congresos.ts cosecha los suyos aparte
-// y los aporta como extraLinks.)
+// (Los links viven por fichero: congresos.ts cosecha los suyos aparte y
+// loadActividadesYCongresos los cruza entre los dos ficheros en ambas
+// direcciones.)
 export function harvestParticipantLinks(actividades: Actividad[]): Map<string, string> {
   const links = new Map<string, string>();
   for (const a of actividades)

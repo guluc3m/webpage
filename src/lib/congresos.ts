@@ -6,6 +6,7 @@ import {
   canonicalCase,
   canonicalTags,
   harvestParticipantLinks,
+  loadActividades,
   normalizeParticipant,
   parseYamlChunks,
   resolveParticipantLinks,
@@ -144,6 +145,28 @@ export function loadCongresos(raw: string, knownActividades: Actividad[] = []): 
     ...c,
     activities: resolveParticipantLinks(c.activities, links),
   }));
+}
+
+/**
+ * Loads both files at once. Un link de participant se escribe una vez en
+ * cualquiera de los dos: los propios de cada fichero ya vienen resueltos (y
+ * mandan), y el otro fichero rellena los huecos por nombre — loadCongresos
+ * aporta los de actividades.yaml a los congresos, y aquí el camino inverso
+ * lleva los de congresos.yaml a las actividades sueltas.
+ */
+export function loadActividadesYCongresos(
+  rawActividades: string,
+  rawCongresos: string,
+): { actividades: Actividad[]; congresos: Congreso[] } {
+  const actividades = loadActividades(rawActividades);
+  const congresos = loadCongresos(rawCongresos, actividades);
+  // Los del propio fichero van al final del merge: si el mismo nombre sale con
+  // link distinto en los dos, gana el suyo.
+  const links = new Map([
+    ...harvestParticipantLinks(congresos.flatMap((c) => c.activities)),
+    ...harvestParticipantLinks(actividades),
+  ]);
+  return { actividades: resolveParticipantLinks(actividades, links), congresos };
 }
 
 // Fechas del congreso deducidas de sus activities, ordenadas: "12-15 marzo
