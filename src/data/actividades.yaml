@@ -2,14 +2,15 @@
 # Lista de actividades del GUL. Edita esta lista para añadir/quitar eventos. Los campos son:
 # - title
 # - date (yyyy/mm/dd)
-# - time? (HH:MM, hora peninsular) y endTime? (HH:MM): horario, para el banner de la próxima
+# - time? (HH:MM, hora peninsular)
+# - endTime? (HH:MM): horario, para el banner de la próxima
 # - place? (solo se enseña mientras la actividad es próxima)
 # - type (uno de: Charla, Taller, Hackathon, CTF, Install party, Game jam, Pódcast, Radio, Congreso, Feria de Asociaciones)
 # - poster?
-# - link? (en una actividad próxima, es el botón «Saber más» del banner)
+# - link? enlace a la página de información, etc.
 # - source?
 # - slides?
-# - photos? (lista de fotos del evento; con cartel, se ven al pulsarlo)
+# - photos? (lista de fotos del evento)
 # - tags? (lista)
 # - participants? (`{name, link}` o, si nombre ya existe, nombre directo y se reutiliza el link)
 #

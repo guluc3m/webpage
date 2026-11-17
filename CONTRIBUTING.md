@@ -66,6 +66,30 @@ El PR ejecuta un check que comprueba que `fortunas.yaml` sigue siendo válido. S
 sale en rojo, el log dice en qué línea está el error (casi siempre, una sangría
 de más o de menos).
 
+
+## Modificar una actividad
+
+Nadie ha asistido a todas las actividades de la asoci desde 1998, por lo que es posible que algunos datos sean incorrectos o incompletos. Por ello, agradecemos que los que sí estuvieron allí contribuyan a rellenar toda la información posible. Apreciamos sobre todo transparencias, código fuente, ponentes, fechas, y descripciones.
+
+Las actividades viven en dos archivos: [`src/data/actividades.yaml`](./src/data/actividades.yaml) y [`src/data/congresos.yaml`](./src/data/congresos.yaml). Los "congresos" son colecciones de varias actividades juntas, e.g. Jornadas Técnicas, GUL Jamón, etc., por lo que viven en `congresos.yaml`, mientras que las actividades "sueltas" viven en `actividades.yaml`.
+
+### Formato
+
+Las actividades (tanto dentro de congresos como sueltas) tienen el mismo formato [^1]:
+- `title`: Título de la actividad
+- `date`: Fecha, en formato `yyyy/mm/dd`
+- `poster`: Link al póster de la actividad
+- `link`: Enlace a la página del evento, más información, etc. 
+- `source`: Enlace a código fuente.
+- `slides`: Enlace a transparencias.
+- `photos`: Listado de enlaces de fotos del evento
+- `participants`: Listado de participantes. `{name, link}` o, si nombre ya existe, nombre directo y se reutiliza el link
+
+Puedes comprobar que el formato del YAML es correcto usando el [JSON schema](https://json-schema.org/) proporcionado en [src/data/schema/actividades.schema.json](src/data/schema/actividades.schema.json)/[src/data/schema/congresos.schema.json](src/data/schema/congresos.schema.json).
+
+
+[^1]: Sólo ponemos campos relevantes, para más información mira el comentario del YAML
+
 ## Estilo
 
 - **Prettier + ESLint** mandan sobre el formato y el estilo. No discutas con
