@@ -1,7 +1,9 @@
 ---
 /**
  * gul-Header — the site header: GUL logo + navigation, plus a star next to the
- * logo for every achievement unlocked (see gul-Achievement).
+ * logo for every achievement unlocked (see gul-Achievement). A star can also
+ * be marked outdated (`gul:achievement:outdated`): it grays out, with a
+ * tooltip saying what is new, until the achievement is earned again.
  *
  * Shared component (`gul-` prefix) — copied into the other GUL repos. It takes
  * the nav links as a prop so nothing about *this* site's sections is baked in.
@@ -54,14 +56,21 @@ const { links } = Astro.props;
   const template = document.querySelector<HTMLTemplateElement>('[data-gul-star]');
 
   function addStar(id: string, text: string, isNew: boolean) {
-    if (!stars || !template || stars.querySelector(`[data-id="${CSS.escape(id)}"]`)) return;
-    const star = template.content.firstElementChild!.cloneNode(true) as HTMLLIElement;
-    star.dataset.id = id;
+    if (!stars || !template) return;
+    // A star the visitor already has (re-earned achievement) is updated in
+    // place instead of drawn a second time.
+    let star = stars.querySelector<HTMLLIElement>(`[data-id="${CSS.escape(id)}"]`);
+    if (!star) {
+      star = template.content.firstElementChild!.cloneNode(true) as HTMLLIElement;
+      star.dataset.id = id;
+      stars.append(star);
+      stars.hidden = false;
+    }
     star.dataset.tooltip = text;
     star.setAttribute('aria-label', `Logro: ${text}`);
     star.classList.toggle('is-new', isNew);
-    stars.append(star);
-    stars.hidden = false;
+    // Just (re-)earned: whatever staleness it had is gone.
+    star.classList.remove('is-stale');
   }
 
   // Written by gul-Achievement as { id: text }.
@@ -78,12 +87,29 @@ const { links } = Astro.props;
     const { id, text } = (event as CustomEvent<{ id: string; text: string }>).detail;
     addStar(id, text, true);
   });
+
+  // Fired on load when an achievement was earned before the current content
+  // existed — fewer fortunas read than there are now (see Hero). The star
+  // grays out and its tooltip says how much is new until it is earned again.
+  document.addEventListener('gul:achievement:outdated', (event) => {
+    const { id, text } = (event as CustomEvent<{ id: string; text: string }>).detail;
+    const star = stars?.querySelector<HTMLLIElement>(`[data-id="${CSS.escape(id)}"]`);
+    if (!star) return; // nothing to gray out: the achievement isn't on display
+    star.dataset.tooltip = text;
+    star.setAttribute('aria-label', `Logro: ${text}`);
+    star.classList.add('is-stale');
+  });
 </script>
 
 <style>
   /* A star unlocked right now pops in; saved ones are just there. */
   .gul-star.is-new {
     animation: gul-star-pop 0.6s ease-out;
+  }
+  /* Earned before the current fortunas went up (see the
+     gul:achievement:outdated listener): gray until it is earned again. */
+  .gul-star.is-stale span {
+    background-color: var(--color-gul-gray);
   }
   @keyframes gul-star-pop {
     0% {

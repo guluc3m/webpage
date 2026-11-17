@@ -10,6 +10,12 @@
  * shown. The quote block stays hidden until that first re-roll lands, so the
  * build's pick is never painted and the swap is invisible (no pop-in).
  *
+ * The achievement for reading every fortuna remembers how many there were
+ * when it was earned. If fortunas are added later, the ones already read are
+ * assumed to be the first n of the list: they count as seen, only the new
+ * ones are handed out, and the header star grays out (its tooltip says how
+ * many are new) until the achievement is earned again.
+ *
  * That list used to be inlined here through define:vars: 50KB of JSON in the
  * HTML of every visit, a quarter of the page, unminifiable and re-downloaded
  * every time. As its own file it is fetched after the first paint instead of
@@ -120,6 +126,66 @@ const fortuna = formattedFortunas[fortunaIndex];
     // early. Only re-rolls that actually get shown count.
     const seen = new Set<number>();
     let achievementUnlocked = false;
+    // Set once the list has loaded and saved progress has been applied to it.
+    let progressRestored = false;
+
+    // The achievement remembers how many fortunas there were when it was
+    // earned (`gul:fortunas-seen`, written by earnAchievement). If more have
+    // been added since, the ones already read are assumed to be the first n of
+    // the list: they count as seen, only the new ones are handed out from here
+    // on, and the header star grays out — its tooltip says how many are new —
+    // until the achievement is earned again.
+    function restoreProgress(all: Fortuna[]) {
+      if (progressRestored || !all.length) return;
+      progressRestored = true;
+      let saved: number;
+      try {
+        saved = Math.floor(Number(localStorage.getItem('gul:fortunas-seen')));
+        if (!(saved > 0)) {
+          // Saves from before the achievement counted fortunas only have the
+          // star record gul-Achievement wrote, whose text bakes the total as
+          // it was at earn time — which is exactly how many had been seen
+          // («Has leído todas las N fortunas»). The oldest format had no
+          // number («todas las fortunas») and a deployed typo rendered
+          // «undefined»: those two yield no digits and simply don't migrate.
+          const old = (
+            JSON.parse(localStorage.getItem('gul:achievements') ?? '{}') as Record<string, string>
+          )['fortunas-completadas'];
+          saved = Number(old?.match(/todas las (\d+) fortunas/)?.[1]);
+        }
+      } catch {
+        return; // no storage (private mode, blocked site data): nothing saved
+      }
+      if (!Number.isFinite(saved) || saved <= 0 || saved >= all.length) return;
+      for (let index = 0; index < saved; index++) seen.add(index);
+      const newCount = all.length - saved;
+      const newOnes = newCount === 1 ? 'una nueva' : `${newCount} nuevas`;
+      const seenOnes = `Has visto ${saved} ${saved === 1 ? 'fortuna' : 'fortunas'}`;
+      document.dispatchEvent(
+        new CustomEvent('gul:achievement:outdated', {
+          detail: {
+            id: 'fortunas-completadas',
+            text: `${seenOnes}, pero hay ${newOnes}`,
+          },
+        }),
+      );
+    }
+
+    // Every fortuna has been read: show the toast (again, if it was earned on
+    // an earlier visit) and save how many there were, so fortunas added later
+    // can be told apart from the ones already read.
+    function earnAchievement(total: number) {
+      if (achievementUnlocked || seen.size !== total) return;
+      achievementUnlocked = true;
+      document.dispatchEvent(
+        new CustomEvent('gul:achievement:show', { detail: 'fortunas-completadas' }),
+      );
+      try {
+        localStorage.setItem('gul:fortunas-seen', String(total));
+      } catch {
+        /* no storage: the count just doesn't survive the visit */
+      }
+    }
 
     function decryptAuthor() {
       if (!authorWrap!.hidden) {
@@ -134,6 +200,7 @@ const fortuna = formattedFortunas[fortunaIndex];
 
     async function nextFortuna(animate = true) {
       const all = await getFortunas();
+      restoreProgress(all);
       // No repeats until every fortuna has been shown, then a fresh round that
       // excludes whatever is currently on screen.
       if (seen.size >= all.length) {
@@ -145,7 +212,16 @@ const fortuna = formattedFortunas[fortunaIndex];
       const available = all
         .map((_, index) => index)
         .filter((index) => index !== currentIndex && !seen.has(index));
-      if (!available.length) return; // empty list, or a single fortuna
+      if (!available.length) {
+        // An empty list, a single fortuna, or — with restored progress — the
+        // one unseen fortuna left is the build's pick already on screen. It
+        // has now been read where it sits, which can complete the round.
+        if (!seen.has(currentIndex)) {
+          seen.add(currentIndex);
+          earnAchievement(all.length);
+        }
+        return;
+      }
 
       currentIndex = available[Math.floor(Math.random() * available.length)];
       seen.add(currentIndex);
@@ -164,12 +240,7 @@ const fortuna = formattedFortunas[fortunaIndex];
         author!.removeAttribute('data-decrypt-paused');
       }
 
-      if (!achievementUnlocked && seen.size === all.length) {
-        document.dispatchEvent(
-          new CustomEvent('gul:achievement:show', { detail: 'fortunas-completadas' }),
-        );
-        achievementUnlocked = true;
-      }
+      earnAchievement(all.length);
     }
 
     // Re-roll the build's fortuna per visit, then reveal. The figure is hidden
