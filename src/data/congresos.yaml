@@ -2165,6 +2165,7 @@
         - https://pbs.twimg.com/media/DLcaeUPX4AADX1U?format=jpg&name=large
         - https://pbs.twimg.com/media/DLcafDAX4AAtgij?format=jpg&name=large
         - https://pbs.twimg.com/media/DLduh8TW4AAUmzv?format=jpg&name=large
+
     - title: Una radio a tu alcance
       type: Radio
       poster: https://pbs.twimg.com/media/DKpiXRwWsAAY3Or?format=jpg&name=900x900
@@ -2174,14 +2175,33 @@
       photos:
         - https://pbs.twimg.com/media/DLIoZeXWkAExf_Z?format=jpg&name=large
       video: https://cloud-gul.uc3m.es/actividades/2017/una_radio_a_tu_alcance/audio_unaradioatualcance_20171002.zip
+
     - title: Linux para principiantes
       type: Charla
       date: 2017/10/04
       tags: [Linux]
-    - title: Zoe
+      participants:
+        - Adrián Borja Pimentel
+
+    - title: 'Zoe: ¿Otra asistente virtual inteligente?'
       type: Charla
       date: 2017/10/02
+      description: |
+        Primero daremos un breve, pero intenso paseo por la arquitectura y funcionalidad de Zoe, nuestra asistente virtual. Después hablaremos de las técnicas de Inteligencia Artificial que intervienen o podrían intervenir en los agentes de Zoe, así como un breve repaso al estado del arte en asistentes virtuales y chatbots.
       tags: [Zoe]
+      slides: https://cloud-gul.uc3m.es/actividades/2017/charla-zoe-iv-sem-asociaciones.pdf
+      participants:
+        - Axel Blanco
+
+    - title: Python para gente normal
+      type: Charla
+      date: 2017/10/03 # me lo he inventao
+      description: |
+        Una rápida introducción a Python, un lenguaje muy versátil y sencillo, a base de aplicaciones de ejemplo y código en directo para que te vayas a casa con ganas de trastear con algo nuevo. Porque la programación no es sólo para ingenieros.
+      tags:
+        - Python
+      participants:
+        - Jorge Marcos
 
 - title: El Evento 2016
   series: El Evento
@@ -2189,7 +2209,7 @@
   url: https://asrob.uc3m.es/evento2016/
   poster: https://pbs.twimg.com/media/Cvdpxe1WYAA4vR6?format=jpg&name=4096x4096
   activities:
-    - title: 'Empujar y tirar: Git para manejar tu código'
+    - title: "Empujar y tirar: Git para manejar tu código"
       date: 2016/10/24
       type: Charla
       tags:
@@ -2209,7 +2229,7 @@
       participants:
         - Daniel Rodríguez
 
-- title: XXXI Jornadas Técnicas
+- title: XXX Jornadas Técnicas
   series: Jornadas Técnicas
   edition: 31
   poster: https://cloud-gul.uc3m.es/actividades/2017/marzo/cartel_xxx_jornadas.png
@@ -2233,6 +2253,7 @@
         - Clara Luis Miguenza
       tags:
         - Visión Artificial
+      slides: https://cloud-gul.uc3m.es/actividades/2017/marzo/vision-artificial-walle_vfinal.pdf
       description: |
         Hablaremos de las técnicas y fundamentos teóricos que forman la base de la visión artificial. Analizaremos las técnicas más usadas dentro de este campo tan cuco, y veremos cómo se traducen en un script de código. Todo esto en una hora... ¿fácil, verdad?
 
@@ -2261,6 +2282,7 @@
         - Jenkins
       description: |
         Si estás comenzando en Android como si eres ya un entendido, seguramente habrás oído hablar de lo que son los Flavors, Build Variants o el sistema de integración continua Jenkins. Si no has oído hablar nunca de ello, esta es una buena manera de entender qué son, ya que repasaremos todos estos conceptos y nos meteremos de lleno en ejemplos prácticos para ver su uso en proyectos Android reales. Si ya tienes experiencia en Android y Jenkins entonces en esta charla podrás conocer cómo se ha desarrollado este proceso en diferentes proyectos y así podremos compartir experiencia y conocimientos.
+
     - title: Archi, Archimate y Modelado de Arquitecturas
       date: 2017/03/28
       participants:
@@ -2322,7 +2344,7 @@
       participants:
         - name: Jorge Marcos
           link: https://twitter.com/jorgeelalto
-    
+
     - title: ¡Orcos de Mongo, gritad para mí!
       type: Taller
       date: 2017/03/28
@@ -2332,7 +2354,7 @@
         MongoDB es posiblemente la base de datos noSQL más famosa, aprendamos a usarla y conquistemos la Tierra Media, por ejemplo.
       participants:
         - Alejandro Baldominos
-    
+
     - title: 'FreeCAD: parametrízame como puedas'
       type: Taller
       date: 2017/03/31
@@ -2342,7 +2364,7 @@
       participants:
         - name: David Estevez
           link: https://twitter.com/DEFrobotics
-    
+
     - title: Taller sobre Angular (v4.0)
       type: Taller
       date: 2017/03/30
@@ -2367,6 +2389,7 @@
       participants:
         - Fernando Cerezal
         - Adrián Casado
+      slides: https://cloud-gul.uc3m.es/actividades/2017/marzo/C%C3%B3mo%20se%20usan%20las%20metodolog%C3%ADas%20%C3%A1giles%20en%20el%20mundo%20real.pdf
       description: |
         Haremos una dinámica por equipos para poder entender algunas reglas de las metodologías ágiles y cuándo trabajar con ellas.
 
@@ -2378,7 +2401,6 @@
         - Software Libre
       description: |
         El GUL nació de un pequeño grupo de personas con curiosidad cuando Linux se consideraba un juguete de freakies. Las licencias libres eran utopías de hippies sin futuro. Hoy Linux es omnipresente, de android a smart TV, de entorno doméstico a Amazon. Parece que todo lo interesante se puede encontrar publicado en GitHub. Sin embargo... la realidad es más frágil de lo que parece.
-
 
 # https://x.com/guluc3m/status/924890462678331393?s=20
 # - title: XXXI Jornadas Técnicas
