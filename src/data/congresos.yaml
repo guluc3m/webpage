@@ -2402,11 +2402,145 @@
       description: |
         El GUL nació de un pequeño grupo de personas con curiosidad cuando Linux se consideraba un juguete de freakies. Las licencias libres eran utopías de hippies sin futuro. Hoy Linux es omnipresente, de android a smart TV, de entorno doméstico a Amazon. Parece que todo lo interesante se puede encontrar publicado en GitHub. Sin embargo... la realidad es más frágil de lo que parece.
 
-# https://x.com/guluc3m/status/924890462678331393?s=20
-# - title: XXXI Jornadas Técnicas
-#   series: Jornadas Técnicas
-#   edition: 31
-#   poster:
+- title: XXXI Jornadas Técnicas
+  series: Jornadas Técnicas
+  edition: 31
+  poster: https://cloud-gul.uc3m.es/actividades/2017/noviembre/cartel-vim.pdf
+  activities:
+    # https://web.archive.org/web/20220524091351/https://cursos.gul.es/xxxi-jornadas-tecnicas-del-gul
+    - title: 'Dios dijo: "Hágase la luz¨, y la luz se hizo. Python dijo: "Hágase la luz¨, y la luz se hizo en 20 líneas menos.'
+      date: 2017/11/20
+      type: Taller
+      description: |
+        ¿Qué tendrá ese Python para que todos hablen de él? Si quieres saberlo, estás invitado a esta charla, donde te presentaré qué se puede y qué se esta haciendo con este polivalente lenguaje open-source ahora mismo. Además, por supuesto, explicaré el uso del lenguaje: desde su bella sintaxis, hasta cómo crear una inteligencia artificial que alcance la singularidad y conquiste el universo.
+      participants:
+        - name: Manu Hortet
+          link: https://twitter.com/manuhortet
+      tags:
+        - Python
+
+    - title: Introducción a OpenGL
+      date: 2017/11/20
+      type: Taller
+      description: |
+        Como crear una aplicacion con GLFW (en Linux)
+      participants:
+        - name: Marcos Oviedo
+          link: https://twitter.com/marcsov77
+      tags:
+        - OpenGL
+
+    - title: La mujer en la ingeniería
+      date: 2017/11/21
+      type: Charla
+      description: |
+        El lugar que ocupa la mujer en el campo de la ingeniería y de la informática, es muy dificultoso. Queremos acercar la perspectiva de las mujeres que estudian estas carreras a sus compañeros para que adquieran mas concienciación, y que sean más conscientes de esta situación y no la favorezcan. Además pretendemos compartir inventos o desarrollos que hayan sido realizados por mujeres que se estudien en nuestras carreras para mostrar el gran aporte que han realizado las mujeres a el campo de la ingeniería y de la informática. Mujeres como la que da nombre a nuestra asociación Ada Lovelace, primera persona en programar.
+      participants:
+        - name: AF Ada Lovelace
+          link: https://twitter.com/AF_Adalovelace
+
+    - title: 'La primera hora de tus próximos 10 años: una introducción a Emacs'
+      date: 2017/11/21
+      type: Taller
+      description: |
+        Repasaremos desde movimiento básico y los conceptos principales hasta la instalación de paquetes y un uso básico de Emacs Lisp. Además, se intentará repasar los paquetes principales que se usan dentro del ecosistema para las tareas más comunes: tomar notas, git, emuladores de terminal y distintos modos de programación.
+      participants:
+        - name: Diego Vicente
+          link: https://twitter.com/DiegoVicen
+      tags:
+        - Emacs
+      slides: https://github.com/diego-vicente/gul-emacs-talk/blob/master/slides.pdf
+      source: https://github.com/diego-vicente/gul-emacs-talk/
+
+    # se cayó
+    # - title: Introducción a Vim
+    #   date: 2017/11/22
+    #   type: Charla
+    #   description: |
+    #     Pequeña introducción a Vim, trucos y funcionalidades básicas y prácticas para empezar a usar Vim, desde cero.
+    #   participants:
+    #     - name: David Marcos
+    #       link: https://twitter.com/daavm98
+    #   tags:
+    #     - Vim
+
+    - title: Blender para principiantes
+      date: 2017/11/22
+      type: Charla
+      description: |
+        En esta charla os enseñaré lo más básico de Blender, así que no hace falta que vengáis con conocimiento previo, ya que empezaré desde cero. Os daré algunos consejos e ideas para que podáis crear las figuras que queráis y os enseñaré a usar los comandos más básicos siguiendo la creación de una figura sencilla. Podréis preguntarme las dudas que tengáis.
+      participants:
+        - name: Silvia Barbero
+          link: https://twitter.com/Fyrier_
+      tags:
+        - Blender
+
+    - title: 'El cerebro de las IAs: Redes neuronales'
+      date: 2017/11/23
+      type: Taller
+      description: |
+        ¿Qué es una red de neuronas? ¿Cómo funcionan estos novedosos (o no tan novedosos) algoritmos? ¿Dónde se enmarcan dentro de la Inteligencia artificial? Durante esta charla-taller se sentarán las bases que nos permitirán entender cómo funcionan estos algoritmos, sus ventajas y desventajas. Se intentarán desmitificar, acercándolos a los asistentes, con el objetivo de salir del taller con una red de neuronas funcional, y los conocimientos para desarrollar una propia.
+      participants:
+        - Axel Blanco
+      tags:
+        - IA
+      # slides: https://docs.google.com/a/uc3m.es/presentation/d/1Zayg2Hb0-rSzTp5urklVIs7P8yBfcwWbIxi9ShvdvYI/edit?usp=sharing
+      # source: https://web.archive.org/web/20201106232357/https://github.com/Drimmark/NeuralNetworksBasic
+
+    - title: 'Paralelización en Python: hemos sido engañados...'
+      date: 2017/11/23
+      type: Charla
+      description: |
+        Para los programadores que provienen de lenguajes de programaciones diferentes a Python, el modo en el que este lenguaje gestiona la paralelización con hilos (threads) puede resultar un tanto extraña. Existen muchos malentendidos sobre cómo llevarla a cabo de forma correcta, qué opciones existen para lograrla, y cuál es su diferencia con la concurrencia.
+      participants:
+        - name: Sinclert Pérez
+          link: https://twitter.com/Sinclert_95
+      tags:
+        - Python
+
+    - title: 'Despliegue "Full stack" en Python: desde el Javascript, y más allá!'
+      date: 2017/11/23
+      type: Charla
+      description: |
+        Para desplegar una aplicación web existen muchas capas (de ahí el término 'Full Stack') que tienen que comunicarse entre sí. Conviene conocerlas para tener una visión más completa de cómo funcionan los servidores web y las aplicaciones que allí se alojan. En la charla explicaré la arquitectura de una aplicación web desde arriba (Nginx / Apache) hasta abajo (Javascript del cliente), y comentaré el uso de un par de paquetes Python que permiten el funcionamiento de un back-end desplegado en dicho lenguaje: "Flask" y "Gunicorn".
+      participants:
+        - Sinclert Pérez
+      tags:
+        - Python
+        - Flask
+        - Nginx
+        - JavaScript
+
+    - title: VIMvinidos al relevo de Sublime
+      date: 2017/11/24
+      type: Charla
+      description: |
+        Es dificil saber con que IDE quedarse para el día a día. Pero por qué un IDE? Un editor de texto no está a la altura?. En esta charla veremos que Vim puede ser nuestro amigo del día a día sin ningun uso de plugins.
+      participants:
+        - name: Sergio Vinagrero
+          link: https://twitter.com/servinagrero
+      tags:
+        - Vim
+
+    - title: Animación con software libre
+      date: 2017/11/24
+      type: Taller
+      description: |
+        ¿Siempre has querido hacer tu propia serie de animación? ¿Incluir cinemáticas en algún proyecto? ¿Conocer más de cerca la animación? Sea cual sea tu motivación (y sí, aunque tu principal problema sea que dibujas como un mono borracho) aprenderemos cómo realizar nuestras primeras animaciones con herramientas libres en una sesión salpicada de historias y memes de este mundillo.
+      participants:
+        - Celia Centeno
+      tags:
+        - Animación
+
+    - title: Iniciación al scripting en Bash
+      date: 2017/11/24
+      type: Taller
+      description: |
+        Aprenderemos a crear scripts de Bash para la automatización y la realización de tareas con una charla/taller de iniciación al sistema integrado por defecto en sistemas GNU/Linux y macOS más potente de todos.
+      participants:
+        - Jorge Marcos
+      tags:
+        - Bash
 
 - title: XXXII Jornadas Técnicas
   series: Jornadas Técnicas
