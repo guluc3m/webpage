@@ -79,8 +79,8 @@
   tags: [Linux, GUL]
   slides: https://cloud-gul.uc3m.es/actividades/2006/noviembre/introduccion/introduccion-leganes.pdf
   participants:
-    - Fernando Cerezal
-    - Claudio Jiménez
+    - Fernando Cerezal López
+    - Claudio Jiménez Castillo
     - Roberto Muñoz Gómez
 
 - title: Introducción a GNU/Linux (Getafe)
@@ -89,8 +89,8 @@
   tags: [Linux, GUL]
   slides: https://cloud-gul.uc3m.es/actividades/2006/noviembre/introduccion/introduccion-getafe.pdf
   participants:
-    - Fernando Cerezal
-    - Claudio Jiménez
+    - Fernando Cerezal López
+    - Claudio Jiménez Castillo
     - Roberto Muñoz Gómez
 
 - title: Ajax en Java EE
@@ -100,7 +100,7 @@
   slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/AjaxEnJava/Ajax.pdf
   video: https://cloud-gul.uc3m.es/actividades/2007/marzo/AjaxEnJava/ajaxenJava-video.ogg
   participants:
-    - Álvaro Sanchez-Mariscal
+    - Álvaro Sánchez-Mariscal
 
 - title: Introducción a Gentoo Linux
   date: 2007/04/10
@@ -239,7 +239,7 @@
   slides: https://cloud-gul.uc3m.es/actividades/2021/mi%20primer%20linux/presentacion.pdf
   video: https://youtu.be/-8oo17P29VU
   participants:
-    - name: Daniel Rodríguez
+    - name: Daniel Rodríguez López
       link: https://github.com/patataman
 
 - title: Introducción a Git
@@ -252,7 +252,7 @@
   slides: https://cloud-gul.uc3m.es/actividades/2021/taller%20introduccion%20a%20git/presentacion.pdf
   video: https://youtu.be/jvsneGS00Tw
   participants:
-    - Daniel Rodríguez
+    - Daniel Rodríguez López
 
 - title: Python para pythipiantes
   type: Charla
@@ -278,7 +278,7 @@
     - https://pbs.twimg.com/media/FDb_IZvWQAAopPb?format=jpg&name=large
     - https://pbs.twimg.com/media/FDbYn0VXsAQZHBc?format=jpg&name=medium
   participants:
-    - Daniel Rodríguez
+    - Daniel Rodríguez López
     - name: Juan Banga
       link: https://github.com/Juanbanpar
     - Luis Daniel Casais
@@ -314,7 +314,7 @@
   poster: https://cloud-gul.uc3m.es/actividades/2022/Introducci%C3%B3n%20a%20C/cartel.png
   video: https://youtu.be/t4GKwYp4OV4
   participants:
-    - name: Alejandro Calderón
+    - name: Alejandro Calderón Mateos
       link: https://twitter.com/acaldero_uc3m
 
 - title: Feria de Asociaciones 2023

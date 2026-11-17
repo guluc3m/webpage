@@ -295,7 +295,7 @@
       video: https://cloud-gul.uc3m.es/actividades/2005/noviembre/Perl/perl-video.ogg
       participants:
         - José Manuel Ferrer
-        - J. J. Rodríguez Buleo
+        - Juan Jose Rodríguez Buleo
 
     - title: Presentación del GUL
       date: 2004/11/08
@@ -540,7 +540,7 @@
       tags: [HPC]
       slides: https://cloud-gul.uc3m.es/actividades/2007/marzo/clustering/clustering.odp
       participants:
-        - Héctor Cordobés
+        - Héctor Cordobés de la Calle
     - title: El lenguaje de programación C
       date: 2007/03/28
       type: Charla
@@ -772,7 +772,7 @@
       slides: https://cloud-gul.uc3m.es/actividades/2009/marzo/Comandos_basicos/Comandos%20Basicos.pdf
       source: https://cloud-gul.uc3m.es/actividades/2009/marzo/Comandos_basicos/Comandos%20Basicos.odp
       participants:
-        - Tanie Pérez Asensio
+        - Tania Pérez Asensio
     - title: Presentación del GUL
       date: 2009/03/09
       type: Charla
@@ -862,7 +862,7 @@
       slides: https://cloud-gul.uc3m.es/actividades/2009/noviembre/Introduccion_a_linux/Introduccion%20a%20Linux.pdf
       source: https://cloud-gul.uc3m.es/actividades/2009/noviembre/Introduccion_a_linux/Introduccion%20a%20Linux.odp
       participants:
-        - Tania Pérez
+        - Tania Pérez Asensio
     - title: Comandos Básicos
       date: 2009/10/29
       type: Charla
@@ -871,7 +871,7 @@
       slides: https://cloud-gul.uc3m.es/actividades/2009/noviembre/Comandos_basicos/Comandos%20Basicos.pdf
       source: https://cloud-gul.uc3m.es/actividades/2009/noviembre/Comandos_basicos/Comandos%20Basicos.odp
       participants:
-        - Tania Pérez
+        - Tania Pérez Asensio
     - title: Introducción a Lenguaje C
       date: 2009/10/29
       type: Charla
@@ -880,7 +880,7 @@
       slides: https://cloud-gul.uc3m.es/actividades/2009/noviembre/Introduccion_a_lenguaje_c/Introduccion%20a%20Lenguaje%20C.pdf
       source: https://cloud-gul.uc3m.es/actividades/2009/noviembre/Introduccion_a_lenguaje_c/Introduccion%20a%20Lenguaje%20C.odp
       participants:
-        - Tania Pérez
+        - Tania Pérez Asensio
     - title: Podcasting en Linux
       date: 2009/10/29
       type: Charla
@@ -910,7 +910,7 @@
         - BOINC
       video: https://cloud-gul.uc3m.es/actividades/2010/marzo/boinc/boinc.mpg
       participants:
-        - Borja Bergua
+        - Borja Bergua Guerra
     - title: Módulos del Kernel
       date: 2010/03/02
       type: Charla
@@ -966,7 +966,7 @@
       video: https://cloud-gul.uc3m.es/actividades/2010/marzo/joomla/joomla.mpg
       source: https://cloud-gul.uc3m.es/actividades/2010/marzo/joomla/Joomla.odp
       participants:
-        - Tania Pérez
+        - Tania Pérez Asensio
     - title: Securizando un servidor
       date: 2010/03/04
       type: Charla
@@ -994,7 +994,7 @@
       video: https://cloud-gul.uc3m.es/actividades/2010/marzo/memoria_dinamica/memoria_dinamica.mpg
       source: https://cloud-gul.uc3m.es/actividades/2010/marzo/memoria_dinamica/Memoria%20Dinamica.odp
       participants:
-        - Tania Pérez
+        - Tania Pérez Asensio
     - title: 'Xplico: concept, features, demo'
       date: 2010/03/10
       type: Charla
@@ -1090,7 +1090,7 @@
         - Android
       slides: https://cloud-gul.uc3m.es/actividades/2010/noviembre/desarrollando_aplicaciones_para_Android/Desarrollando%20aplicaciones%20para%20Android.pdf
       participants:
-        - Tania Pérez
+        - Tania Pérez Asensio
 
 - title: XVII Jornadas Técnicas
   series: Jornadas Técnicas
@@ -1406,7 +1406,7 @@
         - JavaScript
       video: https://youtu.be/ecku_iQ0U6A
       participants:
-        - Juanra Martín
+        - Juan Ramón Martín Blanco
     - title: Bitcoin
       date: 2014/03/19
       type: Charla
@@ -1757,7 +1757,7 @@
       video: https://youtu.be/n-AOqHFxuv8
       link: http://yago.me/gul2015
       participants:
-        - name: Yago Pérez
+        - name: Yago Pérez Sáiz
           link: https://twitter.com/yag_91
 
     - title: Programando en Android Wear
@@ -2064,7 +2064,7 @@
       video: https://youtu.be/B7KZHrf1bds
       slides: https://cloud-gul.uc3m.es/actividades/2016/Noviembre/honduco_espiando_procesos_en_linux.pdf
       participants:
-        - Javier Honduvilla Coto
+        - Francisco Javier Honduvilla Coto
     - title: La serpiente que quería sumar
       description: En esta charla haremos una introducción a varias librerías matemáticas de python, tanto enfocadas al cálculo como a las gráficas y la muestra de datos. Veremos tambien un breve repaso a algunas librerías basadas en estas pensadas para machine learning o data science.
       date: 2016/11/16
@@ -2227,7 +2227,7 @@
       tags:
         - Python
       participants:
-        - Daniel Rodríguez
+        - Daniel Rodríguez López
 
 - title: XXX Jornadas Técnicas
   series: Jornadas Técnicas
@@ -2241,7 +2241,7 @@
       description: |
         Tengas conocimientos o no de programación, esta charla es para ti (si quieres aprender Python). La idea es en los primeros 3 cuartos del tiempo explicar Python, sintaxis, funciones, clases, entrada/salida, sentencias de control... Y al final, dar tiempo para trastear y responder las dudas que puedan surgir.
       participants:
-        - Daniel Rodríguez
+        - Daniel Rodríguez López
       tags:
         - Python
       source: https://github.com/Patataman/PythonBasic
@@ -2309,7 +2309,7 @@
       photos:
         - https://pbs.twimg.com/media/C8Gf1OAXUAAm1b2?format=jpg&name=large
       participants:
-        - Fernando Cerezal
+        - Fernando Cerezal López
       tags:
         - Impresión 3D
       description: |
@@ -2387,8 +2387,8 @@
       tags:
         - Agile
       participants:
-        - Fernando Cerezal
-        - Adrián Casado
+        - Fernando Cerezal López
+        - Adrián Casado Rivas
       slides: https://cloud-gul.uc3m.es/actividades/2017/marzo/C%C3%B3mo%20se%20usan%20las%20metodolog%C3%ADas%20%C3%A1giles%20en%20el%20mundo%20real.pdf
       description: |
         Haremos una dinámica por equipos para poder entender algunas reglas de las metodologías ágiles y cuándo trabajar con ellas.
@@ -2619,7 +2619,7 @@
       tags:
         - Python
       participants:
-        - Daniel Rodríguez
+        - Daniel Rodríguez López
 
     - title: Zoe ha muerto, ¡larga vida a Zoe!
       date: 2018/04/12
@@ -2630,7 +2630,7 @@
         - GUL
       link: https://github.com/guluc3m/zoe-lib-python
       participants:
-        - Daniel Rodríguez
+        - Daniel Rodríguez López
 
     - title: Introducción a la creación de bots
       date: 2018/04/12
@@ -2663,7 +2663,7 @@
       tags:
         - Hardware
       participants:
-        - Daniel Rodríguez
+        - Daniel Rodríguez López
 
 - title: GUL JAMón 2018
   series: GUL Jamón
@@ -2760,7 +2760,7 @@
         - Terminal
         - Linux
       participants:
-        - Daniel Rodríguez
+        - Daniel Rodríguez López
 
     - title: Install Party
       date: 2019/03/18
@@ -2818,7 +2818,7 @@
         En este taller aprenderás la sintaxis básica y tomarás tus primeros pasos junto a este maravilloso lenguaje.
       slides: https://cloud-gul.uc3m.es/actividades/2019/XXXIII%20Jornadas%20T%C3%A9cnicas/Python.pdf
       participants:
-        - Alejandro Cruz
+        - Alejandro de la Cruz
         - Alejandro de la Torre
 
     - title: Impresoras 3D
