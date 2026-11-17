@@ -1365,8 +1365,7 @@
   author: Carlos Linares (Heurística y Optimización)
 
 - quote: |-
-    Como en una fiesta el que mejor se lo pasa es el que se mete de to\', y en la uni
-    el que se mete en to'
+    Como en una fiesta el que mejor se lo pasa es el que se mete de to', y en la uni el que se mete en to'
   author: Hector Molina
 
 - quote: |-
@@ -1387,9 +1386,9 @@
   author: Hack Quesitos
 
 - quote: |-
-    Presi femboy: ¿Qué hay para comer?
-    EL secretario del kebab: Picha
-    Ohh que maravilla
+    - Presi: ¿Qué hay para comer?
+    - Secretario: Picha
+    - Héctor: Oh, qué maravilla
   author: Héctor Molina
 
 - quote: |-
@@ -1401,3 +1400,8 @@
     (un par de frases despues)
     Lo puedo modificar, puedo hacer cochinadas
   author: Javier Garcia Blas (HPC)
+
+- quote: |-
+    - Christian: Yay es más divertido porque puedes escribir `yay` en la terminal
+    - Hugo: `alias yippie="paru"`
+  author: Christian y Hugo (Go vs Rust)
