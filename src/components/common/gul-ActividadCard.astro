@@ -5,7 +5,9 @@
  * the list's width; the photo is a fixed column and the frame takes the rest.
  * The photo keeps its own aspect ratio, so the two columns rarely match in
  * height — `items-center` lines up their midpoints instead of their tops.
- * Mobile stacks them, photo first. The type and tag badges are buttons that
+ * Mobile stacks them, photo first. With `stackedImageBelow` (congreso cards),
+ * a stack at md+ puts the photo under the text instead of over it. The type
+ * and tag badges are buttons that
  * add that filter in gul-ActividadFilters (`data-filter-add`). Clicking the
  * cover opens cartel + photos in gul-Lightbox.
  */
@@ -20,9 +22,16 @@ interface Props {
   actividad: Actividad;
   /** Nivel del heading del título: 'h2' suelto en /actividades, 'h3' dentro de un gul-CongresoCard. */
   heading?: 'h2' | 'h3';
+  /**
+   * Con la imagen apilada en columna en md+ (la card queda estrecha, p.ej.
+   * junto al cartel flotante de un congreso), la baja debajo del texto en vez
+   * de dejarla encima: `order-first` sólo manda por debajo de md, y en @2xl
+   * sigue yendo al lado. Sin efecto en móvil, donde la foto sigue primero.
+   */
+  stackedImageBelow?: boolean;
 }
 
-const { actividad: a, heading = 'h2' } = Astro.props;
+const { actividad: a, heading = 'h2', stackedImageBelow = false } = Astro.props;
 const Title = heading;
 // The cartel goes first and stays the cover; the photos are what happened after.
 const images = [a.poster, ...(a.photos ?? [])]
@@ -81,7 +90,10 @@ const datetime = hasNoDay(a.date) ? a.date.slice(0, 7) : a.date.replaceAll('/', 
           type="button"
           data-gul-lightbox-open={lightboxId}
           title={images.length > 1 ? `Ver las ${images.length} imágenes` : 'Ver imagen'}
-          class="relative order-first block h-56 w-full cursor-pointer overflow-hidden rounded-md border border-gul-line transition-colors hover:border-gul-ink/40 @2xl:order-last @2xl:h-auto @2xl:w-70 @2xl:shrink-0"
+          class:list={[
+            'relative order-first block h-56 w-full cursor-pointer overflow-hidden rounded-md border border-gul-line transition-colors hover:border-gul-ink/40 @2xl:order-last @2xl:h-auto @2xl:w-70 @2xl:shrink-0',
+            stackedImageBelow && 'md:order-last',
+          ]}
         >
           <img
             src={images[0]!.src}

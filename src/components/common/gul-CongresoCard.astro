@@ -4,11 +4,15 @@
  * /actividades: una tarjeta mayor que envuelve a las más pequeñas
  * (gul-ActividadCard) de sus Actividads, más la cabecera (fechas deducidas de
  * las de las activities, título, serie y web). En móvil todo va en columna:
- * título, cartel — global, las activities no llevan el suyo — y después la
- * lista. En md+ el cartel flota a la derecha desde arriba: las cards (BFC
- * todas por el overflow-hidden del marco, ver gul-Frame) se estrechan a su
- * lado las que quepan — la primera, la segunda… según el alto del cartel — y
- * el resto baja a todo el ancho. El marco va sin PixelDissolve (la variante
+ * título, cartel — global, aunque las activities pueden llevar el suyo — y
+ * después la lista. En md+ el cartel flota a la derecha desde arriba: las
+ * cards (BFC todas por el overflow-hidden del marco, ver gul-Frame) se
+ * estrechan a su lado las que quepan — la primera, la segunda… según el alto
+ * del cartel — y el resto baja a todo el ancho. Esa columnas estrechas dejan
+ * a la card de la actividad por debajo del umbral (@2xl) de imagen al lado,
+ * así que sus fotos van apiladas: les pasamos stackedImageBelow para que
+ * caigan debajo del texto, no encima. El marco va sin PixelDissolve (la
+ * variante
  * "plain" de gul-Frame) para que el grupo grande no compita en textura con
  * las cards que lleva dentro, y su badge de serie va en el acento ámbar
  * (gul-amber, el mismo token del callout de aviso) para distinguirlo de una
@@ -112,7 +116,7 @@ const ICONS = {
             .toLowerCase()}
           data-recursos={recursosOf(a).join(',')}
         >
-          <GulActividadCard actividad={a} heading="h3" />
+          <GulActividadCard actividad={a} heading="h3" stackedImageBelow />
         </li>
       ))}
     </ul>
