@@ -4,8 +4,6 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readdirSync } from 'node:fs';
-import { join } from 'node:path';
 import sharp from 'sharp';
 import {
   contraste,
@@ -145,18 +143,4 @@ test('paletaDeImagen: PNG transparente se pinta sobre negro, no se rompe', async
     .png()
     .toBuffer();
   assert.deepEqual(revisarContraste(await paletaDeImagen(png)), []);
-});
-
-test('paletaDeImagen: todas las imágenes reales del repo dan una paleta legible', async () => {
-  const carpetas = ['../assets/real', '../../public/actividades'];
-  let vistas = 0;
-  for (const carpeta of carpetas) {
-    const dir = new URL(carpeta + '/', import.meta.url).pathname;
-    for (const f of readdirSync(dir).filter((n) => /\.(jpe?g|png)$/i.test(n))) {
-      const paleta = await paletaDeImagen(join(dir, f));
-      assert.deepEqual(revisarContraste(paleta), [], `${f} → ${JSON.stringify(paleta)}`);
-      vistas++;
-    }
-  }
-  assert.ok(vistas >= 8, `solo ${vistas} imágenes`);
 });

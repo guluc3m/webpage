@@ -19,3 +19,22 @@ export async function paletaDeImagen(origen: string | Buffer): Promise<Paleta> {
     .toBuffer({ resolveWithObject: true });
   return paletaDesdePixeles(data);
 }
+
+/** Igual que paletaDeImagen, pero descargando la imagen de una URL: carteles que no
+ * viven en el repo (public/). Es build-time como el resto, y si la descarga falla o
+ * no trae una imagen, avisa y devuelve undefined: el que llama usa su paleta por
+ * defecto, en vez de tumbar el build por un cielo nublado (o un 404). */
+export async function paletaDeUrl(url: string): Promise<Paleta | undefined> {
+  try {
+    const res = await fetch(url, { signal: AbortSignal.timeout(10_000) });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const tipo = res.headers.get('content-type') ?? '';
+    if (!tipo.startsWith('image/')) throw new Error(`content-type ${tipo || 'desconocido'}`);
+    return await paletaDeImagen(Buffer.from(await res.arrayBuffer()));
+  } catch (err) {
+    console.warn(
+      `[paletaImagen] no se pudo leer ${url}: ${err instanceof Error ? err.message : err}`,
+    );
+    return undefined;
+  }
+}

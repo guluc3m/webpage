@@ -8,8 +8,8 @@
  *
  * El cartel (`poster`) da los colores: al construir la web se lee la imagen y se saca de ella el
  * fondo, el texto y el acento (src/lib/color.ts), ajustados para que siempre se lea (contraste
- * AA). Solo se lee si el cartel está en public/ (`/actividades/…`); si es una URL externa o falta,
- * el banner usa la paleta de la web.
+ * AA). Se lee tanto si vive en public/ (`/actividades/…`) como si es una URL externa (se
+ * descarga en build); si falta o la descarga falla, el banner usa la paleta de la web.
  *
  * Se comprueba dos veces que el evento no ha acabado, porque la web es estática y el build no se
  * repite solo: al construirla (el HTML ya sale sin banner) y en el navegador (por si llega una
@@ -24,7 +24,7 @@ import GulTerminal from '@components/common/gul-Terminal.astro';
 import { loadActividades } from '@lib/actividades.ts';
 import { conFechas, formatearFecha, proximoEvento } from '@lib/evento.ts';
 import { renderInlineMarkdown } from '@lib/markdown.ts';
-import { paletaDeImagen } from '@lib/paletaImagen.ts';
+import { paletaDeImagen, paletaDeUrl } from '@lib/paletaImagen.ts';
 import { ALPHA_DITHERING, hexARgb, revisarContraste, rgbATriplete } from '@lib/color.ts';
 import rawActividades from '@data/actividades.yaml?raw';
 
@@ -34,12 +34,15 @@ const evento = proximoEvento(conFechas(loadActividades(rawActividades)));
 
 const { dia, hora } = evento ? formatearFecha(evento) : { dia: '', hora: '' };
 
-// El cartel solo se lee si está en public/: el build corre en la raíz del proyecto.
-const rutaCartel =
-  evento?.poster?.startsWith('/') && existsSync(join('public', evento.poster))
-    ? join('public', evento.poster)
-    : undefined;
-const delCartel = rutaCartel ? await paletaDeImagen(rutaCartel) : undefined;
+// El cartel solo se lee si está en public/: el build corre en la raíz del proyecto. Un cartel
+// remoto (URL http) se descarga en build; si la descarga falla, paletaDeUrl avisa y da
+// undefined y el banner usa su paleta por defecto.
+const poster = evento?.poster;
+const delCartel = await (poster?.startsWith('/') && existsSync(join('public', poster))
+  ? paletaDeImagen(join('public', poster))
+  : poster?.startsWith('http')
+    ? paletaDeUrl(poster)
+    : undefined);
 const colores = {
   fondo: delCartel?.fondo ?? 'var(--color-gul-surface)',
   texto: delCartel?.texto ?? 'var(--color-gul-ink)',

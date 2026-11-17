@@ -625,7 +625,7 @@
       link: https://github.com/Toriomg
   link: https://hackspain.com/
   photos:
-    - /actividades/hackspain.png
+    - https://pbs.twimg.com/media/HSph12JXEAAqe_8?format=jpg&name=4096x4096
   source: https://github.com/guluc3m/hackspain26
 
 - title: Linux Install Party
@@ -648,12 +648,12 @@
   type: Charla
   tags: [Git]
   date: 2026/11/05
-  poster: /actividades/charlaGit26.jpg
-  #slides: https://cloud-gul.uc3m.es/actividades/2023/Introducci%C3%B3n%20a%20Git/Taller_de_Git.pdf
-  #source: https://github.com/guluc3m/tutorial_git
+  poster: https://cloud-gul.uc3m.es/actividades/2026/Git%20Workshop/cartel.jpg
   participants:
     - Héctor Molina
     - Jorge Saghin
+  slides: https://cloud-gul.uc3m.es/actividades/2026/Git%20Workshop/transparencias.pdf
+  source: https://github.com/Toriomg/charlas-git-2026-27/
 
 - title: Gincana criptográfica (CTF) | Semana de la Ciencia x Biblioteca EPS
   description: >-
@@ -663,4 +663,4 @@
   date: 2026/11/23
   place: Biblioteca de la EPS, Campus de Leganés
   link: https://www.semanacienciamadrid.org/actividad/gincana-criptografica-aprender-criptografia-divirtiendote
-  poster: /actividades/gincana-criptografica26.png
+  poster: https://cloud-gul.uc3m.es/actividades/2026/ctf/cartel.png
