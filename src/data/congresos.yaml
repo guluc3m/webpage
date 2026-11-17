@@ -2156,6 +2156,7 @@
 - title: IV Semana de Asociaciones
   series: Semana de Asociaciones
   edition: 4
+  poster: https://pbs.twimg.com/media/DKjhqoEWAAESQvq?format=jpg&name=large
   activities:
     - title: Feria de Asociaciones 2017
       type: Feria de Asociaciones
@@ -2164,6 +2165,23 @@
         - https://pbs.twimg.com/media/DLcaeUPX4AADX1U?format=jpg&name=large
         - https://pbs.twimg.com/media/DLcafDAX4AAtgij?format=jpg&name=large
         - https://pbs.twimg.com/media/DLduh8TW4AAUmzv?format=jpg&name=large
+    - title: Una radio a tu alcance
+      type: Radio
+      poster: https://pbs.twimg.com/media/DKpiXRwWsAAY3Or?format=jpg&name=900x900
+      date: 2017/10/02
+      participants:
+        - Sixto Fernández
+      photos:
+        - https://pbs.twimg.com/media/DLIoZeXWkAExf_Z?format=jpg&name=large
+      video: https://cloud-gul.uc3m.es/actividades/2017/una_radio_a_tu_alcance/audio_unaradioatualcance_20171002.zip
+    - title: Linux para principiantes
+      type: Charla
+      date: 2017/10/04
+      tags: [Linux]
+    - title: Zoe
+      type: Charla
+      date: 2017/10/02
+      tags: [Zoe]
 
 - title: El Evento 2016
   series: El Evento
@@ -2191,11 +2209,176 @@
       participants:
         - Daniel Rodríguez
 
-# XXX jt
-# https://x.com/guluc3m/status/847496779708973057?s=20
-# https://x.com/guluc3m/status/847186915489173506?s=20
-# https://x.com/guluc3m/status/847133954947862528?s=20
-# https://x.com/guluc3m/status/843079858947342336?s=20
+- title: XXXI Jornadas Técnicas
+  series: Jornadas Técnicas
+  edition: 31
+  poster: https://cloud-gul.uc3m.es/actividades/2017/marzo/cartel_xxx_jornadas.png
+  activities:
+    # https://web.archive.org/web/20190915090155/https://cursos.gul.es/xxx-jornadas-tecnicas-del-gul
+    - title: Python para todos, y todos para Python!
+      date: 2017/03/27
+      type: Taller
+      description: |
+        Tengas conocimientos o no de programación, esta charla es para ti (si quieres aprender Python). La idea es en los primeros 3 cuartos del tiempo explicar Python, sintaxis, funciones, clases, entrada/salida, sentencias de control... Y al final, dar tiempo para trastear y responder las dudas que puedan surgir.
+      participants:
+        - Daniel Rodríguez
+      tags:
+        - Python
+      source: https://github.com/Patataman/PythonBasic
+
+    - title: Quédate con alguien que te mire como Wall-E
+      date: 2017/03/31
+      type: Charla
+      participants:
+        - Clara Luis Miguenza
+      tags:
+        - Visión Artificial
+      description: |
+        Hablaremos de las técnicas y fundamentos teóricos que forman la base de la visión artificial. Analizaremos las técnicas más usadas dentro de este campo tan cuco, y veremos cómo se traducen en un script de código. Todo esto en una hora... ¿fácil, verdad?
+
+    - title: No dejes que la consola de Linux te intimide
+      date: 2017/03/29
+      type: Charla
+      participants:
+        - Axel Blanco
+      tags:
+        - Linux
+        - Terminal
+      description: |
+        ¿Has abierto alguna vez la consola y las has cerrado por parecer un pozo negro? ¿Siempre has pensado que esto de Linux es muy difícil y la consola es muy fea? Eso es porque no la has mirado con cariño y detalle. Tras esta charla tendrás conocimientos suficientes para realizar tus practicas, completar tus proyectos personales e incluso mandar algún que otro satélite al espacio. Si tienes suerte, incluso puede que sepas tanto como para hacer hablar a las vacas. En esta charla repasaremos algunos comandos básicos de la consola de Linux y otros (sobre todo otros) no tan básicos. Aprende como exprimir el máximo potencial a tu Linux, hasta el punto de odiar entornos gráficos y querer crear carpetas desde la consola. O no, porque tú puedes. Saldrás de esta charla pensando "como he podido vivir hasta ahora sin saber esto?" o te devolvemos el dinero.
+      slides: https://cloud-gul.uc3m.es/actividades/2017/marzo/noDejesQueLaConsolaDeLinuxTeIntimide.pdf
+
+    - title: Android Flavors Beyond the Basics
+      date: 2017/03/30
+      type: Charla
+      participants:
+        - name: Alexander Cabezas
+          link: https://twitter.com/alex_cabezas_me
+        - Alberto Sánchez López
+      tags:
+        - Android
+        - Gradle
+        - Jenkins
+      description: |
+        Si estás comenzando en Android como si eres ya un entendido, seguramente habrás oído hablar de lo que son los Flavors, Build Variants o el sistema de integración continua Jenkins. Si no has oído hablar nunca de ello, esta es una buena manera de entender qué son, ya que repasaremos todos estos conceptos y nos meteremos de lleno en ejemplos prácticos para ver su uso en proyectos Android reales. Si ya tienes experiencia en Android y Jenkins entonces en esta charla podrás conocer cómo se ha desarrollado este proceso en diferentes proyectos y así podremos compartir experiencia y conocimientos.
+    - title: Archi, Archimate y Modelado de Arquitecturas
+      date: 2017/03/28
+      participants:
+        - name: Enrique González Llano
+          link: https://twitter.com/ArquiEmpresa
+      type: Charla
+      description: |
+        En la charla introduciré Archimate de la mano de Archi con una mirada crítica sobre la situación de la Arquitectura Empresarial y sus retos actuales. [Archi](http://www.archimatetool.com) es una herramienta de modelado gráfico OSS que esta teniendo una gran aceptación en el modelado de Arquitecturas con Archimate. [Archimate](http://www.opengroup.org/subjectareas/enterprise/archimate-overview) en un estandard de modelado grafico de arquitecturas gestionado actualmente por [The Open Group](http://www.opengroup.org/aboutus). Entre los dos están revolucionando las formas clásicas de aproximarse al diseño y modelado de Arquitecturas tanto a nivel Empresarial como de Soluciones por ejemplo con el uso de plataforma de desarrollo colaborativo (GitHub) a traves del [estandard de intercambio de modelos de Archimate](http://www.opengroup.org/subjectareas/enterprise/archimate/model-exchange-file-format)
+
+    - title: Mi primer bot de Telegram. Porque tener más spam, es posible
+      type: Taller
+      date: 2017/03/27
+      tags:
+        - Telegram
+        - Python
+      participants:
+        - Adrián Borja Pimentel
+      description: Programaremos un bot básico de Telegram utilizando TelegramBotAPI
+      source: https://github.com/DelegacionUC3M/delebot
+
+    - title: Cómo funciona la impresión 3D paso a paso
+      date: 2017/03/27
+      type: Charla
+      photos:
+        - https://pbs.twimg.com/media/C8Gf1OAXUAAm1b2?format=jpg&name=large
+      participants:
+        - Fernando Cerezal
+      tags:
+        - Impresión 3D
+      description: |
+        La impresión en 3D es posible gracias a múltiples proyectos que la hacen posible. Haremos un pequeño recorrido por ellos y su función en a cadena, desde el diseño a la impresión.
+
+    - title: La Singularidad, ¿A qué debemos temer?
+      type: Charla
+      date: 2017/03/30
+      tags:
+        - IA
+      description: |
+        ¿Qué es la singularidad? Si una IA es más inteligente que nosotros, ¿Tememos a los creadores, o a la IA?
+
+    - title: Docker as development environment
+      type: Charla
+      date: 2017/03/28
+      description: |
+        Virtualiza tu entorno de desarrollo y llévatelo a tu ballena favorita.
+      tags:
+        - Docker
+      participants:
+        - Lucas Menéndez
+
+    - title: Producción musical en Linux
+      type: Charla
+      date: 2017/03/29
+      tags:
+        - Linux
+        - Música
+      description: |
+        ¿Eres un usuario de Linux al que alguna vez le he picado la curiosidad por crear su propia música? ¿Ya utilizas un ordenador Windows o Mac pero tienes un portátil muerto de risa y quieres probar Linux haciendo lo que te gusta? No lo dudes y pásate por esta charla. Tanto si quieres que suenen tres cosas en tu viejo netbook como si quieres montar un estudio casero basado en Linux, te vamos a explicar a grandes rasgos JACK, Audacity, LMMS (y Radium si da tiempo) para que salgas de aquí con una idea suficiente para comenzar a trastear en casa.
+      participants:
+        - name: Jorge Marcos
+          link: https://twitter.com/jorgeelalto
+    
+    - title: ¡Orcos de Mongo, gritad para mí!
+      type: Taller
+      date: 2017/03/28
+      tags:
+        - MongoDB
+      description: |
+        MongoDB es posiblemente la base de datos noSQL más famosa, aprendamos a usarla y conquistemos la Tierra Media, por ejemplo.
+      participants:
+        - Alejandro Baldominos
+    
+    - title: 'FreeCAD: parametrízame como puedas'
+      type: Taller
+      date: 2017/03/31
+      tags:
+        - FreeCAD
+      description: Taller de diseño de objetos paramétricos usando FreeCAD
+      participants:
+        - name: David Estevez
+          link: https://twitter.com/DEFrobotics
+    
+    - title: Taller sobre Angular (v4.0)
+      type: Taller
+      date: 2017/03/30
+      photos:
+        - https://pbs.twimg.com/media/C8Lp0AbXgAAhw9l?format=jpg&name=large
+        - https://pbs.twimg.com/media/C8HP-iGXkAAXmap?format=jpg&name=large
+      tags:
+        - Angular
+        - TypeScript
+      description: |
+        Una introducción básica a TypeScript y Angular, comparándolo brevemente con su predecesor para aquellos que ya han experimentado con la versión anterior, y explicando sus características principales (módulos, componentes, router, servicios, peticiones ajax...) para los que se quieran adentrar de primeras. Además, elaboraremos entre todos una pequeña aplicación (por lo limitado del tiempo) a lo largo del taller para poner en práctica lo aprendido. Al final, incluso podremos probar nuestra recién desarrollada aplicación con test unitarios (y si da tiempo, test de integración -e2e-).
+      participants:
+        - name: José Manuel García García
+          link: https://twitter.com/semagarcia
+        - Isabel Matas Rabadan
+
+    - title: Cómo se usan las metodologías ágiles en el mundo real
+      type: Taller
+      date: 2017/03/29
+      tags:
+        - Agile
+      participants:
+        - Fernando Cerezal
+        - Adrián Casado
+      description: |
+        Haremos una dinámica por equipos para poder entender algunas reglas de las metodologías ágiles y cuándo trabajar con ellas.
+
+    - title: Por qué el Software Libre es importante (Breve historia del GUL)
+      type: Charla
+      date: 2017/03/31
+      tags:
+        - GUL
+        - Software Libre
+      description: |
+        El GUL nació de un pequeño grupo de personas con curiosidad cuando Linux se consideraba un juguete de freakies. Las licencias libres eran utopías de hippies sin futuro. Hoy Linux es omnipresente, de android a smart TV, de entorno doméstico a Amazon. Parece que todo lo interesante se puede encontrar publicado en GitHub. Sin embargo... la realidad es más frágil de lo que parece.
+
 
 # https://x.com/guluc3m/status/924890462678331393?s=20
 # - title: XXXI Jornadas Técnicas
