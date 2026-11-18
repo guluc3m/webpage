@@ -6,7 +6,7 @@
       "additionalProperties": false,
       "properties": {
         "quote": {
-          "description": "- Usen siempre `quote: |-`\n- Las fortunas simples, e.g. \"me gustan los pies\", son de una línea; si tienen \"setup\" también; e.g.\n    \"*luisda hablando del logo de GNOME* me gustan los pies\", o\n    \"(a voz en grito en el despacho) ¡Debian la chupa!)\", o\n    \"no os preoupéis, que no me voy a ir a ningún sitio *no se le volvió a ver*\"\n- Las conversaciones también en multilínea y con `-` y `\"`, e.g.:\n  - Profe: \"Aquí tienes tu examen\"\n  - Alumno: \"¿Cúando es la recuperación?\"\n- Como usan `|-` (sensible a saltos de línea), las fortunas de una línea dejadlas en una línea.",
+          "description": "Texto de la cita. Mira las reglas de formato en CONTRIBUTING.md",
           "type": "string"
         },
         "author": {

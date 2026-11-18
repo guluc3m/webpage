@@ -56,6 +56,12 @@ Reglas generales de formato:
   - Profe: "Aquí tienes tu examen"
   - Alumno: "¿Cúando es la recuperación?"
   ```
+- En las situaciones de que sea una frase, una acción (entre paréntesis os asteriscos) y otra frase, son multilínea y las frases van con `"`, e.g.:
+  ```
+  "Espero no caerme hoy"
+  *se cae*
+  "Mecagoen..."
+  ```
 - Como usan `|-` (sensible a saltos de línea), las fortunas de una línea dejadlas en una línea.
 - Autores:
   - Si la fortuna la ha soltado un profe en clase, pues `"Profesor Con Apellidos (Asignatura)"`

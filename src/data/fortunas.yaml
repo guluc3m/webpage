@@ -1,19 +1,6 @@
 # yaml-language-server: $schema=schema/fortunas.schema.json
-# Reglas generales de formato:
-# - Usen siempre `quote: |-`
-# - Las fortunas simples, e.g. "me gustan los pies", son de una línea; si tienen
-#   "setup" también; e.g.
-#     "*luisda hablando del logo de GNOME* me gustan los pies", o
-#     "(a # voz en grito en el despacho) ¡Debian la chupa!", o
-#     "no os preoupéis, que no me voy a ir a ningún sitio *no se le volvió a ver*",
-# - Las conversaciones también en multilínea y con `-` y `"`, e.g.:
-#   - Profe: "Aquí tienes tu examen"
-#   - Alumno: "¿Cúando es la recuperación?"
-# - Como usan `|-` (sensible a saltos de línea), las fortunas de una línea dejadlas en una línea.
-# - Autores:
-#   - Si la fortuna la ha soltado un profe en clase, pues "Profesor Con Apellidos (Asignatura)"
-#   - Si es otro random/miembro, nombre/mote, e.g. "Epi"
-#   - Comentarios, etc. al final y en minúscula, e.g. "Pepe (un grande)" o "Eumelia y su perrito"
+
+# Las reglas generales de formato están en CONTRIBUTING.md.
 
 - quote: |-
     Esto es un ejemplo real, no penseis que me he inspirado en una noche etilica
@@ -29,7 +16,7 @@
 
 - quote: |-
     - Persona: "En los IDE de Linux se echa de menos que te permitan ir a la definicion del metodo/variable..."
-    - Jesús (dando saltitos y moviendo los brazos) "Eso lo tiene VIM, eso lo tiene VIM, eso lo tienen VIM..."
+    - Jesús (dando saltitos y moviendo los brazos): "Eso lo tiene VIM, eso lo tiene VIM, eso lo tienen VIM..."
   author: Jesús Espino (¿él tiene Vim o Vim le tiene a él?)
 
 - quote: |-
@@ -426,7 +413,7 @@
   author: Pablo Acedo (Electrónica)
 
 - quote: |-
-    Te voy a contar una historia. No sé si es verdad o no, pero me la creo, porque apoya mi teoría.
+    Te voy a contar una historia. No sé si es verdad o no, pero yo me la creo, porque apoya mi teoría.
   author: Roberto Muñoz
 
 - quote: |-
@@ -511,9 +498,9 @@
 
 - quote: |-
     *Un estudiante levanta la mano en un examen; el profesor se acerca*
-    - Alumno (en voz baja): Profesor, ¿puedo hacer una pregunta?
-    - Profesor (en voz baja): Sí, claro.
-    - Alumno (de viva voz): Chavales, ¿qué habéis puesto en la siete?
+    - Alumno (en voz baja): "Profesor, ¿puedo hacer una pregunta?"
+    - Profesor (en voz baja): "Sí, claro."
+    - Alumno (de viva voz): "Chavales, ¿qué habéis puesto en la siete?"
   author: Caso real del Máster en Comercio Electrónico (UC3M)
 
 - quote: |-
@@ -563,9 +550,9 @@
   author: Jaime Garcia (Nuevos Métodos de Enseñanza)
 
 - quote: |-
-    Profesor:"¿Conoceis el libro de Bush (1945)?"
-    Clase: "jejeje, sí, a un Bush si que conocemos..."
-    P: "No, pero no el Bush de ahora, no ese mendrugo, otro."
+    - Profesor:"¿Conoceis el libro de Bush (1945)?"
+    - Clase: "jejeje, sí, a un Bush si que conocemos..."
+    - P: "No, pero no el Bush de ahora, no ese mendrugo, otro."
   author: Fausto Sainz (Interfaces de Usuario)
 
 - quote: |-
@@ -581,11 +568,11 @@
   author: David (@Voiser) - na de na
 
 - quote: |-
-    Profesor: "¿Alguno ha compilado un kernel alguna vez?"
+    - Profesor: "¿Alguno ha compilado un kernel alguna vez?"
     *Sólo levanta la mano un alumno*
-    Profesor: "Bueno... ¿quien tiene instalado Linux en casa?"
+    - Profesor: "Bueno... ¿quien tiene instalado Linux en casa?"
     *Levantan la mano 4 o 5*
-    Profesor: "Vale. Al menos espero que tengais más vida social que yo."
+    - Profesor: "Vale. Al menos espero que tengais más vida social que yo."
   author: Alejandro Calderón (Friki incomprendido)
 
 - quote: |-
@@ -671,7 +658,8 @@
   author: Fernando Jurado (autómatas molones)
 
 - quote: |-
-    *Alumna termina un ejercicio en la pizarra.* (con una sonrisita) ¿Estás completamente satisfecha?
+    *Alumna termina un ejercicio en la pizarra*
+    - Profesor (con una sonrisita): ¿Estás completamente satisfecha?
   author: Fernando Jurado (aguante máximo)
 
 - quote: |-
@@ -911,7 +899,7 @@
   author: Javier García (Computación de Altas Prestaciones)
 
 - quote: |-
-    En vez de usar "patrón maestro-esclavo", ya que es un término poco inclusivo, usaremos "patrón profesor-becario".
+    En vez de usar "patrón maestro-esclavo", que es un término poco inclusivo, usaremos "patrón profesor-becario".
   author: Javier García (Computación de Altas Prestaciones)
 
 - quote: |-
@@ -975,7 +963,7 @@
   author: Javier García (Computación de Altas Prestaciones)
 
 - quote: |-
-    ¿Que vamos a usar chat?
+    ¿Qué vamos a usar chat?
   author: Daniel Garzon (Criptografía y seguridad informática)
 
 - quote: |-
@@ -1044,7 +1032,7 @@
 
 - quote: |-
     Los niños, que no hacen nada, no los puedo poner a trabajar
-  author: José Antonio
+  author: Jose Antonio
 
 - quote: |-
     Linux Manjaro es como Hannah Montana: lo mejor de ambos mundos
@@ -1060,7 +1048,7 @@
 
 - quote: |-
     Al inicio la teoría era sólamente teórica, pero al aplicarlo era más complicado
-  author: Anónimo
+  author: Alumno anónimo (en una memoria)
 
 - quote: |-
     ¡Eso es, Arquitectura me la pone dura!
@@ -1231,7 +1219,7 @@
   author: Daniel Garzon (Seguridad en dispositivos móviles)
 
 - quote: |-
-    ¿Habéis visto? Esto es lo que hace un jefe, la culpa es mía, pero se la echo a él.
+    ¿Habéis visto? Esto es lo que hace un jefe: la culpa es mía, pero se la echo a él.
   author: Daniel Garzon (Seguridad en dispositivos móviles)
 
 - quote: |-
@@ -1259,7 +1247,7 @@
 
 - quote: |-
     - Alumno: "¿Si suspendo el parcial...?"
-    - Daniel: "No hay huevos"
+    - Profesor: "No hay huevos"
   author: Daniel Garzon (Seguridad en dispositivos móviles)
 
 - quote: |-
@@ -1271,7 +1259,7 @@
   author: Luisda hablando sobre "First Dates"
 
 - quote: |-
-    Qué cojones, qué redes ni qué mierda; un Python, si tienes tanto azucar tanta insulina... ni agentes ni mierdas.
+    Qué cojones, qué redes ni qué mierda; ¡un Python! Si tienes tanto azúcar, tanta insulina... ni agentes ni mierdas.
   author: Daniel Garzon (Seguridad en dispositivos móviles)
 
 - quote: |-
@@ -1292,7 +1280,7 @@
   author: Alejandro Calderón (Sistemas distribuidos)
 
 - quote: |-
-    ¿Uptime? No tiene 256 de RAM?
+    ¿Uptime? ¿No tiene 256 de RAM?
   author: Un muerdeantenas del GUL
 
 - quote: |-
@@ -1345,7 +1333,7 @@
   author: Javier Garcia Blas (HPC)
 
 - quote: |-
-    Y señoras y señores, ... te la sacas...... La columna por favor
+    Y señoras y señores... te la sacas. La columna, por favor
   author: Carlos Linares (Heurística y Optimización)
 
 - quote: |-
@@ -1365,13 +1353,13 @@
   author: Carlos Linares (Heurística y Optimización)
 
 - quote: |-
-    Como en una fiesta el que mejor se lo pasa es el que se mete de to', y en la uni el que se mete en to'
-  author: Hector Molina
+    Como en una fiesta, el que mejor se lo pasa es el que se mete de to', y en la uni el que se mete en to'
+  author: Héctor Molina
 
 - quote: |-
-    - Jorge: "Pero que es un MLP? (Multi Layer Perceptron)"
-    - Hector: "My Little Pony"
-  author: Dos filosofos buscando en google
+    - Jorge: "¿Pero qué es un MLP?" (Multi Layer Perceptron)
+    - Héctor: "My Little Pony"
+  author: Dos filósofos buscando en Google
 
 - quote: |-
     Si tung tung tung sahur me pide el número de la tarjeta de crédito, se lo doy junto a los números graciososo de atrás.
@@ -1379,16 +1367,16 @@
 
 - quote: |-
     Se creen que los informáticos tenemos anorexia. Si con dos subidos en un ascensor ya pita por el peso.
-  author: Hector Molina
+  author: Héctor Molina
 
 - quote: |-
     Nitrile Gloves Size M, 100 pcs per Box, examination grade
   author: Hack Quesitos
 
 - quote: |-
-    - Presi: ¿Qué hay para comer?
-    - Secretario: Picha
-    - Héctor: Oh, qué maravilla
+    - Presi: "¿Qué hay para comer?"
+    - Secretario: "Picha"
+    - Héctor: "Oh, qué maravilla"
   author: Héctor Molina
 
 - quote: |-
@@ -1396,21 +1384,12 @@
   author: Javier Garcia Blas (HPC)
 
 - quote: |-
-    Perdonad la expresión: lo puedo "tunear"
+    "Perdonad la expresión: lo puedo 'tunear'"
     (un par de frases despues)
-    Lo puedo modificar, puedo hacer cochinadas
+    "Lo puedo modificar, puedo hacer cochinadas"
   author: Javier Garcia Blas (HPC)
 
 - quote: |-
-    (Hablando sobre la arquitectura maestro - esclavo)
-    Ahora ya no se le llama tanto así porque la gente se quejaba, podéis llamarlo "director de tesis - alumno" o algo así.
-  author: Javier Garcia Blas (HPC)
-
-- quote: |-
-    Si se me muere un becario pues una semanita triste y luego a hablarle a rrhh a que me den otro.
-  author: Javier Garcia Blas (HPC)
-
-- quote: |-
-    - Christian: Yay es más divertido porque puedes escribir `yay` en la terminal
+    - Christian: "Yay es más divertido porque puedes escribir `yay` en la terminal"
     - Hugo: `alias yippie="paru"`
-  author: Christian y Hugo (Go vs Rust)
+  author: Christian y Hugo (usan Arch, btw)
